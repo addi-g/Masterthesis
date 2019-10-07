@@ -1,0 +1,157 @@
+
+\usepackage[ngerman]{babel}
+
+% Kodierung fuer unixoide Systeme und Windowssysteme.
+
+\usepackage[utf8]{inputenc}
+
+% Schriftart Times New Roman.
+
+%\usepackage{lmodern}
+%\usepackage{times}
+%\usepackage{newtxtext,newtxmath}
+\usepackage{mathptmx}
+
+% Erweitert den Zeichenvorrat, so dass z.B. auch Umlaute im PDF-Dokument
+% gefunden werden.
+
+\usepackage[T1]{fontenc}
+
+%Bibliography Fehlerbehebung
+\usepackage{bibgerm}
+
+% Zur Einbindung von Bildern.
+
+\usepackage{graphicx}
+
+% Erweiterte enumerate-Umgebung.
+
+\usepackage{enumerate}
+
+
+% Verschiedene Pakete, die nuetzlich sind um Mathematik in LaTeX zu setzen.
+
+\usepackage{mathtools}
+\usepackage{amsmath, amssymb, amsthm, dsfont}
+\usepackage{mathrsfs}
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{dunkelgruen}{HTML}{0B6121}
+\lstset{
+language=R,                     % the language of the code
+  basicstyle=\tiny, % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+ % backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+%  frame=single,                   % adds a frame around the code
+%  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=t,                   % sets the caption-position to bottom
+    breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+%  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+  otherkeywords={},                                % also try caption instead of title
+  deletekeywords={off,Q,t,q,file,data},
+  keywordstyle=\color{blue},      % keyword style
+  commentstyle=\color{dunkelgruen},   % comment style
+ stringstyle=\color{violet},      % string literal style
+ %  escapeinside={\%*}{*)},         % if you want to add a comment within your code
+%  morekeywords={*,...},           % if you want to add more keywords to the set
+%alsoletter={!},  
+  literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {ü}{{\"u}}1
+           {ß}{{\ss}}1
+}
+
+% Doppelte 1 (\mathbbm{1})
+
+\usepackage{bbm}
+
+% Indentation
+
+%\usepackage{scrextend}
+
+% Spaces for newcommand
+
+%\usepackage{xspace}
+
+% tikz
+\usepackage{tikz}
+%\usetikzlibrary{arrows.meta}% arrow tip library
+%\usetikzlibrary{bending}% better arrow head for bended lines
+
+% Hyphenation of words that already contain a hyphen
+% http://tex.stackexchange.com/questions/2706/adequate-hyphenation-of-words-already-containing-a-hyphen
+% Example:
+% \textsc{Alexandroff}\hyp{}\textsc{Urysohn}\hyp{}Kompaktheit
+
+%\usepackage{hyphenat}
+
+
+% Hyperlinks
+
+%\usepackage{hyperref}
+\usepackage[pdfauthor={Adrian Gabel},%
+pdftitle={Bachelorarbeit - Bewertung Amerikanischer Optionen durch Lösen eines optimalen Stoppproblems},%
+%pagebackref=true,%
+%pdftex
+]{hyperref}
+%\hypersetup{ colorlinks   =  false}
+\usepackage[a-1b]{pdfx}
+%\usepackage{url}
+%\def\UrlBreaks{\do\/\do-}
+
+%\usepackage[
+%%nonumberlist, %keine Seitenzahlen anzeigen
+%toc,          %Einträge im Inhaltsverzeichnis
+%section]      %im Inhaltsverzeichnis auf section-Ebene erscheinen
+%{glossaries}
+
+%%%%%%%%%%%%%%%%
+% Seitenlayout %
+%%%%%%%%%%%%%%%%
+
+% DIV# gibt den Divisor für die Layoutberechnung an.
+% Vergrößern des Divisors vergrößert den Textbereich.
+% BCOR#cm gibt die Breite des Bundstegs an.
+\usepackage[DIV14,BCOR2cm]{typearea}
+
+% Abstand obere Blattkante zur Kopfzeile ist 2.54cm - 15mm
+\setlength{\topmargin}{-15mm}
+
+% Keine Einrueckung nach einem Absatz.
+
+\parindent 0pt
+
+% Abstand zwischen zwei Abs\"atzen.
+
+%\parskip 12pt
+
+% Zeilenabstand.
+
+\linespread{1.25}
+
+% Inhaltsverzeichnis erstellen.
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+\pgfplotsset{samples=50}
+
+\usepgfplotslibrary{statistics}
+
+
+\usepackage{multicol}
+
+\usepackage{subcaption}
+\usepackage{microtype}
+\usepackage{parcolumns}
+\usepackage{changepage}
+
+\usepackage{fancyhdr}

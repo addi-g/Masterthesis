@@ -1,0 +1,127 @@
+% Makros
+
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\E}{\mathbb{E}\,}
+\newcommand{\e}{\mathrm{e}\,}
+\newcommand{\T}{\mathscr{T}}
+
+
+\newcommand{\N}{\mathbb{N}} % natuerliche Zahlen
+\newcommand{\Z}{\mathbb{Z}} % ganze Zahlen
+\newcommand{\Q}{\mathbb{Q}} % rationale Zahlen
+\newcommand{\R}{\mathbb{R}} % reelle Zahlen
+\newcommand{\K}{\mathbb{K}} % Körper
+\newcommand{\co}{\mathrm{co}} % compact open
+\newcommand{\W}{\mathcal{W}} % Weyl-Gruppe
+\newcommand{\1}{\mathbbm{1}} % Körper
+%\newcommand{\C}{\mathcal{C}} % stetige Funktionen
+
+\DeclareMathOperator{\Ret}{Re} % Realteil
+%\newcommand{\PIT}{\textbf{PIT }} % Prime Ideal Theorem
+\newcommand{\AC}{\textbf{AC}\xspace} % Prime Ideal Theorem
+\newcommand{\UFT}{\textbf{UFT}\xspace} % Prime Ideal Theorem
+\newcommand{\PIT}{\textbf{PIT}\xspace}
+\newcommand{\ZF}{\textbf{ZF}\xspace}
+\newcommand{\ZFC}{\textbf{ZFC}\xspace}
+\newcommand{\CC}{\textbf{CC}\xspace}
+\newcommand{\CCR}{\textbf{CC}($\R$)\xspace}
+\newcommand{\PCC}{\textbf{PCC}\xspace}
+\newcommand{\PCCR}{\textbf{PCC}($\R$)\xspace}
+
+\newcommand{\grad}[1]{\gv{\nabla} #1} % for gradient
+\let\divsymb=\div % rename builtin command \div to \divsymb
+\renewcommand{\div}[1]{\mathrm{div\,} #1} % for divergence
+\renewcommand{\d}[1]{\ensuremath\, {\operatorname{d}\!{#1}}}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+
+\newcommand{\alaoglu}{\textsc{Alaoglu}}
+\newcommand{\banach}{\textsc{Banach}}
+\newcommand{\cauchy}{\textsc{Cauchy}}
+\newcommand{\euklid}{\textsc{Euklid}}
+\newcommand{\fubini}{\textsc{Fubini}}
+\newcommand{\hahn}{\textsc{Hahn}}
+\newcommand{\hausdorff}{\textsc{Hausdorff}}
+\newcommand{\helmholtz}{\textsc{Helmholtz}}
+\newcommand{\hilbert}{\textsc{Hilbert}}
+\newcommand{\hoelder}{\textsc{Hölder}}
+\newcommand{\killing}{\textsc{Killing}}
+\newcommand{\kondrachov}{\textsc{Kondrachov}}
+\newcommand{\laplace}{\textsc{Laplace}}
+\newcommand{\lebesgue}{\textsc{Lebesgue}}
+\newcommand{\leibniz}{\textsc{Leibniz}}
+\newcommand{\lie}{\textsc{Lie}}
+\newcommand{\lipschitz}{\textsc{Lipschitz}}
+\newcommand{\navier}{\textsc{Navier}}
+\newcommand{\neumann}{\textsc{Neumann}}
+\newcommand{\newton}{\textsc{Newton}}
+\newcommand{\poincare}{\textsc{Poincaré}}
+\newcommand{\rellich}{\textsc{Rellich}}
+\newcommand{\riesz}{\textsc{Riesz}}
+\newcommand{\schwartz}{\textsc{Schwartz}}
+\newcommand{\sobolev}{\textsc{Sobolev}}
+\newcommand{\stokes}{\textsc{Stokes}}
+\newcommand{\stein}{\textsc{Stein}}
+\newcommand{\urysohn}{\textsc{Urysohn}}
+
+% Umgebungen für Definitionen, Sätze, usw.
+
+%\newtheorem{defn}{Definition}[section]
+%\newtheorem{ex}{Beispiel}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{thm}{Satz}[section]%[chapter]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Korollar}
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{bem}{Bemerkung}
+\newtheorem*{beh}{Behauptung}
+\newtheorem{bemnumber}[thm]{Bemerkung}
+
+\def\Satzrefname{Satz}
+
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\hgt}{ht}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\loc}{loc}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diam}{diam}
+
+%\renewcommand{\refname}{Literaturverzeichnis}
+\addto\captionsngerman{%
+\renewcommand*{\bibname}{Literaturverzeichnis}
+}
+
+\fancypagestyle{intro}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[LE,RO]{\thepage} % except the center
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyhead[LE,RO]{\thepage} % except the center
+\renewcommand{\headrulewidth}{1.0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{MyStyle}{
+\fancyhead{} % clear all header fields
+\fancyhead[RE]{\normalfont \nouppercase{\leftmark}}
+\fancyhead[LO]{\normalfont \nouppercase{\rightmark}}
+\fancyfoot{} % clear all footer fields
+\fancyhead[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{1.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+%\renewcommand{\sectionmark}[1]{\markboth{{\normalfont{##1}}}{}}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\quad {\normalfont{##1}}}{}}
+}
+

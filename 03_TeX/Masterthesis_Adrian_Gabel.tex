@@ -1,0 +1,52 @@
+% Vorlage fuer Abschlussarbeiten am Fachbereich Mathematik der TU Darmstadt.
+% Geeignet fuer Bachelorarbeiten, Masterarbeiten und Diplomarbeiten.
+
+%\documentclass[11pt,a4paper,twoside,openright]{report}
+\documentclass[12pt,a4paper,twoside]{article}
+% Benutzt man die Option draft, so kann man die Umbrueche ueberpruefen.
+
+% Hier werden alle benoetigten Pakete und Einstellungen geladen. Auch
+% hier sind Sie frei diese direkt in der Praeambel zu laden.
+
+\input{pakete}
+% Hier werden Makros und Umgebungen eingebunden. Diese werden separat
+% in der Datei befehle.tex definiert. Sie sind frei diese Befehle auch
+% direkt in der Praeambel zu definieren.
+\input{befehle}
+
+\begin{document}
+
+% Auf der Titelseite und im Inhaltsverzeichnis sollen keine
+% Seitenzahlen dargestellt werden.
+\pagestyle{empty}
+\pagenumbering{arabic}
+\setcounter{page}{-2}
+% Hier wird die Titelseite eingebunden.
+\include{titel}
+\pagestyle{intro}
+\pagenumbering{roman}
+
+% Inhaltsverzeichnis erstellen.
+\tableofcontents
+% Ab sofort werden Seitenzahlen in der Kopfzeile angezeigt.
+%\pagestyle{headings}
+
+\cleardoublepage
+\pagestyle{plain}
+\pagenumbering{arabic}
+%\chapter{Einleitung}
+%\input{einleitung}
+\newpage
+\pagestyle{MyStyle}
+%\chapter{Grundlagen}
+%\input{optimalestoppzeit}
+%\chapter{Regressionsbasierte Monte-Carlo-Verfahren}
+%\input{rb_mc}
+
+%\include{appendix}
+\newpage
+\pagestyle{plain}
+\input{literaturverzeichnis}
+
+\include{erklaerung}
+\end{document}

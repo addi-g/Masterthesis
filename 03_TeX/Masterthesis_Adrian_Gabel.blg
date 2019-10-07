@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Masterthesis_Adrian_Gabel.aux
+A level-1 auxiliary file: titel.aux
+The style file: geralpha.bst
+A level-1 auxiliary file: erklaerung.aux
+Database file #1: Masterthesis_Adrian_Gabel.bib
+Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
+while executing---line 1296 of file geralpha.bst
+Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye L., Karasözen, B., Kohler, M. AND Korn, R." for entry kohler2010review
+while executing---line 1361 of file geralpha.bst
+Too many commas in name 1 of "Devroye L., Karasözen, B., Kohler, M. AND Korn, R." for entry kohler2010review
+while executing---line 1361 of file geralpha.bst
+Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
+while executing---line 1361 of file geralpha.bst
+You've used 12 entries,
+            2768 wiz_defined-function locations,
+            688 strings with 6968 characters,
+and the built_in function-call counts, 4577 in all, are:
+= -- 460
+> -- 182
+< -- 9
++ -- 58
+- -- 56
+* -- 355
+:= -- 728
+add.period$ -- 25
+call.type$ -- 12
+change.case$ -- 55
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 213
+empty$ -- 372
+format.name$ -- 73
+if$ -- 969
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 21
+newline$ -- 52
+num.names$ -- 38
+pop$ -- 71
+preamble$ -- 1
+purify$ -- 79
+quote$ -- 0
+skip$ -- 166
+stack$ -- 0
+substring$ -- 216
+swap$ -- 46
+text.length$ -- 9
+text.prefix$ -- 6
+top$ -- 0
+type$ -- 72
+warning$ -- 0
+while$ -- 42
+width$ -- 15
+write$ -- 151
+(There were 5 error messages)
