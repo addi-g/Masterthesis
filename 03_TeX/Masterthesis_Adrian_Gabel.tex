@@ -2,7 +2,7 @@
 % Geeignet fuer Bachelorarbeiten, Masterarbeiten und Diplomarbeiten.
 
 %\documentclass[11pt,a4paper,twoside,openright]{report}
-\documentclass[12pt,a4paper,twoside]{article}
+\documentclass[12pt,a4paper,twoside]{report}
 % Benutzt man die Option draft, so kann man die Umbrueche ueberpruefen.
 
 % Hier werden alle benoetigten Pakete und Einstellungen geladen. Auch
@@ -19,34 +19,38 @@
 % Auf der Titelseite und im Inhaltsverzeichnis sollen keine
 % Seitenzahlen dargestellt werden.
 \pagestyle{empty}
-\pagenumbering{arabic}
-\setcounter{page}{-2}
+
 % Hier wird die Titelseite eingebunden.
 \include{titel}
-\pagestyle{intro}
-\pagenumbering{roman}
+% Eidesstattliche Erklaerung.
+\cleardoublepage 
+\include{erklaerung}
 
 % Inhaltsverzeichnis erstellen.
-\tableofcontents
-% Ab sofort werden Seitenzahlen in der Kopfzeile angezeigt.
-%\pagestyle{headings}
-
 \cleardoublepage
-\pagestyle{plain}
-\pagenumbering{arabic}
-%\chapter{Einleitung}
-\input{einleitung}
-\newpage
-\pagestyle{MyStyle}
-%\chapter{Grundlagen}
-%\input{optimalestoppzeit}
-%\chapter{Regressionsbasierte Monte-Carlo-Verfahren}
-%\input{rb_mc}
+\tableofcontents
 
+% Ab sofort werden Seitenzahlen in der Kopfzeile angezeigt.
+\pagestyle{headings}
+
+% Einbinden der Einleitung.
+\include{einleitung}
+\chapter{Grundlagen und Hilfsresultate}
+\chapter{Konstruktion des Neuronal Netze Regresssionsschätzers}
+\chapter{Anwendungsbeispiel}
+\chapter*{Appendix}
+
+% Einbinden der einzelnen Kapitel (zur Übersicht eine Datei je Kapitel)
+
+%\include{chap1}
+%\include{chap2}
+%\include{chap3}
+%\include{chap4}
+%\include{chap5}
+%\include{chap6}
 %\include{appendix}
-\newpage
-\pagestyle{plain}
-\input{literaturverzeichnis}
 
-\include{erklaerung}
+% Literaturverzeichnis (beginnt auf einer ungeraden Seite)
+%\cleardoublepage
+\include{literaturverzeichnis}
 \end{document}
