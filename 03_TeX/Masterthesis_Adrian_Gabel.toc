@@ -3,5 +3,5 @@
 \contentsline {chapter}{Einleitung}{6}{chapter*.3}
 \contentsline {chapter}{\numberline {1}Grundlagen und Hilfsresultate}{7}{chapter.1}
 \contentsline {chapter}{\numberline {2}Konstruktion des Neuronal Netze Regresssionssch\IeC {\"a}tzers}{8}{chapter.2}
-\contentsline {chapter}{\numberline {3}Anwendungsbeispiel}{9}{chapter.3}
+\contentsline {chapter}{\numberline {3}Anwendungsbeispiel auf Simulierte Daten}{9}{chapter.3}
 \contentsline {chapter}{Literaturverzeichnis}{12}{chapter*.5}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.15)  12 OCT 2019 20:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.15)  13 OCT 2019 10:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2042,17 +2042,24 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 56.
 (./einleitung.aux) (./literaturverzeichnis.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 56.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 56.
-Package rerunfilecheck Info: File `Masterthesis_Adrian_Gabel.out' has not chang
-ed.
-(rerunfilecheck)             Checksum: F290922B7CDB41BAF8134CF6595CD55E;888.
+
+
+Package rerunfilecheck Warning: File `Masterthesis_Adrian_Gabel.out' has change
+d.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Masterthesis_Adrian_Gabel.out':
+(rerunfilecheck)             Before: 257F8C0CEB710302E6464289A53FE311;1007
+(rerunfilecheck)             After:  8081EBE7FF21FC2368F6AF7D7350AE1A;1002.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 56.
  ) 
 Here is how much of TeX's memory you used:
- 35212 strings out of 493089
- 757986 string characters out of 6134841
+ 35218 strings out of 493089
+ 758040 string characters out of 6134841
  951529 words of memory out of 5000000
  37836 multiletter control sequences out of 15000+600000
- 52705 words of font info for 167 fonts, out of 8000000 for 9000
+ 52965 words of font info for 171 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,11n,83p,943b,670s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -2061,7 +2068,7 @@ live/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist
 /fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
 e1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (12 pages, 102788 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (12 pages, 106423 bytes).
 PDF statistics:
  140 PDF objects out of 1000 (max. 8388607)
  33 named destinations out of 1000 (max. 500000)
