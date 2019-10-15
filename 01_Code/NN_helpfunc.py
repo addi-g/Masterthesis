@@ -5,7 +5,7 @@ Created on Tue Oct 15 11:22:02 2019
 
 @author: adrian
 
-Implementation of neural networks that we need to contruct our neural network 
+Implementation of neural networks which we need to contruct our neural network 
 regression estimate
 """
 import numpy as np
@@ -19,7 +19,7 @@ def sigmoid (x):
 # x: reelle Zahl
 # R: reelle Zahl >= 1
     
-def f_id (x,R):
+def f_id (x, R):
     
     return 4 * R * sigmoid(x / R) - 2 * R 
 
@@ -29,7 +29,7 @@ def f_id (x,R):
 # y: reelle Zahl    
 # R: reelle Zahl >= 1
     
-def f_mult (x,y,R):
+def f_mult (x, y, R):
     
     return ((R ** 2) / 4) * (((1 + np.exp(-1)) ** 3) / (np.exp(-2) - np.exp(-1))) \
     * (sigmoid(((2 * (x + y)) / R) + 1) - 2 * sigmoid(((x + y) / R) + 1) \
@@ -49,10 +49,10 @@ def f_relu (x, R):
 # x: reelle Zahl 
 # y: fixe reelle Zahl
 # R: reelle Zahl >= 1
-# M: natürliche Zahl
+# M: fixe natürliche Zahl
 # a: fixe Zahl > 0
     
-def f_hat (x,y,R,M, a):
+def f_hat (x, y, R, M, a):
     
     return f_relu((M / (2 * a)) * (x - y) + 1) - 2 * f_relu((M / (2 * a)) * (x - y)) + 2 * f_relu((M / (2 * a)) * (x - y) - 1)
     
