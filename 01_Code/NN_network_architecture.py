@@ -35,12 +35,6 @@ def f_net (x, d, j_1_d, k, X_i, N, q, s, R, M, a):
 #initialize f_k_l
     f_k_l = np.empty((s + 1, (1 + M) ** d,))
     f_k_l[:] = np.nan
-    
-    X_i = np.transpose(np.empty((d, (1 + M) ** d,)))
-    X_i[:] = np.nan
-    
-    I_k = np.array(list(itertools.product(range(0, M + 1), repeat = d)))
-    X_i[:] = (I_k[:] * ((2 * a) / M)) - a
 
     for k in range(np.sum(j_1_d) + d, 2 ** s, 1):
         f_k_l[s, k] = 1

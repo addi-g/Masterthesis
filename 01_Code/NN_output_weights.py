@@ -56,7 +56,29 @@ def output_weights(x, N, d, M, a):
                 j += 1 
     
     weights = np.linalg.solve((1 / n) * np.dot(np.transpose(B),B) + (c_3 / n) * np.identity(J), (1 / n) * np.dot(np.transpose(B),Y))
-    return weights
+    return (weights, J)
+
+def neural_network_estimate(x):
+    
+    a, J = output_weights()
+
+    F_net = np.empty((1, J,))
+    F_net[:] = np.nan
+    
+    j = 0
+    while j < J:
+        for k in range(0, ((M + 1) ** d)):
+            for z in range(0, scipy.special.binom(N + d, d)):
+                F_net[1,j] = f_net(x, d, all_j1_jd_by_cond[z], k, X_i[k], N, q, s, R, M, a)
+                j += 1 
+                
+    return np.sum(a * F_net)
+    
+    
+
+    
+    
+    
     
     
     
