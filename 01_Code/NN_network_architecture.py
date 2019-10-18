@@ -14,10 +14,10 @@ Die Gewichte in der Ausgabeschit ermitteln wird mit Hilfe der Inputdaten in dem
 wir ein regularisiertes Kleinste-Quadrate Problem lösen.
 """
 import numpy as np
-from NN_helpfunc import f_id, f_mult, f_relu, f_hat 
-import itertools
+from NN_helpfunc import f_id, f_mult, f_hat 
 
-# 
+# Neuronales Netz welches die Funktion f(x) = (x^(1)- x_ik^(1))^j1 * ... * 
+# (x^(d) - x_ik^(d))^jd * \prod_{j = 1}^d max((1 - (M/2a) * abs(x^(j) - x_ik^(j))),0)
 #
 # x: Eingabevektor für das Neuronale Netz x \in [-a,a]^d
 # d: Ist die Dimension des Eingabevektors d > 0

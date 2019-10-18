@@ -5,10 +5,14 @@ Created on Tue Oct 15 11:22:02 2019
 
 @author: adrian
 
-Implementation of neural networks which we need to contruct our neural network 
-regression estimate
+Implementation von Neuronalen-Netzen welche wir für die Konstruktion unseres 
+Neuronale-Netze-Regressionschätzers benötigen
 """
 import numpy as np
+
+# Sigmoidfunktion
+#
+# x: x \in \R 
 
 def sigmoid (x):
     
