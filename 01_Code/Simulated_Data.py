@@ -23,7 +23,7 @@ exp = np.exp
 tan = np.tan
 
 n = 100
-d = 5
+d = 4
 
 X = np.random.uniform(low=-1,high=1,size=(n,d))
 S = np.random.standard_normal(size=(n,1))
@@ -35,14 +35,16 @@ S = np.random.standard_normal(size=(n,1))
 
 def m_d (x, d):
     
-    if d == 1:
+    if d == 2:
         return log(0.2 * x[0] + 0.9 * x[1]) + cos(pi / (log(0.5 * x[0] + 0.3 * x[1]))) + exp((1/50) * (0.7 * x[0] + 0.7 * x[1])) +  (tan(pi * (0.1 * x[0] + 0.3 * x[1]) ** 4))/((0.1 * x[0] + 0.3 * x[1]) ** 2)
     
-    elif d == 2:
+    elif d == 4:
         return tan(sin(pi * (0.2 * x[0] + 0.5 * x[1] - 0.6 * x[2] + 0.2 * x[3]))) + (0.5 * (x[0] + x[1] + x[2] + x[3])) ** 3 + 1 / (((0.5 * x[0] + 0.3 * x[1] - 0.3 * x[2] + 0.25 * x[3]) ** 2) + 4)
     
-    elif d == 3:
+    elif d == 5:
         return log(0.5 * (x[0] + 0.3 * x[1] + 0.6 * x[2] + x[3] - x[4]) ** 2) + sin(pi * (0.7 * x[0] + x[1] - 0.3 * x[2] - 0.4 * x[3] - 0.8 * x[4])) + cos(pi / (1 + sin(0.5 * (x[1] + 0.9 * x[2] - x[4]))))
+    else:
+        print("Your data has the wrong dimension!")
 
 # Generiert den Vektor Y_1,...,Y_n für den Datensatz (X_1,Y_1),...,(X_n,Y_n)
 #
@@ -51,16 +53,14 @@ def m_d (x, d):
         
 def gen_data_Y (X, sigma):
 
-    n = X.size
-    d = X[0].size
+    n = np.size(X, 0)
+    d = np.size(X, 1)
     
     m_X = np.zeros((n,1,)) 
     m_X[:] = np.nan
 
     for t in range(0,n):
         m_X[t] = m_d(X[t], d)
-        
-    Y = m_X + sigma * iqr(m_X[t]) * S
     
-    return Y 
+    return m_X + sigma * iqr(m_X) * S
 

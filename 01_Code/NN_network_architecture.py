@@ -5,7 +5,7 @@ Created on Tue Oct 15 13:22:49 2019
 
 @author: adrian
 
-Implementation des Neuronalen-Netze-Regressionschätzers
+Implementation des Neuronalen-Netze-Regressionsschätzers
 
 Erst wird die Netzwerk Architektur bestimmt. Die Gewichte, außer die in der 
 Ausgabeschicht werden fix gewählt.
@@ -32,25 +32,34 @@ from NN_helpfunc import f_id, f_mult, f_hat
 # a: > 0         
 
 def f_net (x, d, j_1_d, k, X_i, N, q, s, R, M, a):
-#initialize f_k_l
-    f_k_l = np.empty((s + 1, (1 + M) ** d,))
-    f_k_l[:] = np.nan
+#initialize f_l_k
+    f_l_k = np.empty((s + 1, (1 + M) ** d,))
+    f_l_k[:] = np.nan
 
+    # k läuft hier ab j_1+....+j_d + d los da unsere Matrix ab Index 0 die Werte einträgt
+    # daher wird hier das "+ 1" in der Summe weggelassen da unser Index früher starte.
+    # hier k \in \{0,...,(M + 1)^d - 1|} und im Paper k \in \{1,...,(M + 1)^d|}
+    # Mit der "range"-Funktion wird der Index bei dem gestoppt werden soll nicht angenommen
+    
     for k in range(np.sum(j_1_d) + d, 2 ** s, 1):
-        f_k_l[s, k] = 1
+        f_l_k[s, k] = 1
         
     for k in range(0, d, 1):
-        f_k_l[s, np.sum(j_1_d) + k] = f_hat(x[k], X_i[k,k], R, M, a)
+        f_l_k[s, np.sum(j_1_d) + k] = f_hat(x[k], X_i[k,k], R, M, a)
         
     for l in range(1, d + 1, 1):
         for k in range(j_1_d[range(0, l - 1, 1)].sum(), j_1_d[range(0, l, 1)].sum(), 1):
-            f_k_l[s, k] = f_id(f_id(x[l] - X_i[l,k], R), R)
+            f_l_k[s, k] = f_id(f_id(x[l] - X_i[l,k], R), R)
     
     for l in range(0, s):
         for k in range(0, 2 ** l, 1):
-            f_k_l[l, k] = f_mult(f_k_l[l + 1, (2 * k) - 1], f_k_l[l + 1, 2 * k], R) 
+            # k = 0 separat betrachten da es sonst probleme mit dem Index 2 * k - 1 gibt
+            if k == 0:
+                f_l_k[l, k] = f_mult(f_l_k[l + 1, 0], f_l_k[l + 1, 1], R)
+            else:
+                f_l_k[l, k] = f_mult(f_l_k[l + 1, (2 * k) - 1], f_l_k[l + 1, 2 * k], R) 
               
-    return f_k_l[0,0]
+    return f_l_k[0,0]
 
 
 

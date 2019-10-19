@@ -31,7 +31,7 @@ def output_weights(X, Y, N, q, s, R, d, M, a):
 
     # Anzahl der Eingabevektoren X_1,...,X_n
     
-    n = X.size
+    n = np.size(X, 0)
     
     # Eine beliebige constante > 0
     
@@ -45,6 +45,7 @@ def output_weights(X, Y, N, q, s, R, d, M, a):
     # Für die Konstruktion der Matrix brauchen wir erstmal alle Inputparameter
     # für f_net, da wir dort nur den Funktionswert für einen Vektor j_1,...,j_d einsetzen
     # müssen wir erstmals alle möglichen Vektoren dieser Art konstruieren die die Bedingung 0 <= j_1 + ... + j_d <= N erfüllen
+    # X_ik hat in den Zeilen die Vektoren X_i aus dem Paper
     
     X_ik = np.transpose(np.empty((d, (1 + M) ** d,)))
     X_ik[:] = np.nan
@@ -93,7 +94,7 @@ def neural_network_estimate(x, X, Y, N, q, s, R, d, M, a):
     while j < J:
         for k in range(0, ((M + 1) ** d)):
             for z in range(0, scipy.special.binom(N + d, d)):
-                F_net[1,j] = f_net(x, d, all_j1_jd_by_cond[z], k, X_ik[k], N, q, s, R, M, a)
+                F_net[0,j] = f_net(x, d, all_j1_jd_by_cond[z], k, X_ik[k], N, q, s, R, M, a)
                 j += 1 
                 
     return np.sum(a * F_net)
