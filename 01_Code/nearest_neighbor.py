@@ -11,16 +11,9 @@ K-Nearest-Neighbors Algorithm
 import numpy as np
 from sklearn import neighbors
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import fbeta_score, make_scorer
 import warnings 
-warnings.simplefilter(action='ignore', category=FutureWarning)
 
-X, y = make_regression(n_samples=100, n_features=2, noise=0.1, random_state=1)
-scalarX, scalarY = MinMaxScaler(), MinMaxScaler()
-scalarX.fit(X)
-scalarY.fit(y.reshape(100,1))
-X = scalarX.transform(X)
-y = scalarY.transform(y.reshape(100,1))
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # Implementierung des k-Nächste-Nachbarn-Algorithmus. Dieser bestimmt auch selber bei einer Liste von Anzahlen an Nachbarn die betrachtet werden 
 # sollen welches die beste Wahl ist.
@@ -29,7 +22,7 @@ y = scalarY.transform(y.reshape(100,1))
 # Y: Inputvektor für das Kalibirieren des Modells (Zielvektor an den die Gewichte angepasst werden) 
 # T: Inputvektor für den eine Vorhersage bestimmte werden soll
 
-def k_nearest_neighbor (X,Y):
+def nearest_neighbor_estimate (X,Y):
     
     split = int(0.8*np.size(X,0))
     
@@ -46,8 +39,3 @@ def k_nearest_neighbor (X,Y):
     knn_gridsearch_model.fit(X_train,Y_train)
     
     return knn_gridsearch_model.predict(X_test)
-
-prediction_neighbor = k_nearest_neighbor(X,y)
-    
-    
-

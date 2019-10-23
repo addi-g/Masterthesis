@@ -12,17 +12,8 @@ Kleinste-Quadrate Problem.
 import scipy.special
 import numpy as np
 import itertools
-from NN_helpfunc import f_id, f_mult, f_hat 
-from sklearn.datasets import make_regression
-from sklearn.preprocessing import MinMaxScaler
+from help_neural_networks import f_id, f_mult, f_hat 
 import math
-
-X, y = make_regression(n_samples=100, n_features=2, noise=0.1, random_state=1)
-scalarX, scalarY = MinMaxScaler(), MinMaxScaler()
-scalarX.fit(X)
-scalarY.fit(y.reshape(100,1))
-X = scalarX.transform(X)
-y = scalarY.transform(y.reshape(100,1))
 
 # Neuronales Netz welches die Funktion f(x) = (x^(1)- x_ik^(1))^j1 * ... * 
 # (x^(d) - x_ik^(d))^jd * \prod_{j = 1}^d max((1 - (M/2a) * abs(x^(j) - x_ik^(j))),0)
@@ -133,7 +124,7 @@ def output_weights(X, Y, N, q, R, d, M, a):
 # M: M \in \N
 # a: >0
 
-def neural_network_estimate(X, Y, N, q, R, d, M, a):
+def new_neural_network_estimate(X, Y, N, q, R, d, M, a):
     
     split = int(0.8*np.size(X,0))
     
@@ -162,17 +153,6 @@ def neural_network_estimate(X, Y, N, q, R, d, M, a):
         Y_pred[u] = np.sum(np.transpose(weights) * F_net)
         
     return Y_pred
-
-
-N = 5
-q = 4
-R = 10
-d = 2
-a = 3
-M = 5
-
-prediction_new_neuronal_network = neural_network_estimate(X,y,N,q,R,d,M,a)
-
 
 
     

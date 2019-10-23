@@ -11,22 +11,12 @@ Generieren der Daten die wir für einen Vergleich von Regressionsschätzern ben�
 # n is die Größe der Stichprobe
 
 import numpy as np
-import pandas as pd
 from scipy.stats import iqr
-from random import choice
-
-log = np.log
-pi = np.pi
-cos = np.cos
-sin = np.sin
-exp = np.exp
-tan = np.tan
 
 n = 100
 d = 4
 
 X = np.random.uniform(low=-1,high=1,size=(n,d))
-S = np.random.standard_normal(size=(n,1))
 
 # Regressionsfunktionen
 #
@@ -34,6 +24,13 @@ S = np.random.standard_normal(size=(n,1))
 # d: Dimension des Vektors x
 
 def m_d (x, d):
+    
+    log = np.log
+    pi = np.pi
+    cos = np.cos
+    sin = np.sin
+    exp = np.exp
+    tan = np.tan    
     
     if d == 2:
         return log(0.2 * x[0] + 0.9 * x[1]) + cos(pi / (log(0.5 * x[0] + 0.3 * x[1]))) + exp((1/50) * (0.7 * x[0] + 0.7 * x[1])) +  (tan(pi * (0.1 * x[0] + 0.3 * x[1]) ** 4))/((0.1 * x[0] + 0.3 * x[1]) ** 2)
@@ -47,20 +44,20 @@ def m_d (x, d):
         print("Your data has the wrong dimension!")
 
 # Generiert den Vektor Y_1,...,Y_n für den Datensatz (X_1,Y_1),...,(X_n,Y_n)
-#
+#   
 # X: Inputdaten der Form (X_1,...,X_n), wobei X_i \in [-1,-1]^d für i = 1,...,n
 # sigma: Schwankung in den Werten (Noise) \in \{0.05,0.1\}
         
 def gen_data_Y (X, sigma):
-
+    
     n = np.size(X, 0)
     d = np.size(X, 1)
     
     m_X = np.zeros((n,1,)) 
     m_X[:] = np.nan
-
+    
+    S = np.random.standard_normal(size=(n,1)) 
     for t in range(0,n):
         m_X[t] = m_d(X[t], d)
-    
-    return m_X + sigma * iqr(m_X) * S
 
+    return m_X + sigma * iqr(m_X) * S

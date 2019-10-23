@@ -8,20 +8,6 @@ Created on Fri Oct 11 14:23:15 2019
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
-from sklearn.datasets import make_regression
-from sklearn.preprocessing import MinMaxScaler
-
-
-# generate regression dataset
-X, y = make_regression(n_samples=100, n_features=2, noise=0.1, random_state=1)
-scalarX, scalarY = MinMaxScaler(), MinMaxScaler()
-scalarX.fit(X)
-scalarY.fit(y.reshape(100,1))
-X = scalarX.transform(X)
-y = scalarY.transform(y.reshape(100,1))
-
-Xnew, a = make_regression(n_samples=3, n_features=2, noise=0.1, random_state=1)
-Xnew = scalarX.transform(Xnew)
 
 # Fully-Connected Neuronales Netzt mit einer Verborgenen schicht welches die 
 # Anzahl der Neuronen adaptiv, durch minimierung des L2 fehlers, aus der Menge \{5, 10, 25, 50, 75\} auswählt. 
@@ -29,7 +15,7 @@ Xnew = scalarX.transform(Xnew)
 # X: Eingabevektoren der Form (X_1,...,X_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 # Y: Eingabevektoren der Form (Y_1,...,Y_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 
-def fc_neural_1 (X,Y):
+def fc_neural_1_estimate (X,Y):
     
     split = int(0.8*np.size(X,0))
     
@@ -66,5 +52,5 @@ def fc_neural_1 (X,Y):
     
     return model.predict(X_test)
 
-prediction_fc_neural_1 = fc_neural_1(X,y)
+#prediction_fc_neural_1 = fc_neural_1_estimate(X,y)
    
