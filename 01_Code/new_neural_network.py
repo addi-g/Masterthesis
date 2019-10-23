@@ -24,16 +24,12 @@ scalarY.fit(y.reshape(100,1))
 X = scalarX.transform(X)
 y = scalarY.transform(y.reshape(100,1))
 
-
-
-
 # Neuronales Netz welches die Funktion f(x) = (x^(1)- x_ik^(1))^j1 * ... * 
 # (x^(d) - x_ik^(d))^jd * \prod_{j = 1}^d max((1 - (M/2a) * abs(x^(j) - x_ik^(j))),0)
 #
 # x: Eingabevektor für das Neuronale Netz x \in [-a,a]^d
 # d: Ist die Dimension des Eingabevektors d > 0
 # j_1_d: Ist ein d-dimensionaler Vektor j_1,...,j_d \in {0,1,...,N}
-# k: k \in {1,...,(M+1)^d}
 # X_i: Ist eine  d x (M+1)^d  Matrix. 
 # N: Natürliche Zahl >= q
 # q: 
@@ -42,36 +38,31 @@ y = scalarY.transform(y.reshape(100,1))
 # M: M \in N
 # a: > 0         
 
-def f_net (x, d, j_1_d, k, X_i, N, q, s, R, M, a):
-#initialize f_l_k
-    f_l_k = np.empty((s + 1, (1 + M) ** d,))
+def f_net (x, d, j_1_d, X_i, N, q, s, R, M, a):
+#initialize f_l_k    
+    #(2 ** s) + 1
+    #((1 + M) ** d) + 1
+    f_l_k = np.empty((s + 1, (2 ** s) + 1,))
     f_l_k[:] = np.nan
 
-    # k läuft hier ab j_1+....+j_d + d los da unsere Matrix ab Index 0 die Werte einträgt
-    # daher wird hier das "+ 1" in der Summe weggelassen da unser Index früher starte.
-    # hier k \in \{0,...,(M + 1)^d - 1|} und im Paper k \in \{1,...,(M + 1)^d|}
-    # Mit der "range"-Funktion wird der Index bei dem gestoppt werden soll nicht angenommen
     
-    for k in range(np.sum(j_1_d) + d, 2 ** s, 1):
+    for k in range(np.sum(j_1_d) + d + 1, (2 ** s) + 1, 1):
         f_l_k[s, k] = 1
+       
+    for k in range(1, d + 1, 1):
+        f_l_k[s, np.sum(j_1_d) + k] = f_hat(x[k - 1], X_i[k - 1], R, M, a)   
         
-    for k in range(0, d, 1):
-        f_l_k[s, np.sum(j_1_d) + k] = f_hat(x[k], X_i[k], R, M, a)
-     
-    for l in range(0, d, 1):
-        k = j_1_d[range(0, l, 1)].sum()
-        while k in range(j_1_d[range(0, l, 1)].sum(), j_1_d[range(0, l + 1, 1)].sum() + 1, 1):
-            f_l_k[s, k] = f_id(f_id(x[l] - X_i[l], R), R)
+    for l in range(1, d + 1, 1):
+        k = j_1_d[range(0, l - 1, 1)].sum() + 1
+        while k in range(j_1_d[range(0, l - 1, 1)].sum() + 1, j_1_d[range(0, l, 1)].sum() + 1, 1):
+            f_l_k[s, k] = f_id(f_id(x[l - 1] - X_i[l - 1], R), R)
             k += 1
             
     for l in range(s - 1, -1, -1):
-        for k in range((2 ** l) - 1, -1, -1):
-            # k = 0 separat betrachten da es sonst probleme mit dem Index 2 * k - 1 gibt
-            if k == 0:
-                f_l_k[l, k] = f_mult(f_l_k[l + 1, 0], f_l_k[l + 1, 1], R)
-            else:
-                f_l_k[l, k] = f_mult(f_l_k[l + 1, (2 * k) - 1], f_l_k[l + 1, 2 * k], R)
-    return f_mult(f_l_k[0, 0],f_l_k[0, 0],R)
+        for k in range((2 ** l), 0, -1):
+            f_l_k[l, k] = f_mult(f_l_k[l + 1, (2 * k) - 1], f_l_k[l + 1, 2 * k], R)        
+            
+    return f_l_k[0,1]  
 
 # Bestimmung der Gewichte der Ausgabeschicht durch lösen eines regularisierten
 # Kleineste-Quadrate Problems
@@ -123,7 +114,7 @@ def output_weights(X, Y, N, q, R, d, M, a):
         j = 0
         for k in range(0, ((M + 1) ** d)):
             for z in range(0, int(scipy.special.binom(N + d, d))):
-                B[i,j] = f_net(X[i], d, all_j1_jd_by_cond[z], k, X_ik[k], N, q, s, R, M, a)
+                B[i,j] = f_net(X[i], d, all_j1_jd_by_cond[z], X_ik[k], N, q, s, R, M, a)
                 j += 1
     
     weights = np.linalg.solve((1 / n) * np.dot(np.transpose(B),B) + (c_3 / n) * np.identity(J), (1 / n) * np.dot(np.transpose(B),Y))
@@ -142,37 +133,45 @@ def output_weights(X, Y, N, q, R, d, M, a):
 # M: M \in \N
 # a: >0
 
-def neural_network_estimate(x, X, Y, N, q, R, d, M, a):
+def neural_network_estimate(X, Y, N, q, R, d, M, a):
+    
+    split = int(0.8*np.size(X,0))
+    
+    X_train = X[:split,:]
+    Y_train = Y[:split]
+    X_test = X[split:,:]
+    
+    Y_pred = np.empty((len(X_test), 1,))
+    Y_pred[:] = np.nan
     
     s = math.ceil(math.log2(N + d))
     
-    weights, J, all_j1_jd_by_cond, X_ik = output_weights(X, Y, N, q, R, d, M, a)
+    weights, J, all_j1_jd_by_cond, X_ik = output_weights(X_train, Y_train, N, q, R, d, M, a)
 
     F_net = np.empty((1, J,))
     F_net[:] = np.nan
     
-    
-    j = 0
-    while j < J:
-        for k in range(0, ((M + 1) ** d)):
-            for z in range(0, int(scipy.special.binom(N + d, d))):
-                F_net[0,j] = f_net(x, d, all_j1_jd_by_cond[z], k, X_ik[k], N, q, s, R, M, a)
-                j += 1 
-                 
-    return np.sum(np.transpose(weights) * F_net)
+    for u in range (0,len(X_test),1):
+        j = 0
+        while j < J:
+            for k in range(0, ((M + 1) ** d)):
+                for z in range(0, int(scipy.special.binom(N + d, d))):
+                    F_net[0,j] = f_net(X_test[u], d, all_j1_jd_by_cond[z], X_ik[k], N, q, s, R, M, a)
+                    j += 1 
+                     
+        Y_pred[u] = np.sum(np.transpose(weights) * F_net)
+        
+    return Y_pred
 
-N = 2
-q = 1
-R = 1
+
+N = 5
+q = 4
+R = 10
 d = 2
-a = 1
-M = 3
+a = 3
+M = 5
 
-prediction_new_neuronal_network = np.empty((len(X), 1,))
-prediction_new_neuronal_network[:] = np.nan
-
-
-prediction_new_neuronal_network[0] = neural_network_estimate(X[3],X,y,N,q,R,d,M,a)
+prediction_new_neuronal_network = neural_network_estimate(X,y,N,q,R,d,M,a)
 
 
 

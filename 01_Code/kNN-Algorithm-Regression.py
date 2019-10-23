@@ -15,15 +15,12 @@ from sklearn.metrics import fbeta_score, make_scorer
 import warnings 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-np.random.seed(1)
-n = 100
-d = 3
-
-X = np.random.uniform(low=-1,high=1,size=(n,d))
-
-T = np.random.uniform(low=-1,high=1,size=(10*n,d))
-
-y = 2 * X
+X, y = make_regression(n_samples=100, n_features=2, noise=0.1, random_state=1)
+scalarX, scalarY = MinMaxScaler(), MinMaxScaler()
+scalarX.fit(X)
+scalarY.fit(y.reshape(100,1))
+X = scalarX.transform(X)
+y = scalarY.transform(y.reshape(100,1))
 
 # Implementierung des k-Nächste-Nachbarn-Algorithmus. Dieser bestimmt auch selber bei einer Liste von Anzahlen an Nachbarn die betrachtet werden 
 # sollen welches die beste Wahl ist.
