@@ -13,10 +13,7 @@ from scipy import mean
 #
 # Y: Datensatz der Form (Y_1,...) wobei Y_i \in \R für i = 1,...
 
-def constant_estimate(Y):
-    
-    split = int(0.8*np.size(Y,0))
-    
+def constant_estimate(Y):    
     m = np.zeros((len(Y),1,)) 
     m[:] = mean(Y)
-    return m[split:]
+    return m

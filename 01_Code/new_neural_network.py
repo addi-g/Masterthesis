@@ -124,14 +124,8 @@ def output_weights(X, Y, N, q, R, d, M, a):
 # M: M \in \N
 # a: >0
 
-def new_neural_network_estimate(X, Y, N, q, R, d, M, a):
-    
-    split = int(0.8*np.size(X,0))
-    
-    X_train = X[:split,:]
-    Y_train = Y[:split]
-    X_test = X[split:,:]
-    
+def new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a):
+
     Y_pred = np.empty((len(X_test), 1,))
     Y_pred[:] = np.nan
     

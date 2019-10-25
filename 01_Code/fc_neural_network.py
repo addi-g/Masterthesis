@@ -15,13 +15,7 @@ from keras.layers import Dense
 # X: Eingabevektoren der Form (X_1,...,X_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 # Y: Eingabevektoren der Form (Y_1,...,Y_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 
-def fc_neural_1_estimate (X,Y):
-    
-    split = int(0.8*np.size(X,0))
-    
-    X_train = X[:split,:]
-    Y_train = Y[:split]
-    X_test = X[split:,:]
+def fc_neural_1_estimate (X_train,Y_train,X_test):
     
     Ynew = np.empty((len(X_train), len([5,10,25,50,75]),))
     Ynew[:] = np.nan
@@ -48,7 +42,7 @@ def fc_neural_1_estimate (X,Y):
     model.add(Dense(best_n_neurons, input_dim=d, activation='relu'))
     model.add(Dense(1, activation='linear'))
     model.compile(loss='mse', optimizer='adam')
-    model.fit(X_train, Y_train, epochs=1000, verbose=0) 
+    model.fit(X_train, Y_train, epochs=1000, verbose=1) 
     
     return model.predict(X_test)
 

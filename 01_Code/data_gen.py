@@ -13,11 +13,6 @@ Generieren der Daten die wir für einen Vergleich von Regressionsschätzern ben�
 import numpy as np
 from scipy.stats import iqr
 
-n = 100
-d = 4
-
-X = np.random.uniform(low=-1,high=1,size=(n,d))
-
 # Regressionsfunktionen
 #
 # x: Ein Vektor x \in [-1,-1]^d
@@ -25,21 +20,17 @@ X = np.random.uniform(low=-1,high=1,size=(n,d))
 
 def m_d (x, d):
     
-    log = np.log
     pi = np.pi
     cos = np.cos
     sin = np.sin
-    exp = np.exp
-    tan = np.tan    
+    exp = np.exp  
     
-    if d == 2:
-        return log(0.2 * x[0] + 0.9 * x[1]) + cos(pi / (log(0.5 * x[0] + 0.3 * x[1]))) + exp((1/50) * (0.7 * x[0] + 0.7 * x[1])) +  (tan(pi * (0.1 * x[0] + 0.3 * x[1]) ** 4))/((0.1 * x[0] + 0.3 * x[1]) ** 2)
+    if d == 1:
+        return sin(0.2 * x[0] ** 2) + exp(0.5 * x[0]) + x[0] ** 3
+                   
+    elif d == 2:
+        return 5 * exp(- x[0] ** 2 - (x[1] - 2) ** 2) + x[0] ** 2 + (x[1] - 2) ** 2
     
-    elif d == 4:
-        return tan(sin(pi * (0.2 * x[0] + 0.5 * x[1] - 0.6 * x[2] + 0.2 * x[3]))) + (0.5 * (x[0] + x[1] + x[2] + x[3])) ** 3 + 1 / (((0.5 * x[0] + 0.3 * x[1] - 0.3 * x[2] + 0.25 * x[3]) ** 2) + 4)
-    
-    elif d == 5:
-        return log(0.5 * (x[0] + 0.3 * x[1] + 0.6 * x[2] + x[3] - x[4]) ** 2) + sin(pi * (0.7 * x[0] + x[1] - 0.3 * x[2] - 0.4 * x[3] - 0.8 * x[4])) + cos(pi / (1 + sin(0.5 * (x[1] + 0.9 * x[2] - x[4]))))
     else:
         print("Your data has the wrong dimension!")
 
@@ -60,4 +51,8 @@ def gen_data_Y (X, sigma):
     for t in range(0,n):
         m_X[t] = m_d(X[t], d)
 
-    return m_X + sigma * iqr(m_X) * S
+    Y = m_X + sigma * iqr(m_X) * S
+    return (m_X, Y)
+
+
+    

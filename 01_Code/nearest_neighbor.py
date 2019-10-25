@@ -22,15 +22,8 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 # Y: Inputvektor für das Kalibirieren des Modells (Zielvektor an den die Gewichte angepasst werden) 
 # T: Inputvektor für den eine Vorhersage bestimmte werden soll
 
-def nearest_neighbor_estimate (X,Y):
-    
-    split = int(0.8*np.size(X,0))
-    
-    X_train = X[:split,:]
-    Y_train = Y[:split]
-    X_test = X[split:,:]
-    
-    
+def nearest_neighbor_estimate (X_train,Y_train,X_test):
+      
     params = {'n_neighbors':[2,3,4,5,6,7,8,9], 'weights': ['uniform', 'distance']}
 
     knn = neighbors.KNeighborsRegressor()
