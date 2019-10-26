@@ -77,7 +77,8 @@ def output_weights(X, Y, N, q, R, d, M, a):
     
     # Eine beliebige constante > 0
     
-    c_3 = np.random.randint(1,10)
+    #c_3 = np.random.randint(1,10)
+    c_3 = 0.01
     
     # Anzahl der Spalten der Matrix für das Kleinste-Quadrate Problem
     # In den Spalten sind die Funktionswerte von f_net eingespeichert

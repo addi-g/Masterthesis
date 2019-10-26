@@ -26,13 +26,17 @@ def m_d (x, d):
     exp = np.exp  
     
     if d == 1:
-        return sin(0.2 * x[0] ** 2) + exp(0.5 * x[0]) + x[0] ** 3
+        return x[0] ** 2
                    
     elif d == 2:
-        return 5 * exp(- x[0] ** 2 - (x[1] - 2) ** 2) + x[0] ** 2 + (x[1] - 2) ** 3
+        return cos(0.2 * (x[0] - x[1]) ** 2) + sin(0.5 * (x[0] - x[1])) + (x[0] - x[1]) ** 3
     
     else:
         print("Your data has the wrong dimension!")
+        
+def error_limit (x, p, c, d):
+    
+        return c * (np.log(x) ** 3) * (x ** (-(2 * p)/(2 * p + d)))
 
 # Generiert den Vektor Y_1,...,Y_n für den Datensatz (X_1,Y_1),...,(X_n,Y_n)
 #   

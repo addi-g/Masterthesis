@@ -12,7 +12,7 @@ import numpy as np
 import matplotlib . pyplot as plt
 import pandas as pd
 from scipy.stats import iqr
-from data_gen import gen_data_Y
+from data_gen import gen_data_Y, error_limit
 from constant import constant_estimate
 from new_neural_network import new_neural_network_estimate
 from nearest_neighbor import nearest_neighbor_estimate
@@ -21,37 +21,56 @@ from fc_neural_network import fc_neural_1_estimate
 '''
 EINDIMENSIONALER FALL (d = 1) wird geplottet
 '''
-n = 10000
+n = 1
 
-# Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
-
-N = 3
+N = 2
 q = 2
 R = 10 ** 6  
 a = 2
 M = 2
 d = 1
-
 sigma = 0.05
 
-X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.8),d)), axis = 0)
-m_X_train, Y_train = gen_data_Y(X_train,sigma)
+k = 14
 
-X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.2),d)), axis = 0)
+error = np.empty(k)
+x_value = np.empty(k)
+x_value[:] = np.nan
+error[:] = np.nan
 
-Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
-#Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
-#Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
+j = 0
 
-m_X_test, dummy = gen_data_Y(X_test,sigma)
+while j < k:
+    
+    n *= 2
+    #n = 1000
+    # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+    X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.8),d)), axis = 0)
+    m_X_train, Y_train = gen_data_Y(X_train,sigma)
+    
+    X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.2),d)), axis = 0)
+    
+    Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
+    #Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
+    #Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
+    
+    m_X_test, dummy = gen_data_Y(X_test,sigma)
+       
+    error[j] = np.mean(sum (abs(Y_pred_new_nn - m_X_test) ** 2))
+    x_value[j] = n
+    j += 1
+    
+error_limit_y = error_limit(x_value,2,1,1)
 
-plt.plot(X_test, m_X_test, '-b', label='m_d') 
+plt.plot(x_value, error, '-b', label='error_new_nn')
+plt.plot(x_value, error_limit_y, '-r', label='limit')
+#plt.plot(X_test, m_X_test, '-b', label='m_d') 
 #plt.plot(X_test, Y_pred_nearest_neighbor, '-r', label='nearest_neigbhor')
 #plt.plot(X_test, Y_pred_fc_nn_1, '-g', label='fc_nn_1')
-plt.plot(X_test, Y_pred_new_nn, '-y', label='new_nn')  
+#plt.plot(X_test, Y_pred_new_nn, '-y', label='new_nn')  
 plt.legend(loc='upper left') 
-plt.xlim(-2.0, 2.0)
-plt.show()
+plt.xlim(0, 17000)
+#plt.show()
 #plt.savefig('foo.png')
 
 '''
@@ -65,7 +84,7 @@ N = 3
 q = 2
 R = 10 ** 6 
 a = 2
-M = 2
+M = 4
 d = 2
 
 sigma = 0.05
