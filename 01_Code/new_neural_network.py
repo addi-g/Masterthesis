@@ -147,15 +147,3 @@ def new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a):
         Y_pred[u] = np.sum(np.transpose(weights) * F_net)
         
     return Y_pred
-
-
-    
-    
-
-    
-    
-    
-    
-    
-    
-    

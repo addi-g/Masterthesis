@@ -27,9 +27,9 @@ n = 10000
 
 N = 3
 q = 2
-R = 10
-a = 3
-M = 5
+R = 10 ** 6  
+a = 2
+M = 2
 d = 1
 
 sigma = 0.05
@@ -40,32 +40,32 @@ m_X_train, Y_train = gen_data_Y(X_train,sigma)
 X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.2),d)), axis = 0)
 
 Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
-Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
+#Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
 #Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
 
-m_X_test, Ü = gen_data_Y(X_test,sigma)
+m_X_test, dummy = gen_data_Y(X_test,sigma)
 
 plt.plot(X_test, m_X_test, '-b', label='m_d') 
 #plt.plot(X_test, Y_pred_nearest_neighbor, '-r', label='nearest_neigbhor')
-plt.plot(X_test, Y_pred_fc_nn_1, '-g', label='fc_nn_1')
+#plt.plot(X_test, Y_pred_fc_nn_1, '-g', label='fc_nn_1')
 plt.plot(X_test, Y_pred_new_nn, '-y', label='new_nn')  
 plt.legend(loc='upper left') 
 plt.xlim(-2.0, 2.0)
-#plt.show()
-plt.savefig('foo.png')
+plt.show()
+#plt.savefig('foo.png')
 
 '''
 ZWEIDIMENSIONALER FALL (d = 2) wird ein Vergleich des emp. L2 Fehler gemacht 
-'''
-n = 100
+
+n = 10000
 
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 3
 q = 2
-R = 10
-a = 3
-M = 5
+R = 10 ** 6 
+a = 2
+M = 2
 d = 2
 
 sigma = 0.05
@@ -125,4 +125,4 @@ series_noise_1.name = ""
 error_df = pd.concat([series_noise_1], axis=1)
 #print(error_df)
 error_df.to_csv('out.csv',index = True)    
-
+'''

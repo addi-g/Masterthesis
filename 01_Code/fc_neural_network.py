@@ -45,6 +45,3 @@ def fc_neural_1_estimate (X_train,Y_train,X_test):
     model.fit(X_train, Y_train, epochs=1000, verbose=1) 
     
     return model.predict(X_test)
-
-#prediction_fc_neural_1 = fc_neural_1_estimate(X,y)
-   
