@@ -23,7 +23,7 @@ EINDIMENSIONALER FALL (d = 1) wird geplottet
 '''
 n = 1
 
-N = 2
+N = 3
 q = 2
 R = 10 ** 6  
 a = 2
@@ -31,7 +31,7 @@ M = 2
 d = 1
 sigma = 0.05
 
-k = 14
+k = 15
 
 error = np.empty(k)
 x_value = np.empty(k)
@@ -60,23 +60,24 @@ while j < k:
     x_value[j] = n
     j += 1
     
-error_limit_y = error_limit(x_value,2,1,1)
+error_limit_y = error_limit(x_value,3,1,1)
 
-plt.plot(x_value, error, '-b', label='error_new_nn')
-plt.plot(x_value, error_limit_y, '-r', label='limit')
-#plt.plot(X_test, m_X_test, '-b', label='m_d') 
+plt.loglog(x_value, error, 'yD-', label='error_new_nn')
+plt.loglog(x_value, error_limit_y, 'ro-', label='limit')
 #plt.plot(X_test, Y_pred_nearest_neighbor, '-r', label='nearest_neigbhor')
 #plt.plot(X_test, Y_pred_fc_nn_1, '-g', label='fc_nn_1')
-#plt.plot(X_test, Y_pred_new_nn, '-y', label='new_nn')  
+#plt.plot(X_test, Y_pred_new_nn, 'ro-', label='new_nn')
+#plt.plot(X_test, m_X_test, '-b', label='m_d')   
 plt.legend(loc='upper left') 
-plt.xlim(0, 17000)
-#plt.show()
+#plt.xlim(-2, 2)
+plt.xlim(0, 100000)
+plt.show()
 #plt.savefig('foo.png')
 
 '''
-ZWEIDIMENSIONALER FALL (d = 2) wird ein Vergleich des emp. L2 Fehler gemacht 
-
-n = 10000
+ein Vergleich des emp. L2 Fehler gemacht 
+'''
+n = 100
 
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
@@ -84,8 +85,9 @@ N = 3
 q = 2
 R = 10 ** 6 
 a = 2
-M = 4
-d = 2
+#M = 4
+M = 2
+d = 1
 
 sigma = 0.05
 
@@ -121,7 +123,6 @@ for i in range(0,50,1):
         
         e_L2_avg[j] = np.mean(sum(abs(Y_pred_constant - m_X) ** 2))
     
-    
     scaled_error[i,0] = e_L2_new_nn / np.median(e_L2_avg)
     scaled_error[i,1] = e_L2_fc_nn_1 / np.median(e_L2_avg)
     scaled_error[i,2] = e_L2_nearest_neighbor / np.median(e_L2_avg)
@@ -142,6 +143,5 @@ series_noise_1.name = ""
 #series_noise_2.name = ""
 
 error_df = pd.concat([series_noise_1], axis=1)
-#print(error_df)
-error_df.to_csv('out.csv',index = True)    
-'''
+print(error_df)
+#error_df.to_csv('out.csv',index = True)

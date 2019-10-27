@@ -109,7 +109,9 @@ def output_weights(X, Y, N, q, R, d, M, a):
                 B[i,j] = f_net(X[i], d, all_j1_jd_by_cond[z], X_ik[k], N, q, s, R, M, a)
                 j += 1
     
-    weights = np.linalg.solve((1 / n) * np.dot(np.transpose(B),B) + (c_3 / n) * np.identity(J), (1 / n) * np.dot(np.transpose(B),Y))
+    #weights = np.linalg.solve((1 / n) * np.dot(np.transpose(B),B) + (c_3 / n) * np.identity(J), (1 / n) * np.dot(np.transpose(B),Y))
+    weights = np.linalg.solve(np.dot(np.transpose(B),B) + (c_3) * np.identity(J), np.dot(np.transpose(B),Y))
+
     return (weights, J, all_j1_jd_by_cond, X_ik)
 
 # Bestimmung des Funktionswert des Neuronale-Netzte-Regressionsschätzers
