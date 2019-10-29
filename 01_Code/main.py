@@ -9,6 +9,7 @@ Main Datei die die Simulation und damit den Vergleich der implementierten Schät
 durchführt.
 """
 import numpy as np
+from mpl_toolkits import mplot3d
 import matplotlib . pyplot as plt
 import pandas as pd
 from scipy.stats import iqr
@@ -21,88 +22,114 @@ from fc_neural_network import fc_neural_1_estimate
 '''
 EINDIMENSIONALER FALL (d = 1) wird geplottet
 '''
-n = 1
-
 N = 3
 q = 2
 R = 10 ** 6  
 a = 2
 M = 2
 d = 1
+
 sigma = 0.05
 
-k = 15
+n_train = 100
+n_test = 2000
+# Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
+m_X_train, Y_train = gen_data_Y(X_train,sigma)
+    
+X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
+    
+Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
+#Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
+#Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
+m_X_test, dummy = gen_data_Y(X_test,sigma)
+    
 
-error = np.empty(k)
-x_value = np.empty(k)
-x_value[:] = np.nan
-error[:] = np.nan
-
-j = 0
-
-while j < k:
-    
-    n *= 2
-    #n = 1000
-    # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
-    X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.8),d)), axis = 0)
-    m_X_train, Y_train = gen_data_Y(X_train,sigma)
-    
-    X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.2),d)), axis = 0)
-    
-    Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
-    #Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
-    #Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
-    
-    m_X_test, dummy = gen_data_Y(X_test,sigma)
-       
-    error[j] = np.mean(sum (abs(Y_pred_new_nn - m_X_test) ** 2))
-    x_value[j] = n
-    j += 1
-    
-error_limit_y = error_limit(x_value,3,1,1)
-
-plt.loglog(x_value, error, 'yD-', label='error_new_nn')
-plt.loglog(x_value, error_limit_y, 'ro-', label='limit')
 #plt.plot(X_test, Y_pred_nearest_neighbor, '-r', label='nearest_neigbhor')
 #plt.plot(X_test, Y_pred_fc_nn_1, '-g', label='fc_nn_1')
+#colors = (0,0,0)
+area = 4
+plt.scatter(X_test, Y_pred_new_nn, s=area, color = 'red', alpha=0.5)
+plt.title('Scatter plot pythonspot.com')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
 #plt.plot(X_test, Y_pred_new_nn, 'ro-', label='new_nn')
 #plt.plot(X_test, m_X_test, '-b', label='m_d')   
-plt.legend(loc='upper left') 
+#plt.legend(loc='upper left') 
 #plt.xlim(-2, 2)
-plt.xlim(0, 100000)
-plt.show()
+#plt.xlim(-2,2)
+#plt.show()
 #plt.savefig('foo.png')
 
 '''
-ein Vergleich des emp. L2 Fehler gemacht 
+ZEIDIMENSIONALER FALL (d = 2) wird geplottet
 '''
-n = 100
+N = 2
+q = 2
+R = 10 ** 6  
+a = 2
+M = 2
+d = 2
 
+sigma = 0.05
+
+n_train = 100
+n_test = 2000
+# Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
+m_X_train, Y_train = gen_data_Y(X_train,sigma)
+    
+X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
+    
+Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
+#Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
+#Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
+m_X_test, dummy = gen_data_Y(X_test,sigma)
+    
+
+
+x = np.ravel(X_test[:,0])
+y = np.ravel(X_test[:,1])
+
+# so wie es sein soll
+#z = m_X_test[:,0]
+# was der SChätzer auswirft
+z = Y_pred_new_nn[:,0]
+
+ax = plt.axes(projection='3d')
+ax.scatter(x, y, z, c=z, cmap='viridis', linewidth=0.5);
+ax.view_init(40, 20)
+fig
+
+'''
+ein Vergleich des emp. L2 Fehler gemacht für d = 1
+'''
+n_train = 100
+n_test = 2000
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 3
 q = 2
 R = 10 ** 6 
 a = 2
-#M = 4
 M = 2
 d = 1
 
 sigma = 0.05
 
-scaled_error = np.empty((50, 3,))
+scaled_error = np.empty((5, 3,))
 scaled_error[:] = np.nan
 
-e_L2_avg = np.zeros(50) 
+e_L2_avg = np.zeros(5) 
 e_L2_avg[:] = np.nan
 
-for i in range(0,50,1):
+for i in range(0,5,1):
 
-    X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.8),d)), axis = 0)
+    X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_train),d)), axis = 0)
     m_X_train, Y_train = gen_data_Y(X_train,sigma)
     
-    X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n * 0.2),d)), axis = 0)
+    X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_test),d)), axis = 0)
     
     #Y_pred_constant = constant_estimate(Y_train)
     Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
@@ -115,9 +142,80 @@ for i in range(0,50,1):
     e_L2_fc_nn_1 = np.mean(sum (abs(Y_pred_fc_nn_1 - m_X_test) ** 2))
     e_L2_nearest_neighbor = np.mean(sum (abs(Y_pred_nearest_neighbor - m_X_test) ** 2))
     
-    for j in range(0,50,1):
+    for j in range(0,5,1):
         
-        X = np.sort(np.random.uniform(low=-2,high=2,size=(n,d)), axis = 0)
+        X = np.sort(np.random.uniform(low=-2,high=2,size=(n_test,d)), axis = 0)
+        m_X, Y = gen_data_Y(X,sigma)
+        Y_pred_constant = constant_estimate(Y)
+        
+        e_L2_avg[j] = np.mean(sum(abs(Y_pred_constant - m_X) ** 2))
+    
+    scaled_error[i,0] = e_L2_new_nn / np.median(e_L2_avg)
+    scaled_error[i,1] = e_L2_fc_nn_1 / np.median(e_L2_avg)
+    scaled_error[i,2] = e_L2_nearest_neighbor / np.median(e_L2_avg)
+    
+iqr_new_nn = iqr(scaled_error[:,0]) 
+iqr_fc_nn_1 = iqr(scaled_error[:,1])
+iqr_nearest_neighbor = iqr(scaled_error[:,2])
+
+median_new_nn = np.median(scaled_error[:,0])
+median_fc_nn_1 = np.median(scaled_error[:,1])
+median_nearest_neighbor = np.median(scaled_error[:,2])
+
+rows = ["noise","e_L2_avg","approach","new_nn", "fc_nn_1", "nearest_neighbor"]
+
+series_noise_1 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
+series_noise_1.name = ""
+#series_noise_2 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
+#series_noise_2.name = ""
+
+error_df = pd.concat([series_noise_1], axis=1)
+print(error_df)
+#error_df.to_csv('out.csv',index = True)
+
+'''
+ein Vergleich des emp. L2 Fehler gemacht für d = 2 
+'''
+n_train = 100
+n_test = 2000
+# Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+
+N = 2
+q = 2
+R = 10 ** 6 
+a = 2
+M = 2
+d = 2
+
+sigma = 0.05
+
+scaled_error = np.empty((5, 3,))
+scaled_error[:] = np.nan
+
+e_L2_avg = np.zeros(5) 
+e_L2_avg[:] = np.nan
+
+for i in range(0,5,1):
+
+    X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_train),d)), axis = 0)
+    m_X_train, Y_train = gen_data_Y(X_train,sigma)
+    
+    X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_test),d)), axis = 0)
+    
+    #Y_pred_constant = constant_estimate(Y_train)
+    Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
+    Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
+    Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
+    
+    m_X_test, Ü = gen_data_Y(X_test,sigma)
+    
+    e_L2_new_nn = np.mean(sum (abs(Y_pred_new_nn - m_X_test) ** 2))
+    e_L2_fc_nn_1 = np.mean(sum (abs(Y_pred_fc_nn_1 - m_X_test) ** 2))
+    e_L2_nearest_neighbor = np.mean(sum (abs(Y_pred_nearest_neighbor - m_X_test) ** 2))
+    
+    for j in range(0,5,1):
+        
+        X = np.sort(np.random.uniform(low=-2,high=2,size=(n_test,d)), axis = 0)
         m_X, Y = gen_data_Y(X,sigma)
         Y_pred_constant = constant_estimate(Y)
         

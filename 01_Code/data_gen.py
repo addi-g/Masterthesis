@@ -26,10 +26,10 @@ def m_d (x, d):
     exp = np.exp  
     
     if d == 1:
-        return x[0] ** 3
+        return sin(0.2 * x[0] ** 2) + exp(0.5 * x[0]) + x[0] ** 3
                    
     elif d == 2:
-        return cos(0.2 * (x[0] - x[1]) ** 2) + sin(0.5 * (x[0] - x[1])) + (x[0] - x[1]) ** 3
+        return np.sin(np.sqrt(x[0] ** 2 + x[1] ** 2))
     
     else:
         print("Your data has the wrong dimension!")
