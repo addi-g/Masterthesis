@@ -207,7 +207,7 @@ for i in range(0,5,1):
     Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
     Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
     
-    m_X_test, Ü = gen_data_Y(X_test,sigma)
+    m_X_test, not_needed = gen_data_Y(X_test,sigma)
     
     e_L2_new_nn = np.mean(sum (abs(Y_pred_new_nn - m_X_test) ** 2))
     e_L2_fc_nn_1 = np.mean(sum (abs(Y_pred_fc_nn_1 - m_X_test) ** 2))
