@@ -5,4 +5,44 @@ Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in d
 
 \section{Definitionen}
 
+\begin{defn}[Stoppzeit, vgl. \cite{Klenke2013} 9.15 und 9.16]\label{def:stop}
+    \begin{itemize}
+        \item[]
+        \item[(i)]Eine \emph{Stoppzeit} $\tau$ mit Werten in $[0,T]$ und $T \geq 0$ ist eine bezüglich $(X_t)_{0\leq t \leq T}$ messbare Funktion. Zusätzlich muss für jedes $r \in [0,T]$ das Ereignis $\{\tau \leq r\}$ in der durch $(X_s)_{0 \leq s \leq r}$ erzeugten  $\sigma$-Algebra $\F_r = \sigma((X_s)_{0 \leq s \leq r})$ enthalten sein. Die Klasse aller Stoppzeiten mit Werten im Intervall $[0,T]$ bezeichnen wir mit $\T([0,T])$.
+        \item[(ii)] Ist $T \in \N_0$, so nennen wir eine bezüglich $X_0,\dots,X_T$ messbare Funktion $\tau$ mit Werten in $\{0,1,\dots,T\}$, \emph{Stoppzeit}, wenn zusätzlich für jedes $r \in \{0,\dots,T\}$ das Ereignis $\{\tau = r\}$ in der durch $X_0,\dots,X_r$ erzeugten  $\sigma$-Algebra $\sigma(X_0,\dots,X_r)$ enthalten ist. Die Klasse aller Stoppzeiten mit Werten in $\{0,\dots,T\}$ bezeichnen wir mit $\T(0,\dots,T)$.
+    \end{itemize}
+\end{defn}
+
 \section{Hilfsresultate}
+
+\begin{lem}
+  \label{lem:1}
+  Sei $\sigma \colon \R \to \R$ eine Funktion und $R$,$a > 0$.
+  \begin{itemize}
+  \item[a)] Angenommen $\sigma$ ist zwei mal stetigdifferenzierbar und $t_{\sigma,id} \in \R$ so, dass $sigma'(t_{\sigma, id}) \neq 0$ ist. Dann gilt mit
+  $$ f_{id}(x) = \frac{R}{\sigma'(t_{\sigma, id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, id}\right) - \sigma(t_{\sigma, id})\right)$$
+  für beliebige $x \in [-a, a]\colon$ 
+  $$ |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R}.$$
+  \item[b)] Angenommen $\sigma$ ist drei mal stetigdifferenzierbar und $t_{\sigma,sq} \in \R$ so, dass $sigma''(t_{\sigma, sq}) \neq 0$ ist. Dann gilt mit
+  $$ f_{sq}(x) = \frac{R^2}{\sigma''(t_{\sigma, sq})} \cdot \left(\sigma\left(\frac{2 \cdot x}{R} + t_{\sigma, sq}\right) - 2 \cdot \sigma(\frac{x}{R} + t_{\sigma, sq})+ \sigma(t_{\sigma, sq})\right)$$
+  für beliebige $x \in [-a, a]\colon$ 
+  $$ |f_{sq}(x) - x^2| \leq \frac{5 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma'(t_{\sigma, sq})|} \cdot \frac{1}{R}.$$
+  \end{itemize}
+\end{lem}
+\begin{proof}
+	\begin{itemize}
+  	\item[a)] Sei $u = \frac{c}{R} + t_{\sigma, id}$, $\xi = 0$ und  $x \in [-a, a]$beliebig. Wir wissen, dass $f_{id}$ 1-mal differenzierbar ist, da nach Vorraussetzung $\sigma$ 2-mal stetigdifferenzierbar ist,  existiert nach der Restgliedformel von Lagrange (REFERENZ) ein $c \in [\xi, x] $, sodass mit Ausklammern von $\frac{R}{\sigma'(t_{\sigma, id})} $ folgt$\colon
+$
+  	\begin{equation}
+  	\begin{split}
+  	 |f_{id}(x) -  & x| \\
+  	& \leq \bigg|\frac{R}{\sigma'(t_{\sigma, id})} \cdot \bigg(\sigma\left(\frac{\xi}{R} + t_{\sigma, id}\right) - \sigma(t_{\sigma, id}) + \frac{1}{R} \sigma'\left(\frac{\xi}{R} + t_{\sigma, id}\right) (x - \xi) \\ & \qquad + \frac{1}{2R^2} \sigma''(\frac{c}{R} + t_{\sigma, id}) (x - \xi)^2)\bigg) - x \bigg| \\
+  	& = \bigg|\frac{R}{\sigma'(t_{\sigma, id})} \cdot \bigg(\sigma(t_{\sigma, id}) - \sigma(t_{\sigma, id}) + \frac{x}{R} \sigma'(t_{\sigma, id}) + \frac{x^2}{2R^2} \sigma''(\frac{c}{R} + t_{\sigma, id})\bigg) - x\bigg| \\
+  	& = \bigg|\frac{R}{\sigma'(t_{\sigma, id})} \cdot \bigg(\frac{x}{R} \sigma'(t_{\sigma, id}) + \frac{x^2}{2R^2}\sigma''(u)\bigg) - x\bigg| \\
+  	& = \bigg| \frac{\sigma''(u) \cdot x^2}{2R \cdot \sigma'(t_{\sigma, id})} + x - x\big| \\
+  	& \leq \frac{\| \sigma'' \|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R},  
+  	\end{split}
+  	\end{equation}
+  	Wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt und zudem aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt, dass $x^2 \leq a^2$ ist.
+ 	\end{itemize}
+\end{proof}
