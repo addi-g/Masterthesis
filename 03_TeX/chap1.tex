@@ -19,11 +19,11 @@ Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in d
   \label{lem:1}
   Sei $\sigma \colon \R \to \R$ eine Funktion und $R$,$a > 0$.
   \begin{itemize}
-  \item[a)] Angenommen $\sigma$ ist zwei mal stetigdifferenzierbar und $t_{\sigma,id} \in \R$ so, dass $sigma'(t_{\sigma, id}) \neq 0$ ist. Dann gilt mit
+  \item[a)] Angenommen $\sigma$ ist zwei mal stetig differenzierbar und $t_{\sigma,id} \in \R$ so, dass $sigma'(t_{\sigma, id}) \neq 0$ ist. Dann gilt mit
   $$ f_{id}(x) = \frac{R}{\sigma'(t_{\sigma, id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, id}\right) - \sigma(t_{\sigma, id})\right)$$
   für beliebige $x \in [-a, a]\colon$ 
   $$ |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R}.$$
-  \item[b)] Angenommen $\sigma$ ist drei mal stetigdifferenzierbar und $t_{\sigma,sq} \in \R$ so, dass $sigma''(t_{\sigma, sq}) \neq 0$ ist. Dann gilt mit
+  \item[b)] Angenommen $\sigma$ ist drei mal stetig differenzierbar und $t_{\sigma,sq} \in \R$ so, dass $sigma''(t_{\sigma, sq}) \neq 0$ ist. Dann gilt mit
   $$ f_{sq}(x) = \frac{R^2}{\sigma''(t_{\sigma, sq})} \cdot \left(\sigma\left(\frac{2 \cdot x}{R} + t_{\sigma, sq}\right) - 2 \cdot \sigma(\frac{x}{R} + t_{\sigma, sq})+ \sigma(t_{\sigma, sq})\right)$$
   für beliebige $x \in [-a, a]\colon$ 
   $$ |f_{sq}(x) - x^2| \leq \frac{5 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma'(t_{\sigma, sq})|} \cdot \frac{1}{R}.$$
@@ -31,9 +31,10 @@ Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in d
 \end{lem}
 \begin{proof}
 	\begin{itemize}
-  	\item[a)] Sei $u = \frac{c}{R} + t_{\sigma, id}$, $\xi = 0$ und  $x \in [-a, a]$beliebig. Wir wissen, dass $f_{id}$ 1-mal differenzierbar ist, da nach Vorraussetzung $\sigma$ 2-mal stetigdifferenzierbar ist,  existiert nach der Restgliedformel von Lagrange (REFERENZ) ein $c \in [\xi, x] $, sodass mit Ausklammern von $\frac{R}{\sigma'(t_{\sigma, id})} $ folgt$\colon
+  	\item[a)] Sei $u = \frac{c}{R} + t_{\sigma, id}$, $\xi = 0$ und  $x \in [-a, a]$beliebig. Wir wissen, dass $f_{id}$ 1-mal differenzierbar ist, da nach Vorraussetzung $\sigma$ 2-mal stetig differenzierbar ist,  existiert nach der Restgliedformel von Lagrange (REFERENZ) ein $c \in [\xi, x] $, sodass mit Ausklammern von $\frac{R}{\sigma'(t_{\sigma, id})} $ folgt$\colon
 $
-  	\begin{equation}
+
+  	\begin{equation*}
   	\begin{split}
   	 |f_{id}(x) -  & x| \\
   	& \leq \bigg|\frac{R}{\sigma'(t_{\sigma, id})} \cdot \bigg(\sigma\left(\frac{\xi}{R} + t_{\sigma, id}\right) - \sigma(t_{\sigma, id}) + \frac{1}{R} \sigma'\left(\frac{\xi}{R} + t_{\sigma, id}\right) (x - \xi) \\ & \qquad + \frac{1}{2R^2} \sigma''(\frac{c}{R} + t_{\sigma, id}) (x - \xi)^2)\bigg) - x \bigg| \\
@@ -42,7 +43,75 @@ $
   	& = \bigg| \frac{\sigma''(u) \cdot x^2}{2R \cdot \sigma'(t_{\sigma, id})} + x - x\big| \\
   	& \leq \frac{\| \sigma'' \|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R},  
   	\end{split}
-  	\end{equation}
+  	\end{equation*}
   	Wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt und zudem aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt, dass $x^2 \leq a^2$ ist.
+  	\item[b)] Folgt analog wie in a) durch 2-maliges Anwenden der Restgliedformel von Lagrange (REFeRENZ) auf die Funktion $f$ die hier nun 2-mal differenzierbar ist, da $\sigma$ nach Voraussetzung  3-mal stetig differenzierbar ist.
  	\end{itemize}
 \end{proof}
+
+\begin{lem}
+  \label{lem:2}
+  Sei $\sigma \colon \R \to [0, 1]$ nach Definition 1, 2-zulässig. Zudem sei $R > 0$ und $a > 0$ beliebig. Dann gilt für das neuronale Netz
+  \begin{equation*}
+  	\begin{split}
+  	f_{mult}(x, y) = \frac{R^2}{4 \cdot \sigma''(t_{\sigma})} \cdot & \bigg(\sigma\Big(\frac{2 \cdot (x + y)}{R} + t_{\sigma} \Big) - 2 \cdot \sigma\Big(\frac{x + y}{R} + t_{\sigma}\Big) \\
+  	& - \sigma \Big(\frac{2 \cdot (x - y)}{R} + t_{\sigma} \Big) + 2 \cdot \sigma \Big(\frac{x - y}{R} + t_{\sigma} \Big) \bigg)
+  	\end{split}
+  	\end{equation*}
+  	für beliebige $x, y \in [-a, a]$ die folgende Ungleichung$\colon$
+  	$$|f_{mult}(x, y) - x \cdot y| \leq \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}.$$
+  \end{lem}
+  \begin{proof}
+  Durch Ausmultiplizieren erhalten wir $$f_{mult}(x,y) = \frac{1}{4}(f_{sq}(x + y) - f_{sq}(x - y))$$ und $$x \cdot y = \frac{1}{4}\big((x + y)^2 - (x - y)^2\big).$$
+  Aus diesen beiden Gleichungen folgt durch Ausklammern von $\frac{1}{4}$, der Homogenität des Betrags und der Anwendung der Dreickecksungleichung$\colon$
+  \begin{equation*}
+  \begin{split}
+  |f_{mult}(x, y) - x \cdot y| & = \frac{1}{4} \cdot \big|f_{sq}(x + y) - f_{sq}(x - y) - (x + y)^2 + (x - y)^2\big| \\
+  & \leq \frac{1}{4} \cdot \big|f_{sq}(x + y) - (x + y)^2\big| + \frac{1}{4}\cdot\big| (x - y)^2 - f_{sq}(x - y)\big| \\
+  & \leq 2 \cdot \frac{1}{4} \cdot \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma'(t_{\sigma, sq})|} \cdot \frac{1}{R} \\
+  & = \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R},
+  \end{split}
+\end{equation*}   
+wobei bei bei der letzten Ungleichung verwendet haben, dass $a > 0$ nach Lemma \ref{lem:1}b) beliebig gewählt wurde und daher insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma'(t_{\sigma, sq})|} \cdot \frac{1}{R}$$ gilt. 
+  \end{proof}
+  \begin{lem}
+  \label{lem:3}
+  Sei $\sigma\colon \R \to [0, 1]$ nach Definition 1, 2-zulässig. Sei $f_{mult}$ das neuronale Netz aus Lemma \ref{lem:2} und $f_{id}$ das neuronale Netz aus Lemma \ref{lem:1}. Angenommen es gilt $$a \geq 1 \text{\quad und \quad} R \geq \frac{\|\sigma''\|_{\infty} \cdot a}{2 \cdot |\sigma'(t_{\sigma, id})|}.$$ 
+  Dann erfüllt das neuronale Netz 
+  \begin{equation*}
+  \begin{split}
+  f_{ReLU}(x) & = f_{mult}(f_{id}(x), \sigma(R \cdot x)) 
+  \end{split}
+  \end{equation*}
+ für alle $x \in [-a, a]\colon$
+ $$|f_{ReLU}(x) - \max\{x, 0\}| \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id}), |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.$$
+  \end{lem}
+  \begin{proof}
+  Da $\sigma$ nach Voraussetzung 2-zulässig nach Definition 1 ist, gilt für $R \geq 0,$ und $x \in \R\setminus\{0\}\colon$ $$|\sigma(R \cdot x) - 1| \leq \frac{1}{R\cdot x} \text{\quad für \quad} x > 0$$ und $$|\sigma(R \cdot x)| \leq \frac{1}{|R \cdot x|} \text{\quad für \quad} x < 0.$$
+Damit folgt aus der Homogenität des Betrags $$|\sigma(R \cdot x) - \1_{[0, \infty)}(x)| \leq \frac{1}{|R \cdot x|} = \frac{1}{R \cdot |x|}.$$ 
+Nach Lemma \ref{lem:1} und Lemma \ref{lem:2} gilt$\colon$
+$$ |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R} \text{\quad für \quad} x \in [-a, a]$$ und 
+$$ |f_{mult}(x, y) - x \cdot y| \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} \text{\quad für \quad} x \in [-2a, 2a].$$ 
+Da nach Voraussetzung $a \geq 1$ ist gilt insbesondere $[0, 1] \in [-2a, 2a]$ und daher gilt insbesondere $\sigma(x) \in [-2a, 2a].$ 
+Zudem erhalten wir durch eine Nulladdition, das Anwenden der Dreiecksungleichung, die Verwendung von Lemma \ref{lem:1} und der Voraussetzung für $R\colon$
+\begin{equation*}
+\begin{split}
+|f_{id}(x)| & = |f_{id}(x) - x + x| \\
+& = |f_{id}(x) -x| + |x| \\
+& \leq |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R} + |x| \\
+& \leq |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{2 \cdot |\sigma'(t_{\sigma, id})|}{\|\sigma''\|_{\infty} \cdot a} + |x| \\
+& = a + |x| \\
+& = 2 \cdot a
+\end{split}
+\end{equation*}
+wobei $x \in [-a, a]$. Daraus folgt insbesondere $f_{id}(x) \in [-2a, 2a].$
+Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Vorraussetzung, zweier Nulladdition und dem zweifachen Anwenden der Dreiecksungleichung erhalten wir$\colon$
+\begin{equation*}
+\begin{split}
+|f_{ReLU}(x) - & \max\{x, 0\}|  \\
+& = \big| f_{mult}(f_{id}(x), \sigma(R \cdot x)) - x \cdot \1_{[0, \infty)}(x)\big| \\
+& \leq \big| f_{mult}(f_{id}(x), \sigma(R \cdot x)) - f_{id}(x)\cdot\sigma(R \cdot x)\big| \\
+& \qquad + \big| f_{id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| + \big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big|.
+\end{split}
+\end{equation*}
+  \end{proof}
