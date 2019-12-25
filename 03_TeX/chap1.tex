@@ -105,13 +105,63 @@ Zudem erhalten wir durch eine Nulladdition, das Anwenden der Dreiecksungleichung
 \end{split}
 \end{equation*}
 wobei $x \in [-a, a]$. Daraus folgt insbesondere $f_{id}(x) \in [-2a, 2a].$
-Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Vorraussetzung, zweier Nulladdition und dem zweifachen Anwenden der Dreiecksungleichung erhalten wir$\colon$
+Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Voraussetzung, zweier Nulladdition und dem zweifachen Anwenden der Dreiecksungleichung erhalten wir$\colon$
 \begin{equation*}
 \begin{split}
 |f_{ReLU}(x) - & \max\{x, 0\}|  \\
 & = \big| f_{mult}(f_{id}(x), \sigma(R \cdot x)) - x \cdot \1_{[0, \infty)}(x)\big| \\
 & \leq \big| f_{mult}(f_{id}(x), \sigma(R \cdot x)) - f_{id}(x)\cdot\sigma(R \cdot x)\big| \\
-& \qquad + \big| f_{id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| + \big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big|.
+& \qquad + \big| f_{id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| + \big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big|. \\
+& \text{Daraus ergibt sich mithilfe der obigen Eigenschaften und $a^3 \geq 1$}\\
+& \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R} \cdot 1+ \frac{1}{R} \\
+& \leq \bigg(\frac{160}{3} \cdot \frac{\|\sigma'''\|_{\infty} \cdot a ^3}{|\sigma''(t_{\sigma})|} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma, id})|} + \frac{a^3}{a^3} \bigg) \cdot \frac{1}{R} \\ 
+& \leq \bigg(\frac{160 \cdot\|\sigma'''\|_{\infty} \cdot a ^3 + 3 \cdot \|\sigma''\|_{\infty} \cdot a^3 + 3 \cdot a^3}{3 \cdot \min\{ 2 \cdot \sigma'(t_{\sigma, id})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot \frac{1}{R}\\
+& \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot \sigma'(t_{\sigma, id})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R} \\
+& \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id}), |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.
 \end{split}
 \end{equation*}
+  \end{proof}
+  \begin{lem}
+  \label{lem:4}
+  Sei $M \in \N$ und sei $\sigma\colon \R \to [0, 1]$ 2-zulässig nahc Definition .... Sei $a > 0$ und $$R \geq \frac{\|\sigma''\|_{}\infty \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma, id})|},$$ sei $y \in [-a, a]$ und $f_{ReLU}$ das neuronale Netz aus Lemma \ref{lem:3}. Dann erfüllt das neuronale Netz 
+  \begin{equation*}
+  \begin{split}
+  f_{hat,y}(x) = f_{ReLU}& \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) \\ &+ f_{ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg)
+  \end{split}
+  \end{equation*}
+  für alle $x \in [-a ,a]\colon$ 
+  $$\bigg|f_{hat,y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R}.$$
+  \end{lem}
+  \begin{proof}
+  Als erstes zeigen wir $$(1 - \frac{M}{2a} \cdot |x|)_+ = \max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}, \qquad (x \in \R)$$ damit wir das Resultat mithilfe von Lemma \ref{lem:3} beweisen können.
+  Um die obige Gleichung zu zeigen unterscheiden wir vier Fälle.
+  \begin{itemize}
+  \item[Fall 1] ($x < - \frac{M}{2a}$) In diesem Fall hat die linke Seite durch $z_+ = \max\{z, 0\} \quad (z \in \R)$ und nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden 0 sind. Damit sind stimmt die rechte Seite mit der linken überein. $\hfill(\square)$
+  \item[Fall 2] ($ - \frac{M}{2a} \leq x \leq 0$) Dieser Fall liefert aufgrund der nicht Positivität von $x$ analog das selbe Resultat wie Fall 1. $\hfill(\square)$
+  \item[Fall 3] ($0 < x \leq \frac{M}{2a}$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\},$$ und erfordert daher eine weitere Fallunterscheidung.
+  \item[Fall 3.1] ($x \cdot \frac{M}{2a} \leq 1$) In diesem Fall gilt für die linke Seite$\colon$ 
+  $$\max\{1 - \frac{M}{2a} \cdot x, 0\} = 1 - \frac{M}{2a} \cdot x$$ und für die rechte Seite$\colon$ 
+  $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + 0 = \frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x = 1 - \frac{M}{2a} \cdot x,$$ und stimmt daher mit der linken Seite überein.
+  \item[Fall 3.2] ($x \cdot \frac{M}{2a} > 1$) In diesem Fall gilt für die linke Seite$\colon$ 
+  $$\max\{1 - \frac{M}{2a} \cdot x, 0\} = 0$$ und für die rechte Seite$\colon$ 
+  $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0$$ und stimmt daher mit der linken Seite überein. Damit ist Fall 3 gezeigt. $\hfill(\square)$
+  \item[Fall 4] ($\frac{M}{2a} < x$)  In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\},$$ und erfordert daher eine weitere Fallunterscheidung.
+  \item[Fall 4.1] ($\frac{M}{2a} \cdot x \leq 1$) In diesem Fall gilt für die linke Seite$\colon$ 
+  $$\max\{1 - \frac{M}{2a} \cdot x, 0\} = 1 - \frac{M}{2a} \cdot x$$ und für die rechte Seite$\colon$ 
+  $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a}$$ und stimmt daher mit der linken Seite überein.
+  \item[Fall 4.2] ($\frac{M}{2a} \cdot x > 1$) In diesem Fall gilt für die linke Seite$\colon$ 
+  $$\max\{1 - \frac{M}{2a} \cdot x, 0\} = 0$$ und für die rechte Seite$\colon$ 
+  $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0$$ und stimmt daher mit der linken Seite überein. Damit ist Fall 4 gezeigt. $\hfill(\square)$
+\end{itemize} 
+Durch diese Fallunterscheidung wurde die obige Gleichung (REFERENZ) bewiesen. Daraus folgt mit der Definition von $f_{hat,y}(x)$ und zwei mal der Dreiecksungleichung
+\begin{equation*}
+\begin{split}
+\bigg|f_{hat,y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq \bigg|&f_{ReLU} \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) + 1, 0\}\bigg| \\ 
+& + 2 \cdot \bigg|f_{ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) - \max\{\frac{M}{2a} \cdot (x - y), 0\}\bigg| \\
+& + \bigg|f_{ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) - 1, 0\}\bigg|\\ 
+& \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R},
+\end{split}
+\end{equation*} 
+wobei die letzte Ungleichung daraus folgt, dass wir auf jeden Summanden mit $1 \leq a = M + 1$ Lemma \ref{lem:3} angewendet haben und die Abschätzung 
+$$ (M + 1)^3 = M^3 + 3 \cdot M^2 + 3 \cdot M + 1 \leq M^3 + 3 \cdot M^3 + 3 \cdot M ^3 + M^3 = 8 \cdot M^3 \quad (M \in \N)$$ verwendet haben.
   \end{proof}
