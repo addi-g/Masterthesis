@@ -92,9 +92,9 @@ und da $x \neq 0$ ist, daraus folgt, dass $$\frac{\exp(x) - 1}{x - 0} > 1$$ gilt
 \end{split}
 \end{equation*}
 Wobei die letze Ungleichung aus der Eigenschaft des Betrags kommt, da $\frac{1}{1 + \exp(-x)} - 1< 0$ ist, weil $1 + \exp(-x) > 1$, da $\exp(-x) > 0$. Dies zeigt die erste Relation aus Bedingung (iii).
-Die zweite Relation folgt durch die gleiche Art und Weise, da wir durch $$\frac{1}{1 + \exp(-x)} - \frac{1}{2}= \sigma(x + 0) - \frac{1}{2} = -\sigma(x - 0) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}$$
-wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Aus dieser Eigenschaft folgt mit $$\sigma(x) - 1 = \frac{1}{1 + \exp(-x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus der ersten Relation, da $|x| > 0 $ ist$\colon$  
-$$|\sigma(x)| = |-\sigma(x)| = |\sigma(x) - 1| \leq \frac{1}{|x|}.$$
+Die zweite Relation folgt durch die gleiche Art und Weise, da wir durch $$\frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}$$
+wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Aus dieser Eigenschaft folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus der ersten Relation, da $-x > 0 $ ist$\colon$  
+$$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} \leq \frac{1}{|x|}.$$
 Damit haben wir alle drei Bedingungen aus Definition \ref{logsquasher} gezeigt und unsere Aussage bewiesen.
 \end{proof}
 \begin{lem}
