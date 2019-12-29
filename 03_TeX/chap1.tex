@@ -84,16 +84,26 @@ Betrachten wir nun ein beliebiges $x > 0$. Dann wissen wir nach dem Mittelwertsa
 und da $x \neq 0$ ist, daraus folgt, dass $$\frac{\exp(x) - 1}{x - 0} > 1$$ gilt und damit dann auch durch Multiplikation mit $x$ insbesondere $$ x \leq \exp(x) + 1.$$ Daraus erhalten wir mit Umformungen da $x > 0$ und $1 + \exp(-x) > 0$ ist$\colon$
 \begin{equation*}
 \begin{split}
-& \phantom{\Leftrightarrow} x \leq \exp(x) + 1 \\
-& \Leftrightarrow x \cdot \exp(-x) \leq 1 + \exp(-x) \\
-& \Leftrightarrow \frac{\exp(-x)}{1 + \exp(-x)} \leq \frac{1}{x} \\
-& \Leftrightarrow 1 - \frac{1}{1 + \exp(-x)} \leq \frac{1}{x} \\
-& \Leftrightarrow |\sigma(x) - 1| \leq \frac{1}{x}.
+& \quad x \leq \exp(x) + 1 \\
+ \Leftrightarrow & \quad x \cdot \exp(-x) \leq 1 + \exp(-x) \\
+ \Leftrightarrow & \quad \frac{\exp(-x)}{1 + \exp(-x)} \leq \frac{1}{x} \\
+ \Leftrightarrow & \quad 1 - \frac{1}{1 + \exp(-x)} \leq \frac{1}{x} \\
+ \Leftrightarrow & \quad |\sigma(x) - 1| \leq \frac{1}{x}.
 \end{split}
 \end{equation*}
-Wobei die letze Ungleichung aus der Eigenschaft des Betrags kommt, da $\frac{1}{1 + \exp(-x)} - 1< 0$ ist, weil $1 + \exp(-x) > 1$, da $\exp(-x) > 0$. Dies zeigt die erste Relation aus Bedingung (iii).
-Die zweite Relation folgt durch die gleiche Art und Weise, da wir durch $$\frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}$$
-wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Aus dieser Eigenschaft folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus der ersten Relation, da $-x > 0 $ ist$\colon$  
+Wobei die letzte Ungleichung aus der Eigenschaft des Betrags kommt, da $\frac{1}{1 + \exp(-x)} - 1< 0$ ist, weil $1 + \exp(-x) > 1$, da $\exp(-x) > 0$. Dies zeigt die erste Relation aus Bedingung (iii).
+Die zweite Relation folgt durch die gleiche Art und Weise, da wir durch $$\frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}$$ 
+wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Die obige Gleichheit folgt aus
+\begin{equation*}
+\begin{split}
+ & \quad \frac{1}{1 + \exp(x)} - \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2} \\
+ \Leftrightarrow  & \quad \frac{1}{1 + \exp(x)} + \frac{1}{2} -\frac{1}{1 + \exp(-x)} = \frac{1}{2}\\
+ \Leftrightarrow & \quad  \frac{1 + \exp(-x) + 1 + \exp(x)}{(1 + \exp(x)) \cdot (1 + \exp(-x))} - \frac{1}{2} = \frac{1}{2} \\
+ \Leftrightarrow & \quad \frac{2 + \exp(-x) + \exp(x)}{2 + \exp(-x) + \exp(x)} - \frac{1}{2} = \frac{1}{2} \\
+ \Leftrightarrow & \quad 1 - \frac{1}{2} = \frac{1}{2}.
+\end{split}
+\end{equation*}
+Aus dieser Eigenschaft folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus der ersten Relation, da $-x > 0 $ ist$\colon$  
 $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} \leq \frac{1}{|x|}.$$
 Damit haben wir alle drei Bedingungen aus Definition \ref{logsquasher} gezeigt und unsere Aussage bewiesen.
 \end{proof}
