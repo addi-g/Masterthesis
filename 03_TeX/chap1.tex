@@ -1,23 +1,105 @@
 \chapter{Grundlagen und Hilfsresultate}
 \label{chap:1}
 
-Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen welche wir vor allem für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale Netze Regresssionsschätzer benötigt werden.
+Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen welche wir vor allem für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale Netze Regressionsschätzer benötigt werden.
+
+In dieser Arbeit behandeln wir Neuronale-Netze-Regressionsschätzer im Kontext der nichtparametrischen Regression mit zufälligem Design. Im Gegensatz zur parametrischen Regression ist bei der nichtparametrischen, die Bauart der schätzenden Funktion komplett unbekannt, was von Vorteil hat dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt um eine Funktion zu schätzen.
+
+Bei der nichtparametrischen Regressionsschätzung ist seien $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ u.i.v $\R^d \times \R$-wertige Zufallsvariablen mit $\E[Y^2] < \infty$. Zudem sei $m\colon \R^d \to R$ definiert durch $m(x) = \E[Y \mid X = x]$ die zugehörige Regressionsfunktion. Ausgehend von 
+$$ (X_1, Y_1),\dots,(X_n, Y_n)$$ 
+soll $m$ geschätzt werden.
+
+Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie gefolgt erläutern. In Anwerndung ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten. Ziel ist es dann, daraus die Regressionsfunktion zu schätzen. Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein. 
+
+Für das $L_2$-Risiko einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt$\colon$
+$$\E[|f(X) - Y|^2] = \E[|m(X) - Y|^2] + \int_{\R^d}|f(x) - m(x)|^2 \mathds{P}_X (dx),$$
+d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers der entsteht aufgrund der Verwendung von $f$ anstelle von $m$ bei der Vorhersage bzw. Approximation des Wertes von Y.
+
+Formal führt das daher auf folgende Problemstellung$\colon$
+$(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ seien unabhängig identisch verteilte $\R^d \times \R$ wertige Zufallsvariablen mit $\E[Y^2] < \infty$ und $m\colon\R^d \to \R$ definiert durch $m(x) = \E[Y \mid X = x]$ sei die zugehörige Regressionsfunktion. Gegeben ist die Datenmenge 
+$$ \mathfrak{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\}.$$
+Gesucht ist eine Schätzung 
+$$m_n(\cdot) = m_n(\cdot, \mathfrak{D}_n)\colon\R^d \to \R $$
+von $m$, für die der $L_2$-Fehler 
+$$\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)$$
+möglichst \glqq klein\grqq ist. (Referenz Györfi (2002))
 
 \section{Definitionen}
-
-\begin{defn}[Stoppzeit, vgl. \cite{Klenke2013} 9.15 und 9.16]\label{def:stop}
-    \begin{itemize}
-        \item[]
-        \item[(i)]Eine \emph{Stoppzeit} $\tau$ mit Werten in $[0,T]$ und $T \geq 0$ ist eine bezüglich $(X_t)_{0\leq t \leq T}$ messbare Funktion. Zusätzlich muss für jedes $r \in [0,T]$ das Ereignis $\{\tau \leq r\}$ in der durch $(X_s)_{0 \leq s \leq r}$ erzeugten  $\sigma$-Algebra $\F_r = \sigma((X_s)_{0 \leq s \leq r})$ enthalten sein. Die Klasse aller Stoppzeiten mit Werten im Intervall $[0,T]$ bezeichnen wir mit $\T([0,T])$.
-        \item[(ii)] Ist $T \in \N_0$, so nennen wir eine bezüglich $X_0,\dots,X_T$ messbare Funktion $\tau$ mit Werten in $\{0,1,\dots,T\}$, \emph{Stoppzeit}, wenn zusätzlich für jedes $r \in \{0,\dots,T\}$ das Ereignis $\{\tau = r\}$ in der durch $X_0,\dots,X_r$ erzeugten  $\sigma$-Algebra $\sigma(X_0,\dots,X_r)$ enthalten ist. Die Klasse aller Stoppzeiten mit Werten in $\{0,\dots,T\}$ bezeichnen wir mit $\T(0,\dots,T)$.
-    \end{itemize}
+Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion haben muss um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
+\begin{defn}[($p,C$)-Glattheit]
+\label{def:pc}
+   Sei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$ (also $p \in (0, \infty)$ und sei $C > 0$. Eine Funktion $f\colon \R^d \to \R$ heißt ($p, C$)-glatt, falls für alle $\alpha = (\alpha_1,\dots,\alpha_d) \in \N_0^d$ mit $\sum_{j = 1}^{d}\alpha_j = q$ die partielle Ableitung 
+   $$ \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}$$
+   existiert und falls für alle $x, z \in \R^d$ gilt
+   $$ \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(x) - \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(z) \bigg| \leq C \cdot \|x - z\|^r,$$
+   wobei $\|\cdot\|$ die euklidische Norm ist.  
 \end{defn}
+\begin{bemnumber}
+Im Falle von $p \leq 1$ ist keine Funktion ($p, C$)-glatt genau dann, wenn sie Hölder-stetig ist mit Exponent $p$ und Hölder-Konstante $C$.
+\end{bemnumber}
+
+Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \glqq squashing functions\grqq, welche eine monoton wachsend ist und für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte sigmoidal bzw. logisitsche squasher
+\begin{align}
+\label{logsquasher}
+\sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
+\end{align}
+
+TBD
+
+\begin{defn}
+\label{nzulässig}
+Sei $n \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird $N$-zulässig genannt, wenn monoton wachsend und Lipschitz stetig (REFERENZ) ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind$\colon$
+\begin{itemize}
+\item[(i)] Die Funktion $\sigma$ ist $N + 1$ mal stetig differenzierbar mit beschränkten Ableitungen.
+\item[(ii)] Es existiert ein Punkt $t_{\sigma} \in \R$, in welchem alle Ableitungen bis hin zur $N$-ten Ableitung von $\sigma$ ungleich Null sind.
+\item[(iii)] Wenn $y > 0$ ist, gilt $|\sigma(y) - 1| \leq \frac{1}{y}$. Wenn $y < 0$ ist, gilt $|\sigma(y)| \leq \frac{1}{|y|}$.
+\end{itemize}  
+\end{defn}  
+
+In Lemma \ref{lem:logsquasher} werden wir zudem zeigen, dass der logistische squasher (\ref{logsquasher}) $N$-zulässig ist für beliebiges $N \in \N.$ 
 
 \section{Hilfsresultate}
-
+\begin{lem}
+\label{lem:logsquasher}
+Sei $N \in \N$ beliebig, dann erfüllt der logistische squasher $\sigma\colon \R \to [0, 1], \sigma(x) = \frac{1}{1 + \exp(-x)}$ die Bedingungen aus Definition \ref{logsquasher}.  
+\end{lem}
+\begin{proof}
+Sei $N \in \N$ beliebig. Wir wissen, dass $\sigma$ monoton wachsend ist und als Komposition $N + 1$ mal stetig differenzierbarer Funktionen selber auch $N + 1$ mal stetig differenzierbar ist. Die Ableitungen von $\sigma$ haben die Form$\colon$
+\begin{equation*}
+\begin{split}
+\frac{\partial \sigma}{\partial x}(x) &= -\frac{1}{(1 + \exp(-x))^2} \cdot (-\exp(-x)) \\
+& = \frac{\exp(-x)}{1 + \exp(-x)} \cdot \frac{1}{1 + \exp(-x)} \\
+& = \bigg(1 - \frac{1}{1 + \exp(-x)}\bigg) \cdot \frac{1}{1 + \exp(-x)} \\
+& = (1 - \sigma(x)) \cdot \sigma(x).
+\end{split}
+\end{equation*}
+Da wir bei weiterem Ableiten die Produktregel wiederholt anwenden sind alle Ableitungen von $\sigma$, Polynome in $\sigma$. Dadurch folgt Bedingung (i) aus Definition \ref{logsquasher}, da $sigma$ nach Voraussetzung durch $0$ und $1$ beschränkt ist, und die Ableitungen von $\sigma$ als Produkt von beschränkten Faktoren daher auch. Da hiermit auch die erste Ableitung von $\sigma$ beschränkt ist wissen wir nach Satz ... aus (REFERENZ), dass $\sigma$ Lipschitz stetig ist.
+Nun kommen wir zum Beweis von Bedingung (ii). Polynome, die nicht das $0$-Polynom sind, haben nach Satz ... (REFERENZ) auf $(0, 1)$ endlich viele Nullstellen und $\sigma$ bildet nach Voraussetzung in das Intervall $[0, 1] \supseteq (0, 1)$ ab. Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynome in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit$\sigma(t_{\sigma}) \neq 0$ sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. Daher ist Bedingung (ii) ebenfalls erfüllt.
+Betrachten wir nun ein beliebiges $x > 0$. Dann wissen wir nach dem Mittelwertsatz (REFERENZ) dass ein $z \in (0, \infty)$ existiert, sodass mit $\exp(z) > 1$, da $z > 0$ ist, gilt$\colon$
+\begin{equation*}
+\begin{split}
+(\exp(x - 1) \cdot (x - 0) = e^z
+\end{split}
+\end{equation*} 
+und da $x \neq 0$ ist, daraus folgt, dass $$\frac{\exp(x) - 1}{x - 0} > 1$$ gilt und damit dann auch durch Multiplikation mit $x$ insbesondere $$ x \leq \exp(x) + 1.$$ Daraus erhalten wir mit Umformungen da $x > 0$ und $1 + \exp(-x) > 0$ ist$\colon$
+\begin{equation*}
+\begin{split}
+& \phantom{\Leftrightarrow} x \leq \exp(x) + 1 \\
+& \Leftrightarrow x \cdot \exp(-x) \leq 1 + \exp(-x) \\
+& \Leftrightarrow \frac{\exp(-x)}{1 + \exp(-x)} \leq \frac{1}{x} \\
+& \Leftrightarrow 1 - \frac{1}{1 + \exp(-x)} \leq \frac{1}{x} \\
+& \Leftrightarrow |\sigma(x) - 1| \leq \frac{1}{x}.
+\end{split}
+\end{equation*}
+Wobei die letze Ungleichung aus der Eigenschaft des Betrags kommt, da $\frac{1}{1 + \exp(-x)} - 1< 0$ ist, weil $1 + \exp(-x) > 1$, da $\exp(-x) > 0$. Dies zeigt die erste Relation aus Bedingung (iii).
+Die zweite Relation folgt durch die gleiche Art und Weise, da wir durch $$\frac{1}{1 + \exp(-x)} - \frac{1}{2}= \sigma(x + 0) - \frac{1}{2} = -\sigma(x - 0) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}$$
+wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Aus dieser Eigenschaft folgt mit $$\sigma(x) - 1 = \frac{1}{1 + \exp(-x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus der ersten Relation, da $|x| > 0 $ ist$\colon$  
+$$|\sigma(x)| = |-\sigma(x)| = |\sigma(x) - 1| \leq \frac{1}{|x|}.$$
+Damit haben wir alle drei Bedingungen aus Definition \ref{logsquasher} gezeigt und unsere Aussage bewiesen.
+\end{proof}
 \begin{lem}
   \label{lem:1}
-  Sei $\sigma \colon \R \to \R$ eine Funktion und $R$,$a > 0$.
+  Sei $\sigma \colon \R \to \R$ eine Funktion und $R$, $a > 0$.
   \begin{itemize}
   \item[a)] Angenommen $\sigma$ ist zwei mal stetig differenzierbar und $t_{\sigma,id} \in \R$ so, dass $sigma'(t_{\sigma, id}) \neq 0$ ist. Dann gilt mit
   $$ f_{id}(x) = \frac{R}{\sigma'(t_{\sigma, id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, id}\right) - \sigma(t_{\sigma, id})\right)$$
@@ -165,3 +247,9 @@ Durch diese Fallunterscheidung wurde die obige Gleichung (REFERENZ) bewiesen. Da
 wobei die letzte Ungleichung daraus folgt, dass wir auf jeden Summanden mit $1 \leq a = M + 1$ Lemma \ref{lem:3} angewendet haben und die Abschätzung 
 $$ (M + 1)^3 = M^3 + 3 \cdot M^2 + 3 \cdot M + 1 \leq M^3 + 3 \cdot M^3 + 3 \cdot M ^3 + M^3 = 8 \cdot M^3 \quad (M \in \N)$$ verwendet haben.
   \end{proof}
+  Das nächste Lemma stammt aus Schmidt-Hieber (2019) und wurde auf die Notation dieser Arbeit abgeändert.
+  \begin{lem}
+  \label{lem:5}
+  Sei $M \in \N$, $c_1$ eine Konstante,$a > 0$, $m$ eine ($p, C$)-glatte Funktion und $P(x)$ eine lokale Konvexkombination von Taylorpolynomen in $m$. Dann gilt$\colon$
+  $$\sup_{x \in [-a, a]^d} |m(x) - P(x)| \leq c_1 \cdot \frac{1}{M^p}.$$
+  \end{lem}
