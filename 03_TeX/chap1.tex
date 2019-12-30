@@ -38,13 +38,11 @@ Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion ha
 Im Falle von $p \leq 1$ ist keine Funktion ($p, C$)-glatt genau dann, wenn sie Hölder-stetig ist mit Exponent $p$ und Hölder-Konstante $C$.
 \end{bemnumber}
 
-Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \glqq squashing functions\grqq, welche eine monoton wachsend ist und für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte sigmoidal bzw. logisitsche squasher
+Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \glqq squashing functions\grqq entschieden, welche eine monoton wachsend ist und für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte sigmoidal bzw. logisitsche squasher
 \begin{align}
 \label{logsquasher}
 \sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
 \end{align}
-
-TBD
 
 \begin{defn}
 \label{nzulässig}
