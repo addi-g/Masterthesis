@@ -64,7 +64,18 @@ In Lemma \ref{lem:logsquasher} werden wir zudem zeigen, dass der logistische squ
 Sei $N \in \N$ beliebig, dann erfüllt der logistische squasher $\sigma\colon \R \to [0, 1], \sigma(x) = \frac{1}{1 + \exp(-x)}$ die Bedingungen aus Definition \ref{logsquasher}.  
 \end{lem}
 \begin{proof}
-Sei $N \in \N$ beliebig. Wir wissen, dass $\sigma$ monoton wachsend ist und als Komposition $N + 1$ mal stetig differenzierbarer Funktionen selber auch $N + 1$ mal stetig differenzierbar ist. Die Ableitungen von $\sigma$ haben die Form$\colon$
+Sei $N \in \N$ beliebig. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
+$$\sigma(s) = \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} = \sigma(t),$$
+wobei wir bei der Ungleichung die Monotonie der Exponentialfunktion verwendet haben und die obige Ungleichung aus
+\begin{equation*}
+\begin{split}
+& \quad \exp(s) \leq \exp(t) \\
+ \Leftrightarrow & \quad \exp(-s) \geq \exp(-t) \\
+ \Leftrightarrow & \quad 1 + \exp(-s) \geq 1 + \exp(-t) \\
+ \Leftrightarrow & \quad \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} \\
+\end{split}
+\end{equation*}
+folgt. Zudem ist $\sigma$ als Komposition $N + 1$ mal stetig differenzierbarer Funktionen selber auch $N + 1$ mal stetig differenzierbar. Die Ableitungen von $\sigma$ haben die Form$\colon$
 \begin{equation*}
 \begin{split}
 \frac{\partial \sigma}{\partial x}(x) &= -\frac{1}{(1 + \exp(-x))^2} \cdot (-\exp(-x)) \\
