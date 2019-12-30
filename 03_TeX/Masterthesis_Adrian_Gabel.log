@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.15)  30 DEC 2019 10:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.15)  30 DEC 2019 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1798,7 +1798,7 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 \openout2 = `titel.aux'.
 
 
-(./titel.tex <TU_Darmstadt_Logo.pdf, id=44, 627.00043pt x 236.95763pt>
+(./titel.tex <TU_Darmstadt_Logo.pdf, id=52, 627.00043pt x 236.95763pt>
 File: TU_Darmstadt_Logo.pdf Graphic file (type pdf)
 
 <use TU_Darmstadt_Logo.pdf>
@@ -2145,7 +2145,16 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 
-])
+]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 25.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 25.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 39.
+)
 Overfull \hbox (36.43637pt too wide) has occurred while \output is active
 \T1/ptm/m/n/12 20 \T1/ptm/m/sl/12 KAPITEL 2.  KONSTRUKTION DES NEURONALE NETZE 
 REGRESSIONSSCHÄTZERS
@@ -2369,14 +2378,14 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
 Package rerunfilecheck Info: File `Masterthesis_Adrian_Gabel.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: E214A164E21E6342E0F3D85F75EDDCD6;1563.
+(rerunfilecheck)             Checksum: E20F1F51AF2E8861CE7D9693F5A946E6;2071.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 37319 strings out of 493089
- 785147 string characters out of 6134841
- 1264437 words of memory out of 5000000
- 39121 multiletter control sequences out of 15000+600000
+ 37323 strings out of 493089
+ 785195 string characters out of 6134841
+ 1264442 words of memory out of 5000000
+ 39123 multiletter control sequences out of 15000+600000
  84357 words of font info for 266 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,20n,83p,943b,2594s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2399,9 +2408,9 @@ mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
 urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (34 pages, 393019 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (34 pages, 397366 bytes).
 PDF statistics:
- 1100 PDF objects out of 1200 (max. 8388607)
- 696 named destinations out of 1000 (max. 500000)
- 35426 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 1111 PDF objects out of 1200 (max. 8388607)
+ 698 named destinations out of 1000 (max. 500000)
+ 35442 words of extra memory for PDF output out of 35830 (max. 10000000)
 
