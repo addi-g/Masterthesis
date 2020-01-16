@@ -33,7 +33,11 @@ i}_{(M + 1)^d}$ sind insgesamt $M + 1$ Vektoren der Dimension $d$, wobei jede Ko
 Für $k \in \{1,\dots,(M + 1)^d\}$ sei
 $$p_{\mathbf{i}_k}(x) = \sum_{\substack{j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d}$$
 das Taylorpolynom von $m$ der Ordnung $q$ im Entwicklungspunkt $x_{\mathbf{i}_k}$ und sei
-$$P(x) = \sum_{k = 1}^{(M + 1)^d} p_{\mathbf{i}_k}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+,$$ mit $z_+ = \max\{z, 0\} (z \in \R).$
+\begin{equation}
+\label{konvexkomb}
+P(x) = \sum_{k = 1}^{(M + 1)^d} p_{\mathbf{i}_k}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+,
+\end{equation}
+ mit $z_+ = \max\{z, 0\} (z \in \R).$
 Wir zeigen im folgenden Lemma dass $P(x)$ eine lokale Konvexkombination von Taylorpolynomen von m ist.
 \begin{lem}
 \label{lem:loccon}
@@ -71,8 +75,8 @@ daraus ergibt sich$\colon$
 \begin{split}
 \sum_{k = 1}^{(M + 1)^{d + 1}} & \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \\
 & = \sum_{i \in \{0, 1\}^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg) \\
-& = \Bigg(\sum_{i \in \{0, 1\}^d \times \{0\}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) \\
-& \qquad + \Bigg(\sum_{i \in \{0, 1\}^d \times \{1\}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
+& = \Bigg(\sum_{i \in \{0, 1\}^d \times \{0\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) \\
+& \qquad + \Bigg(\sum_{i \in \{0, 1\}^d \times \{1\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
 & \stackrel{(IV)}{=} 1 \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) + 1 \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
 & = 1 + 1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} + x_{(1,\dots,1)}^{(d + 1)} - x^{(d + 1)}| \\
 & = 1 + 1 - 1 \\
@@ -85,7 +89,40 @@ wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)} -
 
 \textbf{iii)} Es handelt sich hierbei um eine lokale Konvexität, da die Bedingungen \textbf{i)} und \textbf{ii)} für alle $x \in [-a, a]$ gelten.
 \end{proof}
-
+Als nächstes zeigen wir ein Resultat für $(p, C)$-glatte Funktion welches wir im weiteren Verlauf dieser Arbeit wieder benötigen werden.
+\begin{lem}
+\label{lem:pcsmooth}
+Sei $c_1$ eine Konstante. Es gelten die selben Voraussetzungen wie oben und $P(x)$ sei wie in \ref{konvexkomb} definiert, eine lokale Konvexkombination von Taylorpolynomen von $m$. Dann gilt für eine $(p, C)$-glatte Funktion $m\colon$
+$$\sup_{x \in [-a, a]^d} |m(x) - P(x)|  \leq c_1 \cdot \frac{1}{M^p}.$$
+\end{lem}
+\begin{proof}
+Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\xi \in [x, x_{\mathbf{i}_k}],$ so, dass 
+\begin{equation*}
+\begin{split}
+m(x) & = T_{x_{\mathbf{i}_k},q - 1}[m(x)] \\
+& = \sum_{\substack{j_1,\dots,j_d \in \{0,\dots,q - 1\} \\j_1+\dots +j_d \leq q - 1}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(x_{\mathbf{i}_k})}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}} \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \\
+ & \quad + \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} \xi}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d}.
+\end{split}
+\end{equation*}
+Nach dem Beweis von Lemma \ref{konvexkomb} \textbf{i)} erhalten wir 
+$$m(x) = \sum_{k = 1}^{(M + 1)^d} m(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+.$$ Zudem wissen wir dass man immer den Abstand zu den nähesten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}_k}^{(j)}$ größer als $\frac{2a}{M}$ ist, daher ergibt sich$\colon$
+\begin{equation*}
+\begin{split}
+& \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} \xi}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \\
+& \qquad \leq \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} \xi}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot \bigg(\frac{2a}{M}\bigg)^q
+\end{split}
+\end{equation*} 
+und folgern damit und mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit von $m\colon$
+\begin{equation*}
+\begin{split}
+|m(x) - P(x)| & \leq \sum_{k = 1}^{(M + 1)^d} |m(x) - p_{\mathbf{i}_k}| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \\
+& \leq \bigg(\frac{2a}{M}\bigg)^q \|\xi - x_{\mathbf{i}_k}\|^s \cdot C \cdot \sum_{k = 1}^{(M + 1)^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \\
+& = C \cdot \bigg(\frac{2a}{M}\bigg)^p \\
+& = c_1 \cdot \frac{1}{M^p},
+\end{split}
+\end{equation*}
+wobei wir bei der letzten Gleichung  Bedingung \textbf{i)} aus dem Beweis von Lemma \ref{konvexkomb} und $q + s = p$ verwendet haben.
+\end{proof}
 
 \section{Definition der Gewichte der Ausgabeschicht}
 
