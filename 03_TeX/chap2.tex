@@ -33,14 +33,57 @@ i}_{(M + 1)^d}$ sind insgesamt $M + 1$ Vektoren der Dimension $d$, wobei jede Ko
 Für $k \in \{1,\dots,(M + 1)^d\}$ sei
 $$p_{\mathbf{i}_k}(x) = \sum_{\substack{j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d}$$
 das Taylorpolynom von $m$ der Ordnung $q$ im Entwicklungspunkt $x_{\mathbf{i}_k}$ und sei
-$$P(x) = \sum_{k = 1}^{(M + 1)^d} p_{\mathbf{i}_k}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+.$$
+$$P(x) = \sum_{k = 1}^{(M + 1)^d} p_{\mathbf{i}_k}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+,$$ mit $z_+ = \max\{z, 0\} (z \in \R).$
 Wir zeigen im folgenden Lemma dass $P(x)$ eine lokale Konvexkombination von Taylorpolynomen von m ist.
 \begin{lem}
 \label{lem:loccon}
-
+Sei $a >0, M \in \N$ und $$P(x) = \sum_{k = 1}^{(M + 1)^d} p_{\mathbf{i}_k}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$ mit $p_{\mathbf{i}_k}(x)$ wie oben, dann ist $P(x)$ eine lokale Konvexkombination von Taylorpolynomen von m.
 \end{lem}
 \begin{proof}
+Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$ und $M = 3$ eine Skizze an um die Idee des Beweises zu veranschaulichen. (SKIZZE EINFÜGEN)
+Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nähesten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}_k}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
 
+\textbf{i)} Im folgenden wollen wir $$\sum_{k = 1}^{(M + 1)^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ = 1,$$ per Induktion über $d$ zeigen. 
+	
+	 \emph{Induktionsanfang} (IA): Für $d = 1$ kann nur zwischen zwei Gitterpunkten liegen und mit der obigen Begründung ist der Rest gleich Null, daher nehmen wir oBdA an, dass $x$ zwischen $x_{\mathbf{i}_1}$ und $x_{\mathbf{i}_2}$ liegt. 
+	Damit folgt 
+	\begin{equation*}
+	\begin{split}
+	\sum_{k = 1}^{(M + 1)} (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_k}|)_+ & = (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_1}|)_+ + (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_2}|)_+ \\
+	& = 1 + 1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_1} + x_{\mathbf{i}_2} - x| \\
+	& = 1 + 1 - \frac{M}{2a} \cdot \frac{2a}{M} \\
+	& = 1,
+	\end{split}
+	\end{equation*} wobei wir unter anderem verwendet haben, dass beide Summenden unabhängig von dem Positivteil nichtnegativ sind, da der Abstand von $x$ zu den beiden Gitterpunkten $x_{\mathbf{i}_1}$ und$ x_{\mathbf{i}_2}$ kleiner gleich $\frac{2a}{M}$ ist. Zudem haben wir verwendet, dass $x_{\mathbf{i}_2} - x_{\mathbf{i}_1} = \frac{2a}{M}$ gilt, da beides Gitterpunkte sind.     
+	
+\emph{Induktionshypothese} (IH): Aussage \textbf{i)} gilt für eine beliebiges aber festes $d \in \N.$
+
+\emph{Induktionsschritt} (IS): Wir nehmen oBdA. an, dass $x_{(0,\dots,0) \leq x \leq x_{(1,\dots,1}}$ gilt, mit $\mathbf{i}_1 = (0,\dots,0)$ und $\mathbf{i}_{(M + 1)}^{d + 1} = (1,\dots,1).$ Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im folgenden zeigen wir $$\sum_{k = 1}^{(M + 1)^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ = 1.$$
+Alle Summanden sind Null, wenn $|x^{(j)} - x_{\mathbf{i}_k}^{(j)}| \geq \frac{2a}{M}$ ist. Zudem haben wir oBdA angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, nämlich die Anzahl der Gitterpunkte die am nähesten zu $x$ sind. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$ Komponente den selben Wert haben, sind in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|)$ bzw. $(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|)$ vor, da 
+\begin{equation*}
+(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_i^{(d + 1)}|) = \begin{cases}
+(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|) &\text{$i \in \{0, 1\}^d \times \{0\}$}\\
+(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|) &\text{$i \in \{0, 1\}^d \times \{1\}$}
+\end{cases}
+\end{equation*}
+daraus ergibt sich$\colon$
+\begin{equation*}
+\begin{split}
+\sum_{k = 1}^{(M + 1)^{d + 1}} & \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \\
+& = \sum_{i \in \{0, 1\}^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg) \\
+& = \Bigg(\sum_{i \in \{0, 1\}^d \times \{0\}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) \\
+& \qquad + \Bigg(\sum_{i \in \{0, 1\}^d \times \{1\}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
+& \stackrel{(IV)}{=} 1 \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) + 1 \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
+& = 1 + 1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} + x_{(1,\dots,1)}^{(d + 1)} - x^{(d + 1)}| \\
+& = 1 + 1 - 1 \\
+& = 1,
+\end{split}
+\end{equation*}
+wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)} - x_{(0,\dots,0)} = \frac{2a}{M}$ ist, da beides Gitterpunkte sind.  $\hfill(\square)$ 		
+		
+\textbf{ii)} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \geq 0$ für alle $k = 1,\dots, (M + 1)^d$, da $$z_+= \max\{z, 0\} \geq 0 (z \in \R)$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{k = 1}^{(M + 1)^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$ größer gleich Null und wegen i) muss dann auch $$\prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \leq 1$$ gelten.
+
+\textbf{iii)} Es handelt sich hierbei um eine lokale Konvexität, da die Bedingungen \textbf{i)} und \textbf{ii)} für alle $x \in [-a, a]$ gelten.
 \end{proof}
 
 
