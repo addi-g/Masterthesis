@@ -31,7 +31,7 @@ Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion ha
    Sei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$ (also $p \in (0, \infty)$ und sei $C > 0$. Eine Funktion $f\colon \R^d \to \R$ heißt ($p, C$)-glatt, falls für alle $\alpha = (\alpha_1,\dots,\alpha_d) \in \N_0^d$ mit $\sum_{j = 1}^{d}\alpha_j = q$ die partielle Ableitung 
    $$ \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}$$
    existiert und falls für alle $x, z \in \R^d$ gilt
-   $$ \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(x) - \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(z) \bigg| \leq C \cdot \|x - z\|^r,$$
+   $$ \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(x) - \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(z) \bigg| \leq C \cdot \|x - z\|^r,$$
    wobei $\|\cdot\|$ die euklidische Norm ist.  
 \end{defn}
 \begin{bemnumber}

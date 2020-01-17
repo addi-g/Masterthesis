@@ -92,7 +92,7 @@ wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)} -
 Als nächstes zeigen wir ein Resultat für $(p, C)$-glatte Funktion welches wir im weiteren Verlauf dieser Arbeit wieder benötigen werden.
 \begin{lem}
 \label{lem:pcsmooth}
-Sei $c_1$ eine Konstante. Es gelten die selben Voraussetzungen wie oben und $P(x)$ sei wie in \ref{konvexkomb} definiert, eine lokale Konvexkombination von Taylorpolynomen von $m$. Dann gilt für eine $(p, C)$-glatte Funktion $m\colon$
+Sei $M \in \N$, $c_1$ eine Konstante, $a > 0$ und $m$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$. Sei zudem $P(x)$ wie in (\ref{konvexkomb}) eine lokale Konvexkombination von Taylorpolynomen von $m$. Dann gilt$\colon$
 $$\sup_{x \in [-a, a]^d} |m(x) - P(x)|  \leq c_1 \cdot \frac{1}{M^p}.$$
 \end{lem}
 \begin{proof}
@@ -101,18 +101,18 @@ Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\
 \begin{split}
 m(x) & = T_{x_{\mathbf{i}_k},q - 1}[m(x)] \\
 & = \sum_{\substack{j_1,\dots,j_d \in \{0,\dots,q - 1\} \\j_1+\dots +j_d \leq q - 1}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(x_{\mathbf{i}_k})}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}} \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \\
- & \quad + \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} \xi}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d}.
+ & \quad + \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(\xi)}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d}.
 \end{split}
 \end{equation*}
 Nach dem Beweis von Lemma \ref{konvexkomb} \textbf{i)} erhalten wir 
 $$m(x) = \sum_{k = 1}^{(M + 1)^d} m(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+.$$ Zudem wissen wir dass man immer den Abstand zu den nähesten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}_k}^{(j)}$ größer als $\frac{2a}{M}$ ist, daher ergibt sich$\colon$
 \begin{equation*}
 \begin{split}
-& \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} \xi}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \\
-& \qquad \leq \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} \xi}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot \bigg(\frac{2a}{M}\bigg)^q
+& \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(\xi)}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \\
+& \qquad \leq \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(\xi)}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot \bigg(\frac{2a}{M}\bigg)^q
 \end{split}
 \end{equation*} 
-und folgern damit und mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit von $m\colon$
+und folgern mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit von $m\colon$
 \begin{equation*}
 \begin{split}
 |m(x) - P(x)| & \leq \sum_{k = 1}^{(M + 1)^d} |m(x) - p_{\mathbf{i}_k}| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \\
@@ -123,6 +123,56 @@ und folgern damit und mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit
 \end{equation*}
 wobei wir bei der letzten Gleichung  Bedingung \textbf{i)} aus dem Beweis von Lemma \ref{konvexkomb} und $q + s = p$ verwendet haben.
 \end{proof}
+
+$P(x)$ lässt sich in die Form 
+$$\sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$
+durch geeignet gewählte $a_{\mathbf{i}_k,j_1,\dots,j_d} \in \R$ bringen.
+Als nächstes wollen wir geeignete neuronale Netze $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$ definieren, die die Funktionen
+$$x \mapsto (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur so wählen, dass neuronale Netze der Form
+$$\sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) \qquad (a_{\mathbf{i}_k,j_1,\dots,j_d} \in \R)$$ in ihr enthalten sind.
+Um dies zu erreichen, sei $\sigma(x) = \frac{1}{(1 + \exp(-x))} \quad (x \in \R)$ der logistische Squasher (\ref{logsquasher}), wählen $R \geq 1$ und definieren die folgenden neuronale Netze$\colon$
+Das neuronale Netz
+\begin{equation}
+\label{def:fid}
+f_{id}(x) = 4R \cdot \sigma\Big(\frac{x}{R}\Big) - 2R,
+\end{equation}
+welches, wie in Lemma \ref{lem:1} gezeigt, die Funktion $f(x) = x$ approximiert. 
+Das neuronale Netz 
+\begin{equation}
+\label{def:fmult}
+\begin{split}
+f_{mult}(x, y) = \frac{R^2}{4} \cdot \frac{(1 + \exp(- 1))^3}{\exp(-2) - \exp(-1)} \cdot & \bigg(\sigma\Big(\frac{2(x + y)}{R} + 1\Big) - 2 \cdot \sigma \Big(\frac{x + y}{R} + 1\Big) \\
+& - \sigma\Big(\frac{2(x - y)}{R} + 1\Big) + 2 \cdot \sigma\Big(\frac{x - y}{R} + 1\Big)\bigg),
+\end{split}
+\end{equation}
+welches, wie in Lemma \ref{lem:2} gezeigt, die Funktion $f(x, y) = x \cdot y$ approximiert. Das neuronale Netz 
+\begin{equation}
+\label{def:frelu}
+f_{ReLu}(x) = f_{mult}(f_{id}(x), \sigma(R \cdot x)),
+\end{equation}
+welches, wie in Lemma \ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und schließlich noch das neuronale Netz 
+\begin{equation}
+\label{def:fhat}
+f_{hat,y}(x) = f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) +  f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg),
+\end{equation}
+welches, wie in Lemma \ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert. 
+Mit diesen neuronalen Netzen können wir nun $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $j_1,\dots,j_d \in \{0, 1,\dots, N\}$ und $k \in \{1,\dots,(M + 1)^d\}\colon$  
+\begin{align*}
+\label{fnet}
+& f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) = f_1^{(0)}(x). \\
+\intertext{wobei} \\
+& f_k^{(l)}(x) = f_{mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \\
+\intertext{für $k \in \{1, 2, \dots, 2^l \}$ und $l \in\{0,\dots,s - 1\}, $ und} \\
+& f_k^{(s)}(x) = f_{id}(f_{id}(x^{(l)} - x_{\mathbf{i}_k}^{(l)}))  \\
+\intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $l = 1,\dots,d$ und} \\ 
+& f_{j_1 + j_2 + \dots + j_d + k}^{(s)}(x) = f_{hat,x_{\mathbf{i}_k}^{(k)}}(x^{(k)}) \\
+\intertext{für $k = 1,\dots,d$ und} \\
+& f_k^{(s)}(x) = 1 \\
+\intertext{für $k = j_1 + j_2 + \dots + j_d + d + 1,j_1 + j_2 + \dots + j_d + d + 2,\dots,2^s.$}
+\end{align*} 
+ANZAHL DER SCHICHTEN UND NEURONEN PRO SCHICHT ERLÄUTERN.
+Da man bei fully-connencted neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, sind auch nicht fully-connected neuronale Netze in der der Klasse aller fully-connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, enthalten und damit auch insbesondere $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$.
+
 
 \section{Definition der Gewichte der Ausgabeschicht}
 
