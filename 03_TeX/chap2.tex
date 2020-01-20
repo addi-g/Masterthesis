@@ -176,4 +176,59 @@ Da man bei fully-connencted neuronalen Netzen die Gewichte der Verbindungen zwis
 
 \section{Definition der Gewichte der Ausgabeschicht}
 
-TBD
+Wir definieren unseren neuronale Netze Regressionsschätzer $\tilde{m}_n(x)$ durch$\colon$
+\begin{equation}
+\label{estimate}
+\tilde{m}_n(x) = \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x),
+\end{equation}
+wobei wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ durch Minimierung von 
+\begin{equation}
+\label{min} \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2
+\end{equation}
+für eine Konstante $c_3 > 0.$ Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung eine linearen Gleichungssystems. Dafür definieren wir uns 
+\begin{align*} 
+\{B_j \mid j = 1,\dots,J\} = \Bigl\{f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) \mid 1\leq k \leq (1 + M)^d \quad \text{und} \quad 0 \leq j_1 + \cdots + j_d \leq N \Bigr\}
+\end{align*}
+wobei
+$$ J = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist.
+Dies erhält man durch TBD.
+Wir setzen nun 
+$$ \mathbf{B} = (B_j(X_i))_{1\leq i \leq n,1\leq j \leq J} \quad \text{und} \quad \mathbf{Y} = (Y_i)_{i = 1,\dots,n}.$$
+Wir zeigen im Folgenden, dass der Koeffizientenvektor unseres Schätzers \ref{estimate} die eindeutige Lösung des linearen Gleichungssystems 
+\begin{equation}
+\label{les}
+\bigg(\frac{1}{n}\mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1} \bigg) \mathbf{a} = \frac{1}{n} \mathbf{B}^T\mathbf{Y},
+\end{equation}
+wobei $\mathbf{1}$ eine $JxJ$-Einheitsmatrix ist.
+Den Schätzer aus \ref{estimate} kann man umschreiben zu 
+$$ \tilde{m}_n(x) = \sum_{j = 1}^J a_j \cdot B_j(x)$$
+wobei $\mathbf{a} = (a_j)_{j = 1,\dots,J} \in \R^J$ wie in \ref{min} den Ausdruck
+\begin{equation}
+\begin{split}
+& \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2 \\
+& = \frac{1}{n}(\mathbf{Y} - \mathbf{B}\mathbf{a})^T(\mathbf{Y} - \mathbf{B}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
+& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T\mathbf{B}\mathbf{a} - \mathbf{a}^T\mathbf{B}^T\mathbf{Y} + \mathbf{a}^T\mathbf{B}^T\mathbf{B}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
+& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{B}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a}, 
+\end{split}
+\end{equation} 
+minimiert. In der vorletzten Gleichung haben wir verwendet das $\mathbf{Y}^T\mathbf{B}\mathbf{a} = \mathbf{a}^T\mathbf{B}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist. 
+Die Matrix $\mathbf{B}^T\mathbf{B} \in \R^{JxJ}$ ist positiv semidefinit, denn aufgrund der Verschiebungseigenschaft des Standardskalarprodukts gilt für alle $x \in \R\colon$
+$$\langle x, \mathbf{B^T}\mathbf{B} x\rangle = \langle \mathbf{B} x, \mathbf{B} x\rangle \geq 0.$$
+Zudem wissen wir dass $\frac{c_3}{n}\mathbf{1}$ durch die Wahl von $c_3$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
+Daher wissen wir, dass die Matrix
+$$\mathbf{A} = \frac{1}{n}\mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}$$ ebenfalls nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit ist und eine inverse Matrix $\mathbf{A}^{-1}$ existiert. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
+Mit $\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y} \in \R^J$ und $\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}\mathbf{A}\mathbf{b} = \mathbf{Y}^T\mathbf{B}\mathbf{a}$, was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir$\colon$
+\begin{equation*}
+\begin{split}
+& \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{B}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a} \\
+& = \mathbf{a}^T\mathbf{A}\mathbf{a} + \mathbf{b}^T\mathbf{A}\mathbf{a} + \mathbf{a}^T\mathbf{A}\mathbf{b} + \mathbf{b}^T\mathbf{A}\mathbf{b} + \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{B}\mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y} \\
+& = (\mathbf{a} + \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y})^T \mathbf{A} (\mathbf{a} - \frac{1}{n} \cdot \mathbf{A}^{-1} \mathbf{B}^T\mathbf{Y}) - \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{B}\mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y}.
+\end{split} 
+\end{equation*} 
+Die letzte Gleichung wird für $\mathbf{a} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y}$ minimal, 
+da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^J$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ ist für $\mathbf{a} = \mathbf{b}$. Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers \ref{estimate} die eindeutige Lösung des linearen Gleichungssystems \ref{les} ist.
+Da der Koeffizientenvektor die Gleichung \ref{min} minimiert, erhalten wir wenn wir den Koeffizientenvektor mit dem Nullvektor gleichsetzen$\colon$
+$$\frac{1}{n}(\mathbf{Y} - \mathbf{B}\mathbf{a})^T(\mathbf{Y} - \mathbf{B}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
+was uns erlaubt eine obere Schranke für den absoluten Wert unsere Koeffizienten abzuleiten.
+
+
