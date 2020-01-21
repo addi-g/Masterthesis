@@ -1,22 +1,67 @@
 \chapter{Resultat zur Konvergenzgeschwindigkeit}
 \label{chap:3}
 
-In diesem Kapitel stellen wir das Hauptresultat dieser Arbeit vor, ein Resultat zur Konvergenzgeschwindigkeit des in dieser Arbeit vorgestellten Neuronale Netze Regresssionsschätzers.
+In diesem Kapitel stellen wir das Hauptresultat dieser Arbeit vor, ein Resultat zur Konvergenzgeschwindigkeit unseres neuronale Netze Regresssionsschätzers \ref{estimate}.
 
 Ziel im Folgenden ist die Abschätzung des erwarteten $L_2$-Fehlers 
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)$$
 im Falle des sogenannte ... Schätzers mit ... 
 
 \begin{thm}\label{optstop}
-    Unter obigen Voraussetzungen gilt für alle $t \in \{0,\dots,T\}$ und $\mathds{P}_{X_t}\text{-f.s.}$ für alle $x \in \R^d$
-    \begin{equation}\label{eq:1}
-        V_t (x) = \E [f_{\tau_{t-1}^*}(X_{\tau_{t-1}^*}) \mid X_t = x] = \max\{f_t(x),q_t(x)\}.
-    \end{equation}
-    Weiterhin gilt
-    \begin{equation}\label{eq:2}
-        \mathbf{V_0} = \E [f_{\tau^*}(X_{\tau^*})].
-    \end{equation}
+Angenommen die Verteilung von $(X,Y)$ erfüllt 
+$$ \E\bigg(\mathrm{e}^{c_4 \cdot |Y|^2}\bigg) < \infty$$
+für eine Konstante $c_4 > 0$ und die Verteilung von $X$ hat einen beschränkten Träger $supp(\mathds{P}_X)$ und sei $m(x) = \E[Y \mid X = x]$ die entsprechende Regressionsfunktion. 
+Angenomme $m$ ist $(p,C)$-glatt, mit $p = q + s$ für $q \in \N_0$ und $s \in (0,1].$ Wir betrachten unseren neuronale Netze Regressionsschätzer $\tilde{m}_n$ aus \ref{estimate}, wobei $\sigma$ der logistische Squasher ist und $N \geq q, M = M_n = \lceil c_5 \cdot n^{1/(2p + d)}\rceil, R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
+Sei $\beta_n = c_6 \cdot \log(n)$ für eine hinreichend große Konstante $c_6 > 0$ und sei $m_n$ gegeben durch
+$$m_n(x) = T_{\beta_n}\tilde{m}_n (x)$$
+mit $T_{\beta z} = \max\{\min\{z, \beta\}, -\beta\}$ für $z \in \R$ und $\beta > 0.$ Dann gilt für $m_n$ für hinreichend großes $n$
+$$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_7 \cdot (log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
+wobei $c_7 > 0$ nicht von $n$ abhängt.
 \end{thm}
 \begin{proof}
+Nach Voraussetzung wissen wir, dass $supp(\mathds{P}_X)$ beschränkt ist. Da wir angenommen haben, dass $m$ $(p,C)$-glatt und damit insbesondere hölderstetig mit $q = 0$ ist, können wir daraus auf die gleichmäßige Stetigkeit von $m$ schließen. Da wir nur über den beschränkten $supp(\mathds{P}_X)$ integrieren, wissen wir dass $m$ als gleichmäßig stetige Funktion auf einer beschränkten Menge auch beschränkt ist Wir können daher auch oBdA folgern, dass $\|m\|_{\infty} \leq \beta_n$ gilt, weil wir aufgrund der Bechränktheit von $m$ (IST DER BETRAG VON M AUCH BESCHRÄNKT) einfach eine Skalierung von $m$ nehmen können. Zudem nehmen wir oBdA an, dass $supp(X) = \{x \mid \mathds{P}_X(x) > 0\} \supseteq [-a_n, a_n]^d$ ist, da wir ansonsten die Zufallsvariable $X$ auf Nullmengen abändern können.
 
+Sei $\mathfrak{F}$ die durch \ref{networkarch} definierte Menge von Funktionen mit $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und wo der Betrag der Gewichte durch $n^{c_20}$ beschränkt ist. Sei 
+$$ \mathfrak{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j \mid f_j \in \mathfrak{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{21} \cdot n \biggr\}$$
+wobei $c_{21}$ wie unten gewählt wird und für die Kardinalität der Menge gilt 
+$$J_n = (M_n + d)^d \cdot |\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}, j_1 + \cdots j_d \leq N\}|.$$ 
+Ohne Berücksichtigung der Restriktion $j_1 + \cdots j_d \leq N$ lässt sich $$|\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}|$$ durch eine Analogie zu der Anzahl an Möglichkeiten, die man in einem Urnenexperiment berechnen in welchem man $d$-Mal mit Zurücklegen und mit Beachtung der Reihenfolge aus $(N + 1)$ Kugeln zieht. Durch das Weglassen der Restriktion erhalten wir 
+$$ J_n \leq (M_n + 1)^d \cdot (N + 1)^d.$$
+Sei 
+$$g_n(x) = \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x).$$
+Da nach Voraussetzung $m$ $(p,C)$-glatt ist, und $x_{\mathbf{i}_k} \in \R^d$ für alle $k = 1,\dots,(M_n + 1)^d$, gilt$\colon$
+\begin{equation}
+\label{bound}
+\max_{k \in \{1,\dots,(M_n + 1)^d\}, j_1,\dots,j_d \in\{0,\dots,q\}, j_1+\cdots+j_d \leq q} \bigg| \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg| < \infty,
+\end{equation}
+denn das größte Elemente muss auch beschränkt sein, wenn der Abstand zweier beliebiger Elemente immer beschränkt ist.
+Da wir uns in der nichtparametrischen Regressionsschätzung befinden und dafür als Bedingung $\E[Y^2] < \infty$ gelten muss, mit wählen wir mit dem bisher gezeigten$\colon$
+\begin{equation}
+\label{constantc21}
+\begin{split}
+c_{21} = \max\Biggl\{\frac{1 + \E[Y^2]}{c_3}, & (N + 1)^d \cdot \max\biggl\{\bigg| \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg|^2 \colon \\
+& \quad j_1,\dots,j_d \in \{0,\dots,q\}, j_1 + \cdots j_d \leq q\biggr\}\Biggr\}.
+\end{split}
+\end{equation}
+Sei $A_n$ das Event, dass 
+$$\frac{1}{n} \sum_{i = 1}^n Y_i^2 \leq 1 + \E[Y^2]$$
+gilt.
+Wir wissen, dass aufgrund der Unabhängigkeit der $\R^d \times \R$-wertigen Zufallsvariablen  $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ nach 
+\begin{equation*}
+\begin{split}
+\mathds{P}(Y_1 \in \R, \dots, Y_n \in R) & = \mathds{P}((X_1, Y_1) \in \R^d \times \R, \dots, (X_n, Y_n) \in \R^d \times \R) \\
+& = \mathds{P}((X_1, Y_1) \in \R^d \times \R) \cdots \mathds{P}((X_n, Y_n) \in \R^d \times \R) \\
+& = \mathds{P}(Y_1 \in \R) \cdots \mathds{P}(Y_n \in R) ,
+\end{split}
+\end{equation*}
+und durch
+\begin{equation*}
+\begin{split}
+\mathds{P}(Y_1 \in \R, \dots, Y_n \in R) & = \mathds{P}((X_1, Y_1) \in \R^d \times \R, \dots, (X_n, Y_n) \in \R^d \times \R) \\
+& = \mathds{P}((X_1, Y_1) \in \R^d \times \R) \cdots \mathds{P}((X_n, Y_n) \in \R^d \times \R) \\
+& = \mathds{P}((X, Y) \in \R^d \times \R)^n \\
+& = \mathds{P}(Y \in \R)^n
+\end{split}
+\end{equation*}
+dass die Zufallsvariablen $Y_1,\dots,Y_n$ auch unabhängig und identisch verteilt sind. Daraus folgen wir mit Hilfe der Linearität des Erwartungswerts, dass $\E\big[\frac{1}{n} \sum_{i = 1}^n Y_i^2\big] = \E[Y^2]$ 
 \end{proof}

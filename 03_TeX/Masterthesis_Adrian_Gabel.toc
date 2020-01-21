@@ -8,6 +8,6 @@
 \contentsline {section}{\numberline {2.1}Definition der Netzwerkarchitektur}{20}{section.2.1}
 \contentsline {section}{\numberline {2.2}Definition der Gewichte der Ausgabeschicht}{26}{section.2.2}
 \contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{28}{chapter.3}
-\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf Simulierte Daten}{29}{chapter.4}
-\contentsline {chapter}{Literaturverzeichnis}{31}{chapter*.4}
-\contentsline {chapter}{Appendix}{32}{chapter*.5}
+\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf Simulierte Daten}{31}{chapter.4}
+\contentsline {chapter}{Literaturverzeichnis}{33}{chapter*.4}
+\contentsline {chapter}{Appendix}{34}{chapter*.5}
