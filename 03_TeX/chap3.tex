@@ -63,5 +63,60 @@ und durch
 & = \mathds{P}(Y \in \R)^n
 \end{split}
 \end{equation*}
-dass die Zufallsvariablen $Y_1,\dots,Y_n$ auch unabhängig und identisch verteilt sind. Daraus folgen wir mit Hilfe der Linearität des Erwartungswerts, dass $\E\big[\frac{1}{n} \sum_{i = 1}^n Y_i^2\big] = \E[Y^2]$ 
+dass die Zufallsvariablen $Y_1,\dots,Y_n$ auch unabhängig und identisch verteilt sind. Daraus folgern wir mit Hilfe der Linearität des Erwartungswerts, dass $\E\big[\frac{1}{n} \sum_{i = 1}^n Y_i^2\big] = \E[Y^2]$ gilt.
+Mit Hilfe der Monotonie und Homogenität der Wahrscheinlichkeitsfunktion $\mathds{P}$ und der Tschebyscheff Ungleichung für $\epsilon = 1$ (REFERENZ) erhalten wir
+\begin{equation}
+\label{tscheby}
+\begin{split}
+\mathds{P}(A_n^{\mathsf{c}}) & = \mathds{P}(\frac{1}{n}\sum_{i=1}^n Y_i^2 - \E[Y^2] \geq 1) \\
+& \leq \mathds{P}(\Big|\frac{1}{n}\sum_{i=1}^n Y_i^2 - \E[Y^2]\Big| \geq 1) \\
+& \leq \mathds{V}[\frac{1}{n}\sum_{i = 1}^nY_i^2] \\
+& = \frac{n \cdot  \mathds{V}[Y^2]}{n^2} \\
+& = \frac{\mathds{V}[Y^2]}{n} \\
+& \leq \frac{c_{22}}{n},
+\end{split}
+\end{equation}
+wobei wir bei der letzten Gleichheit die identische Verteiltheit der $Y_1,\dots,Y_n$ und Rechenregeln für die Varianz verwendet haben welche wir unter anderem aufgrund der Unabhängigkeit der $Y_1,\dots,Y_n$ verwenden durften.
+Sei $\hat{m}_n = T_{\beta_n}\tilde{m}_n = m_n$ im Falle dass Ereignis $A_n$ gilt und andernfalls $\hat{m}_n = T_{\beta_n}g_n$. Durch die Unabhängigkeit von $A_n$ zu den Zufallsvariablen $X, X_1, \dots, X_n$ und der Jensenschen Ungleichung (REFERENZ) erhalten wir$\colon$
+\begin{equation}
+\label{anc}
+\begin{split}
+ \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] & =  \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \bigg] \cdot \mathds{P}(A_n^{\mathsf{c}}) \\
+ & \leq \E \bigg[2m_n(x)^2 + 2m(x)^2 \mathds{P}_X(dx)\bigg] \cdot \mathds{P}(A_n^{\mathsf{c}})\\
+ & \leq \E \bigg[2\beta_n^2 + 2\beta_n^2 \mathds{P}_X(dx)\bigg] \cdot \mathds{P}(A_n^{\mathsf{c}})\\
+ & = 4\beta_n^2 \cdot \mathds{P}(A_n^{\mathsf{c}}),
+\end{split}
+\end{equation}
+wobei wir bei der letzten Ungleichung verwendet haben dass wir anfangs angenommen haben, dass $\|m\|_{\infty} < \beta_n$ und damit für $c_6$ und $n$ hinreichend groß auch $\tilde{m}_n \leq \beta_n$ und nach der Definition von $m_n$ zudem $m_n \leq \beta_n$ gilt. Bei der letzten Gleichung habe wir dann schließlich noch verwendet dass $\beta_n$ deterministisch und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ ist.
+Durch unsere Definition von $\hat{m}_n$ erhalten wir durch die Monotonie des Erwartungswert und der Abschätzung durch den ganzen Raum$\colon$
+\begin{equation}
+\label{an}
+\begin{split}
+\E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] & = \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] \\
+& \leq \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg].
+\end{split}
+\end{equation}
+Zusammen mit (\ref{tscheby}), (\ref{anc}), (\ref{an}) und der Linearität des Erwartungswerts erhalten wir dann$\colon$
+\begin{equation*}
+\begin{split}
+\E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \cdot (\mathds{1}_{A_n^{\mathsf{c}}} + \mathds{1}_{A_n})\bigg] \\
+& = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] \\
+& \quad + \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] \\
+& \leq 4\beta_n^2 \cdot \mathds{P}(A_n^{\mathsf{c}}) + \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg] \\
+& \leq \frac{4 \cdot c_{22} \cdot \beta_n^2}{n} + \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg].
+\end{split}
+\end{equation*}
+Nach (\ref{estimate}) können wir die unseren Schätzer $\tilde{m}_n$ darstellen durch$\colon$
+$$\tilde{m}_n(x) = \sum_{j = 1}^{J_n}\hat{a}_j \cdot f_j$$
+für geeignete $f_j \in \mathfrak{F}$ und $\hat{a}_j$ welche 
+\begin{equation*}
+\begin{split}
+\frac{c_3}{n}\sum_{j = 1}^{J_n} \hat{a}_j^2 & = \frac{c_3}{n} \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2 \\
+& \leq \sum_{i = 1}^n Y_i^2,
+\end{split}
+\end{equation*}
+erfüllen, wobei wir bei der letzten Ungleichung wie in (\ref{min}) die minimierende Eigenschaft von $a_{\mathbf{i}_k,j_1,\dots,j_d}$ verwendet haben und die Koeffizienten Null gesetzt haben.  Da $c_3 > 0$ ist, erhalten wir dass die $\hat{a}_j$ die Eigenschaft
+$$\sum_{j = 1}^{J_n} \hat{a}_j^2  \leq \frac{1}{n}\sum_{i = 1}^n Y_i^2 \cdot \frac{n}{c_3}$$
+erfüllen müssen.
 \end{proof}
