@@ -11,7 +11,7 @@ im Falle des sogenannte ... Schätzers mit ...
 Angenommen die Verteilung von $(X,Y)$ erfüllt 
 $$ \E\bigg(\mathrm{e}^{c_4 \cdot |Y|^2}\bigg) < \infty$$
 für eine Konstante $c_4 > 0$ und die Verteilung von $X$ hat einen beschränkten Träger $supp(\mathds{P}_X)$ und sei $m(x) = \E[Y \mid X = x]$ die entsprechende Regressionsfunktion. 
-Angenomme $m$ ist $(p,C)$-glatt, mit $p = q + s$ für $q \in \N_0$ und $s \in (0,1].$ Wir betrachten unseren neuronale Netze Regressionsschätzer $\tilde{m}_n$ aus \ref{estimate}, wobei $\sigma$ der logistische Squasher ist und $N \geq q, M = M_n = \lceil c_5 \cdot n^{1/(2p + d)}\rceil, R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
+Angenommen $m$ ist $(p,C)$-glatt, mit $p = q + s$ für $q \in \N_0$ und $s \in (0,1].$ Wir betrachten unseren neuronale Netze Regressionsschätzer $\tilde{m}_n$ aus \ref{estimate}, wobei $\sigma$ der logistische Squasher ist und $N \geq q, M = M_n = \lceil c_5 \cdot n^{1/(2p + d)}\rceil, R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
 Sei $\beta_n = c_6 \cdot \log(n)$ für eine hinreichend große Konstante $c_6 > 0$ und sei $m_n$ gegeben durch
 $$m_n(x) = T_{\beta_n}\tilde{m}_n (x)$$
 mit $T_{\beta z} = \max\{\min\{z, \beta\}, -\beta\}$ für $z \in \R$ und $\beta > 0.$ Dann gilt für $m_n$ für hinreichend großes $n$
@@ -21,14 +21,15 @@ wobei $c_7 > 0$ nicht von $n$ abhängt.
 \begin{proof}
 Nach Voraussetzung wissen wir, dass $supp(\mathds{P}_X)$ beschränkt ist. Da wir angenommen haben, dass $m$ $(p,C)$-glatt und damit insbesondere hölderstetig mit $q = 0$ ist, können wir daraus auf die gleichmäßige Stetigkeit von $m$ schließen. Da wir nur über den beschränkten $supp(\mathds{P}_X)$ integrieren, wissen wir dass $m$ als gleichmäßig stetige Funktion auf einer beschränkten Menge auch beschränkt ist Wir können daher auch oBdA folgern, dass $\|m\|_{\infty} \leq \beta_n$ gilt, weil wir aufgrund der Bechränktheit von $m$ (IST DER BETRAG VON M AUCH BESCHRÄNKT) einfach eine Skalierung von $m$ nehmen können. Zudem nehmen wir oBdA an, dass $supp(X) = \{x \mid \mathds{P}_X(x) > 0\} \supseteq [-a_n, a_n]^d$ ist, da wir ansonsten die Zufallsvariable $X$ auf Nullmengen abändern können.
 
-Sei $\mathfrak{F}$ die durch \ref{networkarch} definierte Menge von Funktionen mit $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und wo der Betrag der Gewichte durch $n^{c_20}$ beschränkt ist. Sei 
+Sei $\mathfrak{F}$ die durch \ref{networkarch} definierte Menge von Funktionen mit $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und wo der Betrag der Gewichte durch $n^{c_{20}}$ beschränkt ist. Sei 
 $$ \mathfrak{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j \mid f_j \in \mathfrak{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{21} \cdot n \biggr\}$$
 wobei $c_{21}$ wie unten gewählt wird und für die Kardinalität der Menge gilt 
-$$J_n = (M_n + d)^d \cdot |\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}, j_1 + \cdots j_d \leq N\}|.$$ 
+$$J_n = (M_n + 1)^d \cdot |\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}, j_1 + \cdots j_d \leq N\}|.$$ 
 Ohne Berücksichtigung der Restriktion $j_1 + \cdots j_d \leq N$ lässt sich $$|\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}|$$ durch eine Analogie zu der Anzahl an Möglichkeiten, die man in einem Urnenexperiment berechnen in welchem man $d$-Mal mit Zurücklegen und mit Beachtung der Reihenfolge aus $(N + 1)$ Kugeln zieht. Durch das Weglassen der Restriktion erhalten wir 
 $$ J_n \leq (M_n + 1)^d \cdot (N + 1)^d.$$
 Sei 
 $$g_n(x) = \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x).$$
+Nach Konstruktion liegt $g_n$ daher auch in $\mathfrak{F}^{(J_n)}.$
 Da nach Voraussetzung $m$ $(p,C)$-glatt ist, und $x_{\mathbf{i}_k} \in \R^d$ für alle $k = 1,\dots,(M_n + 1)^d$, gilt$\colon$
 \begin{equation}
 \label{bound}
@@ -44,7 +45,10 @@ c_{21} = \max\Biggl\{\frac{1 + \E[Y^2]}{c_3}, & (N + 1)^d \cdot \max\biggl\{\big
 \end{split}
 \end{equation}
 Sei $A_n$ das Event, dass 
-$$\frac{1}{n} \sum_{i = 1}^n Y_i^2 \leq 1 + \E[Y^2]$$
+\begin{equation}
+\label{event}
+\frac{1}{n} \sum_{i = 1}^n Y_i^2 \leq 1 + \E[Y^2]
+\end{equation}
 gilt.
 Wir wissen, dass aufgrund der Unabhängigkeit der $\R^d \times \R$-wertigen Zufallsvariablen  $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ nach 
 \begin{equation*}
@@ -119,4 +123,33 @@ für geeignete $f_j \in \mathfrak{F}$ und $\hat{a}_j$ welche
 erfüllen, wobei wir bei der letzten Ungleichung wie in (\ref{min}) die minimierende Eigenschaft von $a_{\mathbf{i}_k,j_1,\dots,j_d}$ verwendet haben und die Koeffizienten Null gesetzt haben.  Da $c_3 > 0$ ist, erhalten wir dass die $\hat{a}_j$ die Eigenschaft
 $$\sum_{j = 1}^{J_n} \hat{a}_j^2  \leq \frac{1}{n}\sum_{i = 1}^n Y_i^2 \cdot \frac{n}{c_3}$$
 erfüllen müssen.
+Auf $A_n$ erhalten wir dann$\colon$
+$$\sum_{j = 1}^{J_n}\hat{a}_j^2 \stackrel{(\ref{event})}{\leq} \frac{1 + \E[Y^2]}{c_3} \cdot n \stackrel{(\ref{constantc21})}{\leq} c_{21} \cdot n,$$
+woraus dann insbesondere $\tilde{m}_n \in \mathfrak{F}^{(J_n)}$ folgt, da $f_j \in \mathfrak{F}$.
+Deswegen nehmen wir nun oBdA.\ an, dass $\hat{m}_n = T_{\beta_n}\bar{m}_n$ für $\bar{m}_n = \tilde{m}_n, g_n \in \mathfrak{F}^{(J_n)}.$
+Da $c_3 > 0$ ist erhalten wir$\colon$
+\begin{equation}
+\begin{split}
+\label{g}
+& \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 \\
+& \quad + \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \bigg|\frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg|^2 \\
+& \stackrel{(\ref{constantc21})}{\leq} \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 +  \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} c_{21} \\
+& = \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + \frac{c_3 \cdot c_{21} \cdot (M_n + 1)^d}{n} \\
+& = \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}.
+\end{split}
+\end{equation}
+Die Funktionen $\tilde{m}_n$ und $g_n$ unterscheiden sich in den Koeffizienten und da wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ von $\tilde{m}_n$ durch Minimierung von (\ref{min}) erhalten haben und nach Voraussetzung $N \geq q$ ist, damit dann $\{0,\dots,q\} \subseteq \{0,\dots,N\}$ und wir bei der Minimierung daher auch insbesondere die Koeffizienten von $g_n$ betrachtet haben, erhalten wir$\colon$
+\begin{equation}
+\begin{split}
+\label{tilde}
+& \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,N\} \\j_1+\dots +j_d \leq N}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 \\
+& \quad + \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \bigg|\frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg|^2 \\
+& = \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}
+\end{split}
+\end{equation}
+Mit (\ref{g}) und (\ref{tilde}) erhalten wir zusammen dann$\colon$
+$$\frac{1}{n} \sum_{i = 1}^n|Y_i - \bar{m}_n(X_i)|^2 \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}.$$
 \end{proof}

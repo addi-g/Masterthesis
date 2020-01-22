@@ -179,11 +179,11 @@ Da man bei fully-connencted neuronalen Netzen die Gewichte der Verbindungen zwis
 Wir definieren unseren neuronale Netze Regressionsschätzer $\tilde{m}_n(x)$ durch$\colon$
 \begin{equation}
 \label{estimate}
-\tilde{m}_n(x) = \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x),
+\tilde{m}_n(x) = \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,N\} \\j_1+\dots +j_d \leq N}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x),
 \end{equation}
 wobei wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ durch Minimierung von 
 \begin{equation}
-\label{min} \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2
+\label{min} \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,N\} \\j_1+\dots +j_d \leq N}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2
 \end{equation}
 für eine Konstante $c_3 > 0.$ Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung eine linearen Gleichungssystems. Dafür definieren wir uns 
 \begin{align*} 
