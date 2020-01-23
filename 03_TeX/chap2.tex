@@ -2,7 +2,7 @@
 \label{chap:2}
 
 In diesem Kapitel werden wir mithilfe von unseren gegebenen Datenmenge 
-$$ \mathfrak{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},$$
+$$ \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},$$
 unseren Regressionsschätzer konstruieren. 
 
 Die Netzwerkarchitektur $(L, k)$ hängt von einer positiven ganzen Zahl $L$, die der Anzahl der verborgenen Schichten ist und einem Vektor $k = (k_1,\dots,k_L) \in \N^L$, der mit jeder Kombonente die Anzahl der Neuronen in der jeweiligen verborgen Schichte angibt. 
@@ -20,7 +20,7 @@ f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{
 \end{align} 
 Bei neuronale Netze Regressionsschätzer wählt man keine Aktivierungsfunktion mehr, da wir einen Funktionswert schätzen wollen nichts mit einer Wahrscheinlichkeit klassifizieren möchten. (REFERENZ)
 
-Für die Konstruktion unseren Schätzers verwenden wir die gegebene Datenmenge $\mathfrak{D}$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzungen für die Regressionsfunktion ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht in dem wir mit unserer Datenmenge ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
+Für die Konstruktion unseren Schätzers verwenden wir die gegebene Datenmenge $\mathcal{D}$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzungen für die Regressionsfunktion ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht in dem wir mit unserer Datenmenge ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
 \section{Definition der Netzwerkarchitektur}
 Sei $a > 0$ fest. Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale Konvexkombination von Taylorpolynomen für $(p,C)$-glatte Funktionen für $x \in [-a, a]^d$ motiviert. 
