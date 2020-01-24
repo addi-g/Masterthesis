@@ -4,10 +4,10 @@
 \contentsline {chapter}{\numberline {1}Grundlagen und Hilfsresultate}{7}{chapter.1}
 \contentsline {section}{\numberline {1.1}Definitionen}{8}{section.1.1}
 \contentsline {section}{\numberline {1.2}Hilfsresultate}{9}{section.1.2}
-\contentsline {chapter}{\numberline {2}Konstruktion des Neuronale Netze Regressionssch\IeC {\"a}tzers}{20}{chapter.2}
-\contentsline {section}{\numberline {2.1}Definition der Netzwerkarchitektur}{21}{section.2.1}
-\contentsline {section}{\numberline {2.2}Definition der Gewichte der Ausgabeschicht}{27}{section.2.2}
-\contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{29}{chapter.3}
-\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf Simulierte Daten}{35}{chapter.4}
-\contentsline {chapter}{Literaturverzeichnis}{37}{chapter*.4}
-\contentsline {chapter}{Appendix}{38}{chapter*.5}
+\contentsline {chapter}{\numberline {2}Konstruktion des Neuronale Netze Regressionssch\IeC {\"a}tzers}{21}{chapter.2}
+\contentsline {section}{\numberline {2.1}Definition der Netzwerkarchitektur}{22}{section.2.1}
+\contentsline {section}{\numberline {2.2}Definition der Gewichte der Ausgabeschicht}{28}{section.2.2}
+\contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{30}{chapter.3}
+\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf Simulierte Daten}{38}{chapter.4}
+\contentsline {chapter}{Literaturverzeichnis}{40}{chapter*.4}
+\contentsline {chapter}{Appendix}{41}{chapter*.5}

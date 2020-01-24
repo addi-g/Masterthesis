@@ -26,7 +26,10 @@ $$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j \mid f_j \in \
 wobei $c_{21}$ wie unten gewählt wird und für die Kardinalität der Menge gilt 
 $$J_n = (M_n + 1)^d \cdot |\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}, j_1 + \cdots j_d \leq N\}|.$$ 
 Ohne Berücksichtigung der Restriktion $j_1 + \cdots j_d \leq N$ lässt sich $$|\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}|$$ durch eine Analogie zu der Anzahl an Möglichkeiten, die man in einem Urnenexperiment berechnen in welchem man $d$-Mal mit Zurücklegen und mit Beachtung der Reihenfolge aus $(N + 1)$ Kugeln zieht. Durch das Weglassen der Restriktion erhalten wir 
-$$ J_n \leq (M_n + 1)^d \cdot (N + 1)^d.$$
+\begin{equation}
+\label{jn}
+J_n \leq (M_n + 1)^d \cdot (N + 1)^d.
+\end{equation}
 Sei 
 $$g_n(x) = \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x).$$
 Nach Konstruktion liegt $g_n$ daher auch in $\mathcal{F}^{(J_n)}.$
@@ -151,7 +154,33 @@ Die Funktionen $\tilde{m}_n$ und $g_n$ unterscheiden sich in den Koeffizienten u
 \end{split}
 \end{equation}
 Mit (\ref{g}) und (\ref{tilde}) erhalten wir zusammen$\colon$
-$$\frac{1}{n} \sum_{i = 1}^n|Y_i - \bar{m}_n(X_i)|^2 \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}.$$
+\begin{equation}
+\label{bed}
+\frac{1}{n} \sum_{i = 1}^n|Y_i - \bar{m}_n(X_i)|^2 \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}.
+\end{equation}
+Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist, sind mit $|\Theta_n| = 1$, $g_{n,1} = g_n$, der Abschätzung (\ref{bed}) für $\hat{m}_n = \T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem penalty Term $pen_n(g_{n,1}) = c_{23} \cdot \frac{(M_n + 1)^d}{n} \geq 0$ die Voraussetzungen für Lemma \ref{lem:8} erfüllt und wir erhalten durch dessen Anwendung:
+\begin{equation*}
+\begin{split}
+& \E \int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
+& \leq \frac{c_{23} \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
+& \quad + 2 \cdot \E\bigg(\min_{l \in \Theta_n} \int |g_{n,l}(x) - m(x)|^2 \mathds{P}_X(dx) + c_{23} \cdot \frac{(M_n + 1)^d}{n}\bigg) \\
+& = \frac{c_{23} \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
+& \quad + 2 \int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + 2 \cdot c_{23} \cdot \frac{(M_n + 1)^d}{n},
+\end{split}
+\end{equation*}
+wobei wir bei der letzten Gleichheit verwendet haben, dass der letzte Summand deterministisch ist. Zudem wissen wir, dass $c_{23}$ auch unabhängig von $n$ ist und zudem $n > 1$ gilt, da wir $n$ hinreichend groß wählen.
+Als nächstes überprüfen wir die Voraussetzungen von Lemma \ref{lem:9} um damit dann die letzte Gleichung weiter abzuschätzen.
+Nach Voraussetzung ist $\beta_n = c_6 \cdot \log(n)$ und $a = (\log n)^{1/(6(N + d))}.$ Damit ist $a > 0$ für hinreichend großes $n$. Nach Voraussetzung ist zudem $d, N, J_n \in \N$ und es gilt
+$$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c_{14}}$$
+ nach (\ref{jn}) für hinreichend großes $n$. Wir betrachten hier den logistischen Squasher welcher nach Lemma \ref{lem:logsquasher} insbesondere 2-zulässig nach Definition \ref{nzulässig} ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma \ref{lem:9} ist, sind nun alle Voraussetzungen erfüllt. Da wir oBdA angenommen haben, dass $supp(X) \subseteq [-a, a]^d$ ist, erhalten wir mit Lemma \ref{lem:9} für hinreichend großes $n$:
+\begin{equation*}
+\begin{split}
+& \frac{c_{23} \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
+& \leq \frac{c_{23} \cdot \log(n)^2 \cdot \big(\big(c_{19} \cdot \log(n) \cdot (M_n + 1)^d \cdot (N + 1)^d \big) + 1\big)}{n} \\
+& \leq \frac{c_{23} \cdot \log(n)^2 \cdot \big(2 \cdot c_{19} \cdot \log(n) \cdot (M_n + 1)^d \cdot (N + 1)^d\big)}{n} \\
+& \leq c_{24} \cdot \frac{\log(n)^3 \cdot (M_n + 1)^d \cdot (N + 1)^d}{n}.
+\end{split}
+\end{equation*}
 Sei 
 \begin{equation*}
 \begin{split}
@@ -159,4 +188,41 @@ P_n(x) = \sum_{k = 1}^{(M_n + 1)^d} & \sum_{\substack{ j_1,\dots,j_d \in \{0,\do
 &  \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+. 
 \end{split}
 \end{equation*}
+Für zwei beliebige reelle Zahlen $u, v \in \R$ gilt durch $0 \leq (a - b)^2 = a^2 + b^2 - 2ab$:
+$$a^2 + b^2 \geq 2ab$$ und zusammen mit einer Nulladdition, der Linearität des Integral und der Supremumseigenschaft erhalten wir:
+\begin{equation*}
+\begin{split}
+& \int |g_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
+& = \int |g_n(x) - P_n(x) + P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
+& = \int |g_n(x) - P_n(x)|^2 + 2(g_n - P_n(x))(P_n(x) - m(x)) + |P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
+& \leq \int 2 |g_n(x) - P_n(x)|^2 + 2 |P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
+& = 2 \int \sup_{x \in [-a, a]^d} |g_n(x) - P_n(x)|^2 \mathds{P}_X(dx) + 2 \int \sup_{x \in [-a, a]^d} |P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
+& = 2 \sup_{x \in [-a, a]^d} |g_n(x) - P_n(x)|^2 + 2 \sup_{x \in [-a, a]^d} |P_n(x) - m(x)|^2, 
+\end{split}
+\end{equation*}
+wobei wir im letzten Schritt $supp(X) \subseteq [-a, a]^d$ und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden weiterhin abzuschätzen möchten wir Lemma \ref{lem:5} anwenden. Dafür überprüfen wir ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten den logistischen squasher, welcher nach Lemma \ref{lem:2} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung für $R$ erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}_k} \in [-a, a]^d$ identisch mit der Definition aus Lemma \ref{lem:5} ist, sind alle Voraussetzungen erfüllt. 
+Wir erhalten damit für $x \in [-a ,a]^d$ und $n$ hinreichend groß:
+\begin{equation*}
+\begin{split}
+& |g_n(x) - P_n(x)| \\
+& = \bigg| \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \bigg| \\
+& \cdot \bigg| f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) - (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \bigg| \\
+& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot e \\
+& \cdot  \bigg| f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) - (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \bigg| \\
+& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot e \cdot \hat{c}_{12} \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s} \cdot M_n^3 \cdot \frac{1}{R_n} \\
+& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot a_n^{3 \cdot (N + d) \cdot 2} \cdot \frac{M_n^3}{R_n} \\
+& =  (M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot \log(n) \cdot \frac{M_n^3}{R_n},
+\end{split}
+\end{equation*}
+wobei wir unter anderem verwendet haben, dass für hinreichend großes $n$:
+$$a_n^{2^{\lceil\log_2(N + d)\rceil}} \leq a_n^{2^{\log_2(N + d) + 1}} = a_n^{(N + d) \cdot 2},$$ gilt. Im letzten Schritt haben wir dann noch die Definition von $a_n$ eingesetzt. 
+Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma \ref{lem:loccon} eine lokale Konvexkombination von Taylorpolynomen von $m$, erhalten wir mit Lemma \ref{lem:pcsmooth}:
+\begin{equation}
+\begin{split}
+|P_n(x) - m(x)| \leq c_{26} \cdot \frac{a_n^p}{M_n^p} \leq c_{26} \cdot \log(n) \cdot \frac{1}{M_n^p} , 
+\end{split}
+\end{equation}
+wobei wir verwendet haben, dass für $p = q + s$ für hinreichend großes $n$ gilt:
+$$a_n^p = a_n^{q + s} \leq a_n^{N + d} \leq a_n^{6 \cdot (N + d)} = \log(n),$$
+da nach Voraussetzung $N \geq q$ und $d \geq s$ mit $s \in (0, 1]$.
 \end{proof}
