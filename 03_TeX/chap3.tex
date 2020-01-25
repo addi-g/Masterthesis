@@ -173,14 +173,15 @@ Als nächstes überprüfen wir die Voraussetzungen von Lemma \ref{lem:9} um dami
 Nach Voraussetzung ist $\beta_n = c_6 \cdot \log(n)$ und $a = (\log n)^{1/(6(N + d))}.$ Damit ist $a > 0$ für hinreichend großes $n$. Nach Voraussetzung ist zudem $d, N, J_n \in \N$ und es gilt
 $$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c_{14}}$$
  nach (\ref{jn}) für hinreichend großes $n$. Wir betrachten hier den logistischen Squasher welcher nach Lemma \ref{lem:logsquasher} insbesondere 2-zulässig nach Definition \ref{nzulässig} ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma \ref{lem:9} ist, sind nun alle Voraussetzungen erfüllt. Da wir oBdA angenommen haben, dass $supp(X) \subseteq [-a, a]^d$ ist, erhalten wir mit Lemma \ref{lem:9} für hinreichend großes $n$:
-\begin{equation*}
+\begin{equation}
+\label{lem9sol}
 \begin{split}
 & \frac{c_{23} \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
 & \leq \frac{c_{23} \cdot \log(n)^2 \cdot \big(\big(c_{19} \cdot \log(n) \cdot (M_n + 1)^d \cdot (N + 1)^d \big) + 1\big)}{n} \\
 & \leq \frac{c_{23} \cdot \log(n)^2 \cdot \big(2 \cdot c_{19} \cdot \log(n) \cdot (M_n + 1)^d \cdot (N + 1)^d\big)}{n} \\
 & \leq c_{24} \cdot \frac{\log(n)^3 \cdot (M_n + 1)^d \cdot (N + 1)^d}{n}.
 \end{split}
-\end{equation*}
+\end{equation}
 Sei 
 \begin{equation*}
 \begin{split}
@@ -188,9 +189,10 @@ P_n(x) = \sum_{k = 1}^{(M_n + 1)^d} & \sum_{\substack{ j_1,\dots,j_d \in \{0,\do
 &  \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+. 
 \end{split}
 \end{equation*}
-Für zwei beliebige reelle Zahlen $u, v \in \R$ gilt durch $0 \leq (a - b)^2 = a^2 + b^2 - 2ab$:
-$$a^2 + b^2 \geq 2ab$$ und zusammen mit einer Nulladdition, der Linearität des Integral und der Supremumseigenschaft erhalten wir:
-\begin{equation*}
+Für zwei beliebige reelle Zahlen $u, v \in \R$ gilt durch $0 \leq (u - v)^2 = u^2 + v^2 - 2uv$:
+$$v^2 + v^2 \geq 2uv$$ und zusammen mit einer Nulladdition, der Linearität des Integral und der Supremumseigenschaft erhalten wir:
+\begin{equation}
+\label{gnmx}
 \begin{split}
 & \int |g_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
 & = \int |g_n(x) - P_n(x) + P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
@@ -199,10 +201,11 @@ $$a^2 + b^2 \geq 2ab$$ und zusammen mit einer Nulladdition, der Linearität des 
 & = 2 \int \sup_{x \in [-a, a]^d} |g_n(x) - P_n(x)|^2 \mathds{P}_X(dx) + 2 \int \sup_{x \in [-a, a]^d} |P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
 & = 2 \sup_{x \in [-a, a]^d} |g_n(x) - P_n(x)|^2 + 2 \sup_{x \in [-a, a]^d} |P_n(x) - m(x)|^2, 
 \end{split}
-\end{equation*}
-wobei wir im letzten Schritt $supp(X) \subseteq [-a, a]^d$ und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden weiterhin abzuschätzen möchten wir Lemma \ref{lem:5} anwenden. Dafür überprüfen wir ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten den logistischen squasher, welcher nach Lemma \ref{lem:2} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung für $R$ erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}_k} \in [-a, a]^d$ identisch mit der Definition aus Lemma \ref{lem:5} ist, sind alle Voraussetzungen erfüllt. 
-Wir erhalten damit für $x \in [-a ,a]^d$ und $n$ hinreichend groß:
-\begin{equation*}
+\end{equation}
+wobei wir im letzten Schritt $supp(X) \subseteq [-a_n, a_n]^d$ und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden weiterhin abzuschätzen möchten wir Lemma \ref{lem:5} anwenden. Dafür überprüfen wir ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten den logistischen squasher, welcher nach Lemma \ref{lem:2} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung für $R$ erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}_k} \in [-a_n, a_n]^d$ identisch mit der Definition aus Lemma \ref{lem:5} ist, sind alle Voraussetzungen erfüllt. 
+Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
+\begin{equation}
+\label{1stsum}
 \begin{split}
 & |g_n(x) - P_n(x)| \\
 & = \bigg| \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \bigg| \\
@@ -213,11 +216,12 @@ Wir erhalten damit für $x \in [-a ,a]^d$ und $n$ hinreichend groß:
 & \leq (M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot a_n^{3 \cdot (N + d) \cdot 2} \cdot \frac{M_n^3}{R_n} \\
 & =  (M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot \log(n) \cdot \frac{M_n^3}{R_n},
 \end{split}
-\end{equation*}
+\end{equation}
 wobei wir unter anderem verwendet haben, dass für hinreichend großes $n$:
 $$a_n^{2^{\lceil\log_2(N + d)\rceil}} \leq a_n^{2^{\log_2(N + d) + 1}} = a_n^{(N + d) \cdot 2},$$ gilt. Im letzten Schritt haben wir dann noch die Definition von $a_n$ eingesetzt. 
 Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma \ref{lem:loccon} eine lokale Konvexkombination von Taylorpolynomen von $m$, erhalten wir mit Lemma \ref{lem:pcsmooth}:
 \begin{equation}
+\label{2ndsum}
 \begin{split}
 |P_n(x) - m(x)| \leq c_{26} \cdot \frac{a_n^p}{M_n^p} \leq c_{26} \cdot \log(n) \cdot \frac{1}{M_n^p} , 
 \end{split}
@@ -225,4 +229,51 @@ Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma \ref{le
 wobei wir verwendet haben, dass für $p = q + s$ für hinreichend großes $n$ gilt:
 $$a_n^p = a_n^{q + s} \leq a_n^{N + d} \leq a_n^{6 \cdot (N + d)} = \log(n),$$
 da nach Voraussetzung $N \geq q$ und $d \geq s$ mit $s \in (0, 1]$.
+Da die rechten Seiten von Ungleichung (\ref{1stsum}) und (\ref{2ndsum}) nicht von $x$ abhängen, gelten die Ungleichung ebenfalls für das Supremum. Durch Quadrieren bleiben die Ungleichungen auch erhalten und durch einsetzen der Definitionen von $M_n$ und $R_n$ erhalten wir für $n$ hinreichend groß:
+\begin{equation}
+\begin{split}
+\sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_n(x)|^2 & \leq \bigg((M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot \log(n) \cdot \frac{M_n^3}{R_n}\bigg)^2 \\
+& \leq c_{25}^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{M_n^6}{R_n^2} \\
+& \leq  c_{25}^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{(M_n + 1)^{6d}}{R_n^2} \\
+& \leq  c_{25}^2 \cdot \log(n)^2 \cdot \frac{(M_n + 1)^{8d}}{R_n^2} \\
+& \leq c_{25}^2 \cdot \frac{n^{\frac{8d}{2p + d}}}{n^{2d + 8}} \cdot \log(n)^2 \\
+& = c_{25}^2 \cdot n^{\frac{8d}{2p + d} - 2d -8} \cdot \log(n)^2 \\
+& \leq c_{25}^2 \cdot n^{\frac{8d}{2p + d}  -8\frac{2p + d}{2p + d}} \cdot \log(n)^2 \\
+& = c_{25}^2 \cdot n^{-\frac{16p}{2p + d}} \cdot \log(n)^2 \\
+& \leq c_{25}^2 \cdot n^{-\frac{2p}{2p + d}} \cdot \log(n^3,
+\end{split}
+\end{equation}
+wobei wir bei der letzten Ungleichung verwendet haben, dass $\frac{16p}{2p + d} > \frac{2p}{2p + d}$, da $p > 0$ ist und dass $\log(n)^2 < \log(n)^3$ für $n$ hinreichend groß. Ebenfalls erhalten wir:
+\begin{equation}
+\begin{split}
+\sup_{x \in [-a_n, a_n]^d} |P_n(x) - m(x)|^2 & \leq \bigg(c_{26} \cdot \log(n) \cdot \frac{1}{M_n^p}\bigg)^2 \\
+& \leq c_{26}^2 \cdot \log(n)^2 \cdot c_{5}^{-2p} \cdot n^{-\frac{2p}{2p + d}} \\
+& \leq (c_{16}^2 \cdot c_{5}^{-2p}) \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}}.
+\end{split}
+\end{equation}
+Mit analogem Vorgehen erhalten wir für (\ref{lem9sol}):
+\begin{equation}
+\begin{split}
+& \frac{c_{23} \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
+& \leq c_{24} \cdot \frac{\log(n)^3 \cdot (M_n + 1)^d \cdot (N + 1)^d}{n} \\
+& \leq \hat{c}_{24} \cdot \log(n)^3 \cdot \frac{(c_5 \cdot n^{\frac{1}{2p + d}} + 2)^d}{n} \\
+& \leq \hat{c}_{24} \cdot \log(n)^3 \cdot \frac{c_5^d\cdot n^{\frac{d}{2p + d}}}{n} \\
+& = \tilde{c}_{24} \cdot \log(n)^3 \cdot n^{\frac{d}{2p + d} - 1} \\
+& = \tilde{c}_{24} \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}}.
+\end{split}
+\end{equation}
+Zudem erhalten wir, da für $n$ hinreichend groß $\log(n)^3 > 1$ gilt, mit analogem Vorgehen:
+\begin{equation*}
+\begin{split}
+c_{21} \cdot \frac{(M_n + 1)^d}{n} & \leq \tilde{c}_{21} \cdot \frac{n^{\frac{d}{2p + d}}}{n} \\
+& \leq \tilde{c}_{21} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}} 
+\end{split}
+\end{equation*} 
+und 
+\begin{equation*}
+\begin{split}
+\frac{4 \cdot c_{22} \cdot \beta_n^2}{n} & \leq \tilde{c}_{22} \cdot \log(n)^3 \cdot n^{-1} \\
+& \leq \tilde{c}_{22} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}}.  
+\end{split}
+\end{equation*} 
 \end{proof}

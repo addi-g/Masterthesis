@@ -157,7 +157,7 @@ f_{hat,y}(x) = f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{R
 \end{equation}
 welches, wie in Lemma \ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert. 
 Mit diesen neuronalen Netzen können wir nun $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $j_1,\dots,j_d \in \{0, 1,\dots, N\}$ und $k \in \{1,\dots,(M + 1)^d\}\colon$  
-\begin{align*}
+\begin{align}
 \label{fnet}
 & f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) = f_1^{(0)}(x). \\
 \intertext{wobei} \\
@@ -169,7 +169,7 @@ Mit diesen neuronalen Netzen können wir nun $f_{net,j_1,\dots,j_d,\mathbf{i}_k}
 \intertext{für $k = 1,\dots,d$ und} \\
 & f_k^{(s)}(x) = 1 \\
 \intertext{für $k = j_1 + j_2 + \dots + j_d + d + 1,j_1 + j_2 + \dots + j_d + d + 2,\dots,2^s.$}
-\end{align*} 
+\end{align} 
 ANZAHL DER SCHICHTEN UND NEURONEN PRO SCHICHT ERLÄUTERN.
 Da man bei fully-connencted neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, sind auch nicht fully-connected neuronale Netze in der der Klasse aller fully-connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, enthalten und damit auch insbesondere $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$.
 
