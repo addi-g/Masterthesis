@@ -1,45 +1,42 @@
 \chapter{Resultat zur Konvergenzgeschwindigkeit}
 \label{chap:3}
 
-In diesem Kapitel stellen wir das Hauptresultat dieser Arbeit vor, ein Resultat zur Konvergenzgeschwindigkeit unseres neuronale Netze Regresssionsschätzers \ref{estimate}.
-
-Ziel im Folgenden ist die Abschätzung des erwarteten $L_2$-Fehlers 
+In diesem Kapitel stellen wir das Hauptresultat dieser Arbeit vor.
+Ziel im Folgenden ist es, eine Abschätzung des erwarteten $L_2$-Fehlers 
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)$$
-im Falle des sogenannte ... Schätzers mit ... 
+im Falle unseres neuronale Netze Regresssionsschätzers \ref{estimate} mit einer $(p,C)$-glatten Regressionsfunktion herzuleiten.
 
 \begin{thm}\label{optstop}
 Angenommen die Verteilung von $(X,Y)$ erfüllt 
 $$ \E\Big(\mathrm{e}^{c_4 \cdot |Y|^2}\Big) < \infty$$
-für eine Konstante $c_4 > 0$ und die Verteilung von $X$ hat einen beschränkten Träger $supp(\mathds{P}_X)$ und sei $m(x) = \E[Y \mid X = x]$ die entsprechende Regressionsfunktion. 
-Angenommen $m$ ist $(p,C)$-glatt, mit $p = q + s$ für $q \in \N_0$ und $s \in (0,1].$ Wir betrachten unseren neuronale Netze Regressionsschätzer $\tilde{m}_n$ aus \ref{estimate}, wobei $\sigma$ der logistische Squasher ist und $N \geq q, M = M_n = \lceil c_5 \cdot n^{1/(2p + d)}\rceil, R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
+für eine Konstante $c_4 > 0$ und die Verteilung von $X$ hat einen beschränkten Träger $supp(\mathds{P}_X)$. Sei $m(x) = \E[Y \mid X = x]$ die entsprechende Regressionsfunktion. 
+Angenommen $m$ ist $(p,C)$-glatt, mit $p = q + s$ für $q \in \N_0$ und $s \in (0,1].$ Wir betrachten unseren neuronale Netze Regressionsschätzer $\tilde{m}_n$ aus \ref{estimate}, wobei $\sigma$ der logistische squasher ist und $N \geq q, M = M_n = \lceil c_5 \cdot n^{1/(2p + d)}\rceil, R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
 Sei $\beta_n = c_6 \cdot \log(n)$ für eine hinreichend große Konstante $c_6 > 0$ und sei $m_n$ gegeben durch
 $$m_n(x) = T_{\beta_n}\tilde{m}_n (x)$$
-mit $T_{\beta z} = \max\{\min\{z, \beta\}, -\beta\}$ für $z \in \R$ und $\beta > 0.$ Dann gilt für $m_n$ für hinreichend großes $n$
-$$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_7 \cdot (log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
-wobei $c_7 > 0$ nicht von $n$ abhängt.
+mit $T_{\beta}z = \max\{\min\{z, \beta\}, -\beta\}$ für $z \in \R$ und $\beta > 0.$ Dann erhalten wir für hinreichend großes $n$:
+$$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_7 \cdot (\log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
+wobei $c_7 > 0$ ist und nicht von $n$ abhängt.
 \end{thm}
 \begin{proof}
-Nach Voraussetzung wissen wir, dass $supp(\mathds{P}_X)$ beschränkt ist. Da wir angenommen haben, dass $m$ $(p,C)$-glatt und damit insbesondere hölderstetig mit $q = 0$ ist, können wir daraus auf die gleichmäßige Stetigkeit von $m$ schließen. Da wir nur über den beschränkten $supp(\mathds{P}_X)$ integrieren, wissen wir dass $m$ als gleichmäßig stetige Funktion auf einer beschränkten Menge auch beschränkt ist Wir können daher auch oBdA folgern, dass $\|m\|_{\infty} \leq \beta_n$ gilt, weil wir aufgrund der Bechränktheit von $m$ (IST DER BETRAG VON M AUCH BESCHRÄNKT) einfach eine Skalierung von $m$ nehmen können. Zudem nehmen wir oBdA an, dass $supp(X) = \{x \mid \mathds{P}_X(x) > 0\} \supseteq [-a_n, a_n]^d$ ist, da wir ansonsten die Zufallsvariable $X$ auf Nullmengen abändern können.
+Nach Voraussetzung wissen wir, dass $supp(\mathds{P}_X)$ beschränkt ist, daher nehmen wir ohne Beschränkung der Allgemeinheit an, dass $supp(X) = \{x \mid \mathds{P}_X(x) > 0\} \subseteq [-a_n, a_n]^d$ ist, da $\mathds{P}(X \in supp\mathds{P}_X)) = 1$ gilt und wir ansonsten die Zufallsvariable $X$ auf Nullmengen abändern können. Zudem haben wir angenommen, dass $m$ $(p,C)$-glatt und damit insbesondere hölderstetig mit $q = 0$ ist. Daraus können wir auf die gleichmäßige Stetigkeit von $m$ schließen \cite{Storch2018}. Da wir nur über den beschränkten $supp(\mathds{P}_X)$ integrieren, wissen wir, dass $m$ als gleichmäßig stetige Funktion auf einer beschränkten Menge auch beschränkt ist \cite{Storch2018}. Wir können daher ohne Beschränkung der Allgemeinheit folgern, dass $\|m\|_{\infty} \leq \beta_n$ ist, da aufgrund der Beschränktheit von $m$, ebenfalls $|m|$ beschränkt ist und wir daher ansonsten eine Skalierung von $m$ nehmen können.
 
-Sei $\mathcal{F}$ die durch \ref{networkarch} definierte Menge von Funktionen mit $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und wo der Betrag der Gewichte durch $n^{c_{20}}$ beschränkt ist. Sei 
-$$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j \mid f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{21} \cdot n \biggr\}$$
-wobei $c_{21}$ wie unten gewählt wird und für die Kardinalität der Menge gilt 
-$$J_n = (M_n + 1)^d \cdot |\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}, j_1 + \cdots j_d \leq N\}|.$$ 
-Ohne Berücksichtigung der Restriktion $j_1 + \cdots j_d \leq N$ lässt sich $$|\{(j_1,\dots,j_d) \mid j_1,\dots,j_d \in \{0,\dots,N\}|$$ durch eine Analogie zu der Anzahl an Möglichkeiten, die man in einem Urnenexperiment berechnen in welchem man $d$-Mal mit Zurücklegen und mit Beachtung der Reihenfolge aus $(N + 1)$ Kugeln zieht. Durch das Weglassen der Restriktion erhalten wir 
+Sei $\mathcal{F}$ die durch \ref{networkarch} definierte Menge von Funktionen mit $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und der Eigenschaft, dass der Betrag der Gewichte durch $n^{c_{20}}$ beschränkt ist. Sei 
+$$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{21} \cdot n \biggr\}$$
+wobei $c_{21}$ in (\ref{constantc21}) gewählt wird und
+$$J_n = (M_n + 1)^d \cdot |\{(j_1,\dots,j_d) : j_1,\dots,j_d \in \{0,\dots,N\}, j_1 + \cdots j_d \leq N\}|,$$ 
+die Kardinalität der Menge $\mathcal{F}^{(J_n)}$ ist. 
+Ohne die Restriktion $j_1 + \cdots j_d \leq N$ lässt sich $$|\{(j_1,\dots,j_d) : j_1,\dots,j_d \in \{0,\dots,N\}|$$ durch eine Analogie zu  einem Urnenexperiment bestimmten. Wir betrachten die Anzahl an Möglichkeiten, wie man $d$-Mal mit Zurücklegen (da auch mehrere Komponenten den gleichen Wert haben können) und mit Beachtung der Reihenfolge (da wir einen Vektor betrachten und die Komponenten nicht vertauschen können) aus $(N + 1)$ Kugeln ziehen kann. Durch das Weglassen der Restriktion $j_1 + \cdots j_d \leq N$ erhalten wir:
 \begin{equation}
 \label{jn}
 J_n \leq (M_n + 1)^d \cdot (N + 1)^d.
 \end{equation}
-Sei 
-$$g_n(x) = \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x).$$
-Nach Konstruktion liegt $g_n$ daher auch in $\mathcal{F}^{(J_n)}.$
-Da nach Voraussetzung $m$ $(p,C)$-glatt ist, und $x_{\mathbf{i}_k} \in \R^d$ für alle $k = 1,\dots,(M_n + 1)^d$, gilt$\colon$
+Da nach Voraussetzung $m$ $(p,C)$-glatt ist, und $x_{\mathbf{i}_k} \in \R^d$ für alle $k = 1,\dots,(M_n + 1)^d$, folgt:
 \begin{equation}
 \label{bound}
 \max_{k \in \{1,\dots,(M_n + 1)^d\}, j_1,\dots,j_d \in\{0,\dots,q\}, j_1+\cdots+j_d \leq q} \bigg| \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg| < \infty,
 \end{equation}
-denn das größte Elemente muss auch beschränkt sein, wenn der Abstand zweier beliebiger Elemente immer beschränkt ist.
-Da wir uns in der nichtparametrischen Regressionsschätzung befinden und dafür als Bedingung $\E[Y^2] < \infty$ gelten muss, mit wählen wir mit dem bisher gezeigten$\colon$
+denn das größte Elemente muss auch beschränkt sein, wenn der Abstand zweier beliebiger Elemente beschränkt ist.
+Da wir uns in der nichtparametrischen Regressionsschätzung befinden und dafür als Bedingung $\E[Y^2] < \infty$ gelten muss, wählen wir mit dem bisher gezeigten:
 \begin{equation}
 \label{constantc21}
 \begin{split}
@@ -47,13 +44,16 @@ c_{21} = \max\Biggl\{\frac{1 + \E[Y^2]}{c_3}, & (N + 1)^d \cdot \max\biggl\{\big
 & \quad j_1,\dots,j_d \in \{0,\dots,q\}, j_1 + \cdots j_d \leq q\biggr\}\Biggr\}.
 \end{split}
 \end{equation}
+Sei 
+$$g_n(x) = \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x).$$
+Da nach Konstruktion $f_{net,j_1,\dots,j_d,\mathbf{i}_k} \in \mathcal{F}$ ist, folgt mit (\ref{constantc21}), dass $g_n$ in $\mathcal{F}^{(J_n)}$ liegt. 
 Sei $A_n$ das Event, dass 
 \begin{equation}
 \label{event}
 \frac{1}{n} \sum_{i = 1}^n Y_i^2 \leq 1 + \E[Y^2]
 \end{equation}
 gilt.
-Wir wissen, dass aufgrund der Unabhängigkeit der $\R^d \times \R$-wertigen Zufallsvariablen  $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ nach 
+Wir wissen, dass aufgrund der Unabhängigkeit der $\R^d \times \R$-wertigen Zufallsvariablen  $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ mit 
 \begin{equation*}
 \begin{split}
 \mathds{P}(Y_1 \in \R, \dots, Y_n \in R) & = \mathds{P}((X_1, Y_1) \in \R^d \times \R, \dots, (X_n, Y_n) \in \R^d \times \R) \\
@@ -70,8 +70,8 @@ und durch
 & = \mathds{P}(Y \in \R)^n
 \end{split}
 \end{equation*}
-dass die Zufallsvariablen $Y_1,\dots,Y_n$ auch unabhängig und identisch verteilt sind. Daraus folgern wir mit Hilfe der Linearität des Erwartungswerts, dass $\E\big[\frac{1}{n} \sum_{i = 1}^n Y_i^2\big] = \E[Y^2]$ gilt.
-Mit Hilfe der Monotonie und Homogenität der Wahrscheinlichkeitsfunktion $\mathds{P}$ und der Tschebyscheff Ungleichung für $\epsilon = 1$ (REFERENZ) erhalten wir
+dass die Zufallsvariablen $Y_1,\dots,Y_n$ auch unabhängig und identisch verteilt sind. Daraus folgern wir $\E\big[\frac{1}{n} \sum_{i = 1}^n Y_i^2\big] = \E[Y^2]$ mit der Linearität des Erwartungswerts.
+Mit Hilfe der Monotonie und Homogenität der Wahrscheinlichkeitsfunktion $\mathds{P}$ und der Tschebyscheff Ungleichung für $\epsilon = 1$ (REFERENZ) erhalten wir:
 \begin{equation}
 \label{tscheby}
 \begin{split}
@@ -84,7 +84,7 @@ Mit Hilfe der Monotonie und Homogenität der Wahrscheinlichkeitsfunktion $\mathd
 \end{split}
 \end{equation}
 wobei wir bei der letzten Gleichheit die identische Verteiltheit der $Y_1,\dots,Y_n$ und Rechenregeln für die Varianz verwendet haben welche wir unter anderem aufgrund der Unabhängigkeit der $Y_1,\dots,Y_n$ verwenden durften.
-Sei $\hat{m}_n = T_{\beta_n}\tilde{m}_n = m_n$ im Falle dass Ereignis $A_n$ gilt und andernfalls $\hat{m}_n = T_{\beta_n}g_n$. Durch die Unabhängigkeit von $A_n$ zu den Zufallsvariablen $X, X_1, \dots, X_n$ und der Jensenschen Ungleichung (REFERENZ) erhalten wir$\colon$
+Sei $\hat{m}_n = T_{\beta_n}\tilde{m}_n = m_n$ im Falle dass Ereignis $A_n$ gilt und andernfalls $\hat{m}_n = T_{\beta_n}g_n$. Durch die Unabhängigkeit von $A_n$ zu den Zufallsvariablen $X, X_1, \dots, X_n$ und der Jensenschen Ungleichung (REFERENZ) erhalten wir:
 \begin{equation}
 \label{anc}
 \begin{split}
@@ -95,7 +95,7 @@ Sei $\hat{m}_n = T_{\beta_n}\tilde{m}_n = m_n$ im Falle dass Ereignis $A_n$ gilt
 \end{split}
 \end{equation}
 wobei wir bei der letzten Ungleichung verwendet haben dass wir anfangs angenommen haben, dass $\|m\|_{\infty} < \beta_n$ und damit für $c_6$ und $n$ hinreichend groß auch $\tilde{m}_n \leq \beta_n$ und nach der Definition von $m_n$ zudem $m_n \leq \beta_n$ gilt. Bei der letzten Gleichung habe wir dann schließlich noch verwendet dass $\beta_n$ deterministisch und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ ist.
-Durch unsere Definition von $\hat{m}_n$ erhalten wir durch die Monotonie des Erwartungswert und der Abschätzung durch den ganzen Raum$\colon$
+Durch unsere Definition von $\hat{m}_n$ erhalten wir durch die Monotonie des Erwartungswert und der Abschätzung durch den ganzen Raum:
 \begin{equation}
 \label{an}
 \begin{split}
@@ -103,8 +103,9 @@ Durch unsere Definition von $\hat{m}_n$ erhalten wir durch die Monotonie des Erw
 & \leq \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg].
 \end{split}
 \end{equation}
-Zusammen mit (\ref{tscheby}), (\ref{anc}), (\ref{an}) und der Linearität des Erwartungswerts erhalten wir dann$\colon$
-\begin{equation*}
+Zusammen mit (\ref{tscheby}), (\ref{anc}), (\ref{an}) und der Linearität des Erwartungswerts erhalten wir dann:
+\begin{equation}
+\label{originaleq}
 \begin{split}
 \E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \cdot (\mathds{1}_{A_n^{\mathsf{c}}} + \mathds{1}_{A_n})\bigg] \\
 & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] \\
@@ -112,8 +113,8 @@ Zusammen mit (\ref{tscheby}), (\ref{anc}), (\ref{an}) und der Linearität des Er
 & \leq 4\beta_n^2 \cdot \mathds{P}(A_n^{\mathsf{c}}) + \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg] \\
 & \leq \frac{4 \cdot c_{22} \cdot \beta_n^2}{n} + \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg].
 \end{split}
-\end{equation*}
-Nach (\ref{estimate}) können wir die unseren Schätzer $\tilde{m}_n$ darstellen durch$\colon$
+\end{equation}
+Nach (\ref{estimate}) können wir unseren Schätzer $\tilde{m}_n$ darstellen durch:
 $$\tilde{m}_n(x) = \sum_{j = 1}^{J_n}\hat{a}_j \cdot f_j$$
 für geeignete $f_j \in \mathcal{F}$ und $\hat{a}_j$ welche 
 \begin{equation*}
@@ -123,14 +124,14 @@ für geeignete $f_j \in \mathcal{F}$ und $\hat{a}_j$ welche
 & \leq \sum_{i = 1}^n Y_i^2,
 \end{split}
 \end{equation*}
-erfüllen, wobei wir bei der letzten Ungleichung wie in (\ref{min}) die minimierende Eigenschaft von $a_{\mathbf{i}_k,j_1,\dots,j_d}$ verwendet haben und die Koeffizienten Null gesetzt haben.  Da $c_3 > 0$ ist, erhalten wir dass die $\hat{a}_j$ die Eigenschaft
+erfüllen, wobei wir bei der letzten Ungleichung wie in (\ref{min}) die minimierende Eigenschaft von $a_{\mathbf{i}_k,j_1,\dots,j_d}$ verwendet haben und zum Schluss die Koeffizienten Null gesetzt haben. Da $c_3 > 0$ ist, erhalten wir dass die Koeffizienten $\hat{a}_j$ die Eigenschaft
 $$\sum_{j = 1}^{J_n} \hat{a}_j^2  \leq \frac{1}{n}\sum_{i = 1}^n Y_i^2 \cdot \frac{n}{c_3}$$
 erfüllen müssen.
-Auf $A_n$ erhalten wir dann$\colon$
+Auf $A_n$ erhalten wir dann:
 $$\sum_{j = 1}^{J_n}\hat{a}_j^2 \stackrel{(\ref{event})}{\leq} \frac{1 + \E[Y^2]}{c_3} \cdot n \stackrel{(\ref{constantc21})}{\leq} c_{21} \cdot n,$$
-woraus dann insbesondere $\tilde{m}_n \in \mathcal{F}^{(J_n)}$ folgt, da $f_j \in \mathcal{F}$.
-Deswegen nehmen wir nun oBdA.\ an, dass $\hat{m}_n = T_{\beta_n}\bar{m}_n$ für $\bar{m}_n = \tilde{m}_n, g_n \in \mathcal{F}^{(J_n)}.$
-Da $c_3 > 0$ ist erhalten wir$\colon$
+woraus durch $f_j \in \mathcal{F}$ dann $\tilde{m}_n \in \mathcal{F}^{(J_n)}$ folgt.
+Deswegen nehmen wir nun ohne Beschränkung der Allgemeinheit $\hat{m}_n = T_{\beta_n}\bar{m}_n$ für $\bar{m}_n \in \{\tilde{m}_n, g_n\} \subseteq \mathcal{F}^{(J_n)}$ an.
+Da $c_3 > 0$ ist, erhalten wir:
 \begin{equation}
 \begin{split}
 \label{g}
@@ -142,7 +143,7 @@ Da $c_3 > 0$ ist erhalten wir$\colon$
 & = \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}.
 \end{split}
 \end{equation}
-Die Funktionen $\tilde{m}_n$ und $g_n$ unterscheiden sich in den Koeffizienten und da wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ von $\tilde{m}_n$ durch Minimierung von (\ref{min}) erhalten haben und nach Voraussetzung $N \geq q$ ist, damit dann $\{0,\dots,q\} \subseteq \{0,\dots,N\}$ und wir bei der Minimierung daher auch insbesondere die Koeffizienten von $g_n$ betrachtet haben, erhalten wir$\colon$
+Die Funktionen $\tilde{m}_n$ und $g_n$ unterscheiden sich in den Vorfaktoren von $f_j$. Da wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ von $\tilde{m}_n$ durch Minimierung von (\ref{min}) erhalten haben und nach Voraussetzung $N \geq q$ ist, damit dann $\{0,\dots,q\} \subseteq \{0,\dots,N\}$ und wir bei der Minimierung daher auch insbesondere die Koeffizienten von $g_n$ betrachtet haben, erhalten wir:
 \begin{equation}
 \begin{split}
 \label{tilde}
@@ -153,12 +154,12 @@ Die Funktionen $\tilde{m}_n$ und $g_n$ unterscheiden sich in den Koeffizienten u
 & = \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}
 \end{split}
 \end{equation}
-Mit (\ref{g}) und (\ref{tilde}) erhalten wir zusammen$\colon$
+Mit (\ref{g}) und (\ref{tilde}) erhalten wir zusammen:
 \begin{equation}
 \label{bed}
 \frac{1}{n} \sum_{i = 1}^n|Y_i - \bar{m}_n(X_i)|^2 \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}.
 \end{equation}
-Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist, sind mit $|\Theta_n| = 1$, $g_{n,1} = g_n$, der Abschätzung (\ref{bed}) für $\hat{m}_n = \T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem penalty Term $pen_n(g_{n,1}) = c_{23} \cdot \frac{(M_n + 1)^d}{n} \geq 0$ die Voraussetzungen für Lemma \ref{lem:8} erfüllt und wir erhalten durch dessen Anwendung:
+Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist, sind mit $|\Theta_n| = 1$, $g_{n,1} = g_n$, der Abschätzung (\ref{bed}) für $\hat{m}_n = \T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem penalty Term $pen_n(g_{n,1}) = c_{23} \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma \ref{lem:8} erfüllt und wir erhalten durch dessen Anwendung:
 \begin{equation*}
 \begin{split}
 & \E \int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
@@ -168,11 +169,11 @@ Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1)
 & \quad + 2 \int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + 2 \cdot c_{23} \cdot \frac{(M_n + 1)^d}{n},
 \end{split}
 \end{equation*}
-wobei wir bei der letzten Gleichheit verwendet haben, dass der letzte Summand deterministisch ist. Zudem wissen wir, dass $c_{23}$ auch unabhängig von $n$ ist und zudem $n > 1$ gilt, da wir $n$ hinreichend groß wählen.
+wobei wir bei der letzten Gleichheit verwendet haben, dass der letzte Summand deterministisch ist. Zudem wissen wir, dass $c_{23}$ unabhängig von $n$ ist und $n > 1$, da wir $n$ hinreichend groß wählen.
 Als nächstes überprüfen wir die Voraussetzungen von Lemma \ref{lem:9} um damit dann die letzte Gleichung weiter abzuschätzen.
-Nach Voraussetzung ist $\beta_n = c_6 \cdot \log(n)$ und $a = (\log n)^{1/(6(N + d))}.$ Damit ist $a > 0$ für hinreichend großes $n$. Nach Voraussetzung ist zudem $d, N, J_n \in \N$ und es gilt
-$$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c_{14}}$$
- nach (\ref{jn}) für hinreichend großes $n$. Wir betrachten hier den logistischen Squasher welcher nach Lemma \ref{lem:logsquasher} insbesondere 2-zulässig nach Definition \ref{nzulässig} ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma \ref{lem:9} ist, sind nun alle Voraussetzungen erfüllt. Da wir oBdA angenommen haben, dass $supp(X) \subseteq [-a, a]^d$ ist, erhalten wir mit Lemma \ref{lem:9} für hinreichend großes $n$:
+Nach Voraussetzung ist $\beta_n = c_6 \cdot \log(n)$ und $a_n = (\log n)^{1/(6(N + d))}.$ Damit ist $a_n > 0$ für hinreichend großes $n$. Nach Voraussetzung ist zudem $d, N, J_n \in \N$ und es gilt nach (\ref{jn}) 
+$$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c_{14}},$$
+für hinreichend großes $n$. Wir betrachten hier den logistischen squasher welcher nach Lemma \ref{lem:logsquasher} insbesondere 2-zulässig nach Definition \ref{nzulässig} ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma \ref{lem:9} ist, sind nun alle Voraussetzungen erfüllt. Da wir ohne Beschränkung der Allgemeinheit angenommen haben, dass $supp(X) \subseteq [-a_n, a_n]^d$ ist, erhalten wir mit Lemma \ref{lem:9} für hinreichend großes $n$:
 \begin{equation}
 \label{lem9sol}
 \begin{split}
@@ -186,11 +187,11 @@ Sei
 \begin{equation*}
 \begin{split}
 P_n(x) = \sum_{k = 1}^{(M_n + 1)^d} & \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \\
-&  \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+. 
+&  \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+. 
 \end{split}
 \end{equation*}
 Für zwei beliebige reelle Zahlen $u, v \in \R$ gilt durch $0 \leq (u - v)^2 = u^2 + v^2 - 2uv$:
-$$v^2 + v^2 \geq 2uv$$ und zusammen mit einer Nulladdition, der Linearität des Integral und der Supremumseigenschaft erhalten wir:
+$$v^2 + v^2 \geq 2uv$$ und zusammen mit einer Nulladdition, der Linearität des Integrals und der Supremumseigenschaft erhalten wir:
 \begin{equation}
 \label{gnmx}
 \begin{split}
@@ -198,8 +199,8 @@ $$v^2 + v^2 \geq 2uv$$ und zusammen mit einer Nulladdition, der Linearität des 
 & = \int |g_n(x) - P_n(x) + P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
 & = \int |g_n(x) - P_n(x)|^2 + 2(g_n - P_n(x))(P_n(x) - m(x)) + |P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
 & \leq \int 2 |g_n(x) - P_n(x)|^2 + 2 |P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
-& = 2 \int \sup_{x \in [-a, a]^d} |g_n(x) - P_n(x)|^2 \mathds{P}_X(dx) + 2 \int \sup_{x \in [-a, a]^d} |P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
-& = 2 \sup_{x \in [-a, a]^d} |g_n(x) - P_n(x)|^2 + 2 \sup_{x \in [-a, a]^d} |P_n(x) - m(x)|^2, 
+& = 2 \int \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_n(x)|^2 \mathds{P}_X(dx) + 2 \int \sup_{x \in [-a_n, a_n]^d} |P_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
+& = 2 \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_n(x)|^2 + 2 \sup_{x \in [-a_n, a_n]^d} |P_n(x) - m(x)|^2, 
 \end{split}
 \end{equation}
 wobei wir im letzten Schritt $supp(X) \subseteq [-a_n, a_n]^d$ und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden weiterhin abzuschätzen möchten wir Lemma \ref{lem:5} anwenden. Dafür überprüfen wir ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten den logistischen squasher, welcher nach Lemma \ref{lem:2} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung für $R$ erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}_k} \in [-a_n, a_n]^d$ identisch mit der Definition aus Lemma \ref{lem:5} ist, sind alle Voraussetzungen erfüllt. 
@@ -209,9 +210,9 @@ Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
 \begin{split}
 & |g_n(x) - P_n(x)| \\
 & = \bigg| \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \bigg| \\
-& \cdot \bigg| f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) - (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \bigg| \\
+& \cdot \bigg| f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) - (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \bigg| \\
 & \leq (M_n + 1)^d \cdot (q + 1)^d \cdot e \\
-& \cdot  \bigg| f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) - (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \bigg| \\
+& \cdot  \bigg| f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) - (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \bigg| \\
 & \leq (M_n + 1)^d \cdot (q + 1)^d \cdot e \cdot \hat{c}_{12} \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s} \cdot M_n^3 \cdot \frac{1}{R_n} \\
 & \leq (M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot a_n^{3 \cdot (N + d) \cdot 2} \cdot \frac{M_n^3}{R_n} \\
 & =  (M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot \log(n) \cdot \frac{M_n^3}{R_n},
@@ -219,7 +220,7 @@ Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
 \end{equation}
 wobei wir unter anderem verwendet haben, dass für hinreichend großes $n$:
 $$a_n^{2^{\lceil\log_2(N + d)\rceil}} \leq a_n^{2^{\log_2(N + d) + 1}} = a_n^{(N + d) \cdot 2},$$ gilt. Im letzten Schritt haben wir dann noch die Definition von $a_n$ eingesetzt. 
-Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma \ref{lem:loccon} eine lokale Konvexkombination von Taylorpolynomen von $m$, erhalten wir mit Lemma \ref{lem:pcsmooth}:
+Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma \ref{lem:loccon} eine lokale Konvexkombination von Taylorpolynomen von $m$ ist, erhalten wir mit Lemma \ref{lem:pcsmooth}:
 \begin{equation}
 \label{2ndsum}
 \begin{split}
@@ -228,9 +229,10 @@ Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma \ref{le
 \end{equation}
 wobei wir verwendet haben, dass für $p = q + s$ für hinreichend großes $n$ gilt:
 $$a_n^p = a_n^{q + s} \leq a_n^{N + d} \leq a_n^{6 \cdot (N + d)} = \log(n),$$
-da nach Voraussetzung $N \geq q$ und $d \geq s$ mit $s \in (0, 1]$.
-Da die rechten Seiten von Ungleichung (\ref{1stsum}) und (\ref{2ndsum}) nicht von $x$ abhängen, gelten die Ungleichung ebenfalls für das Supremum. Durch Quadrieren bleiben die Ungleichungen auch erhalten und durch einsetzen der Definitionen von $M_n$ und $R_n$ erhalten wir für $n$ hinreichend groß:
+da nach Voraussetzung $N \geq q$ und $d \geq s$ mit $s \in (0, 1]$ ist.
+Durch Quadrieren bleiben die Ungleichungen auch erhalten und da die rechten Seiten von Ungleichung (\ref{1stsum}) und (\ref{2ndsum}) nicht von $x$ abhängen, gelten die Ungleichung ebenfalls für das Supremum.   Durch einsetzen der Definitionen von $M_n$ und $R_n$ erhalten wir für $n$ hinreichend groß:
 \begin{equation}
+\label{3rdsum}
 \begin{split}
 \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_n(x)|^2 & \leq \bigg((M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot \log(n) \cdot \frac{M_n^3}{R_n}\bigg)^2 \\
 & \leq c_{25}^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{M_n^6}{R_n^2} \\
@@ -240,11 +242,12 @@ Da die rechten Seiten von Ungleichung (\ref{1stsum}) und (\ref{2ndsum}) nicht vo
 & = c_{25}^2 \cdot n^{\frac{8d}{2p + d} - 2d -8} \cdot \log(n)^2 \\
 & \leq c_{25}^2 \cdot n^{\frac{8d}{2p + d}  -8\frac{2p + d}{2p + d}} \cdot \log(n)^2 \\
 & = c_{25}^2 \cdot n^{-\frac{16p}{2p + d}} \cdot \log(n)^2 \\
-& \leq c_{25}^2 \cdot n^{-\frac{2p}{2p + d}} \cdot \log(n^3,
+& \leq c_{25}^2 \cdot n^{-\frac{2p}{2p + d}} \cdot \log(n)^3,
 \end{split}
 \end{equation}
-wobei wir bei der letzten Ungleichung verwendet haben, dass $\frac{16p}{2p + d} > \frac{2p}{2p + d}$, da $p > 0$ ist und dass $\log(n)^2 < \log(n)^3$ für $n$ hinreichend groß. Ebenfalls erhalten wir:
+wobei wir bei der letzten Ungleichung verwendet haben, dass $\frac{16p}{2p + d} > \frac{2p}{2p + d}$, da $p > 0$ ist und $\log(n)^2 < \log(n)^3$ für $n$ hinreichend groß. Ebenfalls erhalten wir:
 \begin{equation}
+\label{4thsum}
 \begin{split}
 \sup_{x \in [-a_n, a_n]^d} |P_n(x) - m(x)|^2 & \leq \bigg(c_{26} \cdot \log(n) \cdot \frac{1}{M_n^p}\bigg)^2 \\
 & \leq c_{26}^2 \cdot \log(n)^2 \cdot c_{5}^{-2p} \cdot n^{-\frac{2p}{2p + d}} \\
@@ -263,17 +266,27 @@ Mit analogem Vorgehen erhalten wir für (\ref{lem9sol}):
 \end{split}
 \end{equation}
 Zudem erhalten wir, da für $n$ hinreichend groß $\log(n)^3 > 1$ gilt, mit analogem Vorgehen:
-\begin{equation*}
+\begin{equation}
+\label{5thsum}
 \begin{split}
-c_{21} \cdot \frac{(M_n + 1)^d}{n} & \leq \tilde{c}_{21} \cdot \frac{n^{\frac{d}{2p + d}}}{n} \\
-& \leq \tilde{c}_{21} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}} 
+c_{23} \cdot \frac{(M_n + 1)^d}{n} & \leq \tilde{c}_{23} \cdot \frac{n^{\frac{d}{2p + d}}}{n} \\
+& \leq \tilde{c}_{23} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}} 
 \end{split}
-\end{equation*} 
+\end{equation} 
 und 
-\begin{equation*}
+\begin{equation}
+\label{6thsum}
 \begin{split}
 \frac{4 \cdot c_{22} \cdot \beta_n^2}{n} & \leq \tilde{c}_{22} \cdot \log(n)^3 \cdot n^{-1} \\
 & \leq \tilde{c}_{22} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}}.  
 \end{split}
-\end{equation*} 
+\end{equation} 
+Nun haben wir alle Summanden von ($\ref{originaleq}$) abgeschätzt und erhalten schließlich mit mit (\ref{1stsum}) - (\ref{6thsum}):
+\begin{equation*}
+\E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \leq c_{fin} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
+\end{equation*}
+mit 
+$$c_{fin} = \tilde{c}_{22} + 2 \cdot \tilde{c}_{23} + \tilde{c}_{24} + 2 \cdot (2 \cdot c_{16}^2 \cdot c_{5}^{-2p} + 2 \cdot  c_{25}^2),$$
+wobei $c_{fin}$ als Summe nichtnegativer oder positiver Konstanten, die unabhängig von $n$ sind, nichtnegativ und unabhängig von $n$ ist.
+Damit haben wir unser Hauptresultat bewiesen.
 \end{proof}
