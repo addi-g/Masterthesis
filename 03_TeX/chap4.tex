@@ -1,2 +1,23 @@
 \chapter{Anwendungsbeispiel auf simulierte Daten}
 \label{chap:4}
+
+In diesem Kapitel betrachten wir die Leistung unseres neuronale Netze Regressionsschätzers bei endlicher Stichprobengröße auf simulierte Daten in Python.
+
+Unsere simulierten Daten die wir verwenden werden sieht wie gefolgt aus:
+Wir wählen $X$ gleichmäßig verteilt auf $[-1, 1]^d$, wobei $d$ die Dimension des Inputs ist, $\epsilon$ als standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
+$$Y = m_j(X) + \sigma \cdot \lambda_j \cdot \epsilon,$$ 
+mit $m_j \colon [-1, 1]^d \to \R \quad (j \in \{1, 2\})$ wie unten definiert, $\lambda_j > 0$ als Skalierungsfaktor welcher wie unten definiert wird und $\sigma \in \{0.05, 0.10\}.$ Als Regressionsfunktionen verwenden wir:
+$$ m_1(x) =  \sin\big(0.2 \cdot x^2\big) + \exp(0.5 \cdot x) + x^3$$
+und
+$$ m_2(x_0, x_1) = \sin\big(\sqrt[2]{x_0^2 + x_1^2}\big).$$
+Wir wählen $\lambda_j$ als IQR von einer Stichprobengröße von 100 von $m(X)$. ... ERKLÄRE WIE DU DEINE SIMULATIONS DATEN WÄHLST ...
+und was du plotten lässt ... 
+Wir wählen die Parameter für jeden Schätzer durch Aufteilen unserer Stichprobe. Wir teilen die Stichprobe auf in ein learning sample der Größe $n_l = 0.8 \cdot n$ und einem testing sample der Größe $n_t = 0.2 \cdot n$. Wir bestimmen den Schätzer für alle Parameterwerte durch die Mengen die wie unten beschrieben sind durch das learning sample und bestimmen das korrespondiere $L_2$-Risiko auf dem testing sample und wählen dann die Parameter die zu einem minimalen empirischen $L_2$-Risiko auf dem testing sample führen.
+
+Unser erster Schätzer \textit{fc-neural-1} ist ein fully connected neuronales Netz mit einer verborgenen Schicht. Dieser Schätzer hat eine feste Anzahl an Neuronen die wir aus der Menge $\{5, 10, 25, 50, 75\}$ auswählen die bei der Simulation zu einem minimalen empirischen $L_2$-Risiko führt.
+Unser zweiter Schätzer \textit{neighbor} ist ein Nächste-Nachbar Schätzer bei der die Anzahl an nächsten Nachbarn aus der Menge $\{1, 2, 3\} \cup \{4, 8, 12, 16, \dots, 4 \cdot \lfloor\frac{n_l}{4}\rfloor\}$ ausgewählt wird.
+Unser letzter Schätzer \textit{new-neural-estimate} ist unser neuronal Netz welches wir in dieser Arbeit vorgestellt haben. Hier haben wir die Parameter fix gewählt je nachdem welche Regressionsfunktion wir betrachtet haben, entsprechend angepasst.
+
+Die Ergebnisse haben wir in ... zusammengefasst und die Funktionen in ... geplottet die unser Schätzer ausspuckt. 
+Wie wir in den Tabellen anhand des skalierten Fehlers sehen können, übertrifft unserer neuronale Netze Schätzer  in allen Fällen die Leistung der anderen Schätzer. 
+

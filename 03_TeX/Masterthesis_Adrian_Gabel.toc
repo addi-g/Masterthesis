@@ -9,5 +9,5 @@
 \contentsline {section}{\numberline {2.2}Definition der Gewichte der Ausgabeschicht}{28}{section.2.2}
 \contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{30}{chapter.3}
 \contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{40}{chapter.4}
-\contentsline {chapter}{Literaturverzeichnis}{42}{chapter*.4}
-\contentsline {chapter}{Appendix}{43}{chapter*.5}
+\contentsline {chapter}{Literaturverzeichnis}{43}{chapter*.4}
+\contentsline {chapter}{Appendix}{44}{chapter*.5}
