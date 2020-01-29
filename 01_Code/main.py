@@ -19,6 +19,12 @@ from new_neural_network import new_neural_network_estimate
 from nearest_neighbor import nearest_neighbor_estimate
 from fc_neural_network import fc_neural_1_estimate 
 
+n = 10000
+n_train = n * 0.8
+n_test = n * 0.2
+
+sigma = 0.05
+
 '''
 EINDIMENSIONALER FALL (d = 1) wird geplottet
 '''
@@ -29,10 +35,10 @@ a = 2
 M = 2
 d = 1
 
-sigma = 0.05
+#sigma = 0.05
 
-n_train = 100
-n_test = 2000
+#n_train = 100
+#n_test = 2000
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
 m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -49,18 +55,21 @@ m_X_test, dummy = gen_data_Y(X_test,sigma)
 #plt.plot(X_test, Y_pred_fc_nn_1, '-g', label='fc_nn_1')
 #colors = (0,0,0)
 area = 4
-plt.scatter(X_test, Y_pred_new_nn, s=area, color = 'red', alpha=0.5)
-plt.title('Scatter plot pythonspot.com')
+plt.scatter(X_test, m_X_test, s=area, color = 'blue', label='m_1', alpha=0.5)
+plt.scatter(X_test, Y_pred_new_nn, s=area, color = 'red', label='new_neural_network_estimate', alpha=0.5)
+plt.title('...')
+plt.legend(loc='upper left') 
 plt.xlabel('x')
 plt.ylabel('y')
+plt.savefig('graph_d_1.png')
 plt.show()
 #plt.plot(X_test, Y_pred_new_nn, 'ro-', label='new_nn')
 #plt.plot(X_test, m_X_test, '-b', label='m_d')   
-#plt.legend(loc='upper left') 
+
 #plt.xlim(-2, 2)
 #plt.xlim(-2,2)
 #plt.show()
-#plt.savefig('foo.png')
+
 
 '''
 ZEIDIMENSIONALER FALL (d = 2) wird geplottet
@@ -72,10 +81,10 @@ a = 2
 M = 2
 d = 2
 
-sigma = 0.05
+#sigma = 0.05
 
-n_train = 100
-n_test = 2000
+#n_train = 100
+#n_test = 2000
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
 m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -95,18 +104,27 @@ y = np.ravel(X_test[:,1])
 # so wie es sein soll
 #z = m_X_test[:,0]
 # was der SChätzer auswirft
-z = Y_pred_new_nn[:,0]
+z_new = Y_pred_new_nn[:,0]
+
+ax = plt.axes(projection='3d')
+ax.scatter(x, y, z_new, c=z_new, cmap='viridis', linewidth=0.5);
+ax.view_init(40, 20)
+plt.savefig('graph_d_2_new_estimate.png')
+
+# so wie es sein soll
+z = m_X_test[:,0]
+# was der SChätzer auswirft
 
 ax = plt.axes(projection='3d')
 ax.scatter(x, y, z, c=z, cmap='viridis', linewidth=0.5);
 ax.view_init(40, 20)
-fig
+plt.savefig('graph_d_2_m_2.png')
 
 '''
 ein Vergleich des emp. L2 Fehler gemacht für d = 1
 '''
-n_train = 100
-n_test = 2000
+#n_train = 100
+#n_test = 2000
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 3
@@ -116,7 +134,7 @@ a = 2
 M = 2
 d = 1
 
-sigma = 0.05
+#sigma = 0.05
 
 scaled_error = np.empty((5, 3,))
 scaled_error[:] = np.nan
@@ -124,7 +142,7 @@ scaled_error[:] = np.nan
 e_L2_avg = np.zeros(5) 
 e_L2_avg[:] = np.nan
 
-for i in range(0,5,1):
+for i in range(0,50,1):
 
     X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_train),d)), axis = 0)
     m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -138,17 +156,17 @@ for i in range(0,5,1):
     
     m_X_test, not_needed = gen_data_Y(X_test,sigma)
     
-    e_L2_new_nn = np.mean(sum (abs(Y_pred_new_nn - m_X_test) ** 2))
-    e_L2_fc_nn_1 = np.mean(sum (abs(Y_pred_fc_nn_1 - m_X_test) ** 2))
-    e_L2_nearest_neighbor = np.mean(sum (abs(Y_pred_nearest_neighbor - m_X_test) ** 2))
+    e_L2_new_nn = np.mean(abs(Y_pred_new_nn - m_X_test) ** 2)
+    e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
+    e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
     
-    for j in range(0,5,1):
+    for j in range(0,25,1):
         
         X = np.sort(np.random.uniform(low=-2,high=2,size=(n_test,d)), axis = 0)
         m_X, Y = gen_data_Y(X,sigma)
         Y_pred_constant = constant_estimate(Y)
         
-        e_L2_avg[j] = np.mean(sum(abs(Y_pred_constant - m_X) ** 2))
+        e_L2_avg[j] = np.mean(abs(Y_pred_constant - m_X) ** 2)
     
     scaled_error[i,0] = e_L2_new_nn / np.median(e_L2_avg)
     scaled_error[i,1] = e_L2_fc_nn_1 / np.median(e_L2_avg)
@@ -171,13 +189,13 @@ series_noise_1.name = ""
 
 error_df = pd.concat([series_noise_1], axis=1)
 print(error_df)
-#error_df.to_csv('out.csv',index = True)
+error_df.to_csv('out_d_1.csv',index = True)
 
 '''
 ein Vergleich des emp. L2 Fehler gemacht für d = 2 
 '''
-n_train = 100
-n_test = 2000
+#n_train = 100
+#n_test = 2000
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 2
@@ -187,7 +205,7 @@ a = 2
 M = 2
 d = 2
 
-sigma = 0.05
+#sigma = 0.05
 
 scaled_error = np.empty((5, 3,))
 scaled_error[:] = np.nan
@@ -195,7 +213,7 @@ scaled_error[:] = np.nan
 e_L2_avg = np.zeros(5) 
 e_L2_avg[:] = np.nan
 
-for i in range(0,5,1):
+for i in range(0,50,1):
 
     X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_train),d)), axis = 0)
     m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -209,17 +227,17 @@ for i in range(0,5,1):
     
     m_X_test, not_needed = gen_data_Y(X_test,sigma)
     
-    e_L2_new_nn = np.mean(sum (abs(Y_pred_new_nn - m_X_test) ** 2))
-    e_L2_fc_nn_1 = np.mean(sum (abs(Y_pred_fc_nn_1 - m_X_test) ** 2))
-    e_L2_nearest_neighbor = np.mean(sum (abs(Y_pred_nearest_neighbor - m_X_test) ** 2))
+    e_L2_new_nn = np.mean(abs(Y_pred_new_nn - m_X_test) ** 2)
+    e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
+    e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
     
-    for j in range(0,5,1):
+    for j in range(0,25,1):
         
         X = np.sort(np.random.uniform(low=-2,high=2,size=(n_test,d)), axis = 0)
         m_X, Y = gen_data_Y(X,sigma)
         Y_pred_constant = constant_estimate(Y)
         
-        e_L2_avg[j] = np.mean(sum(abs(Y_pred_constant - m_X) ** 2))
+        e_L2_avg[j] = np.mean(abs(Y_pred_constant - m_X) ** 2)
     
     scaled_error[i,0] = e_L2_new_nn / np.median(e_L2_avg)
     scaled_error[i,1] = e_L2_fc_nn_1 / np.median(e_L2_avg)
@@ -242,4 +260,4 @@ series_noise_1.name = ""
 
 error_df = pd.concat([series_noise_1], axis=1)
 print(error_df)
-#error_df.to_csv('out.csv',index = True)
+error_df.to_csv('out_d_2.csv',index = True)

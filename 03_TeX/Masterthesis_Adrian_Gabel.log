@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.15)  27 JAN 2020 14:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.15)  29 JAN 2020 15:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2378,18 +2378,27 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 20.
+(babel)             in language  on input line 19.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 20.
+(babel)             in language  on input line 19.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 20.
+(babel)             in language  on input line 19.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 20.
+(babel)             in language  on input line 19.
 [40
 
 
 
-])
+]
+Overfull \hbox (24.94463pt too wide) in paragraph at lines 22--25
+\OMS/ztmcm/m/n/12 f\OT1/ztmcm/m/n/12 4\OML/ztmcm/m/it/12 ; \OT1/ztmcm/m/n/12 8\
+OML/ztmcm/m/it/12 ; \OT1/ztmcm/m/n/12 12\OML/ztmcm/m/it/12 ; \OT1/ztmcm/m/n/12 
+16\OML/ztmcm/m/it/12 ; [] ; \OT1/ztmcm/m/n/12 4 \OMS/ztmcm/m/n/12 ^^A b[]cg$ \T
+1/ptm/m/n/12 (-20) aus-ge-wählt wird. Un-ser letz-ter Schät-zer \T1/ptm/m/it/12
+ (-20) new_neural_network_estimate
+ []
+
+)
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 45.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2410,8 +2419,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 57.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 57.
-
-[42
+ [42
 
 
 
@@ -2429,7 +2437,8 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 63.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 63.
- [43]
+
+[43]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -2578,13 +2587,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 37455 strings out of 493089
- 786415 string characters out of 6134841
- 1267557 words of memory out of 5000000
- 39156 multiletter control sequences out of 15000+600000
- 88164 words of font info for 294 fonts, out of 8000000 for 9000
+ 37457 strings out of 493089
+ 786437 string characters out of 6134841
+ 1266557 words of memory out of 5000000
+ 39155 multiletter control sequences out of 15000+600000
+ 88389 words of font info for 296 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,21n,83p,1038b,2581s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,21n,83p,1421b,2581s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
  </Users/adrian/Library/texlive/2015/texmf-var/fonts/pk/ljfour/public/bbm/bbm12
 .600pk>{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lo
@@ -2605,7 +2614,7 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (53 pages, 521261 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (53 pages, 523499 bytes).
 PDF statistics:
  1302 PDF objects out of 1440 (max. 8388607)
  750 named destinations out of 1000 (max. 500000)

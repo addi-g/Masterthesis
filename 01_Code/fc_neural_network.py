@@ -36,7 +36,7 @@ def fc_neural_1_estimate (X_train,Y_train,X_test):
         count += 1
     
     Diff = Ynew[:] - Y_train[:]
-    best_n_neurons = n_neurons[(1/len(X_train) *(Diff.sum(axis=0) ** 2)).argmax()]
+    best_n_neurons = n_neurons[(1/len(X_train) *(Diff.sum(axis=0) ** 2)).argmin()]
     
     model = Sequential()
     model.add(Dense(best_n_neurons, input_dim=d, activation='relu'))
