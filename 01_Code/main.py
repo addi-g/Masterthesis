@@ -12,6 +12,7 @@ import numpy as np
 from mpl_toolkits import mplot3d
 import matplotlib . pyplot as plt
 import pandas as pd
+import tikzplotlib
 from scipy.stats import iqr
 from data_gen import gen_data_Y, error_limit
 from constant import constant_estimate
@@ -61,8 +62,9 @@ plt.title('...')
 plt.legend(loc='upper left') 
 plt.xlabel('x')
 plt.ylabel('y')
-plt.savefig('graph_d_1.png')
-plt.show()
+#plt.savefig('graph_d_1.png')
+tikzplotlib.save("mytikz_d1.tex")
+#plt.show()
 #plt.plot(X_test, Y_pred_new_nn, 'ro-', label='new_nn')
 #plt.plot(X_test, m_X_test, '-b', label='m_d')   
 
@@ -109,16 +111,19 @@ z_new = Y_pred_new_nn[:,0]
 ax = plt.axes(projection='3d')
 ax.scatter(x, y, z_new, c=z_new, cmap='viridis', linewidth=0.5);
 ax.view_init(40, 20)
-plt.savefig('graph_d_2_new_estimate.png')
+plt.savefig('graph_d_2_new_estimate.pgf')
 
 # so wie es sein soll
 z = m_X_test[:,0]
-# was der SChätzer auswirft
+# was der Schätzer auswirft
 
 ax = plt.axes(projection='3d')
 ax.scatter(x, y, z, c=z, cmap='viridis', linewidth=0.5);
 ax.view_init(40, 20)
-plt.savefig('graph_d_2_m_2.png')
+plt.savefig('test.pgf')
+#tikzplotlib.save("mytikz_d2.tex")
+
+#plt.savefig('graph_d_2_m_2.png')
 
 '''
 ein Vergleich des emp. L2 Fehler gemacht für d = 1
@@ -188,14 +193,14 @@ series_noise_1.name = ""
 #series_noise_2.name = ""
 
 error_df = pd.concat([series_noise_1], axis=1)
-print(error_df)
+#print(error_df)
 error_df.to_csv('out_d_1.csv',index = True)
 
 '''
 ein Vergleich des emp. L2 Fehler gemacht für d = 2 
 '''
-#n_train = 100
-#n_test = 2000
+n_train = 100
+n_test = 2000
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 2
@@ -205,7 +210,7 @@ a = 2
 M = 2
 d = 2
 
-#sigma = 0.05
+sigma = 0.1
 
 scaled_error = np.empty((5, 3,))
 scaled_error[:] = np.nan
@@ -213,7 +218,7 @@ scaled_error[:] = np.nan
 e_L2_avg = np.zeros(5) 
 e_L2_avg[:] = np.nan
 
-for i in range(0,50,1):
+for i in range(0,5,1):
 
     X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_train),d)), axis = 0)
     m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -231,7 +236,7 @@ for i in range(0,50,1):
     e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
     e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
     
-    for j in range(0,25,1):
+    for j in range(0,5,1):
         
         X = np.sort(np.random.uniform(low=-2,high=2,size=(n_test,d)), axis = 0)
         m_X, Y = gen_data_Y(X,sigma)
@@ -259,5 +264,5 @@ series_noise_1.name = ""
 #series_noise_2.name = ""
 
 error_df = pd.concat([series_noise_1], axis=1)
-print(error_df)
+#print(error_df)
 error_df.to_csv('out_d_2.csv',index = True)

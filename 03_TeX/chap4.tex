@@ -1,27 +1,50 @@
 \chapter{Anwendungsbeispiel auf simulierte Daten}
 \label{chap:4}
 
-In diesem Kapitel betrachten wir die Leistung unseres neuronale Netze Regressionsschätzers bei endlicher Stichprobengröße auf simulierte Daten in Python.
+In diesem Kapitel betrachten wir die Leistung des hier vorgestellten neuronale Netze Regressionsschätzers bei endlicher Stichprobengröße auf simulierte Daten in $Python$.
 
-Unsere simulierten Daten die wir verwenden werden sieht wie gefolgt aus:
+Die simulierten Daten welchen wir verwenden werden, sehen wie gefolgt aus:
 Wir wählen $X$ gleichverteilt auf $[-2, 2]^d$, wobei $d$ die Dimension des Inputs ist, zudem wählen wir $\epsilon$ als standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
 $$Y = m_j(X) + \sigma \cdot \lambda_j \cdot \epsilon,$$ 
-mit $m_j \colon [-2, 2]^d \to \R \quad (j \in \{1, 2\})$ wie unten definiert, $\lambda_j > 0$ als Skalierungsfaktor welcher wie unten definiert wird und einen Rauschfaktor $\sigma \in \{0.05, 0.10\}.$ Als Regressionsfunktionen verwenden wir die glatten Funktionen:
+mit $m_j \colon [-2, 2]^d \to \R \quad (j \in \{1, 2\})$ wie unten definiert, $\lambda_j > 0$ als Skalierungsfaktor welcher wie unten definiert wird und einen Rauschfaktor $\sigma = 0.05.$ Als Regressionsfunktionen verwenden wir die glatten Funktionen:
 $$ m_1(x) =  \sin\big(0.2 \cdot x^2\big) + \exp(0.5 \cdot x) + x^3$$
 und
 $$ m_2(x_0, x_1) = \sin\big(\sqrt[2]{x_0^2 + x_1^2}\big).$$
-Wir wählen $\lambda_j$ als Interquartilsabstand einer Stichprobe von $m(X)$ der Größe von n = 100. Mit diesen Daten lässt sich nun auch $Y$ darstellen.
-Erstmals haben wir $m_1$ und $m_2$ und die jeweilige Schätzung durch unseren neuronale Netze Regressionsschätzer zeichnen lassen. Man erkennt dass der Schätzer eine sehr gute Approximation der Funktion liefert, aber um das genauer zu beurteilen wie gut die Schätzung wirklich ist und wie gut unser Schätzer im Vergleich zu anderen Schätzern abschneidet betrachten wir in in Tabelle ... den Interquartilsabstand und den Median der skalierten $L_2$-Fehler der einzelnen Schätzer. 
+Wir wählen $\lambda_j$ als Interquartilsabstand einer Stichprobe von $m(X)$ der Größe $n = 8000$. Mit diesen Daten lässt sich nun auch $Y$ darstellen.
 
-Unser vorgehen zum Vergleich von drei Regressionsschätzern gestaltet sich wie gefolgt:
-Wir bestimmen den $L_2$-Fehler der einzelnen Schätzer approximativ durch den empirisch arithmetischen $L_2$-Fehler $\epsilon_{L_2,N}$ auf einer unabhängigen Stichprobe von $X$ der Größe $2000$. Da wir unsere Regressionsfunktionen kennen und der Fehler stark vom Verhalten der korrekten Funktion von $m_j$ abhängt, betrachten wir den empirischen $L_2$-Fehler im Verhältnis zum einfachsten Schätzer von $m_j$, einer komplett konstanten Funktion. Der Wert dieses \textit{konstanten} Schätzers bestimmen wir in dem wir das empirische Mittel nach dem Kleinste-Quadrate-Problem der beobachtete Daten $Y$ nehmen. Wir erhalten damit einen skaliertes Fehlermaß $\epsilon_{L_2,N}(m_{n,i})/\bar{\epsilon}_{L_2,N}$ mit $\bar{\epsilon}_{L_2,N}$ als Median von 5 (machen aber wahrscheinlich so 50 ist i im Code) unabhängigen Realisierungen von $\epsilon_{L_2,N}$ erhält. Wir bestimmten $\epsilon_{L_2,N}$ als empirisches Mittel von 5 (ist j im Code, vielleicht doch mehr als 5?) quadratischen Fehlern der Schätzung des konstanten Schätzers. Dieses skalierte Fehlermaß ist so zu deuten, dass ein großer Fehler durch einen der 3 Regressionsschätzer im Falle dass der Fehler vom konstanten Schätzer klein ist, auf eine noch schlechtere Performance hindeutet. Der Fehler $\epsilon_{L_2,N}(m_{n,i})$ wird also durch $\bar{\epsilon}_{L_2,N}$ gewichtet.
-Die resultierenden skalierten Fehler hängen noch von der Stichprobe von $(X, Y)$ ab und um diese Werte besser vergleichen zu können, führen wir die Fehlerberechnung jeweils 50 mal durch und geben dann den jeweiligen Median und Interquartilsabstand aus.
+Um die Leistung unseres neuronalen Netze Regressionsschätzers zu überprüfen, haben wir erstmals $m_1$ und $m_2$ und die jeweilige Schätzung durch unseren neuronale Netze Regressionsschätzer zeichnen lassen. 
+Man erkennt dass der Schätzer eine sehr gute Approximation der Funktion liefert, aber um genauer beurteilen zu können wie gut die Schätzung wirklich ist und wie gut unser Schätzer im Vergleich zu anderen Schätzern abschneidet betrachten wir in Tabelle ... den Interquartilsabstand und den Median der skalierten $L_2$-Fehler der einzelnen Schätzer. 
 
-Wir wählen die Parameter für jeden Schätzer durch Aufteilen unserer Stichprobe. Wir teilen die Stichprobe auf in ein learning sample der Größe $n_l = 0.8 \cdot n$ und einem testing sample der Größe $n_t = 0.2 \cdot n$. Wir bestimmen den Schätzer für alle Parameterwerte durch die Mengen die wie unten beschrieben sind durch das learning sample und bestimmen das korrespondiere $L_2$-Risiko auf dem testing sample und wählen dann die Parameter die zu einem minimalen empirischen $L_2$-Risiko auf dem testing sample führen.
-
+Unser vorgehen zum Vergleich der drei hier betrachteten Regressionsschätzern gestaltet sich wie gefolgt:
+Wir bestimmen erst den $L_2$-Fehler der einzelnen Schätzer approximativ durch den empirisch arithmetischen $L_2$-Fehler $\epsilon_{L_2,N}$ auf einer unabhängigen Stichprobe von $X$ der Größe $N = 10000$. Da wir unsere Regressionsfunktionen kennen und der Fehler stark vom Verhalten der korrekten Funktion von $m_j$ abhängt, betrachten wir den empirischen $L_2$-Fehler im Verhältnis zum einfachsten Schätzer von $m_j$, einer komplett konstanten Funktion. Der Wert dieses \textit{konstanten} Schätzers bestimmen wir in dem wir das empirische Mittel der beobachtete Daten $Y$ nehmen. Wir erhalten damit einen skaliertes Fehlermaß $\epsilon_{L_2,N}(m_{n,i})/\bar{\epsilon}_{L_2,N}(avg)$ mit $\bar{\epsilon}_{L_2,N}(avg)$ als Median von $50$ unabhängigen Realisierungen von $\epsilon_{L_2,N}$. Wir bestimmten $\epsilon_{L_2,N}(\cdot)$ als empirisches Mittel von $25$ quadratischen Fehlern der Schätzung des konstanten Schätzers. Dieses skalierte Fehlermaß ist so zu deuten, dass ein großer Fehler durch einen der drei Regressionsschätzer im Falle dass der Fehler des konstanten Schätzers klein ist, auf eine noch schlechtere Performance hindeutet. Der Fehler $\epsilon_{L_2,N}(m_{n,i})$ wird also durch $\bar{\epsilon}_{L_2,N}(avg)$ gewichtet.
+Die resultierenden skalierten Fehler hängen noch von der Stichprobe von $(X, Y)$ ab und um diese Werte besser vergleichen zu können, führen wir die Fehlerberechnung jeweils $50$ mal durch und geben dann den Median und Interquartilsabstand für die Schätzung der betrachteten Regressionsschätzer aus.
+Wir teilen für jeden Schätzer die Stichprobe auf in ein\textit{learning sample} der Größe $n_l = 0.8 \cdot n$ und in ein \textit{testing sample} der Größe $n_t = 0.2 \cdot n$. Wir bestimmen den Schätzer für alle Parameterwerte mit dem learning sample und bestimmen das korrespondiere $L_2$-Risiko auf dem testing sample und wählen dann die Parameter die zu einem minimalen empirischen $L_2$-Risiko auf dem testing sample führen.
 Unser erster Schätzer \textit{fc\_neural\_1\_estimate} ist ein fully connected neuronales Netz mit einer verborgenen Schicht. Dieser Schätzer hat eine feste Anzahl an Neuronen die wir aus der Menge $\{5, 10, 25, 50, 75\}$ auswählen die bei der Simulation zu einem minimalen empirischen $L_2$-Risiko führt.
 Unser zweiter Schätzer \textit{nearest\_neighbor\_estimate} ist ein Nächste-Nachbar Schätzer bei der die Anzahl an nächsten Nachbarn aus der Menge $\{1, 2, 3\} \cup \{4, 8, 12, 16, \dots, 4 \cdot \lfloor\frac{n_l}{4}\rfloor\}$ ausgewählt wird.
-Unser letzter Schätzer \textit{new\_neural\_network\_estimate} ist unser neuronal Netz welches wir in dieser Arbeit vorgestellt haben. Hier haben wir die Parameter fix gewählt je nachdem welche Regressionsfunktion wir betrachtet haben, entsprechend angepasst.
+Unser letzter Schätzer \textit{new\_neural\_network\_estimate} ist unser hier vorgestelltes neuronale Netze Regressionsschätzer. Hier haben wir die Parameter je nachdem welche Regressionsfunktion wir betrachtet haben entsprechend angepasst.
 
-Wie wir in den Tabellen anhand des skalierten Fehlers sehen können, übertrifft unserer neuronale Netze Schätzer in allen Fällen die Leistung der anderen Schätzer. 
+\input{tix.tex}
 
+
+Wie wir in den Tabellen anhand des skalierten $L_2$-Fehlers sehen können, übertrifft unserer neuronale Netze Schätzer in allen Fällen die Leistung der anderen Schätzer. 
+
+\begin{table}
+\centering
+\begin{tabular}{ |p{5cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+ \hline
+ & \multicolumn{2}{|c|}{$m_1$} & \multicolumn{2}{|c|}{$m_2$}\\
+ \hline
+ \textit{noise}& $5\%$ & $10\%$ & $5\%$ & $10\%$ \\
+ \hline
+ $\bar{\epsilon}_{L_2,N}(avg)$&  &  &  &  \\
+ \hline
+ \textit{approach}& Median (IQR) & Median (IQR)  & Median (IQR)  & Median (IQR)  \\
+ \hline
+ new\_neural\_network\_estimate & Afghanistan   & AF    &AFG&   004\\
+ fc\_neural\_1\_estimate & Aland &   AX  & ALA   &248\\
+ nearest\_neighbor\_estimate & Albania &AL & ALB&  008\\
+ \hline
+\end{tabular}
+    \caption{Truth Tables and Accuracy Measures for each modeling library.}
+    \label{tab:truthTables}   
+\end{table}

@@ -7,7 +7,7 @@ Created on Fri Oct 11 12:01:42 2019
 
 Generieren der Daten die wir für einen Vergleich von Regressionsschätzern benötigen
 """
-# Wir wählen x gleichverteilt auf [-1,1]^d, wobei d die dimension des Inputs ist
+# Wir wählen x gleichverteilt auf [-2,2]^d, wobei d die dimension des Inputs ist
 # n is die Größe der Stichprobe
 
 import numpy as np
@@ -40,7 +40,7 @@ def error_limit (x, p, c, d):
 
 # Generiert den Vektor Y_1,...,Y_n für den Datensatz (X_1,Y_1),...,(X_n,Y_n)
 #   
-# X: Inputdaten der Form (X_1,...,X_n), wobei X_i \in [-1,-1]^d für i = 1,...,n
+# X: Inputdaten der Form (X_1,...,X_n), wobei X_i \in [-2,-2]^d für i = 1,...,n
 # sigma: Schwankung in den Werten (Noise) \in \{0.05,0.1\}
         
 def gen_data_Y (X, sigma):
