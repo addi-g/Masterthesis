@@ -6,7 +6,7 @@ In diesem Kapitel betrachten wir die Leistung des hier vorgestellten neuronale N
 Die simulierten Daten welchen wir verwenden werden, sehen wie gefolgt aus:
 Wir wählen $X$ gleichverteilt auf $[-2, 2]^d$, wobei $d$ die Dimension des Inputs ist, zudem wählen wir $\epsilon$ als standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
 $$Y = m_j(X) + \sigma \cdot \lambda_j \cdot \epsilon,$$ 
-mit $m_j \colon [-2, 2]^d \to \R \quad (j \in \{1, 2\})$ wie unten definiert, $\lambda_j > 0$ als Skalierungsfaktor welcher wie unten definiert wird und einen Rauschfaktor $\sigma = 0.05.$ Als Regressionsfunktionen verwenden wir die glatten Funktionen:
+mit $m_j \colon [-2, 2]^d \to \R \quad (j \in \{1, 2\})$ wie unten definiert, $\lambda_j > 0$ als Skalierungsfaktor welcher wie unten definiert wird und einen Rauschfaktor $\sigma = 0.05.$ Als Regressionsfunktionen verwenden wir die Funktionen:
 $$ m_1(x) =  \sin\big(0.2 \cdot x^2\big) + \exp(0.5 \cdot x) + x^3$$
 und
 $$ m_2(x_0, x_1) = \sin\big(\sqrt[2]{x_0^2 + x_1^2}\big).$$
@@ -21,9 +21,46 @@ Die resultierenden skalierten Fehler hängen noch von der Stichprobe von $(X, Y)
 Wir teilen für jeden Schätzer die Stichprobe auf in ein\textit{learning sample} der Größe $n_l = 0.8 \cdot n$ und in ein \textit{testing sample} der Größe $n_t = 0.2 \cdot n$. Wir bestimmen den Schätzer für alle Parameterwerte mit dem learning sample und bestimmen das korrespondiere $L_2$-Risiko auf dem testing sample und wählen dann die Parameter die zu einem minimalen empirischen $L_2$-Risiko auf dem testing sample führen.
 Unser erster Schätzer \textit{fc\_neural\_1\_estimate} ist ein fully connected neuronales Netz mit einer verborgenen Schicht. Dieser Schätzer hat eine feste Anzahl an Neuronen die wir aus der Menge $\{5, 10, 25, 50, 75\}$ auswählen die bei der Simulation zu einem minimalen empirischen $L_2$-Risiko führt.
 Unser zweiter Schätzer \textit{nearest\_neighbor\_estimate} ist ein Nächste-Nachbar Schätzer bei der die Anzahl an nächsten Nachbarn aus der Menge $\{1, 2, 3\} \cup \{4, 8, 12, 16, \dots, 4 \cdot \lfloor\frac{n_l}{4}\rfloor\}$ ausgewählt wird.
-Unser letzter Schätzer \textit{new\_neural\_network\_estimate} ist unser hier vorgestelltes neuronale Netze Regressionsschätzer. Hier haben wir die Parameter je nachdem welche Regressionsfunktion wir betrachtet haben entsprechend angepasst.
+Unser letzter Schätzer \textit{new\_neural\_network\_estimate} ist unser hier vorgestelltes neuronale Netze Regressionsschätzer. Hier haben wir die Parameter je nachdem welche Regressionsfunktion wir betrachtet haben entsprechend angepasst. EKLÄR WORAN MAN DAS SIEHT ZUM BEISPIEL GRAD DES POLYNOMS WELCHES WIR SCHÄTZEN...
 
-\input{tix.tex}
+%\begin{figure}
+%    \begin{subfigure}[b]{0.5\textwidth}
+%        \centering
+%        \scalebox{0.9}{
+%          \input{m1tikz.tex}}
+%        \caption{Subfigure A}
+%        \label{fig:subfig8}
+%    \end{subfigure}
+%    \begin{subfigure}[b]{0.5\textwidth}
+%    \centering
+%    \scalebox{0.9}{
+%           \input{nnnestimatetikz.tex}}
+%        \caption{Subfigure B}   
+%        \label{fig:subfig9}
+%    \end{subfigure}
+%       \hspace{0.4cm}
+%    \begin{subfigure}[b]{1\textwidth}
+%    \centering
+%    \scalebox{0.9}{
+%	\input{tikzd1.tex}}
+%	 \caption{Subfigure C}
+%        \label{fig:subfig810}
+%    \end{subfigure}
+%    \caption{test} 
+%\label{fig:subfig1.a.4}
+%\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[x dir=reverse]
+\addplot3 [scatter, only marks]
+  table[x=x, y=y, z=f, col sep=comma] {plotpostpro.csv};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+
 
 
 Wie wir in den Tabellen anhand des skalierten $L_2$-Fehlers sehen können, übertrifft unserer neuronale Netze Schätzer in allen Fällen die Leistung der anderen Schätzer. 

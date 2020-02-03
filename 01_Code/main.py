@@ -14,7 +14,7 @@ import matplotlib . pyplot as plt
 import pandas as pd
 import tikzplotlib
 from scipy.stats import iqr
-from data_gen import gen_data_Y, error_limit
+from data_gen import gen_data_Y
 from constant import constant_estimate
 from new_neural_network import new_neural_network_estimate
 from nearest_neighbor import nearest_neighbor_estimate
@@ -111,7 +111,7 @@ z_new = Y_pred_new_nn[:,0]
 ax = plt.axes(projection='3d')
 ax.scatter(x, y, z_new, c=z_new, cmap='viridis', linewidth=0.5);
 ax.view_init(40, 20)
-plt.savefig('graph_d_2_new_estimate.pgf')
+plt.savefig('graph_d_2_new_estimate.png')
 
 # so wie es sein soll
 z = m_X_test[:,0]
@@ -120,8 +120,11 @@ z = m_X_test[:,0]
 ax = plt.axes(projection='3d')
 ax.scatter(x, y, z, c=z, cmap='viridis', linewidth=0.5);
 ax.view_init(40, 20)
-plt.savefig('test.pgf')
+plt.savefig('test.png')
 #tikzplotlib.save("mytikz_d2.tex")
+
+postpro = np.asarray([ X_test[:,0], X_test[:,1], Y_pred_new_nn[:,0] ])
+np.savetxt("plotpostpro.csv", np.transpose(postpro), delimiter=",")
 
 #plt.savefig('graph_d_2_m_2.png')
 
@@ -149,10 +152,10 @@ e_L2_avg[:] = np.nan
 
 for i in range(0,50,1):
 
-    X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_train),d)), axis = 0)
+    X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
     m_X_train, Y_train = gen_data_Y(X_train,sigma)
     
-    X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_test),d)), axis = 0)
+    X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
     
     #Y_pred_constant = constant_estimate(Y_train)
     Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
@@ -167,7 +170,7 @@ for i in range(0,50,1):
     
     for j in range(0,25,1):
         
-        X = np.sort(np.random.uniform(low=-2,high=2,size=(n_test,d)), axis = 0)
+        X = np.random.uniform(low=-2,high=2,size=(n_test,d))
         m_X, Y = gen_data_Y(X,sigma)
         Y_pred_constant = constant_estimate(Y)
         
@@ -200,7 +203,7 @@ error_df.to_csv('out_d_1.csv',index = True)
 ein Vergleich des emp. L2 Fehler gemacht für d = 2 
 '''
 n_train = 100
-n_test = 2000
+n_test = 200
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 2
@@ -220,10 +223,10 @@ e_L2_avg[:] = np.nan
 
 for i in range(0,5,1):
 
-    X_train = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_train),d)), axis = 0)
+    X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
     m_X_train, Y_train = gen_data_Y(X_train,sigma)
     
-    X_test = np.sort(np.random.uniform(low=-2,high=2,size=(int(n_test),d)), axis = 0)
+    X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
     
     #Y_pred_constant = constant_estimate(Y_train)
     Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
@@ -238,7 +241,7 @@ for i in range(0,5,1):
     
     for j in range(0,5,1):
         
-        X = np.sort(np.random.uniform(low=-2,high=2,size=(n_test,d)), axis = 0)
+        X = np.random.uniform(low=-2,high=2,size=(n_test,d))
         m_X, Y = gen_data_Y(X,sigma)
         Y_pred_constant = constant_estimate(Y)
         

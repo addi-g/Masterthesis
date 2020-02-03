@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  31 JAN 2020 13:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  3 FEB 2020 12:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1166,7 +1166,19 @@ File: pgfcalendar.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@cal@easter@N=\count190
 \pgf@cal@easter@M=\count191
 \pgf@cal@easter@julianday=\count192
-)))) (./befehle.tex
+)))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
+ts.patchplots.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/filecontents/filecontents.sty
+Package: filecontents 2019/09/20 v1.5 Create an external file from within a LaT
+eX document
+
+
+Package filecontents Warning: This package is obsolete. Disabling it and
+(filecontents)                passing control to the filecontents environment
+(filecontents)                defined by the LaTeX kernel.
+
+)) (./befehle.tex
 \c@thm=\count193
 ) (./Masterthesis_Adrian_Gabel.aux (./titel.aux)
 (./erklaerung.aux) (./einleitung.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux)
@@ -1479,61 +1491,54 @@ Kapitel 4.
 
 
 
-] (./tix.tex
-Package pgfplots info on input line 17: Overriding colorspace to rgb due to xco
+]
+Package pgfplots info on input line 56: Overriding colorspace to rgb due to xco
 lor configuration.
 Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+PGFPlots: reading {plotpostpro.csv}
 
- [41]
-Underfull \hbox (badness 10000) in paragraph at lines 41--41
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
 []\T1/ptm/m/n/12 (+20) Median
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--41
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
 []\T1/ptm/m/n/12 (+20) Median
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--41
+Underfull \hbox (badness 10000) in paragraph at lines 78--78
 []\T1/ptm/m/n/12 (+20) Median
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--42
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
 []\T1/ptm/m/n/12 (+20) Median
  []
 
 
-Overfull \hbox (1.66882pt too wide) in paragraph at lines 43--43
+Overfull \hbox (1.66882pt too wide) in paragraph at lines 80--80
 []\T1/ptm/m/n/12 (-20) new_neural_network_estimate| 
  []
 
 
-Overfull \hbox (7.12672pt too wide) in paragraph at lines 33--48
+Overfull \hbox (7.12672pt too wide) in paragraph at lines 70--85
  [][] 
  []
 
-) [42]
+) [41] [42]
 \openout2 = `literaturverzeichnis.aux'.
 
- (./literaturverzeichnis.tex (./Masterthesis_Adrian_Gabel.bbl [43
+ (./literaturverzeichnis.tex (./Masterthesis_Adrian_Gabel.bbl
+[43
 
 
 
-]))
-[44]
+])) [44]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -1573,11 +1578,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [48])
-(../01_Code/data_gen.py [49]) (../01_Code/help_neural_networks.py) [50]
-(../01_Code/new_neural_network.py
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [51]
+(../01_Code/data_gen.py [49]) (../01_Code/help_neural_networks.py [50])
+(../01_Code/new_neural_network.py [51]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [52])
@@ -1592,7 +1594,7 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
 Package rerunfilecheck Info: File `Masterthesis_Adrian_Gabel.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: 4ED56EA39F8E37FB3C667C18E995697A;776.
+(rerunfilecheck)             Checksum: B924FC270F0663A304B598EDBA726E2C;776.
 
 
 LaTeX Warning: There were undefined references.
@@ -1600,11 +1602,11 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 43327 strings out of 492162
- 909956 string characters out of 6125292
- 3194944 words of memory out of 5000000
- 45780 multiletter control sequences out of 15000+600000
- 88744 words of font info for 300 fonts, out of 8000000 for 9000
+ 43823 strings out of 492162
+ 925649 string characters out of 6125292
+ 3353246 words of memory out of 5000000
+ 46269 multiletter control sequences out of 15000+600000
+ 88614 words of font info for 298 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,21n,138p,1326b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -1627,9 +1629,9 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (54 pages, 873960 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (54 pages, 728091 bytes).
 PDF statistics:
- 1337 PDF objects out of 1440 (max. 8388607)
- 775 named destinations out of 1000 (max. 500000)
+ 1341 PDF objects out of 1440 (max. 8388607)
+ 779 named destinations out of 1000 (max. 500000)
  39542 words of extra memory for PDF output out of 42996 (max. 10000000)
 

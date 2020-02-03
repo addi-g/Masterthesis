@@ -15,7 +15,7 @@ from scipy.stats import iqr
 
 # Regressionsfunktionen
 #
-# x: Ein Vektor x \in [-1,-1]^d
+# x: Ein Vektor x der Dimension d
 # d: Dimension des Vektors x
 
 def m_d (x, d):
@@ -40,7 +40,7 @@ def error_limit (x, p, c, d):
 
 # Generiert den Vektor Y_1,...,Y_n für den Datensatz (X_1,Y_1),...,(X_n,Y_n)
 #   
-# X: Inputdaten der Form (X_1,...,X_n), wobei X_i \in [-2,-2]^d für i = 1,...,n
+# X: Inputdaten der Form (X_1,...,X_n), wobei X_i \in \R^d für i = 1,...,n
 # sigma: Schwankung in den Werten (Noise) \in \{0.05,0.1\}
         
 def gen_data_Y (X, sigma):
