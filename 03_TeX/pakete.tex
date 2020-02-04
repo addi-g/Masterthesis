@@ -167,5 +167,11 @@ pdftitle={Bachelorarbeit - Bewertung Amerikanischer Optionen durch Lösen eines 
 
 \usepackage{filecontents}
 
+\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows}
+\usetikzlibrary{positioning,calc}
+\tikzset{%
+  every neuron/.style={circle,draw,minimum size=1cm},
+  neuron missing/.style={draw=none,scale=4,text height=0.333cm,execute at begin node=\color{black}$\vdots$},
+}
 
 
