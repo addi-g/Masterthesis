@@ -1,6 +1,12 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{EKT{\etalchar{+}}07}
 
+\bibitem[AB19]{kohler19}
+{\sc A.~Braun, M. Kohler und A.~Krzyzak}: {\em Analysis of the rate of
+  convergence of neural network regression estimates which are easy to
+  implement.}
+\newblock 2019.
+
 \bibitem[AHM09]{Albrecher2009}
 {\sc Albrecher~H., Binder, A.} \btxandlong{}\ {\sc P.~Mayer}: {\em Einführung
   in die Finanzmathematik}.

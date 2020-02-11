@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Masterthesis_Adrian_Gabel.aux
 A level-1 auxiliary file: titel.aux
 A level-1 auxiliary file: erklaerung.aux
@@ -12,55 +12,58 @@ A level-1 auxiliary file: literaturverzeichnis.aux
 The style file: geralpha.bst
 A level-1 auxiliary file: appendix.aux
 Database file #1: Masterthesis_Adrian_Gabel.bib
+Warning--I didn't find a database entry for "forster"
+Warning--I didn't find a database entry for "kohler"
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1296 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1296 of file geralpha.bst
+Warning--empty journal in kohler19
 Too many commas in name 1 of "Devroye L., Karasözen, B., Kohler, M. AND Korn, R." for entry kohler2010review
 while executing---line 1361 of file geralpha.bst
 Too many commas in name 1 of "Devroye L., Karasözen, B., Kohler, M. AND Korn, R." for entry kohler2010review
 while executing---line 1361 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1361 of file geralpha.bst
-You've used 14 entries,
+You've used 15 entries,
             2768 wiz_defined-function locations,
-            704 strings with 7277 characters,
-and the built_in function-call counts, 5141 in all, are:
-= -- 512
-> -- 198
-< -- 11
-+ -- 62
-- -- 60
-* -- 389
-:= -- 818
-add.period$ -- 29
-call.type$ -- 14
-change.case$ -- 63
-chr.to.int$ -- 14
-cite$ -- 14
-duplicate$ -- 247
-empty$ -- 426
-format.name$ -- 81
-if$ -- 1089
+            710 strings with 7439 characters,
+and the built_in function-call counts, 5424 in all, are:
+= -- 541
+> -- 206
+< -- 12
++ -- 64
+- -- 62
+* -- 407
+:= -- 864
+add.period$ -- 31
+call.type$ -- 15
+change.case$ -- 67
+chr.to.int$ -- 15
+cite$ -- 16
+duplicate$ -- 262
+empty$ -- 448
+format.name$ -- 84
+if$ -- 1149
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 25
-newline$ -- 60
-num.names$ -- 44
-pop$ -- 87
+missing$ -- 27
+newline$ -- 64
+num.names$ -- 47
+pop$ -- 92
 preamble$ -- 1
-purify$ -- 91
+purify$ -- 97
 quote$ -- 0
-skip$ -- 188
+skip$ -- 203
 stack$ -- 0
-substring$ -- 230
-swap$ -- 50
-text.length$ -- 11
+substring$ -- 237
+swap$ -- 52
+text.length$ -- 12
 text.prefix$ -- 8
 top$ -- 0
-type$ -- 80
-warning$ -- 0
-while$ -- 46
-width$ -- 17
-write$ -- 175
+type$ -- 88
+warning$ -- 1
+while$ -- 48
+width$ -- 18
+write$ -- 185
 (There were 5 error messages)

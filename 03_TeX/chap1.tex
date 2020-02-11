@@ -1,28 +1,28 @@
 \chapter{Grundlagen und Hilfsresultate}
 \label{chap:1}
 
-Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen welche wir vor allem für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzer benötigen werden.
+Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzer benötigen werden.
 
-In dieser Arbeit behandeln wir Neuronale-Netze-Regressionsschätzer im Kontext der nichtparametrischen Regression mit zufälligem Design. Im Gegensatz zur parametrischen Regression ist bei der nichtparametrischen, die Bauart der schätzenden Funktion komplett unbekannt, was von Vorteil hat, dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt um eine Funktion zu schätzen.
+In dieser Arbeit behandeln wir Neuronale-Netze-Regressionsschätzer im Kontext der nichtparametrischen Regression mit zufälligem Design. Im Gegensatz zur parametrischen Regression ist bei der nichtparametrischen die Bauart der zu schätzenden Funktion komplett unbekannt, was den Vorteil besitzt, dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt um eine Funktion zu schätzen.
 
-Bei der nichtparametrischen Regressionsschätzung seien $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ u.i.v $\R^d \times \R$-wertige Zufallsvariablen mit $\E[Y^2] < \infty$. Zudem sei $m\colon \R^d \to R$ definiert durch $m(x) = \E[Y \mid X = x]$ die zugehörige Regressionsfunktion. Ausgehend von 
+Bei der nichtparametrischen Regressionsschätzung seien $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ unabhängig identisch verteilte (u.\@i.\@v.\@) $\R^d \times \R$-wertige Zufallsvariablen mit $\E[Y^2] < \infty$. Zudem sei $m\colon \R^d \to \R$ definiert durch $m(x) = \E[Y \mid X = x]$ die zugehörige Regressionsfunktion. Ausgehend von der Stichprobe
 $$ (X_1, Y_1),\dots,(X_n, Y_n)$$ 
 soll $m$ geschätzt werden.
 
-Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie gefolgt erläutern. In Anwendung ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten. Ziel ist es dann, daraus die Regressionsfunktion zu schätzen. Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein. 
+Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie folgt erläutern. In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten. Ziel ist es dann, daraus die Regressionsfunktion $m$ zu schätzen. Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein. 
 
 Für das $L_2$-Risiko einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt$\colon$
 $$\E[|f(X) - Y|^2] = \E[|m(X) - Y|^2] + \int_{\R^d}|f(x) - m(x)|^2 \mathds{P}_X (dx),$$
-d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers der entsteht aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw\. Approximation des Wertes von Y.
+d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers der entsteht aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y.
 
 Formal führt das daher auf folgende Problemstellung$\colon$
-$(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ seien unabhängig identisch verteilte $\R^d \times \R$ wertige Zufallsvariablen mit $\E[Y^2] < \infty$ und $m\colon\R^d \to \R$ definiert durch $m(x) = \E[Y \mid X = x]$ sei die zugehörige Regressionsfunktion. Gegeben ist die Datenmenge 
+$(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ seien u.\@i.\@v.\@ $\R^d \times \R$ wertige Zufallsvariablen mit $\E[Y^2] < \infty$ und $m\colon\R^d \to \R$ definiert durch $m(x) = \E[Y \mid X = x]$ sei die zugehörige Regressionsfunktion. Gegeben sei die Datenmenge 
 $$ \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\}.$$
 Gesucht ist eine Schätzung 
 $$m_n(\cdot) = m_n(\cdot, \mathcal{D}_n)\colon\R^d \to \R $$
 von $m$, für die der $L_2$-Fehler 
 $$\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)$$
-möglichst \glqq klein\grqq ist. (Referenz Györfi (2002))
+möglichst \glqq klein\grqq\@ ist. (Referenz Györfi (2002))
 
 \section{Definitionen}
 Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion haben muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
@@ -30,21 +30,82 @@ Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion ha
 \label{def:pc}
    Sei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$ (also $p \in (0, \infty)$ und sei $C > 0$. Eine Funktion $f\colon \R^d \to \R$ heißt ($p, C$)-glatt, falls für alle $\alpha = (\alpha_1,\dots,\alpha_d) \in \N_0^d$ mit $\sum_{j = 1}^{d}\alpha_j = q$ die partielle Ableitung 
    $$ \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}$$
-   existiert und falls für alle $x, z \in \R^d$ gilt
+   existiert und falls für alle $x, z \in \R^d$ die Abschätzung 
    $$ \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(x) - \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(z) \bigg| \leq C \cdot \|x - z\|^r,$$
-   wobei $\|\cdot\|$ die euklidische Norm ist.  
+   gilt, wobei $\|\cdot\|$ die euklidische Norm ist.  
 \end{defn}
 \begin{bemnumber}
-Im Falle von $p \leq 1$ ist keine Funktion ($p, C$)-glatt genau dann, wenn sie Hölder-stetig ist mit Exponent $p$ und Hölder-Konstante $C$.
+Im Falle von $p \leq 1$ ist eine Funktion genau dann ($p, C$)-glatt, wenn sie hölderstetig ist mit Exponent $p$ und Hölderkonstante $C$.
 \end{bemnumber}
 
-Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen , ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichte (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass die Eingaben $x_1,\dots,x_n$ verarbeiten und entsprechend über seine Aktivierung reagieren. Dazu werden die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem Neuronalen Netz ist der Ausgabeschicht die hinter den verborgenen Schichten liegt und bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
-Zwei wichtige Charakteristika die neuronale Netze aufweisen können sind:
+Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen , ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder wiederum aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über seine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem Neuronalen Netz ist der Ausgabeschicht, die hinter den verborgenen Schichten liegt und bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[
+        % define styles    
+        init/.style={ 
+             draw, 
+             circle, 
+             inner sep=2pt,
+             font=\Huge,
+             join = by -latex
+        },
+        squa/.style={ 
+            font=\Large,
+            join = by -latex
+        }
+    ]
+        
+        % Top chain x1 to w1
+        \begin{scope}[start chain=1]
+            \node[on chain=1] at (0,1.5cm)  (x1) {$x_1$};
+            \node[on chain=1,join=by o-latex] (w1) {$w_1$};
+        \end{scope}
+        
+        % Middle chain x2 to output
+        \begin{scope}[start chain=2]
+            \node[on chain=2] (x2) {$x_2$};
+            \node[on chain=2,join=by o-latex] {$w_2$};
+            \node[on chain=2,init] (sigma) {$\displaystyle\Sigma$};
+            \node[on chain=2,squa,label=above:{\parbox{2cm}{\centering Activation\\ function}}]   {$f_{act}$};
+            \node[on chain=2,squa,label=above:Output,join=by -latex] {$y_{out}$};
+        \end{scope}
+        
+        % Bottom chain x3 to w3
+        \begin{scope}[start chain=3]
+            \node[on chain=3] at (0,-1.5cm) 
+            (x3) {$x_3$};
+            \node[on chain=3,label=below:Weights,join=by o-latex]
+            (w3) {$w_3$};
+        \end{scope}
+        
+        % Bias
+        \node[label=above:\parbox{2cm}{\centering Bias \\ $b$}] at (sigma|-w1) (b) {};
+        
+        % Arrows joining w1, w3 and b to sigma
+        \draw[-latex] (w1) -- (sigma);
+        \draw[-latex] (w3) -- (sigma);
+        \draw[o-latex] (b) -- (sigma);
+        
+        % left hand side brace
+        \draw[decorate,decoration={brace,mirror}] (x1.north west) -- node[left=10pt] {Inputs} (x3.south west);
+        
+    \end{tikzpicture}
+    
+    \caption{Neural network pipeline}
+    
+\end{figure}
+
+Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 \begin{itemize}
-\item Wenn in einem neuronalen Netz die Information von der Eingabesicht über die verborgenen Schichten bis hin zur Ausgabeschicht in eine Richtung (\glqq vorwärts \grqq) weiterreicht, spricht man von einem \textit{feedforward} neuronalen Netz.
-\item Ein neuronales Netz wird als ein „vollständig verbundenes“ (\textit{fully connected}) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der (letzten) verborgenen Schicht verbunden.
+\item Wenn in einem neuronalen Netz die Information von der Eingabesicht über die verborgenen Schichten bis hin zur Ausgabeschicht in eine Richtung (\glqq vorwärts \grqq) weitergereicht wird, spricht man von einem \textit{feedforward} neuronalen Netz.
+\item Ein neuronales Netz wird als ein \glqq vollständig verbundenes\grqq\@ (\textit{fully connected}) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der (letzten) verborgenen Schicht verbunden.
 \end{itemize}
-Abbildung \ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature n}), $n$ verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output n}) besteht.
+
+Da wir uns in dieser Arbeit mit neuronalen Netzen zur Regressionschätzung beschäftigen und Funktionswerte schätzen wollen, betrachten wir nur neuronale Netze die in der Ausgabeschicht ein einzelnes Neuron besitzen. 
+
+Abbildung \ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$ verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
 \begin{center}
     \begin{figure}
         \begin{tikzpicture}[
@@ -69,24 +130,24 @@ Abbildung \ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
             ]
             \matrix[net] (mat)
             {
-            |[plain]| \parbox{1cm}{\centering Input\\layer} 
-                        & |[plain]| \parbox{1.2cm}{\centering Hidden\\layer 1} 
+            |[plain]| \parbox{1cm}{\centering \small Input\\layer} 
+                        & |[plain]| \parbox{1.2cm}{\centering \small Hidden\\layer 1} 
                                     &  |[plain]| \parbox{0cm}{\centering ...} 
-                                                &  |[plain]| \parbox{1.2cm}{\centering Hidden\\layer n} 
-                                                                & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+                                                &  |[plain]| \parbox{1.4cm}{\centering \small Hidden\\layer $n_{\mathrm{lyr}}$} 
+                                                                & |[plain]| \parbox{1cm}{\centering \small Output\\layer} \\
                         & |[plain]| & |[plain]| & |[plain]|     & |[plain]|                                   \\
-            |[plain]|   &           & |[plain]| &               & |[plain]|    \\
+            |[plain]|   &           &  |[plain]| \parbox{0cm}{\centering ...}  &               & |[plain]|    \\
                         & |[plain]| & |[plain]| & |[plain]|     &              \\
-            |[plain]|   & |[dot]|   & |[dot]|   & |[dot]|                 \\
-                        & |[plain]| & |[plain]| & |[plain]|     & |[dot]|      \\
-            |[plain]|   & |[dot]|   & |[dot]|   & |[dot]|       & |[plain]|    \\
-            |[dot]|     & |[plain]| & |[plain]| & |[plain]|     & |[dot]|      \\
-            |[dot]|     & |[dot]|   & |[dot]|   & |[dot]|       & |[plain]|    \\
+            |[plain]|   & |[plain]|   & |[plain]|  & |[plain]|                \\
+                        & |[dot]|  & |[plain]| & |[dot]|    & |[dot]|      \\
+            |[plain]|   & |[dot]|   & |[plain]|  & |[dot]|       & |[dot]|     \\
+            |[dot]|     & |[dot]|  & |[plain]| & |[dot]|     & |[dot]|      \\
+            |[dot]|     & |[plain]|    & |[plain]|   & |[plain]|       & |[plain]|    \\
             |[dot]|     & |[plain]| & |[plain]| & |[plain]|     &              \\
-            |[plain]|   &           & |[plain]| &               & |[plain]|    \\
+            |[plain]|   &           &  |[plain]| \parbox{0cm}{\centering ...}  &               & |[plain]|    \\
                         & |[plain]| & |[plain]|            \\
             };
-            \foreach \ai/\mi in {2/Input feature 1,4/Input feature 2,6/Input feature 3,12/Input feature n}
+            \foreach \ai/\mi in {2/\small Input feature 1,4/\small Input feature 2,6/ \small Input feature 3,12/\small Input feature $n_{\mathrm{in}}$}
               \draw[<-] (mat-\ai-1) -- node[above] {\mi} +(-3cm,0);
 
             \foreach \ai in {2,4,6,12}
@@ -96,19 +157,19 @@ Abbildung \ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
             \foreach \ai in {3,11}
             {  
                 \draw[->] (mat-\ai-4) -- (mat-4-5);
-                \draw[->] (mat-4-5) -- node[above] {Output 1} +(2cm,0);\
+                \draw[->] (mat-4-5) -- node[above] {\small Output 1} +(2cm,0);\
             }
             \foreach \ai in {3,11}
             {
                 \draw[->] (mat-\ai-4) -- (mat-10-5);
-                \draw[->] (mat-10-5) -- node[above] {Output n} +(2cm,0);
+                \draw[->] (mat-10-5) -- node[above] {\small Output $n_{\mathrm{out}}$} +(2cm,0);
             }
         \end{tikzpicture}
-        \caption{Feedforward neuronales Netz}
+        \caption{Fully connected feedforward neuronales Netz}
         \label{fig:DNN}
     \end{figure}
 \end{center}
-Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \glqq squashing functions\grqq entschieden, welche eine monoton wachsend ist und für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte sigmoidal bzw. logisitsche squasher
+Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \glqq squashing functions\grqq\@ entschieden, welche eine monoton wachsend Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte sigmoidal bzw.\@ logistische squasher
 \begin{align}
 \label{logsquasher}
 \sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
@@ -116,7 +177,7 @@ Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer
 
 \begin{defn}
 \label{nzulässig}
-Sei $n \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird $N$-zulässig genannt, wenn monoton wachsend und Lipschitz stetig (REFERENZ) ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind$\colon$
+Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird $N$-zulässig genannt, wenn sie monoton wachsend und lipschitzsteig (REFERENZ) ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind$\colon$
 \begin{itemize}
 \item[(i)] Die Funktion $\sigma$ ist $N + 1$ mal stetig differenzierbar mit beschränkten Ableitungen.
 \item[(ii)] Es existiert ein Punkt $t_{\sigma} \in \R$, in welchem alle Ableitungen bis hin zur $N$-ten Ableitung von $\sigma$ ungleich Null sind.
@@ -129,10 +190,10 @@ In Lemma \ref{lem:logsquasher} werden wir zudem zeigen, dass der logistische squ
 \section{Hilfsresultate}
 \begin{lem}
 \label{lem:logsquasher}
-Sei $N \in \N$ beliebig, dann erfüllt der logistische squasher $\sigma\colon \R \to [0, 1], \sigma(x) = \frac{1}{1 + \exp(-x)}$ die Bedingungen aus Definition \ref{logsquasher}.  
+Sei $N \in \N_0$ beliebig, dann erfüllt der logistische squasher $\sigma\colon \R \to [0, 1], \sigma(x) = \frac{1}{1 + \exp(-x)}$ die Bedingungen aus Definition \ref{nzulässig}.  
 \end{lem}
 \begin{proof}
-Sei $N \in \N$ beliebig. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
+Sei $N \in \N_0$ beliebig. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
 $$\sigma(s) = \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} = \sigma(t),$$
 wobei wir bei der Ungleichung die Monotonie der Exponentialfunktion verwendet haben und die obige Ungleichung aus
 \begin{equation*}
@@ -143,7 +204,7 @@ wobei wir bei der Ungleichung die Monotonie der Exponentialfunktion verwendet ha
  \Leftrightarrow & \quad \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} \\
 \end{split}
 \end{equation*}
-folgt. Zudem ist $\sigma$ als Komposition $N + 1$ mal stetig differenzierbarer Funktionen selber auch $N + 1$ mal stetig differenzierbar. Die Ableitungen von $\sigma$ haben die Form$\colon$
+folgt. Zudem ist $\sigma$ als Komposition glatter Funktionen, $N + 1$ mal stetig differenzierbar ist. Die Ableitungen von $\sigma$ haben die Form$\colon$
 \begin{equation*}
 \begin{split}
 \frac{\partial \sigma}{\partial x}(x) &= -\frac{1}{(1 + \exp(-x))^2} \cdot (-\exp(-x)) \\
@@ -152,15 +213,11 @@ folgt. Zudem ist $\sigma$ als Komposition $N + 1$ mal stetig differenzierbarer F
 & = (1 - \sigma(x)) \cdot \sigma(x).
 \end{split}
 \end{equation*}
-Da wir bei weiterem Ableiten die Produktregel wiederholt anwenden sind alle Ableitungen von $\sigma$, Polynome in $\sigma$. Dadurch folgt Bedingung (i) aus Definition \ref{logsquasher}, da $\sigma$ nach Voraussetzung durch $0$ und $1$ beschränkt ist, und die Ableitungen von $\sigma$ als Produkt von beschränkten Faktoren daher auch. Da hiermit auch die erste Ableitung von $\sigma$ beschränkt ist wissen wir nach Satz ... aus (REFERENZ), dass $\sigma$ Lipschitz stetig ist.
-Nun kommen wir zum Beweis von Bedingung (ii). Polynome, die nicht das $0$-Polynom sind, haben nach Satz ... (REFERENZ) auf $(0, 1)$ endlich viele Nullstellen und $\sigma$ bildet nach Voraussetzung in das Intervall $[0, 1] \supseteq (0, 1)$ ab. Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynome in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit$\sigma(t_{\sigma}) \neq 0$ sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. Daher ist Bedingung (ii) ebenfalls erfüllt.
-Betrachten wir nun ein beliebiges $x > 0$. Dann wissen wir nach dem Mittelwertsatz (REFERENZ) dass ein $z \in (0, \infty)$ existiert, sodass mit $\exp(z) > 1$, da $z > 0$ ist, gilt$\colon$
-\begin{equation*}
-\begin{split}
-(\exp(x - 1) \cdot (x - 0) = e^z
-\end{split}
-\end{equation*} 
-und da $x \neq 0$ ist, daraus folgt, dass $$\frac{\exp(x) - 1}{x - 0} > 1$$ gilt und damit dann auch durch Multiplikation mit $x$ insbesondere $$ x \leq \exp(x) + 1.$$ Daraus erhalten wir mit Umformungen da $x > 0$ und $1 + \exp(-x) > 0$ ist$\colon$
+Da wir bei weiterem Ableiten die Produktregel wiederholt anwenden sind alle Ableitungen von $\sigma$, Polynome in $\sigma$. Dadurch folgt Bedingung (i) aus Definition \ref{nzulässig}, da $\sigma$ nach Voraussetzung durch $0$ und $1$ beschränkt ist, und die Ableitungen von $\sigma$ als Produkt von beschränkten Faktoren daher auch. Da hiermit auch die erste Ableitung von $\sigma$ beschränkt ist wissen wir nach Satz ... aus (REFERENZ), dass $\sigma$ lipschitzstetig ist.
+
+Nun kommen wir zum Beweis von Bedingung (ii). Polynome, die nicht das $0$-Polynom sind, haben nach Satz ... (REFERENZ) auf $(0, 1)$ endlich viele Nullstellen und $\sigma$ bildet nach Voraussetzung in das Intervall $[0, 1] \supseteq (0, 1)$ ab. Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynomen in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit $\sigma(t_{\sigma}) \neq 0$, sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. Daher ist Bedingung (ii) ebenfalls erfüllt.
+
+Wir wissen, dass für $x \in R$ und damit insbesondere für ein beliebiges $x > 0$: $$ x \leq \exp(x) + 1$$ gilt. Daraus erhalten wir mit Umformungen da $x > 0$ und $1 + \exp(-x) > 0$ ist:
 \begin{equation*}
 \begin{split}
 & \quad x \leq \exp(x) + 1 \\
@@ -176,190 +233,204 @@ wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Die obige Glei
 \begin{equation*}
 \begin{split}
  & \quad \frac{1}{1 + \exp(x)} - \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2} \\
- \Leftrightarrow  & \quad \frac{1}{1 + \exp(x)} + \frac{1}{2} -\frac{1}{1 + \exp(-x)} = \frac{1}{2}\\
+ \Leftrightarrow  & \quad \frac{1}{1 + \exp(x)} - \frac{1}{2} +\frac{1}{1 + \exp(-x)} = \frac{1}{2}\\
  \Leftrightarrow & \quad  \frac{1 + \exp(-x) + 1 + \exp(x)}{(1 + \exp(x)) \cdot (1 + \exp(-x))} - \frac{1}{2} = \frac{1}{2} \\
  \Leftrightarrow & \quad \frac{2 + \exp(-x) + \exp(x)}{2 + \exp(-x) + \exp(x)} - \frac{1}{2} = \frac{1}{2} \\
  \Leftrightarrow & \quad 1 - \frac{1}{2} = \frac{1}{2}.
 \end{split}
 \end{equation*}
 Aus dieser Eigenschaft folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus der ersten Relation, da $-x > 0 $ ist$\colon$  
-$$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} \leq \frac{1}{|x|}.$$
-Damit haben wir alle drei Bedingungen aus Definition \ref{logsquasher} gezeigt und unsere Aussage bewiesen.
+$$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x|}.$$
+Damit haben wir alle drei Bedingungen aus Definition \ref{nzulässig} gezeigt und unsere Aussage bewiesen.
 \end{proof}
+\begin{lem}[Langrangesche Form des Restglieds \cite{forster}]
+\label{lem:lagrange}
+Sei $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi \in [u, x],$ so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
+\end{lem}
 \begin{lem}
   \label{lem:1}
   Sei $\sigma \colon \R \to \R$ eine Funktion und $R$, $a > 0$.
   \begin{itemize}
-  \item[a)] Angenommen $\sigma$ ist zwei mal stetig differenzierbar und $t_{\sigma,id} \in \R$ so, dass $sigma'(t_{\sigma, id}) \neq 0$ ist. Dann gilt mit
-  $$ f_{id}(x) = \frac{R}{\sigma'(t_{\sigma, id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, id}\right) - \sigma(t_{\sigma, id})\right)$$
+  \item[a)] Angenommen $\sigma$ ist zwei mal stetig differenzierbar und $t_{\sigma,\id} \in \R$ so, dass $\sigma'(t_{\sigma, \id}) \neq 0$ ist. Dann gilt mit
+  $$ f_{\id}(x) = \frac{R}{\sigma'(t_{\sigma, \id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, \id}\right) - \sigma(t_{\sigma, \id})\right)$$
   für beliebige $x \in [-a, a]\colon$ 
-  $$ |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R}.$$
-  \item[b)] Angenommen $\sigma$ ist drei mal stetig differenzierbar und $t_{\sigma,sq} \in \R$ so, dass $sigma''(t_{\sigma, sq}) \neq 0$ ist. Dann gilt mit
-  $$ f_{sq}(x) = \frac{R^2}{\sigma''(t_{\sigma, sq})} \cdot \left(\sigma\left(\frac{2 \cdot x}{R} + t_{\sigma, sq}\right) - 2 \cdot \sigma(\frac{x}{R} + t_{\sigma, sq})+ \sigma(t_{\sigma, sq})\right)$$
+  $$ |f_{\id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, \id})|} \cdot \frac{1}{R}.$$
+  \item[b)] Angenommen $\sigma$ ist drei mal stetig differenzierbar und $t_{\sigma,\sq} \in \R$ so, dass $\sigma''(t_{\sigma, \sq}) \neq 0$ ist. Dann gilt mit
+  $$ f_{\sq}(x) = \frac{R^2}{\sigma''(t_{\sigma, \sq})} \cdot \left(\sigma\left(\frac{2 \cdot x}{R} + t_{\sigma, \sq}\right) - 2 \cdot \sigma(\frac{x}{R} + t_{\sigma, \sq})+ \sigma(t_{\sigma, \sq})\right)$$
   für beliebige $x \in [-a, a]\colon$ 
-  $$ |f_{sq}(x) - x^2| \leq \frac{5 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma'(t_{\sigma, sq})|} \cdot \frac{1}{R}.$$
+  $$ |f_{\sq}(x) - x^2| \leq \frac{5 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma, \sq})|} \cdot \frac{1}{R}.$$
   \end{itemize}
 \end{lem}
 \begin{proof}
 	\begin{itemize}
-  	\item[a)] Sei $u = \frac{c}{R} + t_{\sigma, id}$, $\xi = 0$ und  $x \in [-a, a]$beliebig. Wir wissen, dass $f_{id}$ 1-mal differenzierbar ist, da nach Vorraussetzung $\sigma$ 2-mal stetig differenzierbar ist,  existiert nach der Restgliedformel von Lagrange (REFERENZ) ein $c \in [\xi, x] $, sodass mit Ausklammern von $\frac{R}{\sigma'(t_{\sigma, id})} $ folgt$\colon
-$
-
+  	\item[a)] Wir wissen, dass $f_{\id}$ 2-mal differenzierbar ist, da nach Vorraussetzung $\sigma$ 2-mal stetig differenzierbar ist. Damit folgt mit Lemma \ref{lem:lagrange} für $f = f_{\id}, N = 1, u = 0$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
+$$f_{\id}(x) = \sum_{k = 0}^N \frac{f_{\id}^{(k)}(u)}{k!}(x - u)^k + \frac{f_{\id}^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
+Mit $f_{\id}(0) = 0$ und $f_{\id}'(0) = 1$ erhalten wir:
   	\begin{equation*}
   	\begin{split}
-  	 |f_{id}(x) -  & x| \\
-  	& \leq \bigg|\frac{R}{\sigma'(t_{\sigma, id})} \cdot \bigg(\sigma\left(\frac{\xi}{R} + t_{\sigma, id}\right) - \sigma(t_{\sigma, id}) + \frac{1}{R} \sigma'\left(\frac{\xi}{R} + t_{\sigma, id}\right) (x - \xi) \\ & \qquad + \frac{1}{2R^2} \sigma''(\frac{c}{R} + t_{\sigma, id}) (x - \xi)^2)\bigg) - x \bigg| \\
-  	& = \bigg|\frac{R}{\sigma'(t_{\sigma, id})} \cdot \bigg(\sigma(t_{\sigma, id}) - \sigma(t_{\sigma, id}) + \frac{x}{R} \sigma'(t_{\sigma, id}) + \frac{x^2}{2R^2} \sigma''(\frac{c}{R} + t_{\sigma, id})\bigg) - x\bigg| \\
-  	& = \bigg|\frac{R}{\sigma'(t_{\sigma, id})} \cdot \bigg(\frac{x}{R} \sigma'(t_{\sigma, id}) + \frac{x^2}{2R^2}\sigma''(u)\bigg) - x\bigg| \\
-  	& = \bigg| \frac{\sigma''(u) \cdot x^2}{2R \cdot \sigma'(t_{\sigma, id})} + x - x\big| \\
-  	& \leq \frac{\| \sigma'' \|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R},  
+  	 |f_{\id}(x) -  & x| \\
+  	& = \bigg|0 + 1 \cdot x + \frac{1}{2} \cdot \frac{1}{R \cdot \sigma'(t_{\sigma,\id})} \sigma''(\frac{\xi}{R} + t_{\sigma,\id}) \cdot x^2 - x \bigg| \\
+  	& = \bigg| \frac{\sigma''(\frac{\xi}{R} + t_{\sigma,\id})  \cdot x^2}{2R \cdot \sigma'(t_{\sigma, \id})} + x - x\big| \\
+  	& \leq \frac{\| \sigma'' \|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, \id})|} \cdot \frac{1}{R},  
   	\end{split}
   	\end{equation*}
   	Wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt und zudem aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt, dass $x^2 \leq a^2$ ist.
-  	\item[b)] Folgt analog wie in a) durch 2-maliges Anwenden der Restgliedformel von Lagrange (REFeRENZ) auf die Funktion $f$ die hier nun 2-mal differenzierbar ist, da $\sigma$ nach Voraussetzung  3-mal stetig differenzierbar ist.
+  	\item[b)] Folgt analog wie in a) durch Lemma \ref{lem:lagrange}auf die Funktion $f_{\\sq}$ die hier nun 3-mal differenzierbar ist, da $\sigma$ nach Voraussetzung  3-mal stetig differenzierbar ist.
  	\end{itemize}
 \end{proof}
 
 \begin{lem}
   \label{lem:2}
-  Sei $\sigma \colon \R \to [0, 1]$ nach Definition 1, 2-zulässig. Zudem sei $R > 0$ und $a > 0$ beliebig. Dann gilt für das neuronale Netz
+  Sei $\sigma \colon \R \to [0, 1]$ 2-zulässig. Zudem sei $R > 0$ und $a > 0$ beliebig. Dann gilt für das neuronale Netz
   \begin{equation*}
   	\begin{split}
-  	f_{mult}(x, y) = \frac{R^2}{4 \cdot \sigma''(t_{\sigma})} \cdot & \bigg(\sigma\Big(\frac{2 \cdot (x + y)}{R} + t_{\sigma} \Big) - 2 \cdot \sigma\Big(\frac{x + y}{R} + t_{\sigma}\Big) \\
+  	f_{\mult}(x, y) = \frac{R^2}{4 \cdot \sigma''(t_{\sigma})} \cdot & \bigg(\sigma\Big(\frac{2 \cdot (x + y)}{R} + t_{\sigma} \Big) - 2 \cdot \sigma\Big(\frac{x + y}{R} + t_{\sigma}\Big) \\
   	& - \sigma \Big(\frac{2 \cdot (x - y)}{R} + t_{\sigma} \Big) + 2 \cdot \sigma \Big(\frac{x - y}{R} + t_{\sigma} \Big) \bigg)
   	\end{split}
   	\end{equation*}
   	für beliebige $x, y \in [-a, a]$ die folgende Ungleichung$\colon$
-  	$$|f_{mult}(x, y) - x \cdot y| \leq \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}.$$
+  	$$|f_{\mult}(x, y) - x \cdot y| \leq \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}.$$
   \end{lem}
   \begin{proof}
-  Durch Ausmultiplizieren erhalten wir $$f_{mult}(x,y) = \frac{1}{4}(f_{sq}(x + y) - f_{sq}(x - y))$$ und $$x \cdot y = \frac{1}{4}\big((x + y)^2 - (x - y)^2\big).$$
-  Aus diesen beiden Gleichungen folgt durch Ausklammern von $\frac{1}{4}$, der Homogenität des Betrags und der Anwendung der Dreickecksungleichung$\colon$
+  Durch Einsetzen erhalten wir $$f_{\mult}(x,y) = \frac{1}{4}(f_{\sq}(x + y) - f_{\sq}(x - y))$$ und $$x \cdot y = \frac{1}{4}\big((x + y)^2 - (x - y)^2\big).$$
+  Aus diesen beiden Gleichungen folgt durch Ausklammern von $\frac{1}{4}$, der Homogenität des Betrags und der Anwendung der Dreiecksungleichung$\colon$
   \begin{equation*}
   \begin{split}
-  |f_{mult}(x, y) - x \cdot y| & = \frac{1}{4} \cdot \big|f_{sq}(x + y) - f_{sq}(x - y) - (x + y)^2 + (x - y)^2\big| \\
-  & \leq \frac{1}{4} \cdot \big|f_{sq}(x + y) - (x + y)^2\big| + \frac{1}{4}\cdot\big| (x - y)^2 - f_{sq}(x - y)\big| \\
-  & \leq 2 \cdot \frac{1}{4} \cdot \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma'(t_{\sigma, sq})|} \cdot \frac{1}{R} \\
+  |f_{\mult}(x, y) - x \cdot y| & = \frac{1}{4} \cdot \big|f_{\sq}(x + y) - f_{\sq}(x - y) - (x + y)^2 + (x - y)^2\big| \\
+  & \leq \frac{1}{4} \cdot \big|f_{\sq}(x + y) - (x + y)^2\big| + \frac{1}{4}\cdot\big| (x - y)^2 - f_{\sq}(x - y)\big| \\
+  & \leq 2 \cdot \frac{1}{4} \cdot \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} \\
   & = \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R},
   \end{split}
 \end{equation*}   
-wobei bei bei der letzten Ungleichung verwendet haben, dass $a > 0$ nach Lemma \ref{lem:1}b) beliebig gewählt wurde und daher insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma'(t_{\sigma, sq})|} \cdot \frac{1}{R}$$ gilt. 
+wobei bei bei der letzten Ungleichung verwendet haben, dass $a > 0$ nach Lemma \ref{lem:1}b) beliebig gewählt wurde und daher insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{\sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}$$ gilt. 
   \end{proof}
   \begin{lem}
   \label{lem:3}
-  Sei $\sigma\colon \R \to [0, 1]$ nach Definition 1, 2-zulässig. Sei $f_{mult}$ das neuronale Netz aus Lemma \ref{lem:2} und $f_{id}$ das neuronale Netz aus Lemma \ref{lem:1}. Angenommen es gilt $$a \geq 1 \text{\quad und \quad} R \geq \frac{\|\sigma''\|_{\infty} \cdot a}{2 \cdot |\sigma'(t_{\sigma, id})|}.$$ 
+  Sei $\sigma\colon \R \to [0, 1]$ 2-zulässig. Sei $f_{\mult}$ das neuronale Netz aus Lemma \ref{lem:2} und $f_{\id}$ das neuronale Netz aus Lemma \ref{lem:1}. Angenommen es gelten die Ungleichungen 
+\begin{equation}
+\label{lem:3:Vor1}   
+  a \geq 1 \text{\quad und \quad} R \geq \frac{\|\sigma''\|_{\infty} \cdot a}{2 \cdot |\sigma'(t_{\sigma})|}.
+\end{equation}
   Dann erfüllt das neuronale Netz 
-  \begin{equation*}
+  \begin{equation}
+  \label{lem:3:Vor2}
   \begin{split}
-  f_{ReLU}(x) & = f_{mult}(f_{id}(x), \sigma(R \cdot x)) 
+  f_{\ReLU}(x) & = f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) 
   \end{split}
-  \end{equation*}
- für alle $x \in [-a, a]\colon$
- $$|f_{ReLU}(x) - \max\{x, 0\}| \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id}), |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.$$
+  \end{equation}
+ für alle $x \in [-a, a]$ folgende Ungleichung:
+ $$|f_{\ReLU}(x) - \max\{x, 0\}| \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma}), |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.$$
   \end{lem}
   \begin{proof}
-  Da $\sigma$ nach Voraussetzung 2-zulässig nach Definition 1 ist, gilt für $R \geq 0,$ und $x \in \R\setminus\{0\}\colon$ $$|\sigma(R \cdot x) - 1| \leq \frac{1}{R\cdot x} \text{\quad für \quad} x > 0$$ und $$|\sigma(R \cdot x)| \leq \frac{1}{|R \cdot x|} \text{\quad für \quad} x < 0.$$
-Damit folgt aus der Homogenität des Betrags $$|\sigma(R \cdot x) - \1_{[0, \infty)}(x)| \leq \frac{1}{|R \cdot x|} = \frac{1}{R \cdot |x|}.$$ 
-Nach Lemma \ref{lem:1} und Lemma \ref{lem:2} gilt$\colon$
-$$ |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R} \text{\quad für \quad} x \in [-a, a]$$ und 
-$$ |f_{mult}(x, y) - x \cdot y| \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} \text{\quad für \quad} x \in [-2a, 2a].$$ 
-Da nach Voraussetzung $a \geq 1$ ist gilt insbesondere $[0, 1] \in [-2a, 2a]$ und daher gilt insbesondere $\sigma(x) \in [-2a, 2a].$ 
-Zudem erhalten wir durch eine Nulladdition, das Anwenden der Dreiecksungleichung, die Verwendung von Lemma \ref{lem:1} und der Voraussetzung für $R\colon$
+  Da $\sigma$ nach Voraussetzung 2-zulässig nach Definition 1 ist, gilt für $R \geq 0,$ und $x \in \R\setminus\{0\}\colon$ $$|\sigma(R \cdot x) - 1| \leq \frac{1}{R\cdot x} \text{\, für \,} x > 0$$ und $$|\sigma(R \cdot x)| \leq \frac{1}{|R \cdot x|} \text{\, für \,} x < 0.$$
+Damit folgt aus der Homogenität des Betrags für alle $x \neq 0$: 
+\begin{equation}
+\label{lem:3:Bed1} 
+|\sigma(R \cdot x) - \1_{[0, \infty)}(x)| \leq \frac{1}{|R \cdot x|} = \frac{1}{R \cdot |x|}.
+\end{equation} 
+Nach Lemma \ref{lem:1} und Lemma \ref{lem:2} gilt:
+\begin{equation}
+\label{lem:3:Bed2} 
+|f_{\id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, \id})|} \cdot \frac{1}{R} \text{\, für \,} x \in [-a, a]
+\end{equation}
+ und 
+\begin{equation}
+\label{lem:3:Bed3}
+ |f_{\mult}(x, y) - x \cdot y| \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} \text{\, für \,} x, y \in [-2a, 2a].
+ \end{equation} 
+Da nach Voraussetzung $a \geq 1$ ist, gilt insbesondere $[0, 1] \subseteq [-2a, 2a]$ und daher gilt insbesondere $\sigma(Rx) \in [0, 1]\subseteq [-2a, 2a].$ 
+Zudem erhalten wir durch eine Nulladdition, das Anwenden der Dreiecksungleichung, die Verwendung von Lemma \ref{lem:1} und (\ref{lem:3:Vor1}) für $R$:
 \begin{equation*}
 \begin{split}
-|f_{id}(x)| & = |f_{id}(x) - x + x| \\
-& = |f_{id}(x) -x| + |x| \\
-& \leq |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R} + |x| \\
-& \leq |f_{id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{2 \cdot |\sigma'(t_{\sigma, id})|}{\|\sigma''\|_{\infty} \cdot a} + |x| \\
+|f_{\id}(x)| & = |f_{\id}(x) - x + x| \\
+& \leq |f_{\id}(x) -x| + |x| \\
+&  \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} + |x| \\
+& \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{2 \cdot |\sigma'(t_{\sigma})|}{\|\sigma''\|_{\infty} \cdot a} + |x| \\
 & = a + |x| \\
-& = 2 \cdot a
+& \leq 2 \cdot a
 \end{split}
 \end{equation*}
-wobei $x \in [-a, a]$. Daraus folgt insbesondere $f_{id}(x) \in [-2a, 2a].$
-Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Voraussetzung, zweier Nulladdition und dem zweifachen Anwenden der Dreiecksungleichung erhalten wir$\colon$
+wobei $x \in [-a, a]$. Daraus folgt insbesondere $f_{\id}(x) \in [-2a, 2a].$
+Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, (\ref{lem:3:Vor2}, zweier Nulladditionen und dem zweifachen Anwenden der Dreiecksungleichung erhalten wir$\colon$
 \begin{equation*}
 \begin{split}
-|f_{ReLU}(x) - & \max\{x, 0\}|  \\
-& = \big| f_{mult}(f_{id}(x), \sigma(R \cdot x)) - x \cdot \1_{[0, \infty)}(x)\big| \\
-& \leq \big| f_{mult}(f_{id}(x), \sigma(R \cdot x)) - f_{id}(x)\cdot\sigma(R \cdot x)\big| \\
-& \qquad + \big| f_{id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| + \big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big|. \\
-& \text{Daraus ergibt sich mithilfe der obigen Eigenschaften und $a^3 \geq 1$}\\
-& \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma, id})|} \cdot \frac{1}{R} \cdot 1+ \frac{1}{R} \\
-& \leq \bigg(\frac{160}{3} \cdot \frac{\|\sigma'''\|_{\infty} \cdot a ^3}{|\sigma''(t_{\sigma})|} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma, id})|} + \frac{a^3}{a^3} \bigg) \cdot \frac{1}{R} \\ 
-& \leq \bigg(\frac{160 \cdot\|\sigma'''\|_{\infty} \cdot a ^3 + 3 \cdot \|\sigma''\|_{\infty} \cdot a^3 + 3 \cdot a^3}{3 \cdot \min\{ 2 \cdot \sigma'(t_{\sigma, id})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot \frac{1}{R}\\
-& \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot \sigma'(t_{\sigma, id})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R} \\
-& \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id}), |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.
+|f_{\ReLU}(x) - & \max\{x, 0\}|  \\
+& = \big| f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) - x \cdot \1_{[0, \infty)}(x)\big| \\
+& \leq \big| f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) - f_{\id}(x)\cdot\sigma(R \cdot x)\big| \\
+& \qquad + \big| f_{\id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| + \big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big|. \\
+& \text{Daraus ergibt sich mithilfe von (\ref{lem:3:Bed1}) - \ref{lem:3:Bed3}), $\sigma(Rx) \in [0, 1]$ und $a^3 \geq 1$}\\
+& \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} \cdot 1+ \frac{1}{R} \\
+& \leq \bigg(\frac{160}{3} \cdot \frac{\|\sigma'''\|_{\infty} \cdot a ^3}{|\sigma''(t_{\sigma})|} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} + \frac{a^3}{a^3} \bigg) \cdot \frac{1}{R} \\ 
+& \leq \bigg(\frac{160 \cdot\|\sigma'''\|_{\infty} \cdot a ^3 + 3 \cdot \|\sigma''\|_{\infty} \cdot a^3 + 3 \cdot a^3}{3 \cdot \min\{ 2 \cdot \sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot \frac{1}{R}\\
+& \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot \sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R} \\
+& \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma}), |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.
 \end{split}
 \end{equation*}
   \end{proof}
   \begin{lem}
   \label{lem:4}
-  Sei $M \in \N$ und sei $\sigma\colon \R \to [0, 1]$ 2-zulässig nahc Definition .... Sei $a > 0$ und $$R \geq \frac{\|\sigma''\|_{}\infty \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma, id})|},$$ sei $y \in [-a, a]$ und $f_{ReLU}$ das neuronale Netz aus Lemma \ref{lem:3}. Dann erfüllt das neuronale Netz 
+  Sei $M \in \N$ und sei $\sigma\colon \R \to [0, 1]$ 2-zulässig. Sei $a > 0$ und $$R \geq \frac{\|\sigma''\|_{}\infty \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|},$$ sei $y \in [-a, a]$ und $f_{\ReLU}$ das neuronale Netz aus Lemma \ref{lem:3}. Dann erfüllt das neuronale Netz 
   \begin{equation*}
   \begin{split}
-  f_{hat,y}(x) = f_{ReLU}& \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) \\ &+ f_{ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg)
+  f_{\mathrm{hat},y}(x) = f_{\ReLU}& \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) \\ &+ f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg)
   \end{split}
   \end{equation*}
-  für alle $x \in [-a ,a]\colon$ 
-  $$\bigg|f_{hat,y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R}.$$
+  für alle $x \in [-a ,a]$ mit $z_+ = \max\{0, z\} \, (z \in \R):$   
+  $$\bigg|f_{\mathrm{hat},y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, \id}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R}.$$
   \end{lem}
   \begin{proof}
-  Als erstes zeigen wir $$(1 - \frac{M}{2a} \cdot |x|)_+ = \max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}, \qquad (x \in \R)$$ damit wir das Resultat mithilfe von Lemma \ref{lem:3} beweisen können.
+  Als erstes zeigen wir 
+\begin{equation}
+\label{lem:4:eq}
+ (1 - \frac{M}{2a} \cdot |x|)_+ = \max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}, \qquad (x \in \R)
+ \end{equation}  
+ damit wir das Resultat mithilfe von Lemma \ref{lem:3} beweisen können.
   Um die obige Gleichung zu zeigen unterscheiden wir vier Fälle.
   \begin{itemize}
-  \item[Fall 1] ($x < - \frac{M}{2a}$) In diesem Fall hat die linke Seite durch $z_+ = \max\{z, 0\} \quad (z \in \R)$ und nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden 0 sind. Damit sind stimmt die rechte Seite mit der linken überein. $\hfill(\square)$
-  \item[Fall 2] ($ - \frac{M}{2a} \leq x \leq 0$) Dieser Fall liefert aufgrund der nicht Positivität von $x$ analog das selbe Resultat wie Fall 1. $\hfill(\square)$
-  \item[Fall 3] ($0 < x \leq \frac{M}{2a}$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\},$$ und erfordert daher eine weitere Fallunterscheidung.
-  \item[Fall 3.1] ($x \cdot \frac{M}{2a} \leq 1$) In diesem Fall gilt für die linke Seite$\colon$ 
-  $$\max\{1 - \frac{M}{2a} \cdot x, 0\} = 1 - \frac{M}{2a} \cdot x$$ und für die rechte Seite$\colon$ 
-  $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + 0 = \frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x = 1 - \frac{M}{2a} \cdot x,$$ und stimmt daher mit der linken Seite überein.
-  \item[Fall 3.2] ($x \cdot \frac{M}{2a} > 1$) In diesem Fall gilt für die linke Seite$\colon$ 
-  $$\max\{1 - \frac{M}{2a} \cdot x, 0\} = 0$$ und für die rechte Seite$\colon$ 
-  $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0$$ und stimmt daher mit der linken Seite überein. Damit ist Fall 3 gezeigt. $\hfill(\square)$
-  \item[Fall 4] ($\frac{M}{2a} < x$)  In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\},$$ und erfordert daher eine weitere Fallunterscheidung.
-  \item[Fall 4.1] ($\frac{M}{2a} \cdot x \leq 1$) In diesem Fall gilt für die linke Seite$\colon$ 
-  $$\max\{1 - \frac{M}{2a} \cdot x, 0\} = 1 - \frac{M}{2a} \cdot x$$ und für die rechte Seite$\colon$ 
-  $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a}$$ und stimmt daher mit der linken Seite überein.
-  \item[Fall 4.2] ($\frac{M}{2a} \cdot x > 1$) In diesem Fall gilt für die linke Seite$\colon$ 
-  $$\max\{1 - \frac{M}{2a} \cdot x, 0\} = 0$$ und für die rechte Seite$\colon$ 
-  $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0$$ und stimmt daher mit der linken Seite überein. Damit ist Fall 4 gezeigt. $\hfill(\square)$
+  \item[Fall 1] ($x < 0$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden 0 sind. Es erfordert hier eine weitere Fallunterscheidung.
+ \item[Fall 1.1] ($0 > x \geq -\frac{2a}{M}$) In diesem Fall gilt für die linke und rechte Seite:
+ $$\max\{1 + \frac{M}{2a} \cdot x, 0\} = 1 + \frac{M}{2a} \cdot x.$$
+ \item[Fall 1.2] ($x < -\frac{2a}{M}$) In diesem Fall sind beide Seiten gleich 0, da $1 + \frac{M}{2a} \cdot x \leq 0$ ist. $\hfill(\square)$
+  \item[Fall 2] ($x \geq 0$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}$$ und erfordert daher eine weitere Fallunterscheidung.
+ \item[Fall 2.1] ($0 \leq x < \frac{2a}{M}$) In diesem Fall hat die linke Seite die Gestalt $$1 - \frac{M}{2a} \cdot x$$ und die rechte Seite die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a} \cdot x.$$ und stimmt daher mit der linken Seite überein.
+ \item[Fall 2.2] ($x \geq \frac{2a}{M}$) In diesem ist die linke Seite gleich 0, da $1 - \frac{M}{2a} \cdot x < 0$ ist und die rechte Seite bestitz die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0.$$ $\hfill(\square)$
 \end{itemize} 
-Durch diese Fallunterscheidung wurde die obige Gleichung (REFERENZ) bewiesen. Daraus folgt mit der Definition von $f_{hat,y}(x)$ und zwei mal der Dreiecksungleichung
+Durch diese Fallunterscheidung wurde die Gleichung (\ref{lem:4:eq}) bewiesen. Daraus folgt mit der Definition von $f_{\mathrm{hat},y}(x)$ und zwei mal der Dreiecksungleichung
 \begin{equation*}
 \begin{split}
-\bigg|f_{hat,y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq \bigg|&f_{ReLU} \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) + 1, 0\}\bigg| \\ 
-& + 2 \cdot \bigg|f_{ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) - \max\{\frac{M}{2a} \cdot (x - y), 0\}\bigg| \\
-& + \bigg|f_{ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) - 1, 0\}\bigg|\\ 
-& \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R},
+\bigg|f_{\mathrm{hat},y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq \bigg|&f_{\ReLU} \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) + 1, 0\}\bigg| \\ 
+& + 2 \cdot \bigg|f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) - \max\{\frac{M}{2a} \cdot (x - y), 0\}\bigg| \\
+& + \bigg|f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) - 1, 0\}\bigg|\\ 
+& \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R},
 \end{split}
 \end{equation*} 
 wobei die letzte Ungleichung daraus folgt, dass wir auf jeden Summanden mit $1 \leq a = M + 1$ Lemma \ref{lem:3} angewendet haben und die Abschätzung 
-$$ (M + 1)^3 = M^3 + 3 \cdot M^2 + 3 \cdot M + 1 \leq M^3 + 3 \cdot M^3 + 3 \cdot M ^3 + M^3 = 8 \cdot M^3 \quad (M \in \N)$$ verwendet haben.
+$$ (M + 1)^3 \leq (2M)^3 = 8M^3$$ verwendet haben, da $M \geq 1$ ist.
   \end{proof}
 Die nächsten Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres neuronale Netze Schätzers.. Diese Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt.
-\begin{lem}
+\begin{lem}[\cite{kohler19}, Lemma 5]
 \label{lem:5}
 Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig nach Definition \ref{nzulässig}. (AUF SCHREIBWEISE VON FNET AUFPASSEN)
 Sei $a \geq 1$ und 
 \begin{equation*}
 \begin{split}
-R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma, id})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma, id}|}, \\
-& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, id})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\}
+R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma, \id})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma, \id}|}, \\
+& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, \id})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\}
 \end{split}
 \end{equation*}
-und sei $y \in [-a, a]^d.$ Sei $N \in \N$ und $j_1,\dots,j_d \in \N_0$ so, dass $j_1 + \cdots + j_d \leq N$ gilt und wir setzen $s = \lceil\log_2(N + d)\rceil$. Sei $f_{id}, f_{mult}$ und $f_{hat, z}$ (für $z \in \R$) die neuronalen Netze wir in Lemma \ref{lem:1}, Lemma \ref{lem:2} und Lemma \ref{lem:4}. Wir definieren das Netz $f_{net,j_1,\dots,j_d,y}$ durch:
+und sei $y \in [-a, a]^d.$ Sei $N \in \N$ und $j_1,\dots,j_d \in \N_0$ so, dass $j_1 + \cdots + j_d \leq N$ gilt und wir setzen $s = \lceil\log_2(N + d)\rceil$. Sei $f_{\id}, f_{\mult}$ und $f_{\mathrm{hat}, z}$ (für $z \in \R$) die neuronalen Netze wir in Lemma \ref{lem:1}, Lemma \ref{lem:2} und Lemma \ref{lem:4}. Wir definieren das Netz $f_{net,j_1,\dots,j_d,y}$ durch:
 \begin{align*}
 \label{fnet}
 & f_{net,j_1,\dots,j_d,y}(x) = f_1^{(0)}(x). \\
-\intertext{wobei} \\
-& f_k^{(l)}(x) = f_{mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \\
-\intertext{für $k \in \{1, 2, \dots, 2^l \}$ und $l \in\{0,\dots,s - 1\}, $ und} \\
-& f_k^{(s)}(x) = f_{id}(f_{id}(x^{(l)} - y^{(l)}))  \\
-\intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $l = 1,\dots,d$ und} \\ 
-& f_{j_1 + j_2 + \dots + j_d + k}^{(s)}(x) = f_{hat,y^{(k)}}(x^{(k)}) \\
-\intertext{für $k = 1,\dots,d$ und} \\
+\intertext{wobei} 
+& f_k^{(l)}(x) = f_{\mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \\
+\intertext{für $1 \leq k \leq 2^l$ und $0 \leq l \leq s - 1$ und} 
+& f_k^{(s)}(x) = f_{\id}(f_{\id}(x^{(l)} - y^{(l)}))  \\
+\intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $1 \leq l \leq d$ und} 
+& f_{j_1 + j_2 + \dots + j_d + k}^{(s)}(x) = f_{\mathrm{hat},y^{(k)}}(x^{(k)}) \\
+\intertext{für $1 \leq k \leq d$ und} 
 & f_k^{(s)}(x) = 1 \\
-\intertext{für $k = j_1 + j_2 + \dots + j_d + d + 1,j_1 + j_2 + \dots + j_d + d + 2,\dots,2^s.$}
+\intertext{für $j_1 + j_2 + \dots + j_d + d + 1 \leq k \leq 2^s.$}
 \end{align*} 
 Dann erhalten wir für $x \in [-a, a]^d$:
 \begin{equation*}
@@ -369,7 +440,7 @@ Dann erhalten wir für $x \in [-a, a]^d$:
 \end{split}
 \end{equation*}
 \end{lem}
-  \begin{lem}
+  \begin{lem}[\cite{kohler19}, Lemma 8]
   \label{lem:8}
 Sei $\beta_n = c_6 \cdot \log(n)$ für eine hinreichend große Konstante $c_6 > 0$. Angenommen die Verteilung von $(X, Y)$ erfüllt 
 $$ \E\Big(\mathrm{e}^{c_4 \cdot |Y|^2}\Big) < \infty$$
@@ -393,12 +464,12 @@ Dann erfüllt $m_n\colon$
 für $n > 1$ und einer Konstante $c_{13} > 0$ welche nicht von $n$ abhängt. (DEFINITION VON LP-e-ÜBERDECKUNGSZAHLEN)
   \end{lem}
 Das nächste Lemma benötigen wir um eine Schranke für die Überdeckungszahl $\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)$ zu finden.
-\begin{lem}
+\begin{lem}[\cite{kohler19}, Lemma 9]
 \label{lem:9}
 Sei $a > 0$ und $d, N, J_n \in \N$ so, dass $J_n \leq n^{c_{14}}$ und setze $\beta_n = c_6 \cdot \log(n).$
 Sei $\sigma$ 2-zulässig nach Definition \ref{nzulässig}. Sei $\mathcal{F}$ die Menge aller Funktionen die durch (\ref{networkarch}) definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und dass der Betrag der Gewichte durch $c_{15} \cdot n^{c_{16}}$ beschränkt ist. Sei
 $$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{17} \cdot n^{c_{18}}\biggr\}.$$
 Dann gilt für $n > 1:$
-$$\log\bigg(supp_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\bigg)\bigg) \leq c_{19} \cdot \log(n) \cdot J_n,$$
+$$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\bigg)\bigg) \leq c_{19} \cdot \log(n) \cdot J_n,$$
 für eine Konstante $c_{19}$ die nur von $L, N, a$ und $d$ abhängt.
 \end{lem}
