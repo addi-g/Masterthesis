@@ -42,6 +42,7 @@ Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion ha
 Im Falle von $p \leq 1$ ist eine Funktion genau dann ($p, C$)-glatt, wenn sie hölderstetig ist mit Exponent $p$ und Hölderkonstante $C$.
 \end{bemnumber}
 
+
 Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen , ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder wiederum aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über seine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
 %\begin{figure}
 %    \centering
@@ -188,6 +189,33 @@ Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird $N$-zulässig 
 \end{defn}  
 
 In Lemma \ref{lem:logsquasher} werden wir zudem zeigen, dass der logistische squasher (\ref{logsquasher}) $N$-zulässig ist für beliebiges $N \in \N.$ 
+
+Als nächstes beschreiben wir Überdeckungszahlen, da wir im Beweis für unser Hauptresultat eine Abschätzung einer $L_p\text{-}\epsilon$-Überdeckungszahl anwenden.
+\begin{defn}
+\label{ueberdeckung}
+$(X, d)$ sei ein halbmetrischer Raum \cite{forster2016} . Für $x \in X$ und $\epsilon > 0$ sei:
+$$U_{\epsilon}(x) = \{z \in X : d(x, z) < \epsilon\}$$
+die Kugel um $x$ mit Radius $\epsilon$.
+\begin{itemize}
+\item[a)] $\{z_1,\dots,z_N\} \subseteq X$ heißt $\epsilon$\textit{-Überdeckung} einer Menge $A \subseteq X$, falls gilt:
+$$A \subseteq \bigcup_{k = 1}^N U_{\epsilon}(z_k).$$
+\item[b)] Ist $A \subseteq X$ und $\epsilon > 0$, so ist die sogenannte $\epsilon$\textit{-Überdeckungszahl} von $A$ in $(X,d)$ definiert als:
+$$\mathcal{N}_{(X,d)}(\epsilon, A) = \inf\big\{|U| : U \subseteq X \text{ ist } \epsilon\text{-Überdeckung von } A\big\}.$$   
+\end{itemize}
+\end{defn} 
+\begin{defn}
+\label{lpe}
+Sei $\mathcal{F}$ eine Menge von Funktionen $f\colon \R^d \to \R$, sei $\epsilon > 0$, $1 \leq p < \infty$ und seien $x_1,\dots,x_n \in \R^d$ und $x_1^n = (x_1,\dots,x_n).$ Dann ist die $L_p$-$\epsilon$\textit{-Überdeckungszahl} von $\mathcal{F}$ auf $x_1^n$ definiert durch:
+$$\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n) \coloneqq \mathcal{N}_{(X,d)}(\epsilon, \mathcal{F}),$$
+wobei der halbmetrische Raum $(X, d)$ gegeben ist durch
+\begin{itemize}
+\item $X = $ Menge aller Funktionen $f\colon \R^d \to \R$,
+\item $d(f, g) = d_p(f, g) = (\frac{1}{n}\sum_{i = 1}^n |f(x_i) - g(x_i)|^p)^{1/p} .$
+\end{itemize}
+\end{defn}
+In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimal $N \in \N$, so dass Funktionen $f_1,\dots,f_N\colon \R^d \to \R$ existieren mit der Eigenschaft, dass für jedes $f \in \mathcal{F}$ gilt:
+$$\min_{j = 1,\dots,N}(\frac{1}{n}\sum_{i = 1}^n|f(x_i) - f_j(x_i)|^p)^{1/p} < \epsilon.$$
+In Lemma \ref{lem:9} liefern wir ein Resultat zur Abschätzung einer $L_p$-$\epsilon$-Überdeckungszahl.
 
 \section{Hilfsresultate}
 \begin{lem}
@@ -464,7 +492,7 @@ erfüllt, mit
 $$\tilde{m}_n(\cdot) = \tilde{m}_n(\cdot,(X_1, Y_1),\dots,(X_n, Y_n)) \in \mathcal{F}_n$$
 und 
 $$\frac{1}{n} \sum_{i = 1}^n |Y_i - \tilde{m}_n(X_i)|^2 \leq \min_{l \in \Theta_n}\bigg(\frac{1}{n}\sum_{i = 1}^n |Y_i - g_{n,l}(X_i)|^2 + pen_n(g_n,l)\bigg)$$
-mit einer nichtleeren Parametermenge $\Theta_n$, zufällige Funktionen $g_{n,l}\colon \R^d \to \R$ und deterministischen penalty Termen $pen_n(g_{n,l}) \geq 0$, wobei die zufälligen Funktionen $g_{n,l}\colon \R^d \to \R$ nur von den Zufallsvariablen
+mit einer nichtleeren Parametermenge $\Theta_n$, zufällige Funktionen $g_{n,l}\colon \R^d \to \R$ und deterministischen penalty Terme $pen_n(g_{n,l}) \geq 0$, wobei die zufälligen Funktionen $g_{n,l}\colon \R^d \to \R$ nur von den Zufallsvariablen
 $$\mathbf{b}_1^{(1)},\dots,\mathbf{b}_r^{(1)},\dots,\mathbf{b}_1^{(I_n)},\dots,\mathbf{b}_r^{(I_n)},$$
 abhängen, die unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ sind.
 Dann erfüllt $m_n\colon$
@@ -475,7 +503,7 @@ Dann erfüllt $m_n\colon$
 & \quad + 2 \cdot \E\bigg(\min_{l \in \Theta_n} \int |g_{n,l}(x) - m(x)|^2 \mathds{P}_X(dx) + pen_n(g_{n,l})\bigg),
 \end{split}
 \end{equation*}
-für $n > 1$ und einer Konstante $c_{13} > 0$ welche nicht von $n$ abhängt. (DEFINITION VON LP-e-ÜBERDECKUNGSZAHLEN)
+für $n > 1$ und einer Konstante $c_{13} > 0$ welche nicht von $n$ abhängt.
   \end{lem}
 Das nächste Lemma benötigen wir um eine Schranke für die Überdeckungszahl $\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)$ zu finden.
 \begin{lem}[\cite{kohler19}, Lemma 9]

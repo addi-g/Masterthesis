@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  13 FEB 2020 12:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  13 FEB 2020 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1405,46 +1405,55 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ]
 [8]
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 1
-04.
+05.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 137--137
+Overfull \hbox (6.72pt too wide) in paragraph at lines 138--138
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 138.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 139.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 138.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 139.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 138.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 139.
 
-Overfull \hbox (1.3577pt too wide) in paragraph at lines 139--139
+Overfull \hbox (1.3577pt too wide) in paragraph at lines 140--140
  []\T1/ptm/m/n/10.95 (-20) Output 
  []
 
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 141--141
+Overfull \hbox (6.72pt too wide) in paragraph at lines 142--142
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 145--145
+Overfull \hbox (6.72pt too wide) in paragraph at lines 146--146
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 149--149
+Overfull \hbox (6.72pt too wide) in paragraph at lines 150--150
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
-[9]
-Overfull \hbox (11.33176pt too wide) in paragraph at lines 195--196
-[][]\T1/ptm/b/n/12 Lemma 1.4. []\T1/ptm/m/it/12 (-20) Sei $\OML/ztmcm/m/it/12 N
+[9] [10]
+Overfull \hbox (14.6357pt too wide) in paragraph at lines 216--217
+[]\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
+/n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
+ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-mal $\OML/ztmcm/m/it/12 N \O
+MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
+\OML/ztmcm/m/it/12 f[]; [] ; f[] [] [] \U/msb/m/n/12 R[] \OMS/ztmcm/m/n/12 !
+ []
+
+
+Overfull \hbox (11.33176pt too wide) in paragraph at lines 223--224
+[][]\T1/ptm/b/n/12 Lemma 1.6. []\T1/ptm/m/it/12 (-20) Sei $\OML/ztmcm/m/it/12 N
  \OMS/ztmcm/m/n/12 2 \U/msb/m/n/12 N[]$ \T1/ptm/m/it/12 (-20) be-lie-big, dann 
 er-füllt der lo-gis-ti-sche squas-her $\OML/ztmcm/m/it/12 ^^[ [] [] \U/msb/m/n/
 12 R \OMS/ztmcm/m/n/12 ! \OT1/ztmcm/m/n/12 [0\OML/ztmcm/m/it/12 ; \OT1/ztmcm/m/
@@ -1452,29 +1461,28 @@ n/12 1]\OML/ztmcm/m/it/12 ; ^^[\OT1/ztmcm/m/n/12 (\OML/ztmcm/m/it/12 x\OT1/ztmc
 m/m/n/12 ) =
  []
 
+[11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Underfull \vbox (badness 1082) has occurred while \output is active []
-
- [10]
-[11] [12] [13] [14]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 342
+ [12]
+[13] [14] [15]
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 370
 .
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [15] [16]
-Overfull \hbox (14.48154pt too wide) detected at line 408
+) [16] [17]
+Overfull \hbox (14.48154pt too wide) detected at line 436
 []
  []
 
-[17] [18] [19]
-Overfull \hbox (26.27444pt too wide) in paragraph at lines 480--481
+[18] [19] [20]
+Overfull \hbox (26.27444pt too wide) in paragraph at lines 508--509
 []\T1/ptm/m/n/12 (-20) Das nächs-te Lem-ma be-nö-ti-gen wir um ei-ne Schran-ke 
 für die Über-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OMS
 /ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
  []
 
-[20]) [21]
+) [21]
 \openout2 = `chap2.aux'.
 
  (./chap2.tex
@@ -1621,11 +1629,11 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 44739 strings out of 492162
- 945513 string characters out of 6125292
- 1437337 words of memory out of 5000000
- 47136 multiletter control sequences out of 15000+600000
- 102517 words of font info for 337 fonts, out of 8000000 for 9000
+ 44740 strings out of 492162
+ 945521 string characters out of 6125292
+ 1437363 words of memory out of 5000000
+ 47138 multiletter control sequences out of 15000+600000
+ 102292 words of font info for 335 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,21n,138p,1373b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -1648,9 +1656,9 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (55 pages, 543931 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (55 pages, 548640 bytes).
 PDF statistics:
- 1385 PDF objects out of 1440 (max. 8388607)
- 789 named destinations out of 1000 (max. 500000)
+ 1389 PDF objects out of 1440 (max. 8388607)
+ 791 named destinations out of 1000 (max. 500000)
  48246 words of extra memory for PDF output out of 51595 (max. 10000000)
 
