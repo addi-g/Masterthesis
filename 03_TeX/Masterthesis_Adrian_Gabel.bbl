@@ -22,6 +22,11 @@
   dynamic look-ahead Monte Carlo algorithm for pricing Bermudan options}.
 \newblock The Annals of Applied Probability, 17(4):1138--1171, 2007.
 
+\bibitem[For16]{forster2016}
+{\sc Forster, O.}: {\em Analysis 1 - Differential- und Integralrechnung einer
+  Veränderlichen}.
+\newblock Springer, Berlin, 2016.
+
 \bibitem[Gla13]{glasserman2013monte}
 {\sc Glasserman, P.}: {\em Monte Carlo methods in financial engineering},
   \btxvolumelong{}~53 \btxofserieslong{}\ {\em Stochastic Modelling and Applied

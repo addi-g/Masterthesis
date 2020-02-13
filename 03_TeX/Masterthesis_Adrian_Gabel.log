@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  11 FEB 2020 17:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  13 FEB 2020 09:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1395,7 +1395,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
  (./chap1.tex
 Kapitel 1.
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
-5.
+9.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [7
@@ -1404,53 +1404,46 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 
 ]
 [8]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 1
-02.
+04.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 102.
- [9]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
 
-LaTeX Warning: Reference `fig:DNN' on page 10 undefined on input line 108.
-
-
-Overfull \hbox (6.72pt too wide) in paragraph at lines 135--135
+Overfull \hbox (6.72pt too wide) in paragraph at lines 137--137
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 136.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 138.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 136.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 138.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 136.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 138.
 
-Overfull \hbox (1.3577pt too wide) in paragraph at lines 137--137
+Overfull \hbox (1.3577pt too wide) in paragraph at lines 139--139
  []\T1/ptm/m/n/10.95 (-20) Output 
  []
 
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 139--139
+Overfull \hbox (6.72pt too wide) in paragraph at lines 141--141
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 147--147
+Overfull \hbox (6.72pt too wide) in paragraph at lines 145--145
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
-[10]
-Overfull \hbox (11.33176pt too wide) in paragraph at lines 193--194
+
+Overfull \hbox (6.72pt too wide) in paragraph at lines 149--149
+ []\T1/ptm/m/n/12 (-20) ... 
+ []
+
+[9]
+Overfull \hbox (11.33176pt too wide) in paragraph at lines 195--196
 [][]\T1/ptm/b/n/12 Lemma 1.4. []\T1/ptm/m/it/12 (-20) Sei $\OML/ztmcm/m/it/12 N
  \OMS/ztmcm/m/n/12 2 \U/msb/m/n/12 N[]$ \T1/ptm/m/it/12 (-20) be-lie-big, dann 
 er-füllt der lo-gis-ti-sche squas-her $\OML/ztmcm/m/it/12 ^^[ [] [] \U/msb/m/n/
@@ -1459,23 +1452,24 @@ n/12 1]\OML/ztmcm/m/it/12 ; ^^[\OT1/ztmcm/m/n/12 (\OML/ztmcm/m/it/12 x\OT1/ztmc
 m/m/n/12 ) =
  []
 
-[11] [12]
 
-LaTeX Warning: Citation `forster' on page 13 undefined on input line 246.
+Underfull \vbox (badness 1082) has occurred while \output is active []
 
-[13] [14]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 329
+ [10]
+[11] [12] [13] [14]
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 342
 .
- (/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-[15] [16] [17]
-Overfull \hbox (14.48154pt too wide) detected at line 406
+) [15] [16]
+[17]
+Overfull \hbox (14.48154pt too wide) detected at line 419
 []
  []
 
 [18] [19]
-Overfull \hbox (26.27444pt too wide) in paragraph at lines 466--467
+Overfull \hbox (26.27444pt too wide) in paragraph at lines 479--480
 []\T1/ptm/m/n/12 (-20) Das nächs-te Lem-ma be-nö-ti-gen wir um ei-ne Schran-ke 
 für die Über-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OMS
 /ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
@@ -1617,24 +1611,21 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
 Package rerunfilecheck Info: File `Masterthesis_Adrian_Gabel.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: 5F8DB3FF8F9A584C0F9128011F13A0E0;776.
+(rerunfilecheck)             Checksum: B924FC270F0663A304B598EDBA726E2C;776.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 45028 strings out of 492162
- 950606 string characters out of 6125292
- 1440104 words of memory out of 5000000
- 47409 multiletter control sequences out of 15000+600000
- 120075 words of font info for 389 fonts, out of 8000000 for 9000
+ 44738 strings out of 492162
+ 945506 string characters out of 6125292
+ 1438122 words of memory out of 5000000
+ 47136 multiletter control sequences out of 15000+600000
+ 102517 words of font info for 337 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,21n,138p,1372b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,21n,138p,1373b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
  </Users/adrian/Library/texlive/2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm12
 .600pk>{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lo
@@ -1655,9 +1646,9 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (54 pages, 542000 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (54 pages, 542793 bytes).
 PDF statistics:
- 1376 PDF objects out of 1440 (max. 8388607)
+ 1379 PDF objects out of 1440 (max. 8388607)
  788 named destinations out of 1000 (max. 500000)
- 57462 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 48246 words of extra memory for PDF output out of 51595 (max. 10000000)
 

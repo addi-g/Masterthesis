@@ -3,13 +3,17 @@
 
 Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzer benötigen werden.
 
-In dieser Arbeit behandeln wir Neuronale-Netze-Regressionsschätzer im Kontext der nichtparametrischen Regression mit zufälligem Design. Im Gegensatz zur parametrischen Regression ist bei der nichtparametrischen die Bauart der zu schätzenden Funktion komplett unbekannt, was den Vorteil besitzt, dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt um eine Funktion zu schätzen.
+In dieser Arbeit behandeln wir Neuronale-Netze-Regressionsschätzer im Kontext der nichtparametrischen Regression mit zufälligem Design. 
+
+Im Gegensatz zur parametrischen Regression ist bei der nichtparametrischen die Bauart der zu schätzenden Funktion komplett unbekannt, was den Vorteil besitzt, dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt, um eine Funktion zu schätzen.
 
 Bei der nichtparametrischen Regressionsschätzung seien $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ unabhängig identisch verteilte (u.\@i.\@v.\@) $\R^d \times \R$-wertige Zufallsvariablen mit $\E[Y^2] < \infty$. Zudem sei $m\colon \R^d \to \R$ definiert durch $m(x) = \E[Y \mid X = x]$ die zugehörige Regressionsfunktion. Ausgehend von der Stichprobe
 $$ (X_1, Y_1),\dots,(X_n, Y_n)$$ 
 soll $m$ geschätzt werden.
 
-Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie folgt erläutern. In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten. Ziel ist es dann, daraus die Regressionsfunktion $m$ zu schätzen. Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein. 
+Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie folgt erläutern: 
+
+In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten. Ziel ist es dann, daraus die Regressionsfunktion $m$ zu schätzen. Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein. 
 
 Für das $L_2$-Risiko einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt$\colon$
 $$\E[|f(X) - Y|^2] = \E[|m(X) - Y|^2] + \int_{\R^d}|f(x) - m(x)|^2 \mathds{P}_X (dx),$$
@@ -38,72 +42,70 @@ Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion ha
 Im Falle von $p \leq 1$ ist eine Funktion genau dann ($p, C$)-glatt, wenn sie hölderstetig ist mit Exponent $p$ und Hölderkonstante $C$.
 \end{bemnumber}
 
-Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen , ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder wiederum aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über seine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem Neuronalen Netz ist der Ausgabeschicht, die hinter den verborgenen Schichten liegt und bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
-
-\begin{figure}
-    \centering
-    \begin{tikzpicture}[
-        % define styles    
-        init/.style={ 
-             draw, 
-             circle, 
-             inner sep=2pt,
-             font=\Huge,
-             join = by -latex
-        },
-        squa/.style={ 
-            font=\Large,
-            join = by -latex
-        }
-    ]
-        
-        % Top chain x1 to w1
-        \begin{scope}[start chain=1]
-            \node[on chain=1] at (0,1.5cm)  (x1) {$x_1$};
-            \node[on chain=1,join=by o-latex] (w1) {$w_1$};
-        \end{scope}
-        
-        % Middle chain x2 to output
-        \begin{scope}[start chain=2]
-            \node[on chain=2] (x2) {$x_2$};
-            \node[on chain=2,join=by o-latex] {$w_2$};
-            \node[on chain=2,init] (sigma) {$\displaystyle\Sigma$};
-            \node[on chain=2,squa,label=above:{\parbox{2cm}{\centering Activation\\ function}}]   {$f_{act}$};
-            \node[on chain=2,squa,label=above:Output,join=by -latex] {$y_{out}$};
-        \end{scope}
-        
-        % Bottom chain x3 to w3
-        \begin{scope}[start chain=3]
-            \node[on chain=3] at (0,-1.5cm) 
-            (x3) {$x_3$};
-            \node[on chain=3,label=below:Weights,join=by o-latex]
-            (w3) {$w_3$};
-        \end{scope}
-        
-        % Bias
-        \node[label=above:\parbox{2cm}{\centering Bias \\ $b$}] at (sigma|-w1) (b) {};
-        
-        % Arrows joining w1, w3 and b to sigma
-        \draw[-latex] (w1) -- (sigma);
-        \draw[-latex] (w3) -- (sigma);
-        \draw[o-latex] (b) -- (sigma);
-        
-        % left hand side brace
-        \draw[decorate,decoration={brace,mirror}] (x1.north west) -- node[left=10pt] {Inputs} (x3.south west);
-        
-    \end{tikzpicture}
-    
-    \caption{Neural network pipeline}
-    
-\end{figure}
-
+Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen , ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder wiederum aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über seine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
+%\begin{figure}
+%    \centering
+%    \begin{tikzpicture}[
+%        % define styles    
+%        init/.style={ 
+%             draw, 
+%             circle, 
+%             inner sep=2pt,
+%             font=\Huge,
+%             join = by -latex
+%        },
+%        squa/.style={ 
+%            font=\Large,
+%            join = by -latex
+%        }
+%    ]
+%        
+%        % Top chain x1 to w1
+%        \begin{scope}[start chain=1]
+%            \node[on chain=1] at (0,1.5cm)  (x1) {$x_1$};
+%            \node[on chain=1,join=by o-latex] (w1) {$w_1$};
+%        \end{scope}
+%        
+%        % Middle chain x2 to output
+%        \begin{scope}[start chain=2]
+%            \node[on chain=2] (x2) {$x_2$};
+%            \node[on chain=2,join=by o-latex] {$w_2$};
+%            \node[on chain=2,init] (sigma) {$\displaystyle\Sigma$};
+%            \node[on chain=2,squa,label=above:{\parbox{2cm}{\centering Activation\\ function}}]   {$f_{act}$};
+%            \node[on chain=2,squa,label=above:Output,join=by -latex] {$y_{out}$};
+%        \end{scope}
+%        
+%        % Bottom chain x3 to w3
+%        \begin{scope}[start chain=3]
+%            \node[on chain=3] at (0,-1.5cm) 
+%            (x3) {$x_3$};
+%            \node[on chain=3,label=below:Weights,join=by o-latex]
+%            (w3) {$w_3$};
+%        \end{scope}
+%        
+%        % Bias
+%        \node[label=above:\parbox{2cm}{\centering Bias \\ $b$}] at (sigma|-w1) (b) {};
+%        
+%        % Arrows joining w1, w3 and b to sigma
+%        \draw[-latex] (w1) -- (sigma);
+%        \draw[-latex] (w3) -- (sigma);
+%        \draw[o-latex] (b) -- (sigma);
+%        
+%        % left hand side brace
+%        \draw[decorate,decoration={brace,mirror}] (x1.north west) -- node[left=10pt] {Inputs} (x3.south west);
+%        
+%    \end{tikzpicture}
+%    
+%    \caption{Neural network pipeline}
+%    
+%\end{figure}
 Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 \begin{itemize}
-\item Wenn in einem neuronalen Netz die Information von der Eingabesicht über die verborgenen Schichten bis hin zur Ausgabeschicht in eine Richtung (\glqq vorwärts \grqq) weitergereicht wird, spricht man von einem \textit{feedforward} neuronalen Netz.
+\item Wenn in einem neuronalen Netz die Information von der Eingabesicht über die verborgenen Schichten bis hin zur Ausgabeschicht in eine Richtung (\glqq vorwärts\grqq) weitergereicht wird, spricht man von einem \textit{feedforward} neuronalen Netz.
 \item Ein neuronales Netz wird als ein \glqq vollständig verbundenes\grqq\@ (\textit{fully connected}) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der (letzten) verborgenen Schicht verbunden.
 \end{itemize}
 
-Da wir uns in dieser Arbeit mit neuronalen Netzen zur Regressionschätzung beschäftigen und Funktionswerte schätzen wollen, betrachten wir nur neuronale Netze die in der Ausgabeschicht ein einzelnes Neuron besitzen. 
+Da wir uns in dieser Arbeit mit neuronalen Netzen zur Regressionsschätzung beschäftigen und Funktionswerte schätzen wollen, betrachten wir nur neuronale Netze die in der Ausgabeschicht ein einzelnes Neuron besitzen. 
 
 Abbildung \ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$ verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
 \begin{center}
@@ -140,7 +142,7 @@ Abbildung \ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
                         & |[plain]| & |[plain]| & |[plain]|     &              \\
             |[plain]|   & |[plain]|   & |[plain]|  & |[plain]|                \\
                         & |[dot]|  & |[plain]| & |[dot]|    & |[dot]|      \\
-            |[plain]|   & |[dot]|   & |[plain]|  & |[dot]|       & |[dot]|     \\
+            |[plain]|   & |[dot]|   & |[plain]| \parbox{0cm}{\centering ...} & |[dot]|       & |[dot]|     \\
             |[dot]|     & |[dot]|  & |[plain]| & |[dot]|     & |[dot]|      \\
             |[dot]|     & |[plain]|    & |[plain]|   & |[plain]|       & |[plain]|    \\
             |[dot]|     & |[plain]| & |[plain]| & |[plain]|     &              \\
@@ -157,19 +159,19 @@ Abbildung \ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
             \foreach \ai in {3,11}
             {  
                 \draw[->] (mat-\ai-4) -- (mat-4-5);
-                \draw[->] (mat-4-5) -- node[above] {\small Output 1} +(2cm,0);\
             }
+            \draw[->] (mat-4-5) -- node[above] {\small Output 1} +(2.5cm,0);\
             \foreach \ai in {3,11}
             {
                 \draw[->] (mat-\ai-4) -- (mat-10-5);
-                \draw[->] (mat-10-5) -- node[above] {\small Output $n_{\mathrm{out}}$} +(2cm,0);
             }
+            \draw[->] (mat-10-5) -- node[above] {\small Output $n_{\mathrm{out}}$} +(2.5cm,0);
         \end{tikzpicture}
-        \caption{Fully connected feedforward neuronales Netz}
+        \caption{Fully connected feedforward neuronales Netz mit einer Eingabeschicht mit $n_{\mathrm{in}}$ Neuronen, $n_{\mathrm{lyr}}$ vielen verborgenen Schichten dessen Anzahl an Neuronen variieren kann und einer Ausgabeschicht bestehend aus $n_{\mathrm{out}}$ Neuronen.}
         \label{fig:DNN}
     \end{figure}
 \end{center}
-Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \glqq squashing functions\grqq\@ entschieden, welche eine monoton wachsend Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte sigmoidal bzw.\@ logistische squasher
+Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \textit{squashing functions} entschieden, welche eine monoton wachsend Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte sigmoidal bzw.\@ logistische squasher
 \begin{align}
 \label{logsquasher}
 \sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
@@ -177,7 +179,7 @@ Der Ausgangspunkt für die Definition eines neuronalen Netzes ist die Wahl einer
 
 \begin{defn}
 \label{nzulässig}
-Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird $N$-zulässig genannt, wenn sie monoton wachsend und lipschitzsteig (REFERENZ) ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind$\colon$
+Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird $N$-zulässig genannt, wenn sie monoton wachsend und lipschitzsteig \cite{forster2016} ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind$\colon$
 \begin{itemize}
 \item[(i)] Die Funktion $\sigma$ ist $N + 1$ mal stetig differenzierbar mit beschränkten Ableitungen.
 \item[(ii)] Es existiert ein Punkt $t_{\sigma} \in \R$, in welchem alle Ableitungen bis hin zur $N$-ten Ableitung von $\sigma$ ungleich Null sind.
@@ -243,7 +245,7 @@ Aus dieser Eigenschaft folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 =
 $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x|}.$$
 Damit haben wir alle drei Bedingungen aus Definition \ref{nzulässig} gezeigt und unsere Aussage bewiesen.
 \end{proof}
-\begin{lem}[Langrangesche Form des Restglieds \cite{forster}]
+\begin{lem}[Langrangesche Form des Restglieds \cite{forster2016}]
 \label{lem:lagrange}
 Sei $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi \in [u, x],$ so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
 \end{lem}
@@ -275,7 +277,18 @@ Mit $f_{\id}(0) = 0$ und $f_{\id}'(0) = 1$ erhalten wir:
   	\end{split}
   	\end{equation*}
   	Wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt und zudem aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt, dass $x^2 \leq a^2$ ist.
-  	\item[b)] Folgt analog wie in a) durch Lemma \ref{lem:lagrange}auf die Funktion $f_{\\sq}$ die hier nun 3-mal differenzierbar ist, da $\sigma$ nach Voraussetzung  3-mal stetig differenzierbar ist.
+  	\item[b)]  Die Funktion $f_{\sq}$ die hier nun 3-mal differenzierbar ist, da $\sigma$ nach Voraussetzung  3-mal stetig differenzierbar ist. Es wie in a) durch Lemma \ref{lem:lagrange} mit $f = f_{\sq}, N = 2, u = 0$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
+$$f_{\sq}(x) = \sum_{k = 0}^N \frac{f_{\sq}^{(k)}(u)}{k!}(x - u)^k + \frac{f_{\sq}^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
+Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
+\begin{equation*}
+  	\begin{split}
+  	 |f_{\sq}(x) -  & x^2| \\
+  	& = \bigg|x^2 + \frac{1}{6} \cdot \frac{R^2}{\sigma''(t_{\sigma,\sq})} \left(\frac{8}{R^3}\sigma'''(\frac{2\xi}{R} + t_{\sigma,\sq}) - \frac{2}{R^3} \sigma'''(\frac{\xi}{R} + t_{\sigma,\sq})\right) \cdot x^3 - x^2\bigg| \\
+  	& \leq \frac{a^3}{6 \cdot |\sigma''(t_{\sigma,\sq})|} \cdot \frac{1}{R} \cdot \left(8 \cdot |\sigma'''(\frac{2\xi}{R} + t_{\sigma,\sq})| + 2 |\sigma(\frac{\xi}{R} + t_{\sigma,\sq})|\right) \\
+  	& \leq \frac{10 \cdot a^3}{6 \cdot |\sigma''(t_{\sigma,\sq})|} \cdot \frac{1}{R} \cdot \|\sigma'''\|_{\infty} \\
+  	& = \frac{5 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma, \sq})|} \cdot \frac{1}{R}. 
+  	\end{split}
+  	\end{equation*}
  	\end{itemize}
 \end{proof}
 

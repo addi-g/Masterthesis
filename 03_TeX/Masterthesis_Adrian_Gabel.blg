@@ -13,7 +13,6 @@ The style file: geralpha.bst
 A level-1 auxiliary file: appendix.aux
 Database file #1: Masterthesis_Adrian_Gabel.bib
 Warning--I didn't find a database entry for "forster"
-Warning--I didn't find a database entry for "kohler"
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1296 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
@@ -25,45 +24,45 @@ Too many commas in name 1 of "Devroye L., Karasözen, B., Kohler, M. AND Korn, R
 while executing---line 1361 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1361 of file geralpha.bst
-You've used 15 entries,
+You've used 16 entries,
             2768 wiz_defined-function locations,
-            710 strings with 7439 characters,
-and the built_in function-call counts, 5424 in all, are:
-= -- 541
-> -- 206
-< -- 12
-+ -- 64
-- -- 62
-* -- 407
-:= -- 864
-add.period$ -- 31
-call.type$ -- 15
-change.case$ -- 67
-chr.to.int$ -- 15
-cite$ -- 16
-duplicate$ -- 262
-empty$ -- 448
-format.name$ -- 84
-if$ -- 1149
+            713 strings with 7528 characters,
+and the built_in function-call counts, 5706 in all, are:
+= -- 567
+> -- 214
+< -- 13
++ -- 66
+- -- 64
+* -- 424
+:= -- 909
+add.period$ -- 33
+call.type$ -- 16
+change.case$ -- 71
+chr.to.int$ -- 16
+cite$ -- 17
+duplicate$ -- 279
+empty$ -- 475
+format.name$ -- 88
+if$ -- 1209
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 27
-newline$ -- 64
-num.names$ -- 47
-pop$ -- 92
+missing$ -- 29
+newline$ -- 68
+num.names$ -- 50
+pop$ -- 100
 preamble$ -- 1
-purify$ -- 97
+purify$ -- 103
 quote$ -- 0
-skip$ -- 203
+skip$ -- 214
 stack$ -- 0
-substring$ -- 237
-swap$ -- 52
-text.length$ -- 12
-text.prefix$ -- 8
+substring$ -- 244
+swap$ -- 54
+text.length$ -- 13
+text.prefix$ -- 9
 top$ -- 0
-type$ -- 88
+type$ -- 92
 warning$ -- 1
-while$ -- 48
-width$ -- 18
-write$ -- 185
+while$ -- 50
+width$ -- 19
+write$ -- 197
 (There were 5 error messages)

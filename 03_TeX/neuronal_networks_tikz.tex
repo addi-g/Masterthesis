@@ -1,0 +1,334 @@
+%NEURONALE NETZE
+
+%f_{hat}
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=8.5pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-11pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 1} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 2} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+& |[plain]| & |[plain]| & \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+};
+  \draw[<-] (mat-14-1) -- node[above] {$x$} +(-1cm,0);
+\foreach \ai in {14}
+{\foreach \aii in {4,6,13,15,22,24}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}  
+\foreach \ai in {4,6}
+{\foreach \aii in {2,4,6,8}
+  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
+}
+\foreach \ai in {13,15}
+{\foreach \aii in {11,13,15,17}
+  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
+}
+\foreach \ai in {22,24}
+{\foreach \aii in {20,22,24,26}
+  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
+}
+\foreach \ai in {2,4,6,8,11,13,15,17,20,22,24,26}
+  \draw[->] (mat-\ai-3) -- (mat-14-4);
+\draw[->] (mat-14-4) -- node[above] {$f_{\mathrm{hat},y}(x)$} +(2.5cm,0);
+\end{tikzpicture}
+
+\caption{Neuronales Netz $f_{\mathrm{hat},y}(x) = ...$}
+\label{fig_m_3}
+\end{figure}
+
+
+%f_{ReLU}
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=8.5pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-11pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 1} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 2} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+& |[plain]| & |[plain]| & \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+};
+  \draw[<-] (mat-5-1) -- node[above] {$x$} +(-1cm,0);
+\foreach \ai in {5}
+{\foreach \aii in {4,6}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}  
+\foreach \ai in {4,6}
+{\foreach \aii in {2,4,6,8}
+  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
+}
+\foreach \ai in {2,4,6,8}
+  \draw[->] (mat-\ai-3) -- (mat-5-4);
+\draw[->] (mat-5-4) -- node[above] {$f_{\ReLU}(x, y)$} +(2.5cm,0);
+\end{tikzpicture}
+
+\caption{Neuronales Netz $f_{\ReLU}(x) = ...$}
+\label{fig_m_3}
+\end{figure}
+
+
+%f_{mult}
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=8.5pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-11pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1cm}{\centering Hidden\\layer} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+|[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| \\
+& & |[plain]| \\
+|[plain]| & |[plain]| & \\
+& & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| \\
+|[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| \\
+};
+  \draw[<-] (mat-4-1) -- node[above] {$x$} +(-1cm,0);
+  \draw[<-] (mat-6-1) -- node[above] {$y$} +(-1cm,0);
+\foreach \ai in {4,6}
+{\foreach \aii in {2,4,6,8}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}
+\foreach \ai in {2,4,6,8}
+  \draw[->] (mat-\ai-2) -- (mat-5-3);
+\draw[->] (mat-5-3) -- node[above] {$f_{\mult}(x, y)$} +(2.5cm,0);
+\end{tikzpicture}
+
+\caption{Neuronales Netz $f_{\mult}(x) = ...$}
+\label{fig_m_3}
+\end{figure}
+
+
+%f_{\id}
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=8.5pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-11pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1cm}{\centering Hidden\\layer} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+& & \\
+};
+\foreach \ai [count=\mi ]in {2}
+  \draw[<-] (mat-\ai-1) -- node[above] {Input feature \mi} +(-3cm,0);
+\foreach \ai in {2}
+{\foreach \aii in {2}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}
+\foreach \ai in {2}
+  \draw[->] (mat-\ai-2) -- (mat-2-3);
+\draw[->] (mat-2-3) -- node[above] {Output 1} +(2cm,0);
+\end{tikzpicture}
+
+\caption{Neuronales Netz $f_{\id}(x) = 4R \cdot \sigma(\frac{x}{R}) - 2R$}
+\label{fig_m_3}
+\end{figure}
+
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=8.5pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-11pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1cm}{\centering Hidden\\layer} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+& |[plain]| \\
+|[plain]| & \\
+&  \\
+|[plain]| & |[plain]| \\
+& & \\
+|[plain]| & |[plain]| \\
+& |[plain]| \\
+|[plain]| & \\
+& |[plain]| \\
+};
+\foreach \ai [count=\mi ]in {2,4,...,10}
+  \draw[<-] (mat-\ai-1) -- node[above] {I\mi} +(-1cm,0);
+\foreach \ai in {2,4,...,10}
+{\foreach \aii in {3,6,9}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}
+\foreach \ai in {3,6,9}
+  \draw[->] (mat-\ai-2) -- (mat-6-3);
+\draw[->] (mat-6-3) -- node[above] {O1} +(1cm,0);
+\end{tikzpicture}
+
+\caption{ANN diagram for Speed Sign recognition.}
+\label{fig_m_3}
+\end{figure}
+
+
+
+
+\begin{center}
+    \begin{figure}
+        \begin{tikzpicture}[
+            plain/.style={
+              draw=none,
+              fill=none,
+              },
+            dot/.style={draw,shape=circle,minimum size=3pt,inner sep=0,fill=black
+              },
+            net/.style={
+              matrix of nodes,
+              nodes={
+                draw,
+                circle,
+                inner sep=8.5pt
+                },
+              nodes in empty cells,
+              column sep=0.1cm,
+              row sep=-11pt
+              },
+            >=latex
+            ]
+            \matrix[net] (mat)
+            {
+            |[plain]| \parbox{1cm}{\centering \small Input\\layer} 
+                        & |[plain]| \parbox{1.2cm}{\centering \small Hidden\\layer 1} 
+                                    &  |[plain]| \parbox{0cm}{\centering ...} 
+                                                &  |[plain]| \parbox{1.4cm}{\centering \small Hidden\\layer $n_{\mathrm{lyr}}$} 
+                                                                & |[plain]| \parbox{1cm}{\centering \small Output\\layer} \\
+                        & |[plain]| & |[plain]| & |[plain]|     & |[plain]|                                   \\
+            |[plain]|   &           &  |[plain]| \parbox{0cm}{\centering ...}  &               & |[plain]|    \\
+                        & |[plain]| & |[plain]| & |[plain]|     &              \\
+            |[plain]|   & |[plain]|   & |[plain]|  & |[plain]|                \\
+                        & |[dot]|  & |[plain]| & |[dot]|    & |[dot]|      \\
+            |[plain]|   & |[dot]|   & |[plain]|  & |[dot]|       & |[dot]|     \\
+            |[dot]|     & |[dot]|  & |[plain]| & |[dot]|     & |[dot]|      \\
+            |[dot]|     & |[plain]|    & |[plain]|   & |[plain]|       & |[plain]|    \\
+            |[dot]|     & |[plain]| & |[plain]| & |[plain]|     &              \\
+            |[plain]|   &           &  |[plain]| \parbox{0cm}{\centering ...}  &               & |[plain]|    \\
+                        & |[plain]| & |[plain]|            \\
+            };
+            \foreach \ai/\mi in {2/\small Input feature 1,4/\small Input feature 2,6/ \small Input feature 3,12/\small Input feature $n_{\mathrm{in}}$}
+              \draw[<-] (mat-\ai-1) -- node[above] {\mi} +(-3cm,0);
+
+            \foreach \ai in {2,4,6,12}
+            {\foreach \aii/\mii in {3/,11/ }
+                \draw[->] (mat-\ai-1) -- (mat-\aii-2) node[yshift=0cm] {\mii};
+            }
+            \foreach \ai in {3,11}
+            {  
+                \draw[->] (mat-\ai-4) -- (mat-4-5);
+                \draw[->] (mat-4-5) -- node[above] {\small Output 1} +(2cm,0);\
+            }
+            \foreach \ai in {3,11}
+            {
+                \draw[->] (mat-\ai-4) -- (mat-10-5);
+                \draw[->] (mat-10-5) -- node[above] {\small Output $n_{\mathrm{out}}$} +(2cm,0);
+            }
+        \end{tikzpicture}
+        \caption{Fully connected feedforward neuronales Netz}
+        \label{fig:DNN}
+    \end{figure}
+\end{center}
