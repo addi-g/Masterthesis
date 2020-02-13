@@ -265,8 +265,8 @@ Sei $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und 
 \end{lem}
 \begin{proof}
 	\begin{itemize}
-  	\item[a)] Wir wissen, dass $f_{\id}$ 2-mal differenzierbar ist, da nach Vorraussetzung $\sigma$ 2-mal stetig differenzierbar ist. Damit folgt mit Lemma \ref{lem:lagrange} für $f = f_{\id}, N = 1, u = 0$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
-$$f_{\id}(x) = \sum_{k = 0}^N \frac{f_{\id}^{(k)}(u)}{k!}(x - u)^k + \frac{f_{\id}^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
+  	\item[a)] Wir wissen, dass $f_{\id}$ 2-mal differenzierbar ist, da nach Vorraussetzung $\sigma$ 2-mal stetig differenzierbar ist. Damit folgt mit Lemma \ref{lem:lagrange} für $f = f_{\id}, N = 1$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
+$$f_{\id}(x) = \sum_{k = 0}^N \frac{f_{\id}^{(k)}(0)}{k!}x^k + \frac{f_{\id}^{(N + 1)}(\xi)}{(N + 1)!}x^{N + 1}.$$
 Mit $f_{\id}(0) = 0$ und $f_{\id}'(0) = 1$ erhalten wir:
   	\begin{equation*}
   	\begin{split}
@@ -277,14 +277,14 @@ Mit $f_{\id}(0) = 0$ und $f_{\id}'(0) = 1$ erhalten wir:
   	\end{split}
   	\end{equation*}
   	Wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt und zudem aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt, dass $x^2 \leq a^2$ ist.
-  	\item[b)]  Die Funktion $f_{\sq}$ die hier nun 3-mal differenzierbar ist, da $\sigma$ nach Voraussetzung  3-mal stetig differenzierbar ist. Es wie in a) durch Lemma \ref{lem:lagrange} mit $f = f_{\sq}, N = 2, u = 0$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
-$$f_{\sq}(x) = \sum_{k = 0}^N \frac{f_{\sq}^{(k)}(u)}{k!}(x - u)^k + \frac{f_{\sq}^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
+  	\item[b)]  Die Funktion $f_{\sq}$ die hier nun 3-mal differenzierbar ist, da $\sigma$ nach Voraussetzung  3-mal stetig differenzierbar ist. Es wie in a) durch Lemma \ref{lem:lagrange} mit $f = f_{\sq}, N = 2$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
+$$f_{\sq}(x) = \sum_{k = 0}^N \frac{f_{\sq}^{(k)}(0)}{k!}x^k + \frac{f_{\sq}^{(N + 1)}(\xi)}{(N + 1)!}x^{N + 1}.$$
 Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
 \begin{equation*}
   	\begin{split}
   	 |f_{\sq}(x) -  & x^2| \\
   	& = \bigg|x^2 + \frac{1}{6} \cdot \frac{R^2}{\sigma''(t_{\sigma,\sq})} \left(\frac{8}{R^3}\sigma'''(\frac{2\xi}{R} + t_{\sigma,\sq}) - \frac{2}{R^3} \sigma'''(\frac{\xi}{R} + t_{\sigma,\sq})\right) \cdot x^3 - x^2\bigg| \\
-  	& \leq \frac{a^3}{6 \cdot |\sigma''(t_{\sigma,\sq})|} \cdot \frac{1}{R} \cdot \left(8 \cdot |\sigma'''(\frac{2\xi}{R} + t_{\sigma,\sq})| + 2 |\sigma(\frac{\xi}{R} + t_{\sigma,\sq})|\right) \\
+  	& \leq \frac{a^3}{6 \cdot |\sigma''(t_{\sigma,\sq})|} \cdot \frac{1}{R} \cdot \left(8 \cdot |\sigma'''(\frac{2\xi}{R} + t_{\sigma,\sq})| + 2 |\sigma'''(\frac{\xi}{R} + t_{\sigma,\sq})|\right) \\
   	& \leq \frac{10 \cdot a^3}{6 \cdot |\sigma''(t_{\sigma,\sq})|} \cdot \frac{1}{R} \cdot \|\sigma'''\|_{\infty} \\
   	& = \frac{5 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma, \sq})|} \cdot \frac{1}{R}. 
   	\end{split}
@@ -315,7 +315,7 @@ Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
   & = \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R},
   \end{split}
 \end{equation*}   
-wobei bei bei der letzten Ungleichung verwendet haben, dass $a > 0$ nach Lemma \ref{lem:1}b) beliebig gewählt wurde und daher insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{\sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}$$ gilt. 
+wobei wir bei der letzten Ungleichung verwendet haben, dass $a > 0$ nach Lemma \ref{lem:1}b) beliebig gewählt wurde und daher insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{\sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}$$ gilt. 
   \end{proof}
   \begin{lem}
   \label{lem:3}
@@ -392,23 +392,12 @@ Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, (\ref{lem:3:Vor2}, z
   $$\bigg|f_{\mathrm{hat},y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, \id}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R}.$$
   \end{lem}
   \begin{proof}
-  Als erstes zeigen wir 
+  Für $x \in \R$ gilt die Gleichung:
 \begin{equation}
 \label{lem:4:eq}
- (1 - \frac{M}{2a} \cdot |x|)_+ = \max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}, \qquad (x \in \R)
+ (1 - \frac{M}{2a} \cdot |x|)_+ = \max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}, 
  \end{equation}  
- damit wir das Resultat mithilfe von Lemma \ref{lem:3} beweisen können.
-  Um die obige Gleichung zu zeigen unterscheiden wir vier Fälle.
-  \begin{itemize}
-  \item[Fall 1] ($x < 0$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden 0 sind. Es erfordert hier eine weitere Fallunterscheidung.
- \item[Fall 1.1] ($0 > x \geq -\frac{2a}{M}$) In diesem Fall gilt für die linke und rechte Seite:
- $$\max\{1 + \frac{M}{2a} \cdot x, 0\} = 1 + \frac{M}{2a} \cdot x.$$
- \item[Fall 1.2] ($x < -\frac{2a}{M}$) In diesem Fall sind beide Seiten gleich 0, da $1 + \frac{M}{2a} \cdot x \leq 0$ ist. $\hfill(\square)$
-  \item[Fall 2] ($x \geq 0$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}$$ und erfordert daher eine weitere Fallunterscheidung.
- \item[Fall 2.1] ($0 \leq x < \frac{2a}{M}$) In diesem Fall hat die linke Seite die Gestalt $$1 - \frac{M}{2a} \cdot x$$ und die rechte Seite die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a} \cdot x.$$ und stimmt daher mit der linken Seite überein.
- \item[Fall 2.2] ($x \geq \frac{2a}{M}$) In diesem ist die linke Seite gleich 0, da $1 - \frac{M}{2a} \cdot x < 0$ ist und die rechte Seite bestitz die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0.$$ $\hfill(\square)$
-\end{itemize} 
-Durch diese Fallunterscheidung wurde die Gleichung (\ref{lem:4:eq}) bewiesen. Daraus folgt mit der Definition von $f_{\mathrm{hat},y}(x)$ und zwei mal der Dreiecksungleichung
+die wir im zweiten Teil dieses Beweises zeigen werden. Damit beweisen wir das Resultat mit Hilfe von Lemma \ref{lem:3}, denn mit der Definition von $f_{\mathrm{hat},y}(x)$ und zwei mal der Dreiecksungleichung folgt:
 \begin{equation*}
 \begin{split}
 \bigg|f_{\mathrm{hat},y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq \bigg|&f_{\ReLU} \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) + 1, 0\}\bigg| \\ 
@@ -418,7 +407,19 @@ Durch diese Fallunterscheidung wurde die Gleichung (\ref{lem:4:eq}) bewiesen. Da
 \end{split}
 \end{equation*} 
 wobei die letzte Ungleichung daraus folgt, dass wir auf jeden Summanden mit $1 \leq a = M + 1$ Lemma \ref{lem:3} angewendet haben und die Abschätzung 
-$$ (M + 1)^3 \leq (2M)^3 = 8M^3$$ verwendet haben, da $M \geq 1$ ist.
+$$ (M + 1)^3 \leq (2M)^3 = 8M^3$$ verwendet haben, da $M \geq 1$ ist. $\hfill(\square)$
+
+Um Gleichung (\ref{lem:4:eq}) zu zeigen unterscheiden wir vier Fälle.
+  \begin{itemize}
+  \item[Fall 1] ($x < 0$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden 0 sind. Es erfordert hier eine weitere Fallunterscheidung.
+ \item[Fall 1.1] ($0 > x \geq -\frac{2a}{M}$) In diesem Fall gilt für die linke und rechte Seite:
+ $$\max\{1 + \frac{M}{2a} \cdot x, 0\} = 1 + \frac{M}{2a} \cdot x.$$
+ \item[Fall 1.2] ($x < -\frac{2a}{M}$) In diesem Fall sind beide Seiten gleich 0, da $1 + \frac{M}{2a} \cdot x \leq 0$ ist. $\hfill(\square)$
+  \item[Fall 2] ($x \geq 0$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}$$ und erfordert daher eine weitere Fallunterscheidung.
+ \item[Fall 2.1] ($0 \leq x < \frac{2a}{M}$) In diesem Fall hat die linke Seite die Gestalt $$1 - \frac{M}{2a} \cdot x$$ und die rechte Seite die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a} \cdot x.$$ und stimmt daher mit der linken Seite überein.
+ \item[Fall 2.2] ($x \geq \frac{2a}{M}$) In diesem ist die linke Seite gleich 0, da $1 - \frac{M}{2a} \cdot x < 0$ ist und die rechte Seite bestitz die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0.$$ $\hfill(\square)$
+\end{itemize} 
+Durch diese Fallunterscheidung wurde die Gleichung (\ref{lem:4:eq}) bewiesen und damit ist der Beweis vollständig.
   \end{proof}
 Die nächsten Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres neuronale Netze Schätzers.. Diese Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt.
 \begin{lem}[\cite{kohler19}, Lemma 5]
