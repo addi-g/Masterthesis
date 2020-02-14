@@ -44,7 +44,51 @@ Wir zeigen im folgenden Lemma dass $P(x)$ eine lokale Konvexkombination von Tayl
 Sei $a >0, M \in \N$ und $$P(x) = \sum_{k = 1}^{(M + 1)^d} p_{\mathbf{i}_k}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$ mit $p_{\mathbf{i}_k}(x)$ wie oben, dann ist $P(x)$ eine lokale Konvexkombination von Taylorpolynomen von m.
 \end{lem}
 \begin{proof}
-Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$ und $M = 3$ eine Skizze an um die Idee des Beweises zu veranschaulichen. (SKIZZE EINFÜGEN)
+Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$ und $M = 3$ eine Skizze an um die Idee des Beweises zu veranschaulichen. 
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture} 
+   %Raster zeichnen 
+   %\draw [color=gray!50]  [step=20mm] (-3,-3) grid (4,4); 
+   \draw [color=gray!50] (0,0) -- (6,0) -- (6,6) -- (0,6) -- (0,0);			
+   \draw [color=gray!50] (0,2) -- (6,2);
+   \draw [color=gray!50] (0,4) -- (6,4);
+        \draw [color=gray!50] (2,6) -- (2,0);
+                \draw [color=gray!50] (4,6) -- (4,0);
+
+	\fill[black] (0,0) circle (0.08cm) node[label=below:{$(-a, -a)$}]{};
+		\fill[black] (6,0) circle (0.08cm) node[label=below:{$(a, -a)$}]{};
+				\fill[black] (0,6) circle (0.08cm) node[label=above:{$(-a, a)$}]{};
+						\fill[black] (6,6) circle (0.08cm) node[label=above:{$(a, a)$}]{};
+						\fill[black] (0,0) circle (0.00cm) node[label=left:{$x_{\mathbf{i}_1}$}]{};
+						\fill[black] (2,0) circle (0.00cm) node[label=below:{$x_{\mathbf{i}_2}$}]{};
+						\fill[black] (4,0) circle (0.00cm) node[label=below:{$x_{\mathbf{i}_3}$}]{};
+						\fill[black] (6,0) circle (0.00cm) node[label=right:{$x_{\mathbf{i}_4}$}]{};
+
+						\fill[black] (9,6) circle (0.00cm) node[label=right:{$\mathbf{i}_1 = (0, 0)$}]{};			
+						\fill[black] (9,5.5) circle (0.00cm) node[label=right:{$\mathbf{i}_2 = (1, 0)$}]{};					
+						\fill[black] (9,5) circle (0.00cm) node[label=right:{$\mathbf{i}_3 = (2, 0)$}]{};	
+						\fill[black] (9,4.5) circle (0.00cm) node[label=right:{$\mathbf{i}_4 = (3, 0)$}]{};	
+						\draw [dotted, ultra thick] (10,4) -- (10,3.65);
+						\fill[black] (9,3.15) circle (0.00cm) node[label=right:{$\mathbf{i}_{16} = (3, 3)$}]{};	
+						
+						\fill[black] (0,2) circle (0.08cm);
+						\fill[black] (0,4) circle (0.08cm); 
+						\fill[black] (2,2) circle (0.08cm);
+						\fill[black] (2,4) circle (0.08cm);
+						\fill[black] (2,6) circle (0.08cm);
+						\fill[black] (2,0) circle (0.08cm);
+						\fill[black] (0,4) circle (0.08cm);
+						\fill[black] (2,4) circle (0.08cm);
+						\fill[black] (4,4) circle (0.08cm);
+						\fill[black] (4,6) circle (0.08cm);																\fill[black] (4,0) circle (0.08cm);
+						\fill[black] (4,2) circle (0.08cm);						
+						\fill[black] (6,2) circle (0.08cm);
+						\fill[black] (6,4) circle (0.08cm);
+\end{tikzpicture}
+\caption{Beispielhafte Darstellung der $x_{\mathbf{i}_k}$ für $d = 2$ und $M = 3$.}
+\label{fig:gitter}
+\end{figure}
 Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nähesten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}_k}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
 
 \textbf{i)} Im folgenden wollen wir $$\sum_{k = 1}^{(M + 1)^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ = 1,$$ per Induktion über $d$ zeigen. 
@@ -127,9 +171,9 @@ wobei wir bei der letzten Gleichung  Bedingung \textbf{i)} aus dem Beweis von Le
 $P(x)$ lässt sich in die Form 
 $$\sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$
 durch geeignet gewählte $a_{\mathbf{i}_k,j_1,\dots,j_d} \in \R$ bringen.
-Als nächstes wollen wir geeignete neuronale Netze $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$ definieren, die die Funktionen
+Als nächstes wollen wir geeignete neuronale Netze $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ definieren, die die Funktionen
 $$x \mapsto (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur so wählen, dass neuronale Netze der Form
-$$\sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) \qquad (a_{\mathbf{i}_k,j_1,\dots,j_d} \in \R)$$ in ihr enthalten sind.
+$$\sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{\net,j_1,\dots,j_d,\mathbf{i}_k}(x) \qquad (a_{\mathbf{i}_k,j_1,\dots,j_d} \in \R)$$ in ihr enthalten sind.
 Um dies zu erreichen, sei $\sigma(x) = \frac{1}{(1 + \exp(-x))} \quad (x \in \R)$ der logistische Squasher (\ref{logsquasher}), wählen $R \geq 1$ und definieren die folgenden neuronale Netze$\colon$
 Das neuronale Netz
 \begin{equation}
@@ -181,7 +225,7 @@ Das neuronale Netz
 \begin{equation}
 \label{def:fmult}
 \begin{split}
-f_{mult}(x, y) = \frac{R^2}{4} \cdot \frac{(1 + \exp(- 1))^3}{\exp(-2) - \exp(-1)} \cdot & \bigg(\sigma\Big(\frac{2(x + y)}{R} + 1\Big) - 2 \cdot \sigma \Big(\frac{x + y}{R} + 1\Big) \\
+f_{\mult}(x, y) = \frac{R^2}{4} \cdot \frac{(1 + \exp(- 1))^3}{\exp(-2) - \exp(-1)} \cdot & \bigg(\sigma\Big(\frac{2(x + y)}{R} + 1\Big) - 2 \cdot \sigma \Big(\frac{x + y}{R} + 1\Big) \\
 & - \sigma\Big(\frac{2(x - y)}{R} + 1\Big) + 2 \cdot \sigma\Big(\frac{x - y}{R} + 1\Big)\bigg),
 \end{split}
 \end{equation}
@@ -235,7 +279,7 @@ net/.style={
 Das neuronale Netz 
 \begin{equation}
 \label{def:frelu}
-f_{ReLu}(x) = f_{mult}(f_{\id}(x), \sigma(R \cdot x)),
+f_{ReLu}(x) = f_{\mult}(f_{\id}(x), \sigma(R \cdot x)),
 \end{equation}
 welches, wie in Lemma \ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und in Abbildung \ref{fig:frelu} veranschaulicht wird
 \begin{figure}[htp]
@@ -289,7 +333,7 @@ net/.style={
 und schließlich noch das neuronale Netz 
 \begin{equation}
 \label{def:fhat}
-f_{hat,y}(x) = f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) +  f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg),
+f_{\mathrm{hat},y}(x) = f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) +  f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg),
 \end{equation}
 welches, wie in Lemma \ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung \ref{fig:fhat} veranschaulicht wird.
 \begin{figure}[htp]
@@ -360,38 +404,42 @@ net/.style={
 }
 \foreach \ai in {2,4,6,8,11,13,15,17,20,22,24,26}
   \draw[->] (mat-\ai-3) -- (mat-14-4);
-\draw[->] (mat-14-4) -- node[above] {$f_{\mathrm{hat},y}(x)$} +(2.5cm,0);
+\draw[->] (mat-14-4) -- node[above] {$f_{\mathrm{\mathrm{hat}},y}(x)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\mathrm{hat},y}(x) = ...$}
+\caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x) = ...$}
 \label{fig:fhat}
 \end{figure} 
-Mit diesen neuronalen Netzen können wir nun $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $j_1,\dots,j_d \in \{0, 1,\dots, N\}$ und $k \in \{1,\dots,(M + 1)^d\}\colon$  
+Mit diesen neuronalen Netzen können wir nun $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $j_1,\dots,j_d \in \{0, 1,\dots, N\}$ und $k \in \{1,\dots,(M + 1)^d\}\colon$  
 \begin{align}
 \label{fnet}
-f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) & = f_1^{(0)}(x). \nonumber
+f_{\net,j_1,\dots,j_d,\mathbf{i}_k}(x) & = f_1^{(0)}(x). \nonumber
 \intertext{wobei} \nonumber
-f_k^{(l)}(x) & = f_{mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \nonumber
+f_k^{(l)}(x) & = f_{\mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \nonumber
 \intertext{für $k \in \{1, 2, \dots, 2^l \}$ und $l \in\{0,\dots,s - 1\}, $ und}
 f_k^{(s)}(x) & = f_{\id}(f_{\id}(x^{(l)} - x_{\mathbf{i}_k}^{(l)})) \nonumber
 \intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $1 \leq l \leq d$ und}
-f_{j_1 + j_2 + \dots + j_d + k}^{(s)}(x) & = f_{hat, x_{\mathbf{i}_k}^{(k)}}(x^{(k)})
+f_{j_1 + j_2 + \dots + j_d + k}^{(s)}(x) & = f_{\mathrm{hat}, x_{\mathbf{i}_k}^{(k)}}(x^{(k)})
 \intertext{für $1 \leq k \leq d$ und}
 f_k^{(s)}(x) & = 1 \nonumber
 \end{align} 
 für $j_1 + j_2 + \dots + j_d + d + 1 \leq k \leq 2^s.$
  
-ANZAHL DER SCHICHTEN UND NEURONEN PRO SCHICHT ERLÄUTERN.
-Da das neuronale Netz $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$ aus mehrere neuronalen Netzen zusammengebaut wurden lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Durch (\ref{fnet}) erkennt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$, hat. Da $f_{\mathrm{hat}}$ zwei verbogene Schichten besitzt ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$. Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... 
-Da man bei fully connencted neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, sind auch nicht fully connected neuronale Netze in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, enthalten und damit auch insbesondere $f_{net,j_1,\dots,j_d,\mathbf{i}_k}$.
-
+Da das neuronale Netz $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ aus mehrere neuronalen Netzen zusammengebaut wurden lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Durch (\ref{fnet}) erkennt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$, hat. Da $f_{\mathrm{hat}}$ zwei verbogene Schichten besitzt ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$. Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... 
+Die Anzahl der Neuronen pro verborgener Schicht von $f_{\mathrm{net}}$ ergeben sich wie folgt:
+\begin{itemize}
+\item Die erste verborgene Schicht enthält maximal $3 \cdot 2 \cdot 2^s = 6 \cdot 2^s$ Neuronen, da dies die erste verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$ mal aufgerufen wird. 
+\item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
+\item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2 \cdot 2^s, 2^s, \dots, 8, 4$, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
+\end{itemize}  
+Da man bei fully connencted neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log(N + d) + 1} = 24 \cdot (N + d)$$ gilt.
 
 \section{Definition der Gewichte der Ausgabeschicht}
 
 Wir definieren unseren neuronale Netze Regressionsschätzer $\tilde{m}_n(x)$ durch$\colon$
 \begin{equation}
 \label{estimate}
-\tilde{m}_n(x) = \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,N\} \\j_1+\dots +j_d \leq N}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x),
+\tilde{m}_n(x) = \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,N\} \\j_1+\dots +j_d \leq N}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{\net,j_1,\dots,j_d,\mathbf{i}_k}(x),
 \end{equation}
 wobei wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ durch Minimierung von 
 \begin{equation}
@@ -399,7 +447,7 @@ wobei wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ durch Minimierung v
 \end{equation}
 für eine Konstante $c_3 > 0.$ Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung eine linearen Gleichungssystems. Dafür definieren wir uns 
 \begin{align*} 
-\{B_j \mid j = 1,\dots,J\} = \Bigl\{f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) \mid 1\leq k \leq (1 + M)^d \quad \text{und} \quad 0 \leq j_1 + \cdots + j_d \leq N \Bigr\}
+\{B_j \mid j = 1,\dots,J\} = \Bigl\{f_{\net,j_1,\dots,j_d,\mathbf{i}_k}(x) \mid 1\leq k \leq (1 + M)^d \quad \text{und} \quad 0 \leq j_1 + \cdots + j_d \leq N \Bigr\}
 \end{align*}
 wobei
 $$ J = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist.

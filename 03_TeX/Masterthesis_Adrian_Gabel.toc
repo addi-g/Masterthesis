@@ -6,8 +6,8 @@
 \contentsline {section}{\numberline {1.2}Hilfsresultate}{11}{section.1.2}%
 \contentsline {chapter}{\numberline {2}Konstruktion des Neuronale Netze Schätzers}{22}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Definition der Netzwerkarchitektur}{23}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Definition der Gewichte der Ausgabeschicht}{30}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{33}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{43}{chapter.4}%
-\contentsline {chapter}{Literaturverzeichnis}{47}{chapter*.10}%
-\contentsline {chapter}{Appendix}{48}{chapter*.11}%
+\contentsline {section}{\numberline {2.2}Definition der Gewichte der Ausgabeschicht}{32}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{34}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{44}{chapter.4}%
+\contentsline {chapter}{Literaturverzeichnis}{48}{chapter*.11}%
+\contentsline {chapter}{Appendix}{49}{chapter*.12}%
