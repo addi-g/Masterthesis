@@ -7,17 +7,17 @@ unseren Regressionsschätzer konstruieren.
 
 Die Netzwerkarchitektur $(L, k)$ hängt von einer positiven ganzen Zahl $L$, die der Anzahl der verborgenen Schichten ist und einem Vektor $k = (k_1,\dots,k_L) \in \N^L$, der mit jeder Kombonente die Anzahl der Neuronen in der jeweiligen verborgen Schichte angibt. 
 
-Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, k)$ und dem logistischen squasher (\ref{logsquasher}) als Aktivierungsfunktion, ist eine reelwertige Funktion $f\colon \R^d \to \R$ definiert durch$\colon$
-
+Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, k)$ und dem logistischen squasher (\ref{logsquasher}) als Aktivierungsfunktion, ist eine reelwertige Funktion $f\colon \R^d \to \R$ definiert durch:
 \begin{align}
 \label{networkarch}
 f(x) & = \sum_{i = 1}^{k_L} c_i^{(L)} \cdot f_i^{(L)}(x) + c_0^{(L)} \nonumber \\
-\intertext{für $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ rekursiv definiert durch$\colon$} \nonumber \\
-f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j^{(r - 1)}(x) + c_{i,0}^{(r - 1)} \bigg) \nonumber \\
-\intertext{für $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R (r = 2,\dots, L)$ und$\colon$} \\
-f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber \\
-\intertext{für $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.} \nonumber
+\intertext{für $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ rekursiv definiert durch$\colon$} 
+f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j^{(r - 1)}(x) + c_{i,0}^{(r - 1)} \bigg)\\
+\intertext{für $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R (r = 2,\dots, L)$ und$\colon$}
+f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber
 \end{align} 
+für $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.
+
 Bei neuronale Netze Regressionsschätzer wählt man keine Aktivierungsfunktion mehr, da wir einen Funktionswert schätzen wollen nichts mit einer Wahrscheinlichkeit klassifizieren möchten. (REFERENZ)
 
 Für die Konstruktion unseren Schätzers verwenden wir die gegebene Datenmenge $\mathcal{D}$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzungen für die Regressionsfunktion ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht in dem wir mit unserer Datenmenge ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
@@ -89,7 +89,7 @@ Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$
 \caption{Beispielhafte Darstellung der $x_{\mathbf{i}_k}$ für $d = 2$ und $M = 3$.}
 \label{fig:gitter}
 \end{figure}
-Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nähesten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}_k}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
+Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nahesten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}_k}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
 
 \textbf{i)} Im folgenden wollen wir $$\sum_{k = 1}^{(M + 1)^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ = 1,$$ per Induktion über $d$ zeigen. 
 	
