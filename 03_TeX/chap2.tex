@@ -5,7 +5,7 @@ In diesem Kapitel werden wir mithilfe von unseren gegebenen Datenmenge
 $$ \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},$$
 unseren Regressionsschätzer konstruieren. 
 
-Die Netzwerkarchitektur $(L, k)$ hängt von einer positiven ganzen Zahl $L$, die der Anzahl der verborgenen Schichten ist und einem Vektor $k = (k_1,\dots,k_L) \in \N^L$, der mit jeder Kombonente die Anzahl der Neuronen in der jeweiligen verborgen Schichte angibt. 
+Die Netzwerkarchitektur $(L, k)$ hängt von einer positiven ganzen Zahl $L$, die der Anzahl der verborgenen Schichten ist und einem Vektor $k = (k_1,\dots,k_L) \in \N^L$, der mit jeder Komponente die Anzahl der Neuronen in der jeweiligen verborgen Schichte angibt. 
 
 Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, k)$ und dem logistischen squasher (\ref{logsquasher}) als Aktivierungsfunktion, ist eine reelwertige Funktion $f\colon \R^d \to \R$ definiert durch:
 \begin{align}
@@ -18,30 +18,34 @@ f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{
 \end{align} 
 für $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.
 
-Bei neuronale Netze Regressionsschätzer wählt man keine Aktivierungsfunktion mehr, da wir einen Funktionswert schätzen wollen nichts mit einer Wahrscheinlichkeit klassifizieren möchten. (REFERENZ)
+Bei neuronale Netze Regressionsschätzer wir für die Ausgabeschicht keine Aktivierungsfunktion gewählt, da wir Funktionswerte schätzen möchten und es sich hier nicht um ein Klassifizierungssproblem handelt.
 
-Für die Konstruktion unseren Schätzers verwenden wir die gegebene Datenmenge $\mathcal{D}$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzungen für die Regressionsfunktion ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht in dem wir mit unserer Datenmenge ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
+Für die Konstruktion unseres Schätzers verwenden wir die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzungen für die Regressionsfunktion ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
 \section{Definition der Netzwerkarchitektur}
-Sei $a > 0$ fest. Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale Konvexkombination von Taylorpolynomen für $(p,C)$-glatte Funktionen für $x \in [-a, a]^d$ motiviert. 
-Sei dafür $M \in \N$ und $\mathbf{i} = (i^{(1)},\dots,i^{(d)}) \in \{0,\dots, M\}^d$, sei
-$$x_{\mathbf{i}} = \bigg( -a + i^{(1)} \cdot \frac{2a}{M},\dots, -a + i^{(d)} \cdot \frac{2a}{M}\bigg)$$
+Sei $a > 0$ fest und $M \in \N$. Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale Konvexkombination von Taylorpolynomen für $(p,C)$-glatte Funktionen auf dem Intervall $[-a, a]^d$ motiviert.
+Sei $[M]^d \coloneqq\{0, 1, \dots, M\}^d = \{\mathbf{i}_1,\dots, \mathbf{i}_{(M + 1)^d}\}.$ 
+
+Für $(\mathbf{i}^{(1)},\dots,\mathbf{i}^{(d)}) = \bi \in [M]^d$ und $x \in \R^d$ definieren wir
+$$|\mathbf{i}|_1 \coloneqq \sum_{k= 1}^d \mathbf{i}^{(k)} \quad \mathbf{i}! \coloneqq \mathbf{i}^{(1)}! \cdots \, \mathbf{i}^{(d)}! \quad x^{\mathbf{i}} \coloneqq x_1^{\mathbf{i}^{(1)}} \cdots \,    x_d^{\mathbf{i}^{(d)}}.$$
+Für $f\colon \R^d \to \R$ ausreichend oft differenzierbar definieren wir 
+$$\partial^{\mathbf{i}}f(x) \coloneqq \frac{\partial^{|\mathbf{i}|_1}f}{\partial x_1^{\mathbf{i}^{(1)}} \cdots \, \partial x_d^{\mathbf{i}^{(d)}}} (x).$$
+Wir betrachten im Folgenden ein $d$-dimensionales äquidistantes Gitter im Würfel $[-a, a]^d$ mit Schrittweite $\frac{2a}{M}.$ Die Gitterpunkte haben für $\bi \in [M]^d$ die Gestalt:
+$$x_{\bi} = \bigg( -a + \bi^{(1)} \cdot \frac{2a}{M},\dots, -a + \bi^{(d)} \cdot \frac{2a}{M}\bigg) = -\mathbf{a} + \frac{2a}{M} \cdot \bi,$$
+mit $\mathbf{a} = (a, a, \dots, a) \in \R^d$.
+Hiermit lässt sich das Taylorpolynom von $m$ der Ordnung $q$ im Entwicklungspunkt $x_{\bi}$ schreiben als
+$$p_{\bi}(x) = \sum_{\substack{\mathbf{j} \in \{0,\dots,q\}^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}m(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}$$
 und sei
-$$\{\mathbf{i}_1,\dots, \mathbf{i}_{(M + 1)^d}\} = \{0,\dots,M\}^d,$$
-d.h.  $\mathbf{i}_1,\dots,\mathbf{
-i}_{(M + 1)^d}$ sind insgesamt $M + 1$ Vektoren der Dimension $d$, wobei jede Komponente aus der Menge $\{0,\dots,M\}$ ausgewählt wurde.
-Für $k \in \{1,\dots,(M + 1)^d\}$ sei
-$$p_{\mathbf{i}_k}(x) = \sum_{\substack{j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d}$$
-das Taylorpolynom von $m$ der Ordnung $q$ im Entwicklungspunkt $x_{\mathbf{i}_k}$ und sei
 \begin{equation}
 \label{konvexkomb}
-P(x) = \sum_{k = 1}^{(M + 1)^d} p_{\mathbf{i}_k}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+,
+P(x) = \sum_{\bi \in [M]^d} p_{\bi}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.
 \end{equation}
- mit $z_+ = \max\{z, 0\} (z \in \R).$
-Wir zeigen im folgenden Lemma dass $P(x)$ eine lokale Konvexkombination von Taylorpolynomen von m ist.
-\begin{lem}
+Wir zeigen im folgenden Lemma dass $P(x)$ eine lokale Spline Interpolation von Taylorpolynomen von m ist.
+\begin{lem}[Multilineare Spline Interpolation]
 \label{lem:loccon}
-Sei $a >0, M \in \N$ und $$P(x) = \sum_{k = 1}^{(M + 1)^d} p_{\mathbf{i}_k}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$ mit $p_{\mathbf{i}_k}(x)$ wie oben, dann ist $P(x)$ eine lokale Konvexkombination von Taylorpolynomen von m.
+Sei $a >0, M \in \N$ und $$P(x) = \sum_{\bi \in [M]^d} p_{\bi}(x) \cdot B_{\bi}(x).$$ mit $p_{\mathbf{i}}(x)$ wie oben und 
+$$B_{\bi}(x) = \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+,$$
+dann ist $P(x)$ eine lokale Spline Interpolation von Taylorpolynomen von m.
 \end{lem}
 \begin{proof}
 Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$ und $M = 3$ eine Skizze an um die Idee des Beweises zu veranschaulichen. 
@@ -89,83 +93,91 @@ Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$
 \caption{Beispielhafte Darstellung der $x_{\mathbf{i}_k}$ für $d = 2$ und $M = 3$.}
 \label{fig:gitter}
 \end{figure}
-Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nahesten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}_k}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
+Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nahesten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
 
-\textbf{i)} Im folgenden wollen wir $$\sum_{k = 1}^{(M + 1)^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ = 1,$$ per Induktion über $d$ zeigen. 
+\textbf{•} Im Folgenden wollen wir 
+\begin{equation}
+\label{induktiongl1}
+\sum_{\bi \in [M]^d} B_{\bi}(x) = 1 \quad (x \in \R^d)
+\end{equation}
+per Induktion über $d$ zeigen. 
 	
-	 \emph{Induktionsanfang} (IA): Für $d = 1$ kann nur zwischen zwei Gitterpunkten liegen und mit der obigen Begründung ist der Rest gleich Null, daher nehmen wir oBdA an, dass $x$ zwischen $x_{\mathbf{i}_1}$ und $x_{\mathbf{i}_2}$ liegt. 
+	 \emph{Induktionsanfang} (IA): Für $d = 1$ kann nur zwischen zwei Gitterpunkten liegen und mit der obigen Begründung ist der Rest gleich Null, daher nehmen wir oBdA an, dass $x_{\mathbf{i}_1}\leq x \leq x_{\mathbf{i}_2}$. 
 	Damit folgt 
 	\begin{equation*}
 	\begin{split}
-	\sum_{k = 1}^{(M + 1)} (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_k}|)_+ & = (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_1}|)_+ + (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_2}|)_+ \\
-	& = 1 + 1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_1} + x_{\mathbf{i}_2} - x| \\
+	\sum_{\bi \in [M]^d} (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}}|)_+ & = (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_1}|)_+ + (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_2}|)_+ \\
+	& = 1 + 1 - \frac{M}{2a} \cdot (x - x_{\mathbf{i}_1} + x_{\mathbf{i}_2} - x) \\
 	& = 1 + 1 - \frac{M}{2a} \cdot \frac{2a}{M} \\
 	& = 1,
 	\end{split}
-	\end{equation*} wobei wir unter anderem verwendet haben, dass beide Summenden unabhängig von dem Positivteil nichtnegativ sind, da der Abstand von $x$ zu den beiden Gitterpunkten $x_{\mathbf{i}_1}$ und$ x_{\mathbf{i}_2}$ kleiner gleich $\frac{2a}{M}$ ist. Zudem haben wir verwendet, dass $x_{\mathbf{i}_2} - x_{\mathbf{i}_1} = \frac{2a}{M}$ gilt, da beides Gitterpunkte sind.     
+	\end{equation*} wobei wir unter anderem verwendet haben, dass beide Summanden unabhängig von dem Positivteil nichtnegativ sind, da der Abstand von $x$ zu den beiden Gitterpunkten $x_{\mathbf{i}_1}$ und$ x_{\mathbf{i}_2}$ kleiner gleich $\frac{2a}{M}$ ist. Zudem haben wir verwendet, dass $x_{\mathbf{i}_2} - x_{\mathbf{i}_1} = \frac{2a}{M}$ gilt, da beides Gitterpunkte sind.     
 	
-\emph{Induktionshypothese} (IH): Aussage \textbf{i)} gilt für eine beliebiges aber festes $d \in \N.$
+\emph{Induktionshypothese} (IH): Aussage (\ref{induktiongl1}) gelte für ein beliebiges aber festes $d \in \N.$
 
-\emph{Induktionsschritt} (IS): Wir nehmen oBdA. an, dass $x_{(0,\dots,0) \leq x \leq x_{(1,\dots,1}}$ gilt, mit $\mathbf{i}_1 = (0,\dots,0)$ und $\mathbf{i}_{(M + 1)}^{d + 1} = (1,\dots,1).$ Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im folgenden zeigen wir $$\sum_{k = 1}^{(M + 1)^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ = 1.$$
-Alle Summanden sind Null, wenn $|x^{(j)} - x_{\mathbf{i}_k}^{(j)}| \geq \frac{2a}{M}$ ist. Zudem haben wir oBdA angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, nämlich die Anzahl der Gitterpunkte die am nähesten zu $x$ sind. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$ Komponente den selben Wert haben, sind in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|)$ bzw. $(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|)$ vor, da 
+\emph{Induktionsschritt} (IS): Wir nehmen oBdA an, dass $x_{(0,\dots,0)} \leq x \leq x_{(1,\dots,1)}$ gilt, mit $\mathbf{i}_1 = (0,\dots,0)$ und $\mathbf{i}_{(M + 1)^{(d + 1)}} = (1,\dots,1).$ Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im Folgenden zeigen wir $$\sum_{\bi \in [M]^{(d + 1)}} B_{\bi}(x) = \sum_{\bi \in [M]^{(d + 1)}}\prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big|\bigg)_+ = 1.$$
+Ein Summand ist Null, wenn $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$ ist. Zudem haben wir oBdA angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nahesten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$ Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw. $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
 \begin{equation*}
-(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_i^{(d + 1)}|) = \begin{cases}
-(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|) &\text{$i \in \{0, 1\}^d \times \{0\}$}\\
-(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|) &\text{$i \in \{0, 1\}^d \times \{1\}$}
+\bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_\mathbf{i}^{(d + 1)}\Big|\bigg) = \begin{cases}
+(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|) &\text{$\mathbf{i} \in \{0, 1\}^d \times \{0\}$}\\
+(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|) &\text{$\mathbf{i} \in \{0, 1\}^d \times \{1\}$}
 \end{cases}
 \end{equation*}
 daraus ergibt sich$\colon$
 \begin{equation*}
 \begin{split}
-\sum_{k = 1}^{(M + 1)^{d + 1}} & \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \\
-& = \sum_{i \in \{0, 1\}^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg) \\
-& = \Bigg(\sum_{i \in \{0, 1\}^d \times \{0\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) \\
-& \qquad + \Bigg(\sum_{i \in \{0, 1\}^d \times \{1\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_i^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
+\sum_{\bi \in [M]^{(d + 1)}} & \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
+& = \sum_{\mathbf{i} \in \{0, 1\}^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\bi}^{(j)}|\bigg) \\
+& = \Bigg(\sum_{\mathbf{i} \in \{0, 1\}^d \times \{0\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\bi}^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) \\
+& \qquad + \Bigg(\sum_{\mathbf{i} \in \{0, 1\}^d \times \{1\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\bi}^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
 & \stackrel{(IV)}{=} 1 \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) + 1 \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
 & = 1 + 1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} + x_{(1,\dots,1)}^{(d + 1)} - x^{(d + 1)}| \\
 & = 1 + 1 - 1 \\
 & = 1,
 \end{split}
 \end{equation*}
-wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)} - x_{(0,\dots,0)} = \frac{2a}{M}$ ist, da beides Gitterpunkte sind.  $\hfill(\square)$ 		
+wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)}^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} = \frac{2a}{M}$ ist, da beides Gitterpunkte sind.  $\hfill(\square)$ 		
 		
-\textbf{ii)} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \geq 0$ für alle $k = 1,\dots, (M + 1)^d$, da $$z_+= \max\{z, 0\} \geq 0 (z \in \R)$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{k = 1}^{(M + 1)^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$ größer gleich Null und wegen i) muss dann auch $$\prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \leq 1$$ gelten.
+\textbf{•} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \quad (z \in \R)$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ größer gleich Null und wegen (\ref{induktiongl1}) muss dann auch 
+\begin{equation}
+\label{induktiongl2}
+\prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \leq 1
+\end{equation}
+gelten.
 
-\textbf{iii)} Es handelt sich hierbei um eine lokale Konvexität, da die Bedingungen \textbf{i)} und \textbf{ii)} für alle $x \in [-a, a]$ gelten.
+\textbf{•} Es handelt sich hierbei um eine lokale Konvexität, da die Bedingungen (\ref{induktiongl1}) und (\ref{induktiongl2}) für alle $x \in [-a, a]^d$ gelten.
 \end{proof}
-Als nächstes zeigen wir ein Resultat für $(p, C)$-glatte Funktion welches wir im weiteren Verlauf dieser Arbeit wieder benötigen werden.
+Als nächstes zeigen wir ein Resultat für $(p, C)$-glatte Funktionen, welches wir im weiteren Verlauf dieser Arbeit wieder benötigen werden.
 \begin{lem}
 \label{lem:pcsmooth}
-Sei $M \in \N$, $c_1$ eine Konstante, $a > 0$ und $m$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$. Sei zudem $P(x)$ wie in (\ref{konvexkomb}) eine lokale Konvexkombination von Taylorpolynomen von $m$. Dann gilt$\colon$
-$$\sup_{x \in [-a, a]^d} |m(x) - P(x)|  \leq c_1 \cdot \frac{1}{M^p}.$$
+Sei $M \in \N$, $c_1$ eine Konstante, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$. Sei zudem $P(x)$ analog wie in (\ref{konvexkomb}) eine lokale Spline Interpolation von Taylorpolynomen von $f$. Dann gilt$\colon$
+$$\sup_{x \in [-a, a]^d} |f(x) - P(x)|  \leq c_1 \cdot \frac{1}{M^p}.$$
 \end{lem}
 \begin{proof}
-Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\xi \in [x, x_{\mathbf{i}_k}],$ so, dass 
+Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\xi \in [0, 1],$ so, dass 
 \begin{equation*}
 \begin{split}
-m(x) & = T_{x_{\mathbf{i}_k},q - 1}[m(x)] \\
-& = \sum_{\substack{j_1,\dots,j_d \in \{0,\dots,q - 1\} \\j_1+\dots +j_d \leq q - 1}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(x_{\mathbf{i}_k})}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}} \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \\
- & \quad + \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(\xi)}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d}.
+f(x) & = T_{x_{\mathbf{i}},q - 1}[f(x)] \\
+& = \sum_{|\bj|_1 \leq q - 1}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x^{(1)} - x_{\mathbf{i}}^{(1)})^{\bj} }{\bj!} + \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x^{(1)} - x_{\mathbf{i}}^{(1)})^{\bj} }{\bj!}.
 \end{split}
 \end{equation*}
-Nach dem Beweis von Lemma \ref{konvexkomb} \textbf{i)} erhalten wir 
-$$m(x) = \sum_{k = 1}^{(M + 1)^d} m(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+.$$ Zudem wissen wir dass man immer den Abstand zu den nähesten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}_k}^{(j)}$ größer als $\frac{2a}{M}$ ist, daher ergibt sich$\colon$
+Nach (\ref{induktiongl1}) erhalten wir 
+$$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.$$ Zudem wissen wir dass man immer den Abstand zu den nahesten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist, daher ergibt sich:
 \begin{equation*}
 \begin{split}
-& \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(\xi)}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \\
-& \qquad \leq \sum_{\substack{q - 1 < j_1,\dots,j_d \leq q \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m(\xi)}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}\cdot \bigg(\frac{2a}{M}\bigg)^q
+&\sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x^{(1)} - x_{\mathbf{i}}^{(1)})^{\bj} }{\bj!} \leq \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{1}{\bj!} \cdot \bigg(\frac{2a}{M}\bigg)^q
 \end{split}
 \end{equation*} 
-und folgern mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit von $m\colon$
+und folgern mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit von $f$:
 \begin{equation*}
 \begin{split}
-|m(x) - P(x)| & \leq \sum_{k = 1}^{(M + 1)^d} |m(x) - p_{\mathbf{i}_k}| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \\
-& \leq \bigg(\frac{2a}{M}\bigg)^q \|\xi - x_{\mathbf{i}_k}\|^s \cdot C \cdot \sum_{k = 1}^{(M + 1)^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+ \\
+|f(x) - P(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in \{0,\dots,q\}^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
+& \leq \bigg(\frac{2a}{M}\bigg)^q \|\xi(x - x_{\mathbf{i}}) \|^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & = C \cdot \bigg(\frac{2a}{M}\bigg)^p \\
 & = c_1 \cdot \frac{1}{M^p},
 \end{split}
 \end{equation*}
-wobei wir bei der letzten Gleichung  Bedingung \textbf{i)} aus dem Beweis von Lemma \ref{konvexkomb} und $q + s = p$ verwendet haben.
+wobei wir bei der letzten Gleichheit Bedingung (\ref{induktiongl1}) und $q + s = p$ verwendet haben.
 \end{proof}
 
 $P(x)$ lässt sich in die Form 
@@ -432,7 +444,7 @@ Die Anzahl der Neuronen pro verborgener Schicht von $f_{\mathrm{net}}$ ergeben s
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
 \item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2 \cdot 2^s, 2^s, \dots, 8, 4$, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
 \end{itemize}  
-Da man bei fully connencted neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log(N + d) + 1} = 24 \cdot (N + d)$$ gilt.
+Da man bei fully connencted neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log(N + d) + 1} = 24 \cdot (N + d)$$ gilt. DIE GEWICHTE SIND BESCHRÄNKT DURCH ::: TBD
 
 \section{Definition der Gewichte der Ausgabeschicht}
 
