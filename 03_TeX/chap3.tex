@@ -21,32 +21,31 @@ wobei $c_7 > 0$ ist und nicht von $n$ abhängt.
 Nach Voraussetzung wissen wir, dass $supp(\mathds{P}_X)$ beschränkt ist, daher nehmen wir ohne Beschränkung der Allgemeinheit an, dass $supp(X) = \{x \mid \mathds{P}_X(x) > 0\} \subseteq [-a_n, a_n]^d$ ist, da $\mathds{P}(X \in supp\mathds{P}_X)) = 1$ gilt und wir ansonsten die Zufallsvariable $X$ auf Nullmengen abändern können. Zudem haben wir angenommen, dass $m$ $(p,C)$-glatt und damit insbesondere hölderstetig mit $q = 0$ ist. Daraus können wir auf die gleichmäßige Stetigkeit von $m$ schließen \cite{Storch2018}. Da wir nur über den beschränkten $supp(\mathds{P}_X)$ integrieren, wissen wir, dass $m$ als gleichmäßig stetige Funktion auf einer beschränkten Menge auch beschränkt ist \cite{Storch2018}. Wir können daher ohne Beschränkung der Allgemeinheit folgern, dass $\|m\|_{\infty} \leq \beta_n$ ist, da aufgrund der Beschränktheit von $m$, ebenfalls $|m|$ beschränkt ist und wir daher ansonsten eine Skalierung von $m$ nehmen können.
 
 Sei $\mathcal{F}$ die durch \ref{networkarch} definierte Menge von Funktionen mit $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und der Eigenschaft, dass der Betrag der Gewichte durch $n^{c_{20}}$ beschränkt ist. Sei 
-$$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{21} \cdot n \biggr\}$$
+$$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j \mid f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{21} \cdot n \biggr\}$$
 wobei $c_{21}$ in (\ref{constantc21}) gewählt wird und
-$$J_n = (M_n + 1)^d \cdot |\{(j_1,\dots,j_d) : j_1,\dots,j_d \in \{0,\dots,N\}, j_1 + \cdots j_d \leq N\}|,$$ 
+$$J_n = (M_n + 1)^d \cdot \big|\{\bj \mid \bj \in [N]^d, |\bj|_1 \leq N\}\big|,$$ 
 die Kardinalität der Menge $\mathcal{F}^{(J_n)}$ ist. 
-Ohne die Restriktion $j_1 + \cdots j_d \leq N$ lässt sich $$|\{(j_1,\dots,j_d) : j_1,\dots,j_d \in \{0,\dots,N\}|$$ durch eine Analogie zu  einem Urnenexperiment bestimmten. Wir betrachten die Anzahl an Möglichkeiten, wie man $d$-Mal mit Zurücklegen (da auch mehrere Komponenten den gleichen Wert haben können) und mit Beachtung der Reihenfolge (da wir einen Vektor betrachten und die Komponenten nicht vertauschen können) aus $(N + 1)$ Kugeln ziehen kann. Durch das Weglassen der Restriktion $j_1 + \cdots j_d \leq N$ erhalten wir:
+Ohne die Restriktion $|\bj|_1 \leq N$ lässt sich $$\big|\{\bj \mid \bj \in [N]^d\}\big|$$ durch eine Analogie zu  einem Urnenexperiment bestimmten. Wir betrachten die Anzahl an Möglichkeiten, wie man $d$-Mal mit Zurücklegen (da auch mehrere Komponenten den gleichen Wert haben können) und mit Beachtung der Reihenfolge (da wir einen Vektor betrachten und die Komponenten nicht vertauschen können) aus $(N + 1)$ Kugeln ziehen kann. Durch das Weglassen der Restriktion $|\bj|_1 \leq N$ erhalten wir:
 \begin{equation}
 \label{jn}
 J_n \leq (M_n + 1)^d \cdot (N + 1)^d.
 \end{equation}
-Da nach Voraussetzung $m$ $(p,C)$-glatt ist, und $x_{\mathbf{i}_k} \in \R^d$ für alle $k = 1,\dots,(M_n + 1)^d$, folgt:
+Da nach Voraussetzung $m$ $(p,C)$-glatt ist, und $x_{\mathbf{i}}   \in \R^d$ für alle $\bi \in [M]^d$, folgt:
 \begin{equation}
 \label{bound}
-\max_{k \in \{1,\dots,(M_n + 1)^d\}, j_1,\dots,j_d \in\{0,\dots,q\}, j_1+\cdots+j_d \leq q} \bigg| \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg| < \infty,
+\max_{\bi \in [M]^d,\, \bj \in [q]^d,\, |\bj|_1 \leq q} \big|\partial^{\bj}m(x_{\mathbf{i}})\big| < \infty,
 \end{equation}
 denn das größte Elemente muss auch beschränkt sein, wenn der Abstand zweier beliebiger Elemente beschränkt ist.
 Da wir uns in der nichtparametrischen Regressionsschätzung befinden und dafür als Bedingung $\E[Y^2] < \infty$ gelten muss, wählen wir mit dem bisher gezeigten:
 \begin{equation}
 \label{constantc21}
 \begin{split}
-c_{21} = \max\Biggl\{\frac{1 + \E[Y^2]}{c_3}, & (N + 1)^d \cdot \max\biggl\{\bigg| \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg|^2 \colon \\
-& \quad j_1,\dots,j_d \in \{0,\dots,q\}, j_1 + \cdots j_d \leq q\biggr\}\Biggr\}.
+c_{21} = \max\Biggl\{\frac{1 + \E[Y^2]}{c_3}, & (N + 1)^d \cdot \max\biggl\{\bigg| \frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\bigg|^2 \mid  \bj \in [q]^d,\, |\bj|_1 \leq q\biggr\}\Biggr\}.
 \end{split}
 \end{equation}
 Sei 
-$$g_n(x) = \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \cdot f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x).$$
-Da nach Konstruktion $f_{net,j_1,\dots,j_d,\mathbf{i}_k} \in \mathcal{F}$ ist, folgt mit (\ref{constantc21}), dass $g_n$ in $\mathcal{F}^{(J_n)}$ liegt. 
+$$g_n(x) = \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}}) \cdot f_{\net,\bj,\mathbf{i}}(x).$$
+Da nach Konstruktion $f_{\net,\bj,\mathbf{i}} \in \mathcal{F}$ ist, folgt mit (\ref{constantc21}), dass $g_n$ in $\mathcal{F}^{(J_n)}$ liegt. 
 Sei $A_n$ das Event, dass 
 \begin{equation}
 \label{event}
@@ -119,12 +118,12 @@ $$\tilde{m}_n(x) = \sum_{j = 1}^{J_n}\hat{a}_j \cdot f_j$$
 für geeignete $f_j \in \mathcal{F}$ und $\hat{a}_j$ welche 
 \begin{equation*}
 \begin{split}
-\frac{c_3}{n}\sum_{j = 1}^{J_n} \hat{a}_j^2 & = \frac{c_3}{n} \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2 \\
+\frac{c_3}{n}\sum_{j = 1}^{J_n} \hat{a}_j^2 & = \frac{c_3}{n} \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2 \\
 & \leq \sum_{i = 1}^n Y_i^2,
 \end{split}
 \end{equation*}
-erfüllen, wobei wir bei der letzten Ungleichung wie in (\ref{min}) die minimierende Eigenschaft von $a_{\mathbf{i}_k,j_1,\dots,j_d}$ verwendet haben und zum Schluss die Koeffizienten Null gesetzt haben. Da $c_3 > 0$ ist, erhalten wir dass die Koeffizienten $\hat{a}_j$ die Eigenschaft
+erfüllen, wobei wir bei der letzten Ungleichung wie in (\ref{min}) die minimierende Eigenschaft von $a_{\mathbf{i},\bj}$ verwendet haben und zum Schluss die Koeffizienten Null gesetzt haben. Da $c_3 > 0$ ist, erhalten wir dass die Koeffizienten $\hat{a}_j$ die Eigenschaft
 $$\sum_{j = 1}^{J_n} \hat{a}_j^2  \leq \frac{1}{n}\sum_{i = 1}^n Y_i^2 \cdot \frac{n}{c_3}$$
 erfüllen müssen.
 Auf $A_n$ erhalten wir dann:
@@ -136,21 +135,19 @@ Da $c_3 > 0$ ist, erhalten wir:
 \begin{split}
 \label{g}
 & \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 \\
-& \quad + \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \bigg|\frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg|^2 \\
-& \stackrel{(\ref{constantc21})}{\leq} \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 +  \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} c_{21} \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} \bigg|\frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\bigg|^2 \\
+& \stackrel{(\ref{constantc21})}{\leq} \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 +  \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} c_{21} \\
 & = \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + \frac{c_3 \cdot c_{21} \cdot (M_n + 1)^d}{n} \\
 & = \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}.
 \end{split}
 \end{equation}
-Die Funktionen $\tilde{m}_n$ und $g_n$ unterscheiden sich in den Vorfaktoren von $f_j$. Da wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ von $\tilde{m}_n$ durch Minimierung von (\ref{min}) erhalten haben und nach Voraussetzung $N \geq q$ ist, damit dann $\{0,\dots,q\} \subseteq \{0,\dots,N\}$ und wir bei der Minimierung daher auch insbesondere die Koeffizienten von $g_n$ betrachtet haben, erhalten wir:
+Die Funktionen $\tilde{m}_n$ und $g_n$ unterscheiden sich in den Vorfaktoren von $f_j$. Da wir die Koeffizienten $a_{\mathbf{i},\bj}$ von $\tilde{m}_n$ durch Minimierung von (\ref{min}) erhalten haben und nach Voraussetzung $N \geq q$ ist, damit dann $\{0,\dots,q\} \subseteq \{0,\dots,N\}$ und wir bei der Minimierung daher auch insbesondere die Koeffizienten von $g_n$ betrachtet haben, erhalten wir:
 \begin{equation}
 \begin{split}
 \label{tilde}
 & \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,N\} \\j_1+\dots +j_d \leq N}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 \\
-& \quad + \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \bigg|\frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k})\bigg|^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [N]^d \\ |\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \bigg|\frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\bigg|^2 \\
 & = \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}
 \end{split}
 \end{equation}
@@ -186,8 +183,7 @@ für hinreichend großes $n$. Wir betrachten hier den logistischen squasher welc
 Sei 
 \begin{equation*}
 \begin{split}
-P_n(x) = \sum_{k = 1}^{(M_n + 1)^d} & \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \\
-&  \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+. 
+P_n(x) = \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \frac{1}{\bj!} \cdot \partial^{\bj} m (x_{\mathbf{i}}) \cdot (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+. 
 \end{split}
 \end{equation*}
 Für zwei beliebige reelle Zahlen $u, v \in \R$ gilt durch $0 \leq (u - v)^2 = u^2 + v^2 - 2uv$:
@@ -203,16 +199,14 @@ $$v^2 + v^2 \geq 2uv$$ und zusammen mit einer Nulladdition, der Linearität des 
 & = 2 \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_n(x)|^2 + 2 \sup_{x \in [-a_n, a_n]^d} |P_n(x) - m(x)|^2, 
 \end{split}
 \end{equation}
-wobei wir im letzten Schritt $supp(X) \subseteq [-a_n, a_n]^d$ und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden weiterhin abzuschätzen möchten wir Lemma \ref{lem:5} anwenden. Dafür überprüfen wir ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten den logistischen squasher, welcher nach Lemma \ref{lem:2} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung für $R$ erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}_k} \in [-a_n, a_n]^d$ identisch mit der Definition aus Lemma \ref{lem:5} ist, sind alle Voraussetzungen erfüllt. 
+wobei wir im letzten Schritt $supp(X) \subseteq [-a_n, a_n]^d$ und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden weiterhin abzuschätzen möchten wir Lemma \ref{lem:5} anwenden. Dafür überprüfen wir ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten den logistischen squasher, welcher nach Lemma \ref{lem:2} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung für $R$ erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ identisch mit der Definition aus Lemma \ref{lem:5} ist, sind alle Voraussetzungen erfüllt. 
 Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
 \begin{equation}
 \label{1stsum}
 \begin{split}
-& |g_n(x) - P_n(x)| \\
-& = \bigg| \sum_{k = 1}^{(M_n + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} \frac{1}{j_1! \cdots j_d!} \cdot \frac{\partial^{j_1+\cdots + j_d} m}{\partial^{j_1} x^{(1)}\cdots \partial^{j_d} x^{(d)}}(x_{\mathbf{i}_k}) \bigg| \\
-& \cdot \bigg| f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) - (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \bigg| \\
-& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot e \\
-& \cdot  \bigg| f_{net,j_1,\dots,j_d,\mathbf{i}_k}(x) - (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|)_+ \bigg| \\
+ |g_n(x) - P_n(x)| 
+& = \bigg| \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \frac{1}{\bj!} \cdot \partial^{\bj} m (x_{\mathbf{i}}) \bigg| \cdot \bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \bigg| \\
+& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot e \cdot \bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \bigg| \\
 & \leq (M_n + 1)^d \cdot (q + 1)^d \cdot e \cdot \hat{c}_{12} \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s} \cdot M_n^3 \cdot \frac{1}{R_n} \\
 & \leq (M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot a_n^{3 \cdot (N + d) \cdot 2} \cdot \frac{M_n^3}{R_n} \\
 & =  (M_n + 1)^d \cdot (q + 1)^d \cdot c_{25}\cdot \log(n) \cdot \frac{M_n^3}{R_n},
