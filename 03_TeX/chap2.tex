@@ -181,12 +181,13 @@ wobei wir bei der letzten Gleichheit Bedingung (\ref{induktiongl1}) und $q + s =
 \end{proof}
 
 $P(x)$ lässt sich in die Form 
-$$\sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$
-durch geeignet gewählte $a_{\mathbf{i}_k,j_1,\dots,j_d} \in \R$ bringen.
-Als nächstes wollen wir geeignete neuronale Netze $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ definieren, die die Funktionen
-$$x \mapsto (x^{(1)} - x_{\mathbf{i}_k}^{(1)})^{j_1} \cdots (x^{(d)} - x_{\mathbf{i}_k}^{(d)})^{j_d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}_k}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur so wählen, dass neuronale Netze der Form
-$$\sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{\net,j_1,\dots,j_d,\mathbf{i}_k}(x) \qquad (a_{\mathbf{i}_k,j_1,\dots,j_d} \in \R)$$ in ihr enthalten sind.
-Um dies zu erreichen, sei $\sigma(x) = \frac{1}{(1 + \exp(-x))} \quad (x \in \R)$ der logistische Squasher (\ref{logsquasher}), wählen $R \geq 1$ und definieren die folgenden neuronale Netze$\colon$
+$$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\bi, \bj} \cdot (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$
+durch geeignet gewählte $a_{\bi, \bj} \in \R$ bringen.
+Als nächstes wollen wir geeignete neuronale Netze $f_{\net, \bj, \bi}$ definieren, die die Funktionen
+$$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur so wählen, dass neuronale Netze der Form
+$$\sum_{\bi \in [M]^d} \bigg(\frac{2a}{M}\bigg)^q a_{\mathbf{i}, \bj} \cdot f_{\net,\bj,\mathbf{i}}(x) \qquad (a_{\mathbf{i},\bj} \in \R)$$ in ihr enthalten sind.
+Um dies zu erreichen, sei $$\sigma(x) = \frac{1}{(1 + \exp(-x))} \quad (x \in \R)$$ der logistische Squasher (\ref{logsquasher}), wählen $R \geq 1$ und definieren die folgenden neuronale Netze:
+
 Das neuronale Netz
 \begin{equation}
 \label{def:fid}
@@ -422,10 +423,10 @@ net/.style={
 \caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x) = ...$}
 \label{fig:fhat}
 \end{figure} 
-Mit diesen neuronalen Netzen können wir nun $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $j_1,\dots,j_d \in \{0, 1,\dots, N\}$ und $k \in \{1,\dots,(M + 1)^d\}\colon$  
+Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $\bj = j_1,\dots,j_d \in \{0, 1,\dots, N\}$ und mit $\bi \in [M]^d$ und $k \in \{1,\dots,(M + 1)^d\}$:  
 \begin{align}
 \label{fnet}
-f_{\net,j_1,\dots,j_d,\mathbf{i}_k}(x) & = f_1^{(0)}(x). \nonumber
+f_{\net,\bj,\mathbf{i}}(x) & = f_1^{(0)}(x). \nonumber
 \intertext{wobei} \nonumber
 f_k^{(l)}(x) & = f_{\mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \nonumber
 \intertext{für $k \in \{1, 2, \dots, 2^l \}$ und $l \in\{0,\dots,s - 1\}, $ und}
@@ -437,29 +438,29 @@ f_k^{(s)}(x) & = 1 \nonumber
 \end{align} 
 für $j_1 + j_2 + \dots + j_d + d + 1 \leq k \leq 2^s.$
  
-Da das neuronale Netz $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ aus mehrere neuronalen Netzen zusammengebaut wurden lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Durch (\ref{fnet}) erkennt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$, hat. Da $f_{\mathrm{hat}}$ zwei verbogene Schichten besitzt ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$. Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... 
+Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehrere neuronalen Netzen zusammengebaut wurden lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Durch (\ref{fnet}) erkennt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$, hat. Da $f_{\mathrm{hat}}$ zwei verbogene Schichten besitzt ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$. Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... 
 Die Anzahl der Neuronen pro verborgener Schicht von $f_{\mathrm{net}}$ ergeben sich wie folgt:
 \begin{itemize}
 \item Die erste verborgene Schicht enthält maximal $3 \cdot 2 \cdot 2^s = 6 \cdot 2^s$ Neuronen, da dies die erste verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$ mal aufgerufen wird. 
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
 \item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2 \cdot 2^s, 2^s, \dots, 8, 4$, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
 \end{itemize}  
-Da man bei fully connencted neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,j_1,\dots,j_d,\mathbf{i}_k}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log(N + d) + 1} = 24 \cdot (N + d)$$ gilt. DIE GEWICHTE SIND BESCHRÄNKT DURCH ::: TBD
+Da man bei fully connencted neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log(N + d) + 1} = 24 \cdot (N + d)$$ gilt. DIE GEWICHTE SIND BESCHRÄNKT DURCH ::: TBD
 
 \section{Definition der Gewichte der Ausgabeschicht}
 
 Wir definieren unseren neuronale Netze Regressionsschätzer $\tilde{m}_n(x)$ durch$\colon$
 \begin{equation}
 \label{estimate}
-\tilde{m}_n(x) = \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,N\} \\j_1+\dots +j_d \leq N}} a_{\mathbf{i}_k,j_1,\dots,j_d} \cdot f_{\net,j_1,\dots,j_d,\mathbf{i}_k}(x),
+\tilde{m}_n(x) = \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj} \cdot f_{\net,\bj,\mathbf{i}}(x),
 \end{equation}
-wobei wir die Koeffizienten $a_{\mathbf{i}_k,j_1,\dots,j_d}$ durch Minimierung von 
+wobei wir die Koeffizienten $a_{\mathbf{i},\bj}$ durch Minimierung von 
 \begin{equation}
-\label{min} \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{k = 1}^{(M + 1)^d} \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,N\} \\j_1+\dots +j_d \leq N}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2
+\label{min} \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2
 \end{equation}
 für eine Konstante $c_3 > 0.$ Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung eine linearen Gleichungssystems. Dafür definieren wir uns 
 \begin{align*} 
-\{B_j \mid j = 1,\dots,J\} = \Bigl\{f_{\net,j_1,\dots,j_d,\mathbf{i}_k}(x) \mid 1\leq k \leq (1 + M)^d \quad \text{und} \quad 0 \leq j_1 + \cdots + j_d \leq N \Bigr\}
+\{B_j \mid j = 1,\dots,J\} = \Bigl\{f_{\net,\bj,\bi}(x) \mid \bi \in [M]^d \quad \text{und} \quad 0 \leq |\bj|_1 \leq N \Bigr\}
 \end{align*}
 wobei
 $$ J = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist.
@@ -477,7 +478,7 @@ $$ \tilde{m}_n(x) = \sum_{j = 1}^J a_j \cdot B_j(x)$$
 wobei $\mathbf{a} = (a_j)_{j = 1,\dots,J} \in \R^J$ wie in \ref{min} den Ausdruck
 \begin{equation}
 \begin{split}
-& \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\substack{ j_1,\dots,j_d \in \{0,\dots,q\} \\j_1+\dots +j_d \leq q}} a_{\mathbf{i}_k,j_1,\dots,j_d}^2 \\
+& \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\
 & = \frac{1}{n}(\mathbf{Y} - \mathbf{B}\mathbf{a})^T(\mathbf{Y} - \mathbf{B}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
 & = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T\mathbf{B}\mathbf{a} - \mathbf{a}^T\mathbf{B}^T\mathbf{Y} + \mathbf{a}^T\mathbf{B}^T\mathbf{B}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
 & = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{B}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a}, 
