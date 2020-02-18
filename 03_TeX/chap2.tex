@@ -158,22 +158,22 @@ Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\
 \begin{equation*}
 \begin{split}
 f(x) & = T_{x_{\mathbf{i}},q - 1}[f(x)] \\
-& = \sum_{|\bj|_1 \leq q - 1}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x^{(1)} - x_{\mathbf{i}}^{(1)})^{\bj} }{\bj!} + \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x^{(1)} - x_{\mathbf{i}}^{(1)})^{\bj} }{\bj!}.
+& = \sum_{|\bj|_1 \leq q - 1}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}}^{\bj} }{\bj!} + \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
 \end{split}
 \end{equation*}
 Nach (\ref{induktiongl1}) erhalten wir 
 $$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.$$ Zudem wissen wir dass man immer den Abstand zu den nahesten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist, daher ergibt sich:
 \begin{equation*}
 \begin{split}
-&\sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x^{(1)} - x_{\mathbf{i}}^{(1)})^{\bj} }{\bj!} \leq \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{1}{\bj!} \cdot \bigg(\frac{2a}{M}\bigg)^q
+&\sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \leq \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{1}{\bj!} \cdot \bigg(\frac{2a}{M}\bigg)^q
 \end{split}
 \end{equation*} 
 und folgern mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit von $f$:
 \begin{equation*}
 \begin{split}
 |f(x) - P(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in \{0,\dots,q\}^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
-& \leq \bigg(\frac{2a}{M}\bigg)^q \|\xi(x - x_{\mathbf{i}}) \|^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
-& = C \cdot \bigg(\frac{2a}{M}\bigg)^p \\
+& \leq \bigg(\frac{2a}{M}\bigg)^q \|x_{\bi} - x_{\bi} + \xi(x - x_{\mathbf{i}}) \|^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
+& \leq \bigg(\frac{2a}{M}\bigg)^q \cdot d^{s/2} \cdot \bigg(\frac{2a}{M}\bigg)^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & = c_1 \cdot \frac{1}{M^p},
 \end{split}
 \end{equation*}
