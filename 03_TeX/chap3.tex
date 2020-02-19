@@ -70,7 +70,7 @@ und durch
 \end{split}
 \end{equation*}
 dass die Zufallsvariablen $Y_1,\dots,Y_n$ auch unabhängig und identisch verteilt sind. Daraus folgern wir $\E\big[\frac{1}{n} \sum_{i = 1}^n Y_i^2\big] = \E[Y^2]$ mit der Linearität des Erwartungswerts.
-Mit Hilfe der Monotonie und Homogenität der Wahrscheinlichkeitsfunktion $\mathds{P}$ und der Tschebyscheff Ungleichung für $\epsilon = 1$ (REFERENZ) erhalten wir:
+Mit Hilfe der Monotonie und Homogenität der Wahrscheinlichkeitsfunktion $\mathds{P}$ und der Chebyshev'sche Ungleichung für $\epsilon = 1$ (\cite{Klenke2013}, Satz 5.11) erhalten wir:
 \begin{equation}
 \label{tscheby}
 \begin{split}
@@ -83,7 +83,7 @@ Mit Hilfe der Monotonie und Homogenität der Wahrscheinlichkeitsfunktion $\mathd
 \end{split}
 \end{equation}
 wobei wir bei der letzten Gleichheit die identische Verteiltheit der $Y_1,\dots,Y_n$ und Rechenregeln für die Varianz verwendet haben welche wir unter anderem aufgrund der Unabhängigkeit der $Y_1,\dots,Y_n$ verwenden durften.
-Sei $\hat{m}_n = T_{\beta_n}\tilde{m}_n = m_n$ im Falle dass Ereignis $A_n$ gilt und andernfalls $\hat{m}_n = T_{\beta_n}g_n$. Durch die Unabhängigkeit von $A_n$ zu den Zufallsvariablen $X, X_1, \dots, X_n$ und der Jensenschen Ungleichung (REFERENZ) erhalten wir:
+Sei $\hat{m}_n = T_{\beta_n}\tilde{m}_n = m_n$ im Falle dass Ereignis $A_n$ gilt und andernfalls $\hat{m}_n = T_{\beta_n}g_n$. Durch die Unabhängigkeit von $A_n$ zu den Zufallsvariablen $X, X_1, \dots, X_n$ und der Jensenschen Ungleichung (\cite{Klenke2013}, Satz $7.9$) erhalten wir:
 \begin{equation}
 \label{anc}
 \begin{split}
