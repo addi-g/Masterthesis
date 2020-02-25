@@ -5,36 +5,36 @@ In diesem Kapitel werden wir mithilfe von unseren gegebenen Datenmenge
 $$ \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},$$
 unseren Regressionsschätzer konstruieren. 
 
-Die Netzwerkarchitektur $(L, k)$ hängt von einer positiven ganzen Zahl $L$, die der Anzahl der verborgenen Schichten ist und einem Vektor $k = (k_1,\dots,k_L) \in \N^L$, der mit jeder Komponente die Anzahl der Neuronen in der jeweiligen verborgen Schichte angibt. 
+Die Netzwerkarchitektur $(L, k)$ hängt von der Anzahl der verborgenen Schichten $L \in \N_0$ und und einem Vektor $k = (k_1,\dots,k_L) \in \N^L$ ab, der mit jeder Komponente die Anzahl der Neuronen in der jeweiligen verborgen Schicht angibt. 
 
-Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, k)$ und dem logistischen squasher (\ref{logsquasher}) als Aktivierungsfunktion, ist eine reelwertige Funktion $f\colon \R^d \to \R$ definiert durch:
+Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, k)$ und $\sigma$ aus (\ref{logsquasher}) als Aktivierungsfunktion, ist eine reelwertige Funktion $f\colon \R^d \to \R$ definiert durch:
 \begin{align}
 \label{networkarch}
 f(x) & = \sum_{i = 1}^{k_L} c_i^{(L)} \cdot f_i^{(L)}(x) + c_0^{(L)} \nonumber \\
-\intertext{für $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ rekursiv definiert durch$\colon$} 
+\intertext{für $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ rekursiv definiert durch:} 
 f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j^{(r - 1)}(x) + c_{i,0}^{(r - 1)} \bigg)\\
-\intertext{für $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R (r = 2,\dots, L)$ und$\colon$}
+\intertext{für $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R \,(r = 2,\dots, L)$ und:}
 f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber
 \end{align} 
 für $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.
 
-Bei neuronale Netze Regressionsschätzer wir für die Ausgabeschicht keine Aktivierungsfunktion gewählt, da wir Funktionswerte schätzen möchten und es sich hier nicht um ein Klassifizierungssproblem handelt.
+%Bei neuronale Netze Regressionsschätzer wird für die Ausgabeschicht keine Aktivierungsfunktion gewählt, da wir Funktionswerte schätzen möchten und es sich hier nicht um ein Klassifizierungssproblem handelt.
 
 Für die Konstruktion unseres Schätzers verwenden wir die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzungen für die Regressionsfunktion ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
 \section{Definition der Netzwerkarchitektur}
-Sei $a > 0$ fest und $M \in \N$. Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale Konvexkombination von Taylorpolynomen für $(p,C)$-glatte Funktionen auf dem Intervall $[-a, a]^d$ motiviert.
+Sei $a > 0$ fest und $M \in \N$. Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale lokale Spline Interpolation von Taylorpolynomen für $(p,C)$-glatte Funktionen auf dem Intervall $[-a, a]^d$ motiviert.
 Sei $[M]^d \coloneqq\{0, 1, \dots, M\}^d = \{\mathbf{i}_1,\dots, \mathbf{i}_{(M + 1)^d}\}.$ 
 
 Für $(\mathbf{i}^{(1)},\dots,\mathbf{i}^{(d)}) = \bi \in [M]^d$ und $x \in \R^d$ definieren wir
 $$|\mathbf{i}|_1 \coloneqq \sum_{k= 1}^d \mathbf{i}^{(k)} \quad \mathbf{i}! \coloneqq \mathbf{i}^{(1)}! \cdots \, \mathbf{i}^{(d)}! \quad x^{\mathbf{i}} \coloneqq x_1^{\mathbf{i}^{(1)}} \cdots \,    x_d^{\mathbf{i}^{(d)}}.$$
 Für $f\colon \R^d \to \R$ ausreichend oft differenzierbar definieren wir 
 $$\partial^{\mathbf{i}}f(x) \coloneqq \frac{\partial^{|\mathbf{i}|_1}f}{\partial^{\mathbf{i}^{(1)}} x_1 \cdots \, \partial^{\mathbf{i}^{(d)}} x_d} (x).$$
-Wir betrachten im Folgenden ein $d$-dimensionales äquidistantes Gitter im Würfel $[-a, a]^d$ mit Schrittweite $\frac{2a}{M}.$ Die Gitterpunkte haben für $\bi \in [M]^d$ die Gestalt:
+Wir betrachten im Folgenden ein $d$-dimensionales äquidistantes Gitter im Würfel $[-a, a]^d$ mit Schrittweite $\frac{2a}{M}.$ Sei $\bi_1,\dots,\bi_{(M + 1)^d}$ eine Aufzählung der Elemente von $[M]^d$. Dann ordnen wir jedem Index $\bi \in [M]^d$ einen Gitterpunkt $x_{\bi}$ mit:
 $$x_{\bi} = \bigg( -a + \bi^{(1)} \cdot \frac{2a}{M},\dots, -a + \bi^{(d)} \cdot \frac{2a}{M}\bigg) = -\mathbf{a} + \frac{2a}{M} \cdot \bi,$$
-mit $\mathbf{a} = (a, a, \dots, a) \in \R^d$.
-Hiermit lässt sich das Taylorpolynom von $m$ der Ordnung $q$ im Entwicklungspunkt $x_{\bi}$ schreiben als
-$$p_{\bi}(x) = \sum_{\substack{\mathbf{j} \in \{0,\dots,q\}^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}m(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}$$
+zu, mit $\mathbf{a} = (a, a, \dots, a) \in \R^d$.
+Hiermit lässt sich das zu $m$ gehörige Taylorpolynom der Ordnung $q$ mit Entwicklungspunkt $x_{\bi}$ schreiben als
+$$p_{\bi}(x) = \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}m(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}$$
 und sei
 \begin{equation}
 \label{konvexkomb}
@@ -497,7 +497,7 @@ Die Matrix $\mathbf{B}^T\mathbf{B} \in \R^{JxJ}$ ist positiv semidefinit, denn a
 $$\langle x, \mathbf{B^T}\mathbf{B} x\rangle = \langle \mathbf{B} x, \mathbf{B} x\rangle \geq 0.$$
 Zudem wissen wir dass $\frac{c_3}{n}\mathbf{1}$ durch die Wahl von $c_3$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
 Daher wissen wir, dass die Matrix
-$$\mathbf{A} = \frac{1}{n}\mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}$$ ebenfalls nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit ist und eine inverse Matrix $\mathbf{A}^{-1}$ existiert. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
+$$\mathbf{A} = \frac{1}{n}\mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}$$ also Summe einer positiv semidefiniten und einer positiv definiten Matrix nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit ist und eine inverse Matrix $\mathbf{A}^{-1}$ existiert. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
 Mit $\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y} \in \R^J$ und $\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}\mathbf{A}\mathbf{b} = \mathbf{Y}^T\mathbf{B}\mathbf{a}$, was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir$\colon$
 \begin{equation*}
 \begin{split}

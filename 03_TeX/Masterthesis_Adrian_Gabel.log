@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  19 FEB 2020 12:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  25 FEB 2020 18:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1572,26 +1572,6 @@ Kapitel 4.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
-[]\T1/ptm/m/n/12 (+20) Median
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
-[]\T1/ptm/m/n/12 (+20) Median
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
-[]\T1/ptm/m/n/12 (+20) Median
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
-[]\T1/ptm/m/n/12 (+20) Median
- []
-
-
 Overfull \hbox (1.66882pt too wide) in paragraph at lines 77--77
 []\T1/ptm/m/n/12 (-20) new_neural_network_estimate| 
  []
@@ -1665,11 +1645,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 45441 strings out of 492162
- 960170 string characters out of 6125292
- 1446901 words of memory out of 5000000
- 47830 multiletter control sequences out of 15000+600000
- 101972 words of font info for 333 fonts, out of 8000000 for 9000
+ 45452 strings out of 492162
+ 960283 string characters out of 6125292
+ 1446903 words of memory out of 5000000
+ 47832 multiletter control sequences out of 15000+600000
+ 104954 words of font info for 339 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,21n,138p,1373b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -1692,9 +1672,9 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (59 pages, 563882 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (59 pages, 563824 bytes).
 PDF statistics:
  1428 PDF objects out of 1440 (max. 8388607)
  803 named destinations out of 1000 (max. 500000)
- 48246 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 52342 words of extra memory for PDF output out of 61914 (max. 10000000)
 
