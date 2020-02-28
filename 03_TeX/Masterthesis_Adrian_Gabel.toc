@@ -3,8 +3,8 @@
 \contentsline {chapter}{Einleitung}{6}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Grundlagen und Hilfsresultate}{8}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Definitionen}{9}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Hilfsresultate}{12}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Konstruktion des Neuronale Netze Schätzers}{23}{chapter.2}%
+\contentsline {section}{\numberline {1.2}Hilfsresultate}{13}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Konstruktion des Neuronale Netze Schätzers}{24}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Definition der Netzwerkarchitektur}{24}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Definition der Gewichte der Ausgabeschicht}{33}{section.2.2}%
 \contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{36}{chapter.3}%

@@ -43,7 +43,7 @@ Im Falle von $p \leq 1$ ist eine Funktion genau dann ($p, C$)-glatt, wenn sie h�
 \end{bemnumber}
 
 
-Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen , ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder wiederum aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über seine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
+Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder wiederum aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über seine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
 %\begin{figure}
 %    \centering
 %    \begin{tikzpicture}[
@@ -105,8 +105,25 @@ Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 \item Wenn in einem neuronalen Netz die Information von der Eingabesicht über die verborgenen Schichten bis hin zur Ausgabeschicht in eine Richtung (\glqq vorwärts\grqq) weitergereicht wird, spricht man von einem \textit{feedforward} neuronalen Netz.
 \item Ein neuronales Netz wird als ein \glqq vollständig verbundenes\grqq\@ (\textit{fully connected}) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der (letzten) verborgenen Schicht verbunden.
 \end{itemize}
-
-Da wir uns in dieser Arbeit mit neuronalen Netzen zur Regressionsschätzung beschäftigen und Funktionswerte schätzen wollen, betrachten wir nur neuronale Netze die in der Ausgabeschicht ein einzelnes Neuron besitzen. 
+Als nächstes Definieren wir, was wir unter eine Netzwerkarchitektur verstehen um damit anschließend eine Definition eines mehrschichtigen feedforward neuronalen Netzes zu konstruieren.
+\begin{defn}
+Eine Netzwerkarchitektur $(L, \bk)$ hängt von der Anzahl der verborgenen Schichten $L \in \N_0$ und einem Vektor $\bk = (k_1,\dots,k_L) \in \N^L$ ab, welcher mit jeder Komponente die Anzahl der Neuronen angibt. Damit erhalten wir ein Grundgerüst für die Konstruktion eines neuronalen Netzes.
+\end{defn}
+\begin{defn}
+\label{def:nn}
+Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, \bk)$ und $\sigma$ als Aktivierungsfunktion, ist eine reellwertige Funktion $f\colon \R^d \to \R$ definiert durch:
+\begin{align}
+\label{networkarch}
+f(x) & = \sum_{i = 1}^{k_L} c_i^{(L)} \cdot f_i^{(L)}(x) + c_0^{(L)} \nonumber \\
+\intertext{mit Gewichten $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ rekursiv definiert durch:} 
+f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j^{(r - 1)}(x) + c_{i,0}^{(r - 1)} \bigg)\\
+\intertext{mit Gewichten $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R \,(r = 2,\dots, L)$ und:}
+f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber
+\end{align} 
+für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.
+\end{defn}
+Da wir bei neuronale Netze Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output und nehmen als Aktivierungsfunktion die Identität.
+Man könnte auch für jede Schicht eine andere Aktivierungsfunktion wählen aber beschränkten uns in dieser Arbeit nur auf den Fall dass wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
 
 Abbildung \ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$ verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
 \begin{center}

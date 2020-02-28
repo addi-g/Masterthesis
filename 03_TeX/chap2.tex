@@ -2,25 +2,14 @@
 \label{chap:2}
 
 In diesem Kapitel werden wir mithilfe von unseren gegebenen Datenmenge 
-$$ \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},$$
+\begin{equation}
+\label{dataset}
+\mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},
+\end{equation}
 unseren Regressionsschätzer konstruieren. 
+In Kapitel \ref{chap:1} haben wir bereits in Definition \ref{def:nn} vorgestellt, was unter einem mehrschichtigen feedforward neuronales Netz verstehen.
 
-Die Netzwerkarchitektur $(L, k)$ beschreibt die Gestalt eines neuronalen Netzes. Durch $L \in \N_0$ wird die Anzahl der verborgenen Schichten angeben und der Vektor $k = (k_1,\dots,k_L) \in \N^L$ gibt mit jeder Komponente die Anzahl der Neuronen an, die in der jeweiligen verborgen Schicht enthalten sind. 
-
-Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, k)$ und $\sigma$ aus (\ref{logsquasher}) als Aktivierungsfunktion, ist eine reellwertige Funktion $f\colon \R^d \to \R$ definiert durch:
-\begin{align}
-\label{networkarch}
-f(x) & = \sum_{i = 1}^{k_L} c_i^{(L)} \cdot f_i^{(L)}(x) + c_0^{(L)} \nonumber \\
-\intertext{für $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ rekursiv definiert durch:} 
-f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j^{(r - 1)}(x) + c_{i,0}^{(r - 1)} \bigg)\\
-\intertext{für $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R \,(r = 2,\dots, L)$ und:}
-f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber
-\end{align} 
-für $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.
-
-%Bei neuronale Netze Regressionsschätzer wird für die Ausgabeschicht keine Aktivierungsfunktion gewählt, da wir Funktionswerte schätzen möchten und es sich hier nicht um ein Klassifizierungssproblem handelt.
-
-Für die Konstruktion unseres Schätzers verwenden wir die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzungen für die Regressionsfunktion ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
+Für die Konstruktion unseres Schätzers wählen wir den logistischen Squasher (\ref{logsquasher}) als Aktivierungsfunktion, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzung für die Regressionsfunktion ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge (\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
 \section{Definition der Netzwerkarchitektur}
 Sei $a > 0$ fest und $M \in \N$. Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale lokale Spline Interpolation von Taylorpolynomen für $(p,C)$-glatte Funktionen auf dem Intervall $[-a, a]^d$ motiviert.
@@ -38,12 +27,12 @@ $$p_{\bi}(x) = \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \p
 und sei
 \begin{equation}
 \label{konvexkomb}
-P(x) = \sum_{\bi \in [M]^d} p_{\bi}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.
+P_m(x) = \sum_{\bi \in [M]^d} p_{\bi}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.
 \end{equation}
-Wir zeigen im folgenden Lemma dass $P(x)$ eine lokale Spline Interpolation von Taylorpolynomen von m ist.
+Wir zeigen im folgenden Lemma dass $P_m(x)$ eine lokale Spline Interpolation von Taylorpolynomen von $m$ ist.
 \begin{lem}[Multilineare Spline Interpolation]
 \label{lem:loccon}
-Sei $a >0, M \in \N$ und $$P(x) = \sum_{\bi \in [M]^d} p_{\bi}(x) \cdot B_{\bi}(x).$$ mit $p_{\mathbf{i}}(x)$ wie oben und 
+Sei $a >0, M \in \N$ und $$P_m(x) = \sum_{\bi \in [M]^d} p_{\bi}(x) \cdot B_{\bi}(x).$$ mit $p_{\mathbf{i}}(x)$ wie oben und 
 $$B_{\bi}(x) = \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+,$$
 dann ist $P(x)$ eine lokale Spline Interpolation von Taylorpolynomen von m.
 \end{lem}
@@ -145,13 +134,13 @@ wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)}^{
 \end{equation}
 gelten.
 
-\textbf{•} Es handelt sich hierbei um eine lokale Konvexität, da die Bedingungen (\ref{induktiongl1}) und (\ref{induktiongl2}) für alle $x \in [-a, a]^d$ gelten.
+\textbf{•} Es handelt sich hierbei um eine lokale Spline Interpolation, da die Bedingungen (\ref{induktiongl1}) und (\ref{induktiongl2}) für alle $x \in [-a, a]^d$ gelten.
 \end{proof}
 Als nächstes zeigen wir ein Resultat für $(p, C)$-glatte Funktionen, welches wir im weiteren Verlauf dieser Arbeit wieder benötigen werden.
 \begin{lem}
 \label{lem:pcsmooth}
-Sei $M \in \N$, $c_1$ eine Konstante, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$. Sei zudem $P(x)$ analog wie in (\ref{konvexkomb}) eine lokale Spline Interpolation von Taylorpolynomen von $f$. Dann gilt$\colon$
-$$\sup_{x \in [-a, a]^d} |f(x) - P(x)|  \leq c_1 \cdot \frac{1}{M^p}.$$
+Sei $M \in \N$, $c_1$ eine Konstante, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$. Sei zudem $P_f(x)$ analog wie in (\ref{konvexkomb}) eine lokale Spline Interpolation von Taylorpolynomen von $f$. Dann gilt$\colon$
+$$\sup_{x \in [-a, a]^d} |f(x) - P_f(x)|  \leq c_1 \cdot \frac{1}{M^p}.$$
 \end{lem}
 \begin{proof}
 Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\xi \in [0, 1],$ so, dass 
@@ -171,7 +160,7 @@ $$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot 
 und folgern mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit von $f$:
 \begin{equation*}
 \begin{split}
-|f(x) - P(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
+|f(x) - P_f(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \|x_{\bi} - x_{\bi} + \xi(x - x_{\mathbf{i}}) \|^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \cdot d^{s/2} \cdot \bigg(\frac{2a}{M}\bigg)^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & = c_1 \cdot \frac{1}{M^p},
@@ -438,32 +427,32 @@ f_k^{(s)}(x) & = 1 \nonumber
 \end{align} 
 für $j_1 + j_2 + \dots + j_d + d + 1 \leq k \leq 2^s.$
  
-Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehrere neuronalen Netzen zusammengebaut wurden lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Durch (\ref{fnet}) erkennt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$, hat. Da $f_{\mathrm{hat}}$ zwei verbogene Schichten besitzt ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$. Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... 
+Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehrere neuronalen Netzen zusammengebaut wurde, lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Aus (\ref{fnet}) entnimmt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$, hat. Da $f_{\mathrm{hat}}$ zwei verborgene Schichten besitzt ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$. Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... 
 Die Anzahl der Neuronen pro verborgener Schicht von $f_{\mathrm{net}}$ ergeben sich wie folgt:
 \begin{itemize}
 \item Die erste verborgene Schicht enthält maximal $3 \cdot 2 \cdot 2^s = 6 \cdot 2^s$ Neuronen, da dies die erste verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$ mal aufgerufen wird. 
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
-\item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2 \cdot 2^s, 2^s, \dots, 8, 4$, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
+\item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2 \cdot 2^s, 2^s, \dots, 8, 4$ Neuronen, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
 \end{itemize}  
 Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log(N + d) + 1} = 24 \cdot (N + d)$$ gilt. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
 
 \section{Definition der Gewichte der Ausgabeschicht}
 
-Wir definieren unseren neuronale Netze Regressionsschätzer $\tilde{m}_n(x)$ durch$\colon$
+Wir definieren unseren neuronale Netze Regressionsschätzer $\tilde{m}_n(x)$  durch$\colon$
 \begin{equation}
 \label{estimate}
 \tilde{m}_n(x) = \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj} \cdot f_{\net,\bj,\mathbf{i}}(x),
 \end{equation}
-wobei wir die Koeffizienten $a_{\mathbf{i},\bj}$ durch Minimierung von 
+wobei $n$ die Größe unserer gegebenen Datenmenge (\ref{dataset}) ist und wir die Koeffizienten $a_{\mathbf{i},\bj}$ durch Minimierung von 
 \begin{equation}
 \label{min} \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2
 \end{equation}
-für eine Konstante $c_3 > 0.$ Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung eine linearen Gleichungssystems. Dafür definieren wir uns 
+für eine Konstante $c_3 > 0.$ Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung des, in (\ref{les}) folgenden, linearen Gleichungssystems. Dafür definieren wir uns 
 \begin{align*} 
-\{B_j \mid j = 1,\dots,J\} = \Bigl\{f_{\net,\bj,\bi}(x) \mid \bi \in [M]^d \quad \text{und} \quad 0 \leq |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
+\{U_s \mid s = 1,\dots,S\} = \Bigl\{f_{\net,\bj,\bi}(x) \mid \bi \in [M]^d \quad \text{und} \quad 0 \leq |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
 \end{align*}
 wobei
-$$ J = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist.
+$$ S = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist.
 Diese Kardinalität erhalten wir mit einem Kombinatorik Argument.
 Wir wissen, dass es insgesamt $(M + 1)^d$ Möglichkeiten gibt $d$ viele Zahlen aus einer Menge mit der Größe $(M + 1)$ zu ziehen mit Zurücklegen und da wir Vektoren betrachten und die Komponenten nicht vertauschbar sind ist auch die Reihenfolge der Ziehung zu beachten.
 Für jede dieser $(M + 1)^d$ Möglichkeiten ist noch noch zu beachten, dass wir zusätzlich $d$ mal aus einer Menge mit $(N + 1)$ vielen Zahlen ziehen müssen und gleichzeitig die Bedingung dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
@@ -474,42 +463,42 @@ mit Identität des Binominialkoeffizienten:
 $$\binom{n}{k} = \sum_{i = 0}^k \binom{n - k - 1 + i}{i} \quad (k, n \in \N  \text{ mit  } k < n).$$
 TBD ERKLÄRUNG WIESO DIESE ANALOGIE (FABI FRAGEN)
 Wir setzen nun 
-$$ \mathbf{B} = (B_j(X_i))_{1\leq i \leq n,1\leq j \leq J} \quad \text{und} \quad \mathbf{Y} = (Y_i)_{i = 1,\dots,n}.$$
-Wir zeigen im Folgenden, dass der Koeffizientenvektor unseres Schätzers \ref{estimate} die eindeutige Lösung des linearen Gleichungssystems 
+$$ \mathbf{U} = (U_s(X_i))_{1\leq i \leq n,1\leq s \leq S} \quad \text{und} \quad \mathbf{Y} = (Y_i)_{i = 1,\dots,n}.$$
+Wir zeigen im Folgenden, dass der Koeffizientenvektor unseres Schätzers (\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems 
 \begin{equation}
 \label{les}
-\bigg(\frac{1}{n}\mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1} \bigg) \mathbf{a} = \frac{1}{n} \mathbf{B}^T\mathbf{Y},
+\bigg(\frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1} \bigg) \mathbf{a} = \frac{1}{n} \mathbf{U}^T\mathbf{Y},
 \end{equation}
-wobei $\mathbf{1}$ eine $JxJ$-Einheitsmatrix ist.
-Den Schätzer aus \ref{estimate} kann man umschreiben zu 
-$$ \tilde{m}_n(x) = \sum_{j = 1}^J a_j \cdot B_j(x)$$
-wobei $\mathbf{a} = (a_j)_{j = 1,\dots,J} \in \R^J$ wie in \ref{min} den Ausdruck
+wobei $\mathbf{1}$ eine $SxS$-Einheitsmatrix ist.
+Der Schätzer aus (\ref{estimate}) lässt sich umschreiben zu 
+$$ \tilde{m}_n(x) = \sum_{s = 1}^S a_s \cdot U_s(x)$$
+wobei $\mathbf{a} = (a_s)_{s = 1,\dots,S} \in \R^S$ wie in (\ref{min}) den Ausdruck
 \begin{equation}
 \begin{split}
 & \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\
-& = \frac{1}{n}(\mathbf{Y} - \mathbf{B}\mathbf{a})^T(\mathbf{Y} - \mathbf{B}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
-& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T\mathbf{B}\mathbf{a} - \mathbf{a}^T\mathbf{B}^T\mathbf{Y} + \mathbf{a}^T\mathbf{B}^T\mathbf{B}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
-& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{B}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a}, 
+& = \frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
+& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T\mathbf{U}\mathbf{a} - \mathbf{a}^T\mathbf{U}^T\mathbf{Y} + \mathbf{a}^T\mathbf{U}^T\mathbf{U}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
+& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a}, 
 \end{split}
 \end{equation} 
-minimiert. In der vorletzten Gleichung haben wir verwendet das $\mathbf{Y}^T\mathbf{B}\mathbf{a} = \mathbf{a}^T\mathbf{B}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist. 
-Die Matrix $\mathbf{B}^T\mathbf{B} \in \R^{JxJ}$ ist positiv semidefinit, denn aufgrund der Verschiebungseigenschaft des Standardskalarprodukts gilt für alle $x \in \R\colon$
-$$\langle x, \mathbf{B^T}\mathbf{B} x\rangle = \langle \mathbf{B} x, \mathbf{B} x\rangle \geq 0.$$
+minimiert. In der vorletzten Gleichung haben wir verwendet das $\mathbf{Y}^T\mathbf{U}\mathbf{a} = \mathbf{a}^T\mathbf{U}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist. 
+Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{SxS}$ ist positiv semidefinit, denn aufgrund der Verschiebungseigenschaft des Standardskalarprodukts gilt für alle $x \in \R$:
+$$\langle x, \mathbf{U^T}\mathbf{U} x\rangle = \langle \mathbf{U} x, \mathbf{U} x\rangle \geq 0.$$
 Zudem wissen wir dass $\frac{c_3}{n}\mathbf{1}$ durch die Wahl von $c_3$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
 Daher wissen wir, dass die Matrix
-$$\mathbf{A} = \frac{1}{n}\mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}$$ also Summe einer positiv semidefiniten und einer positiv definiten Matrix nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit ist und eine inverse Matrix $\mathbf{A}^{-1}$ existiert. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
-Mit $\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y} \in \R^J$ und $\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}\mathbf{A}\mathbf{b} = \mathbf{Y}^T\mathbf{B}\mathbf{a}$, was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir$\colon$
+$$\mathbf{A} = \frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1}$$ also Summe einer positiv semidefiniten und einer positiv definiten Matrix nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit und damit insbesondere invertierbar ist. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
+Mit $\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \in \R^S$ und $\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}\mathbf{A}\mathbf{b} = \mathbf{Y}^T\mathbf{U}\mathbf{a}$, was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir:
 \begin{equation*}
 \begin{split}
-& \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{B}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{B}^T\mathbf{B} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a} \\
-& = \mathbf{a}^T\mathbf{A}\mathbf{a} + \mathbf{b}^T\mathbf{A}\mathbf{a} + \mathbf{a}^T\mathbf{A}\mathbf{b} + \mathbf{b}^T\mathbf{A}\mathbf{b} + \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{B}\mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y} \\
-& = (\mathbf{a} + \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y})^T \mathbf{A} (\mathbf{a} - \frac{1}{n} \cdot \mathbf{A}^{-1} \mathbf{B}^T\mathbf{Y}) - \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{B}\mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y}.
+& \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a} \\
+& = \mathbf{a}^T\mathbf{A}\mathbf{a} + \mathbf{b}^T\mathbf{A}\mathbf{a} + \mathbf{a}^T\mathbf{A}\mathbf{b} + \mathbf{b}^T\mathbf{A}\mathbf{b} + \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{U}\mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \\
+& = (\mathbf{a} + \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y})^T \mathbf{A} (\mathbf{a} - \frac{1}{n} \cdot \mathbf{A}^{-1} \mathbf{U}^T\mathbf{Y}) - \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{U}\mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}.
 \end{split} 
 \end{equation*} 
-Die letzte Gleichung wird für $\mathbf{a} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{B}^T\mathbf{Y}$ minimal, 
-da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^J$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ ist für $\mathbf{a} = \mathbf{b}$. Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers \ref{estimate} die eindeutige Lösung des linearen Gleichungssystems \ref{les} ist.
-Da der Koeffizientenvektor die Gleichung \ref{min} minimiert, erhalten wir wenn wir den Koeffizientenvektor mit dem Nullvektor gleichsetzen$\colon$
-$$\frac{1}{n}(\mathbf{Y} - \mathbf{B}\mathbf{a})^T(\mathbf{Y} - \mathbf{B}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
+Die letzte Gleichung wird für $\mathbf{a} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}$ minimal, 
+da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ ist für $\mathbf{a} = \mathbf{b}$. Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers (\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems (\ref{les}) ist.
+Da der Koeffizientenvektor die Gleichung (\ref{min}) minimiert, erhalten wir wenn wir den Koeffizientenvektor mit dem Nullvektor gleichsetzen$\colon$
+$$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
 was uns erlaubt eine obere Schranke für den absoluten Wert unsere Koeffizienten abzuleiten.
 
 
