@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  28 FEB 2020 11:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  28 FEB 2020 11:06
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**Masterthesis_Adrian_Gabel.tex
-(./Masterthesis_Adrian_Gabel.tex
-LaTeX2e <2019-10-01> patch level 3
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/report.cls
+**\def\tikzexternalrealjob{Masterthesis_Adrian_Gabel}\input{Masterthesis_Adrian
+_Gabel}
+(./Masterthesis_Adrian_Gabel.tex (/usr/local/texlive/2019/texmf-dist/tex/latex/
+base/report.cls
 Document Class: report 2019/10/25 v1.4k Standard LaTeX document class
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
@@ -22,38 +22,30 @@ File: size12.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (./pakete.tex
-(/usr/local/texlive/2019/texmf-dist/tex/generic/babel/babel.sty
+) (./pakete.tex (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2020/01/15 3.38 The Babel package
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/switch.def
 File: switch.def 2020/01/15 3.38 Babel switching mechanism
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/babel-german/ngerman.ldf
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2018/12/08 v2.11 German support for babel (post-1996 orthogra
 phy)
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel-german/ngermanb.ldf
 Language: ngermanb 2018/12/08 v2.11 German support for babel (post-1996 orthogr
 aphy)
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2020/01/15 3.38 Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen103
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read1
 \bbl@dirlevel=\count90
 )
 Package babel Info: Making " an active character on input line 121.
-)))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
+))) (/usr/local/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/mathptmx.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/mathptmx.sty
 Package: mathptmx 2005/04/12 PSNFSS-v9.2a Times w/ Math, improved (SPQR, WaS) 
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -88,52 +80,41 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
 LaTeX Info: Redefining \hbar on input line 50.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/germbib/bibgerm.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/germbib/bibgerm.sty
 Package: bibgerm 2000/08/18 v0.1 Support for mixed language bibliographies
 
-** Macros for german `BibTeX'ing added to Style Option `german' 20 Apr 1993 **
-** idea and languages `german' and `USenglish' implemented by M. Wallmeier **
-** Modified for LaTeX 2e and german.sty 2.5b by A. Scherer 1 Nov 1995 **
-** Modified for ngerman.sty and babel.sty by H. Harders 21 August 2000 **)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+** Macros for german `BibTeX'ing added to Style Option `german' 20 Apr 1993 ** 
+** idea and languages `german' and `USenglish' implemented by M. Wallmeier ** *
+* Modified for LaTeX 2e and german.sty 2.5b by A. Scherer 1 Nov 1995 ** ** Modi
+fied for ngerman.sty and babel.sty by H. Harders 21 August 2000 **) (/usr/local
+/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/01 v1.3d Standard LaTeX Graphics (DPC,SPQR)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/enumerate.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks17
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/mathtools/mathtools.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2019/07/31 v1.22 mathematical typesetting tools
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count91
@@ -146,28 +127,22 @@ LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count93
 \calc@Cskip=\skip45
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/mathtools/mhsetup.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2019/11/16 v2.17d AMS math features
 \@mathmargin=\skip46
-
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
 \ex@=\dimen108
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen109
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count94
@@ -221,18 +196,15 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_below_intertext_sep=\dimen121
 \l_MT_above_shortintertext_sep=\dimen122
 \l_MT_below_shortintertext_sep=\dimen123
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup6
 \symAMSb=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amscls/amsthm.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2017/10/31 v2.20.4
 \thm@style=\toks23
 \thm@bodyfont=\toks24
@@ -243,15 +215,12 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@postskip=\skip51
 \thm@headsep=\skip52
 \dth@everypar=\toks28
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/doublestroke/dsfont.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/doublestroke/dsfont.sty
 Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup8
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count107
 \lst@gtempboxa=\box29
 \lst@token=\toks29
@@ -264,21 +233,17 @@ Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \lst@newlines=\count111
 \lst@lineno=\count112
 \lst@maxwidth=\dimen127
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
 \c@lstnumber=\count113
 \lst@skipnumbers=\count114
 \lst@framebox=\box30
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2019/09/10 1.8c listings configuration
 ))
 Package: listings 2019/09/10 1.8c (Carsten Heinz)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
@@ -292,26 +257,21 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2019/09/10 1.8c listings language file
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang3.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2019/09/10 1.8c listings language file
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/bbm.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/bbm.sty
 Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
 LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
 (Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 (Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/us
+r/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/te
+xlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
 \pgfutil@everybye=\toks30
@@ -324,15 +284,13 @@ sts.tex))
 \pgfutil@abb=\box31
 (/usr/local/texlive/2019/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
-))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+)) (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.te
+x (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
 ))
 Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/
+local/texlive/2019/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
@@ -363,7 +321,6 @@ ode.tex
 \t@pgf@tokb=\toks35
 \t@pgf@tokc=\toks36
 \pgf@sys@id@count=\count119
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
 )
@@ -389,9 +346,9 @@ File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr
+/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/
+local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen140
 \pgfmath@count=\count122
@@ -417,8 +374,8 @@ code.tex)
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
 code.tex)
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
-erarithmetics.code.tex)))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+erarithmetics.code.tex))) (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/m
+ath/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count123
 )) (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
@@ -538,15 +495,13 @@ Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
 Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr
+/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/local/
+texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/loca
+l/texlive/2019/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/20
+19/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/local/texlive/2019/
+texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen167
 \pgffor@skip=\dimen168
@@ -594,80 +549,63 @@ s/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/frontendlayer/libraries/tikzl
-ibraryexternal.code.tex
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+ibraryexternal.code.tex (/usr/local/texlive/2019/texmf-dist/tex/latex/pdftexcmd
+s/pdftexcmds.sty
 Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
 )
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/iftex/iftex.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2019/11/07 v1.0c TeX engine tests
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/atveryend/atveryend.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/atveryend/atveryend.sty
 Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
 )
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzexternalshared.code.tex))
-\openout3 = `Masterthesis_Adrian_Gabel.auxlock'.
+No auxiliary output files.
 
-
+\w@pgfexternal@auxout=\write4
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2019/11/10 v7.00c Hypertext links for LaTeX
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/hycolor/hycolor.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2019/12/15 v1.9 Color options for hyperref/bookmark (HO)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hycolor/xcolor-patch.sty
 Package: xcolor-patch 2019/12/15 xcolor patch
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/hopatch.sty
 Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-)))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+))) (/usr/local/texlive/2019/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/auxhook/auxhook.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 )
 \@linkdim=\dimen178
 \Hy@linkcounter=\count136
 \Hy@pagecounter=\count137
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2019/11/10 v7.00c Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/intcalc/intcalc.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count138
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
@@ -679,17 +617,14 @@ Package hyperref Info: Backreferencing OFF on input line 4555.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4788.
 \c@Hy@tempcnt=\count139
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5147.
 \XeTeXLinkMargin=\dimen179
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
@@ -706,7 +641,6 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6443.
 Package hyperref Info: PDF/A mode OFF on input line 6448.
 LaTeX Info: Redefining \ref on input line 6488.
 LaTeX Info: Redefining \pageref on input line 6492.
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/atbegshi/atbegshi.sty
 Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 )
@@ -715,7 +649,6 @@ Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 \c@Hfootnote=\count143
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2019/11/10 v7.00c Hyperref driver for pdfTeX
 \Fld@listcount=\count144
@@ -734,24 +667,20 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/pdfx.sty
 Package: pdfx 2019/02/27 v1.6.3 PDF/X and PDF/A support (CVR/HTH/RRM/PS)
 \pdfx@minorversion=\count146
-
 (/usr/local/texlive/2019/texmf-dist/tex/generic/iftex/ifpdf.sty
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/iftex/ifxetex.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/iftex/ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/iftex/ifluatex.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-){/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/l8u-penc.def
+){/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} (/usr/l
+ocal/texlive/2019/texmf-dist/tex/latex/pdfx/l8u-penc.def
 File: l8u-penc.def 2017/06/23 v0.8 Custom LaTeX file, for UTF8 encoded letters 
 and symbols
 LaTeX Info: Composite with undeclared \b in encoding L8U on input line 278.
 )
 \pdfxsafeforxmp@toks=\toks42
 \pdfx@tmptoks=\toks43
-
 
 Package hyperref Warning: Option `pdftex' has already been used,
 (hyperref)                setting the option has no effect on input line 1461.
@@ -763,13 +692,11 @@ Package hyperref Warning: Option `pdfa' has already been used,
 Package hyperref Info: Option `unicode' set `true' on input line 1463.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2019/11/10 v7.00c Hyperref: PDF Unicode definition (HO)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/stringenc/stringenc.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 Package hyperref Info: Option `psdextra' set `true' on input line 1465.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/psdextra.def
 File: psdextra.def 2019/11/10 v7.00c Hyperref: Additions to PDF string support
 )
@@ -780,48 +707,41 @@ port
 (/usr/local/texlive/2019/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex
 )) (/usr/local/texlive/2019/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/8bit.def
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex) (/
+usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/8bit.def
 File: 8bit.def 2008/03/30 v1.1d Input encoding file
 )
-** pdfx: No file Masterthesis_Adrian_Gabel.xmpdata . Metadata will be incomplet
-e!
+** pdfx: No file figures/Masterthesis_Adrian_Gabel-figure2.xmpdata . Metadata w
+ill be incomplete!
 <<sRGB.icc>> (/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/8bit.def
 File: 8bit.def 2008/03/30 v1.1d Input encoding file
 )
 Package hyperref Info: Option `unicode' set `true' on input line 2411.
 Package hyperref Info: Option `unicode' set `true' on input line 2412.
-
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pdftex/glyphtounicode.tex) (/us
+r/local/texlive/2019/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex) (/usr/lo
+cal/texlive/2019/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex) (/usr/local/
+texlive/2019/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/xmpincl/xmpincl.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/xmpincl/xmpincl.sty
 Package: xmpincl 2008/05/10 v2.2 Include XMP data in pdflatex
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/8bit.def
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/pdfx/8bit.def
 File: 8bit.def 2008/03/30 v1.1d Input encoding file
 )
 Using XMP template file: pdfa.xmp
-\xmpinclWrite=\write4
+\xmpinclWrite=\write5
 \xmpinclRead=\read3
-\openout4 = `pdfa.xmpi'.
+\openout5 = `pdfa.xmpi'.
 
-<<pdfa.xmpi>>)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/koma-script/typearea.sty
+<<pdfa.xmpi>>) (/usr/local/texlive/2019/texmf-dist/tex/latex/koma-script/typear
+ea.sty
 Package: typearea 2019/12/23 v3.28 KOMA-Script package (type area)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/koma-script/scrkbase.sty
 Package: scrkbase 2019/12/23 v3.28 KOMA-Script package (KOMA-Script-dependent b
 asics and keyval usage)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/koma-script/scrbase.sty
 Package: scrbase 2019/12/23 v3.28 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2019/12/23 v3.28 KOMA-Script package (loading files)
 )))
@@ -833,7 +753,6 @@ Package typearea Info: You've used standard option `a4paper'.
 (typearea)             If you'd like to set the option with \KOMAoptions,
 (typearea)             you'd have to use `paper=a4' there
 (typearea)             instead of `a4paper', too.
-
 
 Package typearea Warning: You've used obsolete option `DIV14'.
 (typearea)                Usage of this option indicates an old document
@@ -882,12 +801,11 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \footskip       = 50.75pt
 (typearea)              \baselineskip   = 14.5pt
 (typearea)              on input line 1718.
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgfplots/pgfplots.sty
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/loc
+al/texlive/2019/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2018/03/28 v1.16 Data Visualization (1.16)
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
-(/usr/local/texlive/2019/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/us
+r/local/texlive/2019/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
 \t@pgfplots@toka=\toks44
 \t@pgfplots@tokb=\toks45
 \t@pgfplots@tokc=\toks46
@@ -998,8 +916,8 @@ ks.code.tex
 File: pgflibraryplotmarks.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
-ts.statistics.code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/multicol.sty
+ts.statistics.code.tex) (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/mul
+ticol.sty
 Package: multicol 2019/03/01 v1.8w multicolumn formatting (FMi)
 \c@tracingmulticols=\count155
 \mult@box=\box43
@@ -1048,13 +966,10 @@ Package: multicol 2019/03/01 v1.8w multicolumn formatting (FMi)
 \mult@nat@firstbox=\box67
 \colbreak@box=\box68
 \mc@col@check@num=\count164
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/caption/subcaption.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2020/01/03 v1.3b Sub-captions (AR)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2020/01/03 v3.4h Customizing captions (AR)
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
@@ -1074,8 +989,7 @@ Package caption Info: listings package is loaded.
 )
 \c@subfigure=\count167
 \c@subtable=\count168
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2019/11/18 v2.7d Micro-typographical refinements (RS)
 \MT@toks=\toks48
 \MT@count=\count169
@@ -1083,7 +997,6 @@ LaTeX Info: Redefining \textls on input line 790.
 \MT@outer@kern=\dimen268
 LaTeX Info: Redefining \textmicrotypecontext on input line 1354.
 \MT@listname@count=\count170
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2019/11/18 v2.7d Definitions specific to pdftex (RS)
 
@@ -1092,26 +1005,21 @@ LaTeX Info: Redefining \lslig on input line 914.
 \MT@outer@space=\skip61
 )
 Package microtype Info: Loading configuration file microtype.cfg.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2019/11/18 v2.7d microtype main configuration file (RS)
-))
-(/usr/local/texlive/2019/texmf-dist/tex/latex/sauerj/parcolumns.sty
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/sauerj/parcolumns.sty
 Package: parcolumns 2004/11/25 v1.2 Typeset multiple parallel columns
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/sauerj/processkv.sty
 Package: processkv 2004/08/09 v1.0.1 process key=value lists
 )
 \pc@columnctr=\count171
 \pc@columncount=\count172
 \pc@everypar=\toks49
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/changepage/changepage.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/changepage/changepage.sty
 Package: changepage 2009/10/20 v1.0c check page and change page layout
 \c@cp@cntr=\count173
 \cp@tempcnt=\count174
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip62
@@ -1123,8 +1031,7 @@ s
 \f@nch@O@erf=\skip68
 \f@nch@O@olf=\skip69
 \f@nch@O@orf=\skip70
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/booktabs/booktabs.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen269
 \lightrulewidth=\dimen270
@@ -1155,12 +1062,12 @@ s/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
-ts.dateplot.code.tex
-(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty
+ts.dateplot.code.tex (/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilitie
+s/pgfcalendar.sty
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.
 tex
 File: pgfcalendar.code.tex 2020/01/08 v3.1.5b (3.1.5b)
- (/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 \pgfcalendarcurrentjulian=\count182
 \pgf@cal@easter@Y=\count183
 \pgf@cal@easter@G=\count184
@@ -1174,11 +1081,10 @@ File: pgfcalendar.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@cal@easter@julianday=\count192
 )))
 (/usr/local/texlive/2019/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
-ts.patchplots.code.tex)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/filecontents/filecontents.sty
+ts.patchplots.code.tex) (/usr/local/texlive/2019/texmf-dist/tex/latex/fileconte
+nts/filecontents.sty
 Package: filecontents 2019/09/20 v1.5 Create an external file from within a LaT
 eX document
-
 
 Package filecontents Warning: This package is obsolete. Disabling it and
 (filecontents)                passing control to the filecontents environment
@@ -1207,11 +1113,8 @@ File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \arrowsize=\dimen282
 ))) (./befehle.tex
 \c@thm=\count193
-) (./Masterthesis_Adrian_Gabel.aux (./titel.aux)
-(./erklaerung.aux) (./einleitung.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux)
-(./chap4.aux) (./literaturverzeichnis.aux) (./appendix.aux))
-\openout1 = `Masterthesis_Adrian_Gabel.aux'.
-
+)
+No file figures/Masterthesis_Adrian_Gabel-figure2.aux.
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
@@ -1228,7 +1131,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
-
 
 bibgerm.sty: babel.sty detected
 
@@ -1249,20 +1151,16 @@ bibgerm.sty: babel.sty detected
 Package: epstopdf-base 2019-12-09 v2.10 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \c@lstlisting=\count266
-
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box70
 Package hyperref Info: Link coloring OFF on input line 17.
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
-
 (/usr/local/texlive/2019/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
@@ -1275,11 +1173,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
 LaTeX Info: Redefining \nameref on input line 17.
- (./Masterthesis_Adrian_Gabel.out) (./Masterthesis_Adrian_Gabel.out)
-\@outlinefile=\write5
-\openout5 = `Masterthesis_Adrian_Gabel.out'.
-
-
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.16}).
 
@@ -1298,41 +1191,28 @@ Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
-)
-\openout2 = `titel.aux'.
-
-
-(./titel.tex
-<TU_Darmstadt_Logo.pdf, id=53, 627.00043pt x 236.95763pt>
-File: TU_Darmstadt_Logo.pdf Graphic file (type pdf)
-<use TU_Darmstadt_Logo.pdf>
-Package pdftex.def Info: TU_Darmstadt_Logo.pdf  used on input line 4.
-(pdftex.def)             Requested size: 212.37953pt x 80.26442pt.
+) (./titel.tex
+The command '\includegraphics [width=0.5\linewidth ]{TU_Darmstadt_Logo.pdf}' ha
+s been optimized away. Use '/tikz/external/optimize=false' to disable this.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 13.
- [1
-
-
- <./TU_Darmstadt_Logo.pdf>]) [2]
-\openout2 = `erklaerung.aux'.
-
- (./erklaerung.tex) [3
-
-
-
-] [4
-
-
-]
+) (./erklaerung.tex)
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 31.
-
-(./Masterthesis_Adrian_Gabel.toc
+(./einleitung.tex
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 3.
-LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 5.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 12.
 
+LaTeX Warning: Reference `chap:1' on page 6 undefined on input line 12.
+
+
+LaTeX Warning: Reference `chap:2' on page 6 undefined on input line 13.
+
+
+LaTeX Warning: Reference `chap:3' on page 6 undefined on input line 13.
+
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
+ 15.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
@@ -1341,89 +1221,83 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 5.
-
+ 15.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 5.
-
+ 15.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 5.
-
+ 15.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
-.
-
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
+5.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 15.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 15.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
-
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 15.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 5.
-
-
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 15
+.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-))
-\tf@toc=\write6
-\openout6 = `Masterthesis_Adrian_Gabel.toc'.
+)
 
- [5
-
-]
-\openout2 = `einleitung.aux'.
+LaTeX Warning: Reference `chap:4' on page 6 undefined on input line 16.
 
 
-(./einleitung.tex)
+LaTeX Warning: Citation `kohler19' on page 6 undefined on input line 16.
+
+)
 Underfull \vbox (badness 4279) has occurred while \output is active []
 
- [6
-
-
-]
-[7]
-\openout2 = `chap1.aux'.
-
- (./chap1.tex
+(./chap1.tex
 Kapitel 1.
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
 9.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [8
-
-
-
-]
-[9]
+)
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 1
 05.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
+(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
 
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure0' is up-to-date. ======
-[10] [11 <./figures/Masterthesis_Adrian_Gabel-figure0.pdf>]
+LaTeX Warning: Reference `fig:DNN' on page 10 undefined on input line 111.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Citation `forster2016' on page 11 undefined on input line 183.
+
+
+LaTeX Warning: Reference `lem:logsquasher' on page 11 undefined on input line 1
+91.
+
+
+LaTeX Warning: Reference `logsquasher' on page 11 undefined on input line 191.
+
+
+LaTeX Warning: Citation `forster2016' on page 11 undefined on input line 196.
+
+
 Overfull \hbox (14.6357pt too wide) in paragraph at lines 216--217
 []\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
 /n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
@@ -1431,6 +1305,12 @@ ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-mal $\OML/ztmcm/m/it/12 N \O
 MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
 \OML/ztmcm/m/it/12 f[]; [] ; f[] [] [] \U/msb/m/n/12 R[] \OMS/ztmcm/m/n/12 !
  []
+
+
+LaTeX Warning: Reference `lem:9' on page 12 undefined on input line 218.
+
+
+LaTeX Warning: Reference `nzul√§ssig' on page 12 undefined on input line 223.
 
 
 Overfull \hbox (11.33176pt too wide) in paragraph at lines 223--224
@@ -1442,120 +1322,400 @@ n/12 1]\OML/ztmcm/m/it/12 ; ^^[\OT1/ztmcm/m/n/12 (\OML/ztmcm/m/it/12 x\OT1/ztmc
 m/m/n/12 ) =
  []
 
-[12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13]
-[14] [15] [16]
+LaTeX Warning: Reference `nzul√§ssig' on page 13 undefined on input line 246.
+
+
+LaTeX Warning: Reference `nzul√§ssig' on page 14 undefined on input line 274.
+
+
+LaTeX Warning: Citation `forster2016' on page 14 undefined on input line 276.
+
+
+LaTeX Warning: Reference `lem:lagrange' on page 14 undefined on input line 296.
+
+
+
+LaTeX Warning: Reference `lem:lagrange' on page 15 undefined on input line 308.
+
+
+
+LaTeX Warning: Reference `lem:1' on page 16 undefined on input line 346.
+
+
+LaTeX Warning: Reference `lem:2' on page 16 undefined on input line 350.
+
+
+LaTeX Warning: Reference `lem:1' on page 16 undefined on input line 350.
+
 LaTeX Font Info:    Trying to load font information for U+bbm on input line 370
 .
- (/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+(/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [17] [18]
+)
+
+LaTeX Warning: Reference `lem:1' on page 17 undefined on input line 372.
+
+
+LaTeX Warning: Reference `lem:2' on page 17 undefined on input line 372.
+
+
+LaTeX Warning: Reference `lem:1' on page 17 undefined on input line 383.
+
+
+LaTeX Warning: Reference `lem:3:Vor1' on page 17 undefined on input line 383.
+
+
+LaTeX Warning: Reference `lem:3:Vor2' on page 17 undefined on input line 395.
+
+
+LaTeX Warning: Reference `lem:3:Bed1' on page 17 undefined on input line 408.
+
+
+LaTeX Warning: Reference `lem:3:Bed3' on page 17 undefined on input line 408.
+
+
+LaTeX Warning: Reference `lem:3:Bed1' on page 17 undefined on input line 408.
+
+
+LaTeX Warning: Reference `lem:3:Bed3' on page 17 undefined on input line 408.
+
+
+LaTeX Warning: Reference `lem:3' on page 18 undefined on input line 413.
+
+
+LaTeX Warning: Reference `lem:3' on page 18 undefined on input line 428.
+
+
 Overfull \hbox (14.48154pt too wide) detected at line 436
 []
  []
 
-[19] [20] [21]
+
+LaTeX Warning: Reference `lem:3' on page 19 undefined on input line 437.
+
+
+LaTeX Warning: Reference `lem:4:eq' on page 19 undefined on input line 440.
+
+
+LaTeX Warning: Reference `lem:4:eq' on page 20 undefined on input line 450.
+
+
+LaTeX Warning: Citation `kohler19' on page 20 undefined on input line 453.
+
+
+LaTeX Warning: Reference `nzul√§ssig' on page 20 undefined on input line 455.
+
+
+LaTeX Warning: Reference `lem:1' on page 20 undefined on input line 463.
+
+
+LaTeX Warning: Reference `lem:2' on page 20 undefined on input line 463.
+
+
+LaTeX Warning: Reference `lem:4' on page 20 undefined on input line 463.
+
+
+LaTeX Warning: Citation `kohler19' on page 21 undefined on input line 485.
+
+
 Overfull \hbox (26.27444pt too wide) in paragraph at lines 508--509
 []\T1/ptm/m/n/12 (-20) Das n‰chs-te Lem-ma be-nˆ-ti-gen wir um ei-ne Schran-ke 
 f¸r die ‹ber-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OMS
 /ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
  []
 
-) [22]
-\openout2 = `chap2.aux'.
 
- (./chap2.tex
+LaTeX Warning: Citation `kohler19' on page 22 undefined on input line 509.
+
+
+LaTeX Warning: Reference `nzul√§ssig' on page 22 undefined on input line 512.
+
+
+LaTeX Warning: Reference `networkarch' on page 22 undefined on input line 512.
+
+) (./chap2.tex
 Kapitel 2.
-[23
+
+LaTeX Warning: Reference `logsquasher' on page 23 undefined on input line 10.
 
 
+LaTeX Warning: Reference `networkarch' on page 23 undefined on input line 23.
 
-] [24]
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure1' is up-to-date. ======
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
 
 LaTeX Font Warning: Font shape `OMS/ptm/bx/n' undefined
 (Font)              using `OMS/ptm/m/n' instead
 (Font)              for symbol `textbullet' on input line 98.
 
-[25 <./figures/Masterthesis_Adrian_Gabel-figure1.pdf>]
+
+LaTeX Warning: Reference `induktiongl1' on page 25 undefined on input line 116.
+
+
+
 Overfull \hbox (1.82724pt too wide) detected at line 138
 []
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [26]
 LaTeX Font Info:    Font shape `OMS/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
 
-[27] [28]
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure2' is up-to-date. ======
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure3' is up-to-date. ======
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure4' is up-to-date. ======
-[29 <./figures/Masterthesis_Adrian_Gabel-figure2.pdf>] [30 <./figures/Masterthe
-sis_Adrian_Gabel-figure3.pdf> <./figures/Masterthesis_Adrian_Gabel-figure4.pdf>
+LaTeX Warning: Reference `induktiongl1' on page 27 undefined on input line 141.
+
+
+
+LaTeX Warning: Reference `induktiongl1' on page 27 undefined on input line 148.
+
+
+
+LaTeX Warning: Reference `induktiongl2' on page 27 undefined on input line 148.
+
+
+
+LaTeX Warning: Reference `konvexkomb' on page 27 undefined on input line 153.
+
+
+LaTeX Warning: Reference `induktiongl1' on page 27 undefined on input line 164.
+
+
+
+LaTeX Warning: Reference `induktiongl1' on page 28 undefined on input line 180.
+
+
+
+LaTeX Warning: Reference `logsquasher' on page 28 undefined on input line 189.
+
+
+LaTeX Warning: Reference `lem:1' on page 28 undefined on input line 196.
+
+
+LaTeX Warning: Reference `fig:fid' on page 28 undefined on input line 196.
+
+\openout4 = `figures/Masterthesis_Adrian_Gabel-figure2.dpth'.
+
+
+Overfull \hbox (6.16849pt too wide) in paragraph at lines 219--219
+ []\T1/ptm/m/n/12 (-20) Hidden 
+ []
+
+
+Overfull \hbox (4.21628pt too wide) in paragraph at lines 219--219
+ []\T1/ptm/m/n/12 (-20) Output 
+ []
+
+[28
+
 ]
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure5' is up-to-date. ======
-[31 <./figures/Masterthesis_Adrian_Gabel-figure5.pdf>] [32] [33] [34]) [35]
-\openout2 = `chap3.aux'.
+
+LaTeX Warning: Reference `lem:2' on page 28 undefined on input line 245.
 
 
-(./chap3.tex
+LaTeX Warning: Reference `fig:fmult' on page 28 undefined on input line 245.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `lem:3' on page 29 undefined on input line 297.
+
+
+LaTeX Warning: Reference `fig:frelu' on page 29 undefined on input line 297.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `lem:4' on page 29 undefined on input line 351.
+
+
+LaTeX Warning: Reference `fig:fhat' on page 29 undefined on input line 351.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `fnet' on page 30 undefined on input line 441.
+
+
+LaTeX Warning: Reference `estimate' on page 31 undefined on input line 478.
+
+
+LaTeX Warning: Reference `estimate' on page 31 undefined on input line 484.
+
+
+LaTeX Warning: Reference `min' on page 32 undefined on input line 486.
+
+
+LaTeX Warning: Reference `estimate' on page 32 undefined on input line 510.
+
+
+LaTeX Warning: Reference `les' on page 32 undefined on input line 510.
+
+
+LaTeX Warning: Reference `min' on page 32 undefined on input line 511.
+
+) (./chap3.tex
 Kapitel 3.
-[36
+
+LaTeX Warning: Reference `estimate' on page 34 undefined on input line 7.
 
 
+LaTeX Warning: Reference `estimate' on page 34 undefined on input line 13.
 
-] [37]
+
+LaTeX Warning: Citation `Storch2018' on page 34 undefined on input line 21.
+
+
+LaTeX Warning: Citation `Storch2018' on page 34 undefined on input line 21.
+
+
+LaTeX Warning: Reference `networkarch' on page 35 undefined on input line 23.
+
+
+LaTeX Warning: Reference `constantc21' on page 35 undefined on input line 25.
+
+
+LaTeX Warning: Reference `constantc21' on page 36 undefined on input line 48.
+
+
+LaTeX Warning: Citation `Klenke2013' on page 36 undefined on input line 73.
+
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [38] [39] [40] [41]
+
+LaTeX Warning: Citation `Klenke2013' on page 36 undefined on input line 86.
+
+
+LaTeX Warning: Reference `tscheby' on page 37 undefined on input line 105.
+
+
+LaTeX Warning: Reference `anc' on page 37 undefined on input line 105.
+
+
+LaTeX Warning: Reference `an' on page 37 undefined on input line 105.
+
+
+LaTeX Warning: Reference `estimate' on page 37 undefined on input line 116.
+
+
+LaTeX Warning: Reference `min' on page 38 undefined on input line 126.
+
+
+LaTeX Warning: Reference `event' on page 38 undefined on input line 130.
+
+
+LaTeX Warning: Reference `constantc21' on page 38 undefined on input line 130.
+
+
+LaTeX Warning: Reference `constantc21' on page 38 undefined on input line 142.
+
+
+LaTeX Warning: Reference `constantc21' on page 38 undefined on input line 142.
+
+
+LaTeX Warning: Reference `min' on page 38 undefined on input line 144.
+
+
+LaTeX Warning: Reference `g' on page 39 undefined on input line 154.
+
+
+LaTeX Warning: Reference `tilde' on page 39 undefined on input line 154.
+
+
+LaTeX Warning: Reference `bed' on page 39 undefined on input line 159.
+
+
+LaTeX Warning: Reference `lem:8' on page 39 undefined on input line 159.
+
+
+LaTeX Warning: Reference `lem:9' on page 39 undefined on input line 170.
+
+
+LaTeX Warning: Reference `jn' on page 39 undefined on input line 171.
+
+
+LaTeX Warning: Reference `lem:logsquasher' on page 39 undefined on input line 1
+73.
+
+
+LaTeX Warning: Reference `nzul√§ssig' on page 39 undefined on input line 173.
+
+
+LaTeX Warning: Reference `lem:9' on page 39 undefined on input line 173.
+
+
+LaTeX Warning: Reference `lem:9' on page 39 undefined on input line 173.
+
+
+LaTeX Warning: Reference `lem:5' on page 40 undefined on input line 202.
+
+
+LaTeX Warning: Reference `lem:2' on page 40 undefined on input line 202.
+
+
+LaTeX Warning: Reference `fnet' on page 40 undefined on input line 202.
+
+
+LaTeX Warning: Reference `lem:5' on page 40 undefined on input line 202.
+
+
 Overfull \hbox (24.6976pt too wide) detected at line 214
 []
  []
 
-[42]
+
+LaTeX Warning: Reference `lem:loccon' on page 41 undefined on input line 217.
+
+
+LaTeX Warning: Reference `lem:pcsmooth' on page 41 undefined on input line 217.
+
+
+
+LaTeX Warning: Reference `1stsum' on page 41 undefined on input line 227.
+
+
+LaTeX Warning: Reference `2ndsum' on page 41 undefined on input line 227.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43]
-[44]) [45]
-\openout2 = `chap4.aux'.
 
- (./chap4.tex
+LaTeX Warning: Reference `lem9sol' on page 42 undefined on input line 251.
+
+
+LaTeX Warning: Reference `originaleq' on page 43 undefined on input line 278.
+
+
+LaTeX Warning: Reference `1stsum' on page 43 undefined on input line 278.
+
+
+LaTeX Warning: Reference `6thsum' on page 43 undefined on input line 278.
+
+) (./chap4.tex
 Kapitel 4.
-[46
+(./m1tikz.tex
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+)
+Overfull \hbox (209.98862pt too wide) in paragraph at lines 30--31
+ [][] 
+ []
 
+(./nnnestimatetikz.tex
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+)
+Overfull \hbox (209.98862pt too wide) in paragraph at lines 37--38
+ [][] 
+ []
 
-
-] (./m1tikz.tex
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure6' is up-to-date. ======
-) (./nnnestimatetikz.tex
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure7' is up-to-date. ======
-) (./tikzd1.tex
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure8' is up-to-date. ======
+(./tikzd1.tex
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
 )
 Overfull \hbox (2.28003pt too wide) in paragraph at lines 27--49
 [][] []
  []
-
-\openout3 = `figures/Masterthesis_Adrian_Gabel-figure9.md5'.
-
-\openout3 = `Masterthesis_Adrian_Gabel.auxlock'.
-
-===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
-n-error -interaction=batchmode -jobname "figures/Masterthesis_Adrian_Gabel-figu
-re9" "\def\tikzexternalrealjob{Masterthesis_Adrian_Gabel}\input{Masterthesis_Ad
-rian_Gabel}"' ========
-runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
- "figures/Masterthesis_Adrian_Gabel-figure9" "\def\tikzexternalrealjob{Masterth
-esis_Adrian_Gabel}\input{Masterthesis_Adrian_Gabel}")...executed.
-
-\openout3 = `Masterthesis_Adrian_Gabel.auxlock'.
 
 
 Overfull \hbox (1.66882pt too wide) in paragraph at lines 78--78
@@ -1567,116 +1727,66 @@ Overfull \hbox (7.12672pt too wide) in paragraph at lines 68--83
  [][] 
  []
 
-) [47] [48 <./figures/Masterthesis_Adrian_Gabel-figure6.pdf> <./figures/Mastert
-hesis_Adrian_Gabel-figure7.pdf> <./figures/Masterthesis_Adrian_Gabel-figure8.pd
-f> <./figures/Masterthesis_Adrian_Gabel-figure9.pdf>] [49]
-\openout2 = `literaturverzeichnis.aux'.
-
-
-(./literaturverzeichnis.tex (./Masterthesis_Adrian_Gabel.bbl [50
-
-
-
-])) [51]
-\openout2 = `appendix.aux'.
-
-
-(./appendix.tex
+) (./literaturverzeichnis.tex
+No file figures/Masterthesis_Adrian_Gabel-figure2.bbl.
+) (./appendix.tex
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 9
 .
- (/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
 (../01_Code/main.py
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <6> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
- [52
 
-
-
-]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [53]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [54]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [55])
-(../01_Code/data_gen.py [56]) (../01_Code/help_neural_networks.py [57])
-(../01_Code/new_neural_network.py [58]
+) (../01_Code/data_gen.py) (../01_Code/help_neural_networks.py) (../01_Code/new
+_neural_network.py
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [59])
-(../01_Code/fc_neural_network.py) (../01_Code/nearest_neighbor.py [60])
-(../01_Code/constant.py)) [61]
+) (../01_Code/fc_neural_network.py) (../01_Code/nearest_neighbor.py) (../01_Cod
+e/constant.py))
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
- (./Masterthesis_Adrian_Gabel.aux (./titel.aux)
-(./erklaerung.aux) (./einleitung.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux)
-(./chap4.aux) (./literaturverzeichnis.aux) (./appendix.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
-
-
-Package rerunfilecheck Warning: File `Masterthesis_Adrian_Gabel.out' has change
-d.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Masterthesis_Adrian_Gabel.out':
-(rerunfilecheck)             Before: E10E67C84BFA0B03E6D21ABE87B5C1B7;778
-(rerunfilecheck)             After:  D0D8F58740891B3D7F427AD5C23E569E;778.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 65.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 44429 strings out of 492162
- 942987 string characters out of 6125292
- 2544510 words of memory out of 5000000
- 46786 multiletter control sequences out of 15000+600000
- 94388 words of font info for 310 fonts, out of 8000000 for 9000
+ 43515 strings out of 492162
+ 931678 string characters out of 6125292
+ 1824511 words of memory out of 5000000
+ 46900 multiletter control sequences out of 15000+600000
+ 69451 words of font info for 178 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,21n,138p,1373b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{chapter*.12} has been referenced but does not exi
-st, replaced by a fixed one
-
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <
-/Users/adrian/Library/texlive/2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.6
-00pk>{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/loca
-l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local
-/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/
-texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/te
-xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/
-2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/
-texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/
-2019/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/20
-19/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-di
-st/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/ti
-mes/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a
-.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (61 pages, 1511165 bytes).
+ 83i,21n,140p,1428b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
+live/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2019/
+texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on figures/Masterthesis_Adrian_Gabel-figure2.pdf (1 page, 32807 
+bytes).
 PDF statistics:
- 1598 PDF objects out of 1728 (max. 8388607)
- 808 named destinations out of 1000 (max. 500000)
- 47784 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 29 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 36377 words of extra memory for PDF output out of 42996 (max. 10000000)
 

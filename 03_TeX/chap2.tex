@@ -5,9 +5,9 @@ In diesem Kapitel werden wir mithilfe von unseren gegebenen Datenmenge
 $$ \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},$$
 unseren Regressionsschätzer konstruieren. 
 
-Die Netzwerkarchitektur $(L, k)$ hängt von der Anzahl der verborgenen Schichten $L \in \N_0$ und und einem Vektor $k = (k_1,\dots,k_L) \in \N^L$ ab, der mit jeder Komponente die Anzahl der Neuronen in der jeweiligen verborgen Schicht angibt. 
+Die Netzwerkarchitektur $(L, k)$ beschreibt die Gestalt eines neuronalen Netzes. Durch $L \in \N_0$ wird die Anzahl der verborgenen Schichten angeben und der Vektor $k = (k_1,\dots,k_L) \in \N^L$ gibt mit jeder Komponente die Anzahl der Neuronen an, die in der jeweiligen verborgen Schicht enthalten sind. 
 
-Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, k)$ und $\sigma$ aus (\ref{logsquasher}) als Aktivierungsfunktion, ist eine reelwertige Funktion $f\colon \R^d \to \R$ definiert durch:
+Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, k)$ und $\sigma$ aus (\ref{logsquasher}) als Aktivierungsfunktion, ist eine reellwertige Funktion $f\colon \R^d \to \R$ definiert durch:
 \begin{align}
 \label{networkarch}
 f(x) & = \sum_{i = 1}^{k_L} c_i^{(L)} \cdot f_i^{(L)}(x) + c_0^{(L)} \nonumber \\
@@ -171,7 +171,7 @@ $$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot 
 und folgern mithilfe der Dreiecksungleichung und der $(p,C)$-Glattheit von $f$:
 \begin{equation*}
 \begin{split}
-|f(x) - P(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in \{0,\dots,q\}^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
+|f(x) - P(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \|x_{\bi} - x_{\bi} + \xi(x - x_{\mathbf{i}}) \|^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \cdot d^{s/2} \cdot \bigg(\frac{2a}{M}\bigg)^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & = c_1 \cdot \frac{1}{M^p},

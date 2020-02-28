@@ -85,6 +85,8 @@ language=R,                     % the language of the code
 
 % tikz
 \usepackage{tikz}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=figures/]
 %\usetikzlibrary{arrows.meta}% arrow tip library
 %\usetikzlibrary{bending}% better arrow head for bended lines
 
@@ -142,6 +144,7 @@ pdftitle={Bachelorarbeit - Bewertung Amerikanischer Optionen durch Lösen eines 
 % Inhaltsverzeichnis erstellen.
 
 \usepackage{pgfplots}
+
 \pgfplotsset{compat=1.12}
 \pgfplotsset{samples=50}
 
