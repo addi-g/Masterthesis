@@ -115,7 +115,7 @@ Ein mehrschichtiges feedforward neuronales Netz mit Architektur $(L, \bk)$ und $
 \begin{align}
 \label{networkarch}
 f(x) & = \sum_{i = 1}^{k_L} c_i^{(L)} \cdot f_i^{(L)}(x) + c_0^{(L)} \nonumber \\
-\intertext{mit Gewichten $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ rekursiv definiert durch:} 
+\intertext{mit Gewichten $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ mit $i = 1,\dots,k_L$ rekursiv definiert durch:} 
 f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j^{(r - 1)}(x) + c_{i,0}^{(r - 1)} \bigg)\\
 \intertext{mit Gewichten $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R \,(r = 2,\dots, L)$ und:}
 f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  28 FEB 2020 13:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  29 FEB 2020 14:30
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1474,53 +1474,55 @@ Kapitel 2.
 
 LaTeX Font Warning: Font shape `OMS/ptm/bx/n' undefined
 (Font)              using `OMS/ptm/m/n' instead
-(Font)              for symbol `textbullet' on input line 87.
+(Font)              for symbol `textbullet' on input line 91.
 
 [25] [26 <./figures/Masterthesis_Adrian_Gabel-figure1.pdf>]
-Overfull \hbox (1.82724pt too wide) detected at line 127
+Overfull \hbox (1.82724pt too wide) detected at line 131
 []
  []
 
-LaTeX Font Info:    Font shape `OMS/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 130.
 [27] [28]
-===== Image 'figures/Masterthesis_Adrian_Gabel-figure2' is up-to-date. ======
+Overfull \hbox (33.52199pt too wide) detected at line 181
+[]
+ []
+
 [29]
+===== Image 'figures/Masterthesis_Adrian_Gabel-figure2' is up-to-date. ======
 ===== Image 'figures/Masterthesis_Adrian_Gabel-figure3' is up-to-date. ======
+[30 <./figures/Masterthesis_Adrian_Gabel-figure2.pdf>]
 ===== Image 'figures/Masterthesis_Adrian_Gabel-figure4' is up-to-date. ======
 ===== Image 'figures/Masterthesis_Adrian_Gabel-figure5' is up-to-date. ======
-[30 <./figures/Masterthesis_Adrian_Gabel-figure2.pdf> <./figures/Masterthesis_A
-drian_Gabel-figure3.pdf>] [31 <./figures/Masterthesis_Adrian_Gabel-figure4.pdf>
- <./figures/Masterthesis_Adrian_Gabel-figure5.pdf>] [32] [33] [34]) [35]
+[31 <./figures/Masterthesis_Adrian_Gabel-figure3.pdf> <./figures/Masterthesis_A
+drian_Gabel-figure4.pdf>] [32 <./figures/Masterthesis_Adrian_Gabel-figure5.pdf>
+] [33] [34] [35]) [36]
 \openout2 = `chap3.aux'.
 
-
-(./chap3.tex
+ (./chap3.tex
 Kapitel 3.
-[36
+[37
 
 
 
-] [37]
+] [38]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [38] [39] [40] [41]
+ [39] [40] [41] [42]
 Overfull \hbox (24.6976pt too wide) detected at line 214
 []
  []
 
-[42]
+[43]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43]
-[44]) [45]
+ [44]
+[45]) [46]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
 Kapitel 4.
-[46
+[47
 
 
 
@@ -1546,17 +1548,17 @@ Overfull \hbox (7.12672pt too wide) in paragraph at lines 68--83
  [][] 
  []
 
-) [47] [48 <./figures/Masterthesis_Adrian_Gabel-figure6.pdf> <./figures/Mastert
+) [48] [49 <./figures/Masterthesis_Adrian_Gabel-figure6.pdf> <./figures/Mastert
 hesis_Adrian_Gabel-figure7.pdf> <./figures/Masterthesis_Adrian_Gabel-figure8.pd
-f> <./figures/Masterthesis_Adrian_Gabel-figure9.pdf>] [49]
+f> <./figures/Masterthesis_Adrian_Gabel-figure9.pdf>] [50]
 \openout2 = `literaturverzeichnis.aux'.
 
 
-(./literaturverzeichnis.tex (./Masterthesis_Adrian_Gabel.bbl [50
+(./literaturverzeichnis.tex (./Masterthesis_Adrian_Gabel.bbl [51
 
 
 
-])) [51]
+])) [52]
 \openout2 = `appendix.aux'.
 
 
@@ -1576,27 +1578,27 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <6> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
- [52
+ [53
 
 
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [53]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [54]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [55])
-(../01_Code/data_gen.py [56]) (../01_Code/help_neural_networks.py [57])
-(../01_Code/new_neural_network.py [58]
+ [55]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [59])
-(../01_Code/fc_neural_network.py) (../01_Code/nearest_neighbor.py [60])
-(../01_Code/constant.py)) [61]
+ [56])
+(../01_Code/data_gen.py [57]) (../01_Code/help_neural_networks.py [58])
+(../01_Code/new_neural_network.py [59]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [60])
+(../01_Code/fc_neural_network.py) (../01_Code/nearest_neighbor.py [61])
+(../01_Code/constant.py)) [62]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
  (./Masterthesis_Adrian_Gabel.aux (./titel.aux)
@@ -1614,11 +1616,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 44434 strings out of 492162
- 943025 string characters out of 6125292
- 2544575 words of memory out of 5000000
- 46789 multiletter control sequences out of 15000+600000
- 94388 words of font info for 310 fonts, out of 8000000 for 9000
+ 44448 strings out of 492162
+ 943177 string characters out of 6125292
+ 2544901 words of memory out of 5000000
+ 46793 multiletter control sequences out of 15000+600000
+ 94613 words of font info for 312 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,21n,138p,1372b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -1641,9 +1643,9 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (61 pages, 1513105 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (62 pages, 1518756 bytes).
 PDF statistics:
- 1605 PDF objects out of 1728 (max. 8388607)
- 810 named destinations out of 1000 (max. 500000)
+ 1624 PDF objects out of 1728 (max. 8388607)
+ 817 named destinations out of 1000 (max. 500000)
  47784 words of extra memory for PDF output out of 51595 (max. 10000000)
 
