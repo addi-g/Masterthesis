@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  29 FEB 2020 14:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  1 MAR 2020 14:00
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1482,19 +1482,18 @@ Overfull \hbox (1.82724pt too wide) detected at line 131
  []
 
 [27] [28]
-Overfull \hbox (33.52199pt too wide) detected at line 181
-[]
- []
+Underfull \vbox (badness 2653) has occurred while \output is active []
 
-[29]
+ [29]
 ===== Image 'figures/Masterthesis_Adrian_Gabel-figure2' is up-to-date. ======
+[30]
 ===== Image 'figures/Masterthesis_Adrian_Gabel-figure3' is up-to-date. ======
-[30 <./figures/Masterthesis_Adrian_Gabel-figure2.pdf>]
 ===== Image 'figures/Masterthesis_Adrian_Gabel-figure4' is up-to-date. ======
+[31 <./figures/Masterthesis_Adrian_Gabel-figure2.pdf> <./figures/Masterthesis_A
+drian_Gabel-figure3.pdf>]
 ===== Image 'figures/Masterthesis_Adrian_Gabel-figure5' is up-to-date. ======
-[31 <./figures/Masterthesis_Adrian_Gabel-figure3.pdf> <./figures/Masterthesis_A
-drian_Gabel-figure4.pdf>] [32 <./figures/Masterthesis_Adrian_Gabel-figure5.pdf>
-] [33] [34] [35]) [36]
+[32 <./figures/Masterthesis_Adrian_Gabel-figure4.pdf>] [33 <./figures/Masterthe
+sis_Adrian_Gabel-figure5.pdf>] [34] [35]) [36]
 \openout2 = `chap3.aux'.
 
  (./chap3.tex
@@ -1616,8 +1615,8 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 44448 strings out of 492162
- 943177 string characters out of 6125292
+ 44447 strings out of 492162
+ 943162 string characters out of 6125292
  2544901 words of memory out of 5000000
  46793 multiletter control sequences out of 15000+600000
  94613 words of font info for 312 fonts, out of 8000000 for 9000
@@ -1643,9 +1642,9 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (62 pages, 1518756 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (62 pages, 1518794 bytes).
 PDF statistics:
- 1624 PDF objects out of 1728 (max. 8388607)
- 817 named destinations out of 1000 (max. 500000)
+ 1622 PDF objects out of 1728 (max. 8388607)
+ 816 named destinations out of 1000 (max. 500000)
  47784 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -152,7 +152,7 @@ Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\
 \label{eq:lagrange}
 \begin{split}
 f(x) & = T_{x_{\mathbf{i}},q - 1}[f(x)] \\
-& = \sum_{|\bj|_1 \leq q - 1}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
+& = \sum_{\substack{\bj \in [q-1]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
 \end{split}
 \end{equation}
 Nach (\ref{induktiongl1}) erhalten wir 
@@ -160,14 +160,16 @@ $$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot 
 \begin{equation}
 \label{eq:absch}
 \begin{split}
-&\sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \leq \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{1}{\bj!} \cdot \bigg(\frac{2a}{M}\bigg)^q.
+& \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \\
+& \leq \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{1}{\bj!} \cdot \bigg(\frac{2a}{M}\bigg)^q.
 \end{split}
 \end{equation} 
 Mithilfe der Dreiecksungleichung und der Definition von $P_f(x)$ erhalten wir:
 \begin{equation}
 \label{eq:drei}
 \begin{split}
-|f(x) - P_f(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.
+& |f(x) - P_f(x)| \\
+& \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.
 \end{split}
 \end{equation}
 Nach Gleichung (\ref{eq:lagrange}) erhalten wir:
@@ -175,27 +177,28 @@ Nach Gleichung (\ref{eq:lagrange}) erhalten wir:
 \label{eq:sum}
 \begin{split}
 & \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \\ 
-& = \bigg| \sum_{|\bj|_1 \leq q - 1}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \\
-& = \bigg| \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg|.
+& = \bigg| \sum_{\substack{\bj \in [q-1]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \\
+& \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \\
+& = \bigg| \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg|.
 \end{split}
 \end{equation}
 Aus der $(p,C)$-Glattheit von $f$ nach Definition \ref{def:pc} mit $x_{\bi} + \xi(x - x_{\mathbf{i}}), x_{\bi} \in \R^d$ folgt durch (\ref{eq:absch}) und (\ref{eq:sum}):
 \begin{equation}
 \label{eq:last}
 \begin{split}
-& \bigg| \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{q - 1 < |\bj|_1 \leq q} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg| \\
+& \bigg| \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg| \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \|x_{\bi} + \xi(x - x_{\mathbf{i}}) - x_{\bi} \|^s \cdot C.
 \end{split}
 \end{equation}
 Fassen wir die Gleichungen (\ref{eq:drei}), (\ref{eq:sum}) und (\ref{eq:last}) zusammen, erhalten wir:
-\begin{equation}
+\begin{equation*}
 \begin{split}
 |f(x) - P_f(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \|x_{\bi} + \xi(x - x_{\mathbf{i}}) - x_{\bi} \|^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \cdot \bigg(\frac{2a}{M}\bigg)^s \cdot d^{s/2} \cdot C\\
 & = c \cdot \frac{1}{M^p},
 \end{split}
-\end{equation}
+\end{equation*}
 wobei wir bei der letzten Gleichheit Bedingung (\ref{induktiongl1}) und $q + s = p$ verwendet und 
 $$c = (2a)^p \cdot d^{s/2} \cdot C,$$
 gewählt haben.
@@ -528,9 +531,7 @@ Mit $\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \in \R
 \end{split} 
 \end{equation*} 
 Die letzte Gleichung wird für $\mathbf{a} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}$ minimal, 
-da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ ist für $\mathbf{a} = \mathbf{b}$. Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers (\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems (\ref{les}) ist.
-Da der Koeffizientenvektor die Gleichung (\ref{min}) minimiert, erhalten wir wenn wir den Koeffizientenvektor mit dem Nullvektor gleichsetzen$\colon$
+da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ genau dann, wenn $\mathbf{a} = \mathbf{b}$ gilt. Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers (\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems (\ref{les}) ist.
+Da der Koeffizientenvektor die Gleichung (\ref{min}) minimiert, erhalten wir, wenn wir den Koeffizientenvektor $\mathbf{a}$ gleich Null setzen:
 $$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
-was uns erlaubt eine obere Schranke für den absoluten Wert unsere Koeffizienten abzuleiten.
-
-
+was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten.
