@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  28 FEB 2020 11:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  1 MAR 2020 15:56
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1280,25 +1280,25 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
 
-LaTeX Warning: Reference `fig:DNN' on page 10 undefined on input line 111.
+LaTeX Warning: Reference `fig:DNN' on page 11 undefined on input line 128.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Citation `forster2016' on page 11 undefined on input line 183.
+LaTeX Warning: Citation `forster2016' on page 11 undefined on input line 200.
 
 
-LaTeX Warning: Reference `lem:logsquasher' on page 11 undefined on input line 1
-91.
+LaTeX Warning: Reference `lem:logsquasher' on page 12 undefined on input line 2
+08.
 
 
-LaTeX Warning: Reference `logsquasher' on page 11 undefined on input line 191.
+LaTeX Warning: Reference `logsquasher' on page 12 undefined on input line 208.
 
 
-LaTeX Warning: Citation `forster2016' on page 11 undefined on input line 196.
+LaTeX Warning: Citation `forster2016' on page 12 undefined on input line 213.
 
 
-Overfull \hbox (14.6357pt too wide) in paragraph at lines 216--217
+Overfull \hbox (14.6357pt too wide) in paragraph at lines 233--234
 []\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
 /n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
 ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-mal $\OML/ztmcm/m/it/12 N \O
@@ -1307,14 +1307,14 @@ MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
  []
 
 
-LaTeX Warning: Reference `lem:9' on page 12 undefined on input line 218.
+LaTeX Warning: Reference `lem:9' on page 12 undefined on input line 235.
 
 
-LaTeX Warning: Reference `nzulässig' on page 12 undefined on input line 223.
+LaTeX Warning: Reference `nzulässig' on page 12 undefined on input line 240.
 
 
-Overfull \hbox (11.33176pt too wide) in paragraph at lines 223--224
-[][]\T1/ptm/b/n/12 Lemma 1.6. []\T1/ptm/m/it/12 (-20) Sei $\OML/ztmcm/m/it/12 N
+Overfull \hbox (11.33176pt too wide) in paragraph at lines 240--241
+[][]\T1/ptm/b/n/12 Lemma 1.8. []\T1/ptm/m/it/12 (-20) Sei $\OML/ztmcm/m/it/12 N
  \OMS/ztmcm/m/n/12 2 \U/msb/m/n/12 N[]$ \T1/ptm/m/it/12 (-20) be-lie-big, dann 
 er-f�llt der lo-gis-ti-sche squas-her $\OML/ztmcm/m/it/12 ^^[ [] [] \U/msb/m/n/
 12 R \OMS/ztmcm/m/n/12 ! \OT1/ztmcm/m/n/12 [0\OML/ztmcm/m/it/12 ; \OT1/ztmcm/m/
@@ -1323,221 +1323,255 @@ m/m/n/12 ) =
  []
 
 
-LaTeX Warning: Reference `nzulässig' on page 13 undefined on input line 246.
+LaTeX Warning: Reference `nzulässig' on page 13 undefined on input line 263.
 
 
-LaTeX Warning: Reference `nzulässig' on page 14 undefined on input line 274.
+LaTeX Warning: Reference `nzulässig' on page 14 undefined on input line 291.
 
 
-LaTeX Warning: Citation `forster2016' on page 14 undefined on input line 276.
+LaTeX Warning: Citation `forster2016' on page 14 undefined on input line 293.
 
 
-LaTeX Warning: Reference `lem:lagrange' on page 14 undefined on input line 296.
-
-
-
-LaTeX Warning: Reference `lem:lagrange' on page 15 undefined on input line 308.
+LaTeX Warning: Reference `lem:lagrange' on page 15 undefined on input line 313.
 
 
 
-LaTeX Warning: Reference `lem:1' on page 16 undefined on input line 346.
+LaTeX Warning: Reference `lem:lagrange' on page 15 undefined on input line 325.
 
 
-LaTeX Warning: Reference `lem:2' on page 16 undefined on input line 350.
+
+LaTeX Warning: Reference `lem:1' on page 17 undefined on input line 363.
 
 
-LaTeX Warning: Reference `lem:1' on page 16 undefined on input line 350.
+LaTeX Warning: Reference `lem:2' on page 17 undefined on input line 367.
 
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 370
+
+LaTeX Warning: Reference `lem:1' on page 17 undefined on input line 367.
+
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 387
 .
 (/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
 
-LaTeX Warning: Reference `lem:1' on page 17 undefined on input line 372.
+LaTeX Warning: Reference `lem:1' on page 17 undefined on input line 389.
 
 
-LaTeX Warning: Reference `lem:2' on page 17 undefined on input line 372.
+LaTeX Warning: Reference `lem:2' on page 17 undefined on input line 389.
 
 
-LaTeX Warning: Reference `lem:1' on page 17 undefined on input line 383.
+LaTeX Warning: Reference `lem:1' on page 18 undefined on input line 400.
 
 
-LaTeX Warning: Reference `lem:3:Vor1' on page 17 undefined on input line 383.
+LaTeX Warning: Reference `lem:3:Vor1' on page 18 undefined on input line 400.
 
 
-LaTeX Warning: Reference `lem:3:Vor2' on page 17 undefined on input line 395.
+LaTeX Warning: Reference `lem:3:Vor2' on page 18 undefined on input line 412.
 
 
-LaTeX Warning: Reference `lem:3:Bed1' on page 17 undefined on input line 408.
+LaTeX Warning: Reference `lem:3:Bed1' on page 18 undefined on input line 425.
 
 
-LaTeX Warning: Reference `lem:3:Bed3' on page 17 undefined on input line 408.
+LaTeX Warning: Reference `lem:3:Bed3' on page 18 undefined on input line 425.
 
 
-LaTeX Warning: Reference `lem:3:Bed1' on page 17 undefined on input line 408.
+LaTeX Warning: Reference `lem:3:Bed1' on page 18 undefined on input line 425.
 
 
-LaTeX Warning: Reference `lem:3:Bed3' on page 17 undefined on input line 408.
+LaTeX Warning: Reference `lem:3:Bed3' on page 18 undefined on input line 425.
 
 
-LaTeX Warning: Reference `lem:3' on page 18 undefined on input line 413.
+LaTeX Warning: Reference `lem:3' on page 19 undefined on input line 430.
 
 
-LaTeX Warning: Reference `lem:3' on page 18 undefined on input line 428.
+LaTeX Warning: Reference `lem:3' on page 19 undefined on input line 445.
 
 
-Overfull \hbox (14.48154pt too wide) detected at line 436
+Overfull \hbox (14.48154pt too wide) detected at line 453
 []
  []
 
 
-LaTeX Warning: Reference `lem:3' on page 19 undefined on input line 437.
+LaTeX Warning: Reference `lem:3' on page 19 undefined on input line 454.
 
 
-LaTeX Warning: Reference `lem:4:eq' on page 19 undefined on input line 440.
+LaTeX Warning: Reference `lem:4:eq' on page 19 undefined on input line 457.
 
 
-LaTeX Warning: Reference `lem:4:eq' on page 20 undefined on input line 450.
+LaTeX Warning: Reference `lem:4:eq' on page 20 undefined on input line 467.
 
 
-LaTeX Warning: Citation `kohler19' on page 20 undefined on input line 453.
+LaTeX Warning: Citation `kohler19' on page 20 undefined on input line 470.
 
 
-LaTeX Warning: Reference `nzulässig' on page 20 undefined on input line 455.
+LaTeX Warning: Reference `nzulässig' on page 20 undefined on input line 472.
 
 
-LaTeX Warning: Reference `lem:1' on page 20 undefined on input line 463.
+LaTeX Warning: Reference `lem:1' on page 21 undefined on input line 480.
 
 
-LaTeX Warning: Reference `lem:2' on page 20 undefined on input line 463.
+LaTeX Warning: Reference `lem:2' on page 21 undefined on input line 480.
 
 
-LaTeX Warning: Reference `lem:4' on page 20 undefined on input line 463.
+LaTeX Warning: Reference `lem:4' on page 21 undefined on input line 480.
 
 
-LaTeX Warning: Citation `kohler19' on page 21 undefined on input line 485.
+LaTeX Warning: Citation `kohler19' on page 21 undefined on input line 502.
 
 
-Overfull \hbox (26.27444pt too wide) in paragraph at lines 508--509
+Overfull \hbox (26.27444pt too wide) in paragraph at lines 525--526
 []\T1/ptm/m/n/12 (-20) Das n�chs-te Lem-ma be-n�-ti-gen wir um ei-ne Schran-ke 
 f�r die �ber-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OMS
 /ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
  []
 
 
-LaTeX Warning: Citation `kohler19' on page 22 undefined on input line 509.
+LaTeX Warning: Citation `kohler19' on page 22 undefined on input line 526.
 
 
-LaTeX Warning: Reference `nzulässig' on page 22 undefined on input line 512.
+LaTeX Warning: Reference `nzulässig' on page 22 undefined on input line 529.
 
 
-LaTeX Warning: Reference `networkarch' on page 22 undefined on input line 512.
+LaTeX Warning: Reference `networkarch' on page 22 undefined on input line 529.
 
 ) (./chap2.tex
 Kapitel 2.
 
-LaTeX Warning: Reference `logsquasher' on page 23 undefined on input line 10.
+LaTeX Warning: Reference `chap:1' on page 23 undefined on input line 10.
 
 
-LaTeX Warning: Reference `networkarch' on page 23 undefined on input line 23.
+LaTeX Warning: Reference `def:nn' on page 23 undefined on input line 10.
+
+
+LaTeX Warning: Reference `logsquasher' on page 23 undefined on input line 12.
+
+
+LaTeX Warning: Reference `networkarch' on page 23 undefined on input line 12.
+
+
+LaTeX Warning: Reference `dataset' on page 23 undefined on input line 12.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
 LaTeX Font Warning: Font shape `OMS/ptm/bx/n' undefined
 (Font)              using `OMS/ptm/m/n' instead
-(Font)              for symbol `textbullet' on input line 98.
+(Font)              for symbol `textbullet' on input line 91.
 
 
-LaTeX Warning: Reference `induktiongl1' on page 25 undefined on input line 116.
+LaTeX Warning: Reference `induktiongl1' on page 25 undefined on input line 109.
 
 
 
-Overfull \hbox (1.82724pt too wide) detected at line 138
+Overfull \hbox (1.82724pt too wide) detected at line 131
 []
  []
 
-LaTeX Font Info:    Font shape `OMS/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
 
-LaTeX Warning: Reference `induktiongl1' on page 27 undefined on input line 141.
+LaTeX Warning: Reference `induktiongl1' on page 26 undefined on input line 134.
 
 
 
-LaTeX Warning: Reference `induktiongl1' on page 27 undefined on input line 148.
+LaTeX Warning: Reference `induktiongl1' on page 26 undefined on input line 140.
 
 
 
-LaTeX Warning: Reference `induktiongl2' on page 27 undefined on input line 148.
+LaTeX Warning: Reference `induktiongl2' on page 26 undefined on input line 140.
 
 
 
-LaTeX Warning: Reference `konvexkomb' on page 27 undefined on input line 153.
+LaTeX Warning: Reference `konvexkomb' on page 27 undefined on input line 146.
 
 
-LaTeX Warning: Reference `induktiongl1' on page 27 undefined on input line 164.
-
-
-
-LaTeX Warning: Reference `induktiongl1' on page 28 undefined on input line 180.
+LaTeX Warning: Reference `induktiongl1' on page 27 undefined on input line 158.
 
 
 
-LaTeX Warning: Reference `logsquasher' on page 28 undefined on input line 189.
+LaTeX Warning: Reference `eq:lagrange' on page 27 undefined on input line 175.
 
 
-LaTeX Warning: Reference `lem:1' on page 28 undefined on input line 196.
+LaTeX Warning: Reference `def:pc' on page 28 undefined on input line 185.
 
 
-LaTeX Warning: Reference `fig:fid' on page 28 undefined on input line 196.
-
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-
-LaTeX Warning: Reference `lem:2' on page 28 undefined on input line 245.
+LaTeX Warning: Reference `eq:absch' on page 28 undefined on input line 185.
 
 
-LaTeX Warning: Reference `fig:fmult' on page 28 undefined on input line 245.
-
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-
-LaTeX Warning: Reference `lem:3' on page 29 undefined on input line 297.
+LaTeX Warning: Reference `eq:sum' on page 28 undefined on input line 185.
 
 
-LaTeX Warning: Reference `fig:frelu' on page 29 undefined on input line 297.
-
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
-isable this.
-
-LaTeX Warning: Reference `lem:4' on page 29 undefined on input line 351.
+LaTeX Warning: Reference `eq:drei' on page 28 undefined on input line 193.
 
 
-LaTeX Warning: Reference `fig:fhat' on page 29 undefined on input line 351.
+LaTeX Warning: Reference `eq:sum' on page 28 undefined on input line 193.
+
+
+LaTeX Warning: Reference `eq:last' on page 28 undefined on input line 193.
+
+
+LaTeX Warning: Reference `induktiongl1' on page 28 undefined on input line 202.
+
+
+
+LaTeX Warning: Reference `logsquasher' on page 29 undefined on input line 213.
+
+
+LaTeX Warning: Reference `lem:1' on page 29 undefined on input line 220.
+
+
+LaTeX Warning: Reference `fig:fid' on page 29 undefined on input line 220.
 
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
 isable this.
 
-LaTeX Warning: Reference `fnet' on page 30 undefined on input line 441.
+LaTeX Warning: Reference `lem:2' on page 29 undefined on input line 269.
 
 
-LaTeX Warning: Reference `estimate' on page 32 undefined on input line 478.
+LaTeX Warning: Reference `fig:fmult' on page 29 undefined on input line 269.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `lem:3' on page 29 undefined on input line 321.
 
 
-LaTeX Warning: Reference `estimate' on page 32 undefined on input line 484.
+LaTeX Warning: Reference `fig:frelu' on page 29 undefined on input line 321.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `lem:4' on page 30 undefined on input line 375.
 
 
-LaTeX Warning: Reference `min' on page 32 undefined on input line 486.
+LaTeX Warning: Reference `fig:fhat' on page 30 undefined on input line 375.
+
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to d
+isable this.
+
+LaTeX Warning: Reference `fnet' on page 30 undefined on input line 465.
 
 
-LaTeX Warning: Reference `estimate' on page 33 undefined on input line 510.
+LaTeX Warning: Reference `dataset' on page 31 undefined on input line 481.
 
 
-LaTeX Warning: Reference `les' on page 33 undefined on input line 510.
+LaTeX Warning: Reference `les' on page 31 undefined on input line 485.
 
 
-LaTeX Warning: Reference `min' on page 33 undefined on input line 511.
+LaTeX Warning: Reference `estimate' on page 32 undefined on input line 502.
+
+
+LaTeX Warning: Reference `estimate' on page 32 undefined on input line 508.
+
+
+LaTeX Warning: Reference `min' on page 32 undefined on input line 510.
+
+
+LaTeX Warning: Reference `estimate' on page 33 undefined on input line 534.
+
+
+LaTeX Warning: Reference `les' on page 33 undefined on input line 534.
+
+
+LaTeX Warning: Reference `min' on page 33 undefined on input line 535.
 
 ) (./chap3.tex
 Kapitel 3.
@@ -1713,7 +1747,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
-PGFPlots: reading {plotpostpro.csv}
+PGFPlots: reading {plotpostpro_sort.csv}
 \tikzexternal@dep@file=\write6
 \openout6 = `figures/Masterthesis_Adrian_Gabel-figure9.dep'.
 
@@ -1774,18 +1808,18 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 43814 strings out of 492162
- 941588 string characters out of 6125292
- 3370630 words of memory out of 5000000
- 47203 multiletter control sequences out of 15000+600000
- 67545 words of font info for 172 fonts, out of 8000000 for 9000
+ 43824 strings out of 492162
+ 941670 string characters out of 6125292
+ 3177120 words of memory out of 5000000
+ 47211 multiletter control sequences out of 15000+600000
+ 67654 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,21n,140p,1428b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,21n,140p,1427b,4197s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
 xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
 live/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on figures/Masterthesis_Adrian_Gabel-figure9.pdf (1 page, 225404
+Output written on figures/Masterthesis_Adrian_Gabel-figure9.pdf (1 page, 224055
  bytes).
 PDF statistics:
  29 PDF objects out of 1000 (max. 8388607)

@@ -1,15 +1,15 @@
-\chapter{Konstruktion des Neuronale Netze Schätzers}
+\chapter{Konstruktion des Neuronale-Netze-Schätzers}
 \label{chap:2}
 
-In diesem Kapitel werden wir mithilfe von unseren gegebenen Datenmenge 
+In diesem Kapitel werden wir mithilfe der uns gegebenen Datenmenge 
 \begin{equation}
 \label{dataset}
 \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},
 \end{equation}
 unseren Regressionsschätzer $\widetilde{m}_n$ konstruieren. 
-In Kapitel \ref{chap:1} haben wir bereits in Definition \ref{def:nn} vorgestellt, was unter einem mehrschichtigen feedforward neuronales Netz verstehen.
+In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz verstehen.
 
-Für die Konstruktion unseres Schätzers wählen wir den logistischen Squasher (\ref{logsquasher}) als Aktivierungsfunktion, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus (\ref{networkarch}) eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge (\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
+Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher (\ref{logsquasher}) als Aktivierungsfunktion, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Gleichung~(\ref{networkarch}) eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge (\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
 \section{Definition der Netzwerkarchitektur}
 Sei $a > 0$ fest und $M \in \N$. Zunächst fixieren wir noch die Multiindexnotation, die wir aufgrund der Übersichtlichkeit im weiteren Verlauf dieser Arbeit verwenden werden.
@@ -19,7 +19,9 @@ Für $(\mathbf{i}^{(1)},\dots,\mathbf{i}^{(d)}) = \bi \in [M]^d$ und $x \in \R^d
 $$|\mathbf{i}|_1 \coloneqq \sum_{k= 1}^d \mathbf{i}^{(k)} \quad \mathbf{i}! \coloneqq \mathbf{i}^{(1)}! \cdots \, \mathbf{i}^{(d)}! \quad x^{\mathbf{i}} \coloneqq x_1^{\mathbf{i}^{(1)}} \cdots \,    x_d^{\mathbf{i}^{(d)}}.$$
 Für $f\colon \R^d \to \R$ ausreichend oft differenzierbar definieren wir 
 $$\partial^{\mathbf{i}}f(x) \coloneqq \frac{\partial^{|\mathbf{i}|_1}f}{\partial^{\mathbf{i}^{(1)}} x_1 \cdots \, \partial^{\mathbf{i}^{(d)}} x_d} (x).$$
-Wir betrachten im Folgenden ein $d$-dimensionales äquidistantes Gitter im Würfel $[-a, a]^d$ mit Schrittweite $\frac{2a}{M}.$ Sei $\bi_1,\dots,\bi_{(M + 1)^d}$ eine Aufzählung der Elemente von $[M]^d$. Dann ordnen wir jedem Multiindex $\bi \in [M]^d$ einen Gitterpunkt $x_{\bi}$ mit:
+Wir betrachten im Folgenden ein $d$-dimensionales äquidistantes Gitter im Würfel $[-a, a]^d$ mit Schrittweite $\frac{2a}{M}.$ 
+%Sei $\bi_1,\dots,\bi_{(M + 1)^d}$ eine Aufzählung der Elemente von $[M]^d$.
+Dann ordnen wir jedem Multiindex $\bi \in [M]^d$ einen Gitterpunkt $x_{\bi}$ mit:
 $$x_{\bi} = \bigg( -a + \bi^{(1)} \cdot \frac{2a}{M},\dots, -a + \bi^{(d)} \cdot \frac{2a}{M}\bigg) = -\mathbf{a} + \frac{2a}{M} \cdot \bi,$$
 zu, mit $\mathbf{a} = (a, a, \dots, a) \in \R^d$.
 
@@ -86,7 +88,7 @@ Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$
 \caption{Beispielhafte Darstellung der $x_{\mathbf{i}_k}$ für $d = 2$ und $M = 3$.}
 \label{fig:gitter}
 \end{figure}
-Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nahesten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
+Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nächsten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
 
 \textbf{•} Im Folgenden wollen wir 
 \begin{equation}
@@ -95,8 +97,7 @@ Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsp
 \end{equation}
 per Induktion über $d$ zeigen. 
 	
-	 \emph{Induktionsanfang} (IA): Für $d = 1$ kann $x$ nur zwischen zwei Gitterpunkten liegen und mit der obigen Begründung sind die restlichen Summanden gleich Null, daher nehmen wir oBdA an, dass $x_{\mathbf{i}_1}\leq x \leq x_{\mathbf{i}_2}$. 
-	Damit folgt 
+	 \emph{Induktionsanfang} (IA): Für $d = 1$ kann $x$ nur zwischen zwei Gitterpunkten $x_{\mathbf{i}_1} \neq x_{\mathbf{i}_2}$ liegen. Sei oBdA $x_{\mathbf{i}_1}\leq x \leq x_{\mathbf{i}_2}$, dann gilt mit der gleichen Begründung wie im einleitenden Beispiel:
 	\begin{equation*}
 	\begin{split}
 	\sum_{\bi \in [M]^d} (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}}|)_+ & = (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_1}|)_+ + (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_2}|)_+ \\
@@ -109,7 +110,7 @@ per Induktion über $d$ zeigen.
 \emph{Induktionshypothese} (IH): Aussage (\ref{induktiongl1}) gelte für ein beliebiges aber festes $d \in \N.$
 
 \emph{Induktionsschritt} (IS): Wir nehmen oBdA an, dass $x_{(0,\dots,0)} \leq x \leq x_{(1,\dots,1)}$ gilt bzgl.\@ $(d+1)$-stelliger Relation. Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im Folgenden zeigen wir $$\sum_{\bi \in [M]^{(d + 1)}} B_{\bi}(x) = \sum_{\bi \in [M]^{(d + 1)}}\prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big|\bigg)_+ = 1.$$
-Ein Summand ist Null, wenn $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$ ist. Zudem haben wir oBdA angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nahesten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw. $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
+Ein Summand ist Null, wenn $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$ ist. Zudem haben wir oBdA angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nächsten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$-ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw. $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
 \begin{equation*}
 \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_\mathbf{i}^{(d + 1)}\Big|\bigg) = \begin{cases}
 (1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|) &\text{$\mathbf{i} \in \{0, 1\}^d \times \{0\}$}\\
@@ -130,15 +131,15 @@ gilt. Daraus ergibt sich:
 \end{split}
 \end{equation*}
 wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)}^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} = \frac{2a}{M}$ ist, da beides Gitterpunkte sind.  $\hfill(\square)$ 		
-\begin{itemize}
-\item[•] Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \quad (z \in \R)$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ größer gleich Null und wegen (\ref{induktiongl1}) muss dann auch 
+
+\textbf{•} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \quad (z \in \R)$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ größer gleich Null und wegen (\ref{induktiongl1}) muss dann auch 
 \begin{equation}
 \label{induktiongl2}
 \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \leq 1
 \end{equation}
 gelten.
-\item[•] Es handelt sich hierbei um eine lokale Spline Interpolation, da die Bedingungen (\ref{induktiongl1}) und (\ref{induktiongl2}) für alle $x \in [-a, a]^d$ gelten.
-\end{itemize}
+
+\textbf{•} Es handelt sich hierbei um eine lokale Spline Interpolation, da die Bedingungen (\ref{induktiongl1}) und (\ref{induktiongl2}) für alle $x \in [-a, a]^d$ gelten.
 \end{proof}
 Als nächstes zeigen wir ein Approximationsresultat für $(p, C)$-glatte Funktionen durch ihre lokale Spline Interpolation von Taylorpolynomen, welches wir im weiteren Verlauf dieser Arbeit wieder benötigen werden.
 \begin{lem}
@@ -152,16 +153,15 @@ Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\
 \label{eq:lagrange}
 \begin{split}
 f(x) & = T_{x_{\mathbf{i}},q - 1}[f(x)] \\
-& = \sum_{\substack{\bj \in [q-1]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
+& = \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
 \end{split}
 \end{equation}
-Nach (\ref{induktiongl1}) erhalten wir 
-$$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.$$ Zudem wissen wir dass man immer den Abstand zu den nahesten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist, daher ergibt sich:
+Nach der Basispline Eigenschaft aus Gleichung (\ref{induktiongl1}) erhalten wir 
+$$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.$$ Zudem wissen wir, dass man immer den Abstand zu den nächsten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist. Daher ergibt sich:
 \begin{equation}
 \label{eq:absch}
 \begin{split}
-& \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \\
-& \leq \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{1}{\bj!} \cdot \bigg(\frac{2a}{M}\bigg)^q.
+& \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \leq \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{1}{\bj!} \cdot \bigg(\frac{2a}{M}\bigg)^q.
 \end{split}
 \end{equation} 
 Mithilfe der Dreiecksungleichung und der Definition von $P_f(x)$ erhalten wir:
@@ -206,7 +206,7 @@ gewählt haben.
 
 $P_m(x)$ lässt sich in die Form 
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\bi, \bj} \cdot (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$
-durch geeignet gewählte $a_{\bi, \bj} \in \R$ bringen.
+durch geeignet gewählte $a_{\bi, \bj} \in \R$ bringen, da sich jedes $p_i(x)$ der form so und so ... lässt sich $P(x)$ umschreiben ... (TBD)
 Als nächstes wollen wir geeignete neuronale Netze $f_{\net, \bj, \bi}$ definieren, die die Funktionen
 $$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur so wählen, dass neuronale Netze der Form
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\mathbf{i}, \bj} \cdot f_{\net,\bj,\mathbf{i}}(x) \qquad (a_{\mathbf{i},\bj} \in \R)$$ in ihr enthalten sind.
@@ -447,7 +447,7 @@ net/.style={
 \caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x) = ...$}
 \label{fig:fhat}
 \end{figure} 
-Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $\bj = j_1,\dots,j_d \in \{0, 1,\dots, N\}$, $\bi \in [M]^d$ und $k \in \{1,\dots,(M + 1)^d\}$:  
+Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $\bj \in [N]^d$, $\bi \in [M]^d$ und $k \in \{1,\dots,(M + 1)^d\}$:  
 \begin{align}
 \label{fnet}
 f_{\net,\bj,\mathbf{i}}(x) & = f_1^{(0)}(x). \nonumber
@@ -504,7 +504,7 @@ Wir zeigen im Folgenden, dass der Koeffizientenvektor unseres Schätzers (\ref{e
 \label{les}
 \bigg(\frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1} \bigg) \mathbf{a} = \frac{1}{n} \mathbf{U}^T\mathbf{Y},
 \end{equation}
-wobei $\mathbf{1}$ eine $SxS$-Einheitsmatrix ist.
+ist. Hierbei ist $\mathbf{1}$ eine $S \times S$-Einheitsmatrix ist.
 Der Schätzer aus (\ref{estimate}) lässt sich umschreiben zu 
 $$ \tilde{m}_n(x) = \sum_{s = 1}^S a_s \cdot U_s(x)$$
 wobei $\mathbf{a} = (a_s)_{s = 1,\dots,S} \in \R^S$ wie in (\ref{min}) den Ausdruck
@@ -517,7 +517,7 @@ wobei $\mathbf{a} = (a_s)_{s = 1,\dots,S} \in \R^S$ wie in (\ref{min}) den Ausdr
 \end{split}
 \end{equation} 
 minimiert. In der vorletzten Gleichung haben wir verwendet das $\mathbf{Y}^T\mathbf{U}\mathbf{a} = \mathbf{a}^T\mathbf{U}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist. 
-Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{SxS}$ ist positiv semidefinit, denn aufgrund der Verschiebungseigenschaft des Standardskalarprodukts gilt für alle $x \in \R$:
+Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{S \times S}$ ist positiv semidefinit, denn aufgrund der Verschiebungseigenschaft des Standardskalarprodukts gilt für alle $x \in \R$:
 $$\langle x, \mathbf{U^T}\mathbf{U} x\rangle = \langle \mathbf{U} x, \mathbf{U} x\rangle \geq 0.$$
 Zudem wissen wir dass $\frac{c_3}{n}\mathbf{1}$ durch die Wahl von $c_3$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
 Daher wissen wir, dass die Matrix
