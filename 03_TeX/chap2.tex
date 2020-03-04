@@ -6,13 +6,13 @@ In diesem Kapitel werden wir mithilfe der uns gegebenen Datenmenge
 \label{dataset}
 \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},
 \end{equation}
-unseren Regressionsschätzer $\widetilde{m}_n$ konstruieren. 
+unseren Regressionsschätzer $\tilde{m}_n$ konstruieren. 
 In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz verstehen.
 
-Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher (\ref{logsquasher}) als Aktivierungsfunktion, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Gleichung~(\ref{networkarch}) eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge (\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
+Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Gleichung~(\ref{networkarch}) eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
 \section{Definition der Netzwerkarchitektur}
-Sei $a > 0$ fest und $M \in \N$. Zunächst fixieren wir noch die Multiindexnotation, die wir aufgrund der Übersichtlichkeit im weiteren Verlauf dieser Arbeit verwenden werden.
+Sei $a > 0$ fest und $M \in \N$. Zunächst fixieren wir die Multiindexnotation, die wir aufgrund der Übersichtlichkeit im weiteren Verlauf dieser Arbeit verwenden werden.
 
 Sei $[M]^d \coloneqq\{0, 1, \dots, M\}^d.$ 
 Für $(\mathbf{i}^{(1)},\dots,\mathbf{i}^{(d)}) = \bi \in [M]^d$ und $x \in \R^d$ definieren wir
@@ -22,28 +22,35 @@ $$\partial^{\mathbf{i}}f(x) \coloneqq \frac{\partial^{|\mathbf{i}|_1}f}{\partial
 Wir betrachten im Folgenden ein $d$-dimensionales äquidistantes Gitter im Würfel $[-a, a]^d$ mit Schrittweite $\frac{2a}{M}.$ 
 %Sei $\bi_1,\dots,\bi_{(M + 1)^d}$ eine Aufzählung der Elemente von $[M]^d$.
 Dann ordnen wir jedem Multiindex $\bi \in [M]^d$ einen Gitterpunkt $x_{\bi}$ mit:
-$$x_{\bi} = \bigg( -a + \bi^{(1)} \cdot \frac{2a}{M},\dots, -a + \bi^{(d)} \cdot \frac{2a}{M}\bigg) = -\mathbf{a} + \frac{2a}{M} \cdot \bi,$$
+\begin{equation}
+\label{eq:gitter}
+x_{\bi} = \bigg( -a + \bi^{(1)} \cdot \frac{2a}{M},\dots, -a + \bi^{(d)} \cdot \frac{2a}{M}\bigg) = -\mathbf{a} + \frac{2a}{M} \cdot \bi,
+\end{equation}
 zu, mit $\mathbf{a} = (a, a, \dots, a) \in \R^d$.
 
 Hiermit lässt sich das zu $m$ gehörige Taylorpolynom der Ordnung $q$ mit Entwicklungspunkt $x_{\bi}$ schreiben als
-$$p_{\bi}(x) = \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}m(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}.$$
+$$p_{\bi}^m(x) = \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}m(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}.$$
 Zudem betrachten wir eine Funktion
 \begin{equation}
 \label{konvexkomb}
-P_m(x) = \sum_{\bi \in [M]^d} p_{\bi}(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+,
+P_m(x) = \sum_{\bi \in [M]^d} p_{\bi}^m(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+,
 \end{equation}
 für die wir im weiteren Verlauf dieser Arbeit zeigen werden, dass diese die Regeressionsfunktion $m$ approximiert.
 
-Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale Spline Interpolation von Taylorpolynomen für $(p,C)$-glatte Funktionen auf dem Intervall $[-a, a]^d$ motiviert.
-Wir zeigen im folgenden Lemma dass $P_m(x)$ eine lokale Spline Interpolation von Taylorpolynomen von $m$ ist.
-\begin{lem}[Multilineare Spline Interpolation]
+Wir zeigen mit folgenden Lemma dass $P_m(x)$ eine lokale Spline Interpolation von Taylorpolynomen von $m$ ist.
+\begin{lem}
 \label{lem:loccon}
-Sei $a >0, M \in \N$ und $$P_m(x) = \sum_{\bi \in [M]^d} p_{\bi}(x) \cdot B_{\bi}(x).$$ mit $p_{\mathbf{i}}(x)$ wie oben und 
+Sei $a >0$ und $M \in \N$. Dann sind für $\bi \in [M]^d$ und $x \in \R^d$ die Funktionen 
 $$B_{\bi}(x) = \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+,$$
-dann ist $P_m(x)$ eine lokale Spline Interpolation von Taylorpolynomen von m.
+B-Splines im $R^d$, wobei wir unter $x_{\bi}$ die Gitterpunkte aus Gleichung~(\ref{eq:gitter}) verstehen. Dafür sind folgende drei Bedingungen für $x \in \R^d$ zu überprüfen:
+\begin{itemize}
+\item[i)] Zerlegung der Eins: $\sum_{\bi \in [M]^d} B_{\bi}(x) = 1$.
+\item[ii)] Nicht-Negativität: $B_{\bi}(x) \geq 0$ für alle $\bi \in [M]^d$.
+\item[iii)] Lokaler Träger: Für $\bi \in [M]^d$ ist $B_{\bi}(x) > 0$ falls $|x^{(j)} - x_{\bi}^{(j)}| < \frac{2a}{M}$ für alle $j \in \{1,\dots,d\}$ gilt und andernfalls $B_{\bi}(x) = 0$.
+\end{itemize}
 \end{lem}
 \begin{proof}
-Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$ und $M = 3$ eine Skizze an um die Idee des Beweises zu veranschaulichen. 
+Als erstes möchten wir für $d = 2$ und $M = 3$ eine Skizze angeben um die Idee des Beweises zu veranschaulichen. 
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture} 
@@ -90,7 +97,7 @@ Es sind drei Bedingungen zu überprüfen. Als erstes geben wir aber für $d = 2$
 \end{figure}
 Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nächsten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
 
-\textbf{•} Im Folgenden wollen wir 
+\textbf{i)} Im Folgenden wollen wir 
 \begin{equation}
 \label{induktiongl1}
 \sum_{\bi \in [M]^d} B_{\bi}(x) = 1 \quad (x \in \R^d)
@@ -107,10 +114,10 @@ per Induktion über $d$ zeigen.
 	\end{split}
 	\end{equation*} wobei wir unter anderem verwendet haben, dass beide Summanden unabhängig von dem Positivteil nichtnegativ sind, da der Abstand von $x$ zu den beiden Gitterpunkten $x_{\mathbf{i}_1}$ und$ x_{\mathbf{i}_2}$ kleiner gleich $\frac{2a}{M}$ ist. Zudem haben wir verwendet, dass $x_{\mathbf{i}_2} - x_{\mathbf{i}_1} = \frac{2a}{M}$ gilt, da beides Gitterpunkte sind.     
 	
-\emph{Induktionshypothese} (IH): Aussage (\ref{induktiongl1}) gelte für ein beliebiges aber festes $d \in \N.$
+\emph{Induktionshypothese} (IH): Aussage~(\ref{induktiongl1}) gelte für ein beliebiges aber festes $d \in \N.$
 
 \emph{Induktionsschritt} (IS): Wir nehmen oBdA an, dass $x_{(0,\dots,0)} \leq x \leq x_{(1,\dots,1)}$ gilt bzgl.\@ $(d+1)$-stelliger Relation. Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im Folgenden zeigen wir $$\sum_{\bi \in [M]^{(d + 1)}} B_{\bi}(x) = \sum_{\bi \in [M]^{(d + 1)}}\prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big|\bigg)_+ = 1.$$
-Ein Summand ist Null, wenn $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$ ist. Zudem haben wir oBdA angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nächsten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$-ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw. $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
+Ein Summand ist Null, wenn ein $j \in \{1,\dots,d+1\}$ existiert mit $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$. Zudem haben wir oBdA angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nächsten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$-ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw. $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
 \begin{equation*}
 \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_\mathbf{i}^{(d + 1)}\Big|\bigg) = \begin{cases}
 (1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|) &\text{$\mathbf{i} \in \{0, 1\}^d \times \{0\}$}\\
@@ -132,16 +139,25 @@ gilt. Daraus ergibt sich:
 \end{equation*}
 wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)}^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} = \frac{2a}{M}$ ist, da beides Gitterpunkte sind.  $\hfill(\square)$ 		
 
-\textbf{•} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \quad (z \in \R)$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ größer gleich Null und wegen (\ref{induktiongl1}) muss dann auch 
+\textbf{ii)} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \quad (z \in \R)$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ größer gleich Null und wegen (\ref{induktiongl1}) muss dann auch 
 \begin{equation}
 \label{induktiongl2}
 \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \leq 1
 \end{equation}
 gelten.
 
-\textbf{•} Es handelt sich hierbei um eine lokale Spline Interpolation, da die Bedingungen (\ref{induktiongl1}) und (\ref{induktiongl2}) für alle $x \in [-a, a]^d$ gelten.
+\textbf{iii)} Es handelt sich hierbei um einen lokale Träger, da nach der Konstruktion von $B_{\bi}(x)$ der Funktionswert genau dann Null ist, wenn ein $j \in \{1,\dots, d\}$ existiert, sodass $|x^{(j)} - x_{\bi}^{(j)}| \geq \frac{2a}{M}$ gilt. Andernfalls erhalten wir mit Bedingung~\textbf{ii)}, dass $B_{\bi}(x) > 0$ ist. 
 \end{proof}
-Als nächstes zeigen wir ein Approximationsresultat für $(p, C)$-glatte Funktionen durch ihre lokale Spline Interpolation von Taylorpolynomen, welches wir im weiteren Verlauf dieser Arbeit wieder benötigen werden.
+
+Hiermit erhalten wir, dass:
+\begin{equation*}
+\begin{split}
+P_m(x) &= \sum_{\bi \in [M]^d} p_{\bi}^m(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
+& = \sum_{\bi \in [M]^d} p_{\bi}(x) \cdot B_{\bi}(x)
+\end{split}
+\end{equation*}
+gilt und damit $P_m(x)$ eine Spline Interpolation von Taylorpolynomen von $m$ ist.
+Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale Spline Interpolation von Taylorpolynomen für $(p,C)$-glatte Funktionen auf dem Intervall $[-a, a]^d$ motiviert.
 \begin{lem}
 \label{lem:pcsmooth}
 Sei $M \in \N$, $c > 0$, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0, s \in (0,1]$ und $C > 0$ sind. Sei zudem $P_f(x)$ analog wie in (\ref{konvexkomb}) eine lokale Spline Interpolation von Taylorpolynomen von $f$. Dann gilt$\colon$
@@ -156,7 +172,7 @@ f(x) & = T_{x_{\mathbf{i}},q - 1}[f(x)] \\
 & = \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
 \end{split}
 \end{equation}
-Nach der Basispline Eigenschaft aus Gleichung (\ref{induktiongl1}) erhalten wir 
+Nach der Basispline Eigenschaft aus Gleichung~(\ref{induktiongl1}) erhalten wir 
 $$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.$$ Zudem wissen wir, dass man immer den Abstand zu den nächsten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist. Daher ergibt sich:
 \begin{equation}
 \label{eq:absch}
@@ -172,25 +188,25 @@ Mithilfe der Dreiecksungleichung und der Definition von $P_f(x)$ erhalten wir:
 & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.
 \end{split}
 \end{equation}
-Nach Gleichung (\ref{eq:lagrange}) erhalten wir:
+Nach Gleichung~(\ref{eq:lagrange}) erhalten wir:
 \begin{equation}
 \label{eq:sum}
 \begin{split}
 & \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \\ 
-& = \bigg| \sum_{\substack{\bj \in [q-1]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \\
+& = \bigg| \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \\
 & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \\
-& = \bigg| \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg|.
+& = \bigg| \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg|.
 \end{split}
 \end{equation}
-Aus der $(p,C)$-Glattheit von $f$ nach Definition \ref{def:pc} mit $x_{\bi} + \xi(x - x_{\mathbf{i}}), x_{\bi} \in \R^d$ folgt durch (\ref{eq:absch}) und (\ref{eq:sum}):
+Aus der $(p,C)$-Glattheit von $f$ nach Definition~\ref{def:pc} mit $x_{\bi} + \xi(x - x_{\mathbf{i}}), x_{\bi} \in \R^d$ folgt durch (\ref{eq:absch}) und (\ref{eq:sum}):
 \begin{equation}
 \label{eq:last}
 \begin{split}
-& \bigg| \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{\substack{ \bj \in [q]^d \\q - 1 < |\bj|_1 \leq q}} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg| \\
+& \bigg| \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg| \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \|x_{\bi} + \xi(x - x_{\mathbf{i}}) - x_{\bi} \|^s \cdot C.
 \end{split}
 \end{equation}
-Fassen wir die Gleichungen (\ref{eq:drei}), (\ref{eq:sum}) und (\ref{eq:last}) zusammen, erhalten wir:
+Fassen wir die Gleichungen~(\ref{eq:drei}), (\ref{eq:sum}) und (\ref{eq:last}) zusammen, erhalten wir:
 \begin{equation*}
 \begin{split}
 |f(x) - P_f(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
@@ -199,7 +215,7 @@ Fassen wir die Gleichungen (\ref{eq:drei}), (\ref{eq:sum}) und (\ref{eq:last}) z
 & = c \cdot \frac{1}{M^p},
 \end{split}
 \end{equation*}
-wobei wir bei der letzten Gleichheit Bedingung (\ref{induktiongl1}) und $q + s = p$ verwendet und 
+wobei wir bei der letzten Gleichheit Bedingung~(\ref{induktiongl1}) und $q + s = p$ verwendet und 
 $$c = (2a)^p \cdot d^{s/2} \cdot C,$$
 gewählt haben.
 \end{proof}
@@ -210,14 +226,14 @@ durch geeignet gewählte $a_{\bi, \bj} \in \R$ bringen, da sich jedes $p_i(x)$ d
 Als nächstes wollen wir geeignete neuronale Netze $f_{\net, \bj, \bi}$ definieren, die die Funktionen
 $$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur so wählen, dass neuronale Netze der Form
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\mathbf{i}, \bj} \cdot f_{\net,\bj,\mathbf{i}}(x) \qquad (a_{\mathbf{i},\bj} \in \R)$$ in ihr enthalten sind.
-Um dies zu erreichen, sei $$\sigma(x) = \frac{1}{(1 + \exp(-x))} \quad (x \in \R)$$ der logistische Squasher (\ref{logsquasher}), wählen $R \geq 1$ und definieren die folgenden neuronale Netze:
+Um dies zu erreichen, sei $$\sigma(x) = \frac{1}{(1 + \exp(-x))} \quad (x \in \R)$$ der logistische Squasher~(\ref{logsquasher}), wählen $R \geq 1$ und definieren die folgenden neuronale Netze:
 
 Das neuronale Netz
 \begin{equation}
 \label{def:fid}
 f_{\id}(x) = 4R \cdot \sigma\Big(\frac{x}{R}\Big) - 2R,
 \end{equation}
-welches, wie in Lemma \ref{lem:1} gezeigt, die Funktion $f(x) = x$ approximiert und in Abbildung \ref{fig:fid} veranschaulicht wird.
+welches, wie in Lemma~\ref{lem:1} gezeigt, die Funktion $f(x) = x$ approximiert und in Abbildung~\ref{fig:fid} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -266,7 +282,7 @@ f_{\mult}(x, y) = \frac{R^2}{4} \cdot \frac{(1 + \exp(- 1))^3}{\exp(-2) - \exp(-
 & - \sigma\Big(\frac{2(x - y)}{R} + 1\Big) + 2 \cdot \sigma\Big(\frac{x - y}{R} + 1\Big)\bigg),
 \end{split}
 \end{equation}
-welches, wie in Lemma \ref{lem:2} gezeigt, die Funktion $f(x, y) = x \cdot y$ approximiert und in Abbildung \ref{fig:fmult} veranschaulicht wird.
+welches, wie in Lemma~\ref{lem:2} gezeigt, die Funktion $f(x, y) = x \cdot y$ approximiert und in Abbildung~\ref{fig:fmult} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -318,7 +334,7 @@ Das neuronale Netz
 \label{def:frelu}
 f_{ReLu}(x) = f_{\mult}(f_{\id}(x), \sigma(R \cdot x)),
 \end{equation}
-welches, wie in Lemma \ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und in Abbildung \ref{fig:frelu} veranschaulicht wird
+welches, wie in Lemma~\ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und in Abbildung~\ref{fig:frelu} veranschaulicht wird
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -367,12 +383,12 @@ net/.style={
 \caption{Neuronales Netz $f_{\ReLU}(x) = ...$}
 \label{fig:frelu}
 \end{figure}
-und schließlich noch das neuronale Netz 
+und schließlich das neuronale Netz 
 \begin{equation}
 \label{def:fhat}
 f_{\mathrm{hat},y}(x) = f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) +  f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg),
 \end{equation}
-welches, wie in Lemma \ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung \ref{fig:fhat} veranschaulicht wird.
+welches, wie in Lemma~\ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung~\ref{fig:fhat} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -473,65 +489,101 @@ Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwisc
 
 \section{Definition der Gewichte der Ausgabeschicht}
 
-Wir definieren unseren neuronale Netze Regressionsschätzer $\tilde{m}_n(x)$  durch$\colon$
+Wir definieren unseren Neuronale-Netze-Regressionsschätzer $\tilde{m}_n(x)$  durch:
 \begin{equation}
 \label{estimate}
 \tilde{m}_n(x) = \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj} \cdot f_{\net,\bj,\mathbf{i}}(x),
 \end{equation}
-wobei $n$ die Größe unserer gegebenen Datenmenge (\ref{dataset}) ist und wir die Koeffizienten $a_{\mathbf{i},\bj}$ durch Minimierung von 
+wobei $n$ die Größe unserer gegebenen Datenmenge~(\ref{dataset}) ist und wir die Koeffizienten $a_{\mathbf{i},\bj}$ durch Minimierung des Funktionals 
 \begin{equation}
-\label{min} \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2
+\label{min} 
+\begin{split}
+\varphi(a_{\bi,\bj}) & \coloneqq \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \lambda\|(a_{\bi,\bj})\|_2^2 \\
+& =\frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2
+\end{split}
 \end{equation}
-für eine Konstante $c_3 > 0.$ Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung des, in (\ref{les}) folgenden, linearen Gleichungssystems. Dafür definieren wir uns 
+für eine Konstante $c > 0$ und Regularitätsterm $\lambda\|(a_{\bi,\bj})\|_2^2$ erhalten. Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung des, in (\ref{les}) folgenden, linearen Gleichungssystems. Dafür definieren wir uns die Menge 
 \begin{align*} 
-\{U_s \mid s = 1,\dots,S\} = \Bigl\{f_{\net,\bj,\bi}(x) \mid \bi \in [M]^d \quad \text{und} \quad 0 \leq |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
+\{U_s \mid s = 1,\dots,S\} = \Bigl\{f_{\net,\bj,\bi}(x) \mid \bi \in [M]^d \text{ und } |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
 \end{align*}
 wobei
-$$ S = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist.
+$$ S = \big|[M]^d\big| \cdot  \binom{N + d}{d} = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist .
 Diese Kardinalität erhalten wir mit einem Kombinatorik Argument.
 Wir wissen, dass es insgesamt $(M + 1)^d$ Möglichkeiten gibt $d$ viele Zahlen aus einer Menge mit der Größe $(M + 1)$ zu ziehen mit Zurücklegen und da wir Vektoren betrachten und die Komponenten nicht vertauschbar sind ist auch die Reihenfolge der Ziehung zu beachten.
-Für jede dieser $(M + 1)^d$ Möglichkeiten ist noch noch zu beachten, dass wir zusätzlich $d$ mal aus einer Menge mit $(N + 1)$ vielen Zahlen ziehen müssen und gleichzeitig die Bedingung dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
-Wir betrachten also... (TBD)
-Das lässt sich zurückführen auf ... (TBD) und damit ergibt sich für $d \geq 1$ aus: 
-$$\binom{N + d}{d} = \sum_{k = 0}^N \binom{N - 1 + k}{k},$$
-mit Identität des Binominialkoeffizienten:
-$$\binom{n}{k} = \sum_{i = 0}^k \binom{n - k - 1 + i}{i} \quad (k, n \in \N  \text{ mit  } k < n).$$
-TBD ERKLÄRUNG WIESO DIESE ANALOGIE (FABI FRAGEN)
-Wir setzen nun 
-$$ \mathbf{U} = (U_s(X_i))_{1\leq i \leq n,1\leq s \leq S} \quad \text{und} \quad \mathbf{Y} = (Y_i)_{i = 1,\dots,n}.$$
-Wir zeigen im Folgenden, dass der Koeffizientenvektor unseres Schätzers (\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems 
-\begin{equation}
-\label{les}
-\bigg(\frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1} \bigg) \mathbf{a} = \frac{1}{n} \mathbf{U}^T\mathbf{Y},
-\end{equation}
-ist. Hierbei ist $\mathbf{1}$ eine $S \times S$-Einheitsmatrix ist.
-Der Schätzer aus (\ref{estimate}) lässt sich umschreiben zu 
-$$ \tilde{m}_n(x) = \sum_{s = 1}^S a_s \cdot U_s(x)$$
-wobei $\mathbf{a} = (a_s)_{s = 1,\dots,S} \in \R^S$ wie in (\ref{min}) den Ausdruck
-\begin{equation}
-\begin{split}
-& \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_3}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\
-& = \frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
-& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T\mathbf{U}\mathbf{a} - \mathbf{a}^T\mathbf{U}^T\mathbf{Y} + \mathbf{a}^T\mathbf{U}^T\mathbf{U}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \\
-& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a}, 
-\end{split}
-\end{equation} 
-minimiert. In der vorletzten Gleichung haben wir verwendet das $\mathbf{Y}^T\mathbf{U}\mathbf{a} = \mathbf{a}^T\mathbf{U}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist. 
-Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{S \times S}$ ist positiv semidefinit, denn aufgrund der Verschiebungseigenschaft des Standardskalarprodukts gilt für alle $x \in \R$:
-$$\langle x, \mathbf{U^T}\mathbf{U} x\rangle = \langle \mathbf{U} x, \mathbf{U} x\rangle \geq 0.$$
-Zudem wissen wir dass $\frac{c_3}{n}\mathbf{1}$ durch die Wahl von $c_3$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
-Daher wissen wir, dass die Matrix
-$$\mathbf{A} = \frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1}$$ also Summe einer positiv semidefiniten und einer positiv definiten Matrix nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit und damit insbesondere invertierbar ist. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
-Mit $\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \in \R^S$ und $\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}\mathbf{A}\mathbf{b} = \mathbf{Y}^T\mathbf{U}\mathbf{a}$, was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir:
+Für jede dieser $(M + 1)^d$ Möglichkeiten ist noch zu beachten, dass wir zusätzlich $d$ mal aus einer Menge mit $(N + 1)$ vielen Zahlen ziehen müssen und gleichzeitig die Bedingung dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
+Gesucht ist also 
+$$\big|\Bigl\{\bj \in [N]^d : |\bj|_1 \leq N \Bigr\}\big| \eqqcolon H.$$ 
+Wir stellen fest, dass:
 \begin{equation*}
 \begin{split}
-& \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{U}^T\mathbf{U} + \frac{c_3}{n} \cdot \mathbf{1}\bigg) \mathbf{a} \\
-& = \mathbf{a}^T\mathbf{A}\mathbf{a} + \mathbf{b}^T\mathbf{A}\mathbf{a} + \mathbf{a}^T\mathbf{A}\mathbf{b} + \mathbf{b}^T\mathbf{A}\mathbf{b} + \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{U}\mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \\
-& = (\mathbf{a} + \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y})^T \mathbf{A} (\mathbf{a} - \frac{1}{n} \cdot \mathbf{A}^{-1} \mathbf{U}^T\mathbf{Y}) - \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{U}\mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}.
+& \Bigl\{\bj \in [N]^d : |\bj|_1 \leq N \Bigr\} \\
+& = \Bigl\{\bj \in [N]^d : |\bj|_1 = 0 \Bigr\}
+ \cup \Bigl\{\bj \in [N]^d : |\bj|_1 = 1 \Bigr\}
+ \cup \dots 
+ \cup \Bigl\{\bj \in [N]^d : |\bj|_1 = N\Bigr\}
+\end{split}
+\end{equation*}
+gilt. Mit Lemma~\ref{lem:kombi} wissen wir, dass für $d, N \in \N$ und $k \in \N_0$:
+$$\big|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\big| = \binom{d + k - 1}{k}$$ gilt.
+Damit erhalten wir:
+$$|H| = \sum_{k = 0}^N \binom{N - 1 + k}{k} = \binom{N + d}{d},$$
+mit dem \emph{Hockey Stick Lemma}
+$$\binom{n}{k} = \sum_{i = 0}^k \binom{n - k - 1 + i}{i} \quad (k, n \in \N  \text{ mit  } k < n).$$
+Wir setzen nun 
+$$ \mathbf{U} = (U_s(X_i))_{1\leq i \leq n,1\leq s \leq S} \quad \text{und} \quad \mathbf{Y} = (Y_i)_{i = 1,\dots,n}.$$
+Im folgenden Lemma bestimmen wir den Koeffizientenvektor unseres Schätzers~(\ref{estimate}).
+\begin{lem}
+Der Koeffizientenvektor unseres Schätzers (\ref{estimate}) ist die eindeutige Lösung des linearen Gleichungssystems 
+\begin{equation}	
+\label{les}
+\bigg(\frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1} \bigg) \mathbf{a} = \frac{1}{n} \mathbf{U}^T\mathbf{Y}
+\end{equation}
+Hierbei ist $\mathbf{1}$ eine $S \times S$-Einheitsmatrix und $\ba \in \R^S$, wobei $\ba$ wie in Gleichung~(\ref{min}) den Ausdruck:
+\begin{equation}
+\label{eq:min}
+\begin{split}
+& \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\
+& = \frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a}
+\end{split}
+\end{equation}
+minimiert.
+\end{lem}
+\begin{proof}
+Der Schätzer aus Gleichung~(\ref{estimate}) lässt sich umschreiben zu 
+$$ \tilde{m}_n(x) = \sum_{s = 1}^S a_s \cdot U_s(x)$$
+mit $(a_s)_{s = 1,\dots,S} = \mathbf{a}\in \R^S$. Da $\mathbf{Y}^T\mathbf{U}\mathbf{a} = \mathbf{a}^T\mathbf{U}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist erhalten wir mit Gleichung~(\ref{eq:min}):
+\begin{equation}
+\label{eq:matrix}
+\begin{split}
+& \frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a} \\
+& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - \mathbf{Y}^T\mathbf{U}\mathbf{a} - \mathbf{a}^T\mathbf{U}^T\mathbf{Y} + \mathbf{a}^T\mathbf{U}^T\mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a} \\
+& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}\bigg) \mathbf{a}.
+\end{split}
+\end{equation} 
+Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{S \times S}$ ist positiv semidefinit, denn aufgrund der Verschiebungseigenschaft des Standardskalarprodukts gilt für alle $x \in \R$:
+$$\langle x, \mathbf{U^T}\mathbf{U} x\rangle = \langle \mathbf{U} x, \mathbf{U} x\rangle \geq 0.$$
+Zudem wissen wir dass $\frac{c}{n}\mathbf{1}$ durch die Wahl von $c$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
+Daher wissen wir, dass die Matrix
+$$\mathbf{A} \coloneqq \frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}$$ also Summe einer positiv semidefiniten und einer positiv definiten Matrix nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit und damit insbesondere invertierbar ist. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
+Mit $$\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \in \R^S$$ und $$\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}^T\mathbf{A}\mathbf{b} = \mathbf{Y}^T\mathbf{U}\mathbf{a},$$ was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir in Gleichungs~(\ref{eq:matrix}):
+\begin{equation*}
+\begin{split}
+& \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}\bigg) \mathbf{a} \\
+& = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T \bA \mathbf{a} \\
+& = \frac{1}{n}\bY^T\bY - \frac{1}{n}\bb^T\bA\ba - \frac{1}{n}\ba^T\bA\bb + \ba^T\bA\ba \\
+& = \frac{1}{n}\bY^T\bY - \frac{1}{n}\bb^T\bA\ba - \frac{1}{n}\ba^T\bA\bb + \frac{1}{n}\bb^T\bU^T\bY - \frac{1}{n}\bY^T\bU\bb + \ba^T\bA\ba \\
+& = \frac{1}{n}\bY^T\bY - \frac{1}{n}\bb^T\bA\ba - \frac{1}{n}\ba^T\bA\bb + \frac{1}{n}\bb^T\bA\bA^{-1}\bU^T\bY - \frac{1}{n}\bY^T\bU\bb + \ba^T\bA\ba \\
+& = \frac{1}{n}\bY^T\bY - \frac{1}{n}\bb^T\bA\ba - \frac{1}{n}\ba^T\bA\bb + \frac{1}{n}\bb^T\bA\bb - \frac{1}{n^2}\bY^T\bU\bA^{-1}\bU^T\bY + \ba^T\bA\ba \\
+& = \mathbf{a}^T\mathbf{A}\mathbf{a} - \frac{1}{n}\mathbf{b}^T\mathbf{A}\mathbf{a} - \frac{1}{n}\mathbf{a}^T\mathbf{A}\mathbf{b} + \mathbf{b}^T\mathbf{A}\mathbf{b} + \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{U}\mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \\
+& = (\mathbf{a} - \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y})^T \mathbf{A} (\mathbf{a} - \frac{1}{n} \cdot \mathbf{A}^{-1} \mathbf{U}^T\mathbf{Y}) - \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{U}\mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}.
 \end{split} 
 \end{equation*} 
 Die letzte Gleichung wird für $\mathbf{a} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}$ minimal, 
-da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ genau dann, wenn $\mathbf{a} = \mathbf{b}$ gilt. Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers (\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems (\ref{les}) ist.
-Da der Koeffizientenvektor die Gleichung (\ref{min}) minimiert, erhalten wir, wenn wir den Koeffizientenvektor $\mathbf{a}$ gleich Null setzen:
-$$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c_3}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
-was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten.
+da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ genau dann, wenn $\mathbf{a} = \mathbf{b}$ gilt.
+Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers~(\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems~(\ref{les}) ist.
+\end{proof}
+\begin{bemnumber}
+Da der Koeffizientenvektor $\mathbf{a}$ die Gleichung~(\ref{eq:min}) minimiert, erhalten wir, wenn wir den Koeffizientenvektor gleich Null setzen:
+$$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
+was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. (TBD) WOFÜR BRAUCH ICH DAS DENN? WEGLASSEN!
+\end{bemnumber}

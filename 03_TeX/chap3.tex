@@ -4,7 +4,7 @@
 In diesem Kapitel stellen wir das Hauptresultat dieser Arbeit vor.
 Ziel im Folgenden ist es, eine Abschätzung des erwarteten $L_2$-Fehlers 
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)$$
-im Falle unseres neuronale Netze Regresssionsschätzers \ref{estimate} mit einer $(p,C)$-glatten Regressionsfunktion herzuleiten.
+im Falle unseres neuronale Netze Regresssionsschätzers~\ref{estimate} mit einer $(p,C)$-glatten Regressionsfunktion herzuleiten.
 
 \begin{thm}\label{optstop}
 Angenommen die Verteilung von $(X,Y)$ erfüllt 
@@ -156,7 +156,7 @@ Mit (\ref{g}) und (\ref{tilde}) erhalten wir zusammen:
 \label{bed}
 \frac{1}{n} \sum_{i = 1}^n|Y_i - \bar{m}_n(X_i)|^2 \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{23} \cdot \frac{(M_n + 1)^d}{n}.
 \end{equation}
-Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist, sind mit $|\Theta_n| = 1$, $g_{n,1} = g_n$, der Abschätzung (\ref{bed}) für $\hat{m}_n = \T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem penalty Term $pen_n(g_{n,1}) = c_{23} \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma \ref{lem:8} erfüllt und wir erhalten durch dessen Anwendung:
+Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist, sind mit $|\Theta_n| = 1$, $g_{n,1} = g_n$, der Abschätzung (\ref{bed}) für $\hat{m}_n = \T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem penalty Term $pen_n(g_{n,1}) = c_{23} \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma~\ref{lem:8} erfüllt und wir erhalten durch dessen Anwendung:
 \begin{equation*}
 \begin{split}
 & \E \int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
@@ -167,10 +167,10 @@ Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1)
 \end{split}
 \end{equation*}
 wobei wir bei der letzten Gleichheit verwendet haben, dass der letzte Summand deterministisch ist. Zudem wissen wir, dass $c_{23}$ unabhängig von $n$ ist und $n > 1$, da wir $n$ hinreichend groß wählen.
-Als nächstes überprüfen wir die Voraussetzungen von Lemma \ref{lem:9} um damit dann die letzte Gleichung weiter abzuschätzen.
+Als nächstes überprüfen wir die Voraussetzungen von Lemma~\ref{lem:9} um damit dann die letzte Gleichung weiter abzuschätzen.
 Nach Voraussetzung ist $\beta_n = c_6 \cdot \log(n)$ und $a_n = (\log n)^{1/(6(N + d))}.$ Damit ist $a_n > 0$ für hinreichend großes $n$. Nach Voraussetzung ist zudem $d, N, J_n \in \N$ und es gilt nach (\ref{jn}) 
 $$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c_{14}},$$
-für hinreichend großes $n$. Wir betrachten hier den logistischen squasher welcher nach Lemma \ref{lem:logsquasher} insbesondere 2-zulässig nach Definition \ref{nzulässig} ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma \ref{lem:9} ist, sind nun alle Voraussetzungen erfüllt. Da wir ohne Beschränkung der Allgemeinheit angenommen haben, dass $supp(X) \subseteq [-a_n, a_n]^d$ ist, erhalten wir mit Lemma \ref{lem:9} für hinreichend großes $n$:
+für hinreichend großes $n$. Wir betrachten hier den logistischen squasher welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig nach Definition~\ref{nzulässig} ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma~\ref{lem:9} ist, sind nun alle Voraussetzungen erfüllt. Da wir ohne Beschränkung der Allgemeinheit angenommen haben, dass $supp(X) \subseteq [-a_n, a_n]^d$ ist, erhalten wir mit Lemma~\ref{lem:9} für hinreichend großes $n$:
 \begin{equation}
 \label{lem9sol}
 \begin{split}
@@ -199,7 +199,7 @@ $$v^2 + v^2 \geq 2uv$$ und zusammen mit einer Nulladdition, der Linearität des 
 & = 2 \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_n(x)|^2 + 2 \sup_{x \in [-a_n, a_n]^d} |P_n(x) - m(x)|^2, 
 \end{split}
 \end{equation}
-wobei wir im letzten Schritt $supp(X) \subseteq [-a_n, a_n]^d$ und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden weiterhin abzuschätzen möchten wir Lemma \ref{lem:5} anwenden. Dafür überprüfen wir ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten den logistischen squasher, welcher nach Lemma \ref{lem:2} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung für $R$ erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ identisch mit der Definition aus Lemma \ref{lem:5} ist, sind alle Voraussetzungen erfüllt. 
+wobei wir im letzten Schritt $supp(X) \subseteq [-a_n, a_n]^d$ und $\mathds{P}(X \in supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden weiterhin abzuschätzen möchten wir Lemma~\ref{lem:5} anwenden. Dafür überprüfen wir ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten den logistischen squasher, welcher nach Lemma~\ref{lem:2} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung für $R$ erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ identisch mit der Definition aus Lemma~\ref{lem:5} ist, sind alle Voraussetzungen erfüllt. 
 Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
 \begin{equation}
 \label{1stsum}
@@ -214,7 +214,7 @@ Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
 \end{equation}
 wobei wir unter anderem verwendet haben, dass für hinreichend großes $n$:
 $$a_n^{2^{\lceil\log_2(N + d)\rceil}} \leq a_n^{2^{\log_2(N + d) + 1}} = a_n^{(N + d) \cdot 2},$$ gilt. Im letzten Schritt haben wir dann noch die Definition von $a_n$ eingesetzt. 
-Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma \ref{lem:loccon} eine lokale Konvexkombination von Taylorpolynomen von $m$ ist, erhalten wir mit Lemma \ref{lem:pcsmooth}:
+Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma~\ref{lem:loccon} eine lokale Konvexkombination von Taylorpolynomen von $m$ ist, erhalten wir mit Lemma~\ref{lem:pcsmooth}:
 \begin{equation}
 \label{2ndsum}
 \begin{split}
@@ -224,7 +224,7 @@ Da nach Konstruktion $a > 0$, $m$ $(p, C)$-glatt und $P_n(x)$ nach Lemma \ref{le
 wobei wir verwendet haben, dass für $p = q + s$ für hinreichend großes $n$ gilt:
 $$a_n^p = a_n^{q + s} \leq a_n^{N + d} \leq a_n^{6 \cdot (N + d)} = \log(n),$$
 da nach Voraussetzung $N \geq q$ und $d \geq s$ mit $s \in (0, 1]$ ist.
-Durch Quadrieren bleiben die Ungleichungen auch erhalten und da die rechten Seiten von Ungleichung (\ref{1stsum}) und (\ref{2ndsum}) nicht von $x$ abhängen, gelten die Ungleichung ebenfalls für das Supremum.   Durch einsetzen der Definitionen von $M_n$ und $R_n$ erhalten wir für $n$ hinreichend groß:
+Durch Quadrieren bleiben die Ungleichungen auch erhalten und da die rechten Seiten von Ungleichung~(\ref{1stsum}) und (\ref{2ndsum}) nicht von $x$ abhängen, gelten die Ungleichung ebenfalls für das Supremum.   Durch einsetzen der Definitionen von $M_n$ und $R_n$ erhalten wir für $n$ hinreichend groß:
 \begin{equation}
 \label{3rdsum}
 \begin{split}
