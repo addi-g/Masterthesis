@@ -4,7 +4,7 @@
 In diesem Kapitel stellen wir das Hauptresultat dieser Arbeit vor.
 Ziel im Folgenden ist es, eine Abschätzung des erwarteten $L_2$-Fehlers 
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)$$
-im Falle unseres neuronale Netze Regresssionsschätzers~\ref{estimate} mit einer $(p,C)$-glatten Regressionsfunktion herzuleiten.
+im Falle unseres Neuronale-Netze-Regresssionsschätzers~\ref{estimate} mit einer $(p,C)$-glatten Regressionsfunktion herzuleiten.
 
 \begin{thm}\label{optstop}
 Angenommen die Verteilung von $(X,Y)$ erfüllt 
@@ -17,7 +17,75 @@ mit $T_{\beta}z = \max\{\min\{z, \beta\}, -\beta\}$ für $z \in \R$ und $\beta >
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_7 \cdot (\log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
 wobei $c_7 > 0$ ist und nicht von $n$ abhängt.
 \end{thm}
-\begin{proof}
+Die nächsten Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Schätzers. Diese Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt.
+\begin{lem}[\cite{kohler19}, Lemma 5]
+\label{lem:5}
+Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig nach Definition~\ref{nzulässig}.
+Sei $a \geq 1$ und 
+\begin{equation*}
+\begin{split}
+R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma, \id})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma, \id}|}, \\
+& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, \id})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\}
+\end{split}
+\end{equation*}
+und sei $y \in [-a, a]^d.$ Sei $N \in \N$ und $\bj \in [\N_0]^d$ so, dass $|\bj|_1 \leq N$ gilt und wir setzen $s = \lceil\log_2(N + d)\rceil$. Sei $f_{\id}, f_{\mult}$ und $f_{\mathrm{hat}, z}$ (für $z \in \R$) die neuronalen Netze aus Lemma~\ref{lem:1}, Lemma~\ref{lem:2} und Lemma~\ref{lem:4}. Wir definieren das Netz $f_{net,\bj,y}$ durch:
+\begin{align*}
+\label{fnet}
+& f_{net,\bj,y}(x) = f_1^{(0)}(x). \\
+\intertext{wobei} 
+& f_k^{(l)}(x) = f_{\mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \\
+\intertext{für $1 \leq k \leq 2^l$ und $0 \leq l \leq s - 1$ und} 
+& f_k^{(s)}(x) = f_{\id}(f_{\id}(x^{(l)} - y^{(l)}))  \\
+\intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $1 \leq l \leq d$ und} 
+& f_{j_1 + j_2 + \dots + j_d + k}^{(s)}(x) = f_{\mathrm{hat},y^{(k)}}(x^{(k)}) \\
+\intertext{für $1 \leq k \leq d$ und} 
+& f_k^{(s)}(x) = 1 \\
+\intertext{für $j_1 + j_2 + \dots + j_d + d + 1 \leq k \leq 2^s.$}
+\end{align*} 
+Dann erhalten wir für $x \in [-a, a]^d$:
+\begin{equation*}
+\begin{split}
+& \bigg|f_{net,\bj,y}(x) - (x^{(1)} - y^{(1)})^{j_1} \cdots (x^{(d)} - y^{(d)})^{j_d} \prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - y^{(j)}|)_+\bigg| \\
+& \leq c \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s} \cdot M^3 \cdot \frac{1}{R},
+\end{split}
+\end{equation*}
+für eine Konstante $c > 0$.
+\end{lem}
+  \begin{lem}[\cite{kohler19}, Lemma 8]
+  \label{lem:8}
+Sei $\beta_n = c_6 \cdot \log(n)$ für eine hinreichend große Konstante $c_6 > 0$. Angenommen die Verteilung von $(X, Y)$ erfüllt 
+$$ \E\Big(\mathrm{e}^{c_4 \cdot |Y|^2}\Big) < \infty$$
+für eine Konstante $c_4 > 0$ und dass der Betrag der Regressionsfunktion $m$ beschränkt ist. Sei $\mathcal{F}_n$ eine Menge von Funktionen $f\colon \R^d \to \R$ und wir nehmen an, dass der Schätzer $m_n$ 
+$$m_n = T_{\beta_n}\tilde{m}_n$$ 
+erfüllt, mit 
+$$\tilde{m}_n(\cdot) = \tilde{m}_n(\cdot,(X_1, Y_1),\dots,(X_n, Y_n)) \in \mathcal{F}_n$$
+und 
+$$\frac{1}{n} \sum_{i = 1}^n |Y_i - \tilde{m}_n(X_i)|^2 \leq \min_{l \in \Theta_n}\bigg(\frac{1}{n}\sum_{i = 1}^n |Y_i - g_{n,l}(X_i)|^2 + pen_n(g_n,l)\bigg)$$
+mit einer nichtleeren Parametermenge $\Theta_n$, zufällige Funktionen $g_{n,l}\colon \R^d \to \R$ und deterministischen penalty Terme $pen_n(g_{n,l}) \geq 0$, wobei die zufälligen Funktionen $g_{n,l}\colon \R^d \to \R$ nur von den Zufallsvariablen
+$$\mathbf{b}_1^{(1)},\dots,\mathbf{b}_r^{(1)},\dots,\mathbf{b}_1^{(I_n)},\dots,\mathbf{b}_r^{(I_n)},$$
+abhängen, die unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ sind.
+Dann erfüllt $m_n\colon$
+\begin{equation*}
+\begin{split}
+& \E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
+& \leq \frac{c_{13} \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)\big) + 1\big)}{n} \\
+& \quad + 2 \cdot \E\bigg(\min_{l \in \Theta_n} \int |g_{n,l}(x) - m(x)|^2 \mathds{P}_X(dx) + pen_n(g_{n,l})\bigg),
+\end{split}
+\end{equation*}
+für $n > 1$ und einer Konstante $c_{13} > 0$ welche nicht von $n$ abhängt.
+  \end{lem}
+Das nächste Lemma benötigen wir um eine Schranke für die Überdeckungszahl $\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)$ zu finden.
+\begin{lem}[\cite{kohler19}, Lemma 9]
+\label{lem:9}
+Sei $a > 0$ und $d, N, J_n \in \N$ so, dass $J_n \leq n^{c_{14}}$ und setze $\beta_n = c_6 \cdot \log(n).$
+Sei $\sigma$ 2-zulässig nach Definition~\ref{nzulässig}. Sei $\mathcal{F}$ die Menge aller Funktionen die durch (\ref{networkarch}) definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und dass der Betrag der Gewichte durch $c_{15} \cdot n^{c_{16}}$ beschränkt ist. Sei
+$$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{17} \cdot n^{c_{18}}\biggr\}.$$
+Dann gilt für $n > 1:$
+$$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\bigg)\bigg) \leq c_{19} \cdot \log(n) \cdot J_n,$$
+für eine Konstante $c_{19}$ die nur von $L, N, a$ und $d$ abhängt.
+\end{lem}
+Mit diesen Hilfsresultaten können wir nun unser Hauptresultat beweisen.
+\begin{proof}[Beweis von Satz~\ref{optstop}]
 Nach Voraussetzung wissen wir, dass $supp(\mathds{P}_X)$ beschränkt ist, daher nehmen wir ohne Beschränkung der Allgemeinheit an, dass $supp(X) = \{x \mid \mathds{P}_X(x) > 0\} \subseteq [-a_n, a_n]^d$ ist, da $\mathds{P}(X \in supp\mathds{P}_X)) = 1$ gilt und wir ansonsten die Zufallsvariable $X$ auf Nullmengen abändern können. Zudem haben wir angenommen, dass $m$ $(p,C)$-glatt und damit insbesondere hölderstetig mit $q = 0$ ist. Daraus können wir auf die gleichmäßige Stetigkeit von $m$ schließen \cite{Storch2018}. Da wir nur über den beschränkten $supp(\mathds{P}_X)$ integrieren, wissen wir, dass $m$ als gleichmäßig stetige Funktion auf einer beschränkten Menge auch beschränkt ist \cite{Storch2018}. Wir können daher ohne Beschränkung der Allgemeinheit folgern, dass $\|m\|_{\infty} \leq \beta_n$ ist, da aufgrund der Beschränktheit von $m$, ebenfalls $|m|$ beschränkt ist und wir daher ansonsten eine Skalierung von $m$ nehmen können.
 
 Sei $\mathcal{F}$ die durch \ref{networkarch} definierte Menge von Funktionen mit $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und der Eigenschaft, dass der Betrag der Gewichte durch $n^{c_{20}}$ beschränkt ist. Sei 
