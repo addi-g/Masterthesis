@@ -499,7 +499,7 @@ wobei $n$ die Größe unserer gegebenen Datenmenge~(\ref{dataset}) ist und wir d
 \begin{equation}
 \label{min} 
 \begin{split}
-\varphi(a_{\bi,\bj}) & \coloneqq \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \lambda\|(a_{\bi,\bj})\|_2^2 \\
+\varphi(a_{\bi,\bj}) & \coloneqq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \lambda\|(a_{\bi,\bj})\|_2^2 \\
 & =\frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2
 \end{split}
 \end{equation}
@@ -513,7 +513,7 @@ Diese Kardinalität erhalten wir mit einem Kombinatorik Argument.
 Wir wissen, dass es insgesamt $(M + 1)^d$ Möglichkeiten gibt $d$ viele Zahlen aus einer Menge mit der Größe $(M + 1)$ zu ziehen mit Zurücklegen und da wir Vektoren betrachten und die Komponenten nicht vertauschbar sind ist auch die Reihenfolge der Ziehung zu beachten.
 Für jede dieser $(M + 1)^d$ Möglichkeiten ist noch zu beachten, dass wir zusätzlich $d$ mal aus einer Menge mit $(N + 1)$ vielen Zahlen ziehen müssen und gleichzeitig die Bedingung dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
 Gesucht ist also 
-$$\big|\Bigl\{\bj \in [N]^d : |\bj|_1 \leq N \Bigr\}\big| \eqqcolon H.$$ 
+$$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 \leq N \Bigr\}\bigg| \eqqcolon H.$$ 
 Wir stellen fest, dass:
 \begin{equation*}
 \begin{split}
@@ -586,8 +586,9 @@ Die letzte Gleichung wird für $\mathbf{a} = \frac{1}{n} \cdot \mathbf{A}^{-1}\m
 da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ genau dann, wenn $\mathbf{a} = \mathbf{b}$ gilt.
 Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers~(\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems~(\ref{les}) ist.
 \end{proof}
-%\begin{bemnumber}
-%Da der Koeffizientenvektor $\mathbf{a}$ die Gleichung~(\ref{eq:min}) minimiert, erhalten wir, wenn wir den Koeffizientenvektor gleich Null setzen:
-%$$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
-%was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. (TBD) WOFÜR BRAUCH ICH DAS DENN? WEGLASSEN!
-%\end{bemnumber}
+\begin{bemnumber}
+\label{mtildebeschraenkt}
+Da der Koeffizientenvektor $\mathbf{a}$ die Gleichung~(\ref{eq:min}) minimiert, erhalten wir, wenn wir den Koeffizientenvektor gleich Null setzen:
+$$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
+was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. Daraus können wir folgern, dass unser Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ beschränkt ist. 
+\end{bemnumber}

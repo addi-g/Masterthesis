@@ -38,7 +38,7 @@ für eine Konstante $c_1 > 0$ und die Verteilung von $X$ hat einen beschränkten
 Angenommen $m$ ist $(p,C)$-glatt, mit $q \in \N_0$ und $s \in (0,1]$ und sei $C > 0$. 
 
 Wir betrachten unseren Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ aus Kapitel~\ref{subsec:2.2} welcher aus mehreren neuronalen Netzen zusammengebaut wurde. Für diesen wählen wir unsere Aktivierungsfunktion $\sigma$ als den logistische squasher aus Gleichung {logsquasher}. Aufgrund der Konstruktion unseren Schätzers wählen wir zudem $N \geq q, M = M_n = \lceil c_2 \cdot n^{1/(2p + d)}\rceil$ mit $c_2 >0$ und unabhängig von $n$, $R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
-Sei $\beta_n = c_3 \cdot \log(n)$ für eine hinreichend große Konstante $c_3 > 0$ und sei $m_n$ gegeben durch
+Sei $\beta_n = c_3 \cdot \log(n)$ für eine hinreichend große und von $n$ unabhängige Konstante $c_3 > 0$ und sei $m_n$ gegeben durch
 $$m_n(x) = T_{\beta_n}\tilde{m}_n (x)$$
 mit $T_{\beta}z = \max\{\min\{z, \beta\}, -\beta\}$ für $z \in \R$ und $\beta > 0.$ 
 
@@ -89,8 +89,8 @@ $$m_n = T_{\beta_n}\tilde{m}_n$$
 erfüllt, mit 
 $$\tilde{m}_n(\cdot) = \tilde{m}_n(\cdot,(X_1, Y_1),\dots,(X_n, Y_n)) \in \mathcal{F}_n$$
 und 
-$$\frac{1}{n} \sum_{i = 1}^n |Y_i - \tilde{m}_n(X_i)|^2 \leq \min_{l \in \Theta_n}\bigg(\frac{1}{n}\sum_{i = 1}^n |Y_i - g_{n,l}(X_i)|^2 + pen_n(g_n,l)\bigg)$$
-mit einer nichtleeren Parametermenge $\Theta_n$, zufällige Funktionen $g_{n,l}\colon \R^d \to \R$ und deterministischen penalty Terme $pen_n(g_{n,l}) \geq 0$, wobei die zufälligen Funktionen $g_{n,l}\colon \R^d \to \R$ nur von den Zufallsvariablen
+$$\frac{1}{n} \sum_{i = 1}^n |Y_i - \tilde{m}_n(X_i)|^2 \leq \min_{l \in \Theta_n}\bigg(\frac{1}{n}\sum_{i = 1}^n |Y_i - g_{n,l}(X_i)|^2 + \text{pen}_n(g_n,l)\bigg)$$
+mit einer nichtleeren Parametermenge $\Theta_n$, zufällige Funktionen $g_{n,l}\colon \R^d \to \R$ und deterministischen penalty Terme $\text{pen}_n(g_{n,l}) \geq 0$, wobei die zufälligen Funktionen $g_{n,l}\colon \R^d \to \R$ nur von den Zufallsvariablen
 $$\mathbf{b}_1^{(1)},\dots,\mathbf{b}_r^{(1)},\dots,\mathbf{b}_1^{(I_n)},\dots,\mathbf{b}_r^{(I_n)},$$
 abhängen, die unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ sind.
 Dann erfüllt $m_n\colon$
@@ -98,7 +98,7 @@ Dann erfüllt $m_n\colon$
 \begin{split}
 & \E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
 & \leq \frac{c \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)\big) + 1\big)}{n} \\
-& \quad + 2 \cdot \E\bigg(\min_{l \in \Theta_n} \int |g_{n,l}(x) - m(x)|^2 \mathds{P}_X(dx) + pen_n(g_{n,l})\bigg),
+& \quad + 2 \cdot \E\bigg(\min_{l \in \Theta_n} \int |g_{n,l}(x) - m(x)|^2 \mathds{P}_X(dx) + \text{pen}_n(g_{n,l})\bigg),
 \end{split}
 \end{equation*}
 für $n > 1$ und einer Konstante $c > 0$ welche nicht von $n$ abhängt.
@@ -107,7 +107,7 @@ Das nächste Lemma benötigen wir um eine Schranke für die Überdeckungszahl $\
 \begin{lem}[\cite{kohler19}, Lemma 9]
 \label{lem:9}
 Sei $a > 0$ und $d, N, J_n \in \N$ so, dass $J_n \leq n^{c_{1}}$ und setze $\beta_n = c_2 \cdot \log(n).$
-Sei $\sigma$ 2-zulässig nach Definition~\ref{nzulässig}. Sei $\mathcal{F}$ die Menge aller Funktionen die durch (\ref{networkarch}) definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und dass der Betrag der Gewichte durch $c_{3} \cdot n^{c_{4}}$ beschränkt ist. Sei
+Sei $\sigma$ 2-zulässig nach Definition~\ref{nzulässig}. Sei $\mathcal{F}$ die Menge aller Funktionen die durch Definition~\ref{def:nn} definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und dass der Betrag der Gewichte durch $c_{3} \cdot n^{c_{4}}$ beschränkt ist. Sei
 $$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{5} \cdot n^{c_{6}}\biggr\}.$$
 Dann gilt für $n > 1:$
 $$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\bigg)\bigg) \leq c \cdot \log(n) \cdot J_n,$$
@@ -196,7 +196,7 @@ Mit Ungleichung~(\ref{ungl}) und durch die Unabhängigkeit von $A_n$ von den Zuf
  & \stackrel{(\ref{tscheby})}{\leq} \frac{4 \cdot c_7 \cdot \beta_n^2}{n}.
 \end{split}
 \end{equation}
-Wir haben bei Ungleichung~(\ref{anc}) zudem verwendet, dass wir $n$ und $c_3$ so groß wählen, dass $\max\{\|m\|_{\infty}, \|\tilde{m}\|_{\infty}\} < \beta_n$ gilt. Bei der letzten Gleichung habe wir schließlich verwendet dass $\beta_n$ deterministisch und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ ist.
+Wir haben bei Ungleichung~(\ref{anc}) zudem verwendet, dass wir $n$ und $c_3$ so groß wählen, dass $\max\{\|m\|_{\infty}, \|m_n\|_{\infty}\} < \beta_n$ gilt. Bei der letzten Gleichung habe wir schließlich verwendet dass $\beta_n$ deterministisch und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ ist.
 Durch unsere Definition von $\hat{m}_n$ erhalten wir durch die Monotonie des Erwartungswerts und einer Abschätzung über den ganzen Raum:
 \begin{equation}
 \label{an}
@@ -266,8 +266,8 @@ Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1)
 wobei wir bei der letzten Gleichheit verwendet haben, dass der letzte Summand deterministisch ist. Zudem wissen wir, dass $c_8$ unabhängig von $n$ ist und $n > 1$, da wir $n$ hinreichend groß wählen.
 Als nächstes überprüfen wir die Voraussetzungen von Lemma~\ref{lem:9}, um damit dann die letzte Gleichung mit der Überdeckungszahl $\mathcal{N}_1$weiter abzuschätzen.
 Nach Voraussetzung ist $\beta_n = c_3 \cdot \log(n)$ und $a_n = (\log n)^{1/(6(N + d))} > 0$ für hinreichend großes $n$. Nach Voraussetzung sind zudem $d, N, J_n \in \N$ und es gilt nach Gleichung~(\ref{jn}): 
-$$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c_{14}},$$
-für hinreichend großes $n$. Wir betrachten hier den logistischen squasher $\sigma$ welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma~\ref{lem:9} ist, sind nun alle Voraussetzungen für Lemma~\ref{lem:9} erfüllt. Nach Voraussetzung wissen wir, dass $\supp(\mathds{P}_X)$ beschränkt ist, und wir können unsern $n$ so groß wählen, dass wir ohne Beschränkung der Allgemeinheit annehmen können, dass $\supp(\mathds{P}_X) = \{x \in \R^d \mid \forall \epsilon > 0 : \mathds{P}_X(S_{\epsilon}(x)) > 0\} \subseteq [-a_n, a_n]^d$ ist, mit $S_{\epsilon}$ als $\epsilon$-Umgebung um $x \in \R^d$. In der nächsten Ungleichung bezeichnen wir die Konstanten die sich von $c_8$ unterscheiden und die unabhängig von $n$ sind, zu einer Konstante $c$ zusammen. Wir erhalten damit durch Lemma~\ref{lem:9} für hinreichend großes $n$:
+$$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c},$$
+für hinreichend großes $n$ und Konstante $c > 0$. Wir betrachten hier den logistischen squasher $\sigma$ welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma~\ref{lem:9} ist, sind nun alle Voraussetzungen für Lemma~\ref{lem:9} erfüllt. Nach Voraussetzung wissen wir, dass $\supp(\mathds{P}_X)$ beschränkt ist, und wir können unsern $n$ so groß wählen, dass wir ohne Beschränkung der Allgemeinheit annehmen können, dass $\supp(\mathds{P}_X) = \{x \in \R^d \mid \forall \epsilon > 0 : \mathds{P}_X(S_{\epsilon}(x)) > 0\} \subseteq [-a_n, a_n]^d$ ist, mit $S_{\epsilon}$ als $\epsilon$-Umgebung um $x \in \R^d$. In der nächsten Ungleichung bezeichnen wir die Konstanten die sich von $c_8$ unterscheiden und die unabhängig von $n$ sind, zu einer Konstante $c$ zusammen. Wir erhalten damit durch Lemma~\ref{lem:9} für hinreichend großes $n$:
 \begin{equation}
 \label{lem9sol}
 \begin{split}
@@ -386,7 +386,7 @@ und
 & \leq c_{14} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
 \end{split}
 \end{equation} 
-mit von $n$ unabhängigen Konstanten $c_{13} > 0$ und $c_{14} > 0$.
+mit von $n$ unabhängigen Konstanten $c_{13} \coloneqq c_8 \cdot 2^d > 0$ und $c_{14} \coloneqq 4 \cdot c_4 \cdot c_3^2 > 0$.
 Nun haben wir alle Summanden von Ungleichung ($\ref{originaleq}$) abgeschätzt und erhalten schließlich mit Ungleichungen (\ref{1stsum}) - (\ref{6thsum}):
 \begin{equation*}
 \E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \leq c_{\text{fin}} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
