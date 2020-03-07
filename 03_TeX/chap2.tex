@@ -161,7 +161,7 @@ Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus de
 \begin{lem}
 \label{lem:pcsmooth}
 Sei $M \in \N$, $c > 0$, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0, s \in (0,1]$ und $C > 0$ sind. Sei zudem $P_f(x)$ analog wie in (\ref{konvexkomb}) eine lokale Spline Interpolation von Taylorpolynomen von $f$. Dann gilt$\colon$
-$$\sup_{x \in [-a, a]^d} |f(x) - P_f(x)|  \leq c \cdot \frac{1}{M^p}.$$
+$$\sup_{x \in [-a, a]^d} |f(x) - P_f(x)|  \leq c \cdot \bigg(\frac{a}{M}\bigg)^p.$$
 \end{lem}
 \begin{proof}
 Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\xi \in [0, 1],$ so, dass 
@@ -212,11 +212,11 @@ Fassen wir die Gleichungen~(\ref{eq:drei}), (\ref{eq:sum}) und (\ref{eq:last}) z
 |f(x) - P_f(x)| & \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \|x_{\bi} + \xi(x - x_{\mathbf{i}}) - x_{\bi} \|^s \cdot C \cdot \sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
 & \leq \bigg(\frac{2a}{M}\bigg)^q \cdot \bigg(\frac{2a}{M}\bigg)^s \cdot d^{s/2} \cdot C\\
-& = c \cdot \frac{1}{M^p},
+& = c \cdot \bigg(\frac{a}{M}\bigg)^p,
 \end{split}
 \end{equation*}
 wobei wir bei der letzten Gleichheit Bedingung~(\ref{induktiongl1}) und $q + s = p$ verwendet und 
-$$c = (2a)^p \cdot d^{s/2} \cdot C,$$
+$$c = 2^p \cdot d^{s/2} \cdot C,$$
 gewählt haben.
 \end{proof}
 
@@ -488,6 +488,7 @@ Die Anzahl der Neuronen pro verborgener Schicht von $f_{\mathrm{net}}$ ergeben s
 Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log(N + d) + 1} = 24 \cdot (N + d)$$ gilt. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
 
 \section{Definition der Gewichte der Ausgabeschicht}
+\label{subsec:2.2}
 
 Wir definieren unseren Neuronale-Netze-Regressionsschätzer $\tilde{m}_n(x)$  durch:
 \begin{equation}
@@ -550,7 +551,10 @@ minimiert.
 \end{lem}
 \begin{proof}
 Der Schätzer aus Gleichung~(\ref{estimate}) lässt sich umschreiben zu 
-$$ \tilde{m}_n(x) = \sum_{s = 1}^S a_s \cdot U_s(x)$$
+\begin{equation}
+\label{umschreiben}
+\tilde{m}_n(x) = \sum_{s = 1}^S a_s \cdot U_s(x)
+\end{equation}
 mit $(a_s)_{s = 1,\dots,S} = \mathbf{a}\in \R^S$. Da $\mathbf{Y}^T\mathbf{U}\mathbf{a} = \mathbf{a}^T\mathbf{U}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist erhalten wir mit Gleichung~(\ref{eq:min}):
 \begin{equation}
 \label{eq:matrix}
