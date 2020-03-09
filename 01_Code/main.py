@@ -20,15 +20,14 @@ from new_neural_network import new_neural_network_estimate
 from nearest_neighbor import nearest_neighbor_estimate
 from fc_neural_network import fc_neural_1_estimate 
 
-n = 10000
-n_train = n * 0.8
-n_test = n * 0.2
-
-sigma = 0.05
+N = 10000
+n_train = N * 0.8
+n_test = N * 0.2
 
 '''
 EINDIMENSIONALER FALL (d = 1) wird geplottet
 '''
+
 N = 3
 q = 2
 R = 10 ** 6  
@@ -36,10 +35,8 @@ a = 2
 M = 2
 d = 1
 
-#sigma = 0.05
+sigma = 0.05
 
-#n_train = 100
-#n_test = 2000
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
 m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -83,10 +80,9 @@ a = 2
 M = 2
 d = 2
 
-#sigma = 0.05
+sigma = 0.05
 
-#n_train = 100
-#n_test = 2000
+
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
 m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -131,9 +127,7 @@ np.savetxt("plotpostpro.csv", np.transpose(postpro), delimiter=",")
 '''
 ein Vergleich des emp. L2 Fehler gemacht für d = 1
 '''
-#n_train = 100
-#n_test = 2000
-# Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+#Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 3
 q = 2
@@ -142,7 +136,7 @@ a = 2
 M = 2
 d = 1
 
-#sigma = 0.05
+spreads = [0.05, 0.1]
 
 scaled_error = np.empty((5, 3,))
 scaled_error[:] = np.nan
@@ -150,60 +144,61 @@ scaled_error[:] = np.nan
 e_L2_avg = np.zeros(5) 
 e_L2_avg[:] = np.nan
 
-for i in range(0,50,1):
-
-    X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
-    m_X_train, Y_train = gen_data_Y(X_train,sigma)
+for sigma in spreads:
+    for i in range(0,50,1):
     
-    X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
-    
-    #Y_pred_constant = constant_estimate(Y_train)
-    Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
-    Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
-    Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
-    
-    m_X_test, not_needed = gen_data_Y(X_test,sigma)
-    
-    e_L2_new_nn = np.mean(abs(Y_pred_new_nn - m_X_test) ** 2)
-    e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
-    e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
-    
-    for j in range(0,25,1):
+        X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
+        m_X_train, Y_train = gen_data_Y(X_train,sigma)
         
-        X = np.random.uniform(low=-2,high=2,size=(n_test,d))
-        m_X, Y = gen_data_Y(X,sigma)
-        Y_pred_constant = constant_estimate(Y)
+        X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
         
-        e_L2_avg[j] = np.mean(abs(Y_pred_constant - m_X) ** 2)
+        #Y_pred_constant = constant_estimate(Y_train)
+        Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
+        Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
+        Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
+        
+        m_X_test, not_needed = gen_data_Y(X_test,sigma)
+        
+        e_L2_new_nn = np.mean(abs(Y_pred_new_nn - m_X_test) ** 2)
+        e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
+        e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
+        
+        for j in range(0,25,1):
+            
+            X = np.random.uniform(low=-2,high=2,size=(n_test,d))
+            m_X, Y = gen_data_Y(X,sigma)
+            Y_pred_constant = constant_estimate(Y)
+            
+            e_L2_avg[j] = np.mean(abs(Y_pred_constant - m_X) ** 2)
+        
+        scaled_error[i,0] = e_L2_new_nn / np.median(e_L2_avg)
+        scaled_error[i,1] = e_L2_fc_nn_1 / np.median(e_L2_avg)
+        scaled_error[i,2] = e_L2_nearest_neighbor / np.median(e_L2_avg)
+        
+    iqr_new_nn = iqr(scaled_error[:,0]) 
+    iqr_fc_nn_1 = iqr(scaled_error[:,1])
+    iqr_nearest_neighbor = iqr(scaled_error[:,2])
     
-    scaled_error[i,0] = e_L2_new_nn / np.median(e_L2_avg)
-    scaled_error[i,1] = e_L2_fc_nn_1 / np.median(e_L2_avg)
-    scaled_error[i,2] = e_L2_nearest_neighbor / np.median(e_L2_avg)
+    median_new_nn = np.median(scaled_error[:,0])
+    median_fc_nn_1 = np.median(scaled_error[:,1])
+    median_nearest_neighbor = np.median(scaled_error[:,2])
     
-iqr_new_nn = iqr(scaled_error[:,0]) 
-iqr_fc_nn_1 = iqr(scaled_error[:,1])
-iqr_nearest_neighbor = iqr(scaled_error[:,2])
+    rows = ["noise","e_L2_avg","approach","new_nn", "fc_nn_1", "nearest_neighbor"]
+    
+    if sigma == 0.05:
+        series_noise_1 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
+        series_noise_1.name = ""
+    else:
+        series_noise_2 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
+        series_noise_2.name = ""
 
-median_new_nn = np.median(scaled_error[:,0])
-median_fc_nn_1 = np.median(scaled_error[:,1])
-median_nearest_neighbor = np.median(scaled_error[:,2])
-
-rows = ["noise","e_L2_avg","approach","new_nn", "fc_nn_1", "nearest_neighbor"]
-
-series_noise_1 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
-series_noise_1.name = ""
-#series_noise_2 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
-#series_noise_2.name = ""
-
-error_df = pd.concat([series_noise_1], axis=1)
+error_df = pd.concat([series_noise_1, series_noise_2], axis=1)
 #print(error_df)
 error_df.to_csv('out_d_1.csv',index = True)
 
 '''
 ein Vergleich des emp. L2 Fehler gemacht für d = 2 
 '''
-n_train = 100
-n_test = 200
 # Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 2
@@ -213,7 +208,7 @@ a = 2
 M = 2
 d = 2
 
-sigma = 0.1
+spreads = [0.05,0.1]
 
 scaled_error = np.empty((5, 3,))
 scaled_error[:] = np.nan
@@ -221,51 +216,54 @@ scaled_error[:] = np.nan
 e_L2_avg = np.zeros(5) 
 e_L2_avg[:] = np.nan
 
-for i in range(0,5,1):
-
-    X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
-    m_X_train, Y_train = gen_data_Y(X_train,sigma)
+for sigma in spreads:
+    for i in range(0,50,1):
     
-    X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
-    
-    #Y_pred_constant = constant_estimate(Y_train)
-    Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
-    Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
-    Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
-    
-    m_X_test, not_needed = gen_data_Y(X_test,sigma)
-    
-    e_L2_new_nn = np.mean(abs(Y_pred_new_nn - m_X_test) ** 2)
-    e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
-    e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
-    
-    for j in range(0,5,1):
+        X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
+        m_X_train, Y_train = gen_data_Y(X_train,sigma)
         
-        X = np.random.uniform(low=-2,high=2,size=(n_test,d))
-        m_X, Y = gen_data_Y(X,sigma)
-        Y_pred_constant = constant_estimate(Y)
+        X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
         
-        e_L2_avg[j] = np.mean(abs(Y_pred_constant - m_X) ** 2)
+        #Y_pred_constant = constant_estimate(Y_train)
+        Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
+        Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
+        Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
+        
+        m_X_test, not_needed = gen_data_Y(X_test,sigma)
+        
+        e_L2_new_nn = np.mean(abs(Y_pred_new_nn - m_X_test) ** 2)
+        e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
+        e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
+        
+        for j in range(0,25,1):
+            
+            X = np.random.uniform(low=-2,high=2,size=(n_test,d))
+            m_X, Y = gen_data_Y(X,sigma)
+            Y_pred_constant = constant_estimate(Y)
+            
+            e_L2_avg[j] = np.mean(abs(Y_pred_constant - m_X) ** 2)
+        
+        scaled_error[i,0] = e_L2_new_nn / np.median(e_L2_avg)
+        scaled_error[i,1] = e_L2_fc_nn_1 / np.median(e_L2_avg)
+        scaled_error[i,2] = e_L2_nearest_neighbor / np.median(e_L2_avg)
+        
+    iqr_new_nn = iqr(scaled_error[:,0]) 
+    iqr_fc_nn_1 = iqr(scaled_error[:,1])
+    iqr_nearest_neighbor = iqr(scaled_error[:,2])
     
-    scaled_error[i,0] = e_L2_new_nn / np.median(e_L2_avg)
-    scaled_error[i,1] = e_L2_fc_nn_1 / np.median(e_L2_avg)
-    scaled_error[i,2] = e_L2_nearest_neighbor / np.median(e_L2_avg)
+    median_new_nn = np.median(scaled_error[:,0])
+    median_fc_nn_1 = np.median(scaled_error[:,1])
+    median_nearest_neighbor = np.median(scaled_error[:,2])
     
-iqr_new_nn = iqr(scaled_error[:,0]) 
-iqr_fc_nn_1 = iqr(scaled_error[:,1])
-iqr_nearest_neighbor = iqr(scaled_error[:,2])
+    rows = ["noise","e_L2_avg","approach","new_nn", "fc_nn_1", "nearest_neighbor"]
+    
+    if sigma == 0.05:
+        series_noise_1 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
+        series_noise_1.name = ""
+    else:
+        series_noise_2 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
+        series_noise_2.name = ""
 
-median_new_nn = np.median(scaled_error[:,0])
-median_fc_nn_1 = np.median(scaled_error[:,1])
-median_nearest_neighbor = np.median(scaled_error[:,2])
-
-rows = ["noise","e_L2_avg","approach","new_nn", "fc_nn_1", "nearest_neighbor"]
-
-series_noise_1 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
-series_noise_1.name = ""
-#series_noise_2 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
-#series_noise_2.name = ""
-
-error_df = pd.concat([series_noise_1], axis=1)
+error_df = pd.concat([series_noise_1, series_noise_2], axis=1)
 #print(error_df)
 error_df.to_csv('out_d_2.csv',index = True)

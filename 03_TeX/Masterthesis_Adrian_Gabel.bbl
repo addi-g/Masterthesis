@@ -27,6 +27,11 @@
   Veränderlichen}.
 \newblock Springer, Berlin, 2016.
 
+\bibitem[GKW02]{györfi2002}
+{\sc Györfi, L.~Kohler, M.}, {\sc A.~Krzyzak} \btxandlong{}\ {\sc H.~Walk}:
+  {\em A Distribution-Free Theory of Nonparametric Regression.}
+\newblock Springer series in statistics. Springer, Berlin, 2002.
+
 \bibitem[Gla13]{glasserman2013monte}
 {\sc Glasserman, P.}: {\em Monte Carlo methods in financial engineering},
   \btxvolumelong{}~53 \btxofserieslong{}\ {\em Stochastic Modelling and Applied
@@ -54,6 +59,10 @@
   finance}, \btxvolumelong{}~39 \btxofserieslong{}\ {\em Stochastic Modelling
   and Applied Probability}.
 \newblock Springer, New York, 1998.
+
+\bibitem[Kö13]{Königsberger2013}
+{\sc Königsberger, K.}: {\em Analysis 2}.
+\newblock Springer, Berlin, 2013.
 
 \bibitem[LS01]{longstaff2001valuing}
 {\sc Longstaff, F.} \btxandlong{}\ {\sc E.~Schwartz}: {\em Valuing American

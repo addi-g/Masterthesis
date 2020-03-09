@@ -12,7 +12,7 @@ A level-1 auxiliary file: literaturverzeichnis.aux
 The style file: geralpha.bst
 A level-1 auxiliary file: appendix.aux
 Database file #1: Masterthesis_Adrian_Gabel.bib
-Warning--I didn't find a database entry for "forster"
+Warning--I didn't find a database entry for "Königsberger2013"
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1296 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
@@ -24,45 +24,45 @@ Too many commas in name 1 of "Devroye L., KarasÃ¶zen, B., Kohler, M. AND Korn, R
 while executing---line 1361 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1361 of file geralpha.bst
-You've used 16 entries,
+You've used 18 entries,
             2768 wiz_defined-function locations,
-            713 strings with 7528 characters,
-and the built_in function-call counts, 5706 in all, are:
-= -- 567
-> -- 214
-< -- 13
-+ -- 66
-- -- 64
-* -- 424
-:= -- 909
-add.period$ -- 33
-call.type$ -- 16
-change.case$ -- 71
-chr.to.int$ -- 16
-cite$ -- 17
-duplicate$ -- 279
-empty$ -- 475
-format.name$ -- 88
-if$ -- 1209
+            722 strings with 7754 characters,
+and the built_in function-call counts, 6405 in all, are:
+= -- 635
+> -- 247
+< -- 14
++ -- 78
+- -- 75
+* -- 474
+:= -- 1024
+add.period$ -- 38
+call.type$ -- 18
+change.case$ -- 81
+chr.to.int$ -- 18
+cite$ -- 19
+duplicate$ -- 314
+empty$ -- 531
+format.name$ -- 102
+if$ -- 1357
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 29
-newline$ -- 68
-num.names$ -- 50
-pop$ -- 100
+missing$ -- 33
+newline$ -- 76
+num.names$ -- 56
+pop$ -- 115
 preamble$ -- 1
-purify$ -- 103
+purify$ -- 117
 quote$ -- 0
-skip$ -- 214
+skip$ -- 239
 stack$ -- 0
-substring$ -- 244
-swap$ -- 54
-text.length$ -- 13
-text.prefix$ -- 9
+substring$ -- 259
+swap$ -- 60
+text.length$ -- 14
+text.prefix$ -- 10
 top$ -- 0
-type$ -- 92
+type$ -- 100
 warning$ -- 1
-while$ -- 50
-width$ -- 19
-write$ -- 197
+while$ -- 55
+width$ -- 21
+write$ -- 222
 (There were 5 error messages)

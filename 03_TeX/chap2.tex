@@ -104,7 +104,7 @@ Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsp
 \end{equation}
 per Induktion über $d$ zeigen. 
 	
-	 \emph{Induktionsanfang} (IA): Für $d = 1$ kann $x$ nur zwischen zwei Gitterpunkten $x_{\mathbf{i}_1} \neq x_{\mathbf{i}_2}$ liegen. Sei oBdA $x_{\mathbf{i}_1}\leq x \leq x_{\mathbf{i}_2}$, dann gilt mit der gleichen Begründung wie im einleitenden Beispiel:
+	 \emph{Induktionsanfang} (IA): Für $d = 1$ kann $x$ nur zwischen zwei Gitterpunkten $x_{\mathbf{i}_1} \neq x_{\mathbf{i}_2}$ liegen. Sei ohne Beschränkung der Allgemeinheit $x_{\mathbf{i}_1}\leq x \leq x_{\mathbf{i}_2}$, dann gilt mit der gleichen Begründung wie im einleitenden Beispiel:
 	\begin{equation*}
 	\begin{split}
 	\sum_{\bi \in [M]^d} (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}}|)_+ & = (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_1}|)_+ + (1 - \frac{M}{2a} \cdot |x - x_{\mathbf{i}_2}|)_+ \\
@@ -116,8 +116,8 @@ per Induktion über $d$ zeigen.
 	
 \emph{Induktionshypothese} (IH): Aussage~(\ref{induktiongl1}) gelte für ein beliebiges aber festes $d \in \N.$
 
-\emph{Induktionsschritt} (IS): Wir nehmen oBdA an, dass $x_{(0,\dots,0)} \leq x \leq x_{(1,\dots,1)}$ gilt bzgl.\@ $(d+1)$-stelliger Relation. Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im Folgenden zeigen wir $$\sum_{\bi \in [M]^{(d + 1)}} B_{\bi}(x) = \sum_{\bi \in [M]^{(d + 1)}}\prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big|\bigg)_+ = 1.$$
-Ein Summand ist Null, wenn ein $j \in \{1,\dots,d+1\}$ existiert mit $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$. Zudem haben wir oBdA angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nächsten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$-ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw. $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
+\emph{Induktionsschritt} (IS): Wir nehmen ohne Beschränkung der Allgemeinheit an, dass $x_{(0,\dots,0)} \leq x \leq x_{(1,\dots,1)}$ gilt bzgl.\@ $(d+1)$-stelliger Relation. Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im Folgenden zeigen wir $$\sum_{\bi \in [M]^{(d + 1)}} B_{\bi}(x) = \sum_{\bi \in [M]^{(d + 1)}}\prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big|\bigg)_+ = 1.$$
+Ein Summand ist Null, wenn ein $j \in \{1,\dots,d+1\}$ existiert mit $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$. Zudem haben wir ohne Beschränkung der Allgemeinheit angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nächsten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$-ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw.\@ $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
 \begin{equation*}
 \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_\mathbf{i}^{(d + 1)}\Big|\bigg) = \begin{cases}
 (1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|) &\text{$\mathbf{i} \in \{0, 1\}^d \times \{0\}$}\\
@@ -164,7 +164,7 @@ Sei $M \in \N$, $c > 0$, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p
 $$\sup_{x \in [-a, a]^d} |f(x) - P_f(x)|  \leq c \cdot \bigg(\frac{a}{M}\bigg)^p.$$
 \end{lem}
 \begin{proof}
-Nach dem Satz über die Lagrange Form des Restglieds (REFERENZ) existiert ein $\xi \in [0, 1],$ so, dass 
+Nach Lemma~\ref{lem:lagrange} über die Lagrange Form des Restglieds existiert ein $\xi \in [0, 1],$ so, dass 
 \begin{equation}
 \label{eq:lagrange}
 \begin{split}
@@ -222,7 +222,8 @@ gewählt haben.
 
 $P_m(x)$ lässt sich in die Form 
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\bi, \bj} \cdot (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$
-durch geeignet gewählte $a_{\bi, \bj} \in \R$ bringen, da sich jedes $p_i(x)$ der form so und so ... lässt sich $P(x)$ umschreiben ... (TBD)
+durch geeignet gewählte $a_{\bi, \bj} \in \R$ bringen, da sich jedes $p^m_{\bi}(x)$ als Polynom umordnen lässt und wir daher auch $P_m(x)$ umschreiben können.
+
 Als nächstes wollen wir geeignete neuronale Netze $f_{\net, \bj, \bi}$ definieren, die die Funktionen
 $$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur so wählen, dass neuronale Netze der Form
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\mathbf{i}, \bj} \cdot f_{\net,\bj,\mathbf{i}}(x) \qquad (a_{\mathbf{i},\bj} \in \R)$$ in ihr enthalten sind.
@@ -463,7 +464,8 @@ net/.style={
 \caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x) = ...$}
 \label{fig:fhat}
 \end{figure} 
-Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $\bj \in [N]^d$, $\bi \in [M]^d$ und $k \in \{1,\dots,(M + 1)^d\}$:  
+
+Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N > q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $\bj \in [N]^d$, $\bi \in [M]^d$ und $k \in \{1,\dots,(M + 1)^d\}$:  
 \begin{align}
 \label{fnet}
 f_{\net,\bj,\mathbf{i}}(x) & = f_1^{(0)}(x). \nonumber
@@ -472,20 +474,21 @@ f_k^{(l)}(x) & = f_{\mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) 
 \intertext{für $k \in \{1, 2, \dots, 2^l \}$ und $l \in\{0,\dots,s - 1\}, $ und}
 f_k^{(s)}(x) & = f_{\id}(f_{\id}(x^{(l)} - x_{\mathbf{i}_k}^{(l)})) \nonumber
 \intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $1 \leq l \leq d$ und}
-f_{j_1 + j_2 + \dots + j_d + k}^{(s)}(x) & = f_{\mathrm{hat}, x_{\mathbf{i}_k}^{(k)}}(x^{(k)})
+f_{|\bj|_1+ k}^{(s)}(x) & = f_{\mathrm{hat}, x_{\mathbf{i}_k}^{(k)}}(x^{(k)})
 \intertext{für $1 \leq k \leq d$ und}
 f_k^{(s)}(x) & = 1 \nonumber
 \end{align} 
-für $j_1 + j_2 + \dots + j_d + d + 1 \leq k \leq 2^s.$
+für $|\bj|_1 + d + 1 \leq k \leq 2^s.$
  
-Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehrere neuronalen Netzen zusammengebaut wurde, lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Aus (\ref{fnet}) entnimmt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$, hat. Da $f_{\mathrm{hat}}$ zwei verborgene Schichten besitzt ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$. Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... (TBD)
+Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehrere neuronalen Netzen zusammengebaut wurde, lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Aus (\ref{fnet}) entnimmt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$ bzw.\@ $f_{\id}(f_{\id})$, hat. Da $f_{\mathrm{hat}}$ zwei verborgene Schichten besitzt, ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$.
+%Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... (TBD)
 Die Anzahl der Neuronen pro verborgener Schicht von $f_{\mathrm{net}}$ ergeben sich wie folgt:
 \begin{itemize}
 \item Die erste verborgene Schicht enthält maximal $3 \cdot 2 \cdot 2^s = 6 \cdot 2^s$ Neuronen, da dies die erste verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$ mal aufgerufen wird. 
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
-\item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2 \cdot 2^s, 2^s, \dots, 8, 4$ Neuronen, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
+\item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2^{s+ 1}, 2^s, \dots, 2^3, 2^2$ Neuronen, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
 \end{itemize}  
-Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log(N + d) + 1} = 24 \cdot (N + d)$$ gilt. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
+Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ gilt. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
 
 \section{Definition der Gewichte der Ausgabeschicht}
 \label{subsec:2.2}
@@ -590,5 +593,5 @@ Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers~(\ref{estimate}
 \label{mtildebeschraenkt}
 Da der Koeffizientenvektor $\mathbf{a}$ die Gleichung~(\ref{eq:min}) minimiert, erhalten wir, wenn wir den Koeffizientenvektor gleich Null setzen:
 $$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
-was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. Daraus können wir folgern, dass unser Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ beschränkt ist. 
+was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. Daraus können wir folgern, dass unser Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ beschränkt ist, da $f_{\net,\bj,\bi}$ ebenfalls beschränkt ist.
 \end{bemnumber}

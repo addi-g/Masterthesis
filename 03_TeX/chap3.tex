@@ -50,7 +50,7 @@ Die nächsten Lemmata benötigen wir für den Beweis unseres Hauptresultats, ein
 \begin{lem}[\cite{kohler19}, Lemma 5]
 \label{lem:5}
 Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig nach Definition~\ref{nzulässig}.
-Sei $a \geq 1$ und 
+Sei $a \geq 1$ und $R \in \R$ mit
 \begin{equation*}
 \begin{split}
 R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma, \id})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma, \id})|}, \\
@@ -66,10 +66,10 @@ und sei $y \in [-a, a]^d.$ Sei $N \in \N$ und $\bj \in [\N_0]^d$ so, dass $|\bj|
 \intertext{für $1 \leq k \leq 2^l$ und $0 \leq l \leq s - 1$ und} 
 & f_k^{(s)}(x) = f_{\id}(f_{\id}(x^{(l)} - y^{(l)}))  \\
 \intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $1 \leq l \leq d$ und} 
-& f_{j_1 + j_2 + \dots + j_d + k}^{(s)}(x) = f_{\mathrm{hat},y^{(k)}}(x^{(k)}) \\
+& f_{|\bj|_1 + k}^{(s)}(x) = f_{\mathrm{hat},y^{(k)}}(x^{(k)}) \\
 \intertext{für $1 \leq k \leq d$ und} 
 & f_k^{(s)}(x) = 1 \\
-\intertext{für $j_1 + j_2 + \dots + j_d + d + 1 \leq k \leq 2^s.$}
+\intertext{für $|\bj|_1+ d + 1 \leq k \leq 2^s.$}
 \end{align*} 
 Dann erhalten wir für $x \in [-a, a]^d$:
 \begin{equation*}
@@ -107,7 +107,7 @@ Das nächste Lemma benötigen wir um eine Schranke für die Überdeckungszahl $\
 \begin{lem}[\cite{kohler19}, Lemma 9]
 \label{lem:9}
 Sei $a > 0$ und $d, N, J_n \in \N$ so, dass $J_n \leq n^{c_{1}}$ und setze $\beta_n = c_2 \cdot \log(n).$
-Sei $\sigma$ 2-zulässig nach Definition~\ref{nzulässig}. Sei $\mathcal{F}$ die Menge aller Funktionen die durch Definition~\ref{def:nn} definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und dass der Betrag der Gewichte durch $c_{3} \cdot n^{c_{4}}$ beschränkt ist. Sei
+Sei $\sigma$ 2-zulässig nach Definition~\ref{nzulässig}. Sei $\mathcal{F}$ die Menge aller Funktionen die durch Definition~\ref{def:nn} definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und einer Beschränkung der Betrag der Gewichte durch $c_{3} \cdot n^{c_{4}}$.
 $$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{5} \cdot n^{c_{6}}\biggr\}.$$
 Dann gilt für $n > 1:$
 $$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\bigg)\bigg) \leq c \cdot \log(n) \cdot J_n,$$
@@ -196,7 +196,7 @@ Mit Ungleichung~(\ref{ungl}) und durch die Unabhängigkeit von $A_n$ von den Zuf
  & \stackrel{(\ref{tscheby})}{\leq} \frac{4 \cdot c_7 \cdot \beta_n^2}{n}.
 \end{split}
 \end{equation}
-Wir haben bei Ungleichung~(\ref{anc}) zudem verwendet, dass wir $n$ und $c_3$ so groß wählen, dass $\max\{\|m\|_{\infty}, \|m_n\|_{\infty}\} < \beta_n$ gilt. Bei der letzten Gleichung habe wir schließlich verwendet dass $\beta_n$ deterministisch und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ ist.
+Da wir nach Bemerkung~(\ref{mtildebeschraenkt}) wissen, dass $\tilde{m}_n$ beschränkt ist, ist $m_n$ nach Konstruktion ebenfalls beschränkt. Wir haben daher bei Ungleichung~(\ref{anc}) zudem verwendet, dass wir $n$ und $c_3$ so groß wählen, dass $\max\{\|m\|_{\infty}, \|m_n\|_{\infty}\} < \beta_n$ gilt. Bei der letzten Gleichung habe wir schließlich verwendet dass $\beta_n$ deterministisch und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ ist.
 Durch unsere Definition von $\hat{m}_n$ erhalten wir durch die Monotonie des Erwartungswerts und einer Abschätzung über den ganzen Raum:
 \begin{equation}
 \label{an}
