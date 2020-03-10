@@ -6,10 +6,10 @@ Main Datei die die Simulation und damit den Vergleich der implementierten Schät
 durchführt.
 """
 import numpy as np
-from mpl_toolkits import mplot3d
-import matplotlib . pyplot as plt
+#from mpl_toolkits import mplot3d
+#import matplotlib . pyplot as plt
 import pandas as pd
-import tikzplotlib
+#import tikzplotlib
 from scipy.stats import iqr
 from data_gen import gen_data_Y
 from constant import constant_estimate
