@@ -1,18 +1,15 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 23 15:08:26 2019
 
+"""
 @author: adrian
 
 Main Datei die die Simulation und damit den Vergleich der implementierten Schätzer
 durchführt.
 """
 import numpy as np
-#from mpl_toolkits import mplot3d
-#import matplotlib . pyplot as plt
+from mpl_toolkits import mplot3d
+import matplotlib . pyplot as plt
 import pandas as pd
-#import tikzplotlib
+import tikzplotlib
 from scipy.stats import iqr
 from data_gen import gen_data_Y
 from constant import constant_estimate
@@ -21,8 +18,8 @@ from nearest_neighbor import nearest_neighbor_estimate
 from fc_neural_network import fc_neural_1_estimate 
 
 n = 10000
-n_train = n * 0.8
-n_test = n * 0.2
+n_train = int(n * 0.8)
+n_test = int(n * 0.2)
 
 #'''
 #EINDIMENSIONALER FALL (d = 1) wird geplottet
@@ -138,14 +135,14 @@ d = 1
 
 spreads = [0.05, 0.1]
 
-scaled_error = np.empty((5, 3,))
+scaled_error = np.empty((50, 3,))
 scaled_error[:] = np.nan
 
-e_L2_avg = np.zeros(5) 
+e_L2_avg = np.zeros(25) 
 e_L2_avg[:] = np.nan
 
 for sigma in spreads:
-    for i in range(0,50,1):
+    for i in range(0,np.size(scaled_error,0),1):
     
         X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
         m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -163,7 +160,7 @@ for sigma in spreads:
         e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
         e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
         
-        for j in range(0,25,1):
+        for j in range(0,np.size(e_L2_avg),1):
             
             X = np.random.uniform(low=-2,high=2,size=(n_test,d))
             m_X, Y = gen_data_Y(X,sigma)
@@ -210,14 +207,14 @@ d = 2
 
 spreads = [0.05,0.1]
 
-scaled_error = np.empty((5, 3,))
+scaled_error = np.empty((50, 3,))
 scaled_error[:] = np.nan
 
-e_L2_avg = np.zeros(5) 
+e_L2_avg = np.zeros(25) 
 e_L2_avg[:] = np.nan
 
 for sigma in spreads:
-    for i in range(0,50,1):
+    for i in range(0,np.size(scaled_error,0),1):
     
         X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
         m_X_train, Y_train = gen_data_Y(X_train,sigma)
@@ -235,7 +232,7 @@ for sigma in spreads:
         e_L2_fc_nn_1 = np.mean(abs(Y_pred_fc_nn_1 - m_X_test) ** 2)
         e_L2_nearest_neighbor = np.mean(abs(Y_pred_nearest_neighbor - m_X_test) ** 2)
         
-        for j in range(0,25,1):
+        for j in range(0,np.size(e_L2_avg),1):
             
             X = np.random.uniform(low=-2,high=2,size=(n_test,d))
             m_X, Y = gen_data_Y(X,sigma)
