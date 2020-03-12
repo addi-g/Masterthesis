@@ -185,9 +185,13 @@ for sigma in spreads:
     if sigma == 0.05:
         series_noise_1 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
         series_noise_1.name = ""
+        print("Der empirische L2 Fehler für d = 1 und sigma = 0.05 ist berechnet worden!")
+        
     else:
         series_noise_2 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
         series_noise_2.name = ""
+        print("Der empirische L2 Fehler für d = 1 und sigma = 0.1 ist berechnet worden!")
+
 
 error_df = pd.concat([series_noise_1, series_noise_2], axis=1)
 #print(error_df)
@@ -257,9 +261,12 @@ for sigma in spreads:
     if sigma == 0.05:
         series_noise_1 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
         series_noise_1.name = ""
+        print("Der empirische L2 Fehler für d = 2 und sigma = 0.05 ist berechnet worden!")
+
     else:
         series_noise_2 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
         series_noise_2.name = ""
+        print("Der empirische L2 Fehler für d = 2 und sigma = 0.1 ist berechnet worden!")
 
 error_df = pd.concat([series_noise_1, series_noise_2], axis=1)
 #print(error_df)
