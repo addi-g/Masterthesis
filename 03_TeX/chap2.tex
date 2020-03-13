@@ -1,7 +1,7 @@
 \chapter{Konstruktion des Neuronale-Netze-Schätzers}
 \label{chap:2}
 
-In diesem Kapitel werden wir mithilfe der uns gegebenen Datenmenge 
+In diesem Kapitel werden wir mithilfe der gegebenen Datenmenge 
 \begin{equation}
 \label{dataset}
 \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},
@@ -9,10 +9,10 @@ In diesem Kapitel werden wir mithilfe der uns gegebenen Datenmenge
 unseren Regressionsschätzer $\tilde{m}_n$ konstruieren. 
 In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz verstehen.
 
-Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Gleichung~(\ref{networkarch}) eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
+Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
 \section{Definition der Netzwerkarchitektur}
-Sei $a > 0$ fest und $M \in \N$. Zunächst fixieren wir die Multiindexnotation, die wir aufgrund der Übersichtlichkeit im weiteren Verlauf dieser Arbeit verwenden werden.
+Zunächst fixieren wir die Multiindexnotation, die wir aufgrund der Übersichtlichkeit im weiteren Verlauf dieser Arbeit verwenden werden. Sei $a > 0$ fest und $M \in \N$. 
 
 Sei $[M]^d \coloneqq\{0, 1, \dots, M\}^d.$ 
 Für $(\mathbf{i}^{(1)},\dots,\mathbf{i}^{(d)}) = \bi \in [M]^d$ und $x \in \R^d$ definieren wir
@@ -37,16 +37,16 @@ P_m(x) = \sum_{\bi \in [M]^d} p_{\bi}^m(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{
 \end{equation}
 für die wir im weiteren Verlauf dieser Arbeit zeigen werden, dass diese die Regeressionsfunktion $m$ approximiert.
 
-Wir zeigen mit folgenden Lemma dass $P_m(x)$ eine lokale Spline Interpolation von Taylorpolynomen von $m$ ist.
+Wir zeigen mithilfe des folgenden Lemmas, dass $P_m(x)$ eine lokale Spline Interpolation von Taylorpolynomen von $m$ ist.
 \begin{lem}
 \label{lem:loccon}
 Sei $a >0$ und $M \in \N$. Dann sind für $\bi \in [M]^d$ und $x \in \R^d$ die Funktionen 
 $$B_{\bi}(x) = \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+,$$
-B-Splines im $R^d$, wobei wir unter $x_{\bi}$ die Gitterpunkte aus Gleichung~(\ref{eq:gitter}) verstehen. Dafür sind folgende drei Bedingungen für $x \in \R^d$ zu überprüfen:
+B-Splines im $\R^d$, wobei wir unter $x_{\bi}$ die Gitterpunkte aus Gleichung~(\ref{eq:gitter}) verstehen. Dafür sind folgende drei Bedingungen für $x \in \R^d$ zu überprüfen:
 \begin{itemize}
-\item[i)] Zerlegung der Eins: $\sum_{\bi \in [M]^d} B_{\bi}(x) = 1$.
-\item[ii)] Nicht-Negativität: $B_{\bi}(x) \geq 0$ für alle $\bi \in [M]^d$.
-\item[iii)] Lokaler Träger: Für $\bi \in [M]^d$ ist $B_{\bi}(x) > 0$ falls $|x^{(j)} - x_{\bi}^{(j)}| < \frac{2a}{M}$ für alle $j \in \{1,\dots,d\}$ gilt und andernfalls $B_{\bi}(x) = 0$.
+\item[\textbf{i)}] Zerlegung der Eins: $\sum_{\bi \in [M]^d} B_{\bi}(x) = 1$.
+\item[\textbf{ii)}] Nichtnegativität: $B_{\bi}(x) \geq 0$ für alle $\bi \in [M]^d$.
+\item[\textbf{iii)}] Lokaler Träger: Für $\bi \in [M]^d$ ist $B_{\bi}(x) > 0$ falls $|x^{(j)} - x_{\bi}^{(j)}| < \frac{2a}{M}$ für alle $j \in \{1,\dots,d\}$ gilt und andernfalls $B_{\bi}(x) = 0$.
 \end{itemize}
 \end{lem}
 \begin{proof}
@@ -97,7 +97,7 @@ Als erstes möchten wir für $d = 2$ und $M = 3$ eine Skizze angeben um die Idee
 \end{figure}
 Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nächsten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
 
-\textbf{i)} Im Folgenden wollen wir 
+\emph{\textbf{i)}} Im Folgenden wollen wir 
 \begin{equation}
 \label{induktiongl1}
 \sum_{\bi \in [M]^d} B_{\bi}(x) = 1 \quad (x \in \R^d)
@@ -116,7 +116,7 @@ per Induktion über $d$ zeigen.
 	
 \emph{Induktionshypothese} (IH): Aussage~(\ref{induktiongl1}) gelte für ein beliebiges aber festes $d \in \N.$
 
-\emph{Induktionsschritt} (IS): Wir nehmen ohne Beschränkung der Allgemeinheit an, dass $x_{(0,\dots,0)} \leq x \leq x_{(1,\dots,1)}$ gilt bzgl.\@ $(d+1)$-stelliger Relation. Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im Folgenden zeigen wir $$\sum_{\bi \in [M]^{(d + 1)}} B_{\bi}(x) = \sum_{\bi \in [M]^{(d + 1)}}\prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big|\bigg)_+ = 1.$$
+\emph{Induktionsschritt} (IS): Wir nehmen ohne Beschränkung der Allgemeinheit an, dass $x_{(0,\dots,0)} \leq x \leq x_{(1,\dots,1)}$ komponentenweise gilt. Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im Folgenden zeigen wir $$\sum_{\bi \in [M]^{(d + 1)}} B_{\bi}(x) = \sum_{\bi \in [M]^{(d + 1)}}\prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big|\bigg)_+ = 1.$$
 Ein Summand ist Null, wenn ein $j \in \{1,\dots,d+1\}$ existiert mit $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$. Zudem haben wir ohne Beschränkung der Allgemeinheit angenommen dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt, damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nächsten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$-ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw.\@ $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
 \begin{equation*}
 \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_\mathbf{i}^{(d + 1)}\Big|\bigg) = \begin{cases}
@@ -131,33 +131,32 @@ gilt. Daraus ergibt sich:
 & = \sum_{\mathbf{i} \in \{0, 1\}^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\bi}^{(j)}|\bigg) \\
 & = \Bigg(\sum_{\mathbf{i} \in \{0, 1\}^d \times \{0\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\bi}^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) \\
 & \qquad + \Bigg(\sum_{\mathbf{i} \in \{0, 1\}^d \times \{1\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\bi}^{(j)}|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
-& \stackrel{(\text{IV})}{=} 1 \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}|\bigg) + 1 \cdot \bigg(1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}|\bigg) \\
-& = 1 + 1 - \frac{M}{2a} \cdot |x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} + x_{(1,\dots,1)}^{(d + 1)} - x^{(d + 1)}| \\
+& \stackrel{(\text{IV})}{=} 1 \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\Big|\bigg) + 1 \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\Big|\bigg) \\
+& = 1 + 1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} + x_{(1,\dots,1)}^{(d + 1)} - x^{(d + 1)}\Big| \\
 & = 1 + 1 - 1 \\
 & = 1,
 \end{split}
 \end{equation*}
 wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)}^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} = \frac{2a}{M}$ ist, da beides Gitterpunkte sind.  $\hfill(\square)$ 		
 
-\textbf{ii)} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \quad (z \in \R)$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ größer gleich Null und wegen (\ref{induktiongl1}) muss dann auch 
+\emph{\textbf{ii)}} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \text{ für $z \in \R$}$$ gilt. Damit wäre die Nichtnegativität der Koeffizienten der Linearkombination gezeigt. Damit ist jeder Summand in $$\sum_{\bi \in [M]^d} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ größer gleich Null und wegen der Zerlegung der Eins aus Gleichung~(\ref{induktiongl1}) gilt dann auch 
 \begin{equation}
 \label{induktiongl2}
-\prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \leq 1
+\prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \leq 1.
 \end{equation}
-gelten.
 
-\textbf{iii)} Es handelt sich hierbei um einen lokale Träger, da nach der Konstruktion von $B_{\bi}(x)$ der Funktionswert genau dann Null ist, wenn ein $j \in \{1,\dots, d\}$ existiert, sodass $|x^{(j)} - x_{\bi}^{(j)}| \geq \frac{2a}{M}$ gilt. Andernfalls erhalten wir mit Bedingung~\textbf{ii)}, dass $B_{\bi}(x) > 0$ ist. 
+\emph{\textbf{iii)}} Es handelt sich hierbei um einen lokalen Träger, da nach der Konstruktion von $B_{\bi}(x)$ der Funktionswert genau dann Null ist, wenn ein $j \in \{1,\dots, d\}$ existiert, sodass $|x^{(j)} - x_{\bi}^{(j)}| \geq \frac{2a}{M}$ gilt. Andernfalls erhalten wir mit Bedingung~\textbf{ii)}, dass $B_{\bi}(x) > 0$ ist. 
 \end{proof}
 
-Hiermit erhalten wir, dass:
+Hiermit erhalten wir:
 \begin{equation*}
 \begin{split}
 P_m(x) &= \sum_{\bi \in [M]^d} p_{\bi}^m(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \\
-& = \sum_{\bi \in [M]^d} p_{\bi}(x) \cdot B_{\bi}(x)
+& = \sum_{\bi \in [M]^d} p_{\bi}(x) \cdot B_{\bi}(x).
 \end{split}
 \end{equation*}
-gilt und damit $P_m(x)$ eine Spline Interpolation von Taylorpolynomen von $m$ ist.
-Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die aus der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale Spline Interpolation von Taylorpolynomen für $(p,C)$-glatte Funktionen auf dem Intervall $[-a, a]^d$ motiviert.
+Damit wissen wir, dass $P_m(x)$ eine Spline Interpolation von Taylorpolynomen von $m$ ist.
+Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die der Ausgabeschicht ist durch folgendes Approximationsresultat durch eine lokale Spline Interpolation von Taylorpolynomen für $(p,C)$-glatte Funktionen auf dem Intervall $[-a, a]^d$ motiviert.
 \begin{lem}
 \label{lem:pcsmooth}
 Sei $M \in \N$, $c > 0$, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0, s \in (0,1]$ und $C > 0$ sind. Sei zudem $P_f(x)$ analog wie in (\ref{konvexkomb}) eine lokale Spline Interpolation von Taylorpolynomen von $f$. Dann gilt$\colon$
@@ -215,14 +214,13 @@ Fassen wir die Gleichungen~(\ref{eq:drei}), (\ref{eq:sum}) und (\ref{eq:last}) z
 & = c \cdot \bigg(\frac{a}{M}\bigg)^p,
 \end{split}
 \end{equation*}
-wobei wir bei der letzten Gleichheit Bedingung~(\ref{induktiongl1}) und $q + s = p$ verwendet und 
-$$c = 2^p \cdot d^{s/2} \cdot C,$$
-gewählt haben.
+wobei wir bei der letzten Ungleichung die Eingenschaft der Zerlegung der Eins aus Gleichung~(\ref{induktiongl1}) und $q + s = p$ verwendet haben, mit 
+$$c = 2^p \cdot d^{s/2} \cdot C.$$
 \end{proof}
 
-$P_m(x)$ lässt sich in die Form 
+Durch geeignet gewählte $a_{\bi, \bj} \in \R$ lässt sich $P_m(x)$ in die Form 
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\bi, \bj} \cdot (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$
-durch geeignet gewählte $a_{\bi, \bj} \in \R$ bringen, da sich jedes $p^m_{\bi}(x)$ als Polynom umordnen lässt und wir daher auch $P_m(x)$ umschreiben können.
+bringen, da sich jedes $p^m_{\bi}(x)$ als Polynom umordnen lässt und wir daher auch $P_m(x)$ umschreiben können.
 
 Als nächstes wollen wir geeignete neuronale Netze $f_{\net, \bj, \bi}$ definieren, die die Funktionen
 $$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur so wählen, dass neuronale Netze der Form
@@ -271,7 +269,7 @@ net/.style={
 \draw[->] (mat-2-3) -- node[above] {$f_{\id}(x)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\id}(x) = 4R \cdot \sigma(\frac{x}{R}) - 2R$}
+\caption{Neuronales Netz $f_{\id}(x)$}
 \label{fig:fid}
 \end{figure}
 
@@ -326,7 +324,7 @@ net/.style={
 \draw[->] (mat-5-3) -- node[above] {$f_{\mult}(x, y)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\mult}(x) = ...$}
+\caption{Neuronales Netz $f_{\mult}(x, y)$}
 \label{fig:fmult}
 \end{figure}
 
@@ -381,7 +379,7 @@ net/.style={
 \draw[->] (mat-5-4) -- node[above] {$f_{\ReLU}(x, y)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\ReLU}(x) = ...$}
+\caption{Neuronales Netz $f_{\ReLU}(x)$}
 \label{fig:frelu}
 \end{figure}
 und schließlich das neuronale Netz 
@@ -461,7 +459,7 @@ net/.style={
 \draw[->] (mat-14-4) -- node[above] {$f_{\mathrm{\mathrm{hat}},y}(x)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x) = ...$}
+\caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x)$}
 \label{fig:fhat}
 \end{figure} 
 
@@ -472,23 +470,23 @@ f_{\net,\bj,\mathbf{i}}(x) & = f_1^{(0)}(x). \nonumber
 \intertext{wobei} \nonumber
 f_k^{(l)}(x) & = f_{\mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \nonumber
 \intertext{für $k \in \{1, 2, \dots, 2^l \}$ und $l \in\{0,\dots,s - 1\}, $ und}
-f_k^{(s)}(x) & = f_{\id}(f_{\id}(x^{(l)} - x_{\mathbf{i}_k}^{(l)})) \nonumber
+f_k^{(s)}(x) & = f_{\id}(f_{\id}(x^{(l)} - x_{\mathbf{i}_k}^{(l)}))
 \intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $1 \leq l \leq d$ und}
-f_{|\bj|_1+ k}^{(s)}(x) & = f_{\mathrm{hat}, x_{\mathbf{i}_k}^{(k)}}(x^{(k)})
+f_{|\bj|_1+ k}^{(s)}(x) & = f_{\mathrm{hat}, x_{\mathbf{i}_k}^{(k)}}(x^{(k)}) \nonumber
 \intertext{für $1 \leq k \leq d$ und}
 f_k^{(s)}(x) & = 1 \nonumber
 \end{align} 
 für $|\bj|_1 + d + 1 \leq k \leq 2^s.$
  
-Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehrere neuronalen Netzen zusammengebaut wurde, lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Aus (\ref{fnet}) entnimmt man, dass $f_{\mathrm{net}}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$ bzw.\@ $f_{\id}(f_{\id})$, hat. Da $f_{\mathrm{hat}}$ zwei verborgene Schichten besitzt, ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\mathrm{net}}$.
+Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehrere neuronalen Netzen zusammengebaut wurde, lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Aus der rekursiven Definition~(\ref{fnet}) entnimmt man, dass $f_{\net,\bj,\bi}$ $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$ bzw.\@ $f_{\id}(f_{\id})$, hat. Da $f_{\mathrm{hat}}$ zwei verborgene Schichten besitzt, ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\net,\bj,\bi}$.
 %Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... (TBD)
-Die Anzahl der Neuronen pro verborgener Schicht von $f_{\mathrm{net}}$ ergeben sich wie folgt:
+Die Anzahl der Neuronen pro verborgener Schicht von $f_{\net,\bj,\bi}$ ergeben sich wie folgt:
 \begin{itemize}
 \item Die erste verborgene Schicht enthält maximal $3 \cdot 2 \cdot 2^s = 6 \cdot 2^s$ Neuronen, da dies die erste verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$ mal aufgerufen wird. 
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
 \item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2^{s+ 1}, 2^s, \dots, 2^3, 2^2$ Neuronen, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
 \end{itemize}  
-Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da für die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ gilt. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
+Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ ist. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
 
 \section{Definition der Gewichte der Ausgabeschicht}
 \label{subsec:2.2}
@@ -506,14 +504,14 @@ wobei $n$ die Größe unserer gegebenen Datenmenge~(\ref{dataset}) ist und wir d
 & =\frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2
 \end{split}
 \end{equation}
-für eine Konstante $c > 0$ und Regularitätsterm $\lambda\|(a_{\bi,\bj})\|_2^2$ erhalten. Dieses regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung des, in (\ref{les}) folgenden, linearen Gleichungssystems. Dafür definieren wir uns die Menge 
+für eine Konstante $c > 0$ und Regularitätsterm $\lambda\|(a_{\bi,\bj})\|_2^2$ erhalten. Diese regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung des, in Gleichung~(\ref{les}) folgenden, linearen Gleichungssystems. Dafür definieren wir uns die Menge 
 \begin{align*} 
-\{U_s \mid s = 1,\dots,S\} = \Bigl\{f_{\net,\bj,\bi}(x) \mid \bi \in [M]^d \text{ und } |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
+\{U_s : s = 1,\dots,S\} = \Bigl\{f_{\net,\bj,\bi}(x) : \bi \in [M]^d \text{ und } |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
 \end{align*}
 wobei
 $$ S = \big|[M]^d\big| \cdot  \binom{N + d}{d} = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist .
 Diese Kardinalität erhalten wir mit einem Kombinatorik Argument.
-Wir wissen, dass es insgesamt $(M + 1)^d$ Möglichkeiten gibt $d$ viele Zahlen aus einer Menge mit der Größe $(M + 1)$ zu ziehen mit Zurücklegen und da wir Vektoren betrachten und die Komponenten nicht vertauschbar sind ist auch die Reihenfolge der Ziehung zu beachten.
+Wir wissen, dass es insgesamt $(M + 1)^d$ Möglichkeiten gibt $d$ viele Zahlen aus einer Menge mit der Größe $(M + 1)$ zu ziehen mit Zurücklegen und da wir Vektoren betrachten und die Komponenten nicht vertauschbar sind, ist auch die Reihenfolge der Ziehung zu beachten.
 Für jede dieser $(M + 1)^d$ Möglichkeiten ist noch zu beachten, dass wir zusätzlich $d$ mal aus einer Menge mit $(N + 1)$ vielen Zahlen ziehen müssen und gleichzeitig die Bedingung dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
 Gesucht ist also 
 $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 \leq N \Bigr\}\bigg| \eqqcolon H.$$ 
@@ -531,13 +529,13 @@ gilt. Mit Lemma~\ref{lem:kombi} wissen wir, dass für $d, N \in \N$ und $k \in \
 $$\big|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\big| = \binom{d + k - 1}{k}$$ gilt.
 Damit erhalten wir:
 $$|H| = \sum_{k = 0}^N \binom{N - 1 + k}{k} = \binom{N + d}{d},$$
-mit dem \emph{Hockey Stick Lemma}
+mit der \emph{Hockey-Stick Identität}
 $$\binom{n}{k} = \sum_{i = 0}^k \binom{n - k - 1 + i}{i} \quad (k, n \in \N  \text{ mit  } k < n).$$
 Wir setzen nun 
 $$ \mathbf{U} = (U_s(X_i))_{1\leq i \leq n,1\leq s \leq S} \quad \text{und} \quad \mathbf{Y} = (Y_i)_{i = 1,\dots,n}.$$
-Im folgenden Lemma bestimmen wir den Koeffizientenvektor unseres Schätzers~(\ref{estimate}).
+Im folgenden Lemma bestimmen wir den Koeffizientenvektor unseres Schätzers $\tilde{m}_n$.
 \begin{lem}
-Der Koeffizientenvektor unseres Schätzers (\ref{estimate}) ist die eindeutige Lösung des linearen Gleichungssystems 
+Der Koeffizientenvektor unseres Schätzers $\tilde{m}_n$ aus Gleichung~(\ref{estimate}) ist die eindeutige Lösung des linearen Gleichungssystems 
 \begin{equation}	
 \label{les}
 \bigg(\frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1} \bigg) \mathbf{a} = \frac{1}{n} \mathbf{U}^T\mathbf{Y}
@@ -558,7 +556,9 @@ Der Schätzer aus Gleichung~(\ref{estimate}) lässt sich umschreiben zu
 \label{umschreiben}
 \tilde{m}_n(x) = \sum_{s = 1}^S a_s \cdot U_s(x)
 \end{equation}
-mit $(a_s)_{s = 1,\dots,S} = \mathbf{a}\in \R^S$. Da $\mathbf{Y}^T\mathbf{U}\mathbf{a} = \mathbf{a}^T\mathbf{U}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist erhalten wir mit Gleichung~(\ref{eq:min}):
+mit $(a_s)_{s = 1,\dots,S} = \mathbf{a}\in \R^S$. 
+
+Da $\mathbf{Y}^T\mathbf{U}\mathbf{a} = \mathbf{a}^T\mathbf{U}^T\mathbf{Y}$ gilt, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist erhalten wir mit Gleichung~(\ref{eq:min}):
 \begin{equation}
 \label{eq:matrix}
 \begin{split}
@@ -571,7 +571,7 @@ Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{S \times S}$ ist positiv semidefinit,
 $$\langle x, \mathbf{U^T}\mathbf{U} x\rangle = \langle \mathbf{U} x, \mathbf{U} x\rangle \geq 0.$$
 Zudem wissen wir dass $\frac{c}{n}\mathbf{1}$ durch die Wahl von $c$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
 Daher wissen wir, dass die Matrix
-$$\mathbf{A} \coloneqq \frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}$$ also Summe einer positiv semidefiniten und einer positiv definiten Matrix nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit und damit insbesondere invertierbar ist. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
+$$\mathbf{A} \coloneqq \frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}$$ also Summe einer positiv semidefiniten und einer positiv definiten Matrix nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit und insbesondere invertierbar ist. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
 Mit $$\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \in \R^S$$ und $$\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}^T\mathbf{A}\mathbf{b} = \mathbf{Y}^T\mathbf{U}\mathbf{a},$$ was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir in Gleichungs~(\ref{eq:matrix}):
 \begin{equation*}
 \begin{split}
@@ -593,5 +593,5 @@ Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers~(\ref{estimate}
 \label{mtildebeschraenkt}
 Da der Koeffizientenvektor $\mathbf{a}$ die Gleichung~(\ref{eq:min}) minimiert, erhalten wir, wenn wir den Koeffizientenvektor gleich Null setzen:
 $$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
-was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. Daraus können wir folgern, dass unser Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ beschränkt ist, da $f_{\net,\bj,\bi}$ ebenfalls beschränkt ist.
+was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. Daraus können wir folgern, dass unser Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ beschränkt ist, da $f_{\net,\bj,\bi}$ nach Konstruktion ebenfalls beschränkt ist.
 \end{bemnumber}
