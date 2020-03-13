@@ -17,7 +17,7 @@ from new_neural_network import new_neural_network_estimate
 from nearest_neighbor import nearest_neighbor_estimate
 from fc_neural_network import fc_neural_1_estimate 
 
-n = 10000
+n = 1000
 n_train = int(n * 0.8)
 n_test = int(n * 0.2)
 

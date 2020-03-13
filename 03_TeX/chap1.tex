@@ -77,9 +77,10 @@ Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreic
 Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 \begin{itemize}
 \item Wenn in einem neuronalen Netz die Information von der Eingabeschicht über die verborgenen Schichten bis hin zur Ausgabeschicht in eine Richtung (\glqq vorwärts\grqq) weitergereicht wird, spricht man von einem \textit{feedforward} neuronalen Netz.
-\item Ein neuronales Netz wird als ein \textit{fully connected} (\glqq vollständig verbundenes\grqq\@) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der letzten verborgenen Schicht verbunden.
+\item Ein neuronales Netz wird als ein \textit{fully connected} (\glqq vollständig verbundenes\grqq\@) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. 
+%Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der letzten verborgenen Schicht verbunden.
 \end{itemize}
-Für ein neuronales Netz sind die Aktivierungsfunktionen von großer Bedeutung, da sie dabei helfen, das wirklich komplizierte und nichtlineare komplexe funktionale Mapping zwischen den Eingangsdaten und den abhängigen Ergebnissen zu lernen und zu verstehen.
+Für ein neuronales Netz sind die Aktivierungsfunktionen von großer Bedeutung, da sie dabei helfen, das wirklich komplizierte und nichtlineare komplexe funktionale Mapping zwischen den Eingangsdaten und den abhängigen Ergebnissen zu verstehen.
 \begin{defn}
 Eine \emph{Aktivierungsfunktion} ist eine Transformation, die wir über die Eingabe durchführen, bevor wir sie an die nächste Schicht von Neuronen senden oder sie als Ausgabe finalisieren.
 \end{defn}
@@ -91,7 +92,7 @@ Als nächstes Definieren wir, was wir unter einer Netzwerkarchitektur verstehen 
 \begin{defn}
 Eine \emph{Netzwerkarchitektur $(L, \bk)$} ist eine Klasse aller neuronaler Netze $f$ für die gilt:
 \begin{itemize}
-\item Das neuronale Netz hat $L \in \N_0$ verborgenen Schichten.
+\item Das neuronale Netz hat $L \in \N_0$ verborgene Schichten.
 \item Die Anzahl an Neuronen in jeder verborgenen Schicht wird durch den Vektor $\bk = (k_1,\dots,k_L) \in \N^L$ angegeben.
 \end{itemize}
 Mit dieser Definition können wir nun sagen, dass eine Netzwerkarchitektur wie ein Grundgerüst für die Konstruktion weiterer neuronale Netze ist.
@@ -110,7 +111,7 @@ f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{
 für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.
 \end{defn}
 Da wir bei Neuronale-Netze-Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output und nehmen als Aktivierungsfunktion die Identität.
-Man könnte auch für jede Schicht eine andere Aktivierungsfunktion wählen aber beschränkten uns in dieser Arbeit nur auf den Fall dass wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
+Es wäre auch möglich für jede Schicht eine andere Aktivierungsfunktion zu wählen. In dieser Arbeit beschränken wie uns nur auf den Fall in welchem wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
 
 Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$ verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
 \begin{center}
@@ -176,7 +177,7 @@ Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
         \label{fig:DNN}
     \end{figure}
 \end{center}
-Eines der Ausgangspunkte für die Definition eines neuronalen Netzes ist die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \textit{squashing functions} entschieden, welche eine monoton wachsend Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte \emph{sigmoidal} bzw.\@ \emph{logistische squasher}
+Wie zuvor erwähnt ist eines der Ausgangspunkte für die Definition eines neuronalen Netzes die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \textit{squashing functions} entschieden, welche eine monoton wachsend Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte \emph{sigmoidal} bzw.\@ \emph{logistische squasher}
 \begin{align}
 \label{logsquasher}
 \sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
@@ -218,7 +219,7 @@ wobei der halbmetrische Raum $(X, d)$ gegeben ist durch
 \end{itemize}
 \end{defn}
 In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimal $N \in \N$, so dass Funktionen $f_1,\dots,f_N\colon \R^d \to \R$ existieren mit der Eigenschaft, dass für jedes $f \in \mathcal{F}$ gilt:
-$$\min_{j = 1,\dots,N}(\frac{1}{n}\sum_{i = 1}^n|f(x_i) - f_j(x_i)|^p)^{1/p} < \epsilon.$$
+$$\min_{j = 1,\dots,N}\bigg(\frac{1}{n}\sum_{i = 1}^n|f(x_i) - f_j(x_i)|^p\bigg)^{1/p} < \epsilon.$$
 In Lemma~\ref{lem:9} liefern wir ein Resultat zur Abschätzung einer $L_p$-$\epsilon$-Überdeckungszahl.
 
 \section{Hilfsresultate}
@@ -406,9 +407,9 @@ Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, Gleichung (\ref{lem:
 & \text{Daraus ergibt sich mithilfe von (\ref{lem:3:Bed1}) - (\ref{lem:3:Bed3}), $\sigma(Rx) \in [0, 1]$ und $a^3 \geq 1$}\\
 & \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} \cdot 1+ \frac{1}{R} \\
 & \leq \bigg(\frac{160}{3} \cdot \frac{\|\sigma'''\|_{\infty} \cdot a ^3}{|\sigma''(t_{\sigma})|} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} + \frac{a^3}{a^3} \bigg) \cdot \frac{1}{R} \\ 
-& \leq \bigg(\frac{160 \cdot\|\sigma'''\|_{\infty} \cdot a ^3 + 3 \cdot \|\sigma''\|_{\infty} \cdot a^3 + 3 \cdot a^3}{3 \cdot \min\{ 2 \cdot \sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot \frac{1}{R}\\
-& \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot \sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R} \\
-& \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma}), |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.
+& \leq \bigg(\frac{160 \cdot\|\sigma'''\|_{\infty} \cdot a ^3 + 3 \cdot \|\sigma''\|_{\infty} \cdot a^3 + 3 \cdot a^3}{3 \cdot \min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot \frac{1}{R}\\
+& \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R} \\
+& \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.
 \end{split}
 \end{equation*}
   \end{proof}
@@ -457,8 +458,8 @@ Das nächste Lemma ist ein Kombinatorikargument welches wir in Kapitel~\ref{chap
 \begin{lem}
 \label{lem:kombi}
 Sei $d, N \in \N$ und $k \in \N_0$, dann gilt:
-$$\big|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\big| = \binom{d + k - 1}{k}.$$
+$$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k}.$$
 \end{lem}
 \begin{proof}
-Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$-vielen Kugeln die wir mit $j_1,\dots,j_d$ beschriften. Wir ziehen $k$-Mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren einen Vektor $(j_1,\dots,j_d$ welcher mit jeder Komponente angibt, wie oft welche Kugel gezogen wurde.
+Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$-vielen Kugeln die wir mit $j_1,\dots,j_d$ beschriften. Wir ziehen $k$-Mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren einen Vektor $(j_1,\dots,j_d)$ welcher mit jeder Komponente angibt, wie oft welche Kugel gezogen wurde.
 \end{proof}
