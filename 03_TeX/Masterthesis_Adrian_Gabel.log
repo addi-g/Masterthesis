@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  13 MAR 2020 12:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  15 MAR 2020 13:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1528,8 +1528,11 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 
 
 ]
+
+LaTeX Warning: Citation `györfi2002' on page 36 undefined on input line 28.
+
 [36] [37]
-Overfull \hbox (26.27444pt too wide) in paragraph at lines 106--107
+Overfull \hbox (26.27444pt too wide) in paragraph at lines 107--108
 []\T1/ptm/m/n/12 (-20) Das nächs-te Lem-ma be-nö-ti-gen wir um ei-ne Schran-ke 
 für die Über-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OMS
 /ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
@@ -1550,12 +1553,12 @@ Kapitel 4.
 
 
 ]
-Overfull \hbox (1.66882pt too wide) in paragraph at lines 84--84
+Overfull \hbox (1.66882pt too wide) in paragraph at lines 86--86
 []\T1/ptm/m/n/12 (-20) new_neural_network_estimate| 
  []
 
 
-Overfull \hbox (7.12672pt too wide) in paragraph at lines 74--89
+Overfull \hbox (7.12672pt too wide) in paragraph at lines 76--91
  [][] 
  []
 
@@ -1626,14 +1629,18 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
 Package rerunfilecheck Info: File `Masterthesis_Adrian_Gabel.out' has not chang
 ed.
 (rerunfilecheck)             Checksum: 32A39689288B7AE48717744699C1F36B;772.
+
+
+LaTeX Warning: There were undefined references.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 45498 strings out of 492162
- 960781 string characters out of 6125292
- 1368280 words of memory out of 5000000
+ 45492 strings out of 492162
+ 960724 string characters out of 6125292
+ 1368393 words of memory out of 5000000
  47829 multiletter control sequences out of 15000+600000
- 110886 words of font info for 356 fonts, out of 8000000 for 9000
+ 110436 words of font info for 352 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,21n,138p,1376b,4147s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -1657,9 +1664,9 @@ type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
 usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (66 pages, 596228 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (66 pages, 598013 bytes).
 PDF statistics:
- 1514 PDF objects out of 1728 (max. 8388607)
+ 1517 PDF objects out of 1728 (max. 8388607)
  830 named destinations out of 1000 (max. 500000)
  53878 words of extra memory for PDF output out of 61914 (max. 10000000)
 

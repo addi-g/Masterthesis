@@ -504,7 +504,7 @@ wobei $n$ die Größe unserer gegebenen Datenmenge~(\ref{dataset}) ist und wir d
 & =\frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c}{n} \cdot \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2
 \end{split}
 \end{equation}
-für eine Konstante $c > 0$ und Regularitätsterm $\lambda\|(a_{\bi,\bj})\|_2^2$ erhalten. Diese regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung des, in Gleichung~(\ref{les}) folgenden, linearen Gleichungssystems. Dafür definieren wir uns die Menge 
+für Regularitätsterm $\lambda\|(a_{\bi,\bj})\|_2^2$ mit einer von $n$ unabhängigen Konstante $c > 0$ erhalten. Diese regularisierte lineare Kleinste-Quadrate Schätzung erhalten wir durch die Lösung des, in Gleichung~(\ref{les}) folgenden, linearen Gleichungssystems. Dafür definieren wir uns die Menge 
 \begin{align*} 
 \{U_s : s = 1,\dots,S\} = \Bigl\{f_{\net,\bj,\bi}(x) : \bi \in [M]^d \text{ und } |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
 \end{align*}
