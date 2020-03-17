@@ -1,23 +1,24 @@
 \chapter{Grundlagen und Hilfsresultate}
 \label{chap:1}
 
-Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzer benötigen werden.
+Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden.
+In dieser Arbeit bezeichnen wir immer mit $d$ immer eine natürliche Zahl.
 
 \section{Definitionen}
-Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion haben muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
+Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion haben muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. (Theorem 7.2 und Problem 7.2 in Devroye, Györfi und Lugosi $(1996)$ \cite{DevLug96} und \emph{Section} 3 in Devroye und Wagner $(1980)$ \cite{DevWag80}) Dafür verwenden wir die folgende Definition.
 \begin{defn}[($p,C$)-Glattheit]
 \label{def:pc}
    Sei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$ (also $p \in (0, \infty)$ und sei $C > 0$. Eine Funktion $f\colon \R^d \to \R$ heißt \emph{($p, C$)-glatt}, falls für alle $\alpha = (\alpha_1,\dots,\alpha_d) \in \N_0^d$ mit $\sum_{j = 1}^{d}\alpha_j = q$ die partielle Ableitung 
    $$ \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}$$
    existiert und falls für alle $x, z \in \R^d$ die Abschätzung 
-   $$ \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(x) - \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(z) \bigg| \leq C \cdot \|x - z\|^r,$$
-   gilt, wobei $\|\cdot\|$ die euklidische Norm ist.  
+   $$ \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(x) - \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(z) \bigg| \leq C \cdot \|x - z\|^s,$$
+   gilt, wobei $\|\cdot\|$ die euklidische Norm in $\R^d$ bezeichnet.  
 \end{defn}
 \begin{bemnumber}
-Im Falle von $p \leq 1$ ist eine Funktion genau dann ($p, C$)-glatt, wenn sie hölderstetig ist mit \emph{Exponent $p$} und \emph{Hölderkonstante $C$}.
+Eine Funktion ist genau dann \emph{$s$-hölderstetig} mit \emph{Hölderkonstante $C$}, wenn. $p = s = 1$ gilt.
 \end{bemnumber}
 
-Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzwerkarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder wiederum aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über seine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
+Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzwerkarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über eine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
 %\begin{figure}
 %    \centering
 %    \begin{tikzpicture}[
@@ -80,26 +81,26 @@ Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 \item Ein neuronales Netz wird als ein \textit{fully connected} (\glqq vollständig verbundenes\grqq\@) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. 
 %Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der letzten verborgenen Schicht verbunden.
 \end{itemize}
-Für ein neuronales Netz sind die Aktivierungsfunktionen von großer Bedeutung, da sie dabei helfen, das wirklich komplizierte und nichtlineare komplexe funktionale Mapping zwischen den Eingangsdaten und den abhängigen Ergebnissen zu verstehen.
-\begin{defn}
-Eine \emph{Aktivierungsfunktion} ist eine Transformation, die wir über die Eingabe durchführen, bevor wir sie an die nächste Schicht von Neuronen senden oder sie als Ausgabe finalisieren.
-\end{defn}
-\begin{defn}
-Ein \emph{neuronales Netz} ist eine Funktion $f\colon X \to Y$, wobei $f(x)$ für $x \in X$, definiert ist als Komposition von weiteren Funktionen $g_i \colon X \to Y$, die weiter in andere Funktionen zerlegt werden können.
-Die Funktion $f$ ist eine nichtlinear gewichtete Summe, mit $f(x) =  \sigma(\sum_iw_ig_i(x))$, wobei $w_i$ die Gewichte sind und $\sigma$ eine Aktivierungsfunktion ist.
-\end{defn}
-Als nächstes Definieren wir, was wir unter einer Netzwerkarchitektur verstehen um damit anschließend eine Definition eines mehrschichtigen feedforward neuronalen Netzes zu konstruieren.
-\begin{defn}
-Eine \emph{Netzwerkarchitektur $(L, \bk)$} ist eine Klasse aller neuronaler Netze $f$ für die gilt:
-\begin{itemize}
-\item Das neuronale Netz hat $L \in \N_0$ verborgene Schichten.
-\item Die Anzahl an Neuronen in jeder verborgenen Schicht wird durch den Vektor $\bk = (k_1,\dots,k_L) \in \N^L$ angegeben.
-\end{itemize}
-Mit dieser Definition können wir nun sagen, dass eine Netzwerkarchitektur wie ein Grundgerüst für die Konstruktion weiterer neuronale Netze ist.
-\end{defn}
+Für ein neuronales Netz sind die Aktivierungsfunktionen von großer Bedeutung, da sie dabei helfen, da es nichtlineare komplexe funktionale Mapping zwischen den Eingangsdaten und den abhängigen Ergebnissen zu verstehen.
+%\begin{defn}
+%Eine \emph{Aktivierungsfunktion} ist eine Transformation, die wir über die Eingabe durchführen, bevor wir sie an die nächste Schicht von Neuronen senden oder sie als Ausgabe finalisieren.
+%\end{defn}
+%\begin{defn}
+%Ein \emph{neuronales Netz} ist eine Funktion $f\colon X \to Y$, wobei $f(x)$ für $x \in X$, definiert ist als Komposition von weiteren Funktionen $g_i \colon X \to Y$, die weiter in andere Funktionen zerlegt werden können.
+%Die Funktion $f$ ist eine nichtlinear gewichtete Summe, mit $f(x) =  \sigma(\sum_iw_ig_i(x))$, wobei $w_i$ die Gewichte sind und $\sigma$ eine Aktivierungsfunktion ist.
+%\end{defn}
+%Als nächstes Definieren wir, was wir unter einer Netzwerkarchitektur verstehen um damit anschließend eine Definition eines mehrschichtigen feedforward neuronalen Netzes zu konstruieren.
+%\begin{defn}
+%Eine \emph{Netzwerkarchitektur $(L, \bk)$} ist eine Klasse aller neuronaler Netze $f$ für die gilt:
+%\begin{itemize}
+%\item Das neuronale Netz hat $L \in \N_0$ verborgene Schichten.
+%\item Die Anzahl an Neuronen in jeder verborgenen Schicht wird durch den Vektor $\bk = (k_1,\dots,k_L) \in \N^L$ angegeben.
+%\end{itemize}
+%Mit dieser Definition können wir nun sagen, dass eine Netzwerkarchitektur wie ein Grundgerüst für die Konstruktion weiterer neuronale Netze ist.
+%\end{defn}
 \begin{defn}
 \label{def:nn}
-Ein \emph{mehrschichtiges feedforward neuronales Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion} $\sigma$, ist eine reellwertige Funktion $f\colon \R^d \to \R$ definiert durch:
+Sei $L \in \N$, $\bk \in \N^L$ und $\sigma\colon \R \to \R$. Ein \emph{mehrschichtiges feedforward neuronales Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion} $\sigma$, ist eine reellwertige Funktion $f\colon \R^d \to \R$ definiert durch:
 \begin{align}
 \label{networkarch}
 f(x) & = \sum_{i = 1}^{k_L} c_i^{(L)} \cdot f_i^{(L)}(x) + c_0^{(L)} \nonumber \\
@@ -108,12 +109,20 @@ f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j
 \intertext{mit Gewichten $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R$ mit $r = 2,\dots, L$ und:}
 f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber
 \end{align} 
-für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.
+für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$,
+weiterhin sei $NN(L, \bk)$ die Klasse aller mehrschichtigen feedforward neuronale Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$.
 \end{defn}
+\begin{bemnumber}
+In obiger Definition versteht man unter:
+\begin{itemize}
+\item $L \in \N$ die Anzahl an verborgenen Schichten von $f$.
+\item $\bk = (k_1,\dots,k_L) \in \N^L$ einen Vektor der die Anzahl an Neuronen in jeder verborgenen Schicht angibt.
+\end{itemize}
+\end{bemnumber}
 Da wir bei Neuronale-Netze-Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output und nehmen als Aktivierungsfunktion die Identität.
-Es wäre auch möglich für jede Schicht eine andere Aktivierungsfunktion zu wählen. In dieser Arbeit beschränken wie uns nur auf den Fall in welchem wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
+Es wäre auch möglich für jede Schicht eine andere Aktivierungsfunktion zu wählen. In dieser Arbeit beschränken wir uns nur auf den Fall, in welchem wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
 
-Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$ verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
+Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$~verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
 \begin{center}
     \begin{figure}
         \begin{tikzpicture}[
@@ -177,7 +186,7 @@ Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
         \label{fig:DNN}
     \end{figure}
 \end{center}
-Wie zuvor erwähnt ist eines der Ausgangspunkte für die Definition eines neuronalen Netzes die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für die sogenannten \textit{squashing functions} entschieden, welche eine monoton wachsend Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. Ein Beispiel für eine squashing function ist der sogenannte \emph{sigmoidal} bzw.\@ \emph{logistische squasher}
+Wie zuvor erwähnt ist einer der Ausgangspunkte für die Definition eines neuronalen Netzes die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für eine sogenannten \textit{squashing function} entschieden, welche eine monoton wachsend Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. In dieser Arbeit verwenden wir als squashing function immer den sogenannten \emph{sigmoidal} bzw.\@ \emph{logistische squasher}
 \begin{align}
 \label{logsquasher}
 \sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
@@ -185,37 +194,37 @@ Wie zuvor erwähnt ist eines der Ausgangspunkte für die Definition eines neuron
 
 \begin{defn}
 \label{nzulässig}
-Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zulässig} genannt, wenn sie monoton wachsend und lipschitzsteig \cite{forster2016} ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind:
+Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zulässig} genannt, wenn sie monoton wachsend und lipschitzstetig \cite{forster2016} ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind:
 \begin{itemize}
 \item[(i)] Die Funktion $\sigma$ ist $N + 1$ mal stetig differenzierbar mit beschränkten Ableitungen.
-\item[(ii)] Es existiert ein Punkt $t_{\sigma} \in \R$, in welchem alle Ableitungen bis hin zur $N$-ten Ableitung von $\sigma$ ungleich Null sind.
+\item[(ii)] Es existiert ein Punkt $t_{\sigma} \in \R$ mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
 \item[(iii)] Wenn $y > 0$ ist, gilt $|\sigma(y) - 1| \leq \frac{1}{y}$. Wenn $y < 0$ ist, gilt $|\sigma(y)| \leq \frac{1}{|y|}$.
 \end{itemize}  
 \end{defn}  
 
 In Lemma~\ref{lem:logsquasher} werden wir zudem zeigen, dass der logistische squasher~(\ref{logsquasher}) $N$-zulässig ist für beliebiges $N \in \N_0.$ 
 
-Als geben wir eine Definition von wir Überdeckungszahlen an, da wir im Beweis für unser Hauptresultat eine Abschätzung einer $L_p\text{-}\epsilon$-Überdeckungszahl anwenden.
+Als nächsten geben wir eine Definition von wir Überdeckungszahlen an, da wir im Beweis für unser Hauptresultat eine Abschätzung einer $L_p\text{-}\epsilon$-Überdeckungszahl anwenden.
 \begin{defn}
 \label{ueberdeckung}
-$(X, d)$ sei ein halbmetrischer Raum \cite{forster2016} . Für $x \in X$ und $\epsilon > 0$ sei:
-$$U_{\epsilon}(x) = \{z \in X : d(x, z) < \epsilon\}$$
+$(X, \delta)$ sei ein halbmetrischer Raum \cite{forster2016} . Für $x \in X$ und $\epsilon > 0$ sei:
+$$U_{\epsilon}(x) = \{z \in X : \delta(x, z) < \epsilon\}$$
 die Kugel um $x$ mit Radius $\epsilon$.
 \begin{itemize}
 \item[a)] $\{z_1,\dots,z_N\} \subseteq X$ heißt $\epsilon$\textit{-Überdeckung} einer Menge $A \subseteq X$, falls gilt:
 $$A \subseteq \bigcup_{k = 1}^N U_{\epsilon}(z_k).$$
-\item[b)] Ist $A \subseteq X$ und $\epsilon > 0$, so ist die sogenannte $\epsilon$\textit{-Überdeckungszahl} von $A$ in $(X,d)$ definiert als:
-$$\mathcal{N}_{(X,d)}(\epsilon, A) = \inf\big\{|U| : U \subseteq X \text{ ist } \epsilon\text{-Überdeckung von } A\big\}.$$   
+\item[b)] Ist $A \subseteq X$ und $\epsilon > 0$, so ist die sogenannte $\epsilon$\textit{-Überdeckungszahl} von $A$ in $(X,\delta)$ definiert als:
+$$\mathcal{N}_{(X,\delta)}(\epsilon, A) = \inf\big\{|U| : U \subseteq X \text{ ist } \epsilon\text{-Überdeckung von } A\big\}.$$   
 \end{itemize}
 \end{defn} 
 \begin{defn}
 \label{lpe}
 Sei $\mathcal{F}$ eine Menge von Funktionen $f\colon \R^d \to \R$, sei $\epsilon > 0$, $1 \leq p < \infty$ und seien $x_1,\dots,x_n \in \R^d$ und $x_1^n = (x_1,\dots,x_n).$ Dann ist die $L_p$-$\epsilon$\textit{-Überdeckungszahl} von $\mathcal{F}$ auf $x_1^n$ definiert durch:
-$$\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n) \coloneqq \mathcal{N}_{(X,d)}(\epsilon, \mathcal{F}),$$
-wobei der halbmetrische Raum $(X, d)$ gegeben ist durch
+$$\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n) \coloneqq \mathcal{N}_{(X,\delta)}(\epsilon, \mathcal{F}),$$
+wobei der halbmetrische Raum $(X, \delta)$ gegeben ist durch
 \begin{itemize}
 \item $X = $ Menge aller Funktionen $f\colon \R^d \to \R$,
-\item $d(f, g) = d_p(f, g) = (\frac{1}{n}\sum_{i = 1}^n |f(x_i) - g(x_i)|^p)^{1/p} .$
+\item $\delta(f, g) = \delta_p(f, g) = (\frac{1}{n}\sum_{i = 1}^n |f(x_i) - g(x_i)|^p)^{1/p} .$
 \end{itemize}
 \end{defn}
 In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimal $N \in \N$, so dass Funktionen $f_1,\dots,f_N\colon \R^d \to \R$ existieren mit der Eigenschaft, dass für jedes $f \in \mathcal{F}$ gilt:
@@ -225,21 +234,13 @@ In Lemma~\ref{lem:9} liefern wir ein Resultat zur Abschätzung einer $L_p$-$\eps
 \section{Hilfsresultate}
 \begin{lem}
 \label{lem:logsquasher}
-Sei $N \in \N_0$ beliebig, dann erfüllt der logistische squasher $\sigma\colon \R \to [0, 1], \sigma(x) = \frac{1}{1 + \exp(-x)}$ die Bedingungen aus Definition~\ref{nzulässig}.  
+Sei $N \in \N_0$ beliebig, dann ist der logistische squasher $$\sigma\colon \R \to [0, 1] \text{ mit } \sigma(x) = \frac{1}{1 + \exp(-x)}$$ $N$-zulässig.
 \end{lem}
 \begin{proof}
-Sei $N \in \N_0$ beliebig. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
+Sei $N \in \N_0$ beliebig. Aus den asymptotischen Eigenschaften der Exponentialfunktion, gilt $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ und durch den Zwischenwertsatz erhalten wir schließlich auch $\sigma: \R \to [0,1]$. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
 $$\sigma(s) = \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} = \sigma(t),$$
-wobei wir bei der Ungleichung die Monotonie der Exponentialfunktion verwendet haben und die obige Ungleichung aus
-\begin{equation*}
-\begin{split}
-& \quad \exp(s) \leq \exp(t) \\
- \Leftrightarrow & \quad \exp(-s) \geq \exp(-t) \\
- \Leftrightarrow & \quad 1 + \exp(-s) \geq 1 + \exp(-t) \\
- \Leftrightarrow & \quad \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} \\
-\end{split}
-\end{equation*}
-folgt. Zudem ist $\sigma$ als Komposition glatter Funktionen, $N + 1$ mal stetig differenzierbar ist. Die Ableitungen von $\sigma$ haben die Form:
+wobei wir verwendet haben, dass aufgrund der Monotonie der Exponentialfunktion für $s \leq t$ auch $\exp(-s) \geq \exp(-t)$ gilt.
+Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-Mal stetig differenzierbar. Die Ableitungen von $\sigma$ erfüllt die gewöhnliche Differentialgleichung $\frac{\partial\sigma}{\partial x} = (1 - \sigma) \cdot \sigma,$ da:
 \begin{equation*}
 \begin{split}
 \frac{\partial \sigma}{\partial x}(x) &= -\frac{1}{(1 + \exp(-x))^2} \cdot (-\exp(-x)) \\
@@ -248,11 +249,16 @@ folgt. Zudem ist $\sigma$ als Komposition glatter Funktionen, $N + 1$ mal stetig
 & = (1 - \sigma(x)) \cdot \sigma(x).
 \end{split}
 \end{equation*}
-Da wir bei weiterem Ableiten die Produktregel wiederholt anwenden sind alle Ableitungen von $\sigma$, Polynome in $\sigma$. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung durch $0$ und $1$ beschränkt ist, und die Ableitungen von $\sigma$ als Produkt von beschränkten Faktoren daher auch. Da hiermit auch die erste Ableitung von $\sigma$ beschränkt ist wissen wir, dass $\sigma$ lipschitzstetig ist.
+Da wir bei weiterem Ableiten die Produktregel wiederholt anwenden sind alle Ableitungen von $\sigma$, Polynome in $\sigma$. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung durch $0$ und $1$ beschränkt ist, und die Ableitungen von $\sigma$ als Produkt beschränkter Faktoren daher auch. Da hiermit auch die erste Ableitung von $\sigma$ beschränkt ist wissen wir, dass $\sigma$ lipschitzstetig ist.
 
-Nun kommen wir zum Beweis von Bedingung (ii). Polynome, die nicht das $0$-Polynom sind, haben nach Satz ... (REFERENZ) auf $(0, 1)$ endlich viele Nullstellen und $\sigma$ bildet nach Voraussetzung in das Intervall $[0, 1] \supseteq (0, 1)$ ab. Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynomen in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit $\sigma(t_{\sigma}) \neq 0$, sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. Daher ist Bedingung (ii) ebenfalls erfüllt.
+Nun kommen wir zum Beweis von Bedingung (ii). Polynome, die nicht das Nullpolynom sind, haben nach Satz 1 aus Kap.\@ $2.6$ aus \cite{bosch2009algebra} auf $(0, 1)$ endlich viele Nullstellen und $\sigma$ bildet nach Voraussetzung in das Intervall $[0, 1] \supseteq (0, 1)$ ab. 
+Mit der Leibnizregel aus der Differentialrechnung erhalten wir:
+$$\frac{\partial^n\sigma}{\partial x^n} = \frac{\partial^{n - 1}}{\partial x^{n - 1}}\bigg((1 - \sigma(x)) \cdot \sigma(x)\bigg) = \sum_{k = 0}^{n-1}\binom{n - 1}{k}(1 - \sigma(x))^{(n - 1 - k)}  \sigma(x)^{(k)}$$ 
+für $n = 1,\dots,N$. Da für alle $x \in \R$ $\sigma(x) > 0$ gilt, bleibt dies auch bei Potenzen und positiven Linearkombinationen erhalten. Daher existiert ein $t_{\sigma} \in \R$ mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
+%Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynomen in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit $\sigma(t_{\sigma}) \neq 0$, sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. 
+Damit ist Bedingung (ii) ebenfalls erfüllt.
 
-Wir wissen, dass für $x \in R$ und damit insbesondere für ein beliebiges $x > 0$: $$ x \leq \exp(x) + 1$$ gilt. Daraus erhalten wir mit Umformungen da $x > 0$ und $1 + \exp(-x) > 0$ ist:
+Nun zu Bedingung (iii). Wir wissen, dass für $x \in \R$ und damit insbesondere für ein beliebiges $x > 0$ die Ungleichung $$ x \leq \exp(x) + 1$$ gilt. Daraus erhalten wir mit Umformungen da $x > 0$ und $1 + \exp(-x) > 0$ ist:
 \begin{equation*}
 \begin{split}
 & \quad x \leq \exp(x) + 1 \\
@@ -278,7 +284,7 @@ Aus dieser Eigenschaft folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 =
 $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x|}.$$
 Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt und unsere Aussage bewiesen.
 \end{proof}
-\begin{lem}[Langrangesche Form des Restglieds \cite{forster2016}]
+\begin{lem}[Lagrangesche Form des Restglieds Kap.\@ 22 S.\@ 2 \cite{forster2016}]
 \label{lem:lagrange}
 Sei $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi \in [u, x],$ so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
 \end{lem}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  15 MAR 2020 13:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  17 MAR 2020 12:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1399,46 +1399,46 @@ Kapitel 1.
 
 
 ]
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 7
-9.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 8
+0.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 79.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
  [9]
-Overfull \hbox (6.72pt too wide) in paragraph at lines 143--143
+Overfull \hbox (6.72pt too wide) in paragraph at lines 152--152
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 153.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 153.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 144.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 153.
 
-Overfull \hbox (1.3577pt too wide) in paragraph at lines 145--145
+Overfull \hbox (1.3577pt too wide) in paragraph at lines 154--154
  []\T1/ptm/m/n/10.95 (-20) Output 
  []
 
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 147--147
+Overfull \hbox (6.72pt too wide) in paragraph at lines 156--156
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 151--151
+Overfull \hbox (6.72pt too wide) in paragraph at lines 160--160
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 
-Overfull \hbox (6.72pt too wide) in paragraph at lines 155--155
+Overfull \hbox (6.72pt too wide) in paragraph at lines 164--164
  []\T1/ptm/m/n/12 (-20) ... 
  []
 
 [10] [11]
-Overfull \hbox (14.6357pt too wide) in paragraph at lines 221--222
+Overfull \hbox (14.6357pt too wide) in paragraph at lines 230--231
 []\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
 /n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
 ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-mal $\OML/ztmcm/m/it/12 N \O
@@ -1446,24 +1446,23 @@ MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
 \OML/ztmcm/m/it/12 f[]; [] ; f[] [] [] \U/msb/m/n/12 R[] \OMS/ztmcm/m/n/12 !
  []
 
+[12]
 
-Overfull \hbox (17.33176pt too wide) in paragraph at lines 228--229
-[][]\T1/ptm/b/n/12 Lemma 1.10. []\T1/ptm/m/it/12 (-20) Sei $\OML/ztmcm/m/it/12 
-N \OMS/ztmcm/m/n/12 2 \U/msb/m/n/12 N[]$ \T1/ptm/m/it/12 (-20) be-lie-big, dann
- er-füllt der lo-gis-ti-sche squas-her $\OML/ztmcm/m/it/12 ^^[ [] [] \U/msb/m/n
-/12 R \OMS/ztmcm/m/n/12 ! \OT1/ztmcm/m/n/12 [0\OML/ztmcm/m/it/12 ; \OT1/ztmcm/m
-/n/12 1]\OML/ztmcm/m/it/12 ; ^^[\OT1/ztmcm/m/n/12 (\OML/ztmcm/m/it/12 x\OT1/ztm
-cm/m/n/12 ) =
- []
+LaTeX Warning: Citation `bosch2009algebra' on page 13 undefined on input line 2
+54.
 
-[12] [13] [14] [15] [16]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 375
+[13] [14]
+Underfull \vbox (badness 1062) has occurred while \output is active []
+
+ [15]
+[16]
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 381
 .
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [17] [18]
-Overfull \hbox (14.48154pt too wide) detected at line 441
+) [17]
+[18]
+Overfull \hbox (14.48154pt too wide) detected at line 447
 []
  []
 
@@ -1558,6 +1557,13 @@ Overfull \hbox (1.66882pt too wide) in paragraph at lines 86--86
  []
 
 
+Overfull \hbox (41.6956pt too wide) in paragraph at lines 86--86
+[]$\OT1/ztmcm/m/n/12 2\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 482\OML/ztmcm/m/it/
+12 e[]\OT1/ztmcm/m/n/12 (1\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 612\OML/ztmcm/m
+/it/12 e[]\OT1/ztmcm/m/n/12 )$| 
+ []
+
+
 Overfull \hbox (7.12672pt too wide) in paragraph at lines 76--91
  [][] 
  []
@@ -1636,13 +1642,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 45492 strings out of 492162
- 960724 string characters out of 6125292
- 1368393 words of memory out of 5000000
- 47829 multiletter control sequences out of 15000+600000
- 110436 words of font info for 352 fonts, out of 8000000 for 9000
+ 45498 strings out of 492162
+ 960786 string characters out of 6125292
+ 1368467 words of memory out of 5000000
+ 47831 multiletter control sequences out of 15000+600000
+ 110669 words of font info for 355 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,21n,138p,1376b,4147s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,21n,138p,1379b,4147s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc} </Users/adrian
 /Library/texlive/2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/lo
@@ -1664,9 +1670,9 @@ type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
 usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (66 pages, 598013 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (66 pages, 599723 bytes).
 PDF statistics:
- 1517 PDF objects out of 1728 (max. 8388607)
+ 1518 PDF objects out of 1728 (max. 8388607)
  830 named destinations out of 1000 (max. 500000)
  53878 words of extra memory for PDF output out of 61914 (max. 10000000)
 

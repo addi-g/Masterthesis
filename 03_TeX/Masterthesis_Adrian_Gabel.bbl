@@ -17,6 +17,16 @@
   using simulations and nonparametric regression}.
 \newblock Insurance: mathematics and Economics, 19(1):19--30, 1996.
 
+\bibitem[Dev80]{DevWag80}
+{\sc Devroye, L., Wagner T.~J.}: {\em Distribution-free consistency results in
+  non- parametric discrimination and regression function estimation}.
+\newblock Annals of Statistic, 8:231--239, 1980.
+
+\bibitem[Dev96]{DevLug96}
+{\sc Devroye, L., Györfi L. Lugosi~G.}: {\em A Probabilistic Theory of Pattern
+  Recognition}.
+\newblock Springer, New York, 1996.
+
 \bibitem[EKT{\etalchar{+}}07]{egloff2007dynamic}
 {\sc Egloff, D.}, {\sc M.~Kohler}, {\sc N.~Todorovic} \btxetalshort{.}: {\em A
   dynamic look-ahead Monte Carlo algorithm for pricing Bermudan options}.

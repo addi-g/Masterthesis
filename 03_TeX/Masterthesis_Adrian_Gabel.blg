@@ -13,56 +13,88 @@ The style file: geralpha.bst
 A level-1 auxiliary file: appendix.aux
 Database file #1: Masterthesis_Adrian_Gabel.bib
 Warning--I didn't find a database entry for "gy�rfi2002"
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Wagner, T. J." for entry DevWag80
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Wagner, T. J." for entry DevWag80
+while executing---line 1296 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Wagner, T. J." for entry DevWag80
+while executing---line 1296 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1296 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1296 of file geralpha.bst
 Warning--empty journal in kohler19
+Too many commas in name 1 of "Devroye, L., Wagner, T. J." for entry DevWag80
+while executing---line 1361 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1361 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1361 of file geralpha.bst
+Too many commas in name 1 of "Devroye, L., Györfi, L., Lugosi, G." for entry DevLug96
+while executing---line 1361 of file geralpha.bst
 Too many commas in name 1 of "Devroye L., Karasözen, B., Kohler, M. AND Korn, R." for entry kohler2010review
 while executing---line 1361 of file geralpha.bst
 Too many commas in name 1 of "Devroye L., Karasözen, B., Kohler, M. AND Korn, R." for entry kohler2010review
 while executing---line 1361 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1361 of file geralpha.bst
-You've used 18 entries,
+You've used 20 entries,
             2768 wiz_defined-function locations,
-            721 strings with 7732 characters,
-and the built_in function-call counts, 6405 in all, are:
-= -- 635
-> -- 247
-< -- 14
-+ -- 78
-- -- 75
-* -- 474
-:= -- 1024
-add.period$ -- 38
-call.type$ -- 18
-change.case$ -- 81
-chr.to.int$ -- 18
-cite$ -- 19
-duplicate$ -- 314
-empty$ -- 531
-format.name$ -- 102
-if$ -- 1357
+            733 strings with 8009 characters,
+and the built_in function-call counts, 7061 in all, are:
+= -- 703
+> -- 263
+< -- 16
++ -- 83
+- -- 79
+* -- 518
+:= -- 1126
+add.period$ -- 42
+call.type$ -- 20
+change.case$ -- 89
+chr.to.int$ -- 20
+cite$ -- 21
+duplicate$ -- 347
+empty$ -- 589
+format.name$ -- 110
+if$ -- 1497
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 33
-newline$ -- 76
-num.names$ -- 56
-pop$ -- 115
+missing$ -- 37
+newline$ -- 84
+num.names$ -- 62
+pop$ -- 126
 preamble$ -- 1
-purify$ -- 117
+purify$ -- 129
 quote$ -- 0
-skip$ -- 239
+skip$ -- 264
 stack$ -- 0
-substring$ -- 259
-swap$ -- 60
-text.length$ -- 14
-text.prefix$ -- 10
+substring$ -- 299
+swap$ -- 64
+text.length$ -- 16
+text.prefix$ -- 12
 top$ -- 0
-type$ -- 100
+type$ -- 112
 warning$ -- 1
-while$ -- 55
-width$ -- 21
-write$ -- 222
-(There were 5 error messages)
+while$ -- 61
+width$ -- 23
+write$ -- 246
+(There were 21 error messages)
