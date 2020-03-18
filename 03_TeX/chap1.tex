@@ -15,7 +15,7 @@ Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion ha
    gilt, wobei $\|\cdot\|$ die euklidische Norm in $\R^d$ bezeichnet.  
 \end{defn}
 \begin{bemnumber}
-Eine Funktion ist genau dann \emph{$s$-hölderstetig} mit \emph{Hölderkonstante $C$}, wenn. $p = s = 1$ gilt.
+Im Falle von $p = s = 1$ ist eine Funktion genau dann $(p,C)$-glatt, wenn sie \emph{$s$-hölderstetig} ist mit \emph{Hölderkonstante $C$}.
 \end{bemnumber}
 
 Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzwerkarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über eine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
@@ -196,7 +196,7 @@ Wie zuvor erwähnt ist einer der Ausgangspunkte für die Definition eines neuron
 \label{nzulässig}
 Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zulässig} genannt, wenn sie monoton wachsend und lipschitzstetig \cite{forster2016} ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind:
 \begin{itemize}
-\item[(i)] Die Funktion $\sigma$ ist $N + 1$ mal stetig differenzierbar mit beschränkten Ableitungen.
+\item[(i)] Die Funktion $\sigma$ ist $(N + 1)$-mal stetig differenzierbar mit beschränkten Ableitungen.
 \item[(ii)] Es existiert ein Punkt $t_{\sigma} \in \R$ mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
 \item[(iii)] Wenn $y > 0$ ist, gilt $|\sigma(y) - 1| \leq \frac{1}{y}$. Wenn $y < 0$ ist, gilt $|\sigma(y)| \leq \frac{1}{|y|}$.
 \end{itemize}  
@@ -240,7 +240,7 @@ Sei $N \in \N_0$ beliebig, dann ist der logistische squasher $$\sigma\colon \R \
 Sei $N \in \N_0$ beliebig. Aus den asymptotischen Eigenschaften der Exponentialfunktion, gilt $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ und durch den Zwischenwertsatz erhalten wir schließlich auch $\sigma: \R \to [0,1]$. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
 $$\sigma(s) = \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} = \sigma(t),$$
 wobei wir verwendet haben, dass aufgrund der Monotonie der Exponentialfunktion für $s \leq t$ auch $\exp(-s) \geq \exp(-t)$ gilt.
-Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-Mal stetig differenzierbar. Die Ableitungen von $\sigma$ erfüllt die gewöhnliche Differentialgleichung $\frac{\partial\sigma}{\partial x} = (1 - \sigma) \cdot \sigma,$ da:
+Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-mal stetig differenzierbar. Die Ableitungen von $\sigma$ erfüllt die gewöhnliche Differentialgleichung $\frac{\partial\sigma}{\partial x} = (1 - \sigma) \cdot \sigma,$ da:
 \begin{equation*}
 \begin{split}
 \frac{\partial \sigma}{\partial x}(x) &= -\frac{1}{(1 + \exp(-x))^2} \cdot (-\exp(-x)) \\
@@ -258,18 +258,29 @@ für $n = 1,\dots,N$. Da für alle $x \in \R$ $\sigma(x) > 0$ gilt, bleibt dies 
 %Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynomen in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit $\sigma(t_{\sigma}) \neq 0$, sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. 
 Damit ist Bedingung (ii) ebenfalls erfüllt.
 
-Nun zu Bedingung (iii). Wir wissen, dass für $x \in \R$ und damit insbesondere für ein beliebiges $x > 0$ die Ungleichung $$ x \leq \exp(x) + 1$$ gilt. Daraus erhalten wir mit Umformungen da $x > 0$ und $1 + \exp(-x) > 0$ ist:
-\begin{equation*}
-\begin{split}
-& \quad x \leq \exp(x) + 1 \\
- \Leftrightarrow & \quad x \cdot \exp(-x) \leq 1 + \exp(-x) \\
- \Leftrightarrow & \quad \frac{\exp(-x)}{1 + \exp(-x)} \leq \frac{1}{x} \\
- \Leftrightarrow & \quad 1 - \frac{1}{1 + \exp(-x)} \leq \frac{1}{x} \\
- \Leftrightarrow & \quad |\sigma(x) - 1| \leq \frac{1}{x}.
-\end{split}
-\end{equation*}
-Wobei die letzte Ungleichung aus der Eigenschaft des Betrags kommt, da $\frac{1}{1 + \exp(-x)} - 1< 0$ ist, weil $1 + \exp(-x) > 1$, da $\exp(-x) > 0$. Dies zeigt die erste Relation aus Bedingung (iii).
-Die zweite Relation folgt durch die gleiche Art und Weise, da wir durch $$\frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}$$ 
+Nun zu Bedingung (iii). Wir wissen, dass für $x \in \R$ und damit insbesondere für ein beliebiges $x > 0$ die Ungleichung $$ x \leq \exp(x) + 1$$ gilt. Weiterhin erhalten wir 
+\begin{equation}
+\label{sigma}
+|\sigma(x) - 1| = 1 - \frac{1}{1 + \exp(-x)} = \frac{\exp(-x)}{1 + \exp(-x)}.
+\end{equation}
+Zudem folgt aus $x \leq \exp(x) + 1$ die Ungleichung $x \cdot \exp(-x) \leq 1 + \exp(-x)$ und damit $\frac{\exp(-x)}{1 + \exp(-x)} \leq \frac{1}{x}$. Mithilfe von Gleichung~(\ref{sigma}) erhalten wir nun 
+$$
+|\sigma(x) - 1| \leq \frac{1}{x}.
+$$
+%Daraus erhalten wir mit Umformungen da $x > 0$ und $1 + \exp(-x) > 0$ ist:
+%\begin{equation*}
+%\begin{split}
+%& \quad x \leq \exp(x) + 1 \\
+% \Leftrightarrow & \quad x \cdot \exp(-x) \leq 1 + \exp(-x) \\
+% \Leftrightarrow & \quad \frac{\exp(-x)}{1 + \exp(-x)} \leq \frac{1}{x} \\
+% \Leftrightarrow & \quad 1 - \frac{1}{1 + \exp(-x)} \leq \frac{1}{x} \\
+% \Leftrightarrow & \quad |\sigma(x) - 1| \leq \frac{1}{x}.
+%\end{split}
+%\end{equation*}
+%Wobei die letzte Ungleichung aus der Eigenschaft des Betrags kommt, da $\frac{1}{1 + \exp(-x)} - 1< 0$ ist, weil $1 + \exp(-x) > 1$, da $\exp(-x) > 0$. 
+Dies zeigt den ersten Teil von Definition~\ref{nzulässig} (iii).
+
+Die zweite Teil folgt durch die gleiche Art und Weise, da wir durch $$\frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}$$ 
 wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Die obige Gleichheit folgt aus
 \begin{equation*}
 \begin{split}
@@ -280,44 +291,58 @@ wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Die obige Glei
  \Leftrightarrow & \quad 1 - \frac{1}{2} = \frac{1}{2}.
 \end{split}
 \end{equation*}
-Aus dieser Eigenschaft folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus der ersten Relation, da $-x > 0 $ ist:  
+Aus der Punktsymmetrie folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus dem ersten Teil von Definition~\ref{nzulässig} (iii), da $-x > 0 $ ist:  
 $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x|}.$$
 Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt und unsere Aussage bewiesen.
 \end{proof}
+Als nächstes stellen wir ein Resultat zur Restgliedabschätzung vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
 \begin{lem}[Lagrangesche Form des Restglieds Kap.\@ 22 S.\@ 2 \cite{forster2016}]
 \label{lem:lagrange}
 Sei $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi \in [u, x],$ so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
 \end{lem}
+Es folgen nun drei Approximationsresultate welche wir in Kapitel~\ref{chap:2} für die Konstruktion unseres Neuronale-Netze-Regressionschätzers benötigen werden.
 \begin{lem}
   \label{lem:1}
   Sei $\sigma \colon \R \to \R$ eine Funktion und $R$, $a > 0$.
   \begin{itemize}
-  \item[a)] Angenommen $\sigma$ ist zwei mal stetig differenzierbar und $t_{\sigma,\id} \in \R$ so, dass $\sigma'(t_{\sigma, \id}) \neq 0$ ist. Dann gilt mit
+  \item[a)] Angenommen $\sigma$ ist zweimal stetig differenzierbar und $t_{\sigma,\id} \in \R$ so, dass $\sigma'(t_{\sigma, \id}) \neq 0$ ist. Dann gilt für das neuronale Netz
   $$ f_{\id}(x) = \frac{R}{\sigma'(t_{\sigma, \id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, \id}\right) - \sigma(t_{\sigma, \id})\right)$$
   für beliebige $x \in [-a, a]\colon$ 
   $$ |f_{\id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, \id})|} \cdot \frac{1}{R}.$$
-  \item[b)] Angenommen $\sigma$ ist drei mal stetig differenzierbar und $t_{\sigma,\sq} \in \R$ so, dass $\sigma''(t_{\sigma, \sq}) \neq 0$ ist. Dann gilt mit
-  $$ f_{\sq}(x) = \frac{R^2}{\sigma''(t_{\sigma, \sq})} \cdot \left(\sigma\left(\frac{2 \cdot x}{R} + t_{\sigma, \sq}\right) - 2 \cdot \sigma(\frac{x}{R} + t_{\sigma, \sq})+ \sigma(t_{\sigma, \sq})\right)$$
+  \item[b)] Angenommen $\sigma$ ist dreimal stetig differenzierbar und $t_{\sigma,\sq} \in \R$ so, dass $\sigma''(t_{\sigma, \sq}) \neq 0$ ist. Dann gilt für das neuronale Netz
+  $$ f_{\sq}(x) = \frac{R^2}{\sigma''(t_{\sigma, \sq})} \cdot \left(\sigma\left(\frac{2 \cdot x}{R} + t_{\sigma, \sq}\right) - 2 \cdot \sigma\left(\frac{x}{R} + t_{\sigma, \sq}\right)+ \sigma(t_{\sigma, \sq})\right)$$
   für beliebige $x \in [-a, a]\colon$ 
   $$ |f_{\sq}(x) - x^2| \leq \frac{5 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma, \sq})|} \cdot \frac{1}{R}.$$
   \end{itemize}
 \end{lem}
 \begin{proof}
 	\begin{itemize}
-  	\item[a)] Wir wissen, dass $f_{\id}$ 2-mal differenzierbar ist, da nach Vorraussetzung $\sigma$ 2-mal stetig differenzierbar ist. Damit folgt mit Lemma~\ref{lem:lagrange} für $f = f_{\id}, N = 1$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
-$$f_{\id}(x) = \sum_{k = 0}^N \frac{f_{\id}^{(k)}(0)}{k!}x^k + \frac{f_{\id}^{(N + 1)}(\xi)}{(N + 1)!}x^{N + 1}.$$
+  	\item[a)] Wir wissen, dass $f_{\id}$  zweimal differenzierbar ist, da nach Voraussetzung $\sigma$ zweimal stetig differenzierbar ist. Damit folgt mit Lemma~\ref{lem:lagrange} für $f = f_{\id}, N = 1, u = 0, x \geq 0$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass,
+$$f_{\id}(x) = \sum_{k = 0}^1 \frac{f_{\id}^{(k)}(0)}{k!}x^k + \frac{f_{\id}^{(2)}(\xi)}{2!}x^{2}.$$
+Es gilt:
+$$
+f_{\id}'(x) = \frac{1}{\sigma'(t_{\sigma,\id})} \cdot \sigma'\left(\frac{x}{R} + t_{\sigma,\id}\right).
+$$
 Mit $f_{\id}(0) = 0$ und $f_{\id}'(0) = 1$ erhalten wir:
   	\begin{equation*}
   	\begin{split}
   	 |f_{\id}(x) -  & x| \\
   	& = \bigg|0 + 1 \cdot x + \frac{1}{2} \cdot \frac{1}{R \cdot \sigma'(t_{\sigma,\id})} \sigma''(\frac{\xi}{R} + t_{\sigma,\id}) \cdot x^2 - x \bigg| \\
   	& = \bigg| \frac{\sigma''(\frac{\xi}{R} + t_{\sigma,\id})  \cdot x^2}{2R \cdot \sigma'(t_{\sigma, \id})} + x - x\big| \\
-  	& \leq \frac{\| \sigma'' \|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, \id})|} \cdot \frac{1}{R},  
+  	& \leq \frac{\| \sigma'' \|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, \id})|} \cdot \frac{1}{R},
   	\end{split}
   	\end{equation*}
-  	Wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt und zudem aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt, dass $x^2 \leq a^2$ ist.
-  	\item[b)]  Die Funktion $f_{\sq}$ die hier nun 3-mal differenzierbar ist, da $\sigma$ nach Voraussetzung  3-mal stetig differenzierbar ist. Es wie in a) durch Lemma~\ref{lem:lagrange} mit $f = f_{\sq}, N = 2$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
-$$f_{\sq}(x) = \sum_{k = 0}^N \frac{f_{\sq}^{(k)}(0)}{k!}x^k + \frac{f_{\sq}^{(N + 1)}(\xi)}{(N + 1)!}x^{N + 1}.$$
+  	wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt. Zudem folgt $x^2 \leq a^2$ aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt.
+  	\item[b)]  Die Funktion $f_{\sq}$ ist dreimal differenzierbar, da $\sigma$ nach Voraussetzung dreimal stetig differenzierbar ist. Wie in a) folgt durch Lemma~\ref{lem:lagrange} mit $f = f_{\sq}, N = 2, u = 0, x \geq 0$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
+$$f_{\sq}(x) = \sum_{k = 0}^2 \frac{f_{\sq}^{(k)}(0)}{k!}x^k + \frac{f_{\sq}^{(3)}(\xi)}{3!}x^{3}.$$
+Es gilt:
+$$
+f_{\sq}'(x) = \frac{R^2}{\sigma''(t_{\sigma, \sq})} \cdot \left(\frac{2}{R} \cdot\sigma'\left(\frac{2x}{R} + t_{\sigma, \sq}\right) - \frac{2}{R} \cdot \sigma'\left(\frac{x}{R} + t_{\sigma, \sq}\right)\right)
+$$
+und 
+$$
+f_{\sq}''(x) = \frac{R^2}{\sigma''(t_{\sigma, \sq})} \cdot \left(\frac{4}{R^2} \cdot\sigma''\left(\frac{2x}{R} + t_{\sigma, \sq}\right) - \frac{2}{R^2} \cdot \sigma''\left(\frac{x}{R} + t_{\sigma, \sq}\right)\right).
+$$
 Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
 \begin{equation*}
   	\begin{split}
@@ -329,6 +354,7 @@ Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
   	\end{split}
   	\end{equation*}
  	\end{itemize}
+ 	Daraus folgt die Behauptung.
 \end{proof}
 
 \begin{lem}
@@ -340,12 +366,12 @@ Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
   	& - \sigma \Big(\frac{2 \cdot (x - y)}{R} + t_{\sigma} \Big) + 2 \cdot \sigma \Big(\frac{x - y}{R} + t_{\sigma} \Big) \bigg)
   	\end{split}
   	\end{equation*}
-  	für beliebige $x, y \in [-a, a]$ die folgende Ungleichung:
+  	für beliebige $x, y \in [-a, a]$ folgende Ungleichung:
   	$$|f_{\mult}(x, y) - x \cdot y| \leq \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}.$$
   \end{lem}
   \begin{proof}
   Durch Einsetzen erhalten wir $$f_{\mult}(x,y) = \frac{1}{4}(f_{\sq}(x + y) - f_{\sq}(x - y))$$ und $$x \cdot y = \frac{1}{4}\big((x + y)^2 - (x - y)^2\big).$$
-  Aus diesen beiden Gleichungen folgt durch Ausklammern von $\frac{1}{4}$, der Homogenität des Betrags und der Anwendung der Dreiecksungleichung:
+  Aus diesen beiden Gleichungen folgt durch Ausklammern von $\frac{1}{4}$, der Homogenität des Betrags und der Dreiecksungleichung:
   \begin{equation*}
   \begin{split}
   |f_{\mult}(x, y) - x \cdot y| & = \frac{1}{4} \cdot \big|f_{\sq}(x + y) - f_{\sq}(x - y) - (x + y)^2 + (x - y)^2\big| \\
@@ -354,7 +380,7 @@ Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
   & = \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R},
   \end{split}
 \end{equation*}   
-wobei wir bei der letzten Ungleichung verwendet haben, dass $a > 0$ nach Lemma~\ref{lem:1}b) beliebig gewählt wurde und daher insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{\sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}$$ gilt. 
+wobei wir bei der letzten Ungleichung Lemma~\ref{lem:1}b) mit $x + y, x - y \in [-2a, 2a]$ verwendet haben. Daher folgt insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{\sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}$$ gilt. 
   \end{proof}
   \begin{lem}
   \label{lem:3}
@@ -374,7 +400,7 @@ wobei wir bei der letzten Ungleichung verwendet haben, dass $a > 0$ nach Lemma~\
  $$|f_{\ReLU}(x) - \max\{x, 0\}| \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma}), |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.$$
   \end{lem}
   \begin{proof}
-  Da $\sigma$ nach Voraussetzung 2-zulässig nach Definition 1 ist, gilt für $R \geq 0,$ und $x \in \R\setminus\{0\}\colon$ $$|\sigma(R \cdot x) - 1| \leq \frac{1}{R\cdot x} \text{\, für \,} x > 0$$ und $$|\sigma(R \cdot x)| \leq \frac{1}{|R \cdot x|} \text{\, für \,} x < 0.$$
+  Da $\sigma$ nach Voraussetzung 2-zulässig ist, gilt für $R \geq 0$ und $x \in \R\setminus\{0\}\colon$ $$|\sigma(R \cdot x) - 1| \leq \frac{1}{R\cdot x} \text{\, für \,} x > 0$$ und $$|\sigma(R \cdot x)| \leq \frac{1}{|R \cdot x|} \text{\, für \,} x < 0.$$
 Damit folgt aus der Homogenität des Betrags für alle $x \neq 0$: 
 \begin{equation}
 \label{lem:3:Bed1} 
@@ -391,33 +417,34 @@ Nach Lemma~\ref{lem:1} und Lemma~\ref{lem:2} gilt:
  |f_{\mult}(x, y) - x \cdot y| \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} \text{\, für \,} x, y \in [-2a, 2a].
  \end{equation} 
 Da nach Voraussetzung $a \geq 1$ ist, gilt insbesondere $[0, 1] \subseteq [-2a, 2a]$ und daher gilt insbesondere $\sigma(Rx) \in [0, 1]\subseteq [-2a, 2a].$ 
-Zudem erhalten wir durch eine Nulladdition, das Anwenden der Dreiecksungleichung, die Verwendung von Lemma~\ref{lem:1} und (\ref{lem:3:Vor1}) für $R$:
+Zudem erhalten wir durch eine Nulladdition, die Dreiecksungleichung, Gleichung~(\ref{lem:3:Bed2}) und Voraussetzung~(\ref{lem:3:Vor1}) für $R$:
 \begin{equation*}
 \begin{split}
 |f_{\id}(x)| & = |f_{\id}(x) - x + x| \\
 & \leq |f_{\id}(x) -x| + |x| \\
-&  \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} + |x| \\
-& \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{2 \cdot |\sigma'(t_{\sigma})|}{\|\sigma''\|_{\infty} \cdot a} + |x| \\
+& \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} + |x| \\
+& \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{2 \cdot |\sigma'(t_{\sigma})|}{\|\sigma''\|_{\infty} \cdot a} + |x| \\
 & = a + |x| \\
-& \leq 2 \cdot a
+& \leq 2 \cdot a,
 \end{split}
 \end{equation*}
-wobei $x \in [-a, a]$. Daraus folgt insbesondere $f_{\id}(x) \in [-2a, 2a].$
-Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, Gleichung (\ref{lem:3:Vor2}), zweier Nulladditionen und dem zweifachen Anwenden der Dreiecksungleichung erhalten wir:
+wobei wir bei der letzten Ungleichung $x \in [-a, a]$ verwendet haben. Daraus folgt insbesondere $f_{\id}(x) \in [-2a, 2a].$
+Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Definition des Netzes~(\ref{lem:3:Vor2}), zweier Nulladditionen und zweimal der Dreiecksungleichung erhalten wir:
 \begin{equation*}
 \begin{split}
 |f_{\ReLU}(x) - & \max\{x, 0\}|  \\
 & = \big| f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) - x \cdot \1_{[0, \infty)}(x)\big| \\
 & \leq \big| f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) - f_{\id}(x)\cdot\sigma(R \cdot x)\big| \\
 & \qquad + \big| f_{\id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| + \big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big|. \\
-& \text{Daraus ergibt sich mithilfe von (\ref{lem:3:Bed1}) - (\ref{lem:3:Bed3}), $\sigma(Rx) \in [0, 1]$ und $a^3 \geq 1$}\\
-& \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} \cdot 1+ \frac{1}{R} \\
+\intertext{Daraus ergibt sich mithilfe von (\ref{lem:3:Bed1}) - (\ref{lem:3:Bed3}), $\sigma(Rx) \in [0, 1]$ und $a^3 \geq 1$}
+& \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^2}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} \cdot 1+ \frac{1}{R} \\
 & \leq \bigg(\frac{160}{3} \cdot \frac{\|\sigma'''\|_{\infty} \cdot a ^3}{|\sigma''(t_{\sigma})|} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} + \frac{a^3}{a^3} \bigg) \cdot \frac{1}{R} \\ 
 & \leq \bigg(\frac{160 \cdot\|\sigma'''\|_{\infty} \cdot a ^3 + 3 \cdot \|\sigma''\|_{\infty} \cdot a^3 + 3 \cdot a^3}{3 \cdot \min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot \frac{1}{R}\\
 & \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R} \\
 & \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.
 \end{split}
 \end{equation*}
+Daraus folgt die Behauptung.
   \end{proof}
   \begin{lem}
   \label{lem:4}
@@ -436,36 +463,36 @@ Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, Gleichung (\ref{lem:
 \label{lem:4:eq}
  (1 - \frac{M}{2a} \cdot |x|)_+ = \max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}, 
  \end{equation}  
-die wir im zweiten Teil dieses Beweises zeigen werden. Damit beweisen wir das Resultat mit Hilfe von Lemma~\ref{lem:3}, denn mit der Definition von $f_{\mathrm{hat},y}(x)$ und zwei mal der Dreiecksungleichung folgt:
+die wir im zweiten Teil dieses Beweises zeigen werden. Damit beweisen wir das Resultat mit Hilfe von Lemma~\ref{lem:3}, denn mit der Definition von $f_{\mathrm{hat},y}(x)$ und der Dreiecksungleichung folgt:
 \begin{equation*}
 \begin{split}
-\bigg|f_{\mathrm{hat},y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq \bigg|&f_{\ReLU} \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) + 1, 0\}\bigg| \\ 
+\bigg|f_{\mathrm{hat},y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| & \leq \bigg|f_{\ReLU} \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) + 1, 0\}\bigg| \\ 
 & + 2 \cdot \bigg|f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) - \max\{\frac{M}{2a} \cdot (x - y), 0\}\bigg| \\
 & + \bigg|f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg) - \max\{\frac{M}{2a} \cdot (x - y) - 1, 0\}\bigg|\\ 
 & \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R},
 \end{split}
 \end{equation*} 
-wobei die letzte Ungleichung daraus folgt, dass wir auf jeden Summanden mit $1 \leq a = M + 1$ Lemma~\ref{lem:3} angewendet haben und die Abschätzung 
-$$ (M + 1)^3 \leq (2M)^3 = 8M^3$$ verwendet haben, da $M \geq 1$ ist. $\hfill(\square)$
+wobei die letzte Ungleichung daraus folgt, dass wir auf jeden Summanden Lemma~\ref{lem:3} mit $$1 \leq a = M + 1$$ angewendet habe, da aus $x , y \in [-a, a]$ folgt, dass $\frac{M}{2a}\cdot (x - y) \in [-M, M]$ gilt. Schließlich haben wir
+$$ (M + 1)^3 \leq (2M)^3 = 8M^3$$ verwendet, da $M \geq 1$ ist. $\hfill(\square)$
 
 Um Gleichung~(\ref{lem:4:eq}) zu zeigen unterscheiden wir vier Fälle.
   \begin{itemize}
-  \item[Fall 1] ($x < 0$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden 0 sind. Es erfordert hier eine weitere Fallunterscheidung.
- \item[Fall 1.1] ($0 > x \geq -\frac{2a}{M}$) In diesem Fall gilt für die linke und rechte Seite:
+  \item[Fall 1] ($x < 0$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden 0 sind. Es erfordert hier eine weitere Fallunterscheidung.
+ \item[Fall 1.1] ($0 > x \geq -\frac{2a}{M}$) In diesem Fall gilt für die linke und rechte Seite von Gleichung~(\ref{lem:4:eq}):
  $$\max\{1 + \frac{M}{2a} \cdot x, 0\} = 1 + \frac{M}{2a} \cdot x.$$
  \item[Fall 1.2] ($x < -\frac{2a}{M}$) In diesem Fall sind beide Seiten gleich 0, da $1 + \frac{M}{2a} \cdot x \leq 0$ ist. $\hfill(\square)$
-  \item[Fall 2] ($x \geq 0$) In diesem Fall hat die linke Seite nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}$$ und erfordert daher eine weitere Fallunterscheidung.
- \item[Fall 2.1] ($0 \leq x < \frac{2a}{M}$) In diesem Fall hat die linke Seite die Gestalt $$1 - \frac{M}{2a} \cdot x$$ und die rechte Seite die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a} \cdot x.$$ und stimmt daher mit der linken Seite überein.
- \item[Fall 2.2] ($x \geq \frac{2a}{M}$) In diesem ist die linke Seite gleich 0, da $1 - \frac{M}{2a} \cdot x < 0$ ist und die rechte Seite bestitz die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0.$$ $\hfill(\square)$
+  \item[Fall 2] ($x \geq 0$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}$$ und erfordert daher eine weitere Fallunterscheidung.
+ \item[Fall 2.1] ($0 \leq x < \frac{2a}{M}$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) die Gestalt $$1 - \frac{M}{2a} \cdot x$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a} \cdot x$$ und stimmt daher mit der linken Seite überein.
+ \item[Fall 2.2] ($x \geq \frac{2a}{M}$) In diesem Fall ist die linke Seite von Gleichung~(\ref{lem:4:eq}) gleich 0, da $1 - \frac{M}{2a} \cdot x < 0$ ist und die rechte Seite besitzt die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0.$$ $\hfill(\square)$
 \end{itemize} 
 Durch diese Fallunterscheidung wurde die Gleichung~(\ref{lem:4:eq}) bewiesen und damit ist der Beweis vollständig.
   \end{proof}
-Das nächste Lemma ist ein Kombinatorikargument welches wir in Kapitel~\ref{chap:2} benötigen werden.
+Das nächste Lemma ist ein Resultat aus der Kombinatorik, welches wir in Kapitel~\ref{chap:2} benötigen werden.
 \begin{lem}
 \label{lem:kombi}
-Sei $d, N \in \N$ und $k \in \N_0$, dann gilt:
+Sei $d, N \in \N$ und $k \in \N_0$. Dann gilt:
 $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k}.$$
 \end{lem}
 \begin{proof}
-Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$-vielen Kugeln die wir mit $j_1,\dots,j_d$ beschriften. Wir ziehen $k$-Mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren einen Vektor $(j_1,\dots,j_d)$ welcher mit jeder Komponente angibt, wie oft welche Kugel gezogen wurde.
+Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$ Kugeln, die wir mit $1,\dots,d$ beschriften. Wir ziehen $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren so einen Vektor $(j_1,\dots,j_d)$, wobei $j_k$ mit $k = 1,\dots,d$ angibt wie oft die Kugel mit der Nummer $k$ gezogen wurde.
 \end{proof}

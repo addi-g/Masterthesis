@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  17 MAR 2020 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  18 MAR 2020 12:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1451,39 +1451,34 @@ MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
 LaTeX Warning: Citation `bosch2009algebra' on page 13 undefined on input line 2
 54.
 
-[13] [14]
-Underfull \vbox (badness 1062) has occurred while \output is active []
-
- [15]
-[16]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 381
+[13] [14] [15] [16]
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 407
 .
- (/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [17]
-[18]
-Overfull \hbox (14.48154pt too wide) detected at line 447
-[]
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[19]) [20]
+ [18]
+[19] [20]) [21]
 \openout2 = `chap2.aux'.
 
  (./chap2.tex
 Kapitel 2.
-[21
+[22
 
 
 
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `T1/ptm/b/it' tried instead on input line 47.
- [22] [23]
+ [23] [24]
 Overfull \hbox (1.82724pt too wide) detected at line 139
 []
  []
 
-[24] [25] [26]
+[25] [26] [27]
 Overfull \hbox (6.16849pt too wide) in paragraph at lines 258--258
  []\T1/ptm/m/n/12 (-20) Hidden 
  []
@@ -1493,7 +1488,7 @@ Overfull \hbox (4.21628pt too wide) in paragraph at lines 258--258
  []\T1/ptm/m/n/12 (-20) Output 
  []
 
-[27]
+[28]
 Overfull \hbox (6.16849pt too wide) in paragraph at lines 307--307
  []\T1/ptm/m/n/12 (-20) Hidden 
  []
@@ -1508,12 +1503,12 @@ Overfull \hbox (4.21628pt too wide) in paragraph at lines 359--359
  []\T1/ptm/m/n/12 (-20) Output 
  []
 
-[28]
+[29]
 Overfull \hbox (4.21628pt too wide) in paragraph at lines 413--413
  []\T1/ptm/m/n/12 (-20) Output 
  []
 
-[29] [30] [31] [32] [33]) [34]
+[30] [31] [32] [33] [34]) [35]
 \openout2 = `chap3.aux'.
 
  (./chap3.tex
@@ -1522,32 +1517,32 @@ LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
 7.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [35
+) [36
 
 
 
 ]
 
-LaTeX Warning: Citation `györfi2002' on page 36 undefined on input line 28.
+LaTeX Warning: Citation `györfi2002' on page 37 undefined on input line 28.
 
-[36] [37]
+[37] [38]
 Overfull \hbox (26.27444pt too wide) in paragraph at lines 107--108
 []\T1/ptm/m/n/12 (-20) Das nächs-te Lem-ma be-nö-ti-gen wir um ei-ne Schran-ke 
 für die Über-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OMS
 /ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
  []
 
-[38] [39]
+[39] [40]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [40] [41] [42] [43] [44] [45] [46]) [47]
+ [41] [42] [43] [44] [45] [46] [47]) [48]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
 Kapitel 4.
-[48
+[49
 
 
 
@@ -1568,15 +1563,15 @@ Overfull \hbox (7.12672pt too wide) in paragraph at lines 76--91
  [][] 
  []
 
-) [49] [50]
+) [50] [51]
 \openout2 = `literaturverzeichnis.aux'.
 
  (./literaturverzeichnis.tex (./Masterthesis_Adrian_Gabel.bbl
-[51
+[52
 
 
 
-])) [52]
+])) [53]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -1594,14 +1589,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (../01_Code/main.py
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
- [53
+ [54
 
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [54]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [55]
@@ -1610,21 +1602,24 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [56]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [57])
-(../01_Code/data_gen.py [58]
+ [57]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [59])
-(../01_Code/help_neural_networks.py [60]) (../01_Code/new_neural_network.py
-[61]
+ [58])
+(../01_Code/data_gen.py [59]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [62]
+ [60])
+(../01_Code/help_neural_networks.py [61]) (../01_Code/new_neural_network.py
+[62]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [63])
-(../01_Code/fc_neural_network.py [64]) (../01_Code/nearest_neighbor.py)
-(../01_Code/constant.py [65])) [66]
+ [63]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [64])
+(../01_Code/fc_neural_network.py [65]) (../01_Code/nearest_neighbor.py)
+(../01_Code/constant.py [66])) [67]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
  (./Masterthesis_Adrian_Gabel.aux
@@ -1642,10 +1637,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 45498 strings out of 492162
- 960786 string characters out of 6125292
- 1368467 words of memory out of 5000000
- 47831 multiletter control sequences out of 15000+600000
+ 45501 strings out of 492162
+ 960814 string characters out of 6125292
+ 1369336 words of memory out of 5000000
+ 47832 multiletter control sequences out of 15000+600000
  110669 words of font info for 355 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,21n,138p,1379b,4147s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1670,9 +1665,9 @@ type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
 usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (66 pages, 599723 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (67 pages, 604072 bytes).
 PDF statistics:
- 1518 PDF objects out of 1728 (max. 8388607)
- 830 named destinations out of 1000 (max. 500000)
+ 1524 PDF objects out of 1728 (max. 8388607)
+ 832 named destinations out of 1000 (max. 500000)
  53878 words of extra memory for PDF output out of 61914 (max. 10000000)
 

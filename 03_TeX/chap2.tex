@@ -482,7 +482,7 @@ Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehrere neuronalen Netzen zusammeng
 %Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... (TBD)
 Die Anzahl der Neuronen pro verborgener Schicht von $f_{\net,\bj,\bi}$ ergeben sich wie folgt:
 \begin{itemize}
-\item Die erste verborgene Schicht enthält maximal $3 \cdot 2 \cdot 2^s = 6 \cdot 2^s$ Neuronen, da dies die erste verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$ mal aufgerufen wird. 
+\item Die erste verborgene Schicht enthält maximal $3 \cdot 2 \cdot 2^s = 6 \cdot 2^s$ Neuronen, da dies die erste verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $(2^s)$-mal aufgerufen wird. 
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
 \item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2^{s+ 1}, 2^s, \dots, 2^3, 2^2$ Neuronen, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
 \end{itemize}  
@@ -512,7 +512,7 @@ wobei
 $$ S = \big|[M]^d\big| \cdot  \binom{N + d}{d} = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist .
 Diese Kardinalität erhalten wir mit einem Kombinatorik Argument.
 Wir wissen, dass es insgesamt $(M + 1)^d$ Möglichkeiten gibt $d$ viele Zahlen aus einer Menge mit der Größe $(M + 1)$ zu ziehen mit Zurücklegen und da wir Vektoren betrachten und die Komponenten nicht vertauschbar sind, ist auch die Reihenfolge der Ziehung zu beachten.
-Für jede dieser $(M + 1)^d$ Möglichkeiten ist noch zu beachten, dass wir zusätzlich $d$ mal aus einer Menge mit $(N + 1)$ vielen Zahlen ziehen müssen und gleichzeitig die Bedingung dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
+Für jede dieser $(M + 1)^d$ Möglichkeiten ist noch zu beachten, dass wir zusätzlich $d$-mal aus einer Menge mit $(N + 1)$ vielen Zahlen ziehen müssen und gleichzeitig die Bedingung dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
 Gesucht ist also 
 $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 \leq N \Bigr\}\bigg| \eqqcolon H.$$ 
 Wir stellen fest, dass:
