@@ -2,10 +2,10 @@
 \label{chap:1}
 
 Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden.
-In dieser Arbeit bezeichnen wir immer mit $d$ immer eine natürliche Zahl.
+In dieser Arbeit bezeichnen wir mit $d \geq 1$ immer eine natürliche Zahl.
 
 \section{Definitionen}
-Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion haben muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. (Theorem 7.2 und Problem 7.2 in Devroye, Györfi und Lugosi $(1996)$ \cite{DevLug96} und \emph{Section} 3 in Devroye und Wagner $(1980)$ \cite{DevWag80}) Dafür verwenden wir die folgende Definition.
+Es ist bekannt (vgl.\@ \cite[Theorem 7.2 und Problem 7.2]{DevLug96} \cite[Section 3]{DevWag80}), dass man Glattheitsvoraussetzungen an die Regressionsfunktion haben muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
 \begin{defn}[($p,C$)-Glattheit]
 \label{def:pc}
    Sei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$ (also $p \in (0, \infty)$ und sei $C > 0$. Eine Funktion $f\colon \R^d \to \R$ heißt \emph{($p, C$)-glatt}, falls für alle $\alpha = (\alpha_1,\dots,\alpha_d) \in \N_0^d$ mit $\sum_{j = 1}^{d}\alpha_j = q$ die partielle Ableitung 
@@ -14,11 +14,10 @@ Es ist bekannt, dass man Glattheitsvoraussetzungen an die Regressionsfunktion ha
    $$ \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(x) - \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(z) \bigg| \leq C \cdot \|x - z\|^s,$$
    gilt, wobei $\|\cdot\|$ die euklidische Norm in $\R^d$ bezeichnet.  
 \end{defn}
-\begin{bemnumber}
-Im Falle von $p = s = 1$ ist eine Funktion genau dann $(p,C)$-glatt, wenn sie \emph{$s$-hölderstetig} ist mit \emph{Hölderkonstante $C$}.
-\end{bemnumber}
 
-Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzwerkarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen, verarbeiten und entsprechend über eine Aktivierung reagieren. Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
+Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzwerkarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen und verarbeiten.
+% und entsprechend über eine Aktivierung reagieren. 
+Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
 %\begin{figure}
 %    \centering
 %    \begin{tikzpicture}[
@@ -81,7 +80,7 @@ Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 \item Ein neuronales Netz wird als ein \textit{fully connected} (\glqq vollständig verbundenes\grqq\@) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. 
 %Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der letzten verborgenen Schicht verbunden.
 \end{itemize}
-Für ein neuronales Netz sind die Aktivierungsfunktionen von großer Bedeutung, da sie dabei helfen, da es nichtlineare komplexe funktionale Mapping zwischen den Eingangsdaten und den abhängigen Ergebnissen zu verstehen.
+%Für ein neuronales Netz sind die Aktivierungsfunktionen von großer Bedeutung, da sie dabei helfen, da es nichtlineare komplexe funktionale Mapping zwischen den Eingangsdaten und den abhängigen Ergebnissen zu verstehen.
 %\begin{defn}
 %Eine \emph{Aktivierungsfunktion} ist eine Transformation, die wir über die Eingabe durchführen, bevor wir sie an die nächste Schicht von Neuronen senden oder sie als Ausgabe finalisieren.
 %\end{defn}
@@ -98,6 +97,7 @@ Für ein neuronales Netz sind die Aktivierungsfunktionen von großer Bedeutung, 
 %\end{itemize}
 %Mit dieser Definition können wir nun sagen, dass eine Netzwerkarchitektur wie ein Grundgerüst für die Konstruktion weiterer neuronale Netze ist.
 %\end{defn}
+Als nächstes kommen wir zu einer Definition eines neuronalen Netzes welches wir in dieser Form im weiteren Verlauf dieser Arbeit benötigen werden.
 \begin{defn}
 \label{def:nn}
 Sei $L \in \N$, $\bk \in \N^L$ und $\sigma\colon \R \to \R$. Ein \emph{mehrschichtiges feedforward neuronales Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion} $\sigma$, ist eine reellwertige Funktion $f\colon \R^d \to \R$ definiert durch:
@@ -110,18 +110,18 @@ f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j
 f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber
 \end{align} 
 für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$,
-weiterhin sei $NN(L, \bk)$ die Klasse aller mehrschichtigen feedforward neuronale Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$.
+weiterhin sei $\mathfrak{N}(L, \bk, \sigma)$ die Klasse aller mehrschichtigen feedforward neuronalen Netze mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$.
 \end{defn}
+Wir werden ab jetzt der Einfachheit halber nur noch von neuronalen Netzen mit Architektur $(L,\bk)$ reden und beziehen uns damit immer auf Definition~\ref{def:nn}.
 \begin{bemnumber}
 In obiger Definition versteht man unter:
 \begin{itemize}
 \item $L \in \N$ die Anzahl an verborgenen Schichten von $f$.
-\item $\bk = (k_1,\dots,k_L) \in \N^L$ einen Vektor der die Anzahl an Neuronen in jeder verborgenen Schicht angibt.
+\item $\bk = (k_1,\dots,k_L) \in \N^L$ einen Vektor, der die Anzahl an Neuronen in jeder verborgenen Schicht angibt.
 \end{itemize}
 \end{bemnumber}
-Da wir bei Neuronale-Netze-Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output und nehmen als Aktivierungsfunktion die Identität.
-Es wäre auch möglich für jede Schicht eine andere Aktivierungsfunktion zu wählen. In dieser Arbeit beschränken wir uns nur auf den Fall, in welchem wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
-
+Da wir bei Neuronale-Netze-Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output. Wie wir an der Konstruktion des neuronalen Netzes erkennen kann, nehmen wir in der Ausgabeschicht die Identität als Aktivierungsfunktion.
+%Es wäre auch möglich für jede Schicht eine andere Aktivierungsfunktion zu wählen. In dieser Arbeit beschränken wir uns nur auf den Fall, in welchem wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
 Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$~verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
 \begin{center}
     \begin{figure}
@@ -186,15 +186,15 @@ Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
         \label{fig:DNN}
     \end{figure}
 \end{center}
-Wie zuvor erwähnt ist einer der Ausgangspunkte für die Definition eines neuronalen Netzes die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für eine sogenannten \textit{squashing function} entschieden, welche eine monoton wachsend Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. In dieser Arbeit verwenden wir als squashing function immer den sogenannten \emph{sigmoidal} bzw.\@ \emph{logistische squasher}
+Wie zuvor erwähnt ist einer der Ausgangspunkte für die Definition eines neuronalen Netzes die Wahl einer Aktivierungsfunktion $\sigma\colon \R \to \R$. Wir haben uns in dieser Arbeit für eine sogenannte \textit{Squashing Function} entschieden, welche eine monoton wachsende Funktion ist, für die $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ gilt. In dieser Arbeit verwenden wir als Squashing Function immer den sogenannten \emph{sigmoidal} bzw.\@ \emph{logistischen Squasher}
 \begin{align}
 \label{logsquasher}
 \sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
 \end{align}
-
+Wir kommen nun zu einer Eigenschaft die wir für den logistischen Squasher benötigen und in Lemma~\ref{lem:logsquasher} für $N \in \N_0$ zeigen werden.
 \begin{defn}
 \label{nzulässig}
-Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zulässig} genannt, wenn sie monoton wachsend und lipschitzstetig \cite{forster2016} ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind:
+Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zulässig} genannt, wenn sie monoton wachsend und lipschitzstetig ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind:
 \begin{itemize}
 \item[(i)] Die Funktion $\sigma$ ist $(N + 1)$-mal stetig differenzierbar mit beschränkten Ableitungen.
 \item[(ii)] Es existiert ein Punkt $t_{\sigma} \in \R$ mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
@@ -202,45 +202,17 @@ Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zul�
 \end{itemize}  
 \end{defn}  
 
-In Lemma~\ref{lem:logsquasher} werden wir zudem zeigen, dass der logistische squasher~(\ref{logsquasher}) $N$-zulässig ist für beliebiges $N \in \N_0.$ 
-
-Als nächsten geben wir eine Definition von wir Überdeckungszahlen an, da wir im Beweis für unser Hauptresultat eine Abschätzung einer $L_p\text{-}\epsilon$-Überdeckungszahl anwenden.
-\begin{defn}
-\label{ueberdeckung}
-$(X, \delta)$ sei ein halbmetrischer Raum \cite{forster2016} . Für $x \in X$ und $\epsilon > 0$ sei:
-$$U_{\epsilon}(x) = \{z \in X : \delta(x, z) < \epsilon\}$$
-die Kugel um $x$ mit Radius $\epsilon$.
-\begin{itemize}
-\item[a)] $\{z_1,\dots,z_N\} \subseteq X$ heißt $\epsilon$\textit{-Überdeckung} einer Menge $A \subseteq X$, falls gilt:
-$$A \subseteq \bigcup_{k = 1}^N U_{\epsilon}(z_k).$$
-\item[b)] Ist $A \subseteq X$ und $\epsilon > 0$, so ist die sogenannte $\epsilon$\textit{-Überdeckungszahl} von $A$ in $(X,\delta)$ definiert als:
-$$\mathcal{N}_{(X,\delta)}(\epsilon, A) = \inf\big\{|U| : U \subseteq X \text{ ist } \epsilon\text{-Überdeckung von } A\big\}.$$   
-\end{itemize}
-\end{defn} 
-\begin{defn}
-\label{lpe}
-Sei $\mathcal{F}$ eine Menge von Funktionen $f\colon \R^d \to \R$, sei $\epsilon > 0$, $1 \leq p < \infty$ und seien $x_1,\dots,x_n \in \R^d$ und $x_1^n = (x_1,\dots,x_n).$ Dann ist die $L_p$-$\epsilon$\textit{-Überdeckungszahl} von $\mathcal{F}$ auf $x_1^n$ definiert durch:
-$$\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n) \coloneqq \mathcal{N}_{(X,\delta)}(\epsilon, \mathcal{F}),$$
-wobei der halbmetrische Raum $(X, \delta)$ gegeben ist durch
-\begin{itemize}
-\item $X = $ Menge aller Funktionen $f\colon \R^d \to \R$,
-\item $\delta(f, g) = \delta_p(f, g) = (\frac{1}{n}\sum_{i = 1}^n |f(x_i) - g(x_i)|^p)^{1/p} .$
-\end{itemize}
-\end{defn}
-In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimal $N \in \N$, so dass Funktionen $f_1,\dots,f_N\colon \R^d \to \R$ existieren mit der Eigenschaft, dass für jedes $f \in \mathcal{F}$ gilt:
-$$\min_{j = 1,\dots,N}\bigg(\frac{1}{n}\sum_{i = 1}^n|f(x_i) - f_j(x_i)|^p\bigg)^{1/p} < \epsilon.$$
-In Lemma~\ref{lem:9} liefern wir ein Resultat zur Abschätzung einer $L_p$-$\epsilon$-Überdeckungszahl.
-
 \section{Hilfsresultate}
+Als erstes stellen wir ein Resultat vor, welches wir für Approximationsresultate von neuronalen Netzen benötigen um unseren Neuronale-Netze-Schätzer zu konstruieren.
 \begin{lem}
 \label{lem:logsquasher}
-Sei $N \in \N_0$ beliebig, dann ist der logistische squasher $$\sigma\colon \R \to [0, 1] \text{ mit } \sigma(x) = \frac{1}{1 + \exp(-x)}$$ $N$-zulässig.
+Sei $N \in \N_0$ beliebig, dann ist der logistische Squasher $$\sigma\colon \R \to [0, 1] \text{ mit } \sigma(x) = \frac{1}{1 + \exp(-x)}$$ $N$-zulässig.
 \end{lem}
 \begin{proof}
-Sei $N \in \N_0$ beliebig. Aus den asymptotischen Eigenschaften der Exponentialfunktion, gilt $\lim_{x \to -\infty}\sigma(x) = 0$ und $\lim_{x \to \infty}\sigma(x) = 1$ und durch den Zwischenwertsatz erhalten wir schließlich auch $\sigma: \R \to [0,1]$. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
+Sei $N \in \N_0$ beliebig. Dadurch, dass $0 \leq \frac{1}{1 + exp(-x)} \leq 1$ für alle $x \in \R$ gilt, erhalten wir schließlich auch $\sigma: \R \to [0,1]$. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
 $$\sigma(s) = \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} = \sigma(t),$$
 wobei wir verwendet haben, dass aufgrund der Monotonie der Exponentialfunktion für $s \leq t$ auch $\exp(-s) \geq \exp(-t)$ gilt.
-Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-mal stetig differenzierbar. Die Ableitungen von $\sigma$ erfüllt die gewöhnliche Differentialgleichung $\frac{\partial\sigma}{\partial x} = (1 - \sigma) \cdot \sigma,$ da:
+Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-mal stetig differenzierbar. Die Funktion $\sigma$ erfüllt die gewöhnliche Differentialgleichung $\frac{\partial\sigma}{\partial x} = (1 - \sigma) \cdot \sigma,$ da:
 \begin{equation*}
 \begin{split}
 \frac{\partial \sigma}{\partial x}(x) &= -\frac{1}{(1 + \exp(-x))^2} \cdot (-\exp(-x)) \\
@@ -249,12 +221,16 @@ Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-mal
 & = (1 - \sigma(x)) \cdot \sigma(x).
 \end{split}
 \end{equation*}
-Da wir bei weiterem Ableiten die Produktregel wiederholt anwenden sind alle Ableitungen von $\sigma$, Polynome in $\sigma$. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung durch $0$ und $1$ beschränkt ist, und die Ableitungen von $\sigma$ als Produkt beschränkter Faktoren daher auch. Da hiermit auch die erste Ableitung von $\sigma$ beschränkt ist wissen wir, dass $\sigma$ lipschitzstetig ist.
-
-Nun kommen wir zum Beweis von Bedingung (ii). Polynome, die nicht das Nullpolynom sind, haben nach Satz 1 aus Kap.\@ $2.6$ aus \cite{bosch2009algebra} auf $(0, 1)$ endlich viele Nullstellen und $\sigma$ bildet nach Voraussetzung in das Intervall $[0, 1] \supseteq (0, 1)$ ab. 
 Mit der Leibnizregel aus der Differentialrechnung erhalten wir:
-$$\frac{\partial^n\sigma}{\partial x^n} = \frac{\partial^{n - 1}}{\partial x^{n - 1}}\bigg((1 - \sigma(x)) \cdot \sigma(x)\bigg) = \sum_{k = 0}^{n-1}\binom{n - 1}{k}(1 - \sigma(x))^{(n - 1 - k)}  \sigma(x)^{(k)}$$ 
-für $n = 1,\dots,N$. Da für alle $x \in \R$ $\sigma(x) > 0$ gilt, bleibt dies auch bei Potenzen und positiven Linearkombinationen erhalten. Daher existiert ein $t_{\sigma} \in \R$ mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
+\begin{equation}
+\label{eq:leibniz}
+\frac{\partial^n\sigma}{\partial x^n} = \frac{\partial^{n - 1}}{\partial x^{n - 1}}\bigg((1 - \sigma(x)) \cdot \sigma(x)\bigg) = \sum_{k = 0}^{n-1}\binom{n - 1}{k}(1 - \sigma(x))^{(n - 1 - k)}  \sigma(x)^{(k)} 
+\end{equation}
+für $n = 1,\dots,N$. 
+Damit erkennen wir, dass alle Ableitungen von $\sigma$, Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist, und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren, ebenfalls beschränkt ist. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist wissen wir, dass $\sigma$ lipschitzstetig ist.
+
+Nun kommen wir zum Beweis von Bedingung (ii). 
+Da für alle $x \in \R$ $\sigma(x) > 0$ gilt, bleibt dies auch bei Potenzen und positiven Linearkombinationen erhalten. Daher wissen wir durch Gleichung~(\ref{eq:leibniz}), dass ein $t_{\sigma} \in \R$ existiert, mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
 %Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynomen in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit $\sigma(t_{\sigma}) \neq 0$, sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. 
 Damit ist Bedingung (ii) ebenfalls erfüllt.
 
@@ -296,14 +272,62 @@ $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x
 Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt und unsere Aussage bewiesen.
 \end{proof}
 Als nächstes stellen wir ein Resultat zur Restgliedabschätzung vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
-\begin{lem}[Lagrangesche Form des Restglieds Kap.\@ 22 S.\@ 2 \cite{forster2016}]
+\begin{lem}[Lagrangesche Form des Restglieds, Kapitel 2.4 Seite 67 \cite{Königsberger2013}]
 \label{lem:lagrange}
-Sei $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi \in [u, x],$ so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
+
+\textbf{\emph{i)}} Sei $U \subseteq \R^d$ und $f\colon U \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in U$ Punkte, deren Verbindungsstrecke in $U$ liegt, so gilt:
+$$ f(x) = T_Nf(x;u) + R_{N + 1}(x;u),$$
+wobei das Restglied mit einem geeigneten Punkt $\xi \in [u;x]$ in der Form 
+$$ R_{N + 1}(x;u) = \frac{f^{(N + 1)}}{(N + 1)!} (x - u)^{N + 1}$$
+dargestellt werden kann.
+
+\textbf{\emph{ii)}} Sei $I \subseteq \R$ ein Intervall und $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi$ zwischen $u$ und $x$, so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
 \end{lem}
 Es folgen nun drei Approximationsresultate welche wir in Kapitel~\ref{chap:2} für die Konstruktion unseres Neuronale-Netze-Regressionschätzers benötigen werden.
+Wir betrachten erst eine Approximation der Identität durch das neuronale Netz $f_{\id}$ welches in Abbildung~\ref{fig:fid} veranschaulicht wird und anschließend die Approximation eines Quadrats auf einem Intervall durch das neuronale Netz $f_{\sq}$.
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=6pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-5pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1cm}{\centering Hidden\\layer} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+& & \\
+};
+\foreach \ai [count=\mi ]in {2}
+  \draw[<-] (mat-\ai-1) -- node[above] {$x$} +(-1cm,0);
+\foreach \ai in {2}
+{\foreach \aii in {2}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}
+\foreach \ai in {2}
+  \draw[->] (mat-\ai-2) -- (mat-2-3);
+\draw[->] (mat-2-3) -- node[above] {$f_{\id}(x)$} +(2.5cm,0);
+\end{tikzpicture}
+
+\caption{Neuronales Netz $f_{\id}(x)$}
+\label{fig:fid}
+\end{figure}
+ 
 \begin{lem}
   \label{lem:1}
-  Sei $\sigma \colon \R \to \R$ eine Funktion und $R$, $a > 0$.
+  Sei $\sigma \colon \R \to \R$ eine Funktion, $\|\cdot\|_{\infty}$ die Supremumsnorm auf $[-a, a]$ und $R$, $a > 0$.
   \begin{itemize}
   \item[a)] Angenommen $\sigma$ ist zweimal stetig differenzierbar und $t_{\sigma,\id} \in \R$ so, dass $\sigma'(t_{\sigma, \id}) \neq 0$ ist. Dann gilt für das neuronale Netz
   $$ f_{\id}(x) = \frac{R}{\sigma'(t_{\sigma, \id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, \id}\right) - \sigma(t_{\sigma, \id})\right)$$
@@ -317,7 +341,7 @@ Es folgen nun drei Approximationsresultate welche wir in Kapitel~\ref{chap:2} f�
 \end{lem}
 \begin{proof}
 	\begin{itemize}
-  	\item[a)] Wir wissen, dass $f_{\id}$  zweimal differenzierbar ist, da nach Voraussetzung $\sigma$ zweimal stetig differenzierbar ist. Damit folgt mit Lemma~\ref{lem:lagrange} für $f = f_{\id}, N = 1, u = 0, x \geq 0$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass,
+  	\item[a)] Wir wissen, dass $f_{\id}$  zweimal differenzierbar ist, da nach Voraussetzung $\sigma$ zweimal stetig differenzierbar ist. Damit folgt mit Lemma~\ref{lem:lagrange} für $f = f_{\id}, N = 1, u = 0$ und $I = [-a, a]$, dass ein $\xi$ zwischen $0$ und $x$ existiert, so dass,
 $$f_{\id}(x) = \sum_{k = 0}^1 \frac{f_{\id}^{(k)}(0)}{k!}x^k + \frac{f_{\id}^{(2)}(\xi)}{2!}x^{2}.$$
 Es gilt:
 $$
@@ -333,7 +357,7 @@ Mit $f_{\id}(0) = 0$ und $f_{\id}'(0) = 1$ erhalten wir:
   	\end{split}
   	\end{equation*}
   	wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt. Zudem folgt $x^2 \leq a^2$ aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt.
-  	\item[b)]  Die Funktion $f_{\sq}$ ist dreimal differenzierbar, da $\sigma$ nach Voraussetzung dreimal stetig differenzierbar ist. Wie in a) folgt durch Lemma~\ref{lem:lagrange} mit $f = f_{\sq}, N = 2, u = 0, x \geq 0$ und $I = [-a, a]$, dass ein $\xi \in [0, x]$ existiert, so dass:
+  	\item[b)]  Die Funktion $f_{\sq}$ ist dreimal differenzierbar, da $\sigma$ nach Voraussetzung dreimal stetig differenzierbar ist. Wie in a) folgt durch Lemma~\ref{lem:lagrange} mit $f = f_{\sq}, N = 2, u = 0$ und $I = [-a, a]$, dass ein $\xi$ zwischen $0$ und $x$ existiert, so dass:
 $$f_{\sq}(x) = \sum_{k = 0}^2 \frac{f_{\sq}^{(k)}(0)}{k!}x^k + \frac{f_{\sq}^{(3)}(\xi)}{3!}x^{3}.$$
 Es gilt:
 $$
@@ -356,6 +380,52 @@ Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
  	\end{itemize}
  	Daraus folgt die Behauptung.
 \end{proof}
+Wir betrachten als nächstes die Approximation einer Multiplikation zweier Werte auf einem Intervall durch das neuronale Netz $f_{\mult}$ welches in Abbildung~\ref{fig:fmult} veranschaulicht wird.
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=6pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-5pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1cm}{\centering Hidden\\layer} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+|[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| \\
+& & |[plain]| \\
+|[plain]| & |[plain]| & \\
+& & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| \\
+|[plain]| &  & |[plain]|\\
+};
+  \draw[<-] (mat-4-1) -- node[above] {$x$} +(-1cm,0);
+  \draw[<-] (mat-6-1) -- node[above] {$y$} +(-1cm,0);
+\foreach \ai in {4,6}
+{\foreach \aii in {2,4,6,8}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}
+\foreach \ai in {2,4,6,8}
+  \draw[->] (mat-\ai-2) -- (mat-5-3);
+\draw[->] (mat-5-3) -- node[above] {$f_{\mult}(x, y)$} +(2.5cm,0);
+\end{tikzpicture}
+
+\caption{Neuronales Netz $f_{\mult}(x, y)$}
+\label{fig:fmult}
+\end{figure}
 
 \begin{lem}
   \label{lem:2}
@@ -382,12 +452,62 @@ Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
 \end{equation*}   
 wobei wir bei der letzten Ungleichung Lemma~\ref{lem:1}b) mit $x + y, x - y \in [-2a, 2a]$ verwendet haben. Daher folgt insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{\sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}$$ gilt. 
   \end{proof}
+Wir betrachten als nächstes die Approximation der Maximumsfunktion $\max\{x, 0\}$ für $x$ aus einem Intervall, durch das neuronale Netz $f_{\ReLU}$  Abbildung~\ref{fig:frelu} veranschaulicht wird.
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=6pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-5pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 1} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 2} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+& |[plain]| & |[plain]| & \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+};
+  \draw[<-] (mat-5-1) -- node[above] {$x$} +(-1cm,0);
+\foreach \ai in {5}
+{\foreach \aii in {4,6}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}  
+\foreach \ai in {4,6}
+{\foreach \aii in {2,4,6,8}
+  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
+}
+\foreach \ai in {2,4,6,8}
+  \draw[->] (mat-\ai-3) -- (mat-5-4);
+\draw[->] (mat-5-4) -- node[above] {$f_{\ReLU}(x, y)$} +(2.5cm,0);
+\end{tikzpicture}
+
+\caption{Neuronales Netz $f_{\ReLU}(x)$}
+\label{fig:frelu}
+\end{figure}
+
   \begin{lem}
   \label{lem:3}
-  Sei $\sigma\colon \R \to [0, 1]$ 2-zulässig. Sei $f_{\mult}$ das neuronale Netz aus Lemma~\ref{lem:2} und $f_{\id}$ das neuronale Netz aus Lemma~\ref{lem:1}. Angenommen es gelten die Ungleichungen 
+  Sei $\sigma\colon \R \to [0, 1]$ 2-zulässig und $a \geq 1$. Sei $f_{\mult}$ das neuronale Netz aus Lemma~\ref{lem:2} und $f_{\id}$ das neuronale Netz aus Lemma~\ref{lem:1}. Angenommen es gelte die Ungleichung 
 \begin{equation}
 \label{lem:3:Vor1}   
-  a \geq 1 \text{\quad und \quad} R \geq \frac{\|\sigma''\|_{\infty} \cdot a}{2 \cdot |\sigma'(t_{\sigma})|}.
+ R \geq \frac{\|\sigma''\|_{\infty} \cdot a}{2 \cdot |\sigma'(t_{\sigma})|}.
 \end{equation}
   Dann erfüllt das neuronale Netz 
   \begin{equation}
@@ -446,9 +566,85 @@ Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Definition des N
 \end{equation*}
 Daraus folgt die Behauptung.
   \end{proof}
+Wir betrachten als nächstes die Approximation des Positivteils einer Funktion auf einer Intervall durch das neuronale Netz $f_{\mathrm{hat},y}$ welches Abbildung~\ref{fig:fhat} veranschaulicht wird.
+\begin{figure}[htp]
+\centering
+\begin{tikzpicture}[
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+net/.style={
+  matrix of nodes,
+  nodes={
+    draw,
+    circle,
+    inner sep=6pt
+    },
+  nodes in empty cells,
+  column sep=0.6cm,
+  row sep=-5pt
+  },
+>=latex
+]
+\matrix[net] (mat)
+{
+|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 1} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 2} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+& |[plain]| & |[plain]| & \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & & & |[plain]| \\
+|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
+|[plain]| & |[plain]| &  & |[plain]|\\
+};
+  \draw[<-] (mat-14-1) -- node[above] {$x$} +(-1cm,0);
+\foreach \ai in {14}
+{\foreach \aii in {4,6,13,15,22,24}
+  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
+}  
+\foreach \ai in {4,6}
+{\foreach \aii in {2,4,6,8}
+  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
+}
+\foreach \ai in {13,15}
+{\foreach \aii in {11,13,15,17}
+  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
+}
+\foreach \ai in {22,24}
+{\foreach \aii in {20,22,24,26}
+  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
+}
+\foreach \ai in {2,4,6,8,11,13,15,17,20,22,24,26}
+  \draw[->] (mat-\ai-3) -- (mat-14-4);
+\draw[->] (mat-14-4) -- node[above] {$f_{\mathrm{\mathrm{hat}},y}(x)$} +(2.5cm,0);
+\end{tikzpicture}
+
+\caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x)$}
+\label{fig:fhat}
+\end{figure} 
+
   \begin{lem}
   \label{lem:4}
-  Sei $M \in \N$ und sei $\sigma\colon \R \to [0, 1]$ 2-zulässig. Sei $a > 0$ und $$R \geq \frac{\|\sigma''\|_{}\infty \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|},$$ sei $y \in [-a, a]$ und $f_{\ReLU}$ das neuronale Netz aus Lemma~\ref{lem:3}. Dann erfüllt das neuronale Netz 
+  Sei $M \in \N$ und sei $\sigma\colon \R \to [0, 1]$ 2-zulässig. Sei $a > 0$ und $$R \geq \frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|},$$ sei $y \in [-a, a]$ und $f_{\ReLU}$ das neuronale Netz aus Lemma~\ref{lem:3}. Dann erfüllt das neuronale Netz 
   \begin{equation*}
   \begin{split}
   f_{\mathrm{hat},y}(x) = f_{\ReLU}& \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) \\ &+ f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg)
@@ -490,9 +686,9 @@ Durch diese Fallunterscheidung wurde die Gleichung~(\ref{lem:4:eq}) bewiesen und
 Das nächste Lemma ist ein Resultat aus der Kombinatorik, welches wir in Kapitel~\ref{chap:2} benötigen werden.
 \begin{lem}
 \label{lem:kombi}
-Sei $d, N \in \N$ und $k \in \N_0$. Dann gilt:
+Sei $d, N \in \N$ und $k \in \N_0$ mit $k < N$. Dann gilt:
 $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k}.$$
 \end{lem}
 \begin{proof}
-Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$ Kugeln, die wir mit $1,\dots,d$ beschriften. Wir ziehen $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren so einen Vektor $(j_1,\dots,j_d)$, wobei $j_k$ mit $k = 1,\dots,d$ angibt wie oft die Kugel mit der Nummer $k$ gezogen wurde.
+Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$ Kugeln, die wir mit $1,\dots,d$ beschriften. Wir ziehen $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren so einen Vektor $\bj = (j_1,\dots,j_d)$ aus der Menge mit $|\bj|_1 = k$. Der Koeffizient $j_i$ mit $i= 1,\dots,d$ gibt an wie oft die Kugel mit der Nummer $i$ gezogen wurde. Damit stimmt die Kardinalität der Menge auf der linken Seite mit der Anzahl aller Möglichkeiten überein die man erhält, wenn man $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge zieht.
 \end{proof}

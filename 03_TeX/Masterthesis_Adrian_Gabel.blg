@@ -12,6 +12,7 @@ A level-1 auxiliary file: literaturverzeichnis.aux
 The style file: geralpha.bst
 A level-1 auxiliary file: appendix.aux
 Database file #1: Masterthesis_Adrian_Gabel.bib
+Warning--I didn't find a database entry for "Königsberger2013"
 Warning--I didn't find a database entry for "györfi2002"
 Too many commas in name 1 of "Devroye, L., GyÃ¶rfi, L., Lugosi, G." for entry DevLug96
 while executing---line 1296 of file geralpha.bst
@@ -56,45 +57,45 @@ Too many commas in name 1 of "Devroye L., KarasÃ¶zen, B., Kohler, M. AND Korn, R
 while executing---line 1361 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1361 of file geralpha.bst
-You've used 20 entries,
+You've used 21 entries,
             2768 wiz_defined-function locations,
-            733 strings with 8009 characters,
-and the built_in function-call counts, 7061 in all, are:
-= -- 703
-> -- 263
-< -- 16
-+ -- 83
-- -- 79
-* -- 518
-:= -- 1126
-add.period$ -- 42
-call.type$ -- 20
-change.case$ -- 89
-chr.to.int$ -- 20
-cite$ -- 21
-duplicate$ -- 347
-empty$ -- 589
-format.name$ -- 110
-if$ -- 1497
+            739 strings with 8090 characters,
+and the built_in function-call counts, 7357 in all, are:
+= -- 734
+> -- 271
+< -- 17
++ -- 85
+- -- 81
+* -- 536
+:= -- 1174
+add.period$ -- 45
+call.type$ -- 21
+change.case$ -- 93
+chr.to.int$ -- 21
+cite$ -- 22
+duplicate$ -- 364
+empty$ -- 616
+format.name$ -- 114
+if$ -- 1562
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 37
-newline$ -- 84
-num.names$ -- 62
-pop$ -- 126
+missing$ -- 39
+newline$ -- 88
+num.names$ -- 65
+pop$ -- 132
 preamble$ -- 1
-purify$ -- 129
+purify$ -- 135
 quote$ -- 0
-skip$ -- 264
+skip$ -- 275
 stack$ -- 0
-substring$ -- 299
-swap$ -- 64
-text.length$ -- 16
-text.prefix$ -- 12
+substring$ -- 306
+swap$ -- 66
+text.length$ -- 17
+text.prefix$ -- 13
 top$ -- 0
-type$ -- 112
+type$ -- 116
 warning$ -- 1
-while$ -- 61
-width$ -- 23
-write$ -- 246
+while$ -- 63
+width$ -- 24
+write$ -- 259
 (There were 21 error messages)

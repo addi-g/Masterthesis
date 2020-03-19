@@ -27,6 +27,7 @@ von $m$, für die der $L_2$-Fehler
 $$\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)$$
 möglichst \glqq klein\grqq\@ ist. \cite{györfi2002}
 
+\section{Das Hauptresultat}
 In diesem Kapitel stellen wir das Hauptresultat dieser Arbeit vor.
 Ziel im Folgenden ist es, eine Abschätzung des erwarteten $L_2$-Fehlers 
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)$$
@@ -47,7 +48,10 @@ Dann erhalten wir für hinreichend großes $n$:
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_{\text{fin}} \cdot (\log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
 wobei $c_{\text{fin}} > 0$ ist und nicht von $n$ abhängt.
 \end{thm}
-Die nächsten Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Schätzers. Diese Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt.
+
+\section{Hilfslemmata}
+Die nächsten  Definitionen und Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Schätzers. Die Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt. 
+
 \begin{lem}[\cite{kohler19}, Lemma 5]
 \label{lem:5}
 Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig nach Definition~\ref{nzulässig}.
@@ -81,6 +85,34 @@ Dann erhalten wir für $x \in [-a, a]^d$:
 \end{equation*}
 für eine von $n$ unabhängige Konstante $c > 0$.
 \end{lem}
+
+Als nächstes geben wir eine Definition von Überdeckungszahlen an, da wir im Beweis für unser Hauptresultat eine Abschätzung einer $L_p\text{-}\epsilon$-Überdeckungszahl anwenden.
+\begin{defn}
+\label{ueberdeckung}
+$(X, \delta)$ sei ein halbmetrischer Raum \cite{forster2016} . Für $x \in X$ und $\epsilon > 0$ sei:
+$$U_{\epsilon}(x) = \{z \in X : \delta(x, z) < \epsilon\}$$
+die Kugel um $x$ mit Radius $\epsilon$.
+\begin{itemize}
+\item[a)] $\{z_1,\dots,z_N\} \subseteq X$ heißt $\epsilon$\textit{-Überdeckung} einer Menge $A \subseteq X$, falls gilt:
+$$A \subseteq \bigcup_{k = 1}^N U_{\epsilon}(z_k).$$
+\item[b)] Ist $A \subseteq X$ und $\epsilon > 0$, so ist die sogenannte $\epsilon$\textit{-Überdeckungszahl} von $A$ in $(X,\delta)$ definiert als:
+$$\mathcal{N}_{(X,\delta)}(\epsilon, A) = \inf\big\{|U| : U \subseteq X \text{ ist } \epsilon\text{-Überdeckung von } A\big\}.$$   
+\end{itemize}
+\end{defn} 
+\begin{defn}
+\label{lpe}
+Sei $\mathcal{F}$ eine Menge von Funktionen $f\colon \R^d \to \R$, sei $\epsilon > 0$, $1 \leq p < \infty$ und seien $x_1,\dots,x_n \in \R^d$ und $x_1^n = (x_1,\dots,x_n).$ Dann ist die $L_p$-$\epsilon$\textit{-Überdeckungszahl} von $\mathcal{F}$ auf $x_1^n$ definiert durch:
+$$\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n) \coloneqq \mathcal{N}_{(X,\delta)}(\epsilon, \mathcal{F}),$$
+wobei der halbmetrische Raum $(X, \delta)$ gegeben ist durch
+\begin{itemize}
+\item $X = $ Menge aller Funktionen $f\colon \R^d \to \R$,
+\item $\delta(f, g) = \delta_p(f, g) = (\frac{1}{n}\sum_{i = 1}^n |f(x_i) - g(x_i)|^p)^{1/p} .$
+\end{itemize}
+\end{defn}
+In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimal $N \in \N$, so dass Funktionen $f_1,\dots,f_N\colon \R^d \to \R$ existieren mit der Eigenschaft, dass für jedes $f \in \mathcal{F}$ gilt:
+$$\min_{j = 1,\dots,N}\bigg(\frac{1}{n}\sum_{i = 1}^n|f(x_i) - f_j(x_i)|^p\bigg)^{1/p} < \epsilon.$$
+In Lemma~\ref{lem:9} liefern wir ein Resultat zur Abschätzung einer $L_p$-$\epsilon$-Überdeckungszahl.
+
   \begin{lem}[\cite{kohler19}, Lemma 8]
   \label{lem:8}
 Sei $\beta_n = c_1 \cdot \log(n)$ für eine hinreichend große Konstante $c_1 > 0$. Angenommen die Verteilung von $Y$ erfüllt 
@@ -114,7 +146,9 @@ Dann gilt für $n > 1:$
 $$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\bigg)\bigg) \leq c \cdot \log(n) \cdot J_n,$$
 für eine Konstante $c$ die nur von $L, N, a$ und $d$ abhängt.
 \end{lem}
-Mit diesen Hilfsresultaten können wir nun unser Hauptresultat beweisen.
+
+\section{Beweis von Satz~\ref{optstop}}
+Mit den Hilfsresultaten können wir nun unser Hauptresultat beweisen.
 \begin{proof}[Beweis von Satz~\ref{optstop}]
 Da nach Voraussetzung $\supp(\mathds{P}_X)$ beschränkt ist und der Träger $\supp(\mathds{P}_X)$ immer abgeschlossen ist, wissen wir, dass $\supp(\mathds{P}_X)$ kompakt ist. Da $m$ als ($p,C$)-glatte Funktion insbesondere stetig ist wissen wir das sie auf einer kompakten Menge ihr Maximum und Minimum annimmt. Dadurch können wir $n$ so groß wählen, dass ohne Beschränkung der Allgemeinheit $\|m\|_{\infty} \leq \beta_n$ gilt.
 
@@ -274,7 +308,7 @@ wobei wir bei der letzten Gleichheit verwendet haben, dass der letzte Summand de
 Als nächstes überprüfen wir die Voraussetzungen von Lemma~\ref{lem:9}, um damit dann die letzte Gleichung mit der Überdeckungszahl $\mathcal{N}_1$weiter abzuschätzen.
 Nach Voraussetzung ist $\beta_n = c_3 \cdot \log(n)$ und $a_n = (\log n)^{1/(6(N + d))} > 0$ für hinreichend großes $n$. Nach Voraussetzung sind zudem $d, N, J_n \in \N$ und es gilt nach Gleichung~(\ref{jn}): 
 $$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c},$$
-für hinreichend großes $n$ und Konstante $c > 0$. Wir betrachten hier den logistischen squasher $\sigma$ welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma~\ref{lem:9} ist, sind nun alle Voraussetzungen für Lemma~\ref{lem:9} erfüllt. Nach Voraussetzung wissen wir, dass $\supp(\mathds{P}_X)$ beschränkt ist, und wir können $n$ so groß wählen, dass wir ohne Beschränkung der Allgemeinheit annehmen können, dass $\supp(\mathds{P}_X) = \{x \in \R^d \mid \forall \epsilon > 0 : \mathds{P}_X(S_{\epsilon}(x)) > 0\} \subseteq [-a_n, a_n]^d$ ist, mit $S_{\epsilon}$ als $\epsilon$-Umgebung um $x \in \R^d$. In der nächsten Ungleichungskette fassen wir die Konstanten die sich von $c_8$ unterscheiden und die unabhängig von $n$ sind, zu einer Konstante $c$ zusammen. Wir erhalten damit durch Lemma~\ref{lem:9} für hinreichend großes $n$:
+für hinreichend großes $n$ und Konstante $c > 0$. Wir betrachten hier den logistischen Squasher $\sigma$ welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma~\ref{lem:9} ist, sind nun alle Voraussetzungen für Lemma~\ref{lem:9} erfüllt. Nach Voraussetzung wissen wir, dass $\supp(\mathds{P}_X)$ beschränkt ist, und wir können $n$ so groß wählen, dass wir ohne Beschränkung der Allgemeinheit annehmen können, dass $\supp(\mathds{P}_X) = \{x \in \R^d \mid \forall \epsilon > 0 : \mathds{P}_X(S_{\epsilon}(x)) > 0\} \subseteq [-a_n, a_n]^d$ ist, mit $S_{\epsilon}$ als $\epsilon$-Umgebung um $x \in \R^d$. In der nächsten Ungleichungskette fassen wir die Konstanten die sich von $c_8$ unterscheiden und die unabhängig von $n$ sind, zu einer Konstante $c$ zusammen. Wir erhalten damit durch Lemma~\ref{lem:9} für hinreichend großes $n$:
 \begin{equation}
 \label{lem9sol}
 \begin{split}
@@ -308,7 +342,7 @@ Aus der Supremumseigenschaft folgt
 & = 2 \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_{m,n}(x)|^2 + 2 \sup_{x \in [-a_n, a_n]^d} |P_{m,n}(x) - m(x)|^2, 
 \end{split}
 \end{equation}
-wobei wir im letzten Schritt $\supp(\mathds{P}_X) \subseteq [-a_n, a_n]^d$ und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden der Ungleichung~(\ref{gnmx}) weiterhin abzuschätzen möchten wir Lemma~\ref{lem:5} anwenden. Dafür überprüfen wir, ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten wieder den logistischen squasher $\sigma$ aus Gleichung~\ref{logsquasher}, welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung 
+wobei wir im letzten Schritt $\supp(\mathds{P}_X) \subseteq [-a_n, a_n]^d$ und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ verwendet haben. Um die letzten beiden Summanden der Ungleichung~(\ref{gnmx}) weiterhin abzuschätzen möchten wir Lemma~\ref{lem:5} anwenden. Dafür überprüfen wir, ob dafür alle Voraussetzungen erfüllt sind. Wir betrachten wieder den logistischen Squasher $\sigma$ aus Gleichung~\ref{logsquasher}, welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung 
 \begin{equation*}
 \begin{split}
 R_n & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M_n + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a_n}{|\sigma'(t_{\sigma})|}, \\

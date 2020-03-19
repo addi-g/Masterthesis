@@ -12,16 +12,16 @@ In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt
 Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
 \section{Definition der Netzwerkarchitektur}
-Zunächst fixieren wir die Multiindexnotation, die wir aufgrund der Übersichtlichkeit im weiteren Verlauf dieser Arbeit verwenden werden. Sei $a > 0$ fest und $M \in \N$. 
+Zunächst fixieren wir die Multiindexnotation, die wir der Übersichtlichkeit halber im weiteren Verlauf dieser Arbeit verwenden werden. Sei $a > 0$ fest und $M \in \N$. 
 
 Sei $[M]^d \coloneqq\{0, 1, \dots, M\}^d.$ 
 Für $(\mathbf{i}^{(1)},\dots,\mathbf{i}^{(d)}) = \bi \in [M]^d$ und $x \in \R^d$ definieren wir
-$$|\mathbf{i}|_1 \coloneqq \sum_{k= 1}^d \mathbf{i}^{(k)} \quad \mathbf{i}! \coloneqq \mathbf{i}^{(1)}! \cdots \, \mathbf{i}^{(d)}! \quad x^{\mathbf{i}} \coloneqq x_1^{\mathbf{i}^{(1)}} \cdots \,    x_d^{\mathbf{i}^{(d)}}.$$
+$$|\mathbf{i}|_1 \coloneqq \sum_{k= 1}^d \mathbf{i}^{(k)} \text{, } \quad \mathbf{i}! \coloneqq \mathbf{i}^{(1)}! \cdots \, \mathbf{i}^{(d)}! \quad \text{ und } \quad x^{\mathbf{i}} \coloneqq x_1^{\mathbf{i}^{(1)}} \cdots \,    x_d^{\mathbf{i}^{(d)}}.$$
 Für $f\colon \R^d \to \R$ ausreichend oft differenzierbar definieren wir 
 $$\partial^{\mathbf{i}}f(x) \coloneqq \frac{\partial^{|\mathbf{i}|_1}f}{\partial^{\mathbf{i}^{(1)}} x_1 \cdots \, \partial^{\mathbf{i}^{(d)}} x_d} (x).$$
 Wir betrachten im Folgenden ein $d$-dimensionales äquidistantes Gitter im Würfel $[-a, a]^d$ mit Schrittweite $\frac{2a}{M}.$ 
 %Sei $\bi_1,\dots,\bi_{(M + 1)^d}$ eine Aufzählung der Elemente von $[M]^d$.
-Dann ordnen wir jedem Multiindex $\bi \in [M]^d$ einen Gitterpunkt $x_{\bi}$ mit:
+Dann ordnen wir jedem Multiindex $\bi \in [M]^d$ einen Gitterpunkt
 \begin{equation}
 \label{eq:gitter}
 x_{\bi} = \bigg( -a + \bi^{(1)} \cdot \frac{2a}{M},\dots, -a + \bi^{(d)} \cdot \frac{2a}{M}\bigg) = -\mathbf{a} + \frac{2a}{M} \cdot \bi,
@@ -44,9 +44,9 @@ Sei $a >0$ und $M \in \N$. Dann sind für $\bi \in [M]^d$ und $x \in \R^d$ die F
 $$B_{\bi}(x) = \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+,$$
 B-Splines im $\R^d$, wobei wir unter $x_{\bi}$ die Gitterpunkte aus Gleichung~(\ref{eq:gitter}) verstehen. Dafür sind folgende drei Bedingungen für $x \in \R^d$ zu überprüfen:
 \begin{itemize}
-\item[\textbf{i)}] Zerlegung der Eins: $\sum_{\bi \in [M]^d} B_{\bi}(x) = 1$.
-\item[\textbf{ii)}] Nichtnegativität: $B_{\bi}(x) \geq 0$ für alle $\bi \in [M]^d$.
-\item[\textbf{iii)}] Lokaler Träger: Für $\bi \in [M]^d$ ist $B_{\bi}(x) > 0$ falls $|x^{(j)} - x_{\bi}^{(j)}| < \frac{2a}{M}$ für alle $j \in \{1,\dots,d\}$ gilt und andernfalls $B_{\bi}(x) = 0$.
+\item[\textbf{i)}] \emph{Zerlegung der Eins}: $\sum_{\bi \in [M]^d} B_{\bi}(x) = 1$.
+\item[\textbf{ii)}] \emph{Nichtnegativität}: $B_{\bi}(x) \geq 0$ für alle $\bi \in [M]^d$.
+\item[\textbf{iii)}] \emph{Lokaler Träger}: Für $\bi \in [M]^d$ ist $B_{\bi}(x) > 0$ falls $|x^{(j)} - x_{\bi}^{(j)}| < \frac{2a}{M}$ für alle $j \in \{1,\dots,d\}$ gilt und andernfalls $B_{\bi}(x) = 0$.
 \end{itemize}
 \end{lem}
 \begin{proof}
@@ -171,7 +171,7 @@ f(x) & = T_{x_{\mathbf{i}},q - 1}[f(x)] \\
 & = \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
 \end{split}
 \end{equation}
-Nach der Basispline Eigenschaft aus Gleichung~(\ref{induktiongl1}) erhalten wir 
+Nach der Basisspline Eigenschaft aus Gleichung~(\ref{induktiongl1}) erhalten wir 
 $$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.$$ Zudem wissen wir, dass man immer den Abstand zu den nächsten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist. Daher ergibt sich:
 \begin{equation}
 \label{eq:absch}
@@ -232,46 +232,7 @@ Das neuronale Netz
 \label{def:fid}
 f_{\id}(x) = 4R \cdot \sigma\Big(\frac{x}{R}\Big) - 2R,
 \end{equation}
-welches, wie in Lemma~\ref{lem:1} gezeigt, die Funktion $f(x) = x$ approximiert und in Abbildung~\ref{fig:fid} veranschaulicht wird.
-\begin{figure}[htp]
-\centering
-\begin{tikzpicture}[
-plain/.style={
-  draw=none,
-  fill=none,
-  },
-net/.style={
-  matrix of nodes,
-  nodes={
-    draw,
-    circle,
-    inner sep=6pt
-    },
-  nodes in empty cells,
-  column sep=0.6cm,
-  row sep=-5pt
-  },
->=latex
-]
-\matrix[net] (mat)
-{
-|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1cm}{\centering Hidden\\layer} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
-& & \\
-};
-\foreach \ai [count=\mi ]in {2}
-  \draw[<-] (mat-\ai-1) -- node[above] {$x$} +(-1cm,0);
-\foreach \ai in {2}
-{\foreach \aii in {2}
-  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
-}
-\foreach \ai in {2}
-  \draw[->] (mat-\ai-2) -- (mat-2-3);
-\draw[->] (mat-2-3) -- node[above] {$f_{\id}(x)$} +(2.5cm,0);
-\end{tikzpicture}
-
-\caption{Neuronales Netz $f_{\id}(x)$}
-\label{fig:fid}
-\end{figure}
+welches, wie in Lemma~\ref{lem:1} gezeigt, die Funktion $f(x) = x$ approximiert und in Abbildung~\ref{fig:fid} veranschaulicht wurde.
 
 Das neuronale Netz 
 \begin{equation}
@@ -281,187 +242,19 @@ f_{\mult}(x, y) = \frac{R^2}{4} \cdot \frac{(1 + \exp(- 1))^3}{\exp(-2) - \exp(-
 & - \sigma\Big(\frac{2(x - y)}{R} + 1\Big) + 2 \cdot \sigma\Big(\frac{x - y}{R} + 1\Big)\bigg),
 \end{split}
 \end{equation}
-welches, wie in Lemma~\ref{lem:2} gezeigt, die Funktion $f(x, y) = x \cdot y$ approximiert und in Abbildung~\ref{fig:fmult} veranschaulicht wird.
-\begin{figure}[htp]
-\centering
-\begin{tikzpicture}[
-plain/.style={
-  draw=none,
-  fill=none,
-  },
-net/.style={
-  matrix of nodes,
-  nodes={
-    draw,
-    circle,
-    inner sep=6pt
-    },
-  nodes in empty cells,
-  column sep=0.6cm,
-  row sep=-5pt
-  },
->=latex
-]
-\matrix[net] (mat)
-{
-|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1cm}{\centering Hidden\\layer} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
-|[plain]| &  & |[plain]|\\
-|[plain]| & |[plain]| & |[plain]| \\
-& & |[plain]| \\
-|[plain]| & |[plain]| & \\
-& & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| \\
-|[plain]| &  & |[plain]|\\
-};
-  \draw[<-] (mat-4-1) -- node[above] {$x$} +(-1cm,0);
-  \draw[<-] (mat-6-1) -- node[above] {$y$} +(-1cm,0);
-\foreach \ai in {4,6}
-{\foreach \aii in {2,4,6,8}
-  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
-}
-\foreach \ai in {2,4,6,8}
-  \draw[->] (mat-\ai-2) -- (mat-5-3);
-\draw[->] (mat-5-3) -- node[above] {$f_{\mult}(x, y)$} +(2.5cm,0);
-\end{tikzpicture}
-
-\caption{Neuronales Netz $f_{\mult}(x, y)$}
-\label{fig:fmult}
-\end{figure}
+welches, wie in Lemma~\ref{lem:2} gezeigt, die Funktion $f(x, y) = x \cdot y$ approximiert und in Abbildung~\ref{fig:fmult} veranschaulicht wurde.
 
 Das neuronale Netz 
 \begin{equation}
 \label{def:frelu}
 f_{ReLu}(x) = f_{\mult}(f_{\id}(x), \sigma(R \cdot x)),
 \end{equation}
-welches, wie in Lemma~\ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und in Abbildung~\ref{fig:frelu} veranschaulicht wird
-\begin{figure}[htp]
-\centering
-\begin{tikzpicture}[
-plain/.style={
-  draw=none,
-  fill=none,
-  },
-net/.style={
-  matrix of nodes,
-  nodes={
-    draw,
-    circle,
-    inner sep=6pt
-    },
-  nodes in empty cells,
-  column sep=0.6cm,
-  row sep=-5pt
-  },
->=latex
-]
-\matrix[net] (mat)
-{
-|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 1} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 2} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
-|[plain]| & |[plain]| &  & |[plain]|\\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & & & |[plain]| \\
-& |[plain]| & |[plain]| & \\
-|[plain]| & & & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & |[plain]| &  & |[plain]|\\
-};
-  \draw[<-] (mat-5-1) -- node[above] {$x$} +(-1cm,0);
-\foreach \ai in {5}
-{\foreach \aii in {4,6}
-  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
-}  
-\foreach \ai in {4,6}
-{\foreach \aii in {2,4,6,8}
-  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
-}
-\foreach \ai in {2,4,6,8}
-  \draw[->] (mat-\ai-3) -- (mat-5-4);
-\draw[->] (mat-5-4) -- node[above] {$f_{\ReLU}(x, y)$} +(2.5cm,0);
-\end{tikzpicture}
-
-\caption{Neuronales Netz $f_{\ReLU}(x)$}
-\label{fig:frelu}
-\end{figure}
-und schließlich das neuronale Netz 
+welches, wie in Lemma~\ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und in Abbildung~\ref{fig:frelu} veranschaulicht wurde und schließlich das neuronale Netz 
 \begin{equation}
 \label{def:fhat}
 f_{\mathrm{hat},y}(x) = f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) +  f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg),
 \end{equation}
-welches, wie in Lemma~\ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung~\ref{fig:fhat} veranschaulicht wird.
-\begin{figure}[htp]
-\centering
-\begin{tikzpicture}[
-plain/.style={
-  draw=none,
-  fill=none,
-  },
-net/.style={
-  matrix of nodes,
-  nodes={
-    draw,
-    circle,
-    inner sep=6pt
-    },
-  nodes in empty cells,
-  column sep=0.6cm,
-  row sep=-5pt
-  },
->=latex
-]
-\matrix[net] (mat)
-{
-|[plain]| \parbox{1cm}{\centering Input\\layer} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 1} & |[plain]| \parbox{1.5cm}{\centering Hidden\\layer 2} & |[plain]| \parbox{1cm}{\centering Output\\layer} \\
-|[plain]| & |[plain]| &  & |[plain]|\\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & & & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & & & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & |[plain]| &  & |[plain]|\\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & |[plain]| &  & |[plain]|\\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & & & |[plain]| \\
-& |[plain]| & |[plain]| & \\
-|[plain]| & & & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & |[plain]| &  & |[plain]|\\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & |[plain]| &  & |[plain]|\\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & & & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & & & |[plain]| \\
-|[plain]| & |[plain]| & |[plain]| & |[plain]| \\
-|[plain]| & |[plain]| &  & |[plain]|\\
-};
-  \draw[<-] (mat-14-1) -- node[above] {$x$} +(-1cm,0);
-\foreach \ai in {14}
-{\foreach \aii in {4,6,13,15,22,24}
-  \draw[->] (mat-\ai-1) -- (mat-\aii-2);
-}  
-\foreach \ai in {4,6}
-{\foreach \aii in {2,4,6,8}
-  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
-}
-\foreach \ai in {13,15}
-{\foreach \aii in {11,13,15,17}
-  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
-}
-\foreach \ai in {22,24}
-{\foreach \aii in {20,22,24,26}
-  \draw[->] (mat-\ai-2) -- (mat-\aii-3);
-}
-\foreach \ai in {2,4,6,8,11,13,15,17,20,22,24,26}
-  \draw[->] (mat-\ai-3) -- (mat-14-4);
-\draw[->] (mat-14-4) -- node[above] {$f_{\mathrm{\mathrm{hat}},y}(x)$} +(2.5cm,0);
-\end{tikzpicture}
-
-\caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x)$}
-\label{fig:fhat}
-\end{figure} 
+welches, wie in Lemma~\ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung~\ref{fig:fhat} veranschaulicht wurde.
 
 Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N > q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $\bj \in [N]^d$, $\bi \in [M]^d$ und $k \in \{1,\dots,(M + 1)^d\}$:  
 \begin{align}
