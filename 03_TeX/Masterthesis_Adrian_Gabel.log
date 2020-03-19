@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  19 MAR 2020 12:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  19 MAR 2020 13:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1497,7 +1497,11 @@ Overfull \hbox (1.82724pt too wide) detected at line 139
 []
  []
 
-[26] [27] [28] [29] [30] [31] [32] [33]) [34]
+[26] [27]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [28]
+[29] [30] [31] [32] [33] [34]) [35]
 \openout2 = `chap3.aux'.
 
  (./chap3.tex
@@ -1506,15 +1510,15 @@ LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
 7.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [35
+) [36
 
 
 
 ]
 
-LaTeX Warning: Citation `györfi2002' on page 36 undefined on input line 28.
+LaTeX Warning: Citation `györfi2002' on page 37 undefined on input line 28.
 
-[36] [37]
+[37] [38]
 Overfull \hbox (14.6357pt too wide) in paragraph at lines 112--113
 []\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
 /n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
@@ -1523,50 +1527,50 @@ MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
 \OML/ztmcm/m/it/12 f[]; [] ; f[] [] [] \U/msb/m/n/12 R[] \OMS/ztmcm/m/n/12 !
  []
 
-[38]
+[39]
 Overfull \hbox (26.27444pt too wide) in paragraph at lines 139--140
 []\T1/ptm/m/n/12 (-20) Das nächs-te Lem-ma be-nö-ti-gen wir um ei-ne Schran-ke 
 für die Über-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OMS
 /ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
  []
 
-[39] [40]
+[40]
+
+LaTeX Warning: Reference `OPTSTOP' on page 41 undefined on input line 169.
+
+[41]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+ [42]
 
-
-LaTeX Warning: Reference `OPTSTOP' on page 41 undefined on input line 204.
-
-[41] [42]
-
-LaTeX Warning: Reference `OPTSTOP' on page 43 undefined on input line 272.
+LaTeX Warning: Reference `OPTSTOP' on page 43 undefined on input line 242.
 
 [43] [44]
 
-LaTeX Warning: Reference `OPTSTOP' on page 45 undefined on input line 327.
+LaTeX Warning: Reference `OPTSTOP' on page 45 undefined on input line 306.
 
-[45]
+[45] [46]
 Underfull \vbox (badness 3281) has occurred while \output is active []
 
- [46]
+
+
+LaTeX Warning: Reference `OPTSTOP' on page 47 undefined on input line 364.
+
+[47]
 Underfull \vbox (badness 3701) has occurred while \output is active []
 
+ [48]
 
+LaTeX Warning: Reference `OPTSTOP' on page 49 undefined on input line 415.
 
-LaTeX Warning: Reference `OPTSTOP' on page 47 undefined on input line 392.
-
-[47] [48])
-
-LaTeX Warning: Reference `OPTSTOP' on page 49 undefined on input line 43.
-
-[49]
+[49]) [50]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
 Kapitel 4.
-[50
+[51
 
 
 
@@ -1587,15 +1591,15 @@ Overfull \hbox (7.12672pt too wide) in paragraph at lines 76--91
  [][] 
  []
 
-) [51] [52]
+) [52] [53]
 \openout2 = `literaturverzeichnis.aux'.
 
  (./literaturverzeichnis.tex (./Masterthesis_Adrian_Gabel.bbl
-[53
+[54
 
 
 
-])) [54]
+])) [55]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -1613,14 +1617,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (../01_Code/main.py
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
- [55
+ [56
 
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [56]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [57]
@@ -1629,21 +1630,24 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [58]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [59])
-(../01_Code/data_gen.py [60]
+ [59]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [61])
-(../01_Code/help_neural_networks.py [62]) (../01_Code/new_neural_network.py
-[63]
+ [60])
+(../01_Code/data_gen.py [61]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [64]
+ [62])
+(../01_Code/help_neural_networks.py [63]) (../01_Code/new_neural_network.py
+[64]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [65])
-(../01_Code/fc_neural_network.py [66]) (../01_Code/nearest_neighbor.py)
-(../01_Code/constant.py [67])) [68]
+ [65]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [66])
+(../01_Code/fc_neural_network.py [67]) (../01_Code/nearest_neighbor.py)
+(../01_Code/constant.py [68])) [69]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
  (./Masterthesis_Adrian_Gabel.aux
@@ -1661,9 +1665,9 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 45532 strings out of 492162
- 961374 string characters out of 6125292
- 1369008 words of memory out of 5000000
+ 45534 strings out of 492162
+ 961390 string characters out of 6125292
+ 1369832 words of memory out of 5000000
  47858 multiletter control sequences out of 15000+600000
  111966 words of font info for 358 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1690,9 +1694,9 @@ s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/u
 tmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (68 pages, 615271 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (69 pages, 616017 bytes).
 PDF statistics:
- 1556 PDF objects out of 1728 (max. 8388607)
- 837 named destinations out of 1000 (max. 500000)
+ 1560 PDF objects out of 1728 (max. 8388607)
+ 839 named destinations out of 1000 (max. 500000)
  53902 words of extra memory for PDF output out of 61914 (max. 10000000)
 
