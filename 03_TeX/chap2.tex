@@ -163,11 +163,11 @@ Sei $M \in \N$, $c > 0$, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p
 $$\sup_{x \in [-a, a]^d} |f(x) - P_f(x)|  \leq c \cdot \bigg(\frac{a}{M}\bigg)^p.$$
 \end{lem}
 \begin{proof}
-Nach Lemma~\ref{lem:lagrange} über die Lagrange Form des Restglieds existiert ein $\xi \in [0, 1],$ so, dass 
+Nach Lemma~\ref{lem:lagrange} \textbf{i)} über die Lagrange Form des Restglieds existiert ein $\xi \in [0, 1],$ so, dass 
 \begin{equation}
 \label{eq:lagrange}
 \begin{split}
-f(x) & = T_{x_{\mathbf{i}},q - 1}[f(x)] \\
+f(x) & = T_{q - 1}f(x; x_{\mathbf{i}}) + R_q(x; x_{\mathbf{i}})\\
 & = \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi} + \xi(x - x_{\bi})) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
 \end{split}
 \end{equation}
@@ -279,7 +279,7 @@ Die Anzahl der Neuronen pro verborgener Schicht von $f_{\net,\bj,\bi}$ ergeben s
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
 \item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2^{s+ 1}, 2^s, \dots, 2^3, 2^2$ Neuronen, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
 \end{itemize}  
-Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ in der der Klasse aller fully connected neuronaler Netze, mit $s + 2$ verbogenen Schichten mit jeweils $24 \cdot (N + d)$ Neuronen pro Schicht, da die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ ist. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
+Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ nach Definition~\ref{def:nn} in $\mathfrak{N}(s + 2,\{24 \cdot (N + d)\}^{s + 2},\sigma)$, da die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ ist. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
 
 \section{Definition der Gewichte der Ausgabeschicht}
 \label{subsec:2.2}

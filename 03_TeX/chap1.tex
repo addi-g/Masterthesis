@@ -120,8 +120,9 @@ In obiger Definition versteht man unter:
 \item $\bk = (k_1,\dots,k_L) \in \N^L$ einen Vektor, der die Anzahl an Neuronen in jeder verborgenen Schicht angibt.
 \end{itemize}
 \end{bemnumber}
-Da wir bei Neuronale-Netze-Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output. Wie wir an der Konstruktion des neuronalen Netzes erkennen kann, nehmen wir in der Ausgabeschicht die Identität als Aktivierungsfunktion.
+Da wir bei Neuronale-Netze-Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output. Wie wir an der Konstruktion des neuronalen Netzes erkennen können, nehmen wir in der Ausgabeschicht die Identität als Aktivierungsfunktion.
 %Es wäre auch möglich für jede Schicht eine andere Aktivierungsfunktion zu wählen. In dieser Arbeit beschränken wir uns nur auf den Fall, in welchem wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
+
 Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$~verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
 \begin{center}
     \begin{figure}
@@ -277,14 +278,18 @@ Als nächstes stellen wir ein Resultat zur Restgliedabschätzung vor, welches wi
 
 \textbf{\emph{i)}} Sei $U \subseteq \R^d$ und $f\colon U \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in U$ Punkte, deren Verbindungsstrecke in $U$ liegt, so gilt:
 $$ f(x) = T_Nf(x;u) + R_{N + 1}(x;u),$$
-wobei das Restglied mit einem geeigneten Punkt $\xi \in [u;x]$ in der Form 
+wobei
+$$
+T_N(f;u) \coloneqq \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!} (x - u)^k,
+$$
+das \emph{Taylorpolynom der Ordnung $N$} von $f$ in $a$ ist und das Restglied mit einem geeigneten Punkt $\xi \in [u,x]$ in der Form 
 $$ R_{N + 1}(x;u) = \frac{f^{(N + 1)}}{(N + 1)!} (x - u)^{N + 1}$$
 dargestellt werden kann.
 
 \textbf{\emph{ii)}} Sei $I \subseteq \R$ ein Intervall und $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi$ zwischen $u$ und $x$, so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
 \end{lem}
 Es folgen nun drei Approximationsresultate welche wir in Kapitel~\ref{chap:2} für die Konstruktion unseres Neuronale-Netze-Regressionschätzers benötigen werden.
-Wir betrachten erst eine Approximation der Identität durch das neuronale Netz $f_{\id}$ welches in Abbildung~\ref{fig:fid} veranschaulicht wird und anschließend die Approximation eines Quadrats auf einem Intervall durch das neuronale Netz $f_{\sq}$.
+Wir betrachten erst eine Approximation der Identität durch das neuronale Netz $f_{\id}$ mit Architektur $(1,(1))$ welches in Abbildung~\ref{fig:fid} veranschaulicht wird und anschließend die Approximation eines Quadrats auf einem Intervall durch das neuronale Netz $f_{\sq}$.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -321,7 +326,7 @@ net/.style={
 \draw[->] (mat-2-3) -- node[above] {$f_{\id}(x)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\id}(x)$}
+\caption{Neuronales Netz $f_{\id}(x)$ mit Architektur $(1,(1))$.}
 \label{fig:fid}
 \end{figure}
  
@@ -380,7 +385,7 @@ Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
  	\end{itemize}
  	Daraus folgt die Behauptung.
 \end{proof}
-Wir betrachten als nächstes die Approximation einer Multiplikation zweier Werte auf einem Intervall durch das neuronale Netz $f_{\mult}$ welches in Abbildung~\ref{fig:fmult} veranschaulicht wird.
+Wir betrachten als nächstes die Approximation einer Multiplikation zweier Werte auf einem Intervall durch das neuronale Netz $f_{\mult}$ mit Architektur $(1,(4))$ welches in Abbildung~\ref{fig:fmult} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -423,7 +428,7 @@ net/.style={
 \draw[->] (mat-5-3) -- node[above] {$f_{\mult}(x, y)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\mult}(x, y)$}
+\caption{Neuronales Netz $f_{\mult}(x, y)$ mit Architektur $(1,(4))$.}
 \label{fig:fmult}
 \end{figure}
 
@@ -452,7 +457,7 @@ net/.style={
 \end{equation*}   
 wobei wir bei der letzten Ungleichung Lemma~\ref{lem:1}b) mit $x + y, x - y \in [-2a, 2a]$ verwendet haben. Daher folgt insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{\sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}$$ gilt. 
   \end{proof}
-Wir betrachten als nächstes die Approximation der Maximumsfunktion $\max\{x, 0\}$ für $x$ aus einem Intervall, durch das neuronale Netz $f_{\ReLU}$  Abbildung~\ref{fig:frelu} veranschaulicht wird.
+Wir betrachten als nächstes die Approximation der Maximumsfunktion $\max\{x, 0\}$ für $x$ aus einem Intervall, durch das neuronale Netz $f_{\ReLU}$ mit Architektur $(2,(2,4))$ Abbildung~\ref{fig:frelu} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -498,7 +503,7 @@ net/.style={
 \draw[->] (mat-5-4) -- node[above] {$f_{\ReLU}(x, y)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\ReLU}(x)$}
+\caption{Neuronales Netz $f_{\ReLU}(x)$ mit Architektur $(2,(2,4))$.}
 \label{fig:frelu}
 \end{figure}
 
@@ -566,7 +571,7 @@ Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Definition des N
 \end{equation*}
 Daraus folgt die Behauptung.
   \end{proof}
-Wir betrachten als nächstes die Approximation des Positivteils einer Funktion auf einer Intervall durch das neuronale Netz $f_{\mathrm{hat},y}$ welches Abbildung~\ref{fig:fhat} veranschaulicht wird.
+Wir betrachten als nächstes die Approximation des Positivteils einer Funktion auf einer Intervall durch das neuronale Netz $f_{\mathrm{hat},y}$ mit Architektur $(2, (6, 12))$ welches Abbildung~\ref{fig:fhat} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -638,7 +643,7 @@ net/.style={
 \draw[->] (mat-14-4) -- node[above] {$f_{\mathrm{\mathrm{hat}},y}(x)$} +(2.5cm,0);
 \end{tikzpicture}
 
-\caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x)$}
+\caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x)$ mit Architektur $(2, (6, 12))$.}
 \label{fig:fhat}
 \end{figure} 
 
