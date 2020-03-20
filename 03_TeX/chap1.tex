@@ -112,7 +112,7 @@ f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{
 für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$,
 weiterhin sei $\mathfrak{N}(L, \bk, \sigma)$ die Klasse aller mehrschichtigen feedforward neuronalen Netze mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$.
 \end{defn}
-Wir werden ab jetzt der Einfachheit halber nur noch von neuronalen Netzen mit Architektur $(L,\bk)$ reden und beziehen uns damit immer auf Definition~\ref{def:nn}.
+Wir werden ab jetzt der Einfachheit halber nur noch von neuronalen Netzen mit Architektur $(L,\bk)$ reden und beziehen uns damit immer auf Definition~\ref{def:nn}. Wenn aus dem Kontext Netzwerkarchitektur bereits bekannt ist sprechen wir nur noch von einem neuronalen Netz, beziehen uns damit aber dennoch auf Definition~\ref{def:nn}.
 \begin{bemnumber}
 In obiger Definition versteht man unter:
 \begin{itemize}
@@ -183,7 +183,7 @@ Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
             }
             \draw[->] (mat-10-5) -- node[above] {\small Output $n_{\mathrm{out}}$} +(2.5cm,0);
         \end{tikzpicture}
-        \caption{Fully connected feedforward neuronales Netz mit einer Eingabeschicht mit $n_{\mathrm{in}}$ Neuronen, $n_{\mathrm{lyr}}$ vielen verborgenen Schichten dessen Anzahl an Neuronen variieren kann und einer Ausgabeschicht bestehend aus $n_{\mathrm{out}}$ Neuronen.}
+        \caption{Fully connected feedforward neuronales Netz mit einer Eingabeschicht mit $n_{\mathrm{in}}$ Neuronen, $n_{\mathrm{lyr}}$ vielen verborgenen Schichten, deren Anzahl an Neuronen variieren kann und einer Ausgabeschicht bestehend aus $n_{\mathrm{out}}$ Neuronen.}
         \label{fig:DNN}
     \end{figure}
 \end{center}
@@ -228,7 +228,7 @@ Mit der Leibnizregel aus der Differentialrechnung erhalten wir:
 \frac{\partial^n\sigma}{\partial x^n} = \frac{\partial^{n - 1}}{\partial x^{n - 1}}\bigg((1 - \sigma(x)) \cdot \sigma(x)\bigg) = \sum_{k = 0}^{n-1}\binom{n - 1}{k}(1 - \sigma(x))^{(n - 1 - k)}  \sigma(x)^{(k)} 
 \end{equation}
 für $n = 1,\dots,N$. 
-Damit erkennen wir, dass alle Ableitungen von $\sigma$, Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist, und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren, ebenfalls beschränkt ist. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist wissen wir, dass $\sigma$ lipschitzstetig ist.
+Damit erkennen wir, dass alle Ableitungen von $\sigma$, Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist, und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren, ebenfalls beschränkt ist. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist, wissen wir, dass $\sigma$ lipschitzstetig ist.
 
 Nun kommen wir zum Beweis von Bedingung (ii). 
 Da für alle $x \in \R$ $\sigma(x) > 0$ gilt, bleibt dies auch bei Potenzen und positiven Linearkombinationen erhalten. Daher wissen wir durch Gleichung~(\ref{eq:leibniz}), dass ein $t_{\sigma} \in \R$ existiert, mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
@@ -273,7 +273,8 @@ $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x
 Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt und unsere Aussage bewiesen.
 \end{proof}
 Als nächstes stellen wir ein Resultat zur Restgliedabschätzung vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
-\begin{lem}[Lagrangesche Form des Restglieds, Kapitel 2.4 Seite 67 \cite{Königsberger2013}]
+
+\begin{lem}[Lagrangesche Form des Restglieds, {\cite[Kapitel 2.4 Seite 67]{Königsberger2013}}]
 \label{lem:lagrange}
 
 \textbf{\emph{i)}} Sei $U \subseteq \R^d$ und $f\colon U \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in U$ Punkte, deren Verbindungsstrecke in $U$ liegt, so gilt:
@@ -282,14 +283,14 @@ wobei
 $$
 T_N(f;u) \coloneqq \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!} (x - u)^k,
 $$
-das \emph{Taylorpolynom der Ordnung $N$} von $f$ in $a$ ist und das Restglied mit einem geeigneten Punkt $\xi \in [u,x]$ in der Form 
-$$ R_{N + 1}(x;u) = \frac{f^{(N + 1)}}{(N + 1)!} (x - u)^{N + 1}$$
+das \emph{Taylorpolynom der Ordnung $N$} von $f$ in $a$ ist und das Restglied mit einem geeigneten Punkt $\xi$ auf der Verbindungsstrecke zwischen $u$ und $x$, in der Form 
+$$ R_{N + 1}(x;u) = \frac{f^{(N + 1)}(\xi)}{(N + 1)!} (x - u)^{N + 1}$$
 dargestellt werden kann.
 
 \textbf{\emph{ii)}} Sei $I \subseteq \R$ ein Intervall und $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi$ zwischen $u$ und $x$, so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
 \end{lem}
-Es folgen nun drei Approximationsresultate welche wir in Kapitel~\ref{chap:2} für die Konstruktion unseres Neuronale-Netze-Regressionschätzers benötigen werden.
-Wir betrachten erst eine Approximation der Identität durch das neuronale Netz $f_{\id}$ mit Architektur $(1,(1))$ welches in Abbildung~\ref{fig:fid} veranschaulicht wird und anschließend die Approximation eines Quadrats auf einem Intervall durch das neuronale Netz $f_{\sq}$.
+Es folgen nun drei Approximationsresultate, welche wir in Kapitel~\ref{chap:2} für die Konstruktion unseres Neuronale-Netze-Regressionschätzers benötigen werden.
+Wir betrachten erst eine Approximation der Identität durch das neuronale Netz $f_{\id}\colon \R \to \R$ mit Architektur~$(1,(1))$, welches in Abbildung~\ref{fig:fid} veranschaulicht wird und anschließend die Approximation eines Quadrats auf einem Intervall durch das neuronale Netz $f_{\sq}\colon \R \to \R$ mit Architektur~$(1,(2))$.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -332,7 +333,7 @@ net/.style={
  
 \begin{lem}
   \label{lem:1}
-  Sei $\sigma \colon \R \to \R$ eine Funktion, $\|\cdot\|_{\infty}$ die Supremumsnorm auf $[-a, a]$ und $R$, $a > 0$.
+  Sei $\sigma \colon \R \to \R$ eine Funktion, $R, a > 0$ und $\|\cdot\|_{\infty}$ die Supremumsnorm auf $[-a, a]$.
   \begin{itemize}
   \item[a)] Angenommen $\sigma$ ist zweimal stetig differenzierbar und $t_{\sigma,\id} \in \R$ so, dass $\sigma'(t_{\sigma, \id}) \neq 0$ ist. Dann gilt für das neuronale Netz
   $$ f_{\id}(x) = \frac{R}{\sigma'(t_{\sigma, \id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, \id}\right) - \sigma(t_{\sigma, \id})\right)$$
@@ -361,7 +362,7 @@ Mit $f_{\id}(0) = 0$ und $f_{\id}'(0) = 1$ erhalten wir:
   	& \leq \frac{\| \sigma'' \|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, \id})|} \cdot \frac{1}{R},
   	\end{split}
   	\end{equation*}
-  	wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm ergibt. Zudem folgt $x^2 \leq a^2$ aus $x \in [-a,a] \Leftrightarrow -a \leq x \leq a$ durch Quadrieren der Ungleichung folgt.
+  	wobei sich die letzte Ungleichung aus den Eigenschaften der Supremumsnorm und $x^2 \leq a^2$ ergibt, was aus $x \in [-a,a]$ folgt. Daraus erhalten wir die Behauptung.
   	\item[b)]  Die Funktion $f_{\sq}$ ist dreimal differenzierbar, da $\sigma$ nach Voraussetzung dreimal stetig differenzierbar ist. Wie in a) folgt durch Lemma~\ref{lem:lagrange} mit $f = f_{\sq}, N = 2, u = 0$ und $I = [-a, a]$, dass ein $\xi$ zwischen $0$ und $x$ existiert, so dass:
 $$f_{\sq}(x) = \sum_{k = 0}^2 \frac{f_{\sq}^{(k)}(0)}{k!}x^k + \frac{f_{\sq}^{(3)}(\xi)}{3!}x^{3}.$$
 Es gilt:
@@ -385,7 +386,7 @@ Mit $f_{\sq}(0) = 0$, $f_{\sq}'(0) = 0$ und $f_{\sq}''(0) = 2$ erhalten wir:
  	\end{itemize}
  	Daraus folgt die Behauptung.
 \end{proof}
-Wir betrachten als nächstes die Approximation einer Multiplikation zweier Werte auf einem Intervall durch das neuronale Netz $f_{\mult}$ mit Architektur $(1,(4))$ welches in Abbildung~\ref{fig:fmult} veranschaulicht wird.
+Wir betrachten als Nächstes die Approximation einer Multiplikation zweier Werte auf einem Intervall durch das neuronale Netz $f_{\mult}\colon \R^2 \to \R$ mit Architektur $(1,(4))$, welches in Abbildung~\ref{fig:fmult} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -455,9 +456,9 @@ net/.style={
   & = \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R},
   \end{split}
 \end{equation*}   
-wobei wir bei der letzten Ungleichung Lemma~\ref{lem:1}b) mit $x + y, x - y \in [-2a, 2a]$ verwendet haben. Daher folgt insbesondere für beliebiges $x \in [-2a,2a]$ $$ |f_{\sq}(x) - x^2| \leq \frac{40 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}$$ gilt. 
+wobei wir bei der letzten Ungleichung Lemma~\ref{lem:1}b) mit $x + y, x - y \in [-2a, 2a]$ verwendet haben. Daraus folgt die Behauptung.
   \end{proof}
-Wir betrachten als nächstes die Approximation der Maximumsfunktion $\max\{x, 0\}$ für $x$ aus einem Intervall, durch das neuronale Netz $f_{\ReLU}$ mit Architektur $(2,(2,4))$ Abbildung~\ref{fig:frelu} veranschaulicht wird.
+Wir betrachten als nächstes die Approximation der Maximumsfunktion $\max\{x, 0\}$ für $x$ aus einem Intervall, durch das neuronale Netz $f_{\ReLU}\colon \R \to \R$ mit Architektur $(2,(2,4))$, welches in Abbildung~\ref{fig:frelu} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -571,7 +572,7 @@ Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Definition des N
 \end{equation*}
 Daraus folgt die Behauptung.
   \end{proof}
-Wir betrachten als nächstes die Approximation des Positivteils einer Funktion auf einer Intervall durch das neuronale Netz $f_{\mathrm{hat},y}$ mit Architektur $(2, (6, 12))$ welches Abbildung~\ref{fig:fhat} veranschaulicht wird.
+Wir betrachten als nächstes die Approximation des Positivteils einer Funktion auf einem Intervall durch das neuronale Netz $f_{\mathrm{hat},y}\colon \R \to \R$ mit Architektur $(2, (6, 12))$, welches in Abbildung~\ref{fig:fhat} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -646,7 +647,6 @@ net/.style={
 \caption{Neuronales Netz $f_{\mathrm{\mathrm{hat}},y}(x)$ mit Architektur $(2, (6, 12))$.}
 \label{fig:fhat}
 \end{figure} 
-
   \begin{lem}
   \label{lem:4}
   Sei $M \in \N$ und sei $\sigma\colon \R \to [0, 1]$ 2-zulässig. Sei $a > 0$ und $$R \geq \frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|},$$ sei $y \in [-a, a]$ und $f_{\ReLU}$ das neuronale Netz aus Lemma~\ref{lem:3}. Dann erfüllt das neuronale Netz 
@@ -673,7 +673,7 @@ die wir im zweiten Teil dieses Beweises zeigen werden. Damit beweisen wir das Re
 & \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R},
 \end{split}
 \end{equation*} 
-wobei die letzte Ungleichung daraus folgt, dass wir auf jeden Summanden Lemma~\ref{lem:3} mit $$1 \leq a = M + 1$$ angewendet habe, da aus $x , y \in [-a, a]$ folgt, dass $\frac{M}{2a}\cdot (x - y) \in [-M, M]$ gilt. Schließlich haben wir
+wobei die letzte Ungleichung daraus folgt, dass wir auf jeden Summanden Lemma~\ref{lem:3} mit $$1 \leq a = M + 1$$ angewendet haben, da aus $x , y \in [-a, a]$ folgt, dass $\frac{M}{2a}\cdot (x - y) \in [-M, M]$ gilt. Schließlich haben wir
 $$ (M + 1)^3 \leq (2M)^3 = 8M^3$$ verwendet, da $M \geq 1$ ist. $\hfill(\square)$
 
 Um Gleichung~(\ref{lem:4:eq}) zu zeigen unterscheiden wir vier Fälle.
@@ -684,7 +684,7 @@ Um Gleichung~(\ref{lem:4:eq}) zu zeigen unterscheiden wir vier Fälle.
  \item[Fall 1.2] ($x < -\frac{2a}{M}$) In diesem Fall sind beide Seiten gleich 0, da $1 + \frac{M}{2a} \cdot x \leq 0$ ist. $\hfill(\square)$
   \item[Fall 2] ($x \geq 0$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}$$ und erfordert daher eine weitere Fallunterscheidung.
  \item[Fall 2.1] ($0 \leq x < \frac{2a}{M}$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) die Gestalt $$1 - \frac{M}{2a} \cdot x$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a} \cdot x$$ und stimmt daher mit der linken Seite überein.
- \item[Fall 2.2] ($x \geq \frac{2a}{M}$) In diesem Fall ist die linke Seite von Gleichung~(\ref{lem:4:eq}) gleich 0, da $1 - \frac{M}{2a} \cdot x < 0$ ist und die rechte Seite besitzt die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0.$$ $\hfill(\square)$
+ \item[Fall 2.2] ($x \geq \frac{2a}{M}$) In diesem Fall ist die linke Seite von Gleichung~(\ref{lem:4:eq}) gleich 0, da $1 - \frac{M}{2a} \cdot x < 0$ ist und die rechte Seite besitzt die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0. $$ $\hfill(\square)$
 \end{itemize} 
 Durch diese Fallunterscheidung wurde die Gleichung~(\ref{lem:4:eq}) bewiesen und damit ist der Beweis vollständig.
   \end{proof}
@@ -697,3 +697,5 @@ $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k}.
 \begin{proof}
 Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$ Kugeln, die wir mit $1,\dots,d$ beschriften. Wir ziehen $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren so einen Vektor $\bj = (j_1,\dots,j_d)$ aus der Menge mit $|\bj|_1 = k$. Der Koeffizient $j_i$ mit $i= 1,\dots,d$ gibt an wie oft die Kugel mit der Nummer $i$ gezogen wurde. Damit stimmt die Kardinalität der Menge auf der linken Seite mit der Anzahl aller Möglichkeiten überein die man erhält, wenn man $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge zieht.
 \end{proof}
+
+Im nächsten Kapitel werden wir jetzt die hier einführten NN als Bausteine verwenden um unseren NN-Schätzer zu konstruieren.

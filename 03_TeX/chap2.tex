@@ -41,8 +41,8 @@ Wir zeigen mithilfe des folgenden Lemmas, dass $P_m(x)$ eine lokale Spline Inter
 \begin{lem}
 \label{lem:loccon}
 Sei $a >0$ und $M \in \N$. Dann sind für $\bi \in [M]^d$ die Funktionen 
-$$B_{\bi}(x) = \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \text{ für } x \in \R^d$$
-B-Splines im $\R^d$, wobei wir unter $x_{\bi}$ die Gitterpunkte aus Gleichung~(\ref{eq:gitter}) verstehen. Dafür sind folgende drei Bedingungen für $x \in \R^d$ zu überprüfen:
+$$B_{\bi}(x) = \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \text{ für } x \in [-a, a]^d,$$
+mit $x_{\bi}$ als Gitterpunkte aus Gleichung~(\ref{eq:gitter}), B-Splines auf $[-a, a]^d$, für die die folgenden drei Bedingungen gelten:
 \begin{itemize}
 \item[\textbf{i)}] \emph{Zerlegung der Eins}: $\sum_{\bi \in [M]^d} B_{\bi}(x) = 1$ für $x \in [-a, a]$.
 \item[\textbf{ii)}] \emph{Nichtnegativität}: $B_{\bi}(x) \geq 0$ für alle $\bi \in [M]^d$.
@@ -100,7 +100,7 @@ Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten, die den $x_{\mathbf{i}_k}$ ents
 \emph{\textbf{i)}} Im Folgenden wollen wir 
 \begin{equation}
 \label{induktiongl1}
-\sum_{\bi \in [M]^d} B_{\bi}(x) = 1 \text{ für } x \in [-a , a]
+\sum_{\bi \in [M]^d} B_{\bi}(x) = 1 \text{ für } x \in [-a , a]^d
 \end{equation}
 per Induktion über $d$ zeigen. 
 	
@@ -161,7 +161,7 @@ $$\sup_{x \in [-a, a]^d} |f(x) - P_f(x)|  \leq c \cdot \bigg(\frac{a}{M}\bigg)^p
 mit einer Konstante $c$, die von $p, d, s$ und $C$ abhängt.
 \end{lem}
 \begin{proof}
-Nach Lemma~\ref{lem:lagrange} \textbf{i)} über die Lagrange Form des Restglieds existiert ein $\xi$ zwischen $x_{\bi}$ und $x$, so, dass 
+Nach Lemma~\ref{lem:lagrange} \textbf{i)} über die Lagrange Form des Restglieds existiert ein $\xi$ auf der Verbindungsstrecke zwischen $x_{\bi}$ und $x$, so, dass 
 \begin{equation}
 \label{eq:lagrange}
 \begin{split}
@@ -181,8 +181,7 @@ Mithilfe der Dreiecksungleichung und der Konstruktion von $P_f(x)$ erhalten wir:
 \begin{equation}
 \label{eq:drei}
 \begin{split}
-& |f(x) - P_f(x)| \\
-& \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.
+|f(x) - P_f(x)| \leq \sum_{\bi \in [M]^d} \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.
 \end{split}
 \end{equation}
 Nach Gleichung~(\ref{eq:lagrange}) erhalten wir:
@@ -214,7 +213,7 @@ Fassen wir die Gleichungen~(\ref{eq:drei}), (\ref{eq:sum}) und (\ref{eq:last}) z
 \end{equation*}
 wobei wir bei der letzten Ungleichung die Eingenschaft der Zerlegung der Eins aus Gleichung~(\ref{induktiongl1}) und $q + s = p$ verwendet haben, mit 
 $$c = 2^p \cdot d^{s/2} \cdot C.$$
-Wenden wir schließlich noch das Supremum über $x \in [-a, a]$ an, erhalten wir die Behauptung.
+Bilden wir schließlich noch das Supremum über $x \in [-a, a]^d$, erhalten wir die Behauptung.
 \end{proof}
 
 Durch geeignet gewählte $a_{\bi, \bj} \in \R$ lässt sich $P_m(x)$ in die Form 
@@ -295,7 +294,7 @@ wobei $n$ die Größe unserer gegebenen Datenmenge~(\ref{dataset}) ist und wir d
 \varphi(a_{\bi,\bj}) & \coloneqq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c}{n} \cdot \|(a_{\bi,\bj})\|_2^2
 \end{split}
 \end{equation}
-für Regularitätsterm $\lambda\|(a_{\bi,\bj})\|_2^2$ mit einer von $n$ unabhängigen Konstante $c > 0$ erhalten. 
+für Regularitätsterm $\frac{c}{n}\|(a_{\bi,\bj})\|_2^2$ mit einer von $n$ unabhängigen Konstante $c > 0$ erhalten. 
 
 Wir wollen Gleichung~(\ref{min}) als Gleichungssystem darstellen. Dafür definieren wir uns die Menge 
 \begin{align*} 
@@ -351,7 +350,7 @@ Der Schätzer aus Gleichung~(\ref{estimate}) lässt sich umschreiben zu
 \end{equation}
 mit $(a_s)_{s = 1,\dots,S} = \mathbf{a}\in \R^S$. 
 
-Es gilt $\mathbf{a}^T\mathbf{U}^T\mathbf{Y} = \mathbf{Y}^T\mathbf{U}\mathbf{a}$, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist. Damit erhalten wir mit Gleichung~(\ref{eq:min}):
+Es gilt $\mathbf{a}^T\mathbf{U}^T\mathbf{Y} = \mathbf{Y}^T\mathbf{U}\mathbf{a}$, da dieser Ausdruck eine reelle Zahl und damit insbesondere symmetrisch ist. Damit erhalten wir für die rechte Seite aus Gleichung~(\ref{eq:min}):
 \begin{equation}
 \label{eq:matrix}
 \begin{split}
@@ -387,7 +386,7 @@ Damit erhalten wir in Gleichung~(\ref{eq:matrix}):
 \end{split} 
 \end{equation*} 
 Die letzte Gleichung wird für $\mathbf{a} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}$ minimal, 
-da wir wissen dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ genau dann, wenn $\mathbf{a} = \mathbf{b}$ gilt.
+da wir wissen, dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ genau dann, wenn $\mathbf{a} = \mathbf{b}$ gilt.
 Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers~(\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems~(\ref{les}) ist.
 \end{proof}
 \begin{bemnumber}
