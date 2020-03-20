@@ -25,10 +25,10 @@ Gesucht ist eine Schätzung
 $$m_n(\cdot) = m_n(\cdot, \mathcal{D}_n)\colon\R^d \to \R $$
 von $m$, für die der $L_2$-Fehler 
 $$\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)$$
-möglichst \glqq klein\grqq\@ ist. \cite{györfi2002}
+möglichst \glqq klein\grqq\@ ist. \cite{gyoerfi2002}
 
 \section{Das Hauptresultat}
-In diesem Kapitel stellen wir das Hauptresultat dieser Arbeit vor.
+In diesem Abschnitt stellen wir das Hauptresultat dieser Arbeit vor.
 Ziel im Folgenden ist es, eine Abschätzung des erwarteten $L_2$-Fehlers 
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)$$
 im Falle unseres Neuronale-Netze-Regresssionsschätzers aus Kapitel~\ref{chap:2} mit einer $(p,C)$-glatten Regressionsfunktion $m$ herzuleiten.
@@ -49,7 +49,7 @@ $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_{\text{fin}} \cdot (\log n)
 wobei $c_{\text{fin}} > 0$ ist und nicht von $n$ abhängt.
 \end{thm}
 
-\section{Hilfslemmata}
+\section{Approximationsresultate für Satz~\ref{optstop}}
 Die nächsten  Definitionen und Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Schätzers. Die Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt. 
 
 \begin{lem}[\cite{kohler19}, Lemma 5]
@@ -147,8 +147,8 @@ $$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdo
 für eine Konstante $c$ die nur von $L, N, a$ und $d$ abhängt.
 \end{lem}
 
-\section{Beweis von Satz~\ref{optstop}}
-Mit den Hilfsresultaten können wir nun unser Hauptresultat beweisen.
+\section{Die Abschätzung des erwarteten $L_2$-Fehlers}
+Mit den Approximationsresultaten aus dem vorherigen Abschnitt verfügen wir nun über alle Bausteine um unser Hauptresultat zu beweisen.
 \begin{proof}[Beweis von Satz~\ref{optstop}]
 Da nach Voraussetzung $\supp(\mathds{P}_X)$ beschränkt ist und der Träger $\supp(\mathds{P}_X)$ immer abgeschlossen ist, wissen wir, dass $\supp(\mathds{P}_X)$ kompakt ist. Da $m$ als ($p,C$)-glatte Funktion insbesondere stetig ist wissen wir das sie auf einer kompakten Menge ihr Maximum und Minimum annimmt. Dadurch können wir $n$ so groß wählen, dass ohne Beschränkung der Allgemeinheit $\|m\|_{\infty} \leq \beta_n$ gilt.
 

@@ -12,7 +12,6 @@ A level-1 auxiliary file: literaturverzeichnis.aux
 The style file: geralpha.bst
 A level-1 auxiliary file: appendix.aux
 Database file #1: Masterthesis_Adrian_Gabel.bib
-Warning--I didn't find a database entry for "Königsberger2013"
 Warning--I didn't find a database entry for "györfi2002"
 Too many commas in name 1 of "Devroye, L., GyÃ¶rfi, L., Lugosi, G." for entry DevLug96
 while executing---line 1296 of file geralpha.bst
@@ -59,7 +58,7 @@ Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry 
 while executing---line 1361 of file geralpha.bst
 You've used 21 entries,
             2768 wiz_defined-function locations,
-            739 strings with 8090 characters,
+            737 strings with 8058 characters,
 and the built_in function-call counts, 7357 in all, are:
 = -- 734
 > -- 271
