@@ -97,7 +97,7 @@ Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 %\end{itemize}
 %Mit dieser Definition können wir nun sagen, dass eine Netzwerkarchitektur wie ein Grundgerüst für die Konstruktion weiterer neuronale Netze ist.
 %\end{defn}
-Als nächstes kommen wir zu einer Definition eines neuronalen Netzes welches wir in dieser Form im weiteren Verlauf dieser Arbeit benötigen werden.
+Als Nächstes kommen wir zu einer Definition eines neuronalen Netzes welches wir in dieser Form im weiteren Verlauf dieser Arbeit benötigen werden.
 \begin{defn}
 \label{def:nn}
 Sei $L \in \N$, $\bk \in \N^L$ und $\sigma\colon \R \to \R$. Ein \emph{mehrschichtiges feedforward neuronales Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion} $\sigma$, ist eine reellwertige Funktion $f\colon \R^d \to \R$ definiert durch:
@@ -204,7 +204,7 @@ Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zul�
 \end{defn}  
 
 \section{Hilfsresultate}
-Als erstes stellen wir ein Resultat vor, welches wir für Approximationsresultate von neuronalen Netzen benötigen um unseren Neuronale-Netze-Schätzer zu konstruieren.
+Als Erstes stellen wir ein Resultat vor, welches wir für Approximationsresultate von neuronalen Netzen benötigen um unseren Neuronale-Netze-Schätzer zu konstruieren.
 \begin{lem}
 \label{lem:logsquasher}
 Sei $N \in \N_0$ beliebig, dann ist der logistische Squasher $$\sigma\colon \R \to [0, 1] \text{ mit } \sigma(x) = \frac{1}{1 + \exp(-x)}$$ $N$-zulässig.
@@ -228,7 +228,7 @@ Mit der Leibnizregel aus der Differentialrechnung erhalten wir:
 \frac{\partial^n\sigma}{\partial x^n} = \frac{\partial^{n - 1}}{\partial x^{n - 1}}\bigg((1 - \sigma(x)) \cdot \sigma(x)\bigg) = \sum_{k = 0}^{n-1}\binom{n - 1}{k}(1 - \sigma(x))^{(n - 1 - k)}  \sigma(x)^{(k)} 
 \end{equation}
 für $n = 1,\dots,N$. 
-Damit erkennen wir, dass alle Ableitungen von $\sigma$, Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist, und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren, ebenfalls beschränkt ist. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist, wissen wir, dass $\sigma$ lipschitzstetig ist.
+Damit erkennen wir, dass alle Ableitungen von $\sigma$ Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist, und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren, ebenfalls beschränkt ist. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist, wissen wir, dass $\sigma$ lipschitzstetig ist.
 
 Nun kommen wir zum Beweis von Bedingung (ii). 
 Da für alle $x \in \R$ $\sigma(x) > 0$ gilt, bleibt dies auch bei Potenzen und positiven Linearkombinationen erhalten. Daher wissen wir durch Gleichung~(\ref{eq:leibniz}), dass ein $t_{\sigma} \in \R$ existiert, mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
@@ -257,18 +257,20 @@ $$
 %Wobei die letzte Ungleichung aus der Eigenschaft des Betrags kommt, da $\frac{1}{1 + \exp(-x)} - 1< 0$ ist, weil $1 + \exp(-x) > 1$, da $\exp(-x) > 0$. 
 Dies zeigt den ersten Teil von Definition~\ref{nzulässig} (iii).
 
-Die zweite Teil folgt durch die gleiche Art und Weise, da wir durch 
+Der zweite Teil folgt durch die gleiche Art und Weise, da wir durch 
 \begin{equation}
 \label{eq:sym}
 \frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}
 \end{equation}
-wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Dies erhalten wir durch $\frac{1}{1 + \exp(x)} - \frac{1}{2} +\frac{1}{1 + \exp(-x)} - \frac{1}{2} = 0$, indem wir die Brüche auf einen gemeinsamen Nenner bringen und erhalten und dadurch
-$\frac{2 + \exp(-x) + \exp(x)}{2 + \exp(-x) + \exp(x)} - 1 = 0$ erhalten, woraus  Gleichung~(\ref{eq:sym}) folgt.
+wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. 
+Gleichung ... folgt daraus dass ... gleich 1 ist blablabla (TBD)
+Dies erhalten wir durch $\frac{1}{1 + \exp(x)} - \frac{1}{2} +\frac{1}{1 + \exp(-x)} - \frac{1}{2} = 0$, indem wir die Brüche auf einen gemeinsamen Nenner bringen und erhalten dadurch
+$\frac{2 + \exp(-x) + \exp(x)}{2 + \exp(-x) + \exp(x)} - 1 = 0$, woraus  Gleichung~(\ref{eq:sym}) folgt.
 Aus der Punktsymmetrie folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus dem ersten Teil von Definition~\ref{nzulässig} (iii), da $-x > 0 $ ist:  
 $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x|}.$$
 Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt und unsere Aussage bewiesen.
 \end{proof}
-Als nächstes stellen wir ein Resultat zur Restgliedabschätzung vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
+Als Nächstes stellen wir ein Resultat zur Restgliedabschätzung vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
 
 \begin{lem}[Lagrangesche Form des Restglieds, {\cite[Kapitel 2.4 Seite 67]{Koenigsberger2013}}]
 \label{lem:lagrange}
@@ -575,28 +577,29 @@ Wenden wir nun auf den ersten Summanden in Gleichung~(\ref{eq:relu1}) die Unglei
 \label{eq:relu2}
 \big| f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) - f_{\id}(x)\cdot\sigma(R \cdot x)\big| \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}.
 \end{equation}
-Klammern wir nun im zweiten Summanden in Gleichung~(\ref{eq:relu1}) den Faktor $\sigma(R \cdot x) \in [0, 1]$ aus und wenden Ungleichung~(\ref{lem:3:Bed2}) an, erhalten wir nach Voraussetzung mit $a^2 \leq a^3$:
+Klammern wir nun im zweiten Summanden in Gleichung~(\ref{eq:relu1}) den Faktor $\sigma(R \cdot x) \in [0, 1]$ aus und wenden Ungleichung~(\ref{lem:3:Bed2}) an, erhalten wir:
 \begin{equation}
 \label{eq:relu3}
-\big| f_{\id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} \cdot 1 \leq \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R}.
+\big| f_{\id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} \cdot 1 \leq \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R},
 \end{equation}
-Wenn wir nun im dritten Summanden in Gleichung~(\ref{eq:relu1}), den Faktor $|x|$ durch die Homogenität des Betrag ausklammern und Ungleichung~(\ref{lem:3:Bed1}) anwenden, erhalten wir:
+wobei wir verwendet haben, dass nach der Voraussetzung $a \geq 1$ und damit $a^2 \leq a^3$ gilt.
+
+Wenn wir nun im dritten Summanden in Gleichung~(\ref{eq:relu1}) den Faktor $|x|$ durch die Homogenität des Betrags ausklammern und Ungleichung~(\ref{lem:3:Bed1}) anwenden, erhalten wir:
 \begin{equation}
 \label{eq:relu4}
-\big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big| \leq \frac{1}{R} = \frac{a^3}{a^3} \cdot \frac{1}{R}.
+\big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big| \leq \frac{1}{R}.
 \end{equation}
-Setzen wir nun Ungleichungen~(\ref{eq:relu2})-~(\ref{eq:relu4}) in Ungleichung~(\ref{eq:relu1}) ein, ergibt sich durch Ausklammern von $\frac{1}{R}$ und Umformungen:
+Setzen wir nun Ungleichungen~(\ref{eq:relu2})-~(\ref{eq:relu4}) in Ungleichung~(\ref{eq:relu1}) ein, ergibt sich durch Ausklammern von $\frac{1}{R}$ und Abschätzungen:
 \begin{equation*}
 \begin{split}
 |f_{\ReLU}(x) - \max\{x, 0\}| & \leq \bigg(\frac{160}{3} \cdot \frac{\|\sigma'''\|_{\infty} \cdot a ^3}{|\sigma''(t_{\sigma})|} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} + \frac{a^3}{a^3} \bigg) \cdot \frac{1}{R} \\ 
 & \leq \bigg(\frac{160 \cdot\|\sigma'''\|_{\infty} \cdot a ^3 + 3 \cdot \|\sigma''\|_{\infty} \cdot a^3 + 3 \cdot a^3}{3 \cdot \min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot \frac{1}{R}\\
-& \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R} \\
-& \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.
+& \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R}.
 \end{split}
 \end{equation*}
-Daraus folgt die Behauptung.
+Da $\frac{166}{3} \leq 56$ gilt, folgt schließlich die Behauptung.
   \end{proof}
-Wir betrachten als nächstes die Approximation des Positivteils einer Funktion auf einem Intervall durch das neuronale Netz $f_{\mathrm{hat},y}\colon \R \to \R$ mit Architektur $(2, (6, 12))$, welches in Abbildung~\ref{fig:fhat} veranschaulicht wird.
+Wir betrachten als Nächstes die Approximation des Positivteils einer Funktion auf einem Intervall durch das neuronale Netz $f_{\mathrm{hat},y}\colon \R \to \R$ mit Architektur $(2, (6, 12))$, welches in Abbildung~\ref{fig:fhat} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[

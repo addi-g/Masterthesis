@@ -9,7 +9,7 @@ In diesem Kapitel werden wir mithilfe der gegebenen Datenmenge
 unseren Regressionsschätzer $\tilde{m}_n$ konstruieren. 
 In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$ verstehen.
 
-Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
+Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) eine Tikhonov Regularisierung \cite[Theorem 5.9]{Kress2012} lösen.
 
 \section{Definition der Netzwerkarchitektur}
 Zunächst fixieren wir die Multiindexnotation, die wir der Übersichtlichkeit halber im weiteren Verlauf dieser Arbeit verwenden werden. Sei $a > 0$ fest und $M \in \N$. 
@@ -153,7 +153,7 @@ P_m(x) &= \sum_{\bi \in [M]^d} p_{\bi}^m(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}
 \end{split}
 \end{equation}
 Damit wissen wir, dass $P_m(x)$ eine Spline Interpolation von Taylorpolynomen von $m$ ist.
-Die Wahl der Netzwerkarchitektur und der Werte aller Gewichte bis auf die der Ausgabeschicht ist durch folgendes Approximationsresultat motiviert.
+Die Wahl der Netzwerkarchitektur $(L,\bk)$ unseres Neuronale-Netze-Regressionsschätzers und der Werte aller Gewichte bis auf die der Ausgabeschicht ist durch folgendes Approximationsresultat motiviert.
 \begin{lem}
 \label{lem:pcsmooth}
 Sei $M \in \N$, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0, s \in (0,1]$ und $C > 0$ sind. Sei zudem $P_f(x)$ analog zu Gleichung~(\ref{def:Pm}) eine lokale Spline Interpolation von Taylorpolynomen von $f$. Dann gilt:
@@ -359,20 +359,20 @@ Es gilt $\mathbf{a}^T\mathbf{U}^T\mathbf{Y} = \mathbf{Y}^T\mathbf{U}\mathbf{a}$,
 & = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}\bigg) \mathbf{a}.
 \end{split}
 \end{equation} 
-Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{S \times S}$ ist positiv semidefinit, denn aufgrund der Verschiebungseigenschaft des Standardskalarprodukts gilt für alle $x \in \R$:
+Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{S \times S}$ ist positiv definit, denn aufgrund der Rechenregeln der Transponierten und des Standardskalarprodukts sowie der positiven Definitheit des Standardskalarprodukts gilt für alle $x \in \R\setminus\{0\}$:
 $$\langle x, \mathbf{U^T}\mathbf{U} x\rangle = \langle \mathbf{U} x, \mathbf{U} x\rangle \geq 0.$$
 Zudem wissen wir dass $\frac{c}{n}\mathbf{1}$ durch die Wahl von $c$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
 Daher wissen wir, dass die Matrix
-$$\mathbf{A} \coloneqq \frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}$$ also Summe einer positiv semidefiniten und einer positiv definiten Matrix nur positive Eigenwerte besitzt (REFERENZ), damit also positiv definit und insbesondere invertierbar ist. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
-Mit $$\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \in \R^S$$ und $$\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}^T\mathbf{A}\mathbf{b} = \frac{1}{n} \cdot \mathbf{a}^T\mathbf{U}^T\mathbf{Y},$$ was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir mit 
-$$ - \frac{2}{n}\mathbf{Y}^T\mathbf{U}\mathbf{a} = - \bb^T\bA\ba - \ba^T\bA\bb $$
-und der Nulladdition $$\frac{1}{n}\bb^T\bU^T\bY - \frac{1}{n}\bY^T\bU\bb$$
+$$\mathbf{A} \coloneqq \frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}$$ positiv definit und insbesondere invertierbar ist, da die Eigenwerte positiv sind. Das folgt daraus, dass die ohnehin schon positiven Eigenwerte von $\frac{1}{n}\mathbf{U}^T\mathbf{U}$ um $\frac{c}{n}$ verschoben werden und damit positiv bleiben. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
+Mit $$\mathbf{b} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y} \in \R^S$$ und $$\mathbf{b}^T\mathbf{A}\mathbf{a} = \mathbf{a}^T\mathbf{A}\mathbf{b} = \frac{1}{n} \cdot \mathbf{a}^T\mathbf{U}^T\mathbf{Y} \in \R,$$ was aus der Symmetrie von $\mathbf{A}$ folgt, erhalten wir mit 
+$$ \mathbf{Y}^T\mathbf{U}\mathbf{a} = \frac{n}{2} \cdot \bb^T\bA\ba + \frac{n}{2} \cdot \ba^T\bA\bb $$
+mithilfe von $$0 = \bb^T\bU^T\bY - \bY^T\bU\bb$$
 die Gleichung 
 \begin{equation}
 \begin{split}
-- \frac{2}{n}\mathbf{Y}^T\mathbf{U}\mathbf{a} & = - \bb^T\bA\ba - \ba^T\bA\bb =  - \bb^T\bA\ba - \ba^T\bA\bb + \frac{1}{n}\bb^T\bA\bA^{-1}\bU^T\bY - \frac{1}{n}\bY^T\bU\bb \\
- & = - \bb^T\bA\ba - \ba^T\bA\bb + \frac{1}{n}\bb^T\bU^T\bY - \frac{1}{n}\bY^T\bU\bb \\
-& = - \bb^T\bA\ba - \ba^T\bA\bb + \frac{1}{n}\bb^T\bA\bb - \frac{1}{n^2}\bY^T\bU\bA^{-1}\bU^T\bY
+ \mathbf{Y}^T\mathbf{U}\mathbf{a} & = \frac{n}{2} \Big(\bb^T\bA\ba + \ba^T\bA\bb\Big) = \frac{n}{2}\Big( \bb^T\bA\ba + \ba^T\bA\bb - \frac{1}{n}\bb^T\bU^T\bY + \frac{1}{n}\bY^T\bU\bb \Big)\\
+ & = \frac{n}{2} \Big( \bb^T\bA\ba + \ba^T\bA\bb - \frac{1}{n}\bb^T\bA\bA^{-1}\bU^T\bY + \frac{1}{n}\bY^T\bU\bb \Big)\\
+& = \frac{n}{2} \Big(\bb^T\bA\ba + \ba^T\bA\bb - \bb^T\bA\bb + \frac{1}{n^2}\bY^T\bU\bA^{-1}\bU^T\bY \Big).
 \end{split}
 \end{equation}
 
@@ -381,7 +381,7 @@ Damit erhalten wir in Gleichung~(\ref{eq:matrix}):
 \begin{split}
 & \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T\bigg(\frac{1}{n} \mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}\bigg) \mathbf{a} \\
 & = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T \bA \mathbf{a} \\
-& = \frac{1}{n}\bY^T\bY - \bb^T\bA\ba - \ba^T\bA\bb + \frac{1}{n}\bb^T\bA\bb - \frac{1}{n^2}\bY^T\bU\bA^{-1}\bU^T\bY + \ba^T\bA\ba \\
+& = \frac{1}{n}\bY^T\bY - \bb^T\bA\ba - \ba^T\bA\bb + \bb^T\bA\bb - \frac{1}{n^2}\bY^T\bU\bA^{-1}\bU^T\bY + \ba^T\bA\ba \\
 & = (\mathbf{a} - \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y})^T \mathbf{A} (\mathbf{a} - \frac{1}{n} \cdot \mathbf{A}^{-1} \mathbf{U}^T\mathbf{Y}) + \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{U}\mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}.
 \end{split} 
 \end{equation*} 
@@ -393,5 +393,5 @@ Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers~(\ref{estimate}
 \label{mtildebeschraenkt}
 Da der Koeffizientenvektor $\mathbf{a}$ die Gleichung~(\ref{eq:min}) minimiert, erhalten wir, wenn wir den Koeffizientenvektor gleich Null setzen:
 $$\frac{1}{n}(\mathbf{Y} - \mathbf{U}\mathbf{a})^T(\mathbf{Y} - \mathbf{U}\mathbf{a}) + \frac{c}{n} \cdot \mathbf{a}^T\mathbf{a} \leq \frac{1}{n} \sum_{i = 1}^n Y_i^2,$$
-was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. Daraus können wir folgern, dass unser Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ beschränkt ist, da $f_{\net,\bj,\bi}$ nach Konstruktion ebenfalls beschränkt ist.
+was uns erlaubt eine obere Schranke für den absoluten Wert unserer Koeffizienten abzuleiten. Daraus können wir folgern, dass unser Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ beschränkt ist, da die neuronalen Netze $f_{\net,\bj,\bi}$ nach Konstruktion ebenfalls beschränkt sind.
 \end{bemnumber}

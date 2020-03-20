@@ -12,5 +12,5 @@
 \contentsline {section}{\numberline {3.2}Approximationsresultate für Satz~\ref {optstop}}{39}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Die Abschätzung des erwarteten $L_2$-Fehlers}{42}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{52}{chapter.4}%
-\contentsline {chapter}{Literaturverzeichnis}{56}{chapter*.11}%
-\contentsline {chapter}{Appendix}{57}{chapter*.12}%
+\contentsline {chapter}{Appendix}{55}{chapter*.11}%
+\contentsline {chapter}{Literaturverzeichnis}{70}{chapter*.12}%
