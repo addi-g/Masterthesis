@@ -7,7 +7,7 @@ In diesem Kapitel werden wir mithilfe der gegebenen Datenmenge
 \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\},
 \end{equation}
 unseren Regressionsschätzer $\tilde{m}_n$ konstruieren. 
-In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz verstehen.
+In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$ verstehen.
 
 Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein regularisiertes Kleinste-Quadrate-Problem (REFERENZ) lösen.
 
@@ -277,7 +277,7 @@ Die Anzahl der Neuronen pro verborgener Schicht von $f_{\net,\bj,\bi}$ ergeben s
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
 \item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2^{s+ 1}, 2^s, \dots, 2^3, 2^2$ Neuronen, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
 \end{itemize}  
-Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ nach Definition~\ref{def:nn} in $\mathfrak{N}(s + 2,\{24 \cdot (N + d)\}^{s + 2},\sigma)$, da die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ ist. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
+Da man, wie in Kapitel~\ref{chap:1} bereits erwähnt, bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ nach Definition~\ref{def:nn} in $\mathfrak{N}(s + 2,\{24 \cdot (N + d)\}^{s + 2},\sigma)$, da die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ ist. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
 
 \section{Definition der Gewichte der Ausgabeschicht}
 \label{subsec:2.2}

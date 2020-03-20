@@ -1,7 +1,7 @@
 \chapter{Grundlagen und Hilfsresultate}
 \label{chap:1}
 
-Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden.
+Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Insbesondere gehen wir auf die in dieser Arbeit verwendeten neuronalen Netze ein, die als Baustein für unseren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden.
 In dieser Arbeit bezeichnen wir mit $d \geq 1$ immer eine natürliche Zahl.
 
 \section{Definitionen}
@@ -77,7 +77,7 @@ Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w
 Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 \begin{itemize}
 \item Wenn in einem neuronalen Netz die Information von der Eingabeschicht über die verborgenen Schichten bis hin zur Ausgabeschicht in eine Richtung (\glqq vorwärts\grqq) weitergereicht wird, spricht man von einem \textit{feedforward} neuronalen Netz.
-\item Ein neuronales Netz wird als ein \textit{fully connected} (\glqq vollständig verbundenes\grqq\@) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. 
+\item Ein neuronales Netz wird als ein \textit{fully connected} (\glqq vollständig verbundenes\grqq\@) neuronales Netz bezeichnet, wenn sämtliche Neuronen einer Schicht mit allen der darauffolgenden verbunden sind. Da man bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, unterscheiden wir hier nicht mehr zwischen neuronalen Netzen die fully connected sind oder nicht.
 %Jedes Neuron der verborgenen Schicht ist also mit allen Neuronen der Eingabeschicht verbunden und ebenso ist jedes Neuron der Ausgabeschicht mit allen der letzten verborgenen Schicht verbunden.
 \end{itemize}
 %Für ein neuronales Netz sind die Aktivierungsfunktionen von großer Bedeutung, da sie dabei helfen, da es nichtlineare komplexe funktionale Mapping zwischen den Eingangsdaten und den abhängigen Ergebnissen zu verstehen.
@@ -123,7 +123,7 @@ In obiger Definition versteht man unter:
 Da wir bei Neuronale-Netze-Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output. Wie wir an der Konstruktion des neuronalen Netzes erkennen können, nehmen wir in der Ausgabeschicht die Identität als Aktivierungsfunktion.
 %Es wäre auch möglich für jede Schicht eine andere Aktivierungsfunktion zu wählen. In dieser Arbeit beschränken wir uns nur auf den Fall, in welchem wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
 
-Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$~verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
+Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges feedforward neuronales Netz, welches aus einer Eingabeschicht (\textit{Input feature 1} - \textit{Input feature $n_{\mathrm{in}}$}), $n_{\mathrm{lyr}}$~verborgenen Schichten und einer Ausgabeschicht (\textit{Output 1} - \textit{Output $n_{\mathrm{out}}$}) besteht.
 \begin{center}
     \begin{figure}
         \begin{tikzpicture}[
@@ -183,7 +183,7 @@ Abbildung~\ref{fig:DNN} zeigt schematisch ein mehrschichtiges fully connected fe
             }
             \draw[->] (mat-10-5) -- node[above] {\small Output $n_{\mathrm{out}}$} +(2.5cm,0);
         \end{tikzpicture}
-        \caption{Fully connected feedforward neuronales Netz mit einer Eingabeschicht mit $n_{\mathrm{in}}$ Neuronen, $n_{\mathrm{lyr}}$ vielen verborgenen Schichten, deren Anzahl an Neuronen variieren kann und einer Ausgabeschicht bestehend aus $n_{\mathrm{out}}$ Neuronen.}
+        \caption{Mehrschichtiges feedforward neuronales Netz mit einer Eingabeschicht mit $n_{\mathrm{in}}$ Neuronen, $n_{\mathrm{lyr}}$ vielen verborgenen Schichten, deren Anzahl an Neuronen variieren kann und einer Ausgabeschicht bestehend aus $n_{\mathrm{out}}$ Neuronen.}
         \label{fig:DNN}
     \end{figure}
 \end{center}
@@ -257,17 +257,13 @@ $$
 %Wobei die letzte Ungleichung aus der Eigenschaft des Betrags kommt, da $\frac{1}{1 + \exp(-x)} - 1< 0$ ist, weil $1 + \exp(-x) > 1$, da $\exp(-x) > 0$. 
 Dies zeigt den ersten Teil von Definition~\ref{nzulässig} (iii).
 
-Die zweite Teil folgt durch die gleiche Art und Weise, da wir durch $$\frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}$$ 
-wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Die obige Gleichheit folgt aus
-\begin{equation*}
-\begin{split}
- & \quad \frac{1}{1 + \exp(x)} - \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2} \\
- \Leftrightarrow  & \quad \frac{1}{1 + \exp(x)} - \frac{1}{2} +\frac{1}{1 + \exp(-x)} = \frac{1}{2}\\
- \Leftrightarrow & \quad  \frac{1 + \exp(-x) + 1 + \exp(x)}{(1 + \exp(x)) \cdot (1 + \exp(-x))} - \frac{1}{2} = \frac{1}{2} \\
- \Leftrightarrow & \quad \frac{2 + \exp(-x) + \exp(x)}{2 + \exp(-x) + \exp(x)} - \frac{1}{2} = \frac{1}{2} \\
- \Leftrightarrow & \quad 1 - \frac{1}{2} = \frac{1}{2}.
-\end{split}
-\end{equation*}
+Die zweite Teil folgt durch die gleiche Art und Weise, da wir durch 
+\begin{equation}
+\label{eq:sym}
+\frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}
+\end{equation}
+wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. Dies erhalten wir durch $\frac{1}{1 + \exp(x)} - \frac{1}{2} +\frac{1}{1 + \exp(-x)} - \frac{1}{2} = 0$, indem wir die Brüche auf einen gemeinsamen Nenner bringen und erhalten und dadurch
+$\frac{2 + \exp(-x) + \exp(x)}{2 + \exp(-x) + \exp(x)} - 1 = 0$ erhalten, woraus  Gleichung~(\ref{eq:sym}) folgt.
 Aus der Punktsymmetrie folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus dem ersten Teil von Definition~\ref{nzulässig} (iii), da $-x > 0 $ ist:  
 $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x|}.$$
 Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt und unsere Aussage bewiesen.
@@ -543,28 +539,56 @@ Nach Lemma~\ref{lem:1} und Lemma~\ref{lem:2} gilt:
  |f_{\mult}(x, y) - x \cdot y| \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} \text{\, für \,} x, y \in [-2a, 2a].
  \end{equation} 
 Da nach Voraussetzung $a \geq 1$ ist, gilt insbesondere $[0, 1] \subseteq [-2a, 2a]$ und daher gilt insbesondere $\sigma(Rx) \in [0, 1]\subseteq [-2a, 2a].$ 
-Zudem erhalten wir durch eine Nulladdition, die Dreiecksungleichung, Gleichung~(\ref{lem:3:Bed2}) und Voraussetzung~(\ref{lem:3:Vor1}) für $R$:
-\begin{equation*}
+Zudem erhalten wir durch eine Nulladdition und der Dreiecksungleichung:
+\begin{equation}
+\label{eq:id1}
 \begin{split}
-|f_{\id}(x)| & = |f_{\id}(x) - x + x| \\
-& \leq |f_{\id}(x) -x| + |x| \\
-& \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} + |x| \\
-& \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{2 \cdot |\sigma'(t_{\sigma})|}{\|\sigma''\|_{\infty} \cdot a} + |x| \\
-& = a + |x| \\
-& \leq 2 \cdot a,
+|f_{\id}(x)| & = |f_{\id}(x) - x + x| \leq |f_{\id}(x) -x| + |x|.
 \end{split}
-\end{equation*}
-wobei wir bei der letzten Ungleichung $x \in [-a, a]$ verwendet haben. Daraus folgt insbesondere $f_{\id}(x) \in [-2a, 2a].$
-Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Definition des Netzes~(\ref{lem:3:Vor2}), zweier Nulladditionen und zweimal der Dreiecksungleichung erhalten wir:
+\end{equation}
+Aus Gleichung~(\ref{lem:3:Bed2}) und Voraussetzung~(\ref{lem:3:Vor1}), folgt
+\begin{equation}
+\label{eq:id2}
+\begin{split}
+|f_{\id}(x) -x| & \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R}
+\leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{2 \cdot |\sigma'(t_{\sigma})|}{\|\sigma''\|_{\infty} \cdot a}
+= a.
+\end{split}
+\end{equation}
+Aus $x \in [-a, a]$ folgt schließlich aus den Ungleichungen~(\ref{eq:id1}) und (\ref{eq:id2}):
 \begin{equation*}
+|f_{\id}(x)| \leq |f_{\id}(x) -x| + |x| \leq 2 \cdot a.
+\end{equation*}
+Daraus folgt insbesondere $f_{\id}(x) \in [-2a, 2a].$
+Mithilfe von $\max\{x, 0 \} = x \cdot \1_{[0, \infty)}(x)$, der Definition des Netzes~(\ref{lem:3:Vor2}), zweier Nulladditionen und zweimal der Dreiecksungleichung erhalten wir:
+\begin{equation}
+\label{eq:relu1}
 \begin{split}
 |f_{\ReLU}(x) - & \max\{x, 0\}|  \\
 & = \big| f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) - x \cdot \1_{[0, \infty)}(x)\big| \\
 & \leq \big| f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) - f_{\id}(x)\cdot\sigma(R \cdot x)\big| \\
-& \qquad + \big| f_{\id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| + \big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big|. \\
-\intertext{Daraus ergibt sich mithilfe von (\ref{lem:3:Bed1}) - (\ref{lem:3:Bed3}), $\sigma(Rx) \in [0, 1]$ und $a^3 \geq 1$}
-& \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^2}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} \cdot 1+ \frac{1}{R} \\
-& \leq \bigg(\frac{160}{3} \cdot \frac{\|\sigma'''\|_{\infty} \cdot a ^3}{|\sigma''(t_{\sigma})|} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} + \frac{a^3}{a^3} \bigg) \cdot \frac{1}{R} \\ 
+& \qquad + \big| f_{\id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| + \big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big|. 
+\end{split}
+\end{equation}
+Wenden wir nun auf den ersten Summanden in Gleichung~(\ref{eq:relu1}) die Ungleichung~(\ref{lem:3:Bed3}) an, erhalten wir:
+\begin{equation}
+\label{eq:relu2}
+\big| f_{\mult}(f_{\id}(x), \sigma(R \cdot x)) - f_{\id}(x)\cdot\sigma(R \cdot x)\big| \leq \frac{160 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}.
+\end{equation}
+Klammern wir nun im zweiten Summanden in Gleichung~(\ref{eq:relu1}) den Faktor $\sigma(R \cdot x) \in [0, 1]$ aus und wenden Ungleichung~(\ref{lem:3:Bed2}) an, erhalten wir nach Voraussetzung mit $a^2 \leq a^3$:
+\begin{equation}
+\label{eq:relu3}
+\big| f_{\id}(x)\cdot\sigma(R \cdot x) - x \cdot \sigma(R \cdot x)\big| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R} \cdot 1 \leq \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} \cdot \frac{1}{R}.
+\end{equation}
+Wenn wir nun im dritten Summanden in Gleichung~(\ref{eq:relu1}), den Faktor $|x|$ durch die Homogenität des Betrag ausklammern und Ungleichung~(\ref{lem:3:Bed1}) anwenden, erhalten wir:
+\begin{equation}
+\label{eq:relu4}
+\big| x \cdot \sigma(R \cdot x) - x \cdot \1_{[0, \infty)}(x)\big| \leq \frac{1}{R} = \frac{a^3}{a^3} \cdot \frac{1}{R}.
+\end{equation}
+Setzen wir nun Ungleichungen~(\ref{eq:relu2})-~(\ref{eq:relu4}) in Ungleichung~(\ref{eq:relu1}) ein, ergibt sich durch Ausklammern von $\frac{1}{R}$ und Umformungen:
+\begin{equation*}
+\begin{split}
+|f_{\ReLU}(x) - \max\{x, 0\}| & \leq \bigg(\frac{160}{3} \cdot \frac{\|\sigma'''\|_{\infty} \cdot a ^3}{|\sigma''(t_{\sigma})|} + \frac{\|\sigma''\|_{\infty} \cdot a^3}{2 \cdot |\sigma'(t_{\sigma})|} + \frac{a^3}{a^3} \bigg) \cdot \frac{1}{R} \\ 
 & \leq \bigg(\frac{160 \cdot\|\sigma'''\|_{\infty} \cdot a ^3 + 3 \cdot \|\sigma''\|_{\infty} \cdot a^3 + 3 \cdot a^3}{3 \cdot \min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot \frac{1}{R}\\
 & \leq \frac{166}{3} \cdot \bigg(\frac{\max\{\|\sigma'''\|_{\infty}, \|\sigma''\|_{\infty} , 1\}}{\min\{ 2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}}\bigg) \cdot a^3 \cdot  \frac{1}{R} \\
 & \leq 56 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot a^3 \cdot \frac{1}{R}.
@@ -698,4 +722,4 @@ $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k}.
 Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$ Kugeln, die wir mit $1,\dots,d$ beschriften. Wir ziehen $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren so einen Vektor $\bj = (j_1,\dots,j_d)$ aus der Menge mit $|\bj|_1 = k$. Der Koeffizient $j_i$ mit $i= 1,\dots,d$ gibt an wie oft die Kugel mit der Nummer $i$ gezogen wurde. Damit stimmt die Kardinalität der Menge auf der linken Seite mit der Anzahl aller Möglichkeiten überein die man erhält, wenn man $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge zieht.
 \end{proof}
 
-Im nächsten Kapitel werden wir jetzt die hier einführten NN als Bausteine verwenden um unseren NN-Schätzer zu konstruieren.
+Im nächsten Kapitel werden wir die hier eingeführten neuronalen Netze als Bausteine verwenden, um unseren Neuronale-Netze-Schätzer zu konstruieren.
