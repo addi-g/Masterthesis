@@ -1,20 +1,10 @@
-\chapter{Grundlagen und Hilfsresultate}
+\chapter{Grundlagen und Hilfsresultate für neuronale Netze}
 \label{chap:1}
 
-Der Zweck dieses Kapitels ist es, grundlegende Definitionen zu sammeln, die in den folgenden Kapiteln verwendet werden. Insbesondere gehen wir auf die in dieser Arbeit verwendeten neuronalen Netze ein, die als Baustein für unseren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Hilfsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden.
+Der Zweck dieses Kapitels ist es auf die in dieser Arbeit verwendeten neuronalen Netze einzugehen, die als Bausteine für unseren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Approximationsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden.
 In dieser Arbeit bezeichnen wir mit $d \geq 1$ immer eine natürliche Zahl.
 
 \section{Definitionen}
-Es ist bekannt (vgl.\@ \cite[Theorem 7.2 und Problem 7.2]{DevLug96} \cite[Section 3]{DevWag80}), dass man Glattheitsvoraussetzungen an die Regressionsfunktion haben muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
-\begin{defn}[($p,C$)-Glattheit]
-\label{def:pc}
-   Sei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$ (also $p \in (0, \infty)$ und sei $C > 0$. Eine Funktion $f\colon \R^d \to \R$ heißt \emph{($p, C$)-glatt}, falls für alle $\alpha = (\alpha_1,\dots,\alpha_d) \in \N_0^d$ mit $\sum_{j = 1}^{d}\alpha_j = q$ die partielle Ableitung 
-   $$ \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}$$
-   existiert und falls für alle $x, z \in \R^d$ die Abschätzung 
-   $$ \bigg|\frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(x) - \frac{\partial^qf}{\partial x_1^{\alpha_1}\dots\partial x_d^{\alpha_d}}(z) \bigg| \leq C \cdot \|x - z\|^s,$$
-   gilt, wobei $\|\cdot\|$ die euklidische Norm in $\R^d$ bezeichnet.  
-\end{defn}
-
 Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzwerkarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen und verarbeiten.
 % und entsprechend über eine Aktivierung reagieren. 
 Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
