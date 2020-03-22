@@ -313,19 +313,27 @@ R_n & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M_n + 1)}{2 \cdot |\si
 erfüllt und da unser neuronales Netz (\ref{fnet}) mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ identisch mit der Definition aus Lemma~\ref{lem:5} ist, sind alle Voraussetzungen für Lemma~\ref{lem:logsquasher} erfüllt.
 Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
 \begin{equation}
+\label{vorbereitung}
+\begin{split}
+\bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \bigg| & \leq c \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s} \cdot M_n^3 \cdot \frac{1}{R_n} \\
+& \leq c\cdot a_n^{3 \cdot (N + d) \cdot 2} \cdot \frac{M_n^3}{R_n} \\
+& = c\cdot \log(n) \cdot \frac{M_n^3}{R_n},  
+\end{split}
+\end{equation}
+wobei wir in $c$ alle von $n$ unabhängigen Konstanten zusammenfassen, welche insbesondere die Konstante aus Lemma~\ref{lem:logsquasher} enthält.
+Wir haben unter anderem verwendet, dass für hinreichend großes $n$:
+$$a_n^{2^{\lceil\log_2(N + d)\rceil}} \leq a_n^{2^{\log_2(N + d) + 1}} = a_n^{(N + d) \cdot 2},$$ gilt. Im letzten Schritt haben wir in Ungleichung~(\ref{1stsum}) die Definition von $a_n$ eingesetzt. 
+ Mit Ungleichung~(\ref{vorbereitung}) erhalten wir nun:
+\begin{equation}
 \label{1stsum}
 \begin{split}
 & |g_n(x) - P_{m,n}(x)| \\
 & = \bigg| \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \frac{1}{\bj!} \cdot \partial^{\bj} m (x_{\mathbf{i}}) \bigg| \cdot \bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \bigg| \\
-& \stackrel{(\ref{constantc21})}{\leq} (M_n + 1)^d \cdot (q + 1)^d \cdot z \cdot \bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \bigg| \\
-& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot z \cdot c \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s} \cdot M_n^3 \cdot \frac{1}{R_n} \\
-& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot c\cdot a_n^{3 \cdot (N + d) \cdot 2} \cdot \frac{M_n^3}{R_n} \\
-& =  (M_n + 1)^d \cdot (q + 1)^d \cdot c\cdot \log(n) \cdot \frac{M_n^3}{R_n},
+& \stackrel{(\ref{bound})}{\leq} (M_n + 1)^d \cdot (q + 1)^d \cdot z \cdot \bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \bigg| \\
+& \leq  (M_n + 1)^d \cdot (q + 1)^d \cdot c\cdot \log(n) \cdot \frac{M_n^3}{R_n},
 \end{split}
 \end{equation}
-wobei wir in $c$ alle von $n$ unabhängige Konstante zusammenfassen, welche insbesondere die Konstante aus Lemma~\ref{lem:logsquasher} enthält.
-Wie haben unter anderem verwendet, dass für hinreichend großes $n$:
-$$a_n^{2^{\lceil\log_2(N + d)\rceil}} \leq a_n^{2^{\log_2(N + d) + 1}} = a_n^{(N + d) \cdot 2},$$ gilt. Im letzten Schritt haben wir in Ungleichung~(\ref{1stsum}) die Definition von $a_n$ eingesetzt. 
+wobei wir in $c$ alle von $n$ unabhängigen Konstanten zusammenfassen, welche insbesondere die Konstante aus Lemma~\ref{lem:logsquasher} enthält.
 Da nach Konstruktion $a_n > 0$, $m$ $(p, C)$-glatt und $P_{m,n}(x)$ nach Lemma~\ref{lem:loccon} eine Spline Interpolation von Taylorpolynomen von $m$ ist, erhalten wir mit Lemma~\ref{lem:pcsmooth}:
 \begin{equation}
 \label{2ndsum}
