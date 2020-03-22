@@ -12,6 +12,7 @@ In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt
 Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) eine Tikhonov Regularisierung \cite[Theorem 5.9]{Kress2012} lösen.
 
 \section{Definition der Netzwerkarchitektur}
+\label{subsec:2:1}
 Zunächst fixieren wir die Multiindexnotation, die wir der Übersichtlichkeit halber im weiteren Verlauf dieser Arbeit verwenden werden. Sei $a > 0$ fest und $M \in \N$. 
 
 Sei $[M]^d \coloneqq\{0, 1, \dots, M\}^d.$ 

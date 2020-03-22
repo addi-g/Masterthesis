@@ -15,7 +15,7 @@ In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, d
 
 Für das $L_2$-Risiko einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt:
 $$\E[|f(X) - Y|^2] = \E[|m(X) - Y|^2] + \int_{\R^d}|f(x) - m(x)|^2 \mathds{P}_X (dx),$$
-d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers der entsteht aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y.
+d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers der aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y entsteht.
 
 Formal führt das daher auf folgende Problemstellung:
 
@@ -27,59 +27,46 @@ von $m$, für die der $L_2$-Fehler
 $$\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)$$
 möglichst \glqq klein\grqq\@ ist. \cite{gyoerfi2002}
 
-\section{Das Hauptresultat}
+\section{Die Abschätzung des erwarteten $L_2$-Fehlers}
 In diesem Abschnitt stellen wir das Hauptresultat dieser Arbeit vor.
 Ziel im Folgenden ist es, eine Abschätzung des erwarteten $L_2$-Fehlers 
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)$$
-im Falle unseres Neuronale-Netze-Regresssionsschätzers aus Kapitel~\ref{chap:2} mit einer $(p,C)$-glatten Regressionsfunktion $m$ herzuleiten.
+im Falle des Schätzers $$m_n(x) \coloneqq T_{\beta_n}\tilde{m}_n (x),$$ unter Annahme einer $(p,C)$-glatten Regressionsfunktion $m$ herzuleiten. Wobei $T_{\beta}z = \max\{\min\{z, \beta\}, -\beta\}$ für $z \in \R$ und $\beta > 0$, und $\tilde{m}_n$ unser Neuronale-Netze-Regresssionsschätzer aus Kapitel~\ref{subsec:2.2} ist, welcher aus mehreren neuronalen Netzen konstruiert wurde.
 
-\begin{thm}\label{optstop}
+\begin{mthm}\label{optstop}
 Angenommen die Verteilung von $Y$ erfüllt 
 $$ \E\Big[\mathrm{e}^{c_1 \cdot |Y|^2}\Big] < \infty$$
 für eine Konstante $c_1 > 0$ und die Verteilung von $X$ besitzt einen beschränkten Träger $\supp(\mathds{P}_X)$. Sei $m(x) = \E[Y \mid X = x]$ die zu dem Tupel $(X, Y)$ gehörige Regressionsfunktion.
-Angenommen $m$ ist $(p,C)$-glatt, mit $q \in \N_0$, $s \in (0,1]$ und $C > 0$. 
+Angenommen $m$ ist $(p,C)$-glatt, mit $p = q + s$, wobei $q \in \N_0$, $s \in (0,1]$ und $C > 0$ ist.
 
-Wir betrachten unseren Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$ aus Kapitel~\ref{subsec:2.2} der aus mehreren neuronalen Netzen konstruiert wurde. Für diesen wählen wir unsere Aktivierungsfunktion $\sigma$ als den logistische squasher aus Gleichung~(\ref{logsquasher}). Aufgrund der Konstruktion unseres Schätzers wählen wir zudem $N \geq q, M = M_n = \lceil c_2 \cdot n^{1/(2p + d)}\rceil$ mit $c_2 >0$ und unabhängig von $n$, $R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
+Wir betrachten den Neuronale-Netze-Regressionsschätzer $\tilde{m}_n$, mit Aktivierungsfunktion $\sigma$ als den logistischen Squasher. Aufgrund der Konstruktion unseres Schätzers wählen wir zudem $N \geq q, M = M_n = \lceil c_2 \cdot n^{1/(2p + d)}\rceil$ mit $c_2 >0$ und unabhängig von $n$, $R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
 Sei $\beta_n = c_3 \cdot \log(n)$ für eine hinreichend große und von $n$ unabhängige Konstante $c_3 > 0$ und sei $m_n$ gegeben durch
 $$m_n(x) \coloneqq T_{\beta_n}\tilde{m}_n (x)$$
 mit $T_{\beta}z = \max\{\min\{z, \beta\}, -\beta\}$ für $z \in \R$ und $\beta > 0.$ 
 
 Dann erhalten wir für hinreichend großes $n$:
-$$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_{\text{fin}} \cdot (\log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
-wobei $c_{\text{fin}} > 0$ ist und nicht von $n$ abhängt.
-\end{thm}
+$$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_{\mathrm{fin}} \cdot (\log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
+wobei $c_{\mathrm{fin}} > 0$ ist und nicht von $n$ abhängt.
+\end{mthm}
 
-\section{Approximationsresultate für Satz~\ref{optstop}}
+\section{Approximationsresultate für Hauptsatz 3.1}
 Die nächsten  Definitionen und Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Schätzers. Die Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt. 
 
-\begin{lem}[\cite{kohler19}, Lemma 5]
+\begin{lem}[{\cite[Lemma 5]{kohler19}}]
 \label{lem:5}
-Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig nach Definition~\ref{nzulässig}.
+Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig.
 Sei $a \geq 1$ und $R \in \R$ mit
 \begin{equation*}
 \begin{split}
 R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma})|}, \\
-& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\}
+& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\},
 \end{split}
 \end{equation*}
-und sei $y \in [-a, a]^d.$ Sei $N \in \N$ und $\bj \in [\N_0]^d$ so, dass $|\bj|_1 \leq N$ gilt und wir setzen $s = \lceil\log_2(N + d)\rceil$. Sei $f_{\id}, f_{\mult}$ und $f_{\mathrm{hat}, z}$ (für $z \in \R$) die neuronalen Netze aus Lemma~\ref{lem:1}, Lemma~\ref{lem:2} und Lemma~\ref{lem:4}. Wir definieren das Netz $f_{net,\bj,y}$ durch:
-\begin{align*}
-\label{fnet}
-& f_{net,\bj,y}(x) = f_1^{(0)}(x). \\
-\intertext{wobei} 
-& f_k^{(l)}(x) = f_{\mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \\
-\intertext{für $1 \leq k \leq 2^l$ und $0 \leq l \leq s - 1$ und} 
-& f_k^{(s)}(x) = f_{\id}(f_{\id}(x^{(l)} - y^{(l)}))  \\
-\intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $1 \leq l \leq d$ und} 
-& f_{|\bj|_1 + k}^{(s)}(x) = f_{\mathrm{hat},y^{(k)}}(x^{(k)}) \\
-\intertext{für $1 \leq k \leq d$ und} 
-& f_k^{(s)}(x) = 1 \\
-\intertext{für $|\bj|_1+ d + 1 \leq k \leq 2^s.$}
-\end{align*} 
+wobei $s = \lceil\log_2(N + d)\rceil$ mit $N \in \N$. Sei $y \in [-a, a]^d$ und $\bj \in [\N_0]^d$ so, dass $|\bj|_1 \leq N$ gilt. Sei $f_{\id}, f_{\mult}$ und $f_{\mathrm{hat}, z}$ (für $z \in \R$) die neuronalen Netze aus Lemma~\ref{lem:1}, Lemma~\ref{lem:2} und Lemma~\ref{lem:4}. Wir definieren das Netz $f_{\mathrm{net},\bj,\bi}$ wie in Kapitel~\ref{subsec:2:1} Gleichung~(\ref{fnet}) mit $y$ anstelle von $x_{{i}_k}$.
 Dann erhalten wir für $x \in [-a, a]^d$:
 \begin{equation*}
 \begin{split}
-& \bigg|f_{net,\bj,y}(x) - (x^{(1)} - y^{(1)})^{j_1} \cdots (x^{(d)} - y^{(d)})^{j_d} \prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - y^{(j)}|)_+\bigg| \\
+& \bigg|f_{\net,\bj,\bi}(x) - (x - y)^{\bj} \prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - y^{(j)}|)_+\bigg| \\
 & \leq c \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s} \cdot M^3 \cdot \frac{1}{R},
 \end{split}
 \end{equation*}
@@ -113,17 +100,17 @@ In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimal
 $$\min_{j = 1,\dots,N}\bigg(\frac{1}{n}\sum_{i = 1}^n|f(x_i) - f_j(x_i)|^p\bigg)^{1/p} < \epsilon.$$
 In Lemma~\ref{lem:9} liefern wir ein Resultat zur Abschätzung einer $L_p$-$\epsilon$-Überdeckungszahl.
 
-  \begin{lem}[\cite{kohler19}, Lemma 8]
+  \begin{lem}[{\cite[Lemma 8]{kohler19}}]
   \label{lem:8}
 Sei $\beta_n = c_1 \cdot \log(n)$ für eine hinreichend große Konstante $c_1 > 0$. Angenommen die Verteilung von $Y$ erfüllt 
 $$ \E\Big[\mathrm{e}^{c_2 \cdot |Y|^2}\Big] < \infty$$
-für eine Konstante $c_2 > 0$ und dass der Betrag der Regressionsfunktion $m$ beschränkt ist. Sei $\mathcal{F}_n$ eine Menge von Funktionen $f\colon \R^d \to \R$ und wir nehmen an, dass der Schätzer $m_n$ 
+für eine Konstante $c_2 > 0.$ Zudem nehmen wir an, dass der Betrag der Regressionsfunktion $m$ beschränkt ist. Sei $\mathcal{F}_n$ eine Menge von Funktionen $f\colon \R^d \to \R$ und wir nehmen an, dass der Schätzer $m_n$ 
 $$m_n = T_{\beta_n}\tilde{m}_n$$ 
 erfüllt, mit 
 $$\tilde{m}_n(\cdot) = \tilde{m}_n(\cdot,(X_1, Y_1),\dots,(X_n, Y_n)) \in \mathcal{F}_n$$
 und 
-$$\frac{1}{n} \sum_{i = 1}^n |Y_i - \tilde{m}_n(X_i)|^2 \leq \min_{l \in \Theta_n}\bigg(\frac{1}{n}\sum_{i = 1}^n |Y_i - g_{n,l}(X_i)|^2 + \text{pen}_n(g_n,l)\bigg)$$
-mit einer nichtleeren Parametermenge $\Theta_n$, zufällige Funktionen $g_{n,l}\colon \R^d \to \R$ und deterministischen penalty Terme $\text{pen}_n(g_{n,l}) \geq 0$, wobei die zufälligen Funktionen $g_{n,l}\colon \R^d \to \R$ nur von den Zufallsvariablen
+$$\frac{1}{n} \sum_{i = 1}^n |Y_i - \tilde{m}_n(X_i)|^2 \leq \min_{l \in \Theta_n}\bigg(\frac{1}{n}\sum_{i = 1}^n |Y_i - g_{n,l}(X_i)|^2 + \mathrm{pen}_n(g_n,l)\bigg)$$
+mit einer nichtleeren Parametermenge $\Theta_n$, zufällige Funktionen $g_{n,l}\colon \R^d \to \R$ und deterministischen Penalty Terme $\mathrm{pen}_n(g_{n,l}) \geq 0$, wobei die zufälligen Funktionen $g_{n,l}\colon \R^d \to \R$ nur von den Zufallsvariablen
 $$\mathbf{b}_1^{(1)},\dots,\mathbf{b}_r^{(1)},\dots,\mathbf{b}_1^{(I_n)},\dots,\mathbf{b}_r^{(I_n)},$$
 abhängen, die unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ sind.
 Dann erfüllt $m_n\colon$
@@ -131,49 +118,46 @@ Dann erfüllt $m_n\colon$
 \begin{split}
 & \E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
 & \leq \frac{c \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)\big) + 1\big)}{n} \\
-& \quad + 2 \cdot \E\bigg(\min_{l \in \Theta_n} \int |g_{n,l}(x) - m(x)|^2 \mathds{P}_X(dx) + \text{pen}_n(g_{n,l})\bigg),
+& \quad + 2 \cdot \E\bigg(\min_{l \in \Theta_n} \int |g_{n,l}(x) - m(x)|^2 \mathds{P}_X(dx) + \mathrm{pen}_n(g_{n,l})\bigg),
 \end{split}
 \end{equation*}
 für $n > 1$ und eine von $n$ unabhängige Konstante $c > 0$.
   \end{lem}
 Das nächste Lemma benötigen wir, um eine Schranke für die Überdeckungszahl $\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)$ zu finden.
-\begin{lem}[\cite{kohler19}, Lemma 9]
+\begin{lem}[{\cite[Lemma 9]{kohler19}}]
 \label{lem:9}
-Sei $a > 0$ und $d, N, J_n \in \N$ so, dass $J_n \leq n^{c_{1}}$ und setze $\beta_n = c_2 \cdot \log(n).$
-Sei $\sigma$ 2-zulässig nach Definition~\ref{nzulässig}. Sei $\mathcal{F}$ die Menge aller Funktionen die durch Definition~\ref{def:nn} definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und einer Beschränkung der Betrag der Gewichte durch $c_{3} \cdot n^{c_{4}}$.
+Seien $a > 0$ und $d, N, J_n \in \N$ so, dass $J_n \leq n^{c_{1}}$ und setze $\beta_n = c_2 \cdot \log(n).$
+Sei $\sigma\colon \R \to [0, 1]$ 2-zulässig. Sei $\mathcal{F}$ die Menge aller Funktionen die durch Definition~\ref{def:nn} definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und einer Beschränkung der Betrag der Gewichte durch $c_{3} \cdot n^{c_{4}}$.
 $$ \mathcal{F}^{(J_n)} = \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{5} \cdot n^{c_{6}}\biggr\}.$$
 Dann gilt für $n > 1:$
 $$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\bigg)\bigg) \leq c \cdot \log(n) \cdot J_n,$$
 für eine Konstante $c$ die nur von $L, N, a$ und $d$ abhängt.
 \end{lem}
 
-\section{Die Abschätzung des erwarteten $L_2$-Fehlers}
+\section{Der Beweis von Hauptsatz 3.1}
 Mit den Approximationsresultaten aus dem vorherigen Abschnitt verfügen wir nun über alle Bausteine um unser Hauptresultat zu beweisen.
-\begin{proof}[Beweis von Satz~\ref{optstop}]
-Da nach Voraussetzung $\supp(\mathds{P}_X)$ beschränkt ist und der Träger $\supp(\mathds{P}_X)$ immer abgeschlossen ist, wissen wir, dass $\supp(\mathds{P}_X)$ kompakt ist. Da $m$ als ($p,C$)-glatte Funktion insbesondere stetig ist wissen wir das sie auf einer kompakten Menge ihr Maximum und Minimum annimmt. Dadurch können wir $n$ so groß wählen, dass ohne Beschränkung der Allgemeinheit $\|m\|_{\infty} \leq \beta_n$ gilt.
+\begin{proof}[Beweis von Hauptsatz~\ref{optstop}]
+Da nach Voraussetzung $\supp(\mathds{P}_X)$ beschränkt ist und definitionsgemäß immer abgeschlossen ist, wissen wir nach dem Satz von Heine-Borel (vgl. \cite[Satz 5]{forster2016}), dass $\supp(\mathds{P}_X)$ kompakt ist. Da $m$ als ($p,C$)-glatte Funktion insbesondere stetig ist wissen wir das sie auf einer kompakten Menge ein Maximum und Minimum annimmt. Dadurch können wir $n$ so groß wählen, dass ohne Beschränkung der Allgemeinheit $\|m\|_{\infty} \leq \beta_n$ gilt.
 
-Sei $\mathcal{F}$ die Menge aller Funktion aus Definition~\ref{def:nn} mit Aktivierungsfunktion $\sigma$ und $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und der Eigenschaft, dass der Betrag der Gewichte durch $n^{c_{4}}$, mit einer Konstante $c_4 > 0$ beschränkt ist. Sei  für eine Konstante $c_5 > 0$
-$$ \mathcal{F}^{(J_n)} \coloneqq \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j \mid f_j \in \mathcal{F} \text{ und } \sum_{j = 1}^{J_n} a_j^2 \leq c_5 \cdot n \biggr\}$$
+Sei $\mathcal{F}$ die Menge aller Funktion aus Definition~\ref{def:nn} mit Aktivierungsfunktion $\sigma$ und $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und einer Konstante $c_4 > 0$ so, dass der Betrag der Gewichte durch $n^{c_{4}}$ beschränkt ist. Wir definieren
+$$ \mathcal{F}^{(J_n)} \coloneqq \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \text{ und } \sum_{j = 1}^{J_n} a_j^2 \leq c_5 \cdot n \biggr\}$$
 wobei
 \begin{equation}
 \label{constantc21}
 \begin{split}
-c_5 \coloneqq \max\Biggl\{\frac{1 + \E[Y^2]}{c_6}, & c_2^d \cdot (N + 1)^d \cdot \max\biggl\{\Big| \frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\Big|^2 \bigg| \, \bj \in [q]^d,\, |\bj|_1 \leq q\biggr\}\Biggr\},
+c_5 \coloneqq \max\Biggl\{\frac{1 + \E[Y^2]}{c_6}, c_2^d \cdot (N + 1)^d \cdot \max\biggl\{\Big| \frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\Big|^2 : \bj \in [q]^d,\, |\bj|_1 \leq q\biggr\}\Biggr\}.
 \end{split}
 \end{equation}
-mit $c_6$ als Konstante des Regularitätsterms aus Gleichung~(\ref{min}). Da wir uns in der nichtparametrischen Regressionsschätzung befinden gilt unter anderem die Bedingung $\E[Y^2] < \infty$, und daher ist $c_5$ auch wohldefiniert.
+Hierbei bezeichnet $c_6$ die Konstante des Regularitätsterms aus Gleichung~(\ref{min}). Da wir uns in der nichtparametrischen Regressionsschätzung befinden gilt unter anderem die Bedingung $\E[Y^2] < \infty$, und daher ist $c_5$ auch wohldefiniert.
 Weiterhin ist
-$$J_n = (M_n + 1)^d \cdot \big|\{\bj \mid \bj \in [N]^d, |\bj|_1 \leq N\}\big|,$$ 
-die Kardinalität der Menge $\mathcal{F}^{(J_n)}$. 
-Ohne die Restriktion $|\bj|_1 \leq N$ lässt sich $$\big|\{\bj \mid \bj \in [N]^d\}\big|$$ durch eine Analogie zu  einem Urnenexperiment bestimmen. Wir betrachten die Anzahl an Möglichkeiten, wie man $d$-mal mit Zurücklegen (da auch mehrere Komponenten den gleichen Wert haben können) und mit Beachtung der Reihenfolge (da wir einen Vektor betrachten und die Komponenten nicht vertauschen können) aus $(N + 1)$ Kugeln ziehen kann. Durch das Weglassen der Restriktion $|\bj|_1 \leq N$ erhalten wir:
-\begin{equation}
-\label{jn}
-J_n \leq (M_n + 1)^d \cdot (N + 1)^d.
-\end{equation}
+$J_n = \Big|\mathcal{F}^{(J_n)}\Big|$ 
+und in Kapitel~\ref{subsec:2.2} haben wir bereits gezeigt, dass 
+$$\Big|\mathcal{F}^{(J_n)}\Big| =  (M_n + 1)^d \cdot \binom{N + d}{d} \leq (M_n + 1)^d \cdot (N + 1)^d$$
+gilt.
 Da $m$ nach Voraussetzung $(p,C)$-glatt ist, folgt:
 \begin{equation}
 \label{bound}
-z \coloneqq \max_{\bi \in [M]^d,\, \bj \in [q]^d,\, |\bj|_1 \leq q} \big|\partial^{\bj}m(x_{\mathbf{i}})\big| < \infty,
+z \coloneqq \max_{\bi \in [M_n]^d,\, \bj \in [q]^d,\, |\bj|_1 \leq q} \big|\partial^{\bj}m(x_{\mathbf{i}})\big| < \infty,
 \end{equation}
 denn das größte Elemente muss auch beschränkt sein, wenn der Abstand zweier beliebiger Elemente beschränkt ist.
 Sei 
@@ -194,26 +178,26 @@ A_n \coloneqq \bigg[\frac{1}{n} \sum_{i = 1}^n Y_i^2 \leq 1 + \E[Y^2]\bigg].
 \end{equation}
 Wir wissen, dass aufgrund der Unabhängigkeit und identischen Verteiltheit der $\R^d \times \R$-wertigen Zufallsvariablen  $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ auch die Zufallsvariablen $Y_1,\dots,Y_n$ unabhängig und identisch verteilt sind. 
 Daraus folgern wir $\E\big[\frac{1}{n} \sum_{i = 1}^n Y_i^2\big] = \E[Y^2]$ mit der Linearität des Erwartungswerts.
-Mit Hilfe der Monotonie der Wahrscheinlichkeitsfunktion $\mathds{P}$ und der Chebyshev-Ungleichung für $\epsilon = 1$ (\cite{Klenke2013}, Satz 5.11) erhalten wir:
+Mit Hilfe der Monotonie der Wahrscheinlichkeitsfunktion~$\mathds{P}$ und der Chebyshev-Ungleichung für $\epsilon = 1$ \cite[Satz 5.11]{Klenke2013} erhalten wir:
 \begin{equation*}
 \begin{split}
-\mathds{P}(A_n^{\mathsf{c}}) & = \mathds{P}(\frac{1}{n}\sum_{i=1}^n Y_i^2 - \E[Y^2] \geq 1) \\
-& \leq \mathds{P}(\Big|\frac{1}{n}\sum_{i=1}^n Y_i^2 - \E[Y^2]\Big| \geq 1) \\
-& \leq \mathds{V}[\frac{1}{n}\sum_{i = 1}^nY_i^2].
+\mathds{P}(A_n^{\mathsf{c}}) = \mathds{P}\Big(\frac{1}{n}\sum_{i=1}^n Y_i^2 - \E[Y^2] \geq 1\Big)
+\leq \mathds{P}\Big(\Big|\frac{1}{n}\sum_{i=1}^n Y_i^2 - \E[Y^2]\Big| \geq 1\Big)
+\leq \mathds{V}[\frac{1}{n}\sum_{i = 1}^nY_i^2].
 \end{split}
 \end{equation*}
 Da die Zufallsvariablen $Y_1,\dots,Y_n$ u.\@i.\@v.\@ sind, folgt mit den Rechenregeln der Varianz:
 \begin{equation}
 \label{tscheby}
 \begin{split}
-\mathds{P}(A_n^{\mathsf{c}}) & \leq \frac{n \cdot  \mathds{V}[Y^2]}{n^2} \\
-& = \frac{\mathds{V}[Y^2]}{n} \\
-& = \frac{c_7}{n},
+\mathds{P}(A_n^{\mathsf{c}}) \leq \frac{n \cdot  \mathds{V}[Y^2]}{n^2}
+= \frac{\mathds{V}[Y^2]}{n}
+= \frac{c_7}{n},
 \end{split}
 \end{equation}
 wobei $c_7 \coloneqq \mathds{V}[Y^2]$ ist.
 
-Sei $$\hat{m}_n \coloneqq \mathds{1}_{A_n}m_n + \mathds{1}_{A_n}T_{\beta_n}g_n$$
+Sei $$\hat{m}_n \coloneqq \mathds{1}_{A_n}m_n + \mathds{1}_{A_n^{\mathsf{c}}}T_{\beta_n}g_n$$
 mit $m_n= T_{\beta_n}\tilde{m}_n$.
 
 Für zwei beliebige reelle Zahlen $u, v \in \R$ gilt durch $0 \leq (u - v)^2 = u^2 + v^2 - 2uv$:
@@ -221,9 +205,9 @@ $$u^2 + v^2 \geq 2uv$$ und damit schließlich:
 \begin{equation}
 \label{ungl}
 \begin{split}
-|(u - v)^2| & = |u^2 - 2uv + v^2| \\
-& \leq  u^2 + 2uv + v^2 \\
-& \leq 2u^2 + 2v^2.
+|(u - v)^2| & = |u^2 - 2uv + v^2|
+\leq  u^2 + 2uv + v^2
+\leq 2u^2 + 2v^2.
 \end{split}
 \end{equation}
 Mit Ungleichung~(\ref{ungl}) und durch die Unabhängigkeit von $A_n$ von den Zufallsvariablen $X, X_1, \dots, X_n$ erhalten wir:
@@ -237,7 +221,7 @@ Mit Ungleichung~(\ref{ungl}) und durch die Unabhängigkeit von $A_n$ von den Zuf
  & \stackrel{(\ref{tscheby})}{\leq} \frac{4 \cdot c_7 \cdot \beta_n^2}{n}.
 \end{split}
 \end{equation}
-Da wir nach Bemerkung~(\ref{mtildebeschraenkt}) wissen, dass $\tilde{m}_n$ beschränkt ist, ist $m_n$ nach Konstruktion ebenfalls beschränkt. Wir haben daher bei Ungleichung~(\ref{anc}) zudem verwendet, dass wir $n$ und $c_3$ so groß wählen, dass $\max\{\|m\|_{\infty}, \|m_n\|_{\infty}\} < \beta_n$ gilt. Bei der letzten Gleichung haben wir schließlich verwendet dass $\beta_n$ deterministisch und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ ist.
+Da wir nach Bemerkung~\ref{mtildebeschraenkt} wissen, dass $\tilde{m}_n$ beschränkt ist, ist $m_n$ nach Konstruktion ebenfalls beschränkt. Wir haben daher bei Ungleichung~(\ref{anc}) zudem verwendet, dass wir $n$ und $c_3$ so groß wählen, dass $\max\{\|m\|_{\infty}, \|m_n\|_{\infty}\} < \beta_n$ gilt. Bei der letzten Gleichung haben wir schließlich verwendet, dass $\beta_n$ deterministisch und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ ist.
 Durch unsere Definition von $\hat{m}_n$ erhalten wir durch die Monotonie des Erwartungswerts und einer Abschätzung über den ganzen Raum:
 \begin{equation}
 \label{an}
@@ -250,7 +234,7 @@ Zusammen mit Gleichungen~(\ref{tscheby}), (\ref{anc}), (\ref{an}) und der Linear
 \begin{equation}
 \label{originaleq}
 \begin{split}
-\E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \cdot (\mathds{1}_{A_n^{\mathsf{c}}} + \mathds{1}_{A_n})\bigg] \\
+\E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg] & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \cdot (\mathds{1}_{A_n^{\mathsf{c}}} + \mathds{1}_{A_n})\bigg] \\
 & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] \\
 & \quad + \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] \\
 & \leq \frac{4 \cdot c_7 \cdot \beta_n^2}{n} + \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg].
@@ -263,9 +247,9 @@ $$\tilde{m}_n(x) = \sum_{j = 1}^{J_n}\hat{a}_j \cdot f_j$$
 für geeignete $f_j \in \mathcal{F}$ und $\hat{a}_j$ welche 
 \begin{equation*}
 \begin{split}
-\frac{c_6}{n}\sum_{j = 1}^{J_n} \hat{a}_j^2 & = \frac{c_6}{n} \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_6}{n} \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2 \\
-& \leq \sum_{i = 1}^n Y_i^2,
+\frac{c_6}{n}\sum_{j = 1}^{J_n} \hat{a}_j^2 & = \frac{c_6}{n} \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2
+\leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_6}{n} \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2 
+\leq \sum_{i = 1}^n Y_i^2,
 \end{split}
 \end{equation*}
 erfüllen, wobei wir bei der letzten Ungleichung wie in Kapitel~\ref{chap:2} die minimierende Eigenschaft von $a_{\mathbf{i},\bj}$ verwendet haben und zum Schluss die Koeffizienten Null gesetzt haben. Da $c_6 > 0$ ist, erhalten wir dass, die Koeffizienten $\hat{a}_j$ die Eigenschaft
@@ -294,7 +278,7 @@ Wir erhalten damit:
 \end{equation}
 da für $\bar{m}_n = g_n$ die Ungleichung unmittelbar folgt.
 
-Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist, sind mit der einelementigen Parametermenge $\Theta_n$, der Funktion $g_{n,1} = g_n$, der Abschätzung~(\ref{bed}) für $\hat{m}_n = T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem \emph{penalty Term} $\text{pen}_n(g_{n,1}) = c_8 \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma~\ref{lem:8} erfüllt. Wir erhalten durch dessen Anwendung:
+Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist, sind mit der einelementigen Parametermenge $\Theta_n$, der Funktion $g_{n,1} = g_n$, der Abschätzung~(\ref{bed}) für $\hat{m}_n = T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem \emph{Penalty Term} $\mathrm{pen}_n(g_{n,1}) = c_8 \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma~\ref{lem:8} erfüllt. Wir erhalten durch dessen Anwendung:
 \begin{equation*}
 \begin{split}
 & \E \int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
@@ -430,10 +414,10 @@ und
 mit von $n$ unabhängigen Konstanten $c_{13} \coloneqq c_8 \cdot (2c_2)^d > 0$ und $c_{14} \coloneqq 4 \cdot c_7 \cdot c_3^2 > 0$.
 Nun haben wir alle Summanden von Ungleichung ($\ref{originaleq}$) abgeschätzt und erhalten schließlich mit Ungleichungen (\ref{1stsum}) - (\ref{6thsum}):
 \begin{equation*}
-\E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \leq c_{\text{fin}} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
+\E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \leq c_{\mathrm{fin}} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
 \end{equation*}
 mit 
-$$c_{\text{fin}} = c_{14} + 2 \cdot c_{13} + c_{12} + 2 \cdot \Bigg(2 \cdot \bigg(\frac{c_{11}}{c_2^p}\bigg)^2 + 2 \cdot  c_{10}\Bigg),$$
-wobei $c_{\text{fin}}$ als Summe nichtnegativer und positiver Konstanten, die unabhängig von $n$ sind, nichtnegativ und unabhängig von $n$ ist.
+$$c_{\mathrm{fin}} = c_{14} + 2 \cdot c_{13} + c_{12} + 2 \cdot \Bigg(2 \cdot \bigg(\frac{c_{11}}{c_2^p}\bigg)^2 + 2 \cdot  c_{10}\Bigg),$$
+wobei $c_{\mathrm{fin}}$ als Summe nichtnegativer und positiver Konstanten, die unabhängig von $n$ sind, nichtnegativ und unabhängig von $n$ ist.
 Damit haben wir unser Hauptresultat bewiesen.
 \end{proof}

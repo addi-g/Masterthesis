@@ -8,9 +8,9 @@
 \contentsline {section}{\numberline {2.1}Definition der Netzwerkarchitektur}{24}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Definition der Gewichte der Ausgabeschicht}{33}{section.2.2}%
 \contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{37}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Das Hauptresultat}{38}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Approximationsresultate für Satz~\ref {optstop}}{39}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Die Abschätzung des erwarteten $L_2$-Fehlers}{42}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{52}{chapter.4}%
-\contentsline {chapter}{Appendix}{55}{chapter*.11}%
-\contentsline {chapter}{Literaturverzeichnis}{70}{chapter*.12}%
+\contentsline {section}{\numberline {3.1}Die Abschätzung des erwarteten $L_2$-Fehlers}{38}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Approximationsresultate für Hauptsatz 3.1}{39}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Der Beweis von Hauptsatz 3.1}{42}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{51}{chapter.4}%
+\contentsline {chapter}{Appendix}{54}{chapter*.11}%
+\contentsline {chapter}{Literaturverzeichnis}{69}{chapter*.12}%

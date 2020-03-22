@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  20 MAR 2020 18:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  22 MAR 2020 10:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1201,6 +1201,7 @@ File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \arrowsize=\dimen282
 ))) (./befehle.tex
 \c@thm=\count193
+\c@mthm=\count194
 ) (./Masterthesis_Adrian_Gabel.aux (./titel.aux)
 (./erklaerung.aux) (./einleitung.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux)
 (./chap4.aux) (./appendix.aux) (./literaturverzeichnis.aux))
@@ -1228,16 +1229,16 @@ bibgerm.sty: babel.sty detected
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count194
+\scratchcounter=\count195
 \scratchdimen=\dimen283
 \scratchbox=\box69
-\nofMPsegments=\count195
-\nofMParguments=\count196
+\nofMPsegments=\count196
+\nofMParguments=\count197
 \everyMPshowfont=\toks50
-\MPscratchCnt=\count197
+\MPscratchCnt=\count198
 \MPscratchDim=\dimen284
-\MPnumerator=\count198
-\makeMPintoPDFobject=\count199
+\MPnumerator=\count199
+\makeMPintoPDFobject=\count266
 \everyMPtoPDFconversion=\toks51
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2019-12-09 v2.10 Base part for package epstopdf
@@ -1248,7 +1249,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count266
+\c@lstlisting=\count267
 
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box70
@@ -1264,7 +1265,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count267
+\c@section@level=\count268
 )
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
@@ -1489,7 +1490,7 @@ Kapitel 2.
 
 
 ] [25] [26]
-Overfull \hbox (1.82724pt too wide) detected at line 139
+Overfull \hbox (1.82724pt too wide) detected at line 140
 []
  []
 
@@ -1511,12 +1512,35 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 
 
 ]
-[38]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
 
-LaTeX Warning: Reference `OPTSTOP' on page 39 undefined on input line 78.
 
-[39]
-Overfull \hbox (14.6357pt too wide) in paragraph at lines 112--113
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 30.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 30.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 30.
+
+
+Overfull \hbox (23.82086pt too wide) in paragraph at lines 34--35
+[]\OMS/ztmcm/m/n/12 f[]f\OML/ztmcm/m/it/12 z; ^^L\OMS/ztmcm/m/n/12 g\OML/ztmcm/
+m/it/12 ; \OMS/ztmcm/m/n/12 ^^@\OML/ztmcm/m/it/12 ^^L\OMS/ztmcm/m/n/12 g$ \T1/p
+tm/m/n/12 (-20) für $\OML/ztmcm/m/it/12 z \OMS/ztmcm/m/n/12 2 \U/msb/m/n/12 R$ 
+\T1/ptm/m/n/12 (-20) und $\OML/ztmcm/m/it/12 ^^L > \OT1/ztmcm/m/n/12 0$\T1/ptm/
+m/n/12 (-20) , und $\OML/ztmcm/m/it/12 m[][][]$ \T1/ptm/m/n/12 (-20) un-ser Neu
+ronale-Netze-Regresssionsschätzer
+ []
+
+[38] [39]
+Overfull \hbox (14.6357pt too wide) in paragraph at lines 99--100
 []\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
 /n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
 ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-mal $\OML/ztmcm/m/it/12 N \O
@@ -1525,51 +1549,31 @@ MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
  []
 
 [40]
-Overfull \hbox (28.73529pt too wide) in paragraph at lines 139--140
+Overfull \hbox (28.73529pt too wide) in paragraph at lines 126--127
 []\T1/ptm/m/n/12 (-20) Das nächs-te Lem-ma be-nö-ti-gen wir, um ei-ne Schran-ke
  für die Über-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OM
 S/ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
  []
 
-
-LaTeX Warning: Reference `OPTSTOP' on page 41 undefined on input line 144.
-
-[41]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 150.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 150.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 150.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 150.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 150.
-
-[42]
+[41] [42]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [43] [44] [45] [46] [47]
-Underfull \vbox (badness 3281) has occurred while \output is active []
+ [43] [44] [45]
 
- [48]
-Underfull \vbox (badness 3701) has occurred while \output is active []
+LaTeX Warning: Reference `jn' on page 46 undefined on input line 293.
 
- [49]
-[50]) [51]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [46]
+[47] [48] [49]) [50]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
 Kapitel 4.
-[52
+[51
 
 
 
@@ -1590,7 +1594,7 @@ Overfull \hbox (7.12672pt too wide) in paragraph at lines 76--91
  [][] 
  []
 
-) [53] [54]
+) [52] [53]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -1608,11 +1612,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 (../01_Code/main.py
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
- [55
+ [54
 
 
 
 ]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [55]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [56]
@@ -1621,32 +1628,29 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [57]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [58]
+ [58])
+(../01_Code/data_gen.py [59]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [59])
-(../01_Code/data_gen.py [60]
+ [60])
+(../01_Code/help_neural_networks.py [61]) (../01_Code/new_neural_network.py
+[62]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [61])
-(../01_Code/help_neural_networks.py [62]) (../01_Code/new_neural_network.py
-[63]
+ [63]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [64]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [65])
-(../01_Code/fc_neural_network.py [66]) (../01_Code/nearest_neighbor.py)
-(../01_Code/constant.py [67])) [68]
+ [64])
+(../01_Code/fc_neural_network.py [65]) (../01_Code/nearest_neighbor.py)
+(../01_Code/constant.py [66])) [67]
 \openout2 = `literaturverzeichnis.aux'.
 
  (./literaturverzeichnis.tex
-(./Masterthesis_Adrian_Gabel.bbl [69
+(./Masterthesis_Adrian_Gabel.bbl [68
 
 
 
-])) [70]
+])) [69]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
  (./Masterthesis_Adrian_Gabel.aux
@@ -1656,19 +1660,22 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
 Package rerunfilecheck Info: File `Masterthesis_Adrian_Gabel.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: AD48F18C63C79CB1E6EF81C9CF9E0259;1037.
+(rerunfilecheck)             Checksum: D3E42E926944C7DE98CB890C4156CBDF;1062.
 
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 45617 strings out of 492162
- 962704 string characters out of 6125292
- 1369830 words of memory out of 5000000
- 47916 multiletter control sequences out of 15000+600000
- 121753 words of font info for 391 fonts, out of 8000000 for 9000
+ 45625 strings out of 492162
+ 962764 string characters out of 6125292
+ 1370374 words of memory out of 5000000
+ 47923 multiletter control sequences out of 15000+600000
+ 121978 words of font info for 393 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,21n,138p,1025b,4147s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -1693,9 +1700,9 @@ s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/u
 tmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (70 pages, 623534 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (69 pages, 620285 bytes).
 PDF statistics:
- 1587 PDF objects out of 1728 (max. 8388607)
- 848 named destinations out of 1000 (max. 500000)
+ 1578 PDF objects out of 1728 (max. 8388607)
+ 846 named destinations out of 1000 (max. 500000)
  58510 words of extra memory for PDF output out of 61914 (max. 10000000)
 
