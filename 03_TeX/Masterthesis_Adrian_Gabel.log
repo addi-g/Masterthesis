@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  23 MAR 2020 10:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  23 MAR 2020 10:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1554,7 +1554,7 @@ Kapitel 3.
 
 
 ] [38]
-Overfull \hbox (14.6357pt too wide) in paragraph at lines 78--79
+Overfull \hbox (14.6357pt too wide) in paragraph at lines 80--81
 []\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
 /n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
 ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-mal $\OML/ztmcm/m/it/12 N \O
@@ -1563,7 +1563,7 @@ MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
  []
 
 [39]
-Overfull \hbox (28.73529pt too wide) in paragraph at lines 103--104
+Overfull \hbox (28.73529pt too wide) in paragraph at lines 105--106
 []\T1/ptm/m/n/12 (-20) Das nächs-te Lem-ma be-nö-ti-gen wir, um ei-ne Schran-ke
  für die Über-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OM
 S/ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
@@ -1576,7 +1576,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
  [41] [42] [43]
 
-LaTeX Warning: Reference `jn' on page 44 undefined on input line 271.
+LaTeX Warning: Reference `jn' on page 44 undefined on input line 273.
 
 [44] [45] [46] [47]) [48]
 \openout2 = `chap4.aux'.
@@ -1710,7 +1710,7 @@ s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/u
 tmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (67 pages, 616076 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (67 pages, 616190 bytes).
 PDF statistics:
  1570 PDF objects out of 1728 (max. 8388607)
  845 named destinations out of 1000 (max. 500000)

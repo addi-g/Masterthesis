@@ -271,12 +271,12 @@ mit Netzwerkarchitektur $(1, (4))$, welches, wie in Lemma~\ref{lem:2} gezeigt, d
 Das neuronale Netz 
 \begin{equation}
 \label{def:frelu}
-f_{ReLu}(x) = f_{\mult}(f_{\id}(x), \sigma(R \cdot x)),
+f_{\ReLU}(x) = f_{\mult}(f_{\id}(x), \sigma(R \cdot x)),
 \end{equation}
 mit Netzwerkarchitektur $(2, (2, 4))$, welches, wie in Lemma~\ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und in Abbildung~\ref{fig:frelu} veranschaulicht wurde und schließlich das neuronale Netz 
 \begin{equation}
 \label{def:fhat}
-f_{\mathrm{hat},y}(x) = f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) +  f_{ReLu}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg),
+f_{\mathrm{hat},y}(x) = f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) +  f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg),
 \end{equation}
 mit Netzwerkarchitektur $(2, (6, 12))$, welches, wie in Lemma~\ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung~\ref{fig:fhat} veranschaulicht wurde.
 
