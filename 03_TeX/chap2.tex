@@ -6,7 +6,7 @@ Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie fol
 In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten.
 Für das \emph{$L_2$-Risiko} einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt:
 $$\E[|f(X) - Y|^2] = \E[|m(X) - Y|^2] + \int|f(x) - m(x)|^2 \mathds{P}_X (dx),$$
-d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers der aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y entsteht.
+d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers, der aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y entsteht.
 Im Hinblick auf die Minimierung des \emph{$L_2$-Risikos} sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein.
 Formal führt das daher auf folgende Problemstellung:
 

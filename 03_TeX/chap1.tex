@@ -87,7 +87,7 @@ Zwei wichtige Charakteristika, die neuronale Netze aufweisen können, sind:
 %\end{itemize}
 %Mit dieser Definition können wir nun sagen, dass eine Netzwerkarchitektur wie ein Grundgerüst für die Konstruktion weiterer neuronale Netze ist.
 %\end{defn}
-Als Nächstes kommen wir zu einer Definition eines neuronalen Netzes welches wir in dieser Form im weiteren Verlauf dieser Arbeit benötigen werden.
+Als Nächstes kommen wir zur mathematischen Definition eines neuronalen Netzes, welche wir in dieser Form im weiteren Verlauf dieser Arbeit benötigen werden.
 \begin{defn}
 \label{def:nn}
 Sei $L \in \N$, $\bk \in \N^L$ und $\sigma\colon \R \to \R$. Ein \emph{mehrschichtiges feedforward neuronales Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion} $\sigma$, ist eine reellwertige Funktion $f\colon \R^d \to \R$ definiert durch:
@@ -102,7 +102,7 @@ f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{
 für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$,
 weiterhin sei $\mathfrak{N}(L, \bk, \sigma)$ die Klasse aller mehrschichtigen feedforward neuronalen Netze mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$.
 \end{defn}
-Wir werden ab jetzt der Einfachheit halber nur noch von neuronalen Netzen mit Architektur $(L,\bk)$ reden und beziehen uns damit immer auf Definition~\ref{def:nn}. Wenn aus dem Kontext Netzwerkarchitektur bereits bekannt ist sprechen wir nur noch von einem neuronalen Netz, beziehen uns damit aber dennoch auf Definition~\ref{def:nn}.
+Wir werden ab jetzt der Einfachheit halber nur noch von neuronalen Netzen mit Architektur $(L,\bk)$ reden und beziehen uns damit immer auf Definition~\ref{def:nn}. Wenn aus dem Kontext die Netzwerkarchitektur bereits bekannt ist, sprechen wir nur noch von einem neuronalen Netz, beziehen uns damit aber dennoch auf Definition~\ref{def:nn}.
 \begin{bemnumber}
 In obiger Definition versteht man unter:
 \begin{itemize}
@@ -182,7 +182,7 @@ Wie zuvor erwähnt ist einer der Ausgangspunkte für die Definition eines neuron
 \label{logsquasher}
 \sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
 \end{align}
-Wir kommen nun zu einer Eigenschaft die wir für den logistischen Squasher benötigen und in Lemma~\ref{lem:logsquasher} für $N \in \N_0$ zeigen werden.
+Wir kommen nun zu einer Eigenschaft, die wir für den logistischen Squasher benötigen und in Lemma~\ref{lem:logsquasher} für $N \in \N_0$ zeigen werden.
 \begin{defn}
 \label{nzulässig}
 Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zulässig} genannt, wenn sie monoton wachsend und lipschitzstetig ist und wenn zusätzlich die folgenden drei Bedingungen erfüllt sind:
@@ -194,13 +194,13 @@ Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zul�
 \end{defn}  
 
 \section{Hilfsresultate}
-Als Erstes stellen wir ein Resultat vor, welches wir für Approximationsresultate von neuronalen Netzen benötigen um unseren Neuronale-Netze-Schätzer zu konstruieren.
+Als Erstes stellen wir ein Resultat vor, welches eine wichtige Eigenschaft für die Aktivierungsfunktion der hier betrachteten neuronalen Netze darstellt.
 \begin{lem}
 \label{lem:logsquasher}
 Sei $N \in \N_0$ beliebig, dann ist der logistische Squasher $$\sigma\colon \R \to [0, 1] \text{ mit } \sigma(x) = \frac{1}{1 + \exp(-x)}$$ $N$-zulässig.
 \end{lem}
 \begin{proof}
-Sei $N \in \N_0$ beliebig. Dadurch, dass $0 \leq \frac{1}{1 + exp(-x)} \leq 1$ für alle $x \in \R$ gilt, erhalten wir schließlich auch $\sigma: \R \to [0,1]$. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
+Sei $N \in \N_0$ beliebig. Dadurch, dass $0 \leq \frac{1}{1 + \exp(-x)} \leq 1$ für alle $x \in \R$ gilt, erhalten wir schließlich auch $\sigma: \R \to [0,1]$. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
 $$\sigma(s) = \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} = \sigma(t),$$
 wobei wir verwendet haben, dass aufgrund der Monotonie der Exponentialfunktion für $s \leq t$ auch $\exp(-s) \geq \exp(-t)$ gilt.
 Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-mal stetig differenzierbar. Die Funktion $\sigma$ erfüllt die gewöhnliche Differentialgleichung $\frac{\partial\sigma}{\partial x} = (1 - \sigma) \cdot \sigma,$ da:
@@ -260,7 +260,7 @@ Aus der Punktsymmetrie folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 =
 $$|\sigma(x)| = |-\sigma(x)| = |\sigma(- x) - 1| \leq \frac{1}{-x} = \frac{1}{|x|}.$$
 Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt und unsere Aussage bewiesen.
 \end{proof}
-Als Nächstes stellen wir ein Resultat zur Restgliedabschätzung vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
+Als Nächstes stellen wir ein Resultat zur Taylorformel mit Rest vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
 
 \begin{lem}[Lagrangesche Form des Restglieds, {\cite[Kapitel 2.4 Seite 67]{Koenigsberger2013}}]
 \label{lem:lagrange}
@@ -278,7 +278,8 @@ dargestellt werden kann.
 \textbf{\emph{ii)}} Sei $I \subseteq \R$ ein Intervall und $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi$ zwischen $u$ und $x$, so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1}.$$
 \end{lem}
 Es folgen nun drei Approximationsresultate, welche wir in Kapitel~\ref{chap:2} für die Konstruktion unseres Neuronale-Netze-Regressionschätzers benötigen werden.
-Wir betrachten erst eine Approximation der Identität durch das neuronale Netz $f_{\id}\colon \R \to \R$ mit Architektur~$(1,(1))$, welches in Abbildung~\ref{fig:fid} veranschaulicht wird und anschließend die Approximation eines Quadrats auf einem Intervall durch das neuronale Netz $f_{\sq}\colon \R \to \R$ mit Architektur~$(1,(2))$.
+
+Wir betrachten als Erstes eine Approximation der Identität durch das neuronale Netz $f_{\id}\colon \R \to \R$ mit Architektur~$(1,(1))$, welches in Abbildung~\ref{fig:fid} veranschaulicht wird und anschließend die Approximation eines Quadrats auf einem Intervall durch das neuronale Netz $f_{\sq}\colon \R \to \R$ mit Architektur~$(1,(2))$.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[
@@ -321,7 +322,7 @@ net/.style={
  
 \begin{lem}
   \label{lem:1}
-  Sei $\sigma \colon \R \to \R$ eine Funktion, $R, a > 0$ und $\|\cdot\|_{\infty}$ die Supremumsnorm auf $[-a, a]$.
+  Sei $\sigma \colon \R \to \R$ eine Funktion, $R, a > 0$ und $\|\cdot\|_{\infty}$ die Supremumsnorm auf $[-a,a]$.
   \begin{itemize}
   \item[a)] Angenommen $\sigma$ ist zweimal stetig differenzierbar und $t_{\sigma,\id} \in \R$ so, dass $\sigma'(t_{\sigma, \id}) \neq 0$ ist. Dann gilt für das neuronale Netz
   $$ f_{\id}(x) = \frac{R}{\sigma'(t_{\sigma, \id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, \id}\right) - \sigma(t_{\sigma, \id})\right)$$
@@ -446,7 +447,7 @@ net/.style={
 \end{equation*}   
 wobei wir bei der letzten Ungleichung Lemma~\ref{lem:1}b) mit $x + y, x - y \in [-2a, 2a]$ verwendet haben. Daraus folgt die Behauptung.
   \end{proof}
-Wir betrachten als nächstes die Approximation der Maximumsfunktion $\max\{x, 0\}$ für $x$ aus einem Intervall, durch das neuronale Netz $f_{\ReLU}\colon \R \to \R$ mit Architektur $(2,(2,4))$, welches in Abbildung~\ref{fig:frelu} veranschaulicht wird.
+Wir betrachten als Nächstes die Approximation der Maximumsfunktion $\max\{x, 0\}$ für $x$ aus einem beschränkten Intervall durch das neuronale Netz $f_{\ReLU}\colon \R \to \R$ mit Architektur $(2,(2,4))$, welches in Abbildung~\ref{fig:frelu} veranschaulicht wird.
 \begin{figure}[htp]
 \centering
 \begin{tikzpicture}[

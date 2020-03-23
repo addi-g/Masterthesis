@@ -13,6 +13,7 @@ unter Annahme einer $(p,C)$-glatten Regressionsfunktion $m$ herzuleiten. Hierbei
 für $z \in \R$ und $\beta > 0$ und $\tilde{m}_n$ unser Neuronale-Netze-Regresssionsschätzer aus Kapitel~\ref{subsec:2.2} ist, welcher aus mehreren neuronalen Netzen konstruiert wurde. Für diesen gilt: 
 Die Aktivierungsfunktion $\sigma$ ist der logistische Squasher, $N > q, M = M_n = \lceil c_2 \cdot n^{1/(2p + d)}\rceil$ mit $c_2 >0$ und unabhängig von $n$, $R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
 
+Nun kommen wir zu dem Hauptresultat dieser Arbeit.
 \begin{mthm}[{\cite[Theorem 1]{kohler19}}]
 \label{optstop}
 Angenommen die Verteilung von $Y$ erfüllt 
@@ -26,6 +27,8 @@ Dann erhalten wir für hinreichend großes $n$:
 $$\E \int |m_n(x) - m(x)|^2  \mathds{P}_X(dx) \leq c_{\mathrm{fin}} \cdot (\log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
 wobei $c_{\mathrm{fin}} > 0$ und unabhängig von $n$ ist.
 \end{mthm}
+
+Der folgende Abschnitt liefert Hilfsresultate welche wir im Beweis unsere Hauptresultats gebrauchen werden.
 
 \section{Approximationsresultate für Hauptsatz 3.1}
 Die nächsten  Definitionen und Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Schätzers. Die Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt. 
@@ -110,11 +113,11 @@ $$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdo
 für eine Konstante $c$ die nur von $L, N, a$ und $d$ abhängt.
 \end{lem}
 
-Mit den Approximationsresultaten aus diesem Abschnitt verfügen wir nun über alle Bausteine um unser Hauptresultat zu beweisen.
+Mit den Approximationsresultaten aus diesem Abschnitt verfügen wir nun über alle Bausteine, um unser Hauptresultat zu beweisen.
 
 \section{Der Beweis von Hauptsatz 3.1}
 
-Da nach Voraussetzung $\supp(\mathds{P}_X)$ beschränkt ist und definitionsgemäß immer abgeschlossen ist, wissen wir nach dem Satz von Heine-Borel (vgl. \cite[Satz 5]{forster2016}), dass $\supp(\mathds{P}_X)$ kompakt ist. Da $m$ als ($p,C$)-glatte Funktion insbesondere stetig ist wissen wir das sie auf einer kompakten Menge ein Maximum und Minimum annimmt. Dadurch können wir $n$ so groß wählen, dass ohne Beschränkung der Allgemeinheit $\|m\|_{\infty} \leq \beta_n$ gilt.
+Da nach Voraussetzung $\supp(\mathds{P}_X)$ beschränkt ist und definitionsgemäß immer abgeschlossen ist, wissen wir nach dem Satz von Heine-Borel (vgl. \cite[Satz 5]{forster2016}), dass $\supp(\mathds{P}_X)$ kompakt ist. Da $m$ als ($p,C$)-glatte Funktion insbesondere stetig ist, wissen wir, dass sie auf einer kompakten Menge ein Maximum und Minimum annimmt. Dadurch können wir $n$ so groß wählen, dass ohne Beschränkung der Allgemeinheit $\|m\|_{\infty} \leq \beta_n$ gilt.
 
 Sei $\mathcal{F}$ die Menge aller Funktion aus Definition~\ref{def:nn} mit Aktivierungsfunktion $\sigma$ und $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und einer Konstante $c_4 > 0$ so, dass der Betrag der Gewichte durch $n^{c_{4}}$ beschränkt ist. Wir definieren
 $$ \mathcal{F}^{(J_n)} \coloneqq \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \text{ und } \sum_{j = 1}^{J_n} a_j^2 \leq c_5 \cdot n \biggr\}$$
@@ -125,7 +128,7 @@ wobei
 c_5 \coloneqq \max\Biggl\{\frac{1 + \E[Y^2]}{c_6}, c_2^d \cdot (N + 1)^d \cdot \max\biggl\{\Big| \frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\Big|^2 : \bj \in [q]^d,\, |\bj|_1 \leq q\biggr\}\Biggr\}.
 \end{split}
 \end{equation}
-Hierbei bezeichnet $c_6$ die Konstante des Regularitätsterms aus Gleichung~(\ref{min}). Da wir uns in der nichtparametrischen Regressionsschätzung befinden gilt unter anderem die Bedingung $\E[Y^2] < \infty$, und daher ist $c_5$ auch wohldefiniert.
+Hierbei bezeichnet $c_6$ die Konstante des Regularitätsterms aus Gleichung~(\ref{min}). Da wir uns in der nichtparametrischen Regressionsschätzung befinden, gilt unter anderem die Bedingung $\E[Y^2] < \infty$ und daher ist $c_5$ auch wohldefiniert.
 Weiterhin ist
 $J_n = \Big|\mathcal{F}^{(J_n)}\Big|$ 
 und in Kapitel~\ref{subsec:2.2} haben wir bereits gezeigt, dass 
