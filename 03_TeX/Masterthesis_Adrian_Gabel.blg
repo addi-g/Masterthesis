@@ -55,45 +55,45 @@ Too many commas in name 1 of "Devroye L., Karasözen, B., Kohler, M. AND Korn, R
 while executing---line 1361 of file geralpha.bst
 Name 1 in "Tsitsiklis, J. N., and Van Roy, B." has a comma at the end for entry tsitsiklis1999optimal
 while executing---line 1361 of file geralpha.bst
-You've used 22 entries,
+You've used 23 entries,
             2768 wiz_defined-function locations,
-            741 strings with 8100 characters,
-and the built_in function-call counts, 7639 in all, are:
-= -- 760
-> -- 279
-< -- 18
-+ -- 87
-- -- 83
-* -- 553
-:= -- 1219
-add.period$ -- 47
-call.type$ -- 22
-change.case$ -- 97
-chr.to.int$ -- 22
-cite$ -- 23
-duplicate$ -- 381
-empty$ -- 643
-format.name$ -- 118
-if$ -- 1622
+            747 strings with 8173 characters,
+and the built_in function-call counts, 7921 in all, are:
+= -- 786
+> -- 287
+< -- 19
++ -- 89
+- -- 85
+* -- 570
+:= -- 1264
+add.period$ -- 49
+call.type$ -- 23
+change.case$ -- 101
+chr.to.int$ -- 23
+cite$ -- 24
+duplicate$ -- 398
+empty$ -- 670
+format.name$ -- 122
+if$ -- 1682
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 41
-newline$ -- 92
-num.names$ -- 68
-pop$ -- 140
+missing$ -- 43
+newline$ -- 96
+num.names$ -- 71
+pop$ -- 148
 preamble$ -- 1
-purify$ -- 141
+purify$ -- 147
 quote$ -- 0
-skip$ -- 286
+skip$ -- 297
 stack$ -- 0
-substring$ -- 313
-swap$ -- 68
-text.length$ -- 18
-text.prefix$ -- 14
+substring$ -- 320
+swap$ -- 70
+text.length$ -- 19
+text.prefix$ -- 15
 top$ -- 0
-type$ -- 120
+type$ -- 124
 warning$ -- 1
-while$ -- 65
-width$ -- 25
-write$ -- 271
+while$ -- 67
+width$ -- 26
+write$ -- 283
 (There were 21 error messages)

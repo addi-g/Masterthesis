@@ -4,7 +4,7 @@
 \BOOKMARK [1][-]{section.1.2}{Hilfsresultate}{chapter.1}% 4
 \BOOKMARK [0][-]{chapter.2}{Konstruktion\040des\040Neuronale-Netze-Sch\344tzers}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Definition\040der\040Netzwerkarchitektur}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{Definition\040der\040Gewichte\040der\040Ausgabeschicht}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Bestimmung\040der\040Gewichte\040der\040Ausgabeschicht}{chapter.2}% 7
 \BOOKMARK [0][-]{chapter.3}{Resultat\040zur\040Konvergenzgeschwindigkeit}{}% 8
 \BOOKMARK [1][-]{section.3.1}{Approximationsresultate\040f\374r\040Hauptsatz\0403.1}{chapter.3}% 9
 \BOOKMARK [1][-]{section.3.2}{Der\040Beweis\040von\040Hauptsatz\0403.1}{chapter.3}% 10

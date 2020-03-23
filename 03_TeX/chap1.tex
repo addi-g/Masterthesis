@@ -5,7 +5,7 @@ Der Zweck dieses Kapitels ist es auf die in dieser Arbeit verwendeten neuronalen
 In dieser Arbeit bezeichnen wir mit $d \geq 1$ immer eine natürliche Zahl.
 
 \section{Definitionen}
-Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Netzwerkarchitektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen und verarbeiten.
+Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Architektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen und verarbeiten.
 % und entsprechend über eine Aktivierung reagieren. 
 Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
 %\begin{figure}
@@ -102,7 +102,7 @@ f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{
 für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$,
 weiterhin sei $\mathfrak{N}(L, \bk, \sigma)$ die Klasse aller mehrschichtigen feedforward neuronalen Netze mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$.
 \end{defn}
-Wir werden ab jetzt der Einfachheit halber nur noch von neuronalen Netzen mit Architektur $(L,\bk)$ reden und beziehen uns damit immer auf Definition~\ref{def:nn}. Wenn aus dem Kontext die Netzwerkarchitektur bereits bekannt ist, sprechen wir nur noch von einem neuronalen Netz, beziehen uns damit aber dennoch auf Definition~\ref{def:nn}.
+Wir werden ab jetzt der Einfachheit halber nur noch von \emph{neuronalen Netzen mit Architektur $(L,\bk)$} reden und beziehen uns damit immer auf Definition~\ref{def:nn}. Wenn aus dem Kontext die \emph{Architektur $(L,\bk)$} bereits bekannt ist, sprechen wir nur noch von einem \emph{neuronalen Netz}, beziehen uns damit aber dennoch auf Definition~\ref{def:nn}.
 \begin{bemnumber}
 In obiger Definition versteht man unter:
 \begin{itemize}

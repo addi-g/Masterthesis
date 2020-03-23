@@ -1,15 +1,20 @@
 \chapter{Konstruktion des Neuronale-Netze-Schätzers}
 \label{chap:2}
 
-In dieser Arbeit behandeln wir Neuronale-Netze-Regressionsschätzer im Kontext der \emph{nichtparametrischen Regression} mit \emph{zufälligem Design}. Bei der nichtparametrischen Regressions ist die Bauart der zu schätzenden Funktion komplett unbekannt, was den Vorteil besitzt, dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt, um eine Funktion zu schätzen.
+In dieser Arbeit behandeln wir Neuronale-Netze-Regressionsschätzer im Kontext der \emph{nichtparametrischen Regression} mit \emph{zufälligem Design}. In der Regressionsanalyse betrachtet man einen Zufallsvektor $(X,Y)$, wobei $X$ $\R^d$-wertig und $Y$ reelwertig ist. Man ist daran interessiert, wie der Wert der \emph{Reaktionsvariable} $Y$ vom Wert des \emph{Beobachtungsvektors} $X$ abhängt. Dies bedeutet, dass man eine (messbare) Funktion $f\colon \R^d \to \R$ sucht, sodass $f(X)$ eine \glqq gute Approximation von $Y$ ist \grqq. Das wiederum bedeutet, dass $f(X)$ nah an $Y$ sein sollte, was in gewisser Weise gleichwertig ist, den Ausdruck $|f(X) - Y|$ \glqq klein\grqq zu machen. Da aber $X$ und $Y$ Zufallsvektoren sind und damit $|f(X) - Y|$ auch zufällig ist, ist nicht klat was mit unter \glqq $|f(X) - Y|$ klein\grqq zu verstehen ist. Wir können dieses Problem lösen, indem wir das sogenannte $L_2$-Risiko 
+$$
+\E[|f(X) - Y|^2],
+$$
+einführen und verlangt, dass es so klein wie möglich sein muss.
+Bei der nichtparametrischen Regression ist die Bauart der zu schätzenden Funktion komplett unbekannt, was den Vorteil besitzt, dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt, um eine Funktion zu schätzen.
 Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie folgt erläutern: 
-In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten.
-Für das \emph{$L_2$-Risiko} einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt:
+In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann die \emph{Regressionsfunktion} $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten.
+Für das $L_2$-Risiko einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt:
 $$\E[|f(X) - Y|^2] = \E[|m(X) - Y|^2] + \int|f(x) - m(x)|^2 \mathds{P}_X (dx),$$
 d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers, der aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y entsteht.
 Im Hinblick auf die Minimierung des \emph{$L_2$-Risikos} sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein.
 Formal führt das daher auf folgende Problemstellung:
-
+\begin{prblm}
 $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ seien u.\@i.\@v.\@ $\R^d \times \R$ wertige Zufallsvariablen mit $\E[Y^2] < \infty$ und $m\colon\R^d \to \R$ definiert durch $m(x) = \E[Y \mid X = x]$ sei die zugehörige Regressionsfunktion. Gegeben sei die Datenmenge 
 \begin{equation}
 \label{dataset}
@@ -20,13 +25,14 @@ $$m_n(\cdot) = m_n(\cdot, \mathcal{D}_n)\colon\R^d \to \R $$
 von $m$, für die der $L_2$-Fehler 
 $$\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)$$
 möglichst \glqq klein\grqq\@ ist \cite[Kapitel 1.1 und Kapitel 1.2]{gyoerfi2002}. 
-
+\end{prblm}
 In diesem Kapitel werden wir mithilfe der gegebenen Datenmenge $\mathcal{D}_n$ unseren Regressionsschätzer $\tilde{m}_n$ konstruieren. 
 In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$ verstehen.
 
-Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) eine Tikhonov Regularisierung \cite[Theorem 5.9]{Kress2012} lösen.
+Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein Kleinste-Quadrate-Problem lösen.
+%mit einer Tikhonov Regularisierung \cite[Theorem 5.9]{Kress2012} lösen.
 
-Es ist bekannt (vgl.\@ \cite[Theorem 7.2 und Problem 7.2]{DevLug96} \cite[Section 3]{DevWag80}), dass man Glattheitsvoraussetzungen an die Regressionsfunktion haben muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
+Es ist bekannt (vgl.\@ \cite[Theorem 7.2 und Problem 7.2]{DevLug96} und \cite[Section 3]{DevWag80}), dass man Glattheitsvoraussetzungen an die Regressionsfunktion stellen muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
 \begin{defn}[($p,C$)-Glattheit]
 \label{def:pc}
    Sei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$ (also $p \in (0, \infty)$ und sei $C > 0$. Eine Funktion $f\colon \R^d \to \R$ heißt \emph{($p, C$)-glatt}, falls für alle $\alpha = (\alpha_1,\dots,\alpha_d) \in \N_0^d$ mit $\sum_{j = 1}^{d}\alpha_j = q$ die partielle Ableitung 
@@ -38,6 +44,8 @@ Es ist bekannt (vgl.\@ \cite[Theorem 7.2 und Problem 7.2]{DevLug96} \cite[Sectio
 
 \section{Definition der Netzwerkarchitektur}
 \label{subsec:2:1}
+In diesem Abschnitt stellen wir die \emph{Netzwerkachitektur} unsere Neuronale-Netze-Regressionsschätzers vor. Dafür legen wir die Architektur $(L,\bk)$ fest und gehen auf die konkrete Konstruktion unseres Schätzers ein.
+
 Zunächst fixieren wir die Multiindexnotation, die wir der Übersichtlichkeit halber im weiteren Verlauf dieser Arbeit verwenden werden. Sei $a > 0$ fest und $M \in \N$. 
 
 Sei $[M]^d \coloneqq\{0, 1, \dots, M\}^d.$ 
@@ -179,7 +187,7 @@ P_m(x) &= \sum_{\bi \in [M]^d} p_{\bi}^m(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}
 \end{split}
 \end{equation}
 Damit wissen wir, dass $P_m(x)$ eine Spline Interpolation von Taylorpolynomen von $m$ ist.
-Die Wahl der Netzwerkarchitektur $(L,\bk)$ unseres Neuronale-Netze-Regressionsschätzers und der Werte aller Gewichte bis auf die der Ausgabeschicht ist durch folgendes Approximationsresultat motiviert.
+Die Wahl der Architektur $(L,\bk)$ unseres Neuronale-Netze-Regressionsschätzers und der Werte aller Gewichte bis auf die der Ausgabeschicht ist durch folgendes Approximationsresultat motiviert.
 \begin{lem}
 \label{lem:pcsmooth}
 Sei $M \in \N$, $a > 0$ und $f$ eine ($p, C$)-glatte Funktion, wobei $p = q + s$ mit $q \in \N_0, s \in (0,1]$ und $C > 0$ sind. Sei zudem $P_f(x)$ analog zu Gleichung~(\ref{def:Pm}) eine lokale Spline Interpolation von Taylorpolynomen von $f$. Dann gilt:
@@ -246,8 +254,8 @@ Durch geeignet gewählte $a_{\bi, \bj} \in \R$ lässt sich $P_m(x)$ in die Form
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\bi, \bj} \cdot (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$
 bringen, da sich jedes $p^m_{\bi}(x)$ als Polynom umordnen lässt und wir daher auch $P_m(x)$ umschreiben können.
 
-Als Nächstes wollen wir geeignete neuronale Netze $f_{\net, \bj, \bi}$ mit Netzwerkarchitektur $(L, \bk)$ definieren, die die Funktionen
-$$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Netzwerkarchitektur $(L, \bk)$ so wählen, dass neuronale Netze der Form
+Als Nächstes wollen wir geeignete neuronale Netze $f_{\net, \bj, \bi}$ mit Architektur $(L, \bk)$ definieren, die die Funktionen
+$$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren. Zudem möchten wir die Architektur $(L, \bk)$ so wählen, dass neuronale Netze der Form
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\mathbf{i}, \bj} \cdot f_{\net,\bj,\mathbf{i}}(x) \qquad (a_{\mathbf{i},\bj} \in \R)$$ in der Klasse $\mathfrak{N}(L, \bk, \sigma)$ enthalten sind.
 Um dies zu erreichen, sei $$\sigma(x) = \frac{1}{(1 + \exp(-x))} \quad (x \in \R)$$ der logistische Squasher~(\ref{logsquasher}). Zudem wählen wir $R \geq 1$ und definieren die folgenden neuronalen Netze:
 
@@ -256,7 +264,7 @@ Das neuronale Netz
 \label{def:fid}
 f_{\id}(x) = 4R \cdot \sigma\Big(\frac{x}{R}\Big) - 2R,
 \end{equation}
-mit Netzwerkarchitektur $(1, (1))$, welches, wie in Lemma~\ref{lem:1} gezeigt, die Funktion $f(x) = x$ approximiert und in Abbildung~\ref{fig:fid} veranschaulicht wurde.
+mit Architektur $(1, (1))$, welches, wie in Lemma~\ref{lem:1} gezeigt, die Funktion $f(x) = x$ approximiert und in Abbildung~\ref{fig:fid} veranschaulicht wurde.
 
 Das neuronale Netz 
 \begin{equation}
@@ -266,19 +274,19 @@ f_{\mult}(x, y) = \frac{R^2}{4} \cdot \frac{(1 + \exp(- 1))^3}{\exp(-2) - \exp(-
 & - \sigma\Big(\frac{2(x - y)}{R} + 1\Big) + 2 \cdot \sigma\Big(\frac{x - y}{R} + 1\Big)\bigg),
 \end{split}
 \end{equation}
-mit Netzwerkarchitektur $(1, (4))$, welches, wie in Lemma~\ref{lem:2} gezeigt, die Funktion $f(x, y) = x \cdot y$ approximiert und in Abbildung~\ref{fig:fmult} veranschaulicht wurde.
+mit Architektur $(1, (4))$, welches, wie in Lemma~\ref{lem:2} gezeigt, die Funktion $f(x, y) = x \cdot y$ approximiert und in Abbildung~\ref{fig:fmult} veranschaulicht wurde.
 
 Das neuronale Netz 
 \begin{equation}
 \label{def:frelu}
 f_{\ReLU}(x) = f_{\mult}(f_{\id}(x), \sigma(R \cdot x)),
 \end{equation}
-mit Netzwerkarchitektur $(2, (2, 4))$, welches, wie in Lemma~\ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und in Abbildung~\ref{fig:frelu} veranschaulicht wurde und schließlich das neuronale Netz 
+mit Architektur $(2, (2, 4))$, welches, wie in Lemma~\ref{lem:3} gezeigt, die Funktion $f(x) = x_+$ approximiert und in Abbildung~\ref{fig:frelu} veranschaulicht wurde und schließlich das neuronale Netz 
 \begin{equation}
 \label{def:fhat}
 f_{\mathrm{hat},y}(x) = f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 \cdot f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) +  f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg),
 \end{equation}
-mit Netzwerkarchitektur $(2, (6, 12))$, welches, wie in Lemma~\ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung~\ref{fig:fhat} veranschaulicht wurde.
+mit Architektur $(2, (6, 12))$, welches, wie in Lemma~\ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung~\ref{fig:fhat} veranschaulicht wurde.
 
 Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N > q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $\bj \in [N]^d$, $\bi \in [M]^d$ und $k \in \{1,\dots,(M + 1)^d\}$:  
 \begin{align}
@@ -305,7 +313,7 @@ Die Anzahl der Neuronen pro verborgener Schicht von $f_{\net,\bj,\bi}$ ergeben s
 \end{itemize}  
 Da man, wie in Kapitel~\ref{chap:1} bereits erwähnt, bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ nach Definition~\ref{def:nn} in $\mathfrak{N}(s + 2,\{24 \cdot (N + d)\}^{s + 2},\sigma)$, da die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ ist. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
 
-\section{Definition der Gewichte der Ausgabeschicht}
+\section{Bestimmung der Gewichte der Ausgabeschicht}
 \label{subsec:2.2}
 
 Wir definieren unseren Neuronale-Netze-Regressionsschätzer $\tilde{m}_n(x)$  durch:

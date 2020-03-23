@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  23 MAR 2020 10:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  23 MAR 2020 15:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1201,7 +1201,6 @@ File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \arrowsize=\dimen282
 ))) (./befehle.tex
 \c@thm=\count193
-\c@mthm=\count194
 ) (./Masterthesis_Adrian_Gabel.aux (./titel.aux)
 (./erklaerung.aux) (./einleitung.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux)
 (./chap4.aux) (./appendix.aux) (./literaturverzeichnis.aux))
@@ -1229,16 +1228,16 @@ bibgerm.sty: babel.sty detected
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count195
+\scratchcounter=\count194
 \scratchdimen=\dimen283
 \scratchbox=\box69
-\nofMPsegments=\count196
-\nofMParguments=\count197
+\nofMPsegments=\count195
+\nofMParguments=\count196
 \everyMPshowfont=\toks50
-\MPscratchCnt=\count198
+\MPscratchCnt=\count197
 \MPscratchDim=\dimen284
-\MPnumerator=\count199
-\makeMPintoPDFobject=\count266
+\MPnumerator=\count198
+\makeMPintoPDFobject=\count199
 \everyMPtoPDFconversion=\toks51
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2019-12-09 v2.10 Base part for package epstopdf
@@ -1249,7 +1248,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count267
+\c@lstlisting=\count266
 
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box70
@@ -1265,7 +1264,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count268
+\c@section@level=\count267
 )
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
@@ -1526,8 +1525,8 @@ Overfull \hbox (5.02031pt too wide) has occurred while \output is active
 
  (./chap2.tex
 Kapitel 2.
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 8
-.
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
+3.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 ) [23
@@ -1535,13 +1534,24 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 
 
 ]
-[24] [25] [26]
-Overfull \hbox (1.82724pt too wide) detected at line 165
+[24]
+Overfull \hbox (49.31488pt too wide) in paragraph at lines 47--48
+\T1/ptm/m/n/12 (-20) In die-sem Ab-schnitt stel-len wir die \T1/ptm/m/it/12 (-2
+0) Netz-werka-chi-tek-tur \T1/ptm/m/n/12 (-20) un-se-re Neuronale-Netze-Regress
+ionsschätzers
+ []
+
+[25] [26]
+Overfull \hbox (1.82724pt too wide) detected at line 173
 []
  []
 
-[27] [28]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27]
+[28]
+Underfull \vbox (badness 4967) has occurred while \output is active []
 
  [29]
 [30] [31] [32] [33] [34] [35]) [36]
@@ -1554,22 +1564,15 @@ Kapitel 3.
 
 
 ] [38]
-Overfull \hbox (14.6357pt too wide) in paragraph at lines 80--81
+Overfull \hbox (19.85707pt too wide) in paragraph at lines 80--81
 []\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
 /n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
-ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-mal $\OML/ztmcm/m/it/12 N \O
-MS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen $
-\OML/ztmcm/m/it/12 f[]; [] ; f[] [] [] \U/msb/m/n/12 R[] \OMS/ztmcm/m/n/12 !
+ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-ma-le $\OML/ztmcm/m/it/12 N 
+\OMS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen
+ $\OML/ztmcm/m/it/12 f[]; [] ; f[] [] [] \U/msb/m/n/12 R[] \OMS/ztmcm/m/n/12 !
  []
 
-[39]
-Overfull \hbox (28.73529pt too wide) in paragraph at lines 105--106
-[]\T1/ptm/m/n/12 (-20) Das nächs-te Lem-ma be-nö-ti-gen wir, um ei-ne Schran-ke
- für die Über-de-ckungs-zahl $\OMS/ztmcm/m/n/12 N[][][]\OML/ztmcm/m/it/12 ; \OM
-S/ztmcm/m/n/12 F[]\OML/ztmcm/m/it/12 ; x[][]$
- []
-
-[40]
+[39] [40]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1578,12 +1581,16 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 LaTeX Warning: Reference `jn' on page 44 undefined on input line 273.
 
-[44] [45] [46] [47]) [48]
+[44] [45] [46]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [47]
+[48]) [49]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
 Kapitel 4.
-[49
+[50
 
 
 
@@ -1604,7 +1611,7 @@ Overfull \hbox (7.12672pt too wide) in paragraph at lines 76--91
  [][] 
  []
 
-) [50] [51]
+) [51] [52]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -1622,14 +1629,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (../01_Code/main.py
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
- [52
+ [53
 
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [53]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [54]
@@ -1638,29 +1642,32 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [55]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [56])
-(../01_Code/data_gen.py [57]
+ [56]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [58])
-(../01_Code/help_neural_networks.py [59]) (../01_Code/new_neural_network.py
-[60]
+ [57])
+(../01_Code/data_gen.py [58]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [61]
+ [59])
+(../01_Code/help_neural_networks.py [60]) (../01_Code/new_neural_network.py
+[61]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [62])
-(../01_Code/fc_neural_network.py [63]) (../01_Code/nearest_neighbor.py)
-(../01_Code/constant.py [64])) [65]
+ [62]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [63])
+(../01_Code/fc_neural_network.py [64]) (../01_Code/nearest_neighbor.py)
+(../01_Code/constant.py [65])) [66]
 \openout2 = `literaturverzeichnis.aux'.
 
  (./literaturverzeichnis.tex
-(./Masterthesis_Adrian_Gabel.bbl [66
+(./Masterthesis_Adrian_Gabel.bbl [67
 
 
 
-])) [67]
+])) [68]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
  (./Masterthesis_Adrian_Gabel.aux
@@ -1670,22 +1677,19 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
 Package rerunfilecheck Info: File `Masterthesis_Adrian_Gabel.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: CFB684C100B9CC61410CD397B6BE036E;991.
+(rerunfilecheck)             Checksum: 9B6F5F7A554EEF8A92401D5A220E92F5;991.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 45568 strings out of 492162
- 961730 string characters out of 6125292
- 1370484 words of memory out of 5000000
- 47874 multiletter control sequences out of 15000+600000
- 112676 words of font info for 366 fonts, out of 8000000 for 9000
+ 45576 strings out of 492162
+ 961827 string characters out of 6125292
+ 1369531 words of memory out of 5000000
+ 47875 multiletter control sequences out of 15000+600000
+ 112901 words of font info for 368 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,21n,138p,1025b,4147s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
@@ -1710,9 +1714,9 @@ s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
 w/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/u
 tmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (67 pages, 616190 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (68 pages, 621299 bytes).
 PDF statistics:
- 1570 PDF objects out of 1728 (max. 8388607)
- 845 named destinations out of 1000 (max. 500000)
+ 1577 PDF objects out of 1728 (max. 8388607)
+ 849 named destinations out of 1000 (max. 500000)
  53894 words of extra memory for PDF output out of 61914 (max. 10000000)
 

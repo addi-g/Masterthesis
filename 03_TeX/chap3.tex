@@ -57,7 +57,7 @@ für eine von $n$ unabhängige Konstante $c > 0$.
 Als nächstes geben wir eine Definition von Überdeckungszahlen an, da wir im Beweis für unser Hauptresultat eine Abschätzung einer $L_p\text{-}\epsilon$-Überdeckungszahl anwenden.
 \begin{defn}
 \label{ueberdeckung}
-$(X, \delta)$ sei ein halbmetrischer Raum \cite{forster2016} . Für $x \in X$ und $\epsilon > 0$ sei:
+$(X, \delta)$ sei ein pseudometrischer Raum \cite[Definition 2.1.1]{Topologie2015} . Für $x \in X$ und $\epsilon > 0$ sei:
 $$U_{\epsilon}(x) = \{z \in X : \delta(x, z) < \epsilon\}$$
 die Kugel um $x$ mit Radius $\epsilon$.
 \begin{itemize}
@@ -71,17 +71,16 @@ $$\mathcal{N}_{(X,\delta)}(\epsilon, A) = \inf\big\{|U| : U \subseteq X \text{ i
 \label{lpe}
 Sei $\mathcal{F}$ eine Menge von Funktionen $f\colon \R^d \to \R$, sei $\epsilon > 0$, $1 \leq p < \infty$ und seien $x_1,\dots,x_n \in \R^d$ und $x_1^n = (x_1,\dots,x_n).$ Dann ist die $L_p$-$\epsilon$\textit{-Überdeckungszahl} von $\mathcal{F}$ auf $x_1^n$ definiert durch:
 $$\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n) \coloneqq \mathcal{N}_{(X,\delta)}(\epsilon, \mathcal{F}),$$
-wobei der halbmetrische Raum $(X, \delta)$ gegeben ist durch
+wobei der pseudometrische Raum $(X, \delta)$ gegeben ist durch
 \begin{itemize}
 \item $X = $ Menge aller Funktionen $f\colon \R^d \to \R$,
 \item $\delta(f, g) = \delta_p(f, g) = (\frac{1}{n}\sum_{i = 1}^n |f(x_i) - g(x_i)|^p)^{1/p} .$
 \end{itemize}
 \end{defn}
-In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimal $N \in \N$, so dass Funktionen $f_1,\dots,f_N\colon \R^d \to \R$ existieren mit der Eigenschaft, dass für jedes $f \in \mathcal{F}$ gilt:
+In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimale $N \in \N$, so dass Funktionen $f_1,\dots,f_N\colon \R^d \to \R$ existieren mit der Eigenschaft, dass für jedes $f \in \mathcal{F}$ gilt:
 $$\min_{j = 1,\dots,N}\bigg(\frac{1}{n}\sum_{i = 1}^n|f(x_i) - f_j(x_i)|^p\bigg)^{1/p} < \epsilon.$$
-In Lemma~\ref{lem:9} liefern wir ein Resultat zur Abschätzung einer $L_p$-$\epsilon$-Überdeckungszahl.
-
-  \begin{lem}[{\cite[Lemma 8]{kohler19}}]
+Diese Definition benötigen wir, um nun im folgenden Lemma den erwarteten $L_2$-Fehler eines Schätzers, mithilfe einer $L_p$-$\epsilon$\textit{-Überdeckungszahl} abzuschätzen. Dieses Lemma ist ein Spezialfall von \cite[Lemma 8]{kohler19}.
+  \begin{lem}
   \label{lem:8}
 Sei $\beta_n = c_1 \cdot \log(n)$ für eine hinreichend große Konstante $c_1 > 0$. Angenommen die Verteilung von $Y$ erfüllt 
 $$ \E\Big[\mathrm{e}^{c_2 \cdot |Y|^2}\Big] < \infty$$
@@ -91,18 +90,19 @@ erfüllt, mit
 $$\tilde{m}_n(\cdot) = \tilde{m}_n(\cdot,(X_1, Y_1),\dots,(X_n, Y_n)) \in \mathcal{F}_n$$
 und 
 $$\frac{1}{n} \sum_{i = 1}^n |Y_i - \tilde{m}_n(X_i)|^2 \leq \frac{1}{n}\sum_{i = 1}^n |Y_i - g_{n}(X_i)|^2 + \mathrm{pen}_n(g_n)$$
-mit einer deterministischen Funktion $g_{n}\colon \R^d \to \R$ und deterministischen Penalty Term $\mathrm{pen}_n(g_{n}) \geq 0$, wobei die Funktion $g_{n}\colon \R^d \to \R$ unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist.
-Dann erfüllt $m_n\colon$
-\begin{equation*}
+mit einer deterministischen Funktion $g_{n}\colon \R^d \to \R$ und deterministischem Penalty Term $\mathrm{pen}_n(g_{n}) \geq 0$, wobei die Funktion $g_{n}\colon \R^d \to \R$ unabhängig von $(X_1, Y_1),\dots,(X_n,Y_n)$ ist.
+Dann gilt für der erwarteten $L_2$-Fehler die Ungleichung
+\begin{equation}
+\label{lem:8:ungl}
 \begin{split}
 & \E \int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
 & \leq \frac{c \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)\big) + 1\big)}{n} \\
 & \quad + 2 \cdot \E\bigg(\int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + \mathrm{pen}_n(g_{n})\bigg),
 \end{split}
-\end{equation*}
+\end{equation}
 für $n > 1$ und eine von $n$ unabhängige Konstante $c > 0$.
   \end{lem}
-Das nächste Lemma benötigen wir, um eine Schranke für die Überdeckungszahl $\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)$ zu finden.
+Das nächste Lemma benötigen wir, um in Ungleichung~(\ref{lem:8:ungl}) die Überdeckungszahl $\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)$ weiter abzuschätzen.
 \begin{lem}[{\cite[Lemma 9]{kohler19}}]
 \label{lem:9}
 Seien $a > 0$ und $d, N, J_n \in \N$ so, dass $J_n \leq n^{c_{1}}$ und setze $\beta_n = c_2 \cdot \log(n).$
@@ -258,7 +258,7 @@ Wir erhalten damit:
 \end{equation}
 da für $\bar{m}_n = g_n$ die Ungleichung unmittelbar folgt.
 
-Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1), (X_2, Y_2),\dots$ ist, sind mit der einelementigen Parametermenge $\Theta_n$, der Funktion $g_{n,1} = g_n$, der Abschätzung~(\ref{bed}) für $\hat{m}_n = T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem \emph{Penalty Term} $\mathrm{pen}_n(g_{n,1}) = c_8 \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma~\ref{lem:8} erfüllt. Wir erhalten durch dessen Anwendung:
+Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1),\dots,(X_n, Y_n)$ ist, sind mit der einelementigen Parametermenge $\Theta_n$, der Funktion $g_{n,1} = g_n$, der Abschätzung~(\ref{bed}) für $\hat{m}_n = T_{\beta_n}\bar{m}_n$ mit $\hat{m}_n \in \mathcal{F}^{(J_n)}$ und dem \emph{Penalty Term} $\mathrm{pen}_n(g_{n,1}) = c_8 \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma~\ref{lem:8} erfüllt. Wir erhalten durch dessen Anwendung:
 \begin{equation*}
 \begin{split}
 & \E \int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx) \\
