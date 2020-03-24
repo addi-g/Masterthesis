@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  23 MAR 2020 15:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  24 MAR 2020 14:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1535,14 +1535,14 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 
 ]
 [24]
-Overfull \hbox (49.31488pt too wide) in paragraph at lines 47--48
+Overfull \hbox (49.31488pt too wide) in paragraph at lines 48--49
 \T1/ptm/m/n/12 (-20) In die-sem Ab-schnitt stel-len wir die \T1/ptm/m/it/12 (-2
 0) Netz-werka-chi-tek-tur \T1/ptm/m/n/12 (-20) un-se-re Neuronale-Netze-Regress
 ionsschätzers
  []
 
 [25] [26]
-Overfull \hbox (1.82724pt too wide) detected at line 173
+Overfull \hbox (1.82724pt too wide) detected at line 174
 []
  []
 
@@ -1563,21 +1563,12 @@ Kapitel 3.
 
 
 
-] [38]
-Overfull \hbox (19.85707pt too wide) in paragraph at lines 80--81
-[]\T1/ptm/m/n/12 (-20) In an-de-ren Wor-ten: $\OMS/ztmcm/m/n/12 N[]\OT1/ztmcm/m
-/n/12 (\OML/ztmcm/m/it/12 ^^O; \OMS/ztmcm/m/n/12 F\OML/ztmcm/m/it/12 ; x[]\OT1/
-ztmcm/m/n/12 )$ \T1/ptm/m/n/12 (-20) ist das mi-ni-ma-le $\OML/ztmcm/m/it/12 N 
-\OMS/ztmcm/m/n/12 2 \U/msb/m/n/12 N$\T1/ptm/m/n/12 (-20) , so dass Funk-tio-nen
- $\OML/ztmcm/m/it/12 f[]; [] ; f[] [] [] \U/msb/m/n/12 R[] \OMS/ztmcm/m/n/12 !
- []
-
-[39] [40]
+] [38] [39] [40] [41]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [41] [42] [43]
+ [42] [43]
 
 LaTeX Warning: Reference `jn' on page 44 undefined on input line 273.
 
@@ -1683,40 +1674,45 @@ ed.
 LaTeX Warning: There were undefined references.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
- ) 
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 5 ({)
+### bottom level 
 Here is how much of TeX's memory you used:
- 45576 strings out of 492162
- 961827 string characters out of 6125292
- 1369531 words of memory out of 5000000
- 47875 multiletter control sequences out of 15000+600000
- 112901 words of font info for 368 fonts, out of 8000000 for 9000
+ 45580 strings out of 492162
+ 961866 string characters out of 6125292
+ 1369832 words of memory out of 5000000
+ 47876 multiletter control sequences out of 15000+600000
+ 113126 words of font info for 370 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,21n,138p,1025b,4147s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc} </Users/adrian
-/Library/texlive/2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/lo
-cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/loc
-al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loca
-l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/
-texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/te
-xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
-texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/lo
-cal/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texm
-f-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/font
-s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
-w/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/u
-tmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (68 pages, 621299 bytes).
+ 81i,21n,138p,1025b,4226s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm
+-super-t1.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc} 
+</Users/adrian/Library/texlive/2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.
+600pk></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
+pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb>
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/doublestroke/dsrom12.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
+0.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/tex
+live/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
+e1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/tim
+es/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a
+.pfb>
+Output written on Masterthesis_Adrian_Gabel.pdf (68 pages, 620754 bytes).
 PDF statistics:
- 1577 PDF objects out of 1728 (max. 8388607)
+ 1578 PDF objects out of 1728 (max. 8388607)
  849 named destinations out of 1000 (max. 500000)
  53894 words of extra memory for PDF output out of 61914 (max. 10000000)
 
