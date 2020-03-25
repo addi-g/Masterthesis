@@ -1,6 +1,6 @@
 \babel@toc {ngerman}{}
 \babel@toc {ngerman}{}
-\contentsline {chapter}{Einleitung}{6}{chapter*.3}%
+\contentsline {chapter}{Einleitung}{6}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Grundlagen und Hilfsresultate für neuronale Netze}{8}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Definitionen}{8}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Hilfsresultate}{11}{section.1.2}%
@@ -10,6 +10,12 @@
 \contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{37}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Approximationsresultate für Hauptsatz 3.1}{38}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Der Beweis von Hauptsatz 3.1}{40}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Abschätzung von $T_{1,n}$}{41}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Abschätzung von $T_{2,n}$}{42}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Abschätzung von $T_{2,A,n}$}{45}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}Abschätzung von $T_{2,B,n}$}{46}{subsubsection.3.2.2.2}%
+\contentsline {paragraph}{\numberline {3.2.2.2.1}Abschätzung von $T_{2,B_1,n}$}{47}{paragraph.3.2.2.2.1}%
+\contentsline {paragraph}{\numberline {3.2.2.2.2}Abschätzung von $T_{2,B_2,n}$}{48}{paragraph.3.2.2.2.2}%
 \contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{50}{chapter.4}%
-\contentsline {chapter}{Appendix}{53}{chapter*.11}%
-\contentsline {chapter}{Literaturverzeichnis}{68}{chapter*.12}%
+\contentsline {chapter}{Appendix}{53}{chapter*.10}%
+\contentsline {chapter}{Literaturverzeichnis}{68}{chapter*.11}%
