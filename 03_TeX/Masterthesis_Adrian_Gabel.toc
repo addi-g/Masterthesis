@@ -13,9 +13,7 @@
 \contentsline {subsection}{\numberline {3.2.1}Abschätzung von $T_{1,n}$}{41}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Abschätzung von $T_{2,n}$}{42}{subsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.2.1}Abschätzung von $T_{2,A,n}$}{45}{subsubsection.3.2.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2.2}Abschätzung von $T_{2,B,n}$}{46}{subsubsection.3.2.2.2}%
-\contentsline {paragraph}{\numberline {3.2.2.2.1}Abschätzung von $T_{2,B_1,n}$}{47}{paragraph.3.2.2.2.1}%
-\contentsline {paragraph}{\numberline {3.2.2.2.2}Abschätzung von $T_{2,B_2,n}$}{48}{paragraph.3.2.2.2.2}%
-\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{50}{chapter.4}%
-\contentsline {chapter}{Appendix}{53}{chapter*.10}%
-\contentsline {chapter}{Literaturverzeichnis}{68}{chapter*.11}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}Abschätzung von $T_{2,B,n}$}{47}{subsubsection.3.2.2.2}%
+\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{51}{chapter.4}%
+\contentsline {chapter}{Appendix}{54}{chapter*.10}%
+\contentsline {chapter}{Literaturverzeichnis}{69}{chapter*.11}%

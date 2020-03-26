@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  25 MAR 2020 13:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  26 MAR 2020 11:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1604,36 +1604,30 @@ Underfull \vbox (badness 2005) has occurred while \output is active []
  [41]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 190.
+(hyperref)                removing `math shift' on input line 198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 190.
+(hyperref)                removing `subscript' on input line 198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 190.
+(hyperref)                removing `math shift' on input line 198.
 
 [42] [43] [44]
 
-LaTeX Warning: Reference `jn' on page 45 undefined on input line 292.
+LaTeX Warning: Reference `jn' on page 45 undefined on input line 314.
 
-[45] [46]
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+[45] [46] [47]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- []
-
-[47]
-Underfull \hbox (badness 10000) in paragraph at lines 375--378
-
- []
-
-[48]) [49]
+ [48]
+[49]) [50]
 \openout2 = `chap4.aux'.
 
  (./chap4.tex
 Kapitel 4.
-[50
+[51
 
 
 
@@ -1654,7 +1648,7 @@ Overfull \hbox (7.12672pt too wide) in paragraph at lines 76--91
  [][] 
  []
 
-) [51] [52]
+) [52] [53]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -1672,14 +1666,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (../01_Code/main.py
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
- [53
+ [54
 
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [54]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [55]
@@ -1688,29 +1679,32 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [56]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [57])
-(../01_Code/data_gen.py [58]
+ [57]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [59])
-(../01_Code/help_neural_networks.py [60]) (../01_Code/new_neural_network.py
-[61]
+ [58])
+(../01_Code/data_gen.py [59]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [62]
+ [60])
+(../01_Code/help_neural_networks.py [61]) (../01_Code/new_neural_network.py
+[62]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [63])
-(../01_Code/fc_neural_network.py [64]) (../01_Code/nearest_neighbor.py)
-(../01_Code/constant.py [65])) [66]
+ [63]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [64])
+(../01_Code/fc_neural_network.py [65]) (../01_Code/nearest_neighbor.py)
+(../01_Code/constant.py [66])) [67]
 \openout2 = `literaturverzeichnis.aux'.
 
  (./literaturverzeichnis.tex
-(./Masterthesis_Adrian_Gabel.bbl [67
+(./Masterthesis_Adrian_Gabel.bbl [68
 
 
 
-])) [68]
+])) [69]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
  (./Masterthesis_Adrian_Gabel.aux
@@ -1732,13 +1726,13 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 68.
 ### simple group (level 1) entered at line 5 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 45932 strings out of 492162
- 966592 string characters out of 6125292
- 1377834 words of memory out of 5000000
- 48196 multiletter control sequences out of 15000+600000
+ 45930 strings out of 492162
+ 966536 string characters out of 6125292
+ 1379485 words of memory out of 5000000
+ 48194 multiletter control sequences out of 15000+600000
  123443 words of font info for 399 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,21n,138p,1024b,4296s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,21n,138p,1024b,4281s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm
 -super-t1.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc} 
 </Users/adrian/Library/texlive/2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.
@@ -1762,9 +1756,9 @@ fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (68 pages, 624608 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (69 pages, 627418 bytes).
 PDF statistics:
- 1598 PDF objects out of 1728 (max. 8388607)
+ 1605 PDF objects out of 1728 (max. 8388607)
  856 named destinations out of 1000 (max. 500000)
  61590 words of extra memory for PDF output out of 61914 (max. 10000000)
 
