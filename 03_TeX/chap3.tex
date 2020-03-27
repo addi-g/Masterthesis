@@ -242,7 +242,10 @@ c_5 \coloneqq \max\Biggl\{\frac{1 + \E[Y^2]}{c_6}, c_2^d \cdot (N + 1)^d \cdot z
 \end{equation}
 Hierbei bezeichnet $c_6$ die Konstante des Regularitätsterms aus Gleichung~(\ref{min}). Da wir uns in der nichtparametrischen Regressionsschätzung befinden, gilt unter anderem die Bedingung $\E[Y^2] < \infty$ und daher ist $c_5$ auch wohldefiniert. 
 Weiterhin folgt wie in Kapitel~\ref{subsec:2.2} mit $J_n = S$,
-$$J_n =  (M_n + 1)^d \cdot \binom{N + d}{d} \leq (M_n + 1)^d \cdot (N + 1)^d.$$
+\begin{equation}
+\label{jn}
+J_n =  (M_n + 1)^d \cdot \binom{N + d}{d} \leq (M_n + 1)^d \cdot (N + 1)^d.
+\end{equation}
 
 Da nach Konstruktion $f_{\net,\bj,\mathbf{i}} \in \mathcal{F}$ ist, folgt mit Gleichung~(\ref{constantc21}), dass für $n$ hinreichend groß
 \begin{equation*}
@@ -323,7 +326,7 @@ Wir wollen die Summanden $T_{2,A,n}$ und $T_{2,B,n}$ weiter abschätzen.
 
 \subsubsection{Abschätzung von $T_{2,A,n}$}
 Als Erstes überprüfen wir die Voraussetzungen von Lemma~\ref{lem:9}, um damit dann den Summanden, welcher die Überdeckungszahl $\mathcal{N}_1$ enthält, in Ungleichung~(\ref{eq:lem8}) weiter abzuschätzen.
-Nach Voraussetzung ist $\beta_n = c_3 \cdot \log(n)$ und $a_n = (\log n)^{1/(6(N + d))} > 0$ für hinreichend großes $n$. Nach Voraussetzung sind zudem $d, N, J_n \in \N$ und es gilt nach Gleichung~(\ref{jn}): 
+Nach Voraussetzung ist $\beta_n = c_3 \cdot \log(n)$ und $a_n = (\log n)^{1/(6(N + d))} > 0$ für hinreichend großes $n$. Nach Voraussetzung sind zudem $d$, $N$, $J_n \in \N$ und es gilt nach Gleichung~(\ref{jn}): 
 $$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c},$$
 für hinreichend großes $n$ und Konstante $c > 0$. Wir betrachten hier den logistischen Squasher $\sigma$ welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma~\ref{lem:9} ist, sind nun alle Voraussetzungen für Lemma~\ref{lem:9} erfüllt. Nach Voraussetzung wissen wir, dass $\supp(\mathds{P}_X)$ beschränkt ist und wir können $n$ so groß wählen, dass wir ohne Beschränkung der Allgemeinheit annehmen können, dass $\supp(\mathds{P}_X) = \{x \in \R^d \mid \forall \epsilon > 0 : \mathds{P}_X(S_{\epsilon}(x)) > 0\} \subseteq [-a_n, a_n]^d$ ist, mit $S_{\epsilon}$ als $\epsilon$-Umgebung um $x \in \R^d$. In der nächsten Ungleichungskette fassen wir die Konstanten die sich von $c_8$ unterscheiden und die unabhängig von $n$ sind, zu einer Konstante $c$ zusammen. Wir erhalten damit durch Lemma~\ref{lem:9} für hinreichend großes $n$:
 \begin{equation}
