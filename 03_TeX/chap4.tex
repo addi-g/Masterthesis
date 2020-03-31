@@ -1,7 +1,7 @@
 \chapter{Anwendungsbeispiel auf simulierte Daten}
 \label{chap:4}
 
-In diesem Kapitel betrachten wir die Leistung des hier vorgestellten Neuronale-Netze-Regressionsschätzers bei endlicher Stichprobengröße auf simulierte Daten in $Python$.
+In diesem Kapitel betrachten wir die Leistung unseres Neuronale-Netze-Regressionsschätzers aus Kapitel~{\ref{chap:2}, bei endlicher Stichprobengröße auf simulierte Daten in $Python$.
 
 Die simulierten Daten welchen wir verwenden werden, sehen wie gefolgt aus:
 Wir wählen $X$ gleichverteilt auf $[-2, 2]^d$, wobei $d$ die Dimension des Inputs ist, zudem wählen wir $\epsilon$ als standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
@@ -25,12 +25,15 @@ Wir bestimmten $\epsilon_{L_2,N}(\cdot)$ als empirisches Mittel von $25$ quadrat
 Die resultierenden skalierten Fehler hängen noch von der Stichprobe von $(X, Y)$ ab und um diese Werte besser vergleichen zu können, führen wir die Fehlerberechnung jeweils $50$ mal durch und geben dann den Median und Interquartilsabstand für die Schätzung der betrachteten Regressionsschätzer aus.
 Wir teilen für jeden Schätzer die Stichprobe auf in ein \textit{learning sample} der Größe $n_l = 0.8 \cdot N$ und in ein \textit{testing sample} der Größe $n_t = 0.2 \cdot N$. Wir bestimmen den Schätzer für alle Parameterwerte mit dem learning sample und bestimmen das korrespondiere $L_2$-Risiko auf dem testing sample und wählen dann die Parameter die zu einem minimalen empirischen $L_2$-Risiko auf dem testing sample führen.
 
-Unser erster Schätzer \textit{fc\_neural\_1\_estimate} ist ein fully connected neuronales Netz mit einer verborgenen Schicht. Dieser Schätzer hat eine feste Anzahl an Neuronen die wir aus der Menge $\{5, 10, 25, 50, 75\}$ auswählen die bei der Simulation zu einem minimalen empirischen $L_2$-Risiko führt.
+Unser erster Schätzer \textit{fc\_neural\_1\_estimate} ist ein neuronales Netz mit einer verborgenen Schicht. Dieser Schätzer hat eine feste Anzahl an Neuronen die wir aus der Menge $\{5, 10, 25, 50, 75\}$ auswählen die bei der Simulation zu einem minimalen empirischen $L_2$-Risiko führt.
 
 Unser zweiter Schätzer \textit{nearest\_neighbor\_estimate} ist ein Nächste-Nachbar Schätzer bei der die Anzahl an nächsten Nachbarn aus der Menge $\{1, 2, 3\} \cup \{4, 8, 12, 16, \dots, 4 \cdot \lfloor\frac{n_l}{4}\rfloor\}$ ausgewählt wird.
 
-Unser letzter Schätzer ist der hier vorgestellte Neuronale-Netze-Regressionsschätzer den wir mit \textit{new\_neural\_network\_estimate} bezeichnen. Hier haben wir die Parameter je nachdem welche Regressionsfunktion wir betrachtet haben entsprechend angepasst. Da wir zum Beispiel den Grad der zu schätzenden Funktion kennen und dies bei unserem Schätzer berücksichtigen können.
-%
+Unser letzter Schätzer ist der in Kapitel~\ref{chap:2} vorgestellten Neuronale-Netze-Regressionsschätzer den wir mit \textit{new\_neural\_network\_estimate} bezeichnen. Hier haben wir die Parameter je nachdem welche Regressionsfunktion wir betrachtet haben entsprechend angepasst. Für die Schätzung von $m_1$ setzten wir: $d = 1$, $N = 3$, $q = 2$, $R = 10^6$, $a = 2$, $M = 2$.
+Für die Schätzung von $m_2$ wählten wir: $d = 2$, $N = 2$, $q = 2$, $R = 10^6$, $a = 2$, $M = 2$.
+
+Da wir zum Beispiel den Grad der zu schätzenden Funktion kennen und dies bei unserem Schätzer berücksichtigen können.
+
 %\begin{figure}
 %    \begin{subfigure}[b]{0.5\textwidth}
 %        \centering
@@ -58,36 +61,57 @@ Unser letzter Schätzer ist der hier vorgestellte Neuronale-Netze-Regressionssch
 %\label{fig:subfig1.a.4}
 %\end{figure}
 
-%\begin{figure}
-%\centering
-%%\input{tikzfigure1.tikz}
-%\begin{tikzpicture}
-%\begin{axis}[x dir=reverse]
-%\addplot3 [scatter, only marks]
-%  table[x=x, y=y, z=f, col sep=comma] {plotpostpro_sort.csv};
-%\end{axis}
-%\end{tikzpicture}
-%\end{figure}
+\begin{figure}
+\centering
+%\input{tikzfigure1.tikz}
+\begin{tikzpicture}
+\begin{axis}[x dir=reverse]
+\addplot3 [scatter, only marks]
+  table[x=x, y=y, z=f, col sep=comma] {plotpostpro_sort.csv};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
 
-Wie wir in den Tabellen~\ref{tab:truthTables} anhand des skalierten $L_2$-Fehlers sehen können, übertrifft unserer Neuronale-Netze-Schätzer in allen Fällen die Leistung der anderen Schätzer. 
+Wie wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} anhand des skalierten $L_2$-Fehlers sehen können, übertrifft unserer Neuronale-Netze-Schätzer in allen Fällen die Leistung der anderen Schätzer. 
 
 \begin{table}
 \centering
-\begin{tabular}{ |p{5cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+\begin{tabular}{ |p{5cm}||p{4cm}|p{4cm}|}
  \hline
- & \multicolumn{2}{|c|}{$m_1$} & \multicolumn{2}{|c|}{$m_2$}\\
+ & \multicolumn{2}{|c|}{$m_1$}\\
  \hline
- \textit{noise}& $5\%$ & $10\%$ & $5\%$ & $10\%$ \\
+ \textit{noise}& $5\%$ & $10\%$ \\
  \hline
- $\bar{\epsilon}_{L_2,N}(avg)$& $13.4482362$ & $13.3925910$ & $0.03245693$ & $0.03118817$ \\
+ $\bar{\epsilon}_{L_2,N}(avg)$& $13.4482362$ & $13.3925910$ \\
  \hline
- \textit{approach}& \footnotesize Median (IQR) & \footnotesize Median (IQR)  & \footnotesize Median (IQR)  & \footnotesize Median (IQR)  \\
+ \textit{approach}&  Median (IQR) &  Median (IQR)   \\
  \hline
- new\_neural\_network\_estimate & $2.482e^{-5} (1.612e^{-5})$   & AF    &AFG&   004\\
- fc\_neural\_1\_estimate & Aland &   AX  & ALA   &248\\
- nearest\_neighbor\_estimate & Albania &AL & ALB&  008\\
+ new\_neural\_network\_estimate & $\mathbf{2.482\textbf{e-}05 (1.612\textbf{e-}05)}$   & $\mathbf{6.908\textbf{e-}05 (3.936\textbf{e-}05)}$  \\
+ fc\_neural\_1\_estimate & $4.384\text{e-}04 (2.14\text{e-}03)$ &   $7.261\text{e-}04 (4.57\text{e-}03)$ \\
+ nearest\_neighbor\_estimate & $2.9527\text{e-}04 (9.312\text{e-}05)$ & $9.0864\text{e-}04 (2.8952\text{e-}04)$\\
  \hline
 \end{tabular}
-    \caption{Median und IQR des skalierten empirischen $L_2$-Fehlers für Schätzungen für $m_1$ und $m_2$ mit Stichprobengröße $N = 1000$.}
-    \label{tab:truthTables}   
+    \caption{Median und IQR des skalierten empirischen $L_2$-Fehlers für Schätzungen für $m_1$ mit Stichprobengröße $N = 1000$.}
+     \label{tab:truthTablesm1}   
+\end{table}
+    
+    \begin{table}
+\centering
+\begin{tabular}{ |p{5cm}||p{4cm}|p{4cm}|}
+ \hline
+ & \multicolumn{2}{|c|}{$m_2$}\\
+ \hline
+ \textit{noise}& $5\%$ & $10\%$ \\
+ \hline
+ $\bar{\epsilon}_{L_2,N}(avg)$& $0.0324$ & $0.0311$ \\
+ \hline
+ \textit{approach}&  Median (IQR) &  Median (IQR)   \\
+ \hline
+ new\_neural\_network\_estimate & $\mathbf{0.003961 (0.000932)}$   & $\mathbf{0.00431 (0.000973)}$  \\
+ fc\_neural\_1\_estimate & $0.0257 (0.3803)$ &   $0.0559 (0.52033)$ \\
+ nearest\_neighbor\_estimate & $0.01616 (0.005906)$ &$0.01763 (0.007081)$\\
+ \hline
+\end{tabular}
+    \caption{Median und IQR des skalierten empirischen $L_2$-Fehlers für Schätzungen $m_2$ mit Stichprobengröße $N = 1000$.}
+    \label{tab:truthTablesm2}   
 \end{table}

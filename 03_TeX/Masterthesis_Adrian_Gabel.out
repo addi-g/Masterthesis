@@ -2,7 +2,7 @@
 \BOOKMARK [0][-]{chapter.1}{Grundlagen\040und\040Hilfsresultate\040f\374r\040neuronale\040Netze}{}% 2
 \BOOKMARK [1][-]{section.1.1}{Definitionen}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.2}{Hilfsresultate}{chapter.1}% 4
-\BOOKMARK [0][-]{chapter.2}{Konstruktion\040des\040Neuronale-Netze-Sch\344tzers}{}% 5
+\BOOKMARK [0][-]{chapter.2}{Konstruktion\040unseres\040Neuronale-Netze-Sch\344tzers}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Definition\040der\040Netzwerkarchitektur}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{Bestimmung\040der\040Gewichte\040der\040Ausgabeschicht}{chapter.2}% 7
 \BOOKMARK [0][-]{chapter.3}{Resultat\040zur\040Konvergenzgeschwindigkeit}{}% 8
@@ -11,5 +11,5 @@
 \BOOKMARK [2][-]{subsection.3.2.1}{Absch\344tzung\040von\040T1,n}{section.3.2}% 11
 \BOOKMARK [2][-]{subsection.3.2.2}{Absch\344tzung\040von\040T2,n}{section.3.2}% 12
 \BOOKMARK [0][-]{chapter.4}{Anwendungsbeispiel\040auf\040simulierte\040Daten}{}% 13
-\BOOKMARK [0][-]{chapter*.10}{Appendix}{}% 14
-\BOOKMARK [0][-]{chapter*.11}{Literaturverzeichnis}{}% 15
+\BOOKMARK [0][-]{chapter*.12}{Appendix}{}% 14
+\BOOKMARK [0][-]{chapter*.13}{Literaturverzeichnis}{}% 15

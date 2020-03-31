@@ -1,13 +1,13 @@
 \chapter{Grundlagen und Hilfsresultate für neuronale Netze}
 \label{chap:1}
 
-Der Zweck dieses Kapitels ist es auf die in dieser Arbeit verwendeten neuronalen Netze einzugehen, die als Bausteine für unseren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Approximationsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden.
+Der Zweck dieses Kapitels ist es auf die in dieser Arbeit verwendeten neuronalen Netze einzugehen, die als Bausteine für unseren einfach berechenbaren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Approximationsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden. Wenn wir in dieser Arbeit von \emph{unserem Neuronale-Netze-Regressionsschätzer} sprechen, beziehen wir uns immer auf den \emph{einfach berechenbaren Neuronale-Netze-Regressionsschätzer} aus \cite{kohler19}. 
 In dieser Arbeit bezeichnen wir mit $d \geq 1$ immer eine natürliche Zahl.
 
 \section{Definitionen}
 Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Architektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen und verarbeiten.
 % und entsprechend über eine Aktivierung reagieren. 
-Dazu werden für ein künstliches Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
+Dazu werden für ein Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
 %\begin{figure}
 %    \centering
 %    \begin{tikzpicture}[
@@ -218,10 +218,10 @@ Mit der Leibnizregel aus der Differentialrechnung erhalten wir:
 \frac{\partial^n\sigma}{\partial x^n} = \frac{\partial^{n - 1}}{\partial x^{n - 1}}\bigg((1 - \sigma(x)) \cdot \sigma(x)\bigg) = \sum_{k = 0}^{n-1}\binom{n - 1}{k}(1 - \sigma(x))^{(n - 1 - k)}  \sigma(x)^{(k)} 
 \end{equation}
 für $n = 1,\dots,N$. 
-Damit erkennen wir, dass alle Ableitungen von $\sigma$ Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist, und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren, ebenfalls beschränkt ist. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist, wissen wir, dass $\sigma$ lipschitzstetig ist.
+Damit erkennen wir, dass alle Ableitungen von $\sigma$, Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist, und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren, ebenfalls beschränkt ist. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist, wissen wir, dass $\sigma$ lipschitzstetig ist.
 
 Nun kommen wir zum Beweis von Bedingung (ii). 
-Da für alle $x \in \R$ $\sigma(x) > 0$ gilt, bleibt dies auch bei Potenzen und positiven Linearkombinationen erhalten. Daher wissen wir durch Gleichung~(\ref{eq:leibniz}), dass ein $t_{\sigma} \in \R$ existiert, mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
+Da $\sigma(x) > 0$ für alle $x \in \R$ gilt, bleibt dies auch bei Potenzen und positiven Linearkombinationen erhalten. Daher wissen wir durch Gleichung~(\ref{eq:leibniz}), dass ein $t_{\sigma} \in \R$ existiert, mit $$\frac{\partial^i}{\partial x^i}\sigma(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
 %Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynomen in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit $\sigma(t_{\sigma}) \neq 0$, sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. 
 Damit ist Bedingung (ii) ebenfalls erfüllt.
 
@@ -253,7 +253,7 @@ Der zweite Teil folgt durch die gleiche Art und Weise, da wir durch
 \frac{1}{1 + \exp(x)} - \frac{1}{2}= \sigma(0 - x) - \frac{1}{2} = -\sigma(0 + x) + \frac{1}{2} = -\frac{1}{1 + \exp(-x)} + \frac{1}{2}
 \end{equation}
 wissen, dass $\sigma$ punktsymmetrisch in $(0, \frac{1}{2})$ ist. 
-Gleichung ... folgt daraus dass ... gleich 1 ist blablabla (TBD)
+Gleichung~(\ref{eq:sym}) folgt aus $\frac{1}{1 + \exp(x)} + \frac{1}{1 + \exp(-x)} = 1$.
 Dies erhalten wir durch $\frac{1}{1 + \exp(x)} - \frac{1}{2} +\frac{1}{1 + \exp(-x)} - \frac{1}{2} = 0$, indem wir die Brüche auf einen gemeinsamen Nenner bringen und erhalten dadurch
 $\frac{2 + \exp(-x) + \exp(x)}{2 + \exp(-x) + \exp(x)} - 1 = 0$, woraus  Gleichung~(\ref{eq:sym}) folgt.
 Aus der Punktsymmetrie folgt mit $$\sigma(- x) - 1 = \frac{1}{1 + \exp(x)} - 1 = -\frac{1}{1 + \exp(-x)} = -\sigma(x)$$ für $x < 0$ aus dem ersten Teil von Definition~\ref{nzulässig} (iii), da $-x > 0 $ ist:  
@@ -263,8 +263,7 @@ Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt un
 Als Nächstes stellen wir ein Resultat zur Taylorformel mit Rest vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
 
 \begin{lem}[Lagrangesche Form des Restglieds, {\cite[Kapitel 2.4 Seite 67]{Koenigsberger2013}}]
-\label{lem:lagrange}
-
+\label{lem:lagrange} \ \\
 \textbf{\emph{i)}} Sei $U \subseteq \R^d$ und $f\colon U \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in U$ Punkte, deren Verbindungsstrecke in $U$ liegt, so gilt:
 $$ f(x) = T_Nf(x;u) + R_{N + 1}(x;u),$$
 wobei
@@ -716,4 +715,4 @@ $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k}.
 Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$ Kugeln, die wir mit $1,\dots,d$ beschriften. Wir ziehen $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren so einen Vektor $\bj = (j_1,\dots,j_d)$ aus der Menge mit $|\bj|_1 = k$. Der Koeffizient $j_i$ mit $i= 1,\dots,d$ gibt an wie oft die Kugel mit der Nummer $i$ gezogen wurde. Damit stimmt die Kardinalität der Menge auf der linken Seite mit der Anzahl aller Möglichkeiten überein die man erhält, wenn man $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge zieht.
 \end{proof}
 
-Im nächsten Kapitel werden wir die hier eingeführten neuronalen Netze als Bausteine verwenden, um unseren Neuronale-Netze-Schätzer zu konstruieren.
+Im nächsten Kapitel werden wir die hier eingeführten neuronalen Netze als Bausteine verwenden, um unseren Neuronale-Netze-Regressionsschätzer zu konstruieren.
