@@ -322,14 +322,14 @@ Wir definieren unseren Neuronale-Netze-Regressionsschätzer $\tilde{m}_n(x)$  du
 \label{estimate}
 \tilde{m}_n(x) = \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj} \cdot f_{\net,\bj,\mathbf{i}}(x),
 \end{equation}
-wobei $n$ die Größe unserer gegebenen Datenmenge~(\ref{dataset}) ist und wir die Koeffizienten $a_{\mathbf{i},\bj}$ durch Minimierung des Funktionals 
+wobei $n$ die Größe unserer gegebenen Datenmenge~(\ref{dataset}) ist und wir die Koeffizienten $a_{\mathbf{i},\bj}$ durch eine Tikhonov Regularisierung \cite[Kapitel 16.1]{Kress1998} des Funktionals 
 \begin{equation}
 \label{min} 
 \begin{split}
-\varphi(a_{\bi,\bj}) & \coloneqq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c}{n} \cdot \|(a_{\bi,\bj})\|_2^2
+\varphi(a_{\bi,\bj}) & \coloneqq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c}{n} \cdot \|a_{\bi,\bj}\|_2^2
 \end{split}
 \end{equation}
-für Regularitätsterm $\frac{c}{n}\|(a_{\bi,\bj})\|_2^2$ mit einer von $n$ unabhängigen Konstante $c > 0$ erhalten. 
+mit Regularitätsparameter $\frac{c}{n}$, für eine von $n$ unabhängigen Konstante $c > 0$ erhalten. 
 
 Wir wollen Gleichung~(\ref{min}) als Gleichungssystem darstellen. Dafür definieren wir uns die Menge 
 \begin{align*} 

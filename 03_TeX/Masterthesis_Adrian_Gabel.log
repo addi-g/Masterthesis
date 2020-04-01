@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  1 APR 2020 11:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  1 APR 2020 13:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1759,9 +1759,6 @@ ed.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  )
 (\end occurred inside a group at level 2)
@@ -1772,7 +1769,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
 Here is how much of TeX's memory you used:
  46351 strings out of 492162
  978952 string characters out of 6125292
- 4274458 words of memory out of 5000000
+ 4274559 words of memory out of 5000000
  48666 multiletter control sequences out of 15000+600000
  121095 words of font info for 364 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1800,9 +1797,9 @@ fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/tim
 es/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on Masterthesis_Adrian_Gabel.pdf (69 pages, 1312187 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (69 pages, 1312391 bytes).
 PDF statistics:
- 1607 PDF objects out of 1728 (max. 8388607)
+ 1608 PDF objects out of 1728 (max. 8388607)
  847 named destinations out of 1000 (max. 500000)
  58518 words of extra memory for PDF output out of 61914 (max. 10000000)
 
