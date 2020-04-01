@@ -16,4 +16,4 @@
 \contentsline {subsubsection}{\numberline {3.2.2.2}Abschätzung von $T_{2,B,n}$}{47}{subsubsection.3.2.2.2}%
 \contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{51}{chapter.4}%
 \contentsline {chapter}{Appendix}{55}{chapter*.12}%
-\contentsline {chapter}{Literaturverzeichnis}{70}{chapter*.13}%
+\contentsline {chapter}{Literaturverzeichnis}{69}{chapter*.13}%

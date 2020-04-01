@@ -1,5 +1,5 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{EKT{\etalchar{+}}07}
+\begin{thebibliography}{VRDJ95}
 
 \bibitem[AB19]{kohler19}
 {\sc A.~Braun, M. Kohler und A.~Krzyzak}: {\em Analysis of the rate of
@@ -7,115 +7,51 @@
   implement.}
 \newblock 2019.
 
-\bibitem[AHM09]{Albrecher2009}
-{\sc Albrecher~H., Binder, A.} \btxandlong{}\ {\sc P.~Mayer}: {\em Einführung
-  in die Finanzmathematik}.
-\newblock Birkhäuser, Basel, 2009.
-
 \bibitem[Bar15]{Topologie2015}
-{\sc Bartsch, René}: {\em Allgemeine Topologie}.
-\newblock De Gruyter, Berlin, 2015.
+{\sc Bartsch, R.}: {\em Allgemeine Topologie}.
+\newblock De Gruyter, Berlin, 2. \btxeditionlong{}, 2015.
 
-\bibitem[Bos09]{bosch2009algebra}
+\bibitem[Bos13]{bosch2009algebra}
 {\sc Bosch, S.}: {\em Algebra}.
-\newblock Springer-Lehrbuch. Springer, Berlin, 2009.
+\newblock Springer-Lehrbuch. Springer, Berlin, 8. \btxeditionlong{}, 2013.
 
-\bibitem[Car96]{carriere1996valuation}
-{\sc Carriere, J.}: {\em Valuation of the early-exercise price for options
-  using simulations and nonparametric regression}.
-\newblock Insurance: mathematics and Economics, 19(1):19--30, 1996.
+\bibitem[C{\etalchar{+}}15]{chollet2015keras}
+{\sc Chollet, Fran\c{c}ois} \btxetalshort{.}: {\em Keras}.
+\newblock \url{https://keras.io}, 2015.
 
-\bibitem[Dev80]{DevWag80}
-{\sc Devroye, L., Wagner T.~J.}: {\em Distribution-free consistency results in
+\bibitem[For17]{forster2016}
+{\sc Forster, O.}: {\em Analysis 1 - Differential- und Integralrechnung einer
+  Veränderlichen}.
+\newblock Springer, Berlin, 11. \btxeditionlong{}, 2017.
+
+\bibitem[Kre98]{Kress1998}
+{\sc Kress, R.}: {\em Numerical analysis}.
+\newblock Springer, Berlin, 1. \btxeditionlong{}, 1998.
+
+\bibitem[Kö04]{Koenigsberger2013}
+{\sc Königsberger, K.}: {\em Analysis 2}.
+\newblock Springer, Berlin, 5. \btxeditionlong{}, 2004.
+
+\bibitem[LD80]{DevWag80}
+{\sc L.~Devroye, T.J.~Wagner}: {\em Distribution-free consistency results in
   non- parametric discrimination and regression function estimation}.
 \newblock Annals of Statistic, 8:231--239, 1980.
 
-\bibitem[Dev96]{DevLug96}
-{\sc Devroye, L., Györfi L. Lugosi~G.}: {\em A Probabilistic Theory of Pattern
+\bibitem[LD96]{DevLug96}
+{\sc L.~Devroye, L.~Györfi, G.~Lugosi}: {\em A Probabilistic Theory of Pattern
   Recognition}.
-\newblock Springer, New York, 1996.
+\newblock Springer, New York, 1. \btxeditionlong{}, 1996.
 
-\bibitem[EKT{\etalchar{+}}07]{egloff2007dynamic}
-{\sc Egloff, D.}, {\sc M.~Kohler}, {\sc N.~Todorovic} \btxetalshort{.}: {\em A
-  dynamic look-ahead Monte Carlo algorithm for pricing Bermudan options}.
-\newblock The Annals of Applied Probability, 17(4):1138--1171, 2007.
+\bibitem[LG02]{gyoerfi2002}
+{\sc L.~Györfi, M.~Kohler, A. Krzyzak und H.~Walk}: {\em A Distribution-Free
+  Theory of Nonparametric Regression.}
+\newblock Springer series in statistics. Springer, Berlin, 1.
+  \btxeditionlong{}, 2002.
 
-\bibitem[For16]{forster2016}
-{\sc Forster, O.}: {\em Analysis 1 - Differential- und Integralrechnung einer
-  Veränderlichen}.
-\newblock Springer, Berlin, 2016.
-
-\bibitem[GKW02]{gyoerfi2002}
-{\sc Györfi, L.~Kohler, M.}, {\sc A.~Krzyzak} \btxandlong{}\ {\sc H.~Walk}:
-  {\em A Distribution-Free Theory of Nonparametric Regression.}
-\newblock Springer series in statistics. Springer, Berlin, 2002.
-
-\bibitem[Gla13]{glasserman2013monte}
-{\sc Glasserman, P.}: {\em Monte Carlo methods in financial engineering},
-  \btxvolumelong{}~53 \btxofserieslong{}\ {\em Stochastic Modelling and Applied
-  Probability}.
-\newblock Springer, New York, 2013.
-
-\bibitem[Hil13]{Hildebrandt2013}
-{\sc Hildebrandt, S.}: {\em Analysis 2}.
-\newblock Springer, Berlin, 2013.
-
-\bibitem[Kle13]{Klenke2013}
-{\sc Klenke, A.}: {\em Wahrscheinlichkeitstheorie}.
-\newblock Springer, Berlin, 2013.
-
-\bibitem[Koh10]{kohler2010review}
-{\sc Kohler, M.}: {\em A review on regression-based Monte Carlo methods for
-  pricing American options}.
-\newblock \Btxinlong{}\ {\sc Devroye~L., Karasözen, B. Kohler~M.}
-  \btxandlong{}\ {\sc R.~Korn}\ (\btxeditorslong{}): {\em Recent Developments
-  in Applied Probability and Statistics}, \btxpageslong{}\ 37--58. Physica,
-  Heidelberg, 2010.
-
-\bibitem[Kre12]{Kress2012}
-{\sc Kress, Rainer}: {\em Numerical analysis}.
-\newblock Springer, Berlin, 2012.
-
-\bibitem[KS98]{karatzas1998methods}
-{\sc Karatzas, I.} \btxandlong{}\ {\sc S.~Shreve}: {\em Methods of mathematical
-  finance}, \btxvolumelong{}~39 \btxofserieslong{}\ {\em Stochastic Modelling
-  and Applied Probability}.
-\newblock Springer, New York, 1998.
-
-\bibitem[Kö13]{Koenigsberger2013}
-{\sc Königsberger, K.}: {\em Analysis 2}.
-\newblock Springer, Berlin, 2013.
-
-\bibitem[LS01]{longstaff2001valuing}
-{\sc Longstaff, F.} \btxandlong{}\ {\sc E.~Schwartz}: {\em Valuing American
-  options by simulation: a simple least-squares approach}.
-\newblock The review of financial studies, 14(1):113--147, 2001.
-
-\bibitem[Mal00]{Malkiel2000}
-{\sc Malkiel, B.}: {\em Börsenerfolg ist kein Zufall - die besten
-  Investmentstrategien für das neue Jahrtausend}.
-\newblock FinanzBuch, München, 2000.
-
-\bibitem[{R D}17]{RDevel}
-{\sc {R Development Core Team}}: {\em R: A Language and Environment for
-  Statistical Computing}.
-\newblock R Foundation for Statistical Computing, Vienna, 2017.
-
-\bibitem[SB07]{bulirsch:02}
-{\sc Stoer, J.} \btxandlong{}\ {\sc R.~Bulirsch}: {\em Numerische Mathematik
-  1}.
-\newblock Springer, Berlin, 2007.
-
-\bibitem[Sto18]{Storch2018}
-{\sc Storch, U. und~Wiebe, H}: {\em Grundkonzepte der Mathematik -
-  Mengentheoretische, algebraische, topologische Grundlagen sowie reelle und
-  komplexe Zahlen}.
-\newblock Springer, Berlin, 2018.
-
-\bibitem[TVR99]{tsitsiklis1999optimal}
-{\sc Tsitsiklis, J.~N.} \btxandlong{}\ {\sc B.~Van~Roy}: {\em Optimal stopping
-  of Markov processes: Hilbert space theory, approximation algorithms, and an
-  application to pricing high-dimensional financial derivatives}.
-\newblock IEEE Transactions on Automatic Control, 44(10):1840--1851, 1999.
+\bibitem[VRDJ95]{van1995python}
+{\sc Van~Rossum, Guido} \btxandlong{}\ {\sc Fred~L Drake~Jr}: {\em Python
+  tutorial}.
+\newblock Centrum voor Wiskunde en Informatica Amsterdam, The Netherlands,
+  1995.
 
 \end{thebibliography}

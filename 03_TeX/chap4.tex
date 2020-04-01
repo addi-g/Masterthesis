@@ -1,12 +1,12 @@
 \chapter{Anwendungsbeispiel auf simulierte Daten}
 \label{chap:4}
 
-In diesem Kapitel betrachten wir die Leistung unseres Neuronale-Netze-Regressionsschätzers aus Kapitel~{\ref{chap:2}, bei endlicher Stichprobengröße auf simulierte Daten in $Python$.
+In diesem Kapitel betrachten wir die Leistung unseres Neuronale-Netze-Regressionsschätzers aus Kapitel~{\ref{chap:2}, bei endlicher Stichprobengröße auf simulierte Daten in $Python$~\cite[Version 3.7.3]{van1995python} mithilfe der $Keras$ Bibliothek \cite{chollet2015keras}.
 
 Die simulierten Daten welchen wir verwenden werden, sehen wie gefolgt aus:
 Wir wählen $X$ gleichverteilt auf $[-2, 2]^d$, wobei $d$ die Dimension des Inputs ist, zudem wählen wir $\epsilon$ als standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
 $$Y = m_j(X) + \sigma \cdot \lambda_j \cdot \epsilon,$$ 
-mit $m_j \colon [-2, 2]^d \to \R \quad (j \in \{1, 2\})$ wie unten definiert, $\lambda_j > 0$ als Skalierungsfaktor welcher wie unten definiert wird und einen Rauschfaktor $\sigma = 0.05.$ Als Regressionsfunktionen verwenden wir die Funktionen:
+mit $m_j \colon [-2, 2]^d \to \R$ für  $j \in \{1, 2\}$ wie unten definiert, $\lambda_j > 0$ als Skalierungsfaktor welcher wie unten definiert wird und einen Rauschfaktor $\sigma = 0.05.$ Als Regressionsfunktionen verwenden wir die Funktionen:
 $$ m_1(x) =  \sin\big(0.2 \cdot x^2\big) + \exp(0.5 \cdot x) + x^3$$
 und
 $$ m_2(x_0, x_1) = \sin\big(\sqrt[2]{x_0^2 + x_1^2}\big).$$
@@ -34,46 +34,45 @@ Für die Schätzung von $m_2$ wählten wir: $d = 2$, $N = 2$, $q = 2$, $R = 10^6
 
 Da wir zum Beispiel den Grad der zu schätzenden Funktion kennen und dies bei unserem Schätzer berücksichtigen können.
 
-%\begin{figure}
-%    \begin{subfigure}[b]{0.5\textwidth}
-%        \centering
-%        \scalebox{0.9}{
-%          \input{m1tikz.tex}}
-%        \caption{Subfigure A}
-%        \label{fig:subfig8}
-%    \end{subfigure}
-%    \begin{subfigure}[b]{0.5\textwidth}
-%    \centering
-%    \scalebox{0.9}{
-%           \input{nnnestimatetikz.tex}}
-%        \caption{Subfigure B}   
-%        \label{fig:subfig9}
-%    \end{subfigure}
-%       \hspace{0.4cm}
-%    \begin{subfigure}[b]{1\textwidth}
-%    \centering
-%    \scalebox{0.9}{
-%	\input{tikzd1.tex}}
-%	 \caption{Subfigure C}
-%        \label{fig:subfig810}
-%    \end{subfigure}
-%    \caption{test} 
-%\label{fig:subfig1.a.4}
-%\end{figure}
-
 \begin{figure}
-\centering
-%\input{tikzfigure1.tikz}
-\begin{tikzpicture}
-\begin{axis}[x dir=reverse]
-\addplot3 [scatter, only marks]
-  table[x=x, y=y, z=f, col sep=comma] {plotpostpro_sort.csv};
-\end{axis}
-\end{tikzpicture}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \scalebox{0.9}{
+          \input{m1tikz.tex}}
+        \caption{Zu schätzende Funktion $m_1$. \\\qquad  }
+        \label{fig:subfig8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+           \input{nnnestimatetikz.tex}}
+        \caption{Schätzung von $m_1$ durch unseren Neuronale-Netze-Regressionsschätzer.}   
+        \label{fig:subfig9}
+    \end{subfigure}
+       \hspace{0.4cm}
+    \begin{subfigure}[b]{1\textwidth}
+    \centering
+    \scalebox{0.9}{
+	\input{tikzd1.tex}}
+	 \caption{Visueller Vergleich der Funktion $m_1$ mit ihrer Schätzung.}
+        \label{fig:subfig810}
+    \end{subfigure}
+    \caption{Darstellung der Funktion $m_1$ und dessen Schätzung durch den Schätzer \textit{new\_neural\_network\_estimate}.} 
+\label{fig:subfig1.a.4}
 \end{figure}
 
-Wie wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} anhand des skalierten $L_2$-Fehlers sehen können, übertrifft unserer Neuronale-Netze-Schätzer in allen Fällen die Leistung der anderen Schätzer. 
+%\begin{figure}
+%\centering
+%%\input{tikzfigure1.tikz}
+%\begin{tikzpicture}
+%\begin{axis}[x dir=reverse]
+%\addplot3 [scatter, only marks]
+%  table[x=x, y=y, z=f, col sep=comma] {plotpostpro_sort.csv};
+%\end{axis}
+%\end{tikzpicture}
+%\end{figure}
 
+Wie wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} anhand des skalierten $L_2$-Fehlers sehen können, übertrifft unserer Neuronale-Netze-Schätzer in allen Fällen die Leistung der anderen Schätzer. 
 \begin{table}
 \centering
 \begin{tabular}{ |p{5cm}||p{4cm}|p{4cm}|}
