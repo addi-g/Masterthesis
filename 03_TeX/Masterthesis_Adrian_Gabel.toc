@@ -1,19 +1,19 @@
 \babel@toc {ngerman}{}
 \babel@toc {ngerman}{}
 \contentsline {chapter}{Einleitung}{6}{chapter*.2}%
-\contentsline {chapter}{\numberline {1}Grundlagen und Hilfsresultate für neuronale Netze}{8}{chapter.1}%
+\contentsline {chapter}{\numberline {1}Grundlagen für neuronale Netze}{8}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Definitionen}{8}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Hilfsresultate}{11}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Konstruktion unseres Neuronale-Netze-Schätzers}{23}{chapter.2}%
+\contentsline {chapter}{\numberline {2}Konstruktion eines Neuronale-Netze-Schätzers}{23}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Definition der Netzwerkarchitektur}{25}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Bestimmung der Gewichte der Ausgabeschicht}{33}{section.2.2}%
 \contentsline {chapter}{\numberline {3}Resultat zur Konvergenzgeschwindigkeit}{37}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Approximationsresultate für Hauptsatz 3.1}{38}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Der Beweis von Hauptsatz 3.1}{40}{section.3.2}%
+\contentsline {section}{\numberline {3.1}Approximationsresultate für Hauptsatz \hyperref [optstop]{3.1}}{38}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Der Beweis von Hauptsatz \hyperref [optstop]{3.1}}{40}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Abschätzung von $T_{1,n}$}{41}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Abschätzung von $T_{2,n}$}{42}{subsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.2.1}Abschätzung von $T_{2,A,n}$}{45}{subsubsection.3.2.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2.2}Abschätzung von $T_{2,B,n}$}{47}{subsubsection.3.2.2.2}%
 \contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{51}{chapter.4}%
 \contentsline {chapter}{Appendix}{55}{chapter*.12}%
-\contentsline {chapter}{Literaturverzeichnis}{69}{chapter*.13}%
+\contentsline {chapter}{Literaturverzeichnis}{66}{chapter*.13}%

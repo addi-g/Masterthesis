@@ -9,16 +9,16 @@ im Falle des Schätzers
 \label{schätzer}
 m_n(x) \coloneqq T_{\beta_n}\tilde{m}_n (x),
 \end{equation}
-mit $\beta_n = c_3 \cdot \log(n)$ für eine hinreichend große und von $n$ unabhängige Konstante $c_3 > 0$ und unter Annahme einer $(p,C)$-glatten Regressionsfunktion $m$ herleiten. Hierbei bezeichnet $T_{\beta}z = \max\{\min\{z, \beta\}, -\beta\}$
+mit $\beta_n = c_1 \cdot \log(n)$ für eine hinreichend große und von $n$ unabhängige Konstante $c_1 > 0$ und unter Annahme einer $(p,C)$-glatten Regressionsfunktion $m$ herleiten. Hierbei bezeichnet $T_{\beta}z = \max\{\min\{z, \beta\}, -\beta\}$
 für $z \in \R$ und $\beta > 0$. Weiterhin bezeichnen wir mit $\tilde{m}_n$ unseren Neuronale-Netze-Regresssionsschätzer aus Kapitel~\ref{subsec:2.2}, welcher aus mehreren neuronalen Netzen konstruiert wurde. Für diesen gilt: 
-Die Aktivierungsfunktion $\sigma$ ist der logistische Squasher, $N > q$, $M = M_n = \lceil c_2 \cdot n^{1/(2p + d)}\rceil$ mit $c_2 >0$ und unabhängig von $n$, $R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
+Die Aktivierungsfunktion $\sigma$ ist der logistische Squasher, $N \geq q$, $M = M_n = \lceil c_2 \cdot n^{1/(2p + d)}\rceil$ mit $c_2 >0$ und unabhängig von $n$, $R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
 
 Nun kommen wir zu dem Hauptresultat dieser Arbeit.
 \begin{mthm}[{\cite[Theorem 1]{kohler19}}]
 \label{optstop}
 Angenommen die Verteilung von $Y$ erfüllt 
-$$ \E\Big[\mathrm{e}^{c_1 \cdot |Y|^2}\Big] < \infty$$
-für eine Konstante $c_1 > 0$ und die Verteilung von $X$ besitzt einen beschränkten Träger $\supp(\mathds{P}_X)$. Sei $m(x) = \E[Y \mid X = x]$ die zu dem Tupel $(X, Y)$ gehörige Regressionsfunktion.
+$$ \E\Big[\mathrm{e}^{c_3 \cdot |Y|^2}\Big] < \infty$$
+für eine Konstante $c_3 > 0$ und die Verteilung von $X$ besitzt einen beschränkten Träger $\supp(\mathds{P}_X)$. Sei $m(x) = \E[Y \mid X = x]$ die zu dem Tupel $(X, Y)$ gehörige Regressionsfunktion.
 Angenommen $m$ ist $(p,C)$-glatt, mit $p = q + s$, wobei $q \in \N_0$, $s \in (0,1]$ und $C > 0$ ist.
 
 Sei $m_n$ aus Gleichung~(\ref{schätzer}) gegeben.
@@ -30,8 +30,8 @@ wobei $c_{\mathrm{fin}} > 0$ und unabhängig von $n$ ist.
 
 Der folgende Abschnitt liefert Hilfsresultate, welche wir im Beweis unsere Hauptresultats gebrauchen werden.
 
-\section{Approximationsresultate für Hauptsatz 3.1}
-Die nächsten  Definitionen und Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Schätzers. Die Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt. 
+\section{Approximationsresultate für Hauptsatz \hyperref[optstop]{3.1}}
+Die nächsten  Definitionen und Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Regressionsschätzers. Die Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt. 
 
 \begin{lem}[{\cite[Lemma 5]{kohler19}}]
 \label{lem:5}
@@ -118,7 +118,7 @@ für eine Konstante $c$ die nur von $L$, $N$, $a$ und $d$ abhängt.
 
 Mit den Approximationsresultaten aus diesem Abschnitt verfügen wir nun über alle Bausteine, um unser Hauptresultat zu beweisen.
 
-\section{Der Beweis von Hauptsatz 3.1}
+\section{Der Beweis von Hauptsatz \hyperref[optstop]{3.1}}
 
 Wir betrachten das Ereignis 
 \begin{equation}
@@ -181,17 +181,17 @@ Da die Zufallsvariablen $Y_1,\dots,Y_n$ u.\@i.\@v.\@ sind, folgt mit den Rechenr
 \begin{split}
 \mathds{P}(A_n^{\mathsf{c}}) \leq \frac{n \cdot  \mathds{V}[Y^2]}{n^2}
 = \frac{\mathds{V}[Y^2]}{n}
-= \frac{c_7}{n},
+= \frac{c_4}{n},
 \end{split}
 \end{equation}
-wobei $c_7 \coloneqq \mathds{V}[Y^2]$ ist. 
+wobei $c_4 \coloneqq \mathds{V}[Y^2]$ ist. 
 
 Mit Ungleichung~(\ref{tscheby}) erhalten wir in Ungleichung~(\ref{anc}):
 \begin{equation*}
 \begin{split}
  \E \bigg[\int  2\beta_n^2 + 2\beta_n^2 \mathds{P}_X(dx)\bigg] \cdot \mathds{P}(A_n^{\mathsf{c}})
   \leq 4\beta_n^2 \cdot \mathds{P}(A_n^{\mathsf{c}}) 
-  \stackrel{(\ref{tscheby})}{\leq} \frac{4 \cdot c_7 \cdot \beta_n^2}{n},
+  \stackrel{(\ref{tscheby})}{\leq} \frac{4 \cdot c_4 \cdot \beta_n^2}{n},
 \end{split}
 \end{equation*}
 wobei wir bei der ersten Ungleichung verwendet haben, dass $\beta_n$ deterministisch und $\mathds{P}(X \in \supp(\mathds{P}_X)) = 1$ ist.
@@ -199,10 +199,10 @@ Schließlich erhalten wir in Ungleichung~(\ref{anc}), da für $n$ hinreichend gr
 \begin{equation}
 \label{6thsum}
 \begin{split}
-T_{1,n} \leq \frac{4 \cdot c_7 \cdot \beta_n^2}{n} & \leq c_{14} \cdot \log(n)^3 \cdot n^{-1} \leq c_{14} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
+T_{1,n} \leq \frac{4 \cdot c_4 \cdot \beta_n^2}{n} & \leq c_{5} \cdot \log(n)^3 \cdot n^{-1} \leq c_{5} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
 \end{split}
 \end{equation} 
-mit einer von $n$ unabhängigen Konstante $c_{14} \coloneqq 4 \cdot c_7 \cdot c_3^2 > 0$.
+mit einer von $n$ unabhängigen Konstante $c_{5} \coloneqq 4 \cdot c_4 \cdot c_1^2 > 0$.
 
 Damit haben wir $T_{1,n}$ abgeschätzt entsprechend der rechten Seite von Hauptsatz~\ref{optstop} und als nächstes wollen wir $T_{2,n}$ abschätzen.
 
@@ -228,8 +228,8 @@ Da $m$ nach Voraussetzung $(p,C)$-glatt ist, existiert für alle $\alpha = (\alp
 z \coloneqq \max_{\bi \in [M_n]^d,\, \bj \in [q]^d,\, |\bj|_1 \leq q} \bigg|\frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\bigg| < \infty.
 \end{equation}
 
-Sei $\mathcal{F}$ die Menge aller Funktion aus Definition~\ref{def:nn} mit Aktivierungsfunktion $\sigma$ und $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und einer Konstante $c_4 > 0$ so, dass der Betrag der Gewichte durch $n^{c_{4}}$ beschränkt ist. Wir definieren
-$$ \mathcal{F}^{(J_n)} \coloneqq \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \text{ und } \sum_{j = 1}^{J_n} a_j^2 \leq c_5 \cdot n \biggr\}$$
+Sei $\mathcal{F}$ die Menge aller Funktion aus Definition~\ref{def:nn} mit Aktivierungsfunktion $\sigma$ und $L = s + 2 = \lceil\log_2(N + d)\rceil + 2,$ mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und einer Konstante $c_6 > 0$ so, dass der Betrag der Gewichte durch $n^{c_{6}}$ beschränkt ist. Wir definieren
+$$ \mathcal{F}^{(J_n)} \coloneqq \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \text{ und } \sum_{j = 1}^{J_n} a_j^2 \leq c_7 \cdot n \biggr\}$$
 mit 
 $$
 J_n = (M_n + 1)^d \cdot \bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 \leq N \Bigr\}\bigg|$$
@@ -237,10 +237,10 @@ und
 \begin{equation}
 \label{constantc21}
 \begin{split}
-c_5 \coloneqq \max\Biggl\{\frac{1 + \E[Y^2]}{c_6}, c_2^d \cdot (N + 1)^d \cdot z^2\Biggr\}.
+c_7 \coloneqq \max\Biggl\{\frac{1 + \E[Y^2]}{c_8}, c_2^d \cdot (N + 1)^d \cdot z^2\Biggr\}.
 \end{split}
 \end{equation}
-Hierbei bezeichnet $c_6$ die Konstante des Regularitätsterms aus Gleichung~(\ref{min}). Da wir uns in der nichtparametrischen Regressionsschätzung befinden, gilt unter anderem die Bedingung $\E[Y^2] < \infty$ und daher ist $c_5$ auch wohldefiniert. 
+Hierbei bezeichnet $c_8$ die Konstante des Regularitätsterms aus Gleichung~(\ref{min}). Da wir uns in der nichtparametrischen Regressionsschätzung befinden, gilt unter anderem die Bedingung $\E[Y^2] < \infty$ und daher ist $c_7$ auch wohldefiniert. 
 Weiterhin folgt wie in Kapitel~\ref{subsec:2.2} mit $J_n = S$,
 \begin{equation}
 \label{jn}
@@ -252,7 +252,7 @@ Da nach Konstruktion $f_{\net,\bj,\mathbf{i}} \in \mathcal{F}$ ist, folgt mit Gl
 \begin{split}
 \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \big| \frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\big|^2 & \leq (M_n + 1)^d (N + 1)^d \cdot z^2 \\
 & \leq (2 c_2 \cdot n^{1/2p + d})^d \cdot (N + 1)^d \cdot z^2 \\
-& \leq c_5 \cdot n,
+& \leq c_7 \cdot n,
 \end{split}
 \end{equation*}
 gilt und damit $g_n$ in $\mathcal{F}^{(J_n)}$ liegt. 
@@ -263,19 +263,19 @@ $$\tilde{m}_n(x) = \sum_{j = 1}^{J_n}\hat{a}_j \cdot f_j$$
 für geeignete $f_j \in \mathcal{F}$ und $\hat{a}_j$ welche 
 \begin{equation*}
 \begin{split}
-\frac{c_6}{n}\sum_{j = 1}^{J_n} \hat{a}_j^2 & = \frac{c_6}{n} \sum_{\bi \in [M_n]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2
-\leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_6}{n} \sum_{\bi \in [M_n]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2 
+\frac{c_8}{n}\sum_{j = 1}^{J_n} \hat{a}_j^2 & = \frac{c_8}{n} \sum_{\bi \in [M_n]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2
+\leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_8}{n} \sum_{\bi \in [M_n]^d} \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q}} a_{\mathbf{i},\bj}^2 
 \leq \sum_{i = 1}^n Y_i^2,
 \end{split}
 \end{equation*}
-erfüllen, wobei wir bei der letzten Ungleichung wie in Kapitel~\ref{chap:2} die minimierende Eigenschaft von $a_{\mathbf{i},\bj}$ verwendet haben und zum Schluss die Koeffizienten Null gesetzt haben. Da $c_6 > 0$ ist, erhalten wir dass, die Koeffizienten $\hat{a}_j$ die Eigenschaft
+erfüllen, wobei wir bei der letzten Ungleichung wie in Kapitel~\ref{chap:2} die minimierende Eigenschaft von $a_{\mathbf{i},\bj}$ verwendet haben und zum Schluss die Koeffizienten Null gesetzt haben. Da $c_8 > 0$ ist, erhalten wir dass, die Koeffizienten $\hat{a}_j$ die Eigenschaft
 \begin{equation}
 \label{eq:foran}
-\sum_{j = 1}^{J_n} \hat{a}_j^2  \leq \frac{1}{n}\sum_{i = 1}^n Y_i^2 \cdot \frac{n}{c_6}
+\sum_{j = 1}^{J_n} \hat{a}_j^2  \leq \frac{1}{n}\sum_{i = 1}^n Y_i^2 \cdot \frac{n}{c_8}
 \end{equation}
 erfüllen müssen.
-Da Ungleichung~\ref{eq:foran} insbesondere auf dem Ereignis $A_n$ gilt, folgt aus der Definition von $A_n$ in Gleichung~(\ref{event}) und der Definition der Konstante $c_5$ in Gleichung~(\ref{constantc21}):
-$$\sum_{j = 1}^{J_n}\hat{a}_j^2 \leq \frac{1 + \E[Y^2]}{c_6} \cdot n \leq c_5 \cdot n,$$
+Da Ungleichung~\ref{eq:foran} insbesondere auf dem Ereignis $A_n$ gilt, folgt aus der Definition von $A_n$ in Gleichung~(\ref{event}) und der Definition der Konstante $c_7$ in Gleichung~(\ref{constantc21}):
+$$\sum_{j = 1}^{J_n}\hat{a}_j^2 \leq \frac{1 + \E[Y^2]}{c_8} \cdot n \leq c_7 \cdot n,$$
 woraus durch $f_j \in \mathcal{F}$ schließlich $\tilde{m}_n \in \mathcal{F}^{(J_n)}$ folgt.
 Als nächstes wollen wir Ungleichung~(\ref{lem:8:bed:1}) aus Lemma~\ref{lem:8} für $\tilde{m}_n$ und $g_n$ zeigen.
 
@@ -284,28 +284,28 @@ Die Funktionen $\tilde{m}_n$ und $g_n$ unterscheiden sich in den Vorfaktoren von
 \begin{split}
 \label{tilde}
 & \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_6}{n} \cdot \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [N]^d \\ |\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + \frac{c_6}{n} \cdot \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \bigg|\frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\bigg|^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{8} \cdot \frac{(M_n + 1)^d}{n},
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_8}{n} \cdot \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [N]^d \\ |\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + \frac{c_8}{n} \cdot \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \bigg|\frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\bigg|^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{9} \cdot \frac{(M_n + 1)^d}{n},
 \end{split}
 \end{equation}
-mit $c_{8} = c_6 \cdot (q + 1)^d \cdot z^2$ als Konstante die unabhängig von $n$ ist.
+mit $c_{9} = c_8 \cdot (q + 1)^d \cdot z^2$ als Konstante die unabhängig von $n$ ist.
 Wir erhalten damit für $\bar{m}_n \in \{\tilde{m}_n, g_n\} \subseteq \mathcal{F}^{(J_n)}$:
 \begin{equation}
 \label{bed}
-\frac{1}{n} \sum_{i = 1}^n|Y_i - \bar{m}_n(X_i)|^2 \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_8 \cdot \frac{(M_n + 1)^d}{n},
+\frac{1}{n} \sum_{i = 1}^n|Y_i - \bar{m}_n(X_i)|^2 \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_9 \cdot \frac{(M_n + 1)^d}{n},
 \end{equation}
 da für $\bar{m}_n = g_n$ die Ungleichung unmittelbar folgt.
-Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1),\dots,(X_n, Y_n)$ ist, sind mit der Abschätzung~(\ref{bed}) für $\hat{m}_n = T_{\beta_n}\bar{m}_n$ mit $\bar{m}_n \in \mathcal{F}^{(J_n)}$ und dem \emph{Penalty Term} $\mathrm{pen}_n(g_{n}) = c_8 \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma~\ref{lem:8} erfüllt. Wir erhalten durch dessen Anwendung:
+Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1),\dots,(X_n, Y_n)$ ist, sind mit der Abschätzung~(\ref{bed}) für $\hat{m}_n = T_{\beta_n}\bar{m}_n$ mit $\bar{m}_n \in \mathcal{F}^{(J_n)}$ und dem \emph{Penalty Term} $\mathrm{pen}_n(g_{n}) = c_9 \cdot \frac{(M_n + 1)^d}{n} > 0$ die Voraussetzungen für Lemma~\ref{lem:8} erfüllt. Wir erhalten durch dessen Anwendung:
 \begin{equation}
 \label{eq:lem8}
 \begin{split}
 & \E \Big[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \\
-& \leq \frac{c_8 \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
-& \quad + 2 \cdot \E\bigg[\int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + c_8 \cdot \frac{(M_n + 1)^d}{n}\bigg] \\
-& = \frac{c_8 \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
-& \quad + 2 \int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + 2 \cdot c_8 \cdot \frac{(M_n + 1)^d}{n} \\
-& \eqqcolon T_{2,A,n} + 2 \cdot T_{2,B,n} + 2 \cdot c_8 \cdot \frac{(M_n + 1)^d}{n},
+& \leq \frac{c_9 \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
+& \quad + 2 \cdot \E\bigg[\int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + c_9 \cdot \frac{(M_n + 1)^d}{n}\bigg] \\
+& = \frac{c_9 \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
+& \quad + 2 \int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + 2 \cdot c_9 \cdot \frac{(M_n + 1)^d}{n} \\
+& \eqqcolon T_{2,A,n} + 2 \cdot T_{2,B,n} + 2 \cdot c_9 \cdot \frac{(M_n + 1)^d}{n},
 \end{split}
 \end{equation}
 wobei wir bei der letzten Gleichheit verwendet haben, dass der letzte Summand deterministisch ist. Zudem wissen wir, dass $c_8$ unabhängig von $n$ ist und $n > 1$, da wir $n$ hinreichend groß wählen.
@@ -313,32 +313,32 @@ Des weiteren erhalten wir, da für $n$ hinreichend groß $\log(n)^3 > 1$ gilt, m
 \begin{equation}
 \label{5thsum}
 \begin{split}
-c_8 \cdot \frac{(M_n + 1)^d}{n} & \leq c_{13} \cdot \frac{n^{\frac{d}{2p + d}}}{n} \leq c_{13} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}} ,
+c_9 \cdot \frac{(M_n + 1)^d}{n} & \leq c_{10} \cdot \frac{n^{\frac{d}{2p + d}}}{n} \leq c_{10} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}} ,
 \end{split}
 \end{equation} 
-mit einer von $n$ unabhängigen Konstanten $c_{13} \coloneqq c_8 \cdot (2c_2)^d > 0$.
+mit einer von $n$ unabhängigen Konstanten $c_{10} \coloneqq c_9 \cdot (2c_2)^d > 0$.
 Mithilfe von Ungleichung~(\ref{5thsum}) erhalten wir nun in Gleichung~(\ref{eq:lem8}):
 $$
-\E \Big[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \leq T_{2,A,n} + 2 \cdot T_{2,B,n} + 2 \cdot c_{13} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}}.
+\E \Big[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \leq T_{2,A,n} + 2 \cdot T_{2,B,n} + 2 \cdot c_{10} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}}.
 $$
 
 Wir wollen die Summanden $T_{2,A,n}$ und $T_{2,B,n}$ weiter abschätzen.
 
 \subsubsection{Abschätzung von $T_{2,A,n}$}
 Als Erstes überprüfen wir die Voraussetzungen von Lemma~\ref{lem:9}, um damit dann den Summanden, welcher die Überdeckungszahl $\mathcal{N}_1$ enthält, in Ungleichung~(\ref{eq:lem8}) weiter abzuschätzen.
-Nach Voraussetzung ist $\beta_n = c_3 \cdot \log(n)$ und $a_n = (\log n)^{1/(6(N + d))} > 0$ für hinreichend großes $n$. Nach Voraussetzung sind zudem $d$, $N$, $J_n \in \N$ und es gilt nach Gleichung~(\ref{jn}): 
+Nach Voraussetzung ist $\beta_n = c_1 \cdot \log(n)$ und $a_n = (\log n)^{1/(6(N + d))} > 0$ für hinreichend großes $n$. Nach Voraussetzung sind zudem $d$, $N$, $J_n \in \N$ und es gilt nach Gleichung~(\ref{jn}): 
 $$J_n \leq (M_n + 1)^d \cdot (N + 1)^d \leq n^{c},$$
-für hinreichend großes $n$ und Konstante $c > 0$. Wir betrachten hier den logistischen Squasher $\sigma$ welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma~\ref{lem:9} ist, sind nun alle Voraussetzungen für Lemma~\ref{lem:9} erfüllt. Nach Voraussetzung wissen wir, dass $\supp(\mathds{P}_X)$ beschränkt ist und wir können $n$ so groß wählen, dass wir ohne Beschränkung der Allgemeinheit annehmen können, dass $\supp(\mathds{P}_X) = \{x \in \R^d \mid \forall \epsilon > 0 : \mathds{P}_X(S_{\epsilon}(x)) > 0\} \subseteq [-a_n, a_n]^d$ ist, mit $S_{\epsilon}$ als $\epsilon$-Umgebung um $x \in \R^d$. In der nächsten Ungleichungskette fassen wir die Konstanten die sich von $c_8$ unterscheiden und die unabhängig von $n$ sind, zu einer Konstante $c$ zusammen. Wir erhalten damit durch Lemma~\ref{lem:9} für hinreichend großes $n$:
+für hinreichend großes $n$ und Konstante $c > 0$. Wir betrachten hier den logistischen Squasher $\sigma$ welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Da die hier betrachtete Menge von Funktionen $\mathcal{F}^{(J_n)}$ identisch mit der aus Lemma~\ref{lem:9} ist, sind nun alle Voraussetzungen für Lemma~\ref{lem:9} erfüllt. Nach Voraussetzung wissen wir, dass $\supp(\mathds{P}_X)$ beschränkt ist und wir können $n$ so groß wählen, dass wir ohne Beschränkung der Allgemeinheit annehmen können, dass $\supp(\mathds{P}_X) = \{x \in \R^d \mid \forall \epsilon > 0 : \mathds{P}_X(S_{\epsilon}(x)) > 0\} \subseteq [-a_n, a_n]^d$ ist, mit $S_{\epsilon}$ als $\epsilon$-Umgebung um $x \in \R^d$. In der nächsten Ungleichungskette fassen wir die Konstanten die sich von $c_9$ unterscheiden und die unabhängig von $n$ sind, zu einer Konstante $c$ zusammen. Wir erhalten damit durch Lemma~\ref{lem:9} für hinreichend großes $n$:
 \begin{equation}
 \label{lem9sol}
 \begin{split}
-T_{2,A,n} = & \frac{c_8 \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
-& \leq \frac{c_8 \cdot \log(n)^2 \cdot \big(\big(c \cdot \log(n) \cdot (M_n + 1)^d \cdot (N + 1)^d \big) + 1\big)}{n} \\
-& \leq \frac{c_8 \cdot \log(n)^2 \cdot \big(2 \cdot c \cdot \log(n) \cdot (M_n + 1)^d \cdot (N + 1)^d\big)}{n} \\
-& \leq c_{9} \cdot \frac{\log(n)^3 \cdot (M_n + 1)^d \cdot (N + 1)^d}{n},
+T_{2,A,n} = & \frac{c_9 \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\big) + 1\big)}{n} \\
+& \leq \frac{c_9 \cdot \log(n)^2 \cdot \big(\big(c \cdot \log(n) \cdot (M_n + 1)^d \cdot (N + 1)^d \big) + 1\big)}{n} \\
+& \leq \frac{c_9 \cdot \log(n)^2 \cdot \big(2 \cdot c \cdot \log(n) \cdot (M_n + 1)^d \cdot (N + 1)^d\big)}{n} \\
+& \leq c_{11} \cdot \frac{\log(n)^3 \cdot (M_n + 1)^d \cdot (N + 1)^d}{n},
 \end{split}
 \end{equation}
-wobei $c_9 \coloneqq 2 c_8 \cdot c$ eine von $n$ unabhängige Konstante ist.
+wobei $c_{11} \coloneqq 2 c_9 \cdot c$ eine von $n$ unabhängige Konstante ist.
 Durch einsetzen der Definition von $M_n$ erhalten wir für hinreichend großes $n$ 
 $$
 (M_n + 1)^d \leq (c_2 \cdot n^{\frac{1}{2p + d}} + 2)^d \leq 2^d \cdot c_2^d \cdot n^{\frac{d}{2p + d}} = 2^d \cdot c_2^d \cdot n^{\frac{d}{2p + d} - 1} = 2^d \cdot c_2^d \cdot n^{-\frac{2p}{2p + d}}
@@ -346,12 +346,12 @@ $$
 und damit schließlich für Ungleichung~(\ref{lem9sol}):
 \begin{equation}
 \begin{split}
-& c_9 \cdot \frac{\log(n)^3 \cdot (M_n + 1)^d \cdot (N + 1)^d}{n} \\
-& = c_9 \cdot (N+1)^d \cdot 2^d \cdot c_2^d \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}} \\
+& c_{11} \cdot \frac{\log(n)^3 \cdot (M_n + 1)^d \cdot (N + 1)^d}{n} \\
+& = c_{11} \cdot (N+1)^d \cdot 2^d \cdot c_2^d \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}} \\
 & = c_{12} \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}},
 \end{split}
 \end{equation}
-mit einer von $n$ unabhängigen Konstante $c_{12} \coloneqq c_9 \cdot (N + 1)^d \cdot 2^d \cdot c_2^d > 0.$
+mit einer von $n$ unabhängigen Konstante $c_{12} \coloneqq c_{11} \cdot (N + 1)^d \cdot 2^d \cdot c_2^d > 0.$
 Damit haben wir den Summanden aus Ungleichung~(\ref{eq:lem8}), welcher die Überdeckungszahl $\mathcal{N}_1$ enthält, weiter abgeschätzt.
 %Als Nächstes wollen wir den Term
 %$$
@@ -432,29 +432,29 @@ Bei der letzten Ungleichung haben wir verwendet, dass $\frac{16p}{2p + d} > \fra
 & \leq c^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{M_n^6}{R_n^2} \\
 & \leq  c^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{(M_n + 1)^{6d}}{R_n^2} \\
 & \leq  c^2 \cdot \log(n)^2 \cdot \frac{(M_n + 1)^{8d}}{R_n^2} \\
-& \leq c_{10} \cdot n^{-\frac{2p}{2p + d}} \cdot \log(n)^3,
+& \leq c_{13} \cdot n^{-\frac{2p}{2p + d}} \cdot \log(n)^3,
 \end{split}
 \end{equation}
-mit $c_{10} = c^2 \cdot (2c_2)^{8d} > 0$ und unabhängig von $n$ ist. Bei der letzten Ungleichung haben wir verwendet, dass $\log(n)^2 < \log(n)^3$ für $n$ hinreichend groß gilt. Damit haben wir $\sup_{x \in [-a_n, a_n]^d} T_{2,B_1,n}^2$ aus Ungleichung~(\ref{gnmx}) abgeschätzt.
+mit $c_{13} = c^2 \cdot (2c_2)^{8d} > 0$ und unabhängig von $n$ ist. Bei der letzten Ungleichung haben wir verwendet, dass $\log(n)^2 < \log(n)^3$ für $n$ hinreichend groß gilt. Damit haben wir $\sup_{x \in [-a_n, a_n]^d} T_{2,B_1,n}^2$ aus Ungleichung~(\ref{gnmx}) abgeschätzt.
 
 \paragraph*{Abschätzung von $T_{2,B_2,n}$}\mbox{}\\
 Da nach Konstruktion $a_n > 0$, $m$ $(p, C)$-glatt und $P_{m,n}(x)$ nach Lemma~\ref{lem:loccon} eine Spline Interpolation von Taylorpolynomen von $m$ ist, erhalten wir mit Lemma~\ref{lem:pcsmooth}:
 \begin{equation}
 \label{2ndsum}
 \begin{split}
-T_{2,B_2,n} = |P_{m,n}(x) - m(x)| \leq c_{11} \cdot \frac{a_n^p}{M_n^p} \leq c_{11} \cdot \log(n) \cdot \frac{1}{M_n^p}.
+T_{2,B_2,n} = |P_{m,n}(x) - m(x)| \leq c_{14} \cdot \frac{a_n^p}{M_n^p} \leq c_{14} \cdot \log(n) \cdot \frac{1}{M_n^p}.
 \end{split}
 \end{equation}
-In dieser Ungleichung ist $c_{11} > 0$ eine von $n$ unabhängige Konstante aus Lemma~\ref{lem:pcsmooth} und wir haben zudem verwendet, dass:
+In dieser Ungleichung ist $c_{14} > 0$ eine von $n$ unabhängige Konstante aus Lemma~\ref{lem:pcsmooth} und wir haben zudem verwendet, dass:
 $$a_n^p = a_n^{q + s} \leq a_n^{N + d} \leq a_n^{6 \cdot (N + d)} = \log(n),$$
 für $p = q + s$ für hinreichend großes $n$ gilt, da nach Voraussetzung $N \geq q$ und $d \geq s$ mit $s \in (0, 1]$ ist.
 Durch Quadrieren bleiben die Ungleichungen~(\ref{1stsum}) und (\ref{2ndsum}) auch erhalten und, da in beiden Ungleichungen die rechte Seite unabhängig von $x$ ist, gelten die Ungleichungen ebenfalls für das Supremum über $x \in [-a_n,a_n]^d$. Für $n$ hinreichend groß, erhalten wir durch Einsetzen der Definition von $M_n$:
 \begin{equation}
 \label{4thsum}
 \begin{split}
-\sup_{x \in [-a_n, a_n]^d} |P_{m,n}(x) - m(x)|^2 & \leq \bigg(c_{11} \cdot \log(n) \cdot \frac{1}{M_n^p}\bigg)^2 \\
-& \leq c_{11}^2 \cdot \log(n)^2 \cdot c_{2}^{-2p} \cdot n^{-\frac{2p}{2p + d}} \\
-& \leq \bigg(\frac{c_{11}}{c_2^p}\bigg)^2 \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}}.
+\sup_{x \in [-a_n, a_n]^d} |P_{m,n}(x) - m(x)|^2 & \leq \bigg(c_{14} \cdot \log(n) \cdot \frac{1}{M_n^p}\bigg)^2 \\
+& \leq c_{14}^2 \cdot \log(n)^2 \cdot c_{2}^{-2p} \cdot n^{-\frac{2p}{2p + d}} \\
+& \leq \bigg(\frac{c_{14}}{c_2^p}\bigg)^2 \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}}.
 \end{split}
 \end{equation}
 Hiermit haben wir $\sup_{x \in [-a_n, a_n]^d} T_{2,B_2,n}^2$ aus Ungleichung~(\ref{gnmx}) abgeschätzt.
@@ -464,6 +464,6 @@ Mit der Abschätzung von $T_{1,n}$ haben wir nun alle Summanden von Ungleichung 
 \E \Big[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \leq c_{\mathrm{fin}} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
 \end{equation*}
 mit 
-$$c_{\mathrm{fin}} = c_{14} + 2 \cdot c_{13} + c_{12} + 2 \cdot \Bigg(2 \cdot \bigg(\frac{c_{11}}{c_2^p}\bigg)^2 + 2 \cdot  c_{10}\Bigg),$$
+$$c_{\mathrm{fin}} = c_{5} + 2 \cdot c_{10} + c_{12} + 2 \cdot \Bigg(2 \cdot \bigg(\frac{c_{14}}{c_2^p}\bigg)^2 + 2 \cdot  c_{13}\Bigg),$$
 wobei $c_{\mathrm{fin}}$ als Summe nichtnegativer und positiver Konstanten, die unabhängig von $n$ sind, nichtnegativ und unabhängig von $n$ ist.
 Damit haben wir unser Hauptresultat bewiesen. $\hfill\square$ 	

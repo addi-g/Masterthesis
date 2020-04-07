@@ -1,19 +1,15 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Fri Oct 11 14:23:15 2019
-
-@author: adrian
+Implementation eines fully connected neuronalen Netzes mit einer verborgenen Schicht.
 """
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
 
-# Fully-Connected Neuronales Netzt mit einer Verborgenen schicht welches die 
-# Anzahl der Neuronen adaptiv, durch minimierung des L2 fehlers, aus der Menge \{5, 10, 25, 50, 75\} auswählt. 
+# Fully connected neuronales Netz mit einer verborgenen Schicht welches die 
+# Anzahl der Neuronen adaptiv, durch Minimierung des L2-Fehlers, aus der Menge \{5, 10, 25, 50, 75\} wählt. 
 #
-# X: Eingabevektoren der Form (X_1,...,X_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
-# Y: Eingabevektoren der Form (Y_1,...,Y_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# X: Eingabevektor der Form (X_1,...,X_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# Y: Eingabevektor der Form (Y_1,...,Y_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 
 def fc_neural_1_estimate (X_train,Y_train,X_test):
     

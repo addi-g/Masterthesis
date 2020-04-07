@@ -1,11 +1,11 @@
-\chapter{Konstruktion unseres Neuronale-Netze-Schätzers}
+\chapter{Konstruktion eines Neuronale-Netze-Schätzers}
 \label{chap:2}
 
-In dieser Arbeit behandeln wir Neuronale-Netze-Schätzer im Kontext der \emph{nichtparametrischen Regression} mit \emph{zufälligem Design}. In der Regressionsanalyse betrachtet man einen Zufallsvektor $(X,Y)$, wobei $X$ $\R^d$-wertig und $Y$ reellwertig ist. Man ist daran interessiert, wie der Wert der \emph{Reaktionsvariable} $Y$ vom Wert des \emph{Beobachtungsvektors} $X$ abhängt. Dies bedeutet, dass man eine (messbare) Funktion $f\colon \R^d \to \R$ sucht, sodass $f(X)$ eine \glqq gute Approximation von $Y$ ist \grqq. Das wiederum bedeutet, dass $f(X)$ nah an $Y$ sein sollte, was in gewisser Weise gleichwertig ist, den Ausdruck $|f(X) - Y|$ \glqq klein\grqq zu machen. Da aber $X$ und $Y$ Zufallsvektoren sind und damit $|f(X) - Y|$ auch zufällig ist, ist nicht klar was mit unter \glqq $|f(X) - Y|$ klein\grqq zu verstehen ist. Wir können dieses Problem lösen, indem wir das sogenannte $L_2$-Risiko 
+In dieser Arbeit behandeln wir Neuronale-Netze-Schätzer im Kontext der \emph{nichtparametrischen Regression} mit \emph{zufälligem Design}. In der Regressionsanalyse betrachtet man einen $\R^d \times \R$-wertigen Zufallsvektor $(X,Y)$. Man ist daran interessiert, wie der Wert der \emph{Reaktionsvariable} $Y$ vom Wert des \emph{Beobachtungsvektors} $X$ abhängt. Dies bedeutet, dass man eine (messbare) Funktion $f\colon \R^d \to \R$ sucht, sodass $f(X)$ eine \glqq gute Approximation von $Y$ ist \grqq. Das wiederum bedeutet, dass $f(X)$ nah an $Y$ sein sollte, was in gewisser Weise gleichwertig ist, den Ausdruck $|f(X) - Y|$ \glqq klein\grqq zu machen. Da aber $X$ und $Y$ Zufallsvektoren sind und damit $|f(X) - Y|$ auch zufällig ist, ist nicht klar was unter \glqq $|f(X) - Y|$ klein\grqq zu verstehen ist. Wir können dieses Problem lösen, indem wir das sogenannte $L_2$-Risiko 
 $$
 \E[|f(X) - Y|^2],
 $$
-einführen und verlangt, dass es so klein wie möglich sein muss.
+einführen und verlangen, dass es so klein wie möglich sein muss.
 Bei der nichtparametrischen Regression ist die Bauart der zu schätzenden Funktion komplett unbekannt, was den Vorteil besitzt, dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt, um eine Funktion zu schätzen.
 Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie folgt erläutern: 
 In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann die \emph{Regressionsfunktion} $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten.
@@ -30,7 +30,7 @@ möglichst \glqq klein\grqq ist \cite[Kapitel 1.1 und Kapitel 1.2]{gyoerfi2002}.
 In diesem Kapitel werden wir mithilfe der gegebenen Datenmenge $\mathcal{D}_n$ unseren Regressionsschätzer $\tilde{m}_n$ konstruieren. 
 In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$ verstehen.
 
-Für die Konstruktion unseres Neuronale-Netze-Schätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein Kleinste-Quadrate-Problem lösen.
+Für die Konstruktion unseres Neuronale-Netze-Regressionsschätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion $\sigma$, verwenden die gegebene Datenmenge $\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und schätzen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~(\ref{dataset}) ein Kleinste-Quadrate-Problem lösen.
 %mit einer Tikhonov Regularisierung \cite[Theorem 5.9]{Kress2012} lösen.
 
 Es ist bekannt (vgl.\@ \cite[Theorem 7.2 und Problem 7.2]{DevLug96} und \cite[Section 3]{DevWag80}), dass man Glattheitsvoraussetzungen an die Regressionsfunktion stellen muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
@@ -54,6 +54,18 @@ Für $(\mathbf{i}^{(1)},\dots,\mathbf{i}^{(d)}) = \bi \in [M]^d$ und $x \in \R^d
 $$|\mathbf{i}|_1 \coloneqq \sum_{k= 1}^d \mathbf{i}^{(k)} \text{, } \quad \mathbf{i}! \coloneqq \mathbf{i}^{(1)}! \cdots \, \mathbf{i}^{(d)}! \quad \text{ und } \quad x^{\mathbf{i}} \coloneqq x_1^{\mathbf{i}^{(1)}} \cdots \,    x_d^{\mathbf{i}^{(d)}}.$$
 Für $f\colon \R^d \to \R$ ausreichend oft differenzierbar definieren wir 
 $$\partial^{\mathbf{i}}f(x) \coloneqq \frac{\partial^{|\mathbf{i}|_1}f}{\partial^{\mathbf{i}^{(1)}} x_1 \cdots \, \partial^{\mathbf{i}^{(d)}} x_d} (x).$$
+
+Das nächste Lemma ist ein Resultat aus der Kombinatorik, welches wir in Kapitel~\ref{subsec:2.2} benötigen werden.
+\begin{lem}
+\label{lem:kombi}
+Sei $d, N \in \N$ und $k \in \N_0$ mit $k < N$. Dann gilt:
+$$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k}.$$
+\end{lem}
+\begin{proof}
+Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$ Kugeln, die wir mit $1,\dots,d$ beschriften. Wir ziehen $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren so einen Vektor $\bj = (j_1,\dots,j_d)$ aus der Menge mit $|\bj|_1 = k$. Der Koeffizient $j_i$ mit $i= 1,\dots,d$ gibt an wie oft die Kugel mit der Nummer $i$ gezogen wurde. Damit stimmt die Kardinalität der Menge auf der linken Seite mit der Anzahl aller Möglichkeiten überein die man erhält, wenn man $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge zieht.
+\end{proof}
+
+
 Wir betrachten im Folgenden ein $d$-dimensionales äquidistantes Gitter im Würfel $[-a, a]^d$ mit Schrittweite $\frac{2a}{M}.$ 
 %Sei $\bi_1,\dots,\bi_{(M + 1)^d}$ eine Aufzählung der Elemente von $[M]^d$.
 Dann ordnen wir jedem Multiindex $\bi \in [M]^d$ einen Gitterpunkt
@@ -79,9 +91,9 @@ Sei $a >0$ und $M \in \N$. Dann sind für $\bi \in [M]^d$ die Funktionen
 $$B_{\bi}(x) = \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+ \text{ für } x \in [-a, a]^d,$$
 mit $x_{\bi}$ als Gitterpunkte aus Gleichung~(\ref{eq:gitter}), B-Splines auf $[-a, a]^d$, für die die folgenden drei Bedingungen gelten:
 \begin{itemize}
-\item[\textbf{i)}] \emph{Zerlegung der Eins}: $\sum_{\bi \in [M]^d} B_{\bi}(x) = 1$ für $x \in [-a, a]$.
-\item[\textbf{ii)}] \emph{Nichtnegativität}: $B_{\bi}(x) \geq 0$ für alle $\bi \in [M]^d$.
-\item[\textbf{iii)}] \emph{Lokaler Träger}: Für $\bi \in [M]^d$ ist $B_{\bi}(x) > 0$ falls $|x^{(j)} - x_{\bi}^{(j)}| < \frac{2a}{M}$ für alle $j \in \{1,\dots,d\}$ gilt und andernfalls $B_{\bi}(x) = 0$.
+\item[\emph{(i)}] \emph{Zerlegung der Eins}: $\sum_{\bi \in [M]^d} B_{\bi}(x) = 1$ für $x \in [-a, a]$.
+\item[\emph{(ii)}] \emph{Nichtnegativität}: $B_{\bi}(x) \geq 0$ für alle $\bi \in [M]^d$.
+\item[\emph{(iii)}] \emph{Lokaler Träger}: Für $\bi \in [M]^d$ ist $B_{\bi}(x) > 0$ falls $|x^{(j)} - x_{\bi}^{(j)}| < \frac{2a}{M}$ für alle $j \in \{1,\dots,d\}$ gilt und andernfalls $B_{\bi}(x) = 0$.
 \end{itemize}
 \end{lem}
 \begin{proof}
@@ -132,7 +144,7 @@ Als erstes möchten wir für $d = 2$ und $M = 3$ eine Skizze angeben, um die Ide
 \end{figure}
 Es ist ein Gitter mit $(M + 1)^d$ Gitterpunkten, die den $x_{\mathbf{i}_k}$ entsprechen. Der Abstand zwischen zwei Gitterpunkten beträgt $\frac{2a}{M}.$ Man betrachtet immer den Abstand zu den nächsten $2^d$ Gitterpunkten, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist.     
 
-\emph{\textbf{i)}} Im Folgenden wollen wir 
+(i) Im Folgenden wollen wir 
 \begin{equation}
 \label{induktiongl1}
 \sum_{\bi \in [M]^d} B_{\bi}(x) = 1 \text{ für } x \in [-a , a]^d
@@ -152,7 +164,7 @@ per Induktion über $d$ zeigen.
 \emph{Induktionshypothese} (IH): Aussage~(\ref{induktiongl1}) gelte für ein beliebiges aber festes $d \in \N.$
 
 \emph{Induktionsschritt} (IS): Wir nehmen ohne Beschränkung der Allgemeinheit an, dass $x_{(0,\dots,0)} \leq x \leq x_{(1,\dots,1)}$ komponentenweise gilt. Das heißt also, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Im Folgenden zeigen wir $$\sum_{\bi \in [M]^{(d + 1)}} B_{\bi}(x) = \sum_{\bi \in [M]^{(d + 1)}}\prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big|\bigg)_+ = 1.$$
-Ein Summand ist Null, wenn ein $j \in \{1,\dots,d+1\}$ existiert mit $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$. Zudem haben wir ohne Beschränkung der Allgemeinheit angenommen, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nächsten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$-ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Das heißt, in jedem Summanden kommt der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw.\@ $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ vor, da 
+Ein Summand ist Null, wenn ein $j \in \{1,\dots,d+1\}$ existiert mit $\big|x^{(j)} - x_{\mathbf{i}}^{(j)}\big| \geq \frac{2a}{M}$. Zudem haben wir ohne Beschränkung der Allgemeinheit angenommen, dass $x \in [-a, -a + \frac{2a}{M}]^{d + 1}$ gilt. Damit haben wir also nur noch $2^{d + 1}$ Summanden, was der Anzahl der Gitterpunkte die am nächsten bei $x$ liegen entspricht. Zudem wissen wir, dass alle Gitterpunkte, die in der $(d + 1)$-ten Komponente den selben Wert haben, in dieser Dimension gleich weit von $x^{(d + 1)}$ entfernt sind. Daraus ergibt sich, dass der Faktor $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|)$ bzw.\@ $(1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\big|)$ in jedem Summanden vorkommt, da 
 \begin{equation*}
 \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_\mathbf{i}^{(d + 1)}\Big|\bigg) = \begin{cases}
 (1 - \frac{M}{2a} \cdot \big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\big|) &\text{$\mathbf{i} \in \{0, 1\}^d \times \{0\}$}\\
@@ -174,9 +186,9 @@ gilt. Daraus ergibt sich:
 \end{equation*}
 wobei wir bei der vorletzten Gleichung angewendet haben, dass $x_{(1,\dots,1)}^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} = \frac{2a}{M}$ ist, da beides Gitterpunkte sind.  $\hfill(\square)$ 		
 
-\emph{\textbf{ii)}} Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \text{ für $z \in \R$}$$ gilt.
+(ii) Es folgt $\prod_{j = 1}^d (1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \geq 0$ für alle $\bi \in [M]^d$, da $$z_+= \max\{z, 0\} \geq 0 \text{ für $z \in \R$}$$ gilt.
 
-\emph{\textbf{iii)}} Es handelt sich hierbei um einen lokalen Träger, da nach der Konstruktion von $B_{\bi}(x)$ der Funktionswert genau dann Null ist, wenn ein $j \in \{1,\dots, d\}$ existiert, sodass $|x^{(j)} - x_{\bi}^{(j)}| \geq \frac{2a}{M}$ gilt. Andernfalls erhalten wir mit Bedingung~\emph{\textbf{ii)}}, dass $B_{\bi}(x) > 0$ ist. 
+(iii) Es handelt sich hierbei um einen lokalen Träger, da nach der Konstruktion von $B_{\bi}(x)$ der Funktionswert genau dann Null ist, wenn ein $j \in \{1,\dots, d\}$ existiert, sodass $|x^{(j)} - x_{\bi}^{(j)}| \geq \frac{2a}{M}$ gilt. Andernfalls erhalten wir mit Bedingung~(ii), dass $B_{\bi}(x) > 0$ ist. 
 \end{proof}
 
 Mit der Definition eines B-Splines aus Lemma~\ref{lem:loccon} erhalten wir nun:
@@ -201,11 +213,11 @@ Nach Lemma~\ref{lem:lagrange} \textbf{i)} über die Lagrange Form des Restglieds
 \label{eq:lagrange}
 \begin{split}
 f(x) & = T_{q - 1}f(x; x_{\mathbf{i}}) + R_q(x; x_{\mathbf{i}})\\
-& = \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(\xi) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
+& = \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(\xi) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}.
 \end{split}
 \end{equation}
 Nach der B-Spline Eigenschaft aus Gleichung~(\ref{induktiongl1}) erhalten wir 
-$$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.$$ Zudem wissen wir, dass man immer den Abstand zu den nächsten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist. Daher ergibt sich:
+$$f(x) = \sum_{\bi \in [M]^d} f(x) \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+.$$ Zudem wissen wir, dass man ohne Beschränkung der Allgemeinheit immer den Abstand zu den nächsten $2^d$ Gitterpunkten betrachtet, da  $(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ = 0$ immer dann gilt, wenn der Abstand zwischen $x^{(j)}$ und $x_{\mathbf{i}}^{(j)}$ größer als $\frac{2a}{M}$ ist. Daher ergibt sich:
 \begin{equation}
 \label{eq:absch}
 \begin{split}
@@ -246,7 +258,7 @@ Fassen wir die Gleichungen~(\ref{eq:drei}), (\ref{eq:sum}) und (\ref{eq:last}) z
 & = c \cdot \bigg(\frac{a}{M}\bigg)^p,
 \end{split}
 \end{equation*}
-wobei wir bei der letzten Ungleichung die Eingenschaft der Zerlegung der Eins aus Gleichung~(\ref{induktiongl1}) und $q + s = p$ verwendet haben, mit 
+wobei wir bei der letzten Ungleichung die Eigenschaft der Zerlegung der Eins aus Gleichung~(\ref{induktiongl1}) und $q + s = p$ verwendet haben, mit 
 $$c = 2^p \cdot d^{s/2} \cdot C.$$
 Bilden wir schließlich noch das Supremum über $x \in [-a, a]^d$, erhalten wir die Behauptung.
 \end{proof}
@@ -289,13 +301,13 @@ f_{\mathrm{hat},y}(x) = f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - 2 
 \end{equation}
 mit Architektur $(2, (6, 12))$, welches, wie in Lemma~\ref{lem:4} gezeigt, für fixes $y \in \R$ die Funktion $$f(x) = \bigg(1 - \bigg(\frac{M}{2a}\bigg) \cdot |x - y|\bigg)_+$$ approximiert und in Abbildung~\ref{fig:fhat} veranschaulicht wurde.
 
-Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N > q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $\bj \in [N]^d$, $\bi \in [M]^d$ und $k \in \{1,\dots,(M + 1)^d\}$:  
+Mit diesen neuronalen Netzen können wir nun $f_{\net,\bj,\bi}$ rekursiv definieren. Dafür wählen wir $N \geq q$, setzen $s = \lceil\log_2(N + d)\rceil$ und definieren für $k \in \{1,\dots,(M + 1)^d\}$, $\bi \in [M]^d$ und $\bj \in [N]^d$:  
 \begin{align}
 \label{fnet}
-f_{\net,\bj,\mathbf{i}}(x) & = f_1^{(0)}(x). \nonumber
+f_{\net,\bj,\mathbf{i}}(x) & = f_1^{(0)}(x), \nonumber
 \intertext{wobei} \nonumber
 f_k^{(l)}(x) & = f_{\mult}\Big(f_{2k - 1}^{(l + 1)}(x),f_{2k}^{(l + 1)}(x)\Big) \nonumber
-\intertext{für $k \in \{1, 2, \dots, 2^l \}$ und $l \in\{0,\dots,s - 1\}, $ und}
+\intertext{für $k \in \{1, 2, \dots, 2^l \}$ und $l \in\{0,\dots,s - 1\}. $ Zudem ist}
 f_k^{(s)}(x) & = f_{\id}(f_{\id}(x^{(l)} - x_{\mathbf{i}_k}^{(l)}))
 \intertext{für $j_1 + j_2 + \dots + j_{l-1} + 1 \leq k \leq j_1 + j_2 + \dots + j_l$ und $1 \leq l \leq d$ und}
 f_{|\bj|_1+ k}^{(s)}(x) & = f_{\mathrm{hat}, x_{\mathbf{i}_k}^{(k)}}(x^{(k)}) \nonumber
@@ -310,7 +322,7 @@ Die Anzahl der Neuronen pro verborgener Schicht von $f_{\net,\bj,\bi}$ ergeben s
 \begin{itemize}
 \item Die erste verborgene Schicht enthält maximal $3 \cdot 2 \cdot 2^s = 6 \cdot 2^s$ Neuronen, da dies die erste verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $(2^s)$-mal aufgerufen wird. 
 \item Die zweite verborgene Schicht maximal $3 \cdot 4 \cdot 2^s = 12\cdot 2^s$ Neuronen, da dies die zweite verborgene Schicht von $f_{\mathrm{hat}}$ ist und maximal $2^s$-mal aufgerufen wird.
-\item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2^{s+ 1}, 2^s, \dots, 2^3, 2^2$ Neuronen, da wir $s$-mal $f_{\mult}$ ineinander geschachtelt aufrufen. 
+\item Die verborgenen Schichten $3,\dots,s + 2$ enthalten maximal   $2^{s+ 1}, 2^s, \dots, 2^3, 2^2$ Neuronen, da wir $s$-mal $f_{\mult}$ verschachtelt aufrufen. 
 \end{itemize}  
 Da man, wie in Kapitel~\ref{chap:1} bereits erwähnt, bei fully connected neuronalen Netzen die Gewichte der Verbindungen zwischen zwei Neuronen auf Null setzen kann, können auch nicht fully connected neuronale Netze in dieser Klasse enthalten sein. Daher liegt auch $f_{\net,\bj,\bi}$ nach Definition~\ref{def:nn} in $\mathfrak{N}(s + 2,\{24 \cdot (N + d)\}^{s + 2},\sigma)$, da die größte Anzahl an Neuronen in einer Schicht $$12 \cdot 2^s = 12 \cdot 2^{\lceil\log_2(N + d)\rceil} \leq 12 \cdot 2^{\log_2(N + d) + 1} = 24 \cdot (N + d)$$ ist. Weiterhin erkennt man durch die Zusammensetzung der neuronalen Netze, dass alle Gewichte im Betrag durch $c \cdot \max\{\frac{M}{2a}, R^2\}$ beschränkt sind, wobei $c > 0$ ist. 
 
@@ -320,7 +332,7 @@ Da man, wie in Kapitel~\ref{chap:1} bereits erwähnt, bei fully connected neuron
 Wir definieren unseren Neuronale-Netze-Regressionsschätzer $\tilde{m}_n(x)$  durch:
 \begin{equation}
 \label{estimate}
-\tilde{m}_n(x) = \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj} \cdot f_{\net,\bj,\mathbf{i}}(x),
+\tilde{m}_n(x) \coloneqq \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj} \cdot f_{\net,\bj,\mathbf{i}}(x),
 \end{equation}
 wobei $n$ die Größe unserer gegebenen Datenmenge~(\ref{dataset}) ist und wir die Koeffizienten $a_{\mathbf{i},\bj}$ durch eine Tikhonov Regularisierung \cite[Kapitel 16.1]{Kress1998} des Funktionals 
 \begin{equation}
@@ -333,13 +345,13 @@ mit Regularitätsparameter $\frac{c}{n}$, für eine von $n$ unabhängigen Konsta
 
 Wir wollen Gleichung~(\ref{min}) als Gleichungssystem darstellen. Dafür definieren wir uns die Menge 
 \begin{align*} 
-\{U_s : s = 1,\dots,S\} = \Bigl\{f_{\net,\bj,\bi}(x) : \bi \in [M]^d \text{ und } |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
+\{U_s : s = 1,\dots,S\} \coloneqq \Bigl\{f_{\net,\bj,\bi}(x) : \bi \in [M]^d \text{ und } |\bj|_1 \leq N \, \text{ mit }\, \bj \in [N]^d \Bigr\}
 \end{align*}
 wobei
 $$ S \coloneqq \big|[M]^d\big| \cdot  \binom{N + d}{d} = (M + 1)^d \cdot \binom{N + d}{d}$$ die Kardinalität der Menge ist.
 Diese Kardinalität erhalten wir mit einem Kombinatorik Argument.
-Wir wissen, dass es insgesamt $(M + 1)^d$ Möglichkeiten gibt $d$ viele Zahlen aus einer Menge mit der Größe $(M + 1)$ zu ziehen mit Zurücklegen und da wir Vektoren betrachten und die Komponenten nicht vertauschbar sind, ist auch die Reihenfolge der Ziehung zu beachten.
-Für jedes dieser $(M + 1)^d$ Möglichkeiten ist noch zu beachten, dass wir zusätzlich $d$-mal aus einer Menge mit $(N + 1)$ vielen Zahlen ziehen und gleichzeitig die Bedingung beachten müssen, dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
+Wir wissen, dass es insgesamt $(M + 1)^d$ Möglichkeiten gibt $d$-viele Zahlen aus einer Menge mit der Größe $(M + 1)$ zu ziehen, mit Zurücklegen und da wir Vektoren betrachten und die Komponenten nicht vertauschbar sind, ist auch die Reihenfolge der Ziehung zu beachten.
+Für jedes dieser $(M + 1)^d$ Möglichkeiten ist noch zu beachten, dass wir zusätzlich $d$-mal aus einer Menge mit $(N + 1)$-vielen Zahlen ziehen und gleichzeitig die Bedingung beachten müssen, dass die Summe der gezogen $d$ Elemente zwischen Null und $N$ liegt.
 Gesucht ist also 
 $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 \leq N \Bigr\}\bigg| \eqqcolon H.$$ 
 Wir stellen fest, dass
@@ -395,7 +407,7 @@ Es gilt $\mathbf{a}^T\mathbf{U}^T\mathbf{Y} = \mathbf{Y}^T\mathbf{U}\mathbf{a}$,
 \end{split}
 \end{equation} 
 Die Matrix $\mathbf{U}^T\mathbf{U} \in \R^{S \times S}$ ist positiv definit, denn aufgrund der Rechenregeln der Transponierten und des Standardskalarprodukts sowie der positiven Definitheit des Standardskalarprodukts gilt für alle $x \in \R\setminus\{0\}$:
-$$\langle x, \mathbf{U^T}\mathbf{U} x\rangle = \langle \mathbf{U} x, \mathbf{U} x\rangle \geq 0.$$
+$$\langle x, \mathbf{U^T}\mathbf{U} x\rangle = \langle \mathbf{U} x, \mathbf{U} x\rangle > 0.$$
 Zudem wissen wir dass $\frac{c}{n}\mathbf{1}$ durch die Wahl von $c$ nur positive Eigenwerte besitzt und damit positiv definit ist.  
 Daher wissen wir, dass die Matrix
 $$\mathbf{A} \coloneqq \frac{1}{n}\mathbf{U}^T\mathbf{U} + \frac{c}{n} \cdot \mathbf{1}$$ positiv definit und insbesondere invertierbar ist, da die Eigenwerte positiv sind. Das folgt daraus, dass die ohnehin schon positiven Eigenwerte von $\frac{1}{n}\mathbf{U}^T\mathbf{U}$ um $\frac{c}{n}$ verschoben werden und damit positiv bleiben. Zudem ist die Matrix $\mathbf{A}$ symmetrisch. 
@@ -421,7 +433,7 @@ Damit erhalten wir in Gleichung~(\ref{eq:matrix}):
 \end{split} 
 \end{equation*} 
 Die letzte Gleichung wird für $\mathbf{a} = \frac{1}{n} \cdot \mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}$ minimal, 
-da wir wissen, dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt und $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ genau dann, wenn $\mathbf{a} = \mathbf{b}$ gilt.
+da wir wissen, dass $\mathbf{A}$ positiv definit ist und damit $x^T\mathbf{A}x > 0$ für alle $x \in \R^S$ mit $x \neq 0$ gilt. Wir erhalten dann insbesondere $(\mathbf{a} - \mathbf{b})^T\mathbf{A}(\mathbf{a} - \mathbf{b}) = 0$ genau dann, wenn $\mathbf{a} = \mathbf{b}$ gilt.
 Dies zeigt also, dass der Koeffizientenvektor unseres Schätzers~(\ref{estimate}) die eindeutige Lösung des linearen Gleichungssystems~(\ref{les}) ist.
 \end{proof}
 \begin{bemnumber}

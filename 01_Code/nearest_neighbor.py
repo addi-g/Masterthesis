@@ -1,26 +1,19 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Fri Oct 11 11:14:47 2019
-
-@author: adrian
-K-Nearest-Neighbors Algorithm
+Implementation eines Nächste-Nachbarn-Schätzer
 """
 
-# Generate sample data
-import numpy as np
 from sklearn import neighbors
 from sklearn.model_selection import GridSearchCV
 import warnings 
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-# Implementierung des k-Nächste-Nachbarn-Algorithmus. Dieser bestimmt auch selber bei einer Liste von Anzahlen an Nachbarn die betrachtet werden 
-# sollen welches die beste Wahl ist.
+# Implementierung des k-Nächste-Nachbarn-Schätzer. Dieser bestimmt auch selber bei einer Liste von Anzahlen an Nachbarn die betrachtet werden 
+# sollen welches die beste Wahl ist. Dieser gibt die Schätzung für X_test aus.
 #
-# X: Inputvektor für das Kalibirieren des Modells 
-# Y: Inputvektor für das Kalibirieren des Modells (Zielvektor an den die Gewichte angepasst werden) 
-# T: Inputvektor für den eine Vorhersage bestimmte werden soll
+# X_train: Inputvektor für das Training des Schätzers 
+# Y_train: Inputvektor für das Training des Schätzers
+# X_test: Inputvektor der geschätzt werden soll
 
 def nearest_neighbor_estimate (X_train,Y_train,X_test):
       

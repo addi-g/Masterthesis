@@ -1,15 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Wed Oct 23 15:26:19 2019
-
-@author: adrian
-Constant Estimator
+Implementation des konstanten Schätzers.
 """
 import numpy as np
 from scipy import mean
 
-# Gibt den Mittelwert der Funktionswerte einer Funktion als Schätzer zurück
+# Gibt den Mittelwert der Funktionswerte einer Funktion als Schätzung zurück
 #
 # Y: Datensatz der Form (Y_1,...) wobei Y_i \in \R für i = 1,...
 

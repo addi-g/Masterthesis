@@ -1,15 +1,11 @@
-
 """
-@author: adrian
-
 Main Datei die die Simulation und damit den Vergleich der implementierten Schätzer
 durchführt.
 """
 import numpy as np
-#from mpl_toolkits import mplot3d
-#import matplotlib . pyplot as plt
+import matplotlib . pyplot as plt
 import pandas as pd
-#import tikzplotlib
+import tikzplotlib
 from scipy.stats import iqr
 from data_gen import gen_data_Y
 from constant import constant_estimate
@@ -24,6 +20,7 @@ n_test = int(n * 0.2)
 '''
 EINDIMENSIONALER FALL (d = 1) wird geplottet
 '''
+# Wahl der Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 3
 q = 2
@@ -34,21 +31,15 @@ d = 1
 
 sigma = 0.05
 
-# Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
 m_X_train, Y_train = gen_data_Y(X_train,sigma)
     
 X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
     
 Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
-#Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
-#Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
 m_X_test, dummy = gen_data_Y(X_test,sigma)
     
 
-#plt.plot(X_test, Y_pred_nearest_neighbor, '-r', label='nearest_neigbhor')
-#plt.plot(X_test, Y_pred_fc_nn_1, '-g', label='fc_nn_1')
-#colors = (0,0,0)
 area = 4
 plt.scatter(X_test, m_X_test, s=area, color = 'blue', label='m_1', alpha=0.5)
 plt.scatter(X_test, Y_pred_new_nn, s=area, color = 'red', label='new_neural_network_estimate', alpha=0.5)
@@ -56,75 +47,12 @@ plt.title('...')
 plt.legend(loc='upper left') 
 plt.xlabel('x')
 plt.ylabel('y')
-#plt.savefig('graph_d_1.png')
 tikzplotlib.save("mytikz_d1.tex")
-#plt.show()
-#plt.plot(X_test, Y_pred_new_nn, 'ro-', label='new_nn')
-#plt.plot(X_test, m_X_test, '-b', label='m_d')   
-
-#plt.xlim(-2, 2)
-#plt.xlim(-2,2)
-#plt.show()
-
-
-'''
-ZEIDIMENSIONALER FALL (d = 2) wird geplottet
-'''
-N = 2
-q = 2
-R = 10 ** 6  
-a = 2
-M = 2
-d = 2
-
-sigma = 0.05
-
-
-# Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
-X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
-m_X_train, Y_train = gen_data_Y(X_train,sigma)
-    
-X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
-    
-Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
-#Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
-#Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
-m_X_test, dummy = gen_data_Y(X_test,sigma)
-    
-
-
-x = np.ravel(X_test[:,0])
-y = np.ravel(X_test[:,1])
-
-# so wie es sein soll
-#z = m_X_test[:,0]
-# was der SChätzer auswirft
-z_new = Y_pred_new_nn[:,0]
-
-ax = plt.axes(projection='3d')
-ax.scatter(x, y, z_new, c=z_new, cmap='viridis', linewidth=0.5);
-ax.view_init(40, 20)
-plt.savefig('graph_d_2_new_estimate.png')
-
-# so wie es sein soll
-z = m_X_test[:,0]
-# was der Schätzer auswirft
-
-ax = plt.axes(projection='3d')
-ax.scatter(x, y, z, c=z, cmap='viridis', linewidth=0.5);
-ax.view_init(40, 20)
-plt.savefig('test.png')
-#tikzplotlib.save("mytikz_d2.tex")
-
-postpro = np.asarray([ X_test[:,0], X_test[:,1], Y_pred_new_nn[:,0] ])
-np.savetxt("plotpostpro.csv", np.transpose(postpro), delimiter=",")
-
-#plt.savefig('graph_d_2_m_2.png')
 
 '''
 ein Vergleich des emp. L2 Fehler gemacht für d = 1
 '''
-#Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+# Wahl der Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 3
 q = 2
@@ -149,7 +77,6 @@ for sigma in spreads:
         
         X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
         
-        #Y_pred_constant = constant_estimate(Y_train)
         Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
         Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
         Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
@@ -194,13 +121,12 @@ for sigma in spreads:
 
 
 error_df = pd.concat([series_noise_1, series_noise_2], axis=1)
-#print(error_df)
 error_df.to_csv('out_d_1.csv',index = True)
 
 '''
 ein Vergleich des emp. L2 Fehler gemacht für d = 2 
 '''
-# Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+# Wahl der Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
 
 N = 2
 q = 2
@@ -225,7 +151,6 @@ for sigma in spreads:
         
         X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
         
-        #Y_pred_constant = constant_estimate(Y_train)
         Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
         Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
         Y_pred_nearest_neighbor = nearest_neighbor_estimate(X_train, Y_train, X_test)
@@ -269,5 +194,4 @@ for sigma in spreads:
         print("Der empirische L2 Fehler für d = 2 und sigma = 0.1 ist berechnet worden!")
 
 error_df = pd.concat([series_noise_1, series_noise_2], axis=1)
-#print(error_df)
 error_df.to_csv('out_d_2.csv',index = True)

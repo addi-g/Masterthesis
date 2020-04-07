@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Tue Oct 15 11:22:02 2019
-
-@author: adrian
-
 Implementation von Neuronalen-Netzen welche wir für die Konstruktion unseres 
 Neuronale-Netze-Regressionschätzers benötigen
 """

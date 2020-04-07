@@ -1,13 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Wed Oct 16 15:40:14 2019
-
-@author: adrian
-
-Um die Gewichte der Ausgabeschicht zu bestimmen lösen wir ein regularisiertes 
-Kleinste-Quadrate Problem.
-
+Implementation unseres Neuronale-Netze-Regressionschätzers fully connected neuronalen Netzes mit einer verborgenen Schicht.
 """
 import scipy.special
 import numpy as np
@@ -18,7 +10,7 @@ import math
 # Neuronales Netz welches die Funktion f(x) = (x^(1)- x_ik^(1))^j1 * ... * 
 # (x^(d) - x_ik^(d))^jd * \prod_{j = 1}^d max((1 - (M/2a) * abs(x^(j) - x_ik^(j))),0)
 #
-# x: Eingabevektor für das Neuronale Netz x \in [-a,a]^d
+# x: Eingabevektor für das neuronale Netz x \in [-a,a]^d
 # d: Ist die Dimension des Eingabevektors d > 0
 # j_1_d: Ist ein d-dimensionaler Vektor j_1,...,j_d \in {0,1,...,N}
 # X_i: Ist eine  d x (M+1)^d  Matrix. 
@@ -30,12 +22,12 @@ import math
 # a: > 0         
 
 def f_net (x, d, j_1_d, X_i, N, q, s, R, M, a):
-#initialize f_l_k    
-    #(2 ** s) + 1
-    #((1 + M) ** d) + 1
+    #initialize f_l_k    
+    
     f_l_k = np.empty((s + 1, (2 ** s) + 1,))
     f_l_k[:] = np.nan
 
+    # Rekursive Definition des neuronalen Netzes f_net nach Kapitel 2
     
     for k in range(np.sum(j_1_d) + d + 1, (2 ** s) + 1, 1):
         f_l_k[s, k] = 1
@@ -58,8 +50,8 @@ def f_net (x, d, j_1_d, X_i, N, q, s, R, M, a):
 # Bestimmung der Gewichte der Ausgabeschicht durch lösen eines regularisierten
 # Kleineste-Quadrate Problems
 #
-# X: Eingabevektoren der Form (X_1,...,X_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
-# Y: Eingabevektoren der Form (Y_1,...,Y_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# X: Eingabevektoren der Form (X_1,...,X_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# Y: Eingabevektoren der Form (Y_1,...,Y_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 # N: Natürliche Zahl >= q
 # q: 
 # R: Zahl >= 1
@@ -77,7 +69,6 @@ def output_weights(X, Y, N, q, R, d, M, a):
     
     # Eine beliebige constante > 0
     
-    #c_3 = np.random.randint(1,10)
     c_3 = 0.01
     
     # Anzahl der Spalten der Matrix für das Kleinste-Quadrate Problem
@@ -109,16 +100,15 @@ def output_weights(X, Y, N, q, R, d, M, a):
                 B[i,j] = f_net(X[i], d, all_j1_jd_by_cond[z], X_ik[k], N, q, s, R, M, a)
                 j += 1
     
-    #weights = np.linalg.solve((1 / n) * np.dot(np.transpose(B),B) + (c_3 / n) * np.identity(J), (1 / n) * np.dot(np.transpose(B),Y))
     weights = np.linalg.solve(np.dot(np.transpose(B),B) + (c_3) * np.identity(J), np.dot(np.transpose(B),Y))
 
     return (weights, J, all_j1_jd_by_cond, X_ik)
 
-# Bestimmung des Funktionswert des Neuronale-Netzte-Regressionsschätzers
+# Bestimmung des Funktionswerts des Neuronale-Netze-Regressionsschätzers.
 # 
 # x: Eingabe für einen Vektor der Form [-a,a]^d für den eine Schätzung bestimmt werden soll
-# X: Eingabevektoren der Form (X_1,...,X_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
-# Y: Eingabevektoren der Form (Y_1,...,Y_n) für das Neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# X: Eingabevektoren der Form (X_1,...,X_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# Y: Eingabevektoren der Form (Y_1,...,Y_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 # N: Natürliche Zahl >= q
 # q: 
 # s: [log_2(N + d)]

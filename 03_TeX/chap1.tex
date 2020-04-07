@@ -1,11 +1,11 @@
-\chapter{Grundlagen und Hilfsresultate für neuronale Netze}
+\chapter{Grundlagen für neuronale Netze}
 \label{chap:1}
 
 Der Zweck dieses Kapitels ist es auf die in dieser Arbeit verwendeten neuronalen Netze einzugehen, die als Bausteine für unseren einfach berechenbaren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Approximationsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden. Wenn wir in dieser Arbeit von \emph{unserem Neuronale-Netze-Regressionsschätzer} sprechen, beziehen wir uns immer auf den \emph{einfach berechenbaren Neuronale-Netze-Regressionsschätzer} aus \cite{kohler19}. 
 In dieser Arbeit bezeichnen wir mit $d \geq 1$ immer eine natürliche Zahl.
 
 \section{Definitionen}
-Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Architektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen und verarbeiten.
+Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen, was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Architektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen und verarbeiten.
 % und entsprechend über eine Aktivierung reagieren. 
 Dazu werden für ein Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
 %\begin{figure}
@@ -325,11 +325,11 @@ net/.style={
   \begin{itemize}
   \item[a)] Angenommen $\sigma$ ist zweimal stetig differenzierbar und $t_{\sigma,\id} \in \R$ so, dass $\sigma'(t_{\sigma, \id}) \neq 0$ ist. Dann gilt für das neuronale Netz
   $$ f_{\id}(x) = \frac{R}{\sigma'(t_{\sigma, \id})} \cdot \left(\sigma\left(\frac{x}{R} + t_{\sigma, \id}\right) - \sigma(t_{\sigma, \id})\right)$$
-  für beliebige $x \in [-a, a]\colon$ 
+  für beliebiges $x \in [-a, a]\colon$ 
   $$ |f_{\id}(x) - x| \leq \frac{\|\sigma''\|_{\infty} \cdot a^2}{2 \cdot |\sigma'(t_{\sigma, \id})|} \cdot \frac{1}{R}.$$
   \item[b)] Angenommen $\sigma$ ist dreimal stetig differenzierbar und $t_{\sigma,\sq} \in \R$ so, dass $\sigma''(t_{\sigma, \sq}) \neq 0$ ist. Dann gilt für das neuronale Netz
   $$ f_{\sq}(x) = \frac{R^2}{\sigma''(t_{\sigma, \sq})} \cdot \left(\sigma\left(\frac{2 \cdot x}{R} + t_{\sigma, \sq}\right) - 2 \cdot \sigma\left(\frac{x}{R} + t_{\sigma, \sq}\right)+ \sigma(t_{\sigma, \sq})\right)$$
-  für beliebige $x \in [-a, a]\colon$ 
+  für beliebiges $x \in [-a, a]\colon$ 
   $$ |f_{\sq}(x) - x^2| \leq \frac{5 \cdot \|\sigma'''\|_{\infty} \cdot a^3}{3 \cdot |\sigma''(t_{\sigma, \sq})|} \cdot \frac{1}{R}.$$
   \end{itemize}
 \end{lem}
@@ -434,7 +434,7 @@ net/.style={
   	$$|f_{\mult}(x, y) - x \cdot y| \leq \frac{20 \cdot \|\sigma'''\|_{\infty} \cdot a ^3}{3 \cdot |\sigma''(t_{\sigma})|} \cdot \frac{1}{R}.$$
   \end{lem}
   \begin{proof}
-  Durch Einsetzen erhalten wir $$f_{\mult}(x,y) = \frac{1}{4}(f_{\sq}(x + y) - f_{\sq}(x - y))$$ und $$x \cdot y = \frac{1}{4}\big((x + y)^2 - (x - y)^2\big).$$
+  Durch Einsetzen von $f_{\sq}$ in $f_{\mult}$ erhalten wir $$f_{\mult}(x,y) = \frac{1}{4}(f_{\sq}(x + y) - f_{\sq}(x - y))$$ und durch Umformungen $$x \cdot y = \frac{1}{4}\big((x + y)^2 - (x - y)^2\big).$$
   Aus diesen beiden Gleichungen folgt durch Ausklammern von $\frac{1}{4}$, der Homogenität des Betrags und der Dreiecksungleichung:
   \begin{equation*}
   \begin{split}
@@ -547,7 +547,7 @@ Aus Gleichung~(\ref{lem:3:Bed2}) und Voraussetzung~(\ref{lem:3:Vor1}), folgt
 = a.
 \end{split}
 \end{equation}
-Aus $x \in [-a, a]$ folgt schließlich aus den Ungleichungen~(\ref{eq:id1}) und (\ref{eq:id2}):
+Aus $x \in [-a, a]$ folgt schließlich mit den Ungleichungen~(\ref{eq:id1}) und (\ref{eq:id2}):
 \begin{equation*}
 |f_{\id}(x)| \leq |f_{\id}(x) -x| + |x| \leq 2 \cdot a.
 \end{equation*}
@@ -673,7 +673,7 @@ net/.style={
   \end{split}
   \end{equation*}
   für alle $x \in [-a ,a]$ mit $z_+ = \max\{0, z\} \, (z \in \R):$   
-  $$\bigg|f_{\mathrm{hat},y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma, \id}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R}.$$
+  $$\bigg|f_{\mathrm{hat},y}(x) - \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \leq 1792 \cdot \frac{\max\{|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma}), |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R}.$$
   \end{lem}
   \begin{proof}
   Für $x \in \R$ gilt die Gleichung:
@@ -695,24 +695,14 @@ $$ (M + 1)^3 \leq (2M)^3 = 8M^3$$ verwendet, da $M \geq 1$ ist. $\hfill(\square)
 
 Um Gleichung~(\ref{lem:4:eq}) zu zeigen unterscheiden wir vier Fälle.
   \begin{itemize}
-  \item[Fall 1] ($x < 0$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden 0 sind. Es erfordert hier eine weitere Fallunterscheidung.
+  \item[Fall 1] ($x < 0$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) nach der Definition des Betrags die Gestalt $$\max\{1 + \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot 0 + 0,$$ da $x < 0$ und damit die letzten zwei Summanden Null sind. Es erfordert hier eine weitere Fallunterscheidung.
  \item[Fall 1.1] ($0 > x \geq -\frac{2a}{M}$) In diesem Fall gilt für die linke und rechte Seite von Gleichung~(\ref{lem:4:eq}):
  $$\max\{1 + \frac{M}{2a} \cdot x, 0\} = 1 + \frac{M}{2a} \cdot x.$$
- \item[Fall 1.2] ($x < -\frac{2a}{M}$) In diesem Fall sind beide Seiten gleich 0, da $1 + \frac{M}{2a} \cdot x \leq 0$ ist. $\hfill(\square)$
+ \item[Fall 1.2] ($x < -\frac{2a}{M}$) In diesem Fall sind beide Seiten gleich Null, da $1 + \frac{M}{2a} \cdot x \leq 0$ ist. $\hfill(\square)$
   \item[Fall 2] ($x \geq 0$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) nach der Definition des Betrags die Gestalt $$\max\{1 - \frac{M}{2a} \cdot x, 0\}$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\max\{\frac{M}{2a} \cdot x + 1, 0\} - 2 \cdot \max\{\frac{M}{2a} \cdot x, 0\} + \max\{\frac{M}{2a} \cdot x - 1, 0\}$$ und erfordert daher eine weitere Fallunterscheidung.
  \item[Fall 2.1] ($0 \leq x < \frac{2a}{M}$) In diesem Fall hat die linke Seite von Gleichung~(\ref{lem:4:eq}) die Gestalt $$1 - \frac{M}{2a} \cdot x$$ und die rechte Seite von Gleichung~(\ref{lem:4:eq}) die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + 0 = 1 - \frac{M}{2a} \cdot x$$ und stimmt daher mit der linken Seite überein.
  \item[Fall 2.2] ($x \geq \frac{2a}{M}$) In diesem Fall ist die linke Seite von Gleichung~(\ref{lem:4:eq}) gleich 0, da $1 - \frac{M}{2a} \cdot x < 0$ ist und die rechte Seite besitzt die Form $$\frac{M}{2a} \cdot x + 1 - 2 \cdot \frac{M}{2a} \cdot x + \frac{M}{2a} \cdot x - 1 = 0. $$ $\hfill(\square)$
 \end{itemize} 
 Durch diese Fallunterscheidung wurde die Gleichung~(\ref{lem:4:eq}) bewiesen und damit ist der Beweis vollständig.
   \end{proof}
-Das nächste Lemma ist ein Resultat aus der Kombinatorik, welches wir in Kapitel~\ref{chap:2} benötigen werden.
-\begin{lem}
-\label{lem:kombi}
-Sei $d, N \in \N$ und $k \in \N_0$ mit $k < N$. Dann gilt:
-$$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k}.$$
-\end{lem}
-\begin{proof}
-Diese Aussage folgt aus einer Analogie zu einem Urnenexperiment. Wir betrachten eine Urne mit $d$ Kugeln, die wir mit $1,\dots,d$ beschriften. Wir ziehen $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge und konstruieren so einen Vektor $\bj = (j_1,\dots,j_d)$ aus der Menge mit $|\bj|_1 = k$. Der Koeffizient $j_i$ mit $i= 1,\dots,d$ gibt an wie oft die Kugel mit der Nummer $i$ gezogen wurde. Damit stimmt die Kardinalität der Menge auf der linken Seite mit der Anzahl aller Möglichkeiten überein die man erhält, wenn man $k$-mal aus dieser Urne mit Zurücklegen und ohne Beachtung der Reihenfolge zieht.
-\end{proof}
-
 Im nächsten Kapitel werden wir die hier eingeführten neuronalen Netze als Bausteine verwenden, um unseren Neuronale-Netze-Regressionsschätzer zu konstruieren.

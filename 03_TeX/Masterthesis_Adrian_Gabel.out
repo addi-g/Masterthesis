@@ -1,13 +1,13 @@
 \BOOKMARK [0][-]{chapter*.2}{Einleitung}{}% 1
-\BOOKMARK [0][-]{chapter.1}{Grundlagen\040und\040Hilfsresultate\040f\374r\040neuronale\040Netze}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Grundlagen\040f\374r\040neuronale\040Netze}{}% 2
 \BOOKMARK [1][-]{section.1.1}{Definitionen}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.2}{Hilfsresultate}{chapter.1}% 4
-\BOOKMARK [0][-]{chapter.2}{Konstruktion\040unseres\040Neuronale-Netze-Sch\344tzers}{}% 5
+\BOOKMARK [0][-]{chapter.2}{Konstruktion\040eines\040Neuronale-Netze-Sch\344tzers}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Definition\040der\040Netzwerkarchitektur}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{Bestimmung\040der\040Gewichte\040der\040Ausgabeschicht}{chapter.2}% 7
 \BOOKMARK [0][-]{chapter.3}{Resultat\040zur\040Konvergenzgeschwindigkeit}{}% 8
-\BOOKMARK [1][-]{section.3.1}{Approximationsresultate\040f\374r\040Hauptsatz\0403.1}{chapter.3}% 9
-\BOOKMARK [1][-]{section.3.2}{Der\040Beweis\040von\040Hauptsatz\0403.1}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.1}{Approximationsresultate\040f\374r\040Hauptsatz\040[optstop]3.1}{chapter.3}% 9
+\BOOKMARK [1][-]{section.3.2}{Der\040Beweis\040von\040Hauptsatz\040[optstop]3.1}{chapter.3}% 10
 \BOOKMARK [2][-]{subsection.3.2.1}{Absch\344tzung\040von\040T1,n}{section.3.2}% 11
 \BOOKMARK [2][-]{subsection.3.2.2}{Absch\344tzung\040von\040T2,n}{section.3.2}% 12
 \BOOKMARK [0][-]{chapter.4}{Anwendungsbeispiel\040auf\040simulierte\040Daten}{}% 13
