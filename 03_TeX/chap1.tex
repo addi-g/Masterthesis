@@ -4,7 +4,6 @@
 Der Zweck dieses Kapitels ist es auf die in dieser Arbeit verwendeten neuronalen Netze einzugehen, die als Bausteine für unseren einfach berechenbaren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Approximationsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden. Wenn wir in dieser Arbeit von \emph{unserem Neuronale-Netze-Regressionsschätzer} sprechen, beziehen wir uns immer auf den \emph{einfach berechenbaren Neuronale-Netze-Regressionsschätzer} aus \cite{kohler19}. 
 In dieser Arbeit bezeichnen wir mit $d \geq 1$ immer eine natürliche Zahl.
 
-\section{Definitionen}
 Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen, was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Architektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft so, dass sie die Eingaben $x_1,\dots,x_n$, die einerseits aus dem beobachteten Prozess resultieren können, dessen Werte dem Neuron übergeben werden, oder andererseits aus den Ausgaben anderer Neuronen stammen und verarbeiten.
 % und entsprechend über eine Aktivierung reagieren. 
 Dazu werden für ein Neuron $j$ die Eingaben mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Der Endpunkt des Informationsflusses in einem neuronalen Netz ist die Ausgabeschicht, die hinter den verborgenen Schichten liegt. Sie bildet damit die letzte Schicht in einem neuronalen Netz. Die Ausgabeschicht enthält somit das Ergebnis der Informationsverarbeitung durch das Netz.  
@@ -193,8 +192,7 @@ Sei $N \in \N_0$. Eine Funktion $\sigma\colon \R \to [0, 1]$ wird \emph{$N$-zul�
 \end{itemize}  
 \end{defn}  
 
-\section{Hilfsresultate}
-Als Erstes stellen wir ein Resultat vor, welches eine wichtige Eigenschaft für die Aktivierungsfunktion der hier betrachteten neuronalen Netze darstellt.
+Als Nächstes stellen wir ein Resultat vor, welches eine wichtige Eigenschaft für die Aktivierungsfunktion der hier betrachteten neuronalen Netze darstellt.
 \begin{lem}
 \label{lem:logsquasher}
 Sei $N \in \N_0$ beliebig, dann ist der logistische Squasher $$\sigma\colon \R \to [0, 1] \text{ mit } \sigma(x) = \frac{1}{1 + \exp(-x)}$$ $N$-zulässig.
