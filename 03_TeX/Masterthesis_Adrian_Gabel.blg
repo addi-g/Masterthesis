@@ -10,49 +10,49 @@ A level-1 auxiliary file: chap3.aux
 A level-1 auxiliary file: chap4.aux
 A level-1 auxiliary file: appendix.aux
 A level-1 auxiliary file: literaturverzeichnis.aux
-The style file: geralpha.bst
+The style file: alpha.bst
 Database file #1: Masterthesis_Adrian_Gabel.bib
 Warning--I didn't find a database entry for "Klenke2013"
 Warning--empty journal in kohler19
 You've used 11 entries,
-            2768 wiz_defined-function locations,
-            677 strings with 6352 characters,
-and the built_in function-call counts, 3470 in all, are:
-= -- 351
-> -- 110
-< -- 9
-+ -- 32
-- -- 30
-* -- 227
-:= -- 571
-add.period$ -- 24
+            2543 wiz_defined-function locations,
+            632 strings with 5756 characters,
+and the built_in function-call counts, 3670 in all, are:
+= -- 350
+> -- 178
+< -- 5
++ -- 60
+- -- 58
+* -- 235
+:= -- 642
+add.period$ -- 35
 call.type$ -- 11
-change.case$ -- 45
+change.case$ -- 63
 chr.to.int$ -- 11
 cite$ -- 12
-duplicate$ -- 179
-empty$ -- 299
-format.name$ -- 45
-if$ -- 755
+duplicate$ -- 162
+empty$ -- 275
+format.name$ -- 73
+if$ -- 740
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 20
-newline$ -- 48
+missing$ -- 18
+newline$ -- 59
 num.names$ -- 33
-pop$ -- 67
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 67
+purify$ -- 75
 quote$ -- 0
-skip$ -- 145
+skip$ -- 122
 stack$ -- 0
 substring$ -- 104
-swap$ -- 24
-text.length$ -- 9
+swap$ -- 10
+text.length$ -- 5
 text.prefix$ -- 5
 top$ -- 0
 type$ -- 56
 warning$ -- 1
-while$ -- 26
-width$ -- 12
-write$ -- 140
+while$ -- 30
+width$ -- 13
+write$ -- 151
 (There were 2 warnings)

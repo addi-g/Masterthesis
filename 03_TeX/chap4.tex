@@ -10,10 +10,10 @@ mit $m_j \colon [-2, 2]^d \to \R$ für  $j \in \{1, 2\}$ wie unten definiert, $\
 $$ m_1(x) =  \sin\big(0.2 \cdot x^2\big) + \exp(0.5 \cdot x) + x^3$$
 und
 $$ m_2(x_0, x_1) = \sin\big(\sqrt[2]{x_0^2 + x_1^2}\big).$$
-Wir wählen $\lambda_j$ als Interquartilsabstand einer Stichprobe von $m(X)$ der Größe $N = 800$. Mit diesen Daten lässt sich nun auch $Y$ darstellen.
+Wir wählen $\lambda_j$ als Interquartilsabstand \emph{(IQR)} einer Stichprobe von $m(X)$ der Größe $N = 800$. Mit diesen Daten lässt sich nun auch $Y$ darstellen.
 
 Um die Leistung unseres Neuronalen-Netze-Regressionsschätzers zu überprüfen, haben wir erstmals die Funktion $m_1$ und die jeweilige Schätzung durch unseren Neuronale-Netze-Regressionsschätzer für $\sigma = 0.05$ zeichnen lassen. 
-Visuelle kann man mit Abbildung~\ref{fig:subfig1.a.4} erkennen, dass der Schätzer eine sehr gute Approximation der Funktion liefert, aber um genauer beurteilen zu können wie gut die Schätzung wirklich ist und wie gut unser Schätzer im Vergleich zu anderen Schätzern abschneidet, betrachten wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} den Interquartilsabstand \emph{(IQR)} und den Median der skalierten $L_2$-Fehler der einzelnen Schätzer. 
+Visuelle kann man mit Abbildung~\ref{fig:subfig1.a.4} erkennen, dass der Schätzer eine sehr gute Approximation der Funktion liefert, aber um genauer beurteilen zu können wie gut die Schätzung wirklich ist und wie gut unser Schätzer im Vergleich zu anderen Schätzern abschneidet, betrachten wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} den Interquartilsabstand und den Median der skalierten $L_2$-Fehler der einzelnen Schätzer. 
 
 Unser Vorgehen zum Vergleich der drei hier betrachteten Regressionsschätzern gestaltet sich wie gefolgt:
 Wir bestimmen erst den $L_2$-Fehler der einzelnen Schätzer approximativ durch den empirisch arithmetischen $L_2$-Fehler $\epsilon_{L_2,N}$ auf einer unabhängigen Stichprobe von $X$ der Größe $N = 1000$. 

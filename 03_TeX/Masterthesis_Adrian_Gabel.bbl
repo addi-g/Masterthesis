@@ -1,56 +1,62 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{VRDJ95}
-
-\bibitem[AB19]{kohler19}
-{\sc A.~Braun, M. Kohler und A.~Krzyzak}: {\em Analysis of the rate of
-  convergence of neural network regression estimates which are easy to
-  implement.}
-\newblock 2019.
+\begin{thebibliography}{GKKW02}
 
 \bibitem[Bar15]{Topologie2015}
-{\sc Bartsch, R.}: {\em Allgemeine Topologie}.
-\newblock De Gruyter, Berlin, 2. \btxeditionlong{}, 2015.
+R.~Bartsch.
+\newblock {\em Allgemeine Topologie}.
+\newblock De Gruyter, Berlin, 2. edition, 2015.
+
+\bibitem[BKK19]{kohler19}
+A.~Braun, M.~Kohler, and A.~Krzyzak.
+\newblock Analysis of the rate of convergence of neural network regression
+  estimates which are easy to implement.
+\newblock 2019.
 
 \bibitem[Bos13]{bosch2009algebra}
-{\sc Bosch, S.}: {\em Algebra}.
-\newblock Springer-Lehrbuch. Springer, Berlin, 8. \btxeditionlong{}, 2013.
+S.~Bosch.
+\newblock {\em Algebra}.
+\newblock Springer-Lehrbuch. Springer, Berlin, 8. edition, 2013.
 
 \bibitem[C{\etalchar{+}}15]{chollet2015keras}
-{\sc Chollet, Fran\c{c}ois} \btxetalshort{.}: {\em Keras}.
+F.~Chollet et~al.
+\newblock Keras.
 \newblock \url{https://keras.io}, 2015.
 
+\bibitem[DGL96]{DevLug96}
+L.~Devroye, L.~Györfi, and G.~Lugosi.
+\newblock {\em A Probabilistic Theory of Pattern Recognition}.
+\newblock Springer, New York, 1. edition, 1996.
+
+\bibitem[DW80]{DevWag80}
+L.~Devroye and T.J. Wagner.
+\newblock Distribution-free consistency results in non- parametric
+  discrimination and regression function estimation.
+\newblock {\em Annals of Statistic}, 8:231--239, 1980.
+
 \bibitem[For17]{forster2016}
-{\sc Forster, O.}: {\em Analysis 1 - Differential- und Integralrechnung einer
+O.~Forster.
+\newblock {\em Analysis 1 - Differential- und Integralrechnung einer
   Veränderlichen}.
-\newblock Springer, Berlin, 11. \btxeditionlong{}, 2017.
+\newblock Springer, Berlin, 11. edition, 2017.
+
+\bibitem[GKKW02]{gyoerfi2002}
+L.~Györfi, M.~Kohler, A.~Krzyzak, and H.~Walk.
+\newblock {\em A Distribution-Free Theory of Nonparametric Regression.}
+\newblock Springer series in statistics. Springer, Berlin, 1. edition, 2002.
 
 \bibitem[Kre98]{Kress1998}
-{\sc Kress, R.}: {\em Numerical analysis}.
-\newblock Springer, Berlin, 1. \btxeditionlong{}, 1998.
+R.~Kress.
+\newblock {\em Numerical analysis}.
+\newblock Springer, Berlin, 1. edition, 1998.
 
 \bibitem[Kö04]{Koenigsberger2013}
-{\sc Königsberger, K.}: {\em Analysis 2}.
-\newblock Springer, Berlin, 5. \btxeditionlong{}, 2004.
-
-\bibitem[LD80]{DevWag80}
-{\sc L.~Devroye, T.J.~Wagner}: {\em Distribution-free consistency results in
-  non- parametric discrimination and regression function estimation}.
-\newblock Annals of Statistic, 8:231--239, 1980.
-
-\bibitem[LD96]{DevLug96}
-{\sc L.~Devroye, L.~Györfi, G.~Lugosi}: {\em A Probabilistic Theory of Pattern
-  Recognition}.
-\newblock Springer, New York, 1. \btxeditionlong{}, 1996.
-
-\bibitem[LG02]{gyoerfi2002}
-{\sc L.~Györfi, M.~Kohler, A. Krzyzak und H.~Walk}: {\em A Distribution-Free
-  Theory of Nonparametric Regression.}
-\newblock Springer series in statistics. Springer, Berlin, 1.
-  \btxeditionlong{}, 2002.
+K.~Königsberger.
+\newblock {\em Analysis 2}.
+\newblock Springer, Berlin, 5. edition, 2004.
 
 \bibitem[VRDJ95]{van1995python}
-{\sc Van~Rossum, Guido} \btxandlong{}\ {\sc Fred~L Drake~Jr}: {\em Python
-  tutorial}.
+G.~Van~Rossum and F.~L. Drake~Jr.
+\newblock {\em Python tutorial}.
 \newblock Centrum voor Wiskunde en Informatica Amsterdam, The Netherlands,
   1995.
 
