@@ -96,20 +96,21 @@ Sei $L \in \N$, $\bk \in \N^L$ und $\sigma\colon \R \to \R$. Ein \emph{mehrschic
 %\label{networkarch}
 f(x) & = \sum_{i = 1}^{k_L} c_i^{(L)} \cdot f_i^{(L)}(x) + c_0^{(L)} \nonumber \\
 \intertext{mit Gewichten $c_0^{(L)},\dots,c_{k_L}^{(L)} \in \R$ und für $f_i^{(L)}$ mit $i = 1,\dots,k_L$ rekursiv definiert durch:} 
-f_i^{(r)}(x) & = \sigma \bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j^{(r - 1)}(x) + c_{i,0}^{(r - 1)} \bigg)\\
-\intertext{mit Gewichten $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R$ mit $r = 2,\dots, L$ und:}
-f_i^{(1)}(x) & = \sigma \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber
+f_i^{(r)}(x) & = \sigma_r\bigg(\sum_{j = 1}^{k_r - 1} c_{i,j}^{(r - 1)} \cdot f_j^{(r - 1)}(x) + c_{i,0}^{(r - 1)} \bigg)\\
+\intertext{mit Gewichten $c_{i,0}^{(r - 1)},\dots,c_{i,k_{r - 1}}^{(r - 1)} \in \R$ mit $r = 2,\dots, L$, wobei $\sigma_r \in \{\sigma, \operatorname{id}\}$ und:}
+f_i^{(1)}(x) & = \sigma_1 \Bigg(\sum_{j = 1}^{d} c_{i,j}^{(0)} \cdot x^{(j)} + c_{i,0}^{(0)} \Bigg) \nonumber
 \end{align*} 
-für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$.
+für die Gewichte $c_{i,0}^{(0)},\dots,c_{i,d}^{(0)} \in \R$, wobei $\sigma_1 \in \{\sigma, \operatorname{id}\}$.
 Weiterhin sei $\mathfrak{N}(L, \bk, \sigma)$ die Klasse aller mehrschichtigen feedforward neuronalen Netze mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$.
 \end{defn}
-Wir werden ab jetzt der Einfachheit halber nur noch von \emph{neuronalen Netzen mit Architektur $(L,\bk)$} reden, wenn die Aktivierungsfunktion $\sigma$ aus dem Kontext bekannt ist oder keine Rolle spielt und beziehen uns damit immer auf Definition~\ref{def:nn}. Wenn aus dem Kontext die \emph{Architektur $(L,\bk)$} und die \emph{Aktivierungsfunktion $\sigma$} bereits bekannt ist, sprechen wir nur noch von einem \emph{neuronalen Netz}, beziehen uns damit aber dennoch auf Definition~\ref{def:nn}.
+Wir werden ab jetzt der Einfachheit halber nur noch von \emph{neuronalen Netzen mit Architektur $(L,\bk)$} reden, wenn die Aktivierungsfunktion $\sigma$ aus dem Kontext bekannt ist oder keine Rolle spielt und beziehen uns damit immer auf Definition~\ref{def:nn}. Wenn aus dem Kontext die \emph{Architektur~$(L,\bk)$} und die \emph{Aktivierungsfunktion $\sigma$} bereits bekannt ist, sprechen wir nur noch von einem \emph{neuronalen Netz}, beziehen uns damit aber dennoch auf Definition~\ref{def:nn}.
 \begin{bemnumber}
 In obiger Definition versteht man unter:
 \begin{itemize}
 \item $L \in \N$ die Anzahl an verborgenen Schichten von $f$.
 \item $\bk = (k_1,\dots,k_L) \in \N^L$ einen Vektor, der die Anzahl an Neuronen in jeder verborgenen Schicht angibt.
 \end{itemize}
+Ist $f = \sum_{i = 1}^n a_i f_i $ eine Linearkombination von neuronalen Netzen $f_1,\dots,f_n \in \mathfrak{N}(L, \bk, \sigma)$ mit Linearfaktoren $a_1,\dots,a_n \in \R$, so können wir $f$ als ein neuronales Netz mit Architektur~$(L+1,(k_1,\dots,k_L,n))$ betrachten, wobei in diesem Fall $\sigma_L = \operatorname{id}$ gilt.
 \end{bemnumber}
 Da wir bei Neuronale-Netze-Regressionsschätzern Funktionswerte schätzen möchten, haben wir in der Ausgabeschicht nur ein Neuron. Damit erreichen wir einen eindimensionalen Output. Wie wir an der Konstruktion des neuronalen Netzes in Definition~\ref{def:nn} erkennen können, nehmen wir in der Ausgabeschicht die Identität als Aktivierungsfunktion.
 %Es wäre auch möglich für jede Schicht eine andere Aktivierungsfunktion zu wählen. In dieser Arbeit beschränken wir uns nur auf den Fall, in welchem wir in allen verborgenen Schichten die selbe Aktivierungsfunktion verwenden.
