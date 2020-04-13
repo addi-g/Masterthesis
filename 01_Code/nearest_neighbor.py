@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """
-Implementation eines Nächste-Nachbarn-Schätzer
+Implementation eines Naechste-Nachbarn-Schaetzer
 """
 
 from sklearn import neighbors
@@ -8,12 +11,12 @@ import warnings
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-# Implementierung des k-Nächste-Nachbarn-Schätzer. Dieser bestimmt auch selber bei einer Liste von Anzahlen an Nachbarn die betrachtet werden 
-# sollen welches die beste Wahl ist. Dieser gibt die Schätzung für X_test aus.
+# Implementierung des k-Naechste-Nachbarn-Schaetzer. Dieser bestimmt auch selber bei einer Liste von Anzahlen an Nachbarn die betrachtet werden 
+# sollen welches die beste Wahl ist. Dieser gibt die Schaetzung fuer X_test aus.
 #
-# X_train: Inputvektor für das Training des Schätzers 
-# Y_train: Inputvektor für das Training des Schätzers
-# X_test: Inputvektor der geschätzt werden soll
+# X_train: Inputvektor fuer das Training des Schaetzers 
+# Y_train: Inputvektor fuer das Training des Schaetzers
+# X_test: Inputvektor der geschaetzt werden soll
 
 def nearest_neighbor_estimate (X_train,Y_train,X_test):
       

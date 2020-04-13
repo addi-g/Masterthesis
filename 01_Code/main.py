@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Main Datei die die Simulation und damit den Vergleich der implementierten Schätzer
-durchführt.
+Main Datei die die Simulation und damit den Vergleich der implementierten Schaetzer
+durchfuehrt.
 """
 import numpy as np
 import matplotlib . pyplot as plt
@@ -20,7 +22,7 @@ n_test = int(n * 0.2)
 '''
 EINDIMENSIONALER FALL (d = 1) wird geplottet
 '''
-# Wahl der Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+# Wahl der Parameter fuer unseren neuen Neuronale-Netze-Regressionschaetzer
 
 N = 3
 q = 2
@@ -50,9 +52,9 @@ plt.ylabel('y')
 tikzplotlib.save("mytikz_d1.tex")
 
 '''
-ein Vergleich des emp. L2 Fehler gemacht für d = 1
+ein Vergleich des emp. L2 Fehler gemacht fuer d = 1
 '''
-# Wahl der Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+# Wahl der Parameter fuer unseren neuen Neuronale-Netze-Regressionschaetzer
 
 N = 3
 q = 2
@@ -112,21 +114,21 @@ for sigma in spreads:
     if sigma == 0.05:
         series_noise_1 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
         series_noise_1.name = ""
-        print("Der empirische L2 Fehler für d = 1 und sigma = 0.05 ist berechnet worden!")
+        print("Der empirische L2 Fehler fuer d = 1 und sigma = 0.05 ist berechnet worden!")
         
     else:
         series_noise_2 = pd.Series([repr(sigma),np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
         series_noise_2.name = ""
-        print("Der empirische L2 Fehler für d = 1 und sigma = 0.1 ist berechnet worden!")
+        print("Der empirische L2 Fehler fuer d = 1 und sigma = 0.1 ist berechnet worden!")
 
 
 error_df = pd.concat([series_noise_1, series_noise_2], axis=1)
 error_df.to_csv('out_d_1.csv',index = True)
 
 '''
-ein Vergleich des emp. L2 Fehler gemacht für d = 2 
+ein Vergleich des emp. L2 Fehler gemacht fuer d = 2
 '''
-# Wahl der Parameter für unseren neuen Neuronale-Netze-Regressionschätzer
+# Wahl der Parameter fuer unseren neuen Neuronale-Netze-Regressionschaetzer
 
 N = 2
 q = 2
@@ -186,12 +188,12 @@ for sigma in spreads:
     if sigma == 0.05:
         series_noise_1 = pd.Series([repr(sigma),np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
         series_noise_1.name = ""
-        print("Der empirische L2 Fehler für d = 2 und sigma = 0.05 ist berechnet worden!")
+        print("Der empirische L2 Fehler fuer d = 2 und sigma = 0.05 ist berechnet worden!")
 
     else:
         series_noise_2 = pd.Series([repr(sigma)+'%',np.median(e_L2_avg),"(Median, IQR)",(median_new_nn, iqr_new_nn), (median_fc_nn_1, iqr_fc_nn_1), (median_nearest_neighbor, iqr_nearest_neighbor)], index=rows)
         series_noise_2.name = ""
-        print("Der empirische L2 Fehler für d = 2 und sigma = 0.1 ist berechnet worden!")
+        print("Der empirische L2 Fehler fuer d = 2 und sigma = 0.1 ist berechnet worden!")
 
 error_df = pd.concat([series_noise_1, series_noise_2], axis=1)
 error_df.to_csv('out_d_2.csv',index = True)

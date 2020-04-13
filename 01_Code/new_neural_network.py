@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """
-Implementation unseres Neuronale-Netze-Regressionschätzers fully connected neuronalen Netzes mit einer verborgenen Schicht.
+Implementation unseres Neuronale-Netze-Regressionschaetzers
 """
 import scipy.special
 import numpy as np
@@ -10,11 +13,11 @@ import math
 # Neuronales Netz welches die Funktion f(x) = (x^(1)- x_ik^(1))^j1 * ... * 
 # (x^(d) - x_ik^(d))^jd * \prod_{j = 1}^d max((1 - (M/2a) * abs(x^(j) - x_ik^(j))),0)
 #
-# x: Eingabevektor für das neuronale Netz x \in [-a,a]^d
+# x: Eingabevektor fuer das neuronale Netz x \in [-a,a]^d
 # d: Ist die Dimension des Eingabevektors d > 0
 # j_1_d: Ist ein d-dimensionaler Vektor j_1,...,j_d \in {0,1,...,N}
 # X_i: Ist eine  d x (M+1)^d  Matrix. 
-# N: Natürliche Zahl >= q
+# N: Natuerliche Zahl >= q
 # q: 
 # s: [log_2(N + d)]
 # R: Zahl >= 1
@@ -47,12 +50,12 @@ def f_net (x, d, j_1_d, X_i, N, q, s, R, M, a):
             
     return f_l_k[0,1]  
 
-# Bestimmung der Gewichte der Ausgabeschicht durch l�sen eines regularisierten
+# Bestimmung der Gewichte der Ausgabeschicht durch loesen eines regularisierten
 # Kleineste-Quadrate-Problems
 #
-# X: Eingabevektoren der Form (X_1,...,X_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
-# Y: Eingabevektoren der Form (Y_1,...,Y_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
-# N: Natürliche Zahl >= q
+# X: Eingabevektoren der Form (X_1,...,X_n) fuer das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# Y: Eingabevektoren der Form (Y_1,...,Y_n) fuer das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# N: Natuerliche Zahl >= q
 # q: 
 # R: Zahl >= 1
 # d: Ist die Dimension des Eingabevektors d > 0
@@ -71,14 +74,14 @@ def output_weights(X, Y, N, q, R, d, M, a):
     
     c_3 = 0.01
     
-    # Anzahl der Spalten der Matrix f�r das Kleinste-Quadrate-Problem
+    # Anzahl der Spalten der Matrix fuer das Kleinste-Quadrate-Problem
     # In den Spalten sind die Funktionswerte von f_net eingespeichert
     
     J = int(((1 + M) ** d) * scipy.special.binom(N + d, d))
     
-    # Für die Konstruktion der Matrix brauchen wir erstmal alle Inputparameter
-    # für f_net, da wir dort nur den Funktionswert für einen Vektor j_1,...,j_d einsetzen
-    # müssen wir erstmals alle möglichen Vektoren dieser Art konstruieren die die Bedingung 0 <= j_1 + ... + j_d <= N erfüllen
+    # Fuer die Konstruktion der Matrix brauchen wir erstmal alle Inputparameter
+    # fuer f_net, da wir dort nur den Funktionswert fuer einen Vektor j_1,...,j_d einsetzen
+    # muessen wir erstmals alle moeglichen Vektoren dieser Art konstruieren die die Bedingung 0 <= j_1 + ... + j_d <= N erfuellen
     # X_ik hat in den Zeilen die Vektoren X_i aus dem Paper
     
     X_ik = np.transpose(np.empty((d, (1 + M) ** d,)))
@@ -104,12 +107,12 @@ def output_weights(X, Y, N, q, R, d, M, a):
 
     return (weights, J, all_j1_jd_by_cond, X_ik)
 
-# Bestimmung des Funktionswerts des Neuronale-Netze-Regressionsschätzers.
+# Bestimmung des Funktionswerts des Neuronale-Netze-Regressionsschaetzers.
 # 
-# x: Eingabe für einen Vektor der Form [-a,a]^d für den eine Schätzung bestimmt werden soll
-# X: Eingabevektoren der Form (X_1,...,X_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
-# Y: Eingabevektoren der Form (Y_1,...,Y_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
-# N: Natürliche Zahl >= q
+# x: Eingabe fuer einen Vektor der Form [-a,a]^d fuer den eine Schaetzung bestimmt werden soll
+# X: Eingabevektoren der Form (X_1,...,X_n) fuer das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# Y: Eingabevektoren der Form (Y_1,...,Y_n) fuer das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# N: Natuerliche Zahl >= q
 # q: 
 # s: [log_2(N + d)]
 # R: Zahl >= 1

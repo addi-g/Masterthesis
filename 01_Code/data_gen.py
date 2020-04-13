@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """
-Generieren der Daten die wir für einen Vergleich von Regressionsschätzern benötigen
+Generieren der Daten die wir fuer einen Vergleich von Regressionsschaetzern benoetigen
 """
-# Wir wählen x gleichverteilt auf [-2,2]^d, wobei d die Dimension des Inputs ist
-# n is die Größe der Stichprobe
+# Wir waehlen x gleichverteilt auf [-2,2]^d, wobei d die Dimension des Inputs ist
+# n is die Groesse der Stichprobe
 
 import numpy as np
 from scipy.stats import iqr
@@ -26,9 +29,9 @@ def m_d (x, d):
     else:
         print("Your data has the wrong dimension!")
         
-# Generiert den Vektor Y_1,...,Y_n für den Datensatz (X_1,Y_1),...,(X_n,Y_n)
+# Generiert den Vektor Y_1,...,Y_n fuer den Datensatz (X_1,Y_1),...,(X_n,Y_n)
 #   
-# X: Inputdaten der Form (X_1,...,X_n), wobei X_i \in \R^d für i = 1,...,n
+# X: Inputdaten der Form (X_1,...,X_n), wobei X_i \in \R^d fuer i = 1,...,n
 # sigma: Streuungsfaktor \in \{0.05,0.1\}
         
 def gen_data_Y (X, sigma):

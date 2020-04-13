@@ -33,16 +33,21 @@ L.~Devroye and T.J. Wagner.
   discrimination and regression function estimation.
 \newblock {\em Annals of Statistic}, 8:231--239, 1980.
 
-\bibitem[For17]{forster2016}
+\bibitem[For16]{forster2016}
 O.~Forster.
 \newblock {\em Analysis 1 - Differential- und Integralrechnung einer
   Veränderlichen}.
-\newblock Springer, Berlin, 11. edition, 2017.
+\newblock Springer, Berlin, 12. edition, 2016.
 
 \bibitem[GKKW02]{gyoerfi2002}
 L.~Györfi, M.~Kohler, A.~Krzyzak, and H.~Walk.
 \newblock {\em A Distribution-Free Theory of Nonparametric Regression.}
 \newblock Springer series in statistics. Springer, Berlin, 1. edition, 2002.
+
+\bibitem[Kle13]{Klenke2013}
+A.~Klenke.
+\newblock {\em Wahrscheinlichkeitstheorie}.
+\newblock Springer, Berlin, 2013.
 
 \bibitem[Kre98]{Kress1998}
 R.~Kress.

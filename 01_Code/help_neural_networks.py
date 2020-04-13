@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """
-Implementation von Neuronalen-Netzen welche wir für die Konstruktion unseres 
-Neuronale-Netze-Regressionschätzers benötigen
+Implementation von neuronalen Netzen welche wir fuer die Konstruktion unseres 
+Neuronale-Netze-Regressionschaetzers benoetigen
 """
 import numpy as np
 
@@ -47,7 +50,7 @@ def f_relu (x, R):
 # x: reelle Zahl 
 # y: fixe reelle Zahl
 # R: reelle Zahl >= 1
-# M: fixe natürliche Zahl
+# M: fixe natuerliche Zahl
 # a: fixe Zahl > 0
     
 def f_hat (x, y, R, M, a):
