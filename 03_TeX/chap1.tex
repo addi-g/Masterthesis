@@ -262,22 +262,12 @@ Damit haben wir alle drei Bedingungen aus Definition~\ref{nzulässig} gezeigt un
 \end{proof}
 Als Nächstes stellen wir ein Resultat zur Taylorformel mit Rest vor, welches wir im weiteren Verlauf der Arbeit benötigen werden.
 
-\begin{lem}[Lagrangesche Form des Restglieds, {\cite[Kapitel 2.4 Seite 67]{Koenigsberger2013}}]
+\begin{lem}[Lagrangesche Form des Restglieds, {\cite[§22, Satz 2]{forster2016}}]
 \label{lem:lagrange} \ \\
-\textbf{\emph{i)}} Sei $U \subseteq \R^d$ und $f\colon U \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in U$ Punkte, deren Verbindungsstrecke in $U$ liegt, so gilt:
-$$ f(x) = T_Nf(x;u) + R_{N + 1}(x;u),$$
-wobei
-$$
-T_N(f;u) \coloneqq \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!} (x - u)^k,
-$$
-das \emph{Taylorpolynom der Ordnung $N$} von $f$ in $a$ ist und das Restglied mit einem geeigneten Punkt $\xi$ auf der Verbindungsstrecke zwischen $u$ und $x$, in der Form 
-$$ R_{N + 1}(x;u) = \frac{f^{(N + 1)}(\xi)}{(N + 1)!} (x - u)^{N + 1}$$
-dargestellt werden kann.
-
-\textbf{\emph{ii)}} Sei $I \subseteq \R$ ein Intervall und $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi$ zwischen $u$ und $x$, so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1},$$
+Sei $I \subseteq \R$ ein Intervall und $f \colon I \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in I$. Dann existiert ein $\xi$ zwischen $u$ und $x$, so dass $$f(x) = \sum_{k = 0}^N \frac{f^{(k)}(u)}{k!}(x - u)^k + \frac{f^{(N + 1)}(\xi)}{(N + 1)!}(x - u)^{N + 1},$$
 wobei hier $f^{(k)}$ für $k = 0,\dots,N+1$ die $k$-te Ableitung von $f$ bezeichnet.
 \end{lem}
-Es folgen nun drei Approximationsresultate, welche wir in Kapitel~\ref{chap:2} für die Konstruktion unseres Neuronale-Netze-Regressionschätzers benötigen werden.
+Es folgen nun drei Approximationsresultate, welche wir in Kapitel~\ref{chap:2} für die Konstruktion unseres Neuronale-Netze-Regressionsschätzers benötigen werden.
 
 Wir betrachten als Erstes eine Approximation der Identität durch das neuronale Netz $f_{\id}\colon \R \to \R$ mit Architektur~$(1,(1))$, welches in Abbildung~\ref{fig:fid} veranschaulicht wird und anschließend die Approximation eines Quadrats auf einem Intervall durch das neuronale Netz $f_{\sq}\colon \R \to \R$ mit Architektur~$(1,(2))$.
 \begin{figure}[htp]

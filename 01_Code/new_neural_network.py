@@ -47,8 +47,8 @@ def f_net (x, d, j_1_d, X_i, N, q, s, R, M, a):
             
     return f_l_k[0,1]  
 
-# Bestimmung der Gewichte der Ausgabeschicht durch lösen eines regularisierten
-# Kleineste-Quadrate Problems
+# Bestimmung der Gewichte der Ausgabeschicht durch l�sen eines regularisierten
+# Kleineste-Quadrate-Problems
 #
 # X: Eingabevektoren der Form (X_1,...,X_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 # Y: Eingabevektoren der Form (Y_1,...,Y_n) für das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
@@ -71,7 +71,7 @@ def output_weights(X, Y, N, q, R, d, M, a):
     
     c_3 = 0.01
     
-    # Anzahl der Spalten der Matrix für das Kleinste-Quadrate Problem
+    # Anzahl der Spalten der Matrix f�r das Kleinste-Quadrate-Problem
     # In den Spalten sind die Funktionswerte von f_net eingespeichert
     
     J = int(((1 + M) ** d) * scipy.special.binom(N + d, d))

@@ -9,7 +9,7 @@ Künstliche Intelligenz ist längst in unserem Alltag präsent und dringt in imm
 Es besteht eine große Lücke zwischen den Schätzungen, für die schönen Konvergenzergebnisse die in der Theorie nachgewiesen wurden, und den Schätzungen, die in der Praxis verwendet werden können.
 
 Maschinelle Lernverfahren können \emph{als Lernen einer Funktion} $(f)$ zusammengefasst werden, die Eingangsvariablen $(X)$ auf Ausgangsvariablen $(Y$) abbildet.
-$$Y = f(x)$$
+
 Ein Algorithmus lernt diese Zielabbildungsfunktion aus Trainingsdaten.
 Die Form der Funktion ist unbekannt, sodass es unsere Aufgabe als Praktiker des maschinellen Lernens ist, verschiedene Algorithmen des maschinellen Lernens zu evaluieren und zu sehen, welcher die zugrunde liegende Funktion besser annähert.
 Unterschiedliche Algorithmen machen unterschiedliche Annahmen oder Vorurteile über die Form der Funktion und die Art und Weise, wie sie gelernt werden kann.
@@ -19,8 +19,8 @@ Nichtparametrische Methoden sind gut, wenn Sie über viele Daten und keine Vorke
 
 Ziel dieser Arbeit ist es, die folgende Frage genauer zu betrachten: Wenn wir eine Regressionsschätzung des neuronalen Netzes theoretisch genau so definieren, wie sie in der Praxis umgesetzt wird, welches Konvergenzergebnis können wir dann für diese Schätzung vorweisen? 
 
-Als Erstes werden wir in Kapitel~\ref{chap:1} grundlegende Definition und Hilfsresultate für den weiteren Verlauf der Arbeit sammeln.
-Anschließend definieren wir in Kapitel~\ref{chap:2} eine neue Regressionsschätzung für neuronale Netze, bei der die meisten Gewichte unabhängig von den Daten gewählt werden, die durch einige neuere Approximationsergebnisse für neuronale Netze motiviert sind, und die daher leicht zu implementieren ist. In Kapitel~\ref{chap:3} zeigen wir dann unser Hauptresultat, dass wir für diese Schätzung Konvergenzraten ableiten können, falls die Regressionsfunktion glatt ist. 
+Als Erstes werden wir in Kapitel~\ref{chap:1} Grundlagen zu neuronalen Netzen für den weiteren Verlauf der Arbeit sammeln.
+Anschließend definieren wir in Kapitel~\ref{chap:2} eine neue Regressionsschätzung für neuronale Netze, bei der die meisten Gewichte unabhängig von den Daten gewählt werden, die durch einige neuere Approximationsergebnisse für neuronale Netze motiviert sind und die daher leicht zu implementieren ist. In Kapitel~\ref{chap:3} zeigen wir dann unser Hauptresultat, dass wir für diese Schätzung Konvergenzraten ableiten können, falls die Regressionsfunktion glatt ist. 
 
 Mit diesem Hauptergebnis ist es nun möglich, einfach zu implementierende Regressionsverfahren für neuronale Netze zu definieren, die die gleiche Konvergenzrate wie lineare Regressionsschätzungen (z.B. Kernel- oder Spline-Schätzungen) erreichen, d.h. sie erreichen (bis zu einem logarithmischen Faktor) die optimale Minimax-Konvergenzrate $n-2p/(2p+d)$ im Falle einer ($p,C$)-glatten Regressionsfunktion, für jedes $p > 0$.
-Abschließend wird die Leistung unseres neu vorgeschlagenen Schätzers für simulierte Daten in Kapitel~\ref{chap:4} veranschaulicht. Diese Arbeit orientiert sich an \cite{kohler19}.
+Abschließend wird die Leistung unseres vorgestellten Schätzers für simulierte Daten in Kapitel~\ref{chap:4} veranschaulicht. Diese Arbeit orientiert sich an \cite{kohler19}.

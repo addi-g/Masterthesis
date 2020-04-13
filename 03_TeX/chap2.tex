@@ -1,23 +1,20 @@
 \chapter{Konstruktion eines Neuronale-Netze-Schätzers}
 \label{chap:2}
 
-In dieser Arbeit behandeln wir Neuronale-Netze-Schätzer im Kontext der \emph{nichtparametrischen Regression} mit \emph{zufälligem Design}. In der Regressionsanalyse betrachtet man einen $\R^d \times \R$-wertigen Zufallsvektor $(X,Y)$. Man ist daran interessiert, wie der Wert der \emph{Reaktionsvariable} $Y$ vom Wert des \emph{Beobachtungsvektors} $X$ abhängt. Dies bedeutet, dass man eine (messbare) Funktion $f\colon \R^d \to \R$ sucht, sodass $f(X)$ eine \glqq gute Approximation von $Y$ ist\grqq. Das wiederum bedeutet, dass $f(X)$ nah an $Y$ sein sollte, was in gewisser Weise gleichwertig damit ist den Ausdruck $|f(X) - Y|$ zu \glqq minimieren\grqq. Da aber $X$ und $Y$ Zufallsvektoren sind und damit $|f(X) - Y|$ auch zufällig ist, ist nicht klar was unter \glqq $|f(X) - Y|$ klein\grqq{} zu verstehen ist. Wir können dieses Problem lösen, indem wir das sogenannte \emph{$L_2$-Risiko} 
+In dieser Arbeit behandeln wir Neuronale-Netze-Schätzer im Kontext der \emph{nichtparametrischen Regression}.
+%mit \emph{zufälligem Design}.
+In der Regressionsanalyse betrachtet man einen $\R^d \times \R$-wertigen Zufallsvektor $(X,Y)$. Man ist daran interessiert, wie der Wert der \emph{Reaktionsvariable} $Y$ vom Wert des \emph{Beobachtungsvektors} $X$ abhängt. Dies bedeutet, dass man eine (messbare) Funktion $f\colon \R^d \to \R$ sucht, sodass $f(X)$ eine \glqq gute Approximation von $Y$\grqq{} ist. Das wiederum bedeutet, dass $f(X)$ nah an $Y$ sein sollte, was in gewisser Weise gleichwertig damit ist den Ausdruck $|f(X) - Y|$ zu \glqq minimieren\grqq. Da aber $X$ und $Y$ Zufallsvektoren sind und damit $|f(X) - Y|$ auch zufällig ist, ist nicht klar was unter \glqq $|f(X) - Y|$ minimal\grqq{} zu verstehen ist. Wir können dieses Problem lösen, indem wir das sogenannte \emph{$L_2$-Risiko} 
 $$
 \E[|f(X) - Y|^2],
 $$
 einführen und verlangen, dass dieses so klein wie möglich ist.
-\todo{Nichtparametrische Regression: 1) Bauart von $f$ ist unbekannt 2) Minimierung des L2 Risikos führt auf $m$ 3) Verteilung von $(X,Y)$ unbekannt 4) Werte von $(X,Y)$ beobachten und daraus $m$ schätzen.}
-Bei der nichtparametrischen Regression ist die Bauart der zu schätzenden Funktion komplett unbekannt, was den Vorteil besitzt, dass weniger Annahmen getroffen werden müssen, man aber dadurch noch mehr Daten benötigt, um eine Funktion zu schätzen.
-Das Problem der Regressionsschätzung bei zufälligem Design lässt sich wie folgt erläutern: 
-In Anwendungsfällen ist üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann die \emph{Regressionsfunktion} $m(x) = \E[Y \mid X = x]$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten.
-Für das $L_2$-Risiko einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt:
+Bei der nichtparametrischen Regression ist die Bauart der schätzenden Funktion $f$ komplett unbekannt. Wir sind daher an einer Funktion interessiert, die das $L_2$-Risiko von $f$ minimiert. Dies führt auf die \emph{Regressionsfunktion} $m(x) = \E[Y \mid X = x]$, da für das das $L_2$-Risiko einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt:
 $$\E[|f(X) - Y|^2] = \E[|m(X) - Y|^2] + \int|f(x) - m(x)|^2 \mathds{P}_X (dx),$$
-d.h. der mittlere quadratische Vorhersagefehler einer Funktion ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers, der aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y entsteht.
-Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein.
-Formal führt das daher auf folgende Problemstellung:
+d.h. der mittlere quadratische Vorhersagefehler einer Funktion $f$ ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers, der aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y entsteht. Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein. Dieser $L_2$-Fehler ist immer nichtnegativ und für $f(x) = m(x)$ sogar Null. Daher ist $m$ die beste Wahl für $f.$
+In Anwendungsfällen ist aber üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann die Regressionsfunktion $m$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten und damit die Regressionsfunktion $m$ zu schätzen. Formal führt das auf folgende Problemstellung:
 \begin{prblm}[{\cite[Kapitel 1.1 und Kapitel 1.2]{gyoerfi2002}}]
 \label{prblm:1}
-$(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ seien u.i.v.\@ $\R^d \times \R$-wertige Zufallsvariablen mit $\E[Y^2] < \infty$ und $m\colon\R^d \to \R$ definiert durch $m(x) = \E[Y \mid X = x]$ sei die zugehörige Regressionsfunktion. Gegeben sei die Datenmenge 
+Seien $(X, Y), (X_1, Y_1), (X_2, Y_2), \dots$ u.i.v.\@ $\R^d \times \R$-wertige Zufallsvariablen mit $\E[Y^2] < \infty$ und $m\colon\R^d \to \R$ definiert durch $m(x) = \E[Y \mid X = x]$ sei die zugehörige Regressionsfunktion. Gegeben sei die Datenmenge 
 \begin{equation}
 \label{dataset}
 \mathcal{D}_n = \{(X_1, Y_1),\dots,(X_n, Y_n)\}.
@@ -32,7 +29,7 @@ In diesem Kapitel werden wir mithilfe von neuronalen Netzen einen Regressionssch
 
 %In Kapitel~\ref{chap:1} haben wir bereits in Definition~\ref{def:nn} vorgestellt, was wir unter einem mehrschichtigen feedforward neuronalen Netz mit Architektur $(L, \bk)$ und Aktivierungsfunktion $\sigma$ verstehen.
 
-Für die Konstruktion unseres Neuronale-Netze-Regressionsschätzers wählen wir den logistischen Squasher~(\ref{logsquasher}) als Aktivierungsfunktion~$\sigma$, verwenden die gegebene Datenmenge~$\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und bestimmen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~$\mathcal{D}_n$ ein Kleinste-Quadrate Problem lösen.
+Für die Konstruktion unseres Neuronale-Netze-Regressionsschätzers wählen wir den logistischen Squasher aus Gleichung~(\ref{logsquasher}) als Aktivierungsfunktion~$\sigma$, verwenden die gegebene Datenmenge~$\mathcal{D}_n$ und wählen die Gewichte des neuronalen Netzes so, dass die resultierende Funktion aus Definition~\ref{def:nn} eine gute Schätzung für die Regressionsfunktion $m$ ist. Dafür wählen wir die Gewichte bis auf die in der Ausgabeschicht fest und bestimmen die Gewichte in der Ausgabeschicht, indem wir mit unserer Datenmenge~$\mathcal{D}_n$ ein Kleinste-Quadrate-Problem lösen.
 %mit einer Tikhonov Regularisierung \cite[Theorem 5.9]{Kress2012} lösen.
 
 Es ist bekannt (vgl.\@ \cite[Theorem 7.2 und Problem 7.2]{DevLug96} und \cite[Section 3]{DevWag80}), dass man Glattheitsvoraussetzungen an die Regressionsfunktion stellen muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
@@ -78,13 +75,25 @@ mit $\mathbf{a} = (a, a, \dots, a) \in \R^d$ zu.
 
 Hiermit lässt sich das zu $m$ gehörige Taylorpolynom der Ordnung $q \in \N_0$ mit Entwicklungspunkt $x_{\bi}$ schreiben als
 $$p_{\bi}^m(x) = \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}m(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}.$$
-\todo{Restgliedformel in höherer Raumdimension aus Kapitel 1}
-Zudem betrachten wir eine Funktion
 \begin{equation}
 \label{konvexkomb}
 P_m(x) = \sum_{\bi \in [M]^d} p_{\bi}^m(x) \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+,
 \end{equation}
 mit der wir die Regeressionsfunktion $m$ approximieren wollen.
+
+Als Nächstes stellen wir ein Resultat zur Taylorformel mit Rest vor, welches der Restgliedformel aus Kapitel \ref{chap:1} in höherer Raumdimension entspricht.
+\begin{lem}[Lagrangesche Form des Restglieds, {\cite[Kapitel 2.4, Seite 67]{Koenigsberger2013}}]
+\label{lem:lagrangehoch} \ \\
+Sei $U \subseteq \R^d$ und $f\colon U \to \R$ eine $(N + 1)$-mal stetig differenzierbare Funktion und $u, x \in U$ Punkte, deren Verbindungsstrecke in $U$ liegt, so gilt:
+$$ f(x) = T_Nf(x;u) + R_{N + 1}(x;u),$$
+wobei
+$$
+T_Nf(x;u) \coloneqq \sum_{\substack{\bj \in [N]^d \\ |\bj|_1 \leq N}}  \partial^{\bj}f(u) \cdot \frac{ (x - u)^{\bj} }{\bj!}
+$$
+das \emph{Taylorpolynom der Ordnung $N$ von $f$ in $u$} ist und das \emph{Restglied} mit einem geeigneten Punkt $\xi$ auf der Verbindungsstrecke zwischen $u$ und $x$ in der Form 
+$$ R_{N + 1}(x;u) = \sum_{\substack{ \bj \in [N + 1]^d \\|\bj|_1 = N + 1}} \partial^{\bj}f(\xi) \cdot \frac{ (x - u)^{\bj} }{\bj!}$$
+dargestellt werden kann.
+\end{lem}
 
 Wir zeigen mithilfe des folgenden Lemmas, dass wir $P_m(x)$ als eine lokale Spline-Inter"=polation von Taylorpolynomen von $m$ auffassen können.
 \begin{lem}
@@ -212,13 +221,12 @@ $$\sup_{x \in [-a, a]^d} |f(x) - P_f(x)|  \leq c \cdot \bigg(\frac{a}{M}\bigg)^p
 mit einer Konstante $c$, die von $p$, $d$, $s$ und $C$ abhängt.
 \end{lem}
 \begin{proof}
-\todo{Lemma Verweis anpassen}
-Nach Lemma~\ref{lem:lagrange} \textbf{i)} über die Lagrange Form des Restglieds existiert ein $\xi$ auf der Verbindungsstrecke zwischen $x_{\bi}$ und $x$ so, dass 
+Nach Lemma~\ref{lem:lagrangehoch} über die Lagrange Form des Restglieds existiert ein $\xi$ auf der Verbindungsstrecke zwischen $x_{\bi}$ und $x$ so, dass 
 \begin{equation}
 \label{eq:lagrange}
 \begin{split}
 f(x) & = T_{q - 1}f(x; x_{\mathbf{i}}) + R_q(x; x_{\mathbf{i}})\\
-& = \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(\xi) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}
+& = \sum_{\substack{\bj \in [q - 1]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(\xi) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}
 \end{split}
 \end{equation}
 gilt.
@@ -236,7 +244,7 @@ Nach Gleichung~(\ref{eq:lagrange}) erhalten wir:
 \label{eq:sum}
 \begin{split}
 & \bigg|f(x) - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \\ 
-& = \bigg| \sum_{\substack{\bj \in [q]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(\xi) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \\
+& = \bigg| \sum_{\substack{\bj \in [q - 1]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(\xi) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} \\
 & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad - \sum_{\substack{\mathbf{j} \in [q]^d \\|\mathbf{j}|_1 \leq q}} \partial^{\mathbf{j}}f(x_{\mathbf{i}}) \cdot \frac{(x - x_{\mathbf{i}})^{\mathbf{j}}}{\mathbf{j}!}\bigg| \\
 & = \bigg| \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(\xi) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} - \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(x_{\bi}) \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}\bigg|.
 \end{split}
@@ -281,7 +289,7 @@ $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\bi, 
 bringen, da sich jedes $p^m_{\bi}(x)$ als Polynom umordnen lässt und wir daher auch $P_m(x)$ umschreiben können.
 
 Als Nächstes wollen wir geeignete neuronale Netze $f_{\net, \bj, \bi}$ mit Architektur $(L, \bk)$ definieren, die die Funktionen
-$$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren um anschließend Linearkombinationen
+$$x \mapsto (x - x_{\mathbf{i}})^{\bj} \prod_{j = 1}^d \bigg(1 - \frac{M}{2a} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|\bigg)_+$$ approximieren, um anschließend Linearkombinationen
 $$\sum_{\bi \in [M]^d} \sum_{\substack{ \bj \in [q]^d\\|\bj|_1 \leq q}} a_{\mathbf{i}, \bj} \cdot f_{\net,\bj,\mathbf{i}}(x) \qquad (a_{\mathbf{i},\bj} \in \R)$$ zu betrachten.
 Um dies zu erreichen, wählen wir als Aktivierungsfunktion den logistischen Squasher $$\sigma(x) = \frac{1}{(1 + \exp(-x))} \quad (x \in \R)$$ aus Gleichung~(\ref{logsquasher}). Zudem wählen wir $R \geq 1$ und erhalten für die neuronalen Netze aus Kapitel~\ref{chap:1}:
 \begin{itemize}
@@ -310,6 +318,7 @@ f_k^{(s)}(x) & = 1 \nonumber
 \end{align*} 
 für $|\bj|_1 + d + 1 \leq k \leq 2^s.$
 \end{defn}
+\todo{Lemma 3.2 aus Kapitel 3 hier einfügen und $f_{net}$ anpassen}
  
 Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehreren neuronalen Netzen zusammengebaut wurde, lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Aus der rekursiven Definition~\ref{fnet} entnimmt man, dass $f_{\net,\bj,\bi}$ insgesamt $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$ bzw.\@ $f_{\id}(f_{\id})$ hat. Da $f_{\mathrm{hat}}$ zwei verborgene Schichten besitzt, ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\net,\bj,\bi}$.
 %Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... (TBD)
@@ -329,7 +338,7 @@ Wir definieren unseren Neuronale-Netze-Regressionsschätzer $\tilde{m}_n(x)$  du
 \label{estimate}
 \tilde{m}_n(x) \coloneqq \sum_{\bi \in [M]^d} \sum_{\substack{\bj \in [N]^d\\|\bj|_1 \leq N}} a_{\mathbf{i},\bj} \cdot f_{\net,\bj,\mathbf{i}}(x),
 \end{equation}
-wobei $n$ die Größe unserer gegebenen Datenmenge~$\mathcal{D}_n$ ist und wir die Koeffizienten~$a_{\mathbf{i},\bj}$ durch die Lösung eines Kleinste-Quadrate Problems erhalten. Dazu betrachten wir die Tikhonov Regularisierung (vgl.\@ \cite[Kapitel 16.1]{Kress1998})
+wobei $n$ die Größe unserer gegebenen Datenmenge~$\mathcal{D}_n$ ist und wir die Koeffizienten~$a_{\mathbf{i},\bj}$ durch die Lösung eines Kleinste-Quadrate-Problems erhalten. Dazu betrachten wir die Tikhonov Regularisierung (vgl.\@ \cite[Kapitel 16.1]{Kress1998})
 \begin{equation}
 \label{min} 
 \begin{split}
