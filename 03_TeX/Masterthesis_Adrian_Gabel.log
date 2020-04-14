@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  13 APR 2020 18:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  14 APR 2020 09:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2064,7 +2064,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 (../01_Code/main.py
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
  [55
 
 
@@ -2088,7 +2088,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [63])
 (../01_Code/fc_neural_network.py [64]) (../01_Code/nearest_neighbor.py)
-[65] (../01_Code/constant.py)) [66]
+(../01_Code/constant.py [65])) [66]
 \openout2 = `literaturverzeichnis.aux'.
 
  (./literaturverzeichnis.tex
@@ -2114,9 +2114,9 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 46871 strings out of 492162
- 992178 string characters out of 6125292
- 4303729 words of memory out of 5000000
+ 46854 strings out of 492162
+ 991901 string characters out of 6125292
+ 4307729 words of memory out of 5000000
  49285 multiletter control sequences out of 15000+600000
  111496 words of font info for 341 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2143,9 +2143,9 @@ s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
 
-Output written on Masterthesis_Adrian_Gabel.pdf (67 pages, 1294841 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (67 pages, 1291574 bytes).
 PDF statistics:
- 1500 PDF objects out of 1728 (max. 8388607)
- 749 named destinations out of 1000 (max. 500000)
+ 1480 PDF objects out of 1728 (max. 8388607)
+ 732 named destinations out of 1000 (max. 500000)
  53990 words of extra memory for PDF output out of 61914 (max. 10000000)
 

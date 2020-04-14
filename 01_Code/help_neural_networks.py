@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Implementation von neuronalen Netzen welche wir fuer die Konstruktion unseres 
 Neuronale-Netze-Regressionschaetzers benoetigen

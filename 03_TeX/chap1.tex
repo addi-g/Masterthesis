@@ -197,6 +197,39 @@ Ein in dieser Arbeit wichtiges Beispiel für eine Aktivierungsfunktion bildet de
 \label{logsquasher}
 \sigma(x) = \frac{1}{1 + \exp(-x)} \quad (x \in \R).
 \end{align}
+\begin{lem}
+\label{lem:polynom}
+Sei $n \in \N$. Dann existiert zur $n$-ten Ableitung~$\sigma^{(n)}$ des logistischen Squashers~$\sigma$ aus Gleichung~\eqref{logsquasher} ein Polynom $P_n$ vom Grad $(n + 1)$, sodass $P_n(\sigma) = \sigma^{(n)}$ gilt. Insbesondere ist $P_n$ ungleich dem Nullpolynom für alle $n \in \N$.
+\end{lem}
+\begin{proof}
+    Wir zeigen die Aussage per Induktion über $n$.
+    
+    \emph{Induktionsanfang} (IA): 
+    Die Funktion $\sigma$ erfüllt die gewöhnliche Differentialgleichung $\sigma^{(1)} = (1 - \sigma) \cdot \sigma,$ da:
+\begin{equation*}
+\begin{split}
+\sigma^{(1)}(x) &= -\frac{1}{(1 + \exp(-x))^2} \cdot (-\exp(-x)) 
+ = \frac{\exp(-x)}{1 + \exp(-x)} \cdot \frac{1}{1 + \exp(-x)} \\
+& = \bigg(1 - \frac{1}{1 + \exp(-x)}\bigg) \cdot \frac{1}{1 + \exp(-x)} 
+ = (1 - \sigma(x)) \cdot \sigma(x).
+\end{split}
+\end{equation*}
+    
+    %Für $n = 1$ erhalten wir $\sigma^{(1)} = \sigma' = (1 - \sigma) \cdot \sigma = \sigma - \sigma^2.$ 
+    Damit gilt $\sigma^{(1)} = P_1(\sigma)$ mit $P_1(x) = x - x^2.$ Es gilt $\operatorname{deg}(P_1) = 2$, da der führende Koeffizient von $P_1$ ungleich Null ist.
+    
+\emph{Induktionshypothese} (IH): Die Aussage gelte für ein beliebiges aber festes $n \in \N.$
+
+\emph{Induktionsschritt} (IS): Nach der Induktionshypothese existiert ein Polynom $P_{n - 1}$ mit $P_{n - 1}(x) = \sum_{k = 0}^{n} a_k\cdot x^k$ und $\sigma^{(n - 1)} = P_{n - 1}(\sigma)$.
+Mit der Kettenregel aus der Differentialrechnung erhalten wir:
+\begin{align}
+\sigma^{(n)} & = (\sigma^{(n - 1)})' \overset{\text{(IH)}}{=} \Big(\sum_{k = 0}^{n} a_k\cdot \sigma^k\Big)' = \sum_{k = 1}^{n} a_k \cdot k \cdot \sigma^{k- 1} \cdot \sigma' 
+ \overset{\text{(IA)}}{=}  \sum_{k = 1}^{n} a_k \cdot k \cdot \sigma^{k- 1} \cdot \sigma \cdot (1 - \sigma) \nonumber \\  
+& = \sum_{k = 1}^{n} a_k \cdot k \cdot \sigma^{k} - \sum_{k = 1}^{n} a_k \cdot k \cdot \sigma^{k + 1}. \label{eq:kette}
+\end{align} 
+Gleichung \eqref{eq:kette} definiert ein Polynom $P_n$ vom Grad $(n + 1)$ mit $\sigma^{(n)} = P_n(\sigma)$.
+Damit haben wir die Aussage für alle $n \in \N$ bewiesen.
+\end{proof}
 %Als Nächstes stellen wir ein Resultat vor, welches eine wichtige Eigenschaft für die Aktivierungsfunktion der hier betrachteten neuronalen Netze darstellt.
 \begin{lem}
 \label{lem:logsquasher}
@@ -206,27 +239,12 @@ Sei $N \in \N_0$ beliebig, dann ist der logistische Squasher $\sigma$ aus Gleich
 Sei $N \in \N_0$ beliebig. Dadurch, dass $0 \leq \frac{1}{1 + \exp(-x)} \leq 1$ für alle $x \in \R$ gilt, erhalten wir schließlich auch $\sigma: \R \to [0,1]$. Wir wissen, dass $\sigma$ monoton wachsend ist, da für beliebige $s, t \in \R$ mit $s \leq t$ gilt:
 $$\sigma(s) = \frac{1}{1 + \exp(-s)} \leq \frac{1}{1 + \exp(-t)} = \sigma(t),$$
 wobei wir verwendet haben, dass aufgrund der Monotonie der Exponentialfunktion für $s \leq t$ auch $\exp(-s) \geq \exp(-t)$ gilt.
-Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-mal stetig differenzierbar. Die Funktion $\sigma$ erfüllt die gewöhnliche Differentialgleichung $\frac{\partial\sigma}{\partial x} = (1 - \sigma) \cdot \sigma,$ da:
-\begin{equation*}
-\begin{split}
-\frac{\partial \sigma}{\partial x}(x) &= -\frac{1}{(1 + \exp(-x))^2} \cdot (-\exp(-x)) \\
-& = \frac{\exp(-x)}{1 + \exp(-x)} \cdot \frac{1}{1 + \exp(-x)} \\
-& = \bigg(1 - \frac{1}{1 + \exp(-x)}\bigg) \cdot \frac{1}{1 + \exp(-x)} \\
-& = (1 - \sigma(x)) \cdot \sigma(x).
-\end{split}
-\end{equation*}
-Mit der Leibnizregel aus der Differentialrechnung erhalten wir:
-\begin{equation}
-\label{eq:leibniz}
-\frac{\partial^n\sigma}{\partial x^n} = \frac{\partial^{n - 1}}{\partial x^{n - 1}}\bigg((1 - \sigma) \cdot \sigma\bigg) = \sum_{k = 0}^{n-1}\binom{n - 1}{k}(1 - \sigma)^{(n - 1 - k)}  \sigma^{(k)} 
-\end{equation}
-für $n = 1,\dots,N$. 
-Damit erkennen wir durch auflösen der Rekursion, dass alle Ableitungen von $\sigma$, Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren ebenfalls beschränkt ist. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist, wissen wir, dass $\sigma$ lipschitzstetig ist.
+Zudem ist $\sigma$ als Komposition glatter Funktionen insbesondere $(N + 1)$-mal stetig differenzierbar.
 
-Nun kommen wir zum Beweis von Bedingung (ii). 
-Wir wissen, dass Polynome die nicht das Nullpolynom sind nur endliche viele Nullstellen besitzen. Daher wissen wir durch Gleichung~(\ref{eq:leibniz}), dass ein $t_{\sigma} \in \R$ existiert, mit $$\frac{\partial^i \sigma}{\partial x^i}(t_{\sigma}) \neq 0 \text{ für } i = 0,\dots,N.$$
-\todo{ausführlicher, warum ist das Nullpolynom ausgeschlossen? Surjektivität von $\sigma$ nutzen für die Existenz von $t_\sigma$}
-%Da die Ableitungen von $\sigma$, als Zusammensetzung von Polynomen in $\sigma$, wieder Polynome sind für die die obere Eigenschaft ebenfalls gilt, existiert ein $t_{\sigma} \in \R$ mit $\sigma(t_{\sigma}) \neq 0$, sodass alle Ableitungen bis zum Grad $N$ von $\sigma$, aufgrund ihrer Struktur ungleich $0$ sind. 
+Mit Lemma~\ref{lem:polynom} wissen wir, dass alle Ableitungen von $\sigma$, Polynome in $\sigma$ sind. Dadurch folgt Bedingung (i) aus Definition~\ref{nzulässig}, da $\sigma$ nach Voraussetzung beschränkt ist und die Ableitungen von $\sigma$ als endliche Summe von Produkten beschränkter Faktoren ebenfalls beschränkt sind. Da hiermit auch insbesondere die erste Ableitung von $\sigma$ beschränkt ist, wissen wir, dass $\sigma$ lipschitzstetig ist.
+
+Nun kommen wir zum Beweis von Bedingung (ii).
+Sei $\mathcal{N}$ die Menge aller Nullstellen der Polynome $P_1,\dots,P_n$ aus Lemma~\ref{lem:polynom}. Da keines dieser Polynome das Nullpolynom ist, wissen wir, dass $|\mathcal{N}| < \infty$ gilt. Insbesondere ist $(0,1)\setminus \mathcal{N}$ nicht leer. Sei $y \in (0,1) \setminus \mathcal{N}$. Da $\sigma$ surjektiv nach $(0,1)$ ist, existiert ein $t_{\sigma} \in \R$ mit $\sigma(t_{\sigma}) = y.$ Per Konstruktion ist $\sigma^{(n)}(t_{\sigma}) \neq 0.$
 Damit ist Bedingung (ii) ebenfalls erfüllt.
 
 Nun zu Bedingung (iii). Wir wissen, dass für $x \in \R$ und damit insbesondere für ein beliebiges $x > 0$ die Ungleichung $$ x \leq \exp(x) + 1$$ gilt.

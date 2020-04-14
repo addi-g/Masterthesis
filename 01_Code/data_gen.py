@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Generieren der Daten die wir fuer einen Vergleich von Regressionsschaetzern benoetigen
 """

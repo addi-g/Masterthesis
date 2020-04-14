@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Main Datei die die Simulation und damit den Vergleich der implementierten Schaetzer
 durchfuehrt.

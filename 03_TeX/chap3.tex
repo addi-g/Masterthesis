@@ -27,31 +27,8 @@ wobei $c_{\mathrm{fin}} > 0$ eine von $n$ unabhängige Konstante ist.
 \end{mthm}
 
 Bevor wir zum Beweis von Hauptresultat ~\ref{optstop} kommen, stellen wir im folgenden Abschnitt die dafür notwendigen Hilfsresultate vor.
-\todo{Abschnittname passend?}
 \section{Approximationsresultate für Hauptsatz \hyperref[optstop]{3.1}}
 Die nächsten  Definitionen und Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Regressionsschätzers. Die Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt. 
-\todo{Lemmata zusammenfassen, d.h. auch Überdeckungszahlen weglassen usw.}
-\begin{lem}[{\cite[Lemma 5]{kohler19}}]
-\label{lem:5}
-Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig.
-Sei $a \geq 1$ und $R \in \R$ mit
-\begin{equation*}
-\begin{split}
-R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma})|}, \\
-& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\},
-\end{split}
-\end{equation*}
-wobei $s = \lceil\log_2(N + d)\rceil$ mit $N \in \N$. Sei $y \in [-a, a]^d$ und $\bj \in [\N_0]^d$ so, dass $|\bj|_1 \leq N$ gilt. Seien $f_{\id}, f_{\mult}$ und $f_{\mathrm{hat}, z}$ (für $z \in \R$) die neuronalen Netze aus Lemma~\ref{lem:1}, Lemma~\ref{lem:2} und Lemma~\ref{lem:4}. Wir definieren das Netz $f_{\mathrm{net},\bj,y}$ so wie $f_{\mathrm{net},\bj,\bi}$ in Definition~\ref{fnet}, wobei $x_{{\bi}_k}$ durch $y \in \R^d$ ersetzt wird.
-Dann erhalten wir für $x \in [-a, a]^d$:
-\begin{equation*}
-\begin{split}
-& \bigg|f_{\net,\bj,y}(x) - (x - y)^{\bj} \prod_{j = 1}^d \Big(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - y^{(j)}\Big|\Big)_+\bigg| \\
-& \leq c \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s} \cdot M^3 \cdot \frac{1}{R},
-\end{split}
-\end{equation*}
-für eine von $n$ unabhängige Konstante $c > 0$.
-\end{lem}
-
 Als Nächstes geben wir eine Definition von Überdeckungszahlen an, da wir im Beweis für unser Hauptresultat eine Abschätzung einer $L_p\text{-}\epsilon$-Überdeckungszahl anwenden.
 \begin{defn}
 \label{ueberdeckung}

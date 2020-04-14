@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Implementation eines fully connected neuronalen Netzes mit einer verborgenen Schicht.
 """

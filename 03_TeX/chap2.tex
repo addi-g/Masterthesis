@@ -319,6 +319,29 @@ f_k^{(s)}(x) & = 1 \nonumber
 für $|\bj|_1 + d + 1 \leq k \leq 2^s.$
 \end{defn}
 \todo{Lemma 3.2 aus Kapitel 3 hier einfügen und $f_{net}$ anpassen}
+Das folgende Lemma liefert ein Approximationsresultat für das neuronale Netz $f_{\mathrm{net},\bj,\bi}.$
+
+\begin{lem}[{\cite[Lemma 5]{kohler19}}]
+\label{lem:5}
+Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig.
+Sei $a \geq 1$ und $R \in \R$ mit
+\begin{equation*}
+\begin{split}
+R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma})|}, \\
+& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\},
+\end{split}
+\end{equation*}
+wobei $s = \lceil\log_2(N + d)\rceil$ mit $N \in \N$. Sei $y \in [-a, a]^d$ und $\bj \in [\N_0]^d$ so, dass $|\bj|_1 \leq N$ gilt. Seien $f_{\id}, f_{\mult}$ und $f_{\mathrm{hat}, z}$ (für $z \in \R$) die neuronalen Netze aus Lemma~\ref{lem:1}, Lemma~\ref{lem:2} und Lemma~\ref{lem:4}. Sei $f_{\mathrm{net},\bj,\bi}$ das neuronale Netzt aus Definition~\ref{fnet}, wobei $x_{{\bi}_k} \in \R^d.$
+Dann erhalten wir für $x \in [-a, a]^d$:
+\begin{equation*}
+\begin{split}
+& \bigg|f_{\net,\bj,\bi}(x) - (x - x_{\bi_k})^{\bj} \prod_{j = 1}^d \Big(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - x_{\bi_k}^{(j)}\Big|\Big)_+\bigg| \\
+& \leq c \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s} \cdot M^3 \cdot \frac{1}{R},
+\end{split}
+\end{equation*}
+für eine von $n$ unabhängige Konstante $c > 0$.
+\end{lem} 
+ 
  
 Da das neuronale Netz $f_{\net,\bj,\bi}$ aus mehreren neuronalen Netzen zusammengebaut wurde, lässt sich dadurch auch die Anzahl an Schichten und Neuronen pro Schicht durch diese Struktur erklären. Aus der rekursiven Definition~\ref{fnet} entnimmt man, dass $f_{\net,\bj,\bi}$ insgesamt $s + 2$ verborgene Schichten, durch $s$-maliges Anwenden von $f_{\mult}$ und einer Anwendung von $f_{\mathrm{hat}}$ bzw.\@ $f_{\id}(f_{\id})$ hat. Da $f_{\mathrm{hat}}$ zwei verborgene Schichten besitzt, ergibt sich daraus die Anzahl an verborgenen Schichten von $f_{\net,\bj,\bi}$.
 %Für die Anzahl an Neuronen für die jeweiligen Schichten können wir nur eine oberen Schranke angeben, da ... (TBD)
@@ -370,7 +393,7 @@ gilt. Mit Lemma~\ref{lem:kombi} wissen wir, dass für $d$, $N \in \N$ und $k \in
 $$\bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg| = \binom{d + k - 1}{k} = \binom{d + k - 1}{d - 1}$$ gilt.
 Damit erhalten wir
 $$H = \sum_{k = 0}^N \bigg|\Bigl\{\bj \in [N]^d : |\bj|_1 = k \Bigr\}\bigg|= \sum_{k = 0}^N \binom{d + k - 1}{d - 1} = \binom{N + d}{d},$$
-mit der \emph{Hockey-Stick Identität} \todo{Zitiere Quelle}
+mit der \emph{Hockey-Stick Identität} (vgl.\@ \cite{tollerproofs}[Theorem 10.14]) \todo{Zitiere Quelle}
 $$\sum_{i = 0}^{n-r} \binom{i + r}{r} = \sum_{i = r}^n \binom{i}{r} = \binom{n + 1}{r + 1} \quad (n, r \in \N  \text{ mit  } n \geq r).$$
 Wir setzen nun 
 $$ \mathbf{U} = (U_s(X_i))_{1\leq i \leq n,1\leq s \leq S} \quad \text{und} \quad \mathbf{Y} = (Y_i)_{1 \leq i \leq n}.$$
