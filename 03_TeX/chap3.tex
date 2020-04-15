@@ -70,8 +70,8 @@ Dann gilt für den erwarteten $L_2$-Fehler die Ungleichung
 \begin{equation}
 \label{lem:8:ungl}
 \begin{split}
-& \E \Big[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \\
-& \leq \frac{1}{n} \cdot c \cdot \log(n)^2 \cdot \big(\log\big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\big)\big) + 1\big) \\
+& \E \Big[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \\[0.5em]
+& \leq \frac{1}{n} \cdot c \cdot \log(n)^2 \cdot \Bigg(\log\bigg(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\Big(\frac{1}{n \cdot \beta_n},\mathcal{F}_n,x_1^n\Big)\bigg) + 1\Bigg) \\[0.5em]
 & \quad + 2 \cdot \E\bigg[\int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + \mathrm{pen}_n(g_{n})\bigg],
 \end{split}
 \end{equation}
@@ -85,7 +85,7 @@ Seien $a > 0$ und $d, L, N, J_n \in \N$ so, dass $J_n \leq n^{c_{1}}$ für eine 
 Sei die Funktion $\sigma\colon \R \to [0, 1]$ 2-zulässig. Sei $\mathcal{F}$ die Menge aller Funktionen die durch Definition~\ref{def:nn} definiert sind mit $k_1 = k_2 = \cdots = k_L = 24 \cdot (N + d)$ und einer Beschränkung des Betrags der Gewichte durch $c_{3} \cdot n^{c_{4}}$ für Konstanten $c_3, c_4 > 0$. Sei
 $$ \mathcal{F}^{(J_n)} \coloneqq \biggl\{\sum_{j = 1}^{J_n} a_j \cdot f_j : f_j \in \mathcal{F} \quad \text{und} \quad \sum_{j = 1}^{J_n} a_j^2 \leq c_{5} \cdot n^{c_{6}}\biggr\}$$ für Konstanten $c_5, c_6 > 0.$
 Dann gilt für $n > 1$:
-$$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\bigg(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\bigg)\bigg) \leq c \cdot \log(n) \cdot J_n,$$
+$$\log\bigg(\sup_{x_1^n\in[-a,a]^{d \cdot n}} \mathcal{N}_1\Big(\frac{1}{n \cdot \beta_n}, \mathcal{F}^{(J_n)},x_1^n\Big)\bigg) \leq c \cdot \log(n) \cdot J_n,$$
 für eine Konstante $c$ die nur von $L$, $N$, $a$ und $d$ abhängt.
 \end{lem}
 
@@ -103,8 +103,8 @@ Damit können wir den erwarteten $L_2$-Fehler umschreiben zu:
 \begin{equation}
 \label{originaleq}
 \begin{split}
-\E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg] & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \cdot (\mathds{1}_{A_n^{\mathsf{c}}} + \mathds{1}_{A_n})\bigg] \\
-& = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] \\
+\E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg] & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \cdot (\mathds{1}_{A_n^{\mathsf{c}}} + \mathds{1}_{A_n})\bigg] \\[0.5em]
+& = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] \\[0.5em]
 & \quad + \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] \\
 & \eqqcolon T_{1,n} + T_{2,n}.
 \end{split}
@@ -128,8 +128,8 @@ Mit Ungleichung~(\ref{ungl}) und durch die Unabhängigkeit von $A_n$ von den Zuf
 \begin{equation}
 \label{anc}
 \begin{split}
- T_{1,n} = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] & =  \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \bigg] \cdot \mathds{P}(A_n^{\mathsf{c}}) \\
- & \leq \E \bigg[\int 2m_n(x)^2 + 2m(x)^2 \mathds{P}_X(dx)\bigg] \cdot \mathds{P}(A_n^{\mathsf{c}})\\
+ T_{1,n} = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] & =  \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \bigg] \cdot \mathds{P}(A_n^{\mathsf{c}}) \\[0.5em]
+ & \leq \E \bigg[\int 2m_n(x)^2 + 2m(x)^2 \mathds{P}_X(dx)\bigg] \cdot \mathds{P}(A_n^{\mathsf{c}})\\[0.5em]
  & \leq \E \bigg[\int  2\beta_n^2 + 2\beta_n^2 \mathds{P}_X(dx)\bigg] \cdot \mathds{P}(A_n^{\mathsf{c}}).
 \end{split}
 \end{equation}
@@ -190,7 +190,7 @@ Durch unsere Definition von $\hat{m}_n$ erhalten wir durch die Monotonie des Erw
 \begin{equation}
 \label{an}
 \begin{split}
-T_{2,n} = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] & = \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] \\
+T_{2,n} = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] & = \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] \\[0.5em]
 & \leq \E \bigg[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg].
 \end{split}
 \end{equation}
@@ -225,7 +225,8 @@ Um Lemma~\ref{lem:8} anwenden zu können, zeigen wir im Folgenden zunächst $g_n
 Da nach Konstruktion $f_{\net,\bj,\mathbf{i}} \in \mathcal{F}$ ist, folgt mit Gleichung~(\ref{constantc21}), dass für $n$ hinreichend groß die Abschätzung
 \begin{equation*}
 \begin{split}
-\sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \big| \frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\big|^2 & \leq (M_n + 1)^d (N + 1)^d \cdot z^2 \\
+\sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1  \leq q}} \big| \frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\big|^2 
+& \leq (M_n + 1)^d (N + 1)^d \cdot z^2 \\
 & \leq (2 c_2 \cdot n^{1/2p + d})^d \cdot (N + 1)^d \cdot z^2 \\
 & \leq c_7 \cdot n
 \end{split}
@@ -258,8 +259,8 @@ Als Nächstes wollen wir Ungleichung~(\ref{lem:8:bed:1}) aus Lemma~\ref{lem:8} f
 \begin{split}
 \label{tilde}
 \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_8}{n} \cdot \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [N]^d \\ |\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\
-& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + \frac{c_8}{n} \cdot \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \bigg|\frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\bigg|^2 \\
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - \tilde{m}_n(X_i)|^2 + \frac{c_8}{n} \cdot \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [N]^d \\ |\bj|_1 \leq N}} a_{\mathbf{i},\bj}^2 \\[0.5em]
+& \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + \frac{c_8}{n} \cdot \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \bigg|\frac{1}{\bj!} \cdot \partial^{\bj}m(x_{\mathbf{i}})\bigg|^2 \\[0.5em]
 & \leq \frac{1}{n} \sum_{i = 1}^n|Y_i - g_n(X_i)|^2 + c_{9} \cdot \frac{(M_n + 1)^d}{n},
 \end{split}
 \end{equation}
@@ -275,9 +276,9 @@ Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1)
 \label{eq:lem8}
 \begin{split}
 & \E \Big[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \\
-& \leq \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \bigg(\log\Big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\Big) + 1\bigg) \\
-& \quad + 2 \cdot \E\bigg[\int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + c_9 \cdot \frac{(M_n + 1)^d}{n}\bigg] \\
-& = \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \bigg(\log\Big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\Big) + 1\bigg) \\
+& \leq \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \Bigg(\log\bigg(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\Big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\Big)\bigg) + 1\Bigg) \\[0.5em]
+& \quad + 2 \cdot \E\bigg[\int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + c_9 \cdot \frac{(M_n + 1)^d}{n}\bigg] \\[0.5em]
+& = \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \Bigg(\log\bigg(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\Big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\Big)\bigg) + 1\Bigg) \\[0.5em]
 & \quad + 2 \int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + 2 \cdot c_9 \cdot \frac{(M_n + 1)^d}{n} \\
 & \eqqcolon T_{2,A,n} + 2 \cdot T_{2,B,n} + 2 \cdot c_9 \cdot \frac{(M_n + 1)^d}{n},
 \end{split}
@@ -306,8 +307,8 @@ für hinreichend großes $n$ und Konstante $\gamma > 0$. Wir betrachten hier den
 \begin{equation}
 \label{lem9sol}
 \begin{split}
-T_{2,A,n} = & \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \bigg(\log\Big(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\big)\Big) + 1\bigg) \\
-& \leq \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \big(\big(c \cdot \log(n) \cdot J_n \big) + 1\big) \\
+T_{2,A,n} = & \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \Bigg(\log\bigg(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\Big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\Big)\bigg) + 1\Bigg) \\[0.5em]
+& \leq \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \Big(\big(c \cdot \log(n) \cdot J_n \big) + 1\Big) \\
 & \leq \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \big(2 \cdot c \cdot \log(n) \cdot J_n\big) \\
 & \leq c_{11} \cdot \frac{1}{n} \cdot \log(n)^3 \cdot J_n,
 \end{split}
@@ -353,8 +354,8 @@ Aus der Supremumseigenschaft folgt weiter
 \begin{equation}
 \label{gnmx}
 \begin{split}
-&  \int \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_{m,n}(x)|^2 \mathds{P}_X(dx) +  \int \sup_{x \in [-a_n, a_n]^d} |P_{m,n}(x) - m(x)|^2 \mathds{P}_X(dx) \\
-& =  \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_{m,n}(x)|^2 +  \sup_{x \in [-a_n, a_n]^d} |P_{m,n}(x) - m(x)|^2  \\
+&  \int \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_{m,n}(x)|^2 \mathds{P}_X(dx) +  \int \sup_{x \in [-a_n, a_n]^d} |P_{m,n}(x) - m(x)|^2 \mathds{P}_X(dx) \\[0.5em]
+& =  \sup_{x \in [-a_n, a_n]^d} |g_n(x) - P_{m,n}(x)|^2 +  \sup_{x \in [-a_n, a_n]^d} |P_{m,n}(x) - m(x)|^2  \\[0.5em]
 & \eqqcolon  \sup_{x \in [-a_n, a_n]^d} T_{2,B_1,n}^2(x) +  \sup_{x \in [-a_n, a_n]^d} T_{2,B_2,n}^2(x),
 \end{split}
 \end{equation}
@@ -366,17 +367,18 @@ Um die letzten beiden Summanden der Gleichung~(\ref{gnmx}) weiter abzuschätzen,
 Wir überprüfen, ob für Lemma~\ref{lem:5} alle Voraussetzungen erfüllt sind. Wir betrachten wieder den logistischen Squasher $\sigma$ aus Gleichung~\ref{logsquasher}, welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung 
 \begin{equation*}
 \begin{split}
-R_n & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M_n + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a_n}{|\sigma'(t_{\sigma})|}, \\
-& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M_n^3 \biggr\}
+R_n & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M_n + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a_n}{|\sigma'(t_{\sigma})|}, \\[0.5em]
+& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M_n^3 \biggr\}
 \end{split}
 \end{equation*}
-erfüllt. Weiterhin ist unser neuronales Netz aus Definition \ref{fnet} mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ identisch mit der Definition aus Lemma~\ref{lem:5} und daher sind alle Voraussetzungen für Lemma~\ref{lem:5} erfüllt.
+\todo{passt das mit Lemma 2.8 zusammen?}
+erfüllt. Daher sind für unser neuronales Netz aus Definition \ref{fnet} mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ alle Voraussetzungen für Lemma~\ref{lem:5} erfüllt.
 Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
 \begin{equation}
 \label{vorbereitung}
 \begin{split}
-\bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \bigg| & \leq c \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s} \cdot M_n^3 \cdot \frac{1}{R_n} \\
-& \leq c\cdot a_n^{3 \cdot (N + d) \cdot 2} \cdot \frac{M_n^3}{R_n} \\
+\bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d(1 - \frac{M_n}{2a_n} \cdot |x^{(j)} - x_{\mathbf{i}}^{(j)}|)_+ \bigg| & \leq c \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s} \cdot M_n^3 \cdot \frac{1}{R_n} \\[0.5em]
+& \leq c\cdot a_n^{3 \cdot (N + d) \cdot 2} \cdot \frac{M_n^3}{R_n} \\[0.5em]
 & = c\cdot \log(n) \cdot \frac{M_n^3}{R_n},  
 \end{split}
 \end{equation}
@@ -388,8 +390,8 @@ Mit Ungleichung~(\ref{vorbereitung}) und Gleichung~(\ref{bound}) erhalten wir nu
 \label{1stsum}
 \begin{split}
 T_{2,B_1,n}(x) & = |g_n(x) - P_{m,n}(x)| \\
-& = \bigg|\! \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \frac{1}{\bj!} \cdot \partial^{\bj} m (x_{\mathbf{i}}) \bigg|\!\! \cdot \!\!\bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d\Big(1 - \frac{M_n}{2a_n} \cdot \Big|x^{(j)} - x_{\mathbf{i}}^{(j)}\Big|\Big)_+ \bigg| \\
-& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot z \cdot \bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d\Big(1 - \frac{M_n}{2a_n} \cdot \Big|x^{(j)} - x_{\mathbf{i}}^{(j)}\Big|\Big)_+ \bigg| \\
+& = \bigg|\! \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \frac{1}{\bj!} \cdot \partial^{\bj} m (x_{\mathbf{i}}) \bigg|\!\! \cdot \!\!\bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d\Big(1 - \frac{M_n}{2a_n} \cdot \Big|x^{(j)} - x_{\mathbf{i}}^{(j)}\Big|\Big)_+ \bigg| \\[0.5em]
+& \leq (M_n + 1)^d \cdot (q + 1)^d \cdot z \cdot \bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d\Big(1 - \frac{M_n}{2a_n} \cdot \Big|x^{(j)} - x_{\mathbf{i}}^{(j)}\Big|\Big)_+ \bigg| \\[0.5em]
 & \leq  (M_n + 1)^d \cdot c\cdot \log(n) \cdot \frac{M_n^3}{R_n},
 \end{split}
 \end{equation}
@@ -403,10 +405,10 @@ Bei der letzten Ungleichung haben wir verwendet, dass für $p > 0$ auch $\frac{1
 \begin{equation}
 \label{3rdsum}
 \begin{split}
-|g_n(x) - P_{m,n}(x)|^2 & \leq \bigg((M_n + 1)^d \cdot c \cdot \log(n) \cdot \frac{M_n^3}{R_n}\bigg)^2 \\
-& \leq c^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{M_n^6}{R_n^2} \\
-& \leq  c^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{(M_n + 1)^{6d}}{R_n^2} \\
-& \leq  c^2 \cdot \log(n)^2 \cdot \frac{(M_n + 1)^{8d}}{R_n^2} \\
+|g_n(x) - P_{m,n}(x)|^2 & \leq \bigg((M_n + 1)^d \cdot c \cdot \log(n) \cdot \frac{M_n^3}{R_n}\bigg)^2 \\[0.5em]
+& \leq c^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{M_n^6}{R_n^2} \\[0.5em]
+& \leq  c^2 \cdot (M_n + 1)^{2d} \cdot \log(n)^2 \cdot \frac{(M_n + 1)^{6d}}{R_n^2} \\[0.5em]
+& \leq  c^2 \cdot \log(n)^2 \cdot \frac{(M_n + 1)^{8d}}{R_n^2} \\[0.5em]
 & \leq c_{13} \cdot n^{-\frac{2p}{2p + d}} \cdot \log(n)^3,
 \end{split}
 \end{equation}
@@ -428,8 +430,8 @@ Durch Quadrieren bleibt die Ungleichung~(\ref{2ndsum}) auch erhalten und, da in 
 \label{4thsum}
 \begin{split}
 \sup_{x \in [-a_n, a_n]^d} |P_{m,n}(x) - m(x)|^2 & \leq \bigg(c_{14} \cdot \log(n) \cdot \frac{1}{M_n^p}\bigg)^2 \\
-& \leq c_{14}^2 \cdot \log(n)^2 \cdot c_{2}^{-2p} \cdot n^{-\frac{2p}{2p + d}} \\
-& \leq \bigg(\frac{c_{14}}{c_2^p}\bigg)^2 \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}}.
+& \leq c_{14}^2 \cdot \log(n)^2 \cdot c_{2}^{-2p} \cdot n^{-\frac{2p}{2p + d}} \\[0.5em]
+& \leq \Big(\frac{c_{14}}{c_2^p}\Big)^2 \cdot \log(n)^3 \cdot n^{-\frac{2p}{2p + d}}.
 \end{split}
 \end{equation}
 Hiermit haben wir $\sup_{x \in [-a_n, a_n]^d} T_{2,B_2,n}(x)^2$ aus Ungleichung~(\ref{gnmx}) abgeschätzt.
@@ -440,6 +442,6 @@ Mit der Abschätzung von $T_{1,n}$ haben wir nun alle Summanden von Ungleichung 
 \E \Big[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \leq c_{\mathrm{fin}} \cdot \log(n)^3 \cdot n^{- \frac{2p}{2p + d}},
 \end{equation*}
 mit 
-$$c_{\mathrm{fin}} = c_{5} + 2 \cdot c_{10} + c_{12} + 2 \cdot \Bigg(2 \cdot \bigg( \bigg(\frac{c_{14}}{c_2^p}\bigg)^2 +  c_{13}\bigg)\Bigg),$$
+$$c_{\mathrm{fin}} = c_{5} + 2 \cdot c_{10} + c_{12} + 2 \cdot \Bigg(2 \cdot \bigg( \Big(\frac{c_{14}}{c_2^p}\Big)^2 +  c_{13}\bigg)\Bigg),$$
 wobei $c_{\mathrm{fin}}$ als Summe nichtnegativer und positiver Konstanten, die unabhängig von $n$ sind, nichtnegativ und unabhängig von $n$ ist.
 Damit haben wir unser Hauptresultat bewiesen. $\hfill\square$ 	

@@ -189,10 +189,10 @@ gilt. Daraus ergibt sich:
 \begin{equation*}
 \begin{split}
 \sum_{\bi \in [M]^{(d + 1)}} & \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - x_{\mathbf{i}}^{(j)}\Big|\bigg)_+ \\
-& = \sum_{\mathbf{i} \in \{0, 1\}^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - x_{\bi}^{(j)}\Big|\bigg) \\
-& = \Bigg(\sum_{\mathbf{i} \in \{0, 1\}^d \times \{0\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - x_{\bi}^{(j)}\Big|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\Big|\bigg) \\
-& \quad + \Bigg(\sum_{\mathbf{i} \in \{0, 1\}^d \times \{1\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - x_{\bi}^{(j)}\Big|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\Big|\bigg) \\
-& \stackrel{(\text{IV})}{=} 1 \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\Big|\bigg) + 1 \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\Big|\bigg) \\
+& = \sum_{\mathbf{i} \in \{0, 1\}^{d + 1}} \prod_{j = 1}^{d + 1} \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - x_{\bi}^{(j)}\Big|\bigg) \\[0.5em]
+& = \Bigg(\sum_{\mathbf{i} \in \{0, 1\}^d \times \{0\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - x_{\bi}^{(j)}\Big|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\Big|\bigg) \\[0.5em]
+& \quad + \Bigg(\sum_{\mathbf{i} \in \{0, 1\}^d \times \{1\}} \prod_{j = 1}^{d} \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(j)} - x_{\bi}^{(j)}\Big|\bigg)\Bigg) \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\Big|\bigg) \\[0.5em]
+& \stackrel{\mathmakebox[\widthof{=}]{\text{(IH)}}}{=} 1 \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)}\Big|\bigg) + 1 \cdot \bigg(1 - \frac{M}{2a} \cdot \Big|x^{(d + 1)} - x_{(1,\dots,1)}^{(d + 1)}\Big|\bigg) \\[0.5em]
 & = 1 + 1 - \frac{M}{2a} \cdot \bigg(x^{(d + 1)} - x_{(0,\dots,0)}^{(d + 1)} + x_{(1,\dots,1)}^{(d + 1)} - x^{(d + 1)}\bigg) \\
 & = 1 + 1 - 1 \\
 & = 1,
@@ -225,7 +225,7 @@ Nach Lemma~\ref{lem:lagrangehoch} über die Lagrange Form des Restglieds existie
 \begin{equation}
 \label{eq:lagrange}
 \begin{split}
-f(x) & = T_{q - 1}f(x; x_{\mathbf{i}}) + R_q(x; x_{\mathbf{i}})\\
+f(x) & = T_{q - 1}f(x; x_{\mathbf{i}}) + R_q(x; x_{\mathbf{i}})\\[0.5em]
 & = \sum_{\substack{\bj \in [q - 1]^d \\ |\bj|_1 \leq q - 1}}  \partial^{\bj}f(x_{\mathbf{i}}) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!} + \sum_{\substack{ \bj \in [q]^d \\|\bj|_1 = q}} \partial^{\bj}f(\xi) \cdot \frac{ (x - x_{\mathbf{i}})^{\bj} }{\bj!}
 \end{split}
 \end{equation}
@@ -275,7 +275,7 @@ mit $p = q + s.$ Setzen wir nun Ungleichung~\eqref{end2} in \eqref{last} ein, er
 \begin{equation}
 \label{ende}
 \begin{split}
-|f(x) - P_f(x)| &\leq \binom{d + q - 1}{q} \cdot C \cdot \bigg(\frac{2a}{M}\bigg)^p \cdot d^{s/2}\\
+|f(x) - P_f(x)| &\leq \binom{d + q - 1}{q} \cdot C \cdot \bigg(\frac{2a}{M}\bigg)^p \cdot d^{s/2}\\[0.5em]
 & = c \cdot \bigg(\frac{a}{M}\bigg)^p.
 \end{split}
 \end{equation}
@@ -319,15 +319,15 @@ f_k^{(s)}(x) & = 1 \nonumber
 für $|\bj|_1 + d + 1 \leq k \leq 2^s.$
 \end{defn}
 \todo{Lemma 3.2 aus Kapitel 3 hier einfügen und $f_{net}$ anpassen}
-Das folgende Lemma liefert ein Approximationsresultat für das neuronale Netz $f_{\mathrm{net},\bj,\bi}.$
+Das folgende Lemma ist ein Spezialfall \cite[Lemma 5]{kohler19} und liefert ein Approximationsresultat für das neuronale Netz $f_{\mathrm{net},\bj,\bi}.$ Dieses Lemma wird hier nur der Vollständigkeit halber und ohne Beweis aufgeführt
 
-\begin{lem}[{\cite[Lemma 5]{kohler19}}]
+\begin{lem}
 \label{lem:5}
 Sei $M \in \N$ und $\sigma\colon \R \to [0, 1]$ $2$-zulässig.
 Sei $a \geq 1$ und $R \in \R$ mit
 \begin{equation*}
 \begin{split}
-R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma})|}, \\
+R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma})|}, \\[0.5em]
 & \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\},
 \end{split}
 \end{equation*}
@@ -442,8 +442,8 @@ und $$0 = \bb^T\bU^T\bY - \bY^T\bU\bb$$
 die Gleichung 
 \begin{equation}
 \begin{split}
- \mathbf{Y}^T\mathbf{U}\mathbf{a} & = \frac{n}{2} \Big(\bb^T\bA\ba + \ba^T\bA\bb\Big) = \frac{n}{2}\Big( \bb^T\bA\ba + \ba^T\bA\bb - \frac{1}{n}\bb^T\bU^T\bY + \frac{1}{n}\bY^T\bU\bb \Big)\\
- & = \frac{n}{2} \Big( \bb^T\bA\ba + \ba^T\bA\bb - \frac{1}{n}\bb^T\bA\Big(\bA^{-1}\bU^T\bY\Big) + \frac{1}{n}\bY^T\bU\bb \Big)\\
+ \mathbf{Y}^T\mathbf{U}\mathbf{a} & = \frac{n}{2} \Big(\bb^T\bA\ba + \ba^T\bA\bb\Big) = \frac{n}{2}\Big( \bb^T\bA\ba + \ba^T\bA\bb - \frac{1}{n}\bb^T\bU^T\bY + \frac{1}{n}\bY^T\bU\bb \Big)\\[0.5em]
+ & = \frac{n}{2} \Big( \bb^T\bA\ba + \ba^T\bA\bb - \frac{1}{n}\bb^T\bA\Big(\bA^{-1}\bU^T\bY\Big) + \frac{1}{n}\bY^T\bU\bb \Big)\\[0.5em]
 & = \frac{n}{2} \Big(\bb^T\bA\ba + \ba^T\bA\bb - \bb^T\bA\bb + \frac{1}{n^2}\bY^T\bU\bA^{-1}\bU^T\bY \Big).
 \end{split}
 \end{equation}
@@ -451,8 +451,8 @@ die Gleichung
 Damit erhalten wir in Gleichung~(\ref{eq:matrix}):
 \begin{equation*}
 \begin{split}
-\varphi(\ba) & = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T \bA \mathbf{a} \\
-& = \frac{1}{n}\bY^T\bY - \bb^T\bA\ba - \ba^T\bA\bb + \bb^T\bA\bb - \frac{1}{n^2}\bY^T\bU\bA^{-1}\bU^T\bY + \ba^T\bA\ba \\
+\varphi(\ba) & = \frac{1}{n}(\mathbf{Y}^T\mathbf{Y} - 2\mathbf{Y}^T\mathbf{U}\mathbf{a}) + \mathbf{a}^T \bA \mathbf{a} \\[0.5em]
+& = \frac{1}{n}\bY^T\bY - \bb^T\bA\ba - \ba^T\bA\bb + \bb^T\bA\bb - \frac{1}{n^2}\bY^T\bU\bA^{-1}\bU^T\bY + \ba^T\bA\ba \\[0.5em]
 & = (\mathbf{a} - \bb)^T \mathbf{A} (\mathbf{a} - \bb) + \frac{1}{n}\mathbf{Y}^T\mathbf{Y} - \frac{1}{n^2}\mathbf{Y}^T\mathbf{U}\mathbf{A}^{-1}\mathbf{U}^T\mathbf{Y}.
 \end{split} 
 \end{equation*} 

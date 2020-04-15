@@ -6,18 +6,17 @@ Erfinder träumen schon lange davon, Maschinen zu schaffen, die denken. Dieser W
 Als programmierbare Computer zum ersten Mal konzipiert wurden, fragten sich die Menschen, ob solche Maschinen intelligent werden könnten, mehr als hundert Jahre bevor man sie baute. Heute ist die künstliche Intelligenz (\emph{KI}) ein blühendes Feld mit vielen praktischen Anwendungen und aktiven Forschungsthemen. 
 Künstliche Intelligenz ist längst in unserem Alltag präsent und dringt in immer mehr Bereiche vor. Sprachassistenten etwa sind bereits als Helfer auf dem Smartphone, im Auto oder zu Hause Normalität geworden. Fortschritte im Bereich der KI beruhen vor allem auf der Verwendung \emph{neuronaler Netze}. Vergleichbar mit der Funktionsweise des menschlichen Gehirns verknüpfen sie mathematisch definierte Einheiten miteinander \cite{goodfellow2016deep}.
 
-In vielen Anwendungen der KI geht es darum, aus einer Menge von Daten eine allgemeine Regel abzuleiten (\emph{maschinelles Lernen}). Mathematisch führt dies zu einem Approximationsproblem. 
-Im Kontext der KI wurden hierzu unter anderem neuronale Netze vorgeschlagen, die als universale Funktionsapproximatoren (\emph{Schätzer}) eingesetzt werden können, jedoch insbesondere bei vielen verdeckten Schichten schwer zu analysieren sind. 
-Dies führt unter anderem dazu, dass eine große Lücke zwischen den Schätzungen, für die schöne Konvergenzergebnisse in der Theorie nachgewiesen wurden, und den Schätzungen, die in der Praxis verwendet werden können, entsteht.
-
-Maschinelles Lernen kann \emph{als Lernen einer Funktion} $f$ zusammengefasst werden, die Eingangsvariablen~$X$ auf Ausgangsvariablen~$Y$ abbildet, sodass die Abbildungsvorschrift~$f(X) = Y$ entsteht.
+In vielen Anwendungen der KI geht es darum, aus einer Menge von Daten eine allgemeine Regel abzuleiten (\emph{maschinelles Lernen}). Maschinelles Lernen kann \emph{als Lernen einer Funktion} $f$ zusammengefasst werden, die Eingangsvariablen~$X$ auf Ausgangsvariablen~$Y$ abbildet, sodass die Abbildungsvorschrift~$f(X) = Y$ entsteht.
 
 Ein Algorithmus lernt diese Zielabbildungsfunktion aus Trainingsdaten.
 Die Form der Funktion ist unbekannt, sodass es unsere Aufgabe als Praktiker des maschinellen Lernens ist, verschiedene Algorithmen des maschinellen Lernens zu evaluieren und zu sehen, welcher die zugrunde liegende Funktion besser annähert.
 Unterschiedliche Algorithmen machen unterschiedliche Annahmen über die Form der Funktion und die Art und Weise, wie sie gelernt werden kann.
 
 Algorithmen, die keine Annahmen über die Form der Abbildungsfunktion treffen, werden als nichtparametrische Algorithmen des maschinellen Lernens bezeichnet. Indem sie keine Annahmen treffen, können sie jede beliebige Funktionsform aus den Trainingsdaten lernen.
-Nichtparametrische Methoden sind gut, wenn viele Daten verfügbar sind und man sich nicht allzu sehr um die Auswahl der richtigen Funktionen kümmern will \cite[Seite 757]{AI}.
+Nichtparametrische Methoden sind gut, wenn viele Daten verfügbar sind und man sich nicht allzu sehr um die Auswahl der richtigen Funktionen kümmern will \cite[Seite 757]{AI}. Mathematisch führt dies zu einem Approximationsproblem. 
+
+Im Kontext der KI wurden hierzu unter anderem neuronale Netze vorgeschlagen, die als universale Funktionsapproximatoren (\emph{Schätzer}) eingesetzt werden können, jedoch insbesondere bei vielen verdeckten Schichten schwer zu analysieren sind. 
+Dies führt unter anderem dazu, dass eine große Lücke zwischen den Schätzungen, für die schöne Konvergenzergebnisse in der Theorie nachgewiesen wurden, und den Schätzungen, die in der Praxis verwendet werden können, entsteht.
 
 Ziel dieser Arbeit ist es, die folgende Frage genauer zu betrachten: Wenn wir eine Regressionsschätzung des neuronalen Netzes theoretisch genau so definieren, wie sie in der Praxis umgesetzt wird, welches Konvergenzergebnis können wir dann für diese Schätzung vorweisen? 
 
