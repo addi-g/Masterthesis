@@ -26,7 +26,7 @@ $$\E \Big[\int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)\Big] \leq c_{\mathrm{fin}} \c
 wobei $c_{\mathrm{fin}} > 0$ eine von $n$ unabhängige Konstante ist.
 \end{mthm}
 
-Bevor wir zum Beweis von Hauptresultat ~\ref{optstop} kommen, stellen wir im folgenden Abschnitt die dafür notwendigen Hilfsresultate vor.
+Bevor wir zum Beweis von Hauptresultat~\ref{optstop} kommen, stellen wir im folgenden Abschnitt die dafür notwendigen Hilfsresultate vor.
 \section{Approximationsresultate für Hauptsatz \hyperref[optstop]{3.1}}
 Die nächsten  Definitionen und Lemmata benötigen wir für den Beweis unseres Hauptresultats, einer Aussage über die Konvergenzgeschwindigkeit unseres Neuronale-Netze-Regressionsschätzers. Die Lemmata werden hier nur der Vollständigkeit halber und ohne Beweis aufgeführt. 
 Als Nächstes geben wir eine Definition von Überdeckungszahlen an, da wir im Beweis für unser Hauptresultat eine Abschätzung einer $L_p\text{-}\epsilon$-Überdeckungszahl anwenden.
@@ -51,7 +51,7 @@ wobei der pseudometrische Raum $(X, \delta)$ gegeben ist durch $X$ als Menge all
 \end{defn}
 %In anderen Worten: $\mathcal{N}_p(\epsilon, \mathcal{F}, x_1^n)$ ist das minimale $N \in \N$, so dass Funktionen $f_1,\dots,f_N\colon \R^d \to \R$ existieren mit der Eigenschaft, dass für jedes $f \in \mathcal{F}$ gilt:
 %$$\min_{j = 1,\dots,N}\bigg(\frac{1}{n}\sum_{i = 1}^n|f(x_i) - f_j(x_i)|^p\bigg)^{1/p} < \epsilon.$$
-Das folgende Lemma beschreibt wie man den erwarteten $L_2$-Fehler eines Schätzers mithilfe einer $L_p$-$\epsilon$\textit{-Überdeckungszahl} abschätzen kann. Dieses Lemma ist ein Spezialfall von \cite[Lemma 8]{kohler19}.
+Das folgende Lemma beschreibt wie man den erwarteten $L_2$-Fehler eines Schätzers mithilfe einer $L_p$-$\epsilon$\textit{-Überdeckungszahl} abschätzen kann. Dieses Lemma ist ein Spezialfall von~\cite[Lemma 8]{kohler19}.
   \begin{lem}
   \label{lem:8}
 Sei $\beta_n = c_1 \cdot \log(n)$ für eine hinreichend große Konstante $c_1 > 0$. Angenommen die Verteilung von $Y$ erfüllt 
@@ -367,12 +367,11 @@ Um die letzten beiden Summanden der Gleichung~(\ref{gnmx}) weiter abzuschätzen,
 Wir überprüfen, ob für Lemma~\ref{lem:5} alle Voraussetzungen erfüllt sind. Wir betrachten wieder den logistischen Squasher $\sigma$ aus Gleichung~\ref{logsquasher}, welcher nach Lemma~\ref{lem:logsquasher} insbesondere 2-zulässig ist. Zudem ist für hinreichend großes $n$ die Bedingung 
 \begin{equation*}
 \begin{split}
-R_n & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M_n + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a_n}{|\sigma'(t_{\sigma})|}, \\[0.5em]
-& \quad \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s}, 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M_n^3 \biggr\}
+R_n & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M_n + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a_n}{|\sigma'(t_{\sigma})|}, \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s}, \\[0.5em]
+& \quad 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M_n^3 \biggr\}
 \end{split}
 \end{equation*}
-\todo{passt das mit Lemma 2.8 zusammen?}
-erfüllt. Daher sind für unser neuronales Netz aus Definition \ref{fnet} mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ alle Voraussetzungen für Lemma~\ref{lem:5} erfüllt.
+erfüllt. Daher gelten für unser neuronales Netz aus Definition \ref{fnet} mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ alle Voraussetzungen für Lemma~\ref{lem:5}.
 Wir erhalten damit für $x \in [-a_n ,a_n]^d$ und $n$ hinreichend groß:
 \begin{equation}
 \label{vorbereitung}

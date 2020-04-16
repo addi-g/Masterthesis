@@ -17,7 +17,7 @@ Um die Leistung unseres Neuronale-Netze-Regressionsschätzers zu überprüfen, h
 Visuell kann man mit Abbildung~\ref{fig:subfig1.a.4} erkennen, dass der Schätzer eine sehr gute Approximation der Funktion liefert, aber um genauer beurteilen zu können wie gut die Schätzung wirklich ist und wie gut unser Schätzer im Vergleich zu anderen Schätzern abschneidet, betrachten wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} den Interquartilsabstand und den Median des skalierten $L_2$-Fehlers der einzelnen Schätzer. 
 
 Unser Vorgehen zum Vergleich der drei hier betrachteten Regressionsschätzer gestaltet sich wie folgt:
-Wir bestimmen erst den $L_2$-Fehler der einzelnen Schätzer approximativ durch den empirisch arithmetischen $L_2$-Fehler $\epsilon_{L_2,N}$ auf einer unabhängigen Stichprobe von $X$ der Größe $N = 1000$. 
+Wir bestimmen als Erstes den $L_2$-Fehler der einzelnen Schätzer $m_{n,i}$ für $i = 1,2,3$ approximativ durch den empirisch arithmetischen $L_2$-Fehler $\epsilon_{L_2,N}(m_{n,i})$ auf einer unabhängigen Stichprobe von $X$ der Größe $N = 1000$. 
 
 Da wir unsere Regressionsfunktionen kennen und der Fehler stark vom Verhalten der Funktion $m_j$ abhängt, betrachten wir den empirischen $L_2$-Fehler im Verhältnis zum simpelsten Schätzer von $m_j$, einer konstanten Funktion. Der Wert dieses \textit{konstanten Schätzers} bestimmen wir, in dem wir das empirische Mittel der beobachteten Daten $Y$ nehmen. Wir erhalten damit ein skaliertes Fehlermaß $\epsilon_{L_2,N}(m_{n,i})/\bar{\epsilon}_{L_2,N}(avg)$ mit $\bar{\epsilon}_{L_2,N}(avg)$ als Median von $50$ unabhängigen Realisierungen von $\epsilon_{L_2,N}$. 
 

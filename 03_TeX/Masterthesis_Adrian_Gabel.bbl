@@ -39,10 +39,21 @@ O.~Forster.
   Veränderlichen}.
 \newblock Springer, Berlin, 12. edition, 2016.
 
+\bibitem[GBC16]{goodfellow2016deep}
+I.~Goodfellow, Y.~Bengio, and A.~Courville.
+\newblock {\em Deep Learning}.
+\newblock Adaptive Computation and Machine Learning series. MIT Press, 2016.
+
 \bibitem[GKKW02]{gyoerfi2002}
 L.~Györfi, M.~Kohler, A.~Krzyzak, and H.~Walk.
 \newblock {\em A Distribution-Free Theory of Nonparametric Regression.}
 \newblock Springer series in statistics. Springer, Berlin, 1. edition, 2002.
+
+\bibitem[HTN96]{hesiod1996works}
+Hesiod, D.W. Tandy, and W.C. Neale.
+\newblock {\em Works and Days: A Translation and Commentary for the Social
+  Sciences}.
+\newblock University of California Press, 1996.
 
 \bibitem[Kle13]{Klenke2013}
 A.~Klenke.
@@ -58,6 +69,26 @@ R.~Kress.
 K.~Königsberger.
 \newblock {\em Analysis 2}.
 \newblock Springer, Berlin, 5. edition, 2004.
+
+\bibitem[MK05]{2005metamorphoses}
+C.~Martin and B.M.W. Knox.
+\newblock {\em Metamorphoses: A New Translation}.
+\newblock W. W. Norton, 2005.
+
+\bibitem[RN09]{AI}
+Stuart Russell and Peter Norvig.
+\newblock {\em Artificial Intelligence: A Modern Approach}.
+\newblock Prentice Hall Press, USA, 3rd edition, 2009.
+
+\bibitem[Spa96]{sparkes1996red}
+B.A. Sparkes.
+\newblock {\em The Red and the Black: Studies in Greek Pottery}.
+\newblock Routledge, 1996.
+
+\bibitem[TEC19]{tollerproofs}
+A.~Toller, F.~Edholm, and D.~Chen.
+\newblock {\em Proofs in Competition Math: Volume 2}.
+\newblock Lulu.com, 2019.
 
 \bibitem[VRDJ95]{van1995python}
 G.~Van~Rossum and F.~L. Drake~Jr.
