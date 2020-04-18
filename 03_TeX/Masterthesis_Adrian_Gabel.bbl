@@ -7,7 +7,7 @@ R.~Bartsch.
 \newblock De Gruyter, Berlin, 2. edition, 2015.
 
 \bibitem[BKK19]{kohler19}
-A.~Braun, M.~Kohler, and A.~Krzyzak.
+A.~Braun, M.~Kohler, und A.~Krzyzak.
 \newblock Analysis of the rate of convergence of neural network regression
   estimates which are easy to implement.
 \newblock 2019.
@@ -15,7 +15,7 @@ A.~Braun, M.~Kohler, and A.~Krzyzak.
 \bibitem[Bos13]{bosch2009algebra}
 S.~Bosch.
 \newblock {\em Algebra}.
-\newblock Springer-Lehrbuch. Springer, Berlin, 8. edition, 2013.
+\newblock Springer-Lehrbuch. Springer, Berlin, 8. Auflage, 2013.
 
 \bibitem[C{\etalchar{+}}15]{chollet2015keras}
 F.~Chollet et~al.
@@ -23,12 +23,12 @@ F.~Chollet et~al.
 \newblock \url{https://keras.io}, 2015.
 
 \bibitem[DGL96]{DevLug96}
-L.~Devroye, L.~Györfi, and G.~Lugosi.
+L.~Devroye, L.~Györfi, und G.~Lugosi.
 \newblock {\em A Probabilistic Theory of Pattern Recognition}.
-\newblock Springer, New York, 1. edition, 1996.
+\newblock Springer, New York, 1. Auflage, 1996.
 
 \bibitem[DW80]{DevWag80}
-L.~Devroye and T.J. Wagner.
+L.~Devroye und T.J. Wagner.
 \newblock Distribution-free consistency results in non- parametric
   discrimination and regression function estimation.
 \newblock {\em Annals of Statistic}, 8:231--239, 1980.
@@ -37,20 +37,20 @@ L.~Devroye and T.J. Wagner.
 O.~Forster.
 \newblock {\em Analysis 1 - Differential- und Integralrechnung einer
   Veränderlichen}.
-\newblock Springer, Berlin, 12. edition, 2016.
+\newblock Springer, Berlin, 12. Auflage, 2016.
 
 \bibitem[GBC16]{goodfellow2016deep}
-I.~Goodfellow, Y.~Bengio, and A.~Courville.
+I.~Goodfellow, Y.~Bengio, und A.~Courville.
 \newblock {\em Deep Learning}.
 \newblock Adaptive Computation and Machine Learning series. MIT Press, 2016.
 
 \bibitem[GKKW02]{gyoerfi2002}
-L.~Györfi, M.~Kohler, A.~Krzyzak, and H.~Walk.
+L.~Györfi, M.~Kohler, A.~Krzyzak, und H.~Walk.
 \newblock {\em A Distribution-Free Theory of Nonparametric Regression.}
-\newblock Springer series in statistics. Springer, Berlin, 1. edition, 2002.
+\newblock Springer series in statistics. Springer, Berlin, 1. Auflage, 2002.
 
 \bibitem[HTN96]{hesiod1996works}
-Hesiod, D.W. Tandy, and W.C. Neale.
+Hesiod, D.W. Tandy, und W.C. Neale.
 \newblock {\em Works and Days: A Translation and Commentary for the Social
   Sciences}.
 \newblock University of California Press, 1996.
@@ -63,22 +63,22 @@ A.~Klenke.
 \bibitem[Kre98]{Kress1998}
 R.~Kress.
 \newblock {\em Numerical analysis}.
-\newblock Springer, Berlin, 1. edition, 1998.
+\newblock Springer, Berlin, 1. Auflage, 1998.
 
 \bibitem[Kö04]{Koenigsberger2013}
 K.~Königsberger.
 \newblock {\em Analysis 2}.
-\newblock Springer, Berlin, 5. edition, 2004.
+\newblock Springer, Berlin, 5. Auflage, 2004.
 
 \bibitem[MK05]{2005metamorphoses}
-C.~Martin and B.M.W. Knox.
+C.~Martin und B.M.W. Knox.
 \newblock {\em Metamorphoses: A New Translation}.
 \newblock W. W. Norton, 2005.
 
 \bibitem[RN09]{AI}
-Stuart Russell and Peter Norvig.
+Stuart Russell und Peter Norvig.
 \newblock {\em Artificial Intelligence: A Modern Approach}.
-\newblock Prentice Hall Press, USA, 3rd edition, 2009.
+\newblock Prentice Hall Press, USA, 3. Auflage, 2009.
 
 \bibitem[Spa96]{sparkes1996red}
 B.A. Sparkes.
@@ -86,12 +86,12 @@ B.A. Sparkes.
 \newblock Routledge, 1996.
 
 \bibitem[TEC19]{tollerproofs}
-A.~Toller, F.~Edholm, and D.~Chen.
+A.~Toller, F.~Edholm, und D.~Chen.
 \newblock {\em Proofs in Competition Math: Volume 2}.
 \newblock Lulu.com, 2019.
 
 \bibitem[VRDJ95]{van1995python}
-G.~Van~Rossum and F.~L. Drake~Jr.
+G.~Van~Rossum und F.~L. Drake~Jr.
 \newblock {\em Python tutorial}.
 \newblock Centrum voor Wiskunde en Informatica Amsterdam, The Netherlands,
   1995.

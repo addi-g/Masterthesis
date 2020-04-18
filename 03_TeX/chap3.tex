@@ -103,9 +103,9 @@ Damit können wir den erwarteten $L_2$-Fehler umschreiben zu:
 \begin{equation}
 \label{originaleq}
 \begin{split}
-\E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg] & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \cdot (\mathds{1}_{A_n^{\mathsf{c}}} + \mathds{1}_{A_n})\bigg] \\[0.5em]
+\E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx)\bigg] & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \cdot (\mathds{1}_{A_n^{\mathsf{c}}} + \mathds{1}_{A_n})\bigg] \\[1em]
 & = \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n^{\mathsf{c}}}\bigg] \\[0.5em]
-& \quad + \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] \\
+& \quad + \E \bigg[\int |m_n(x) - m(x)|^2 \mathds{P}_X(dx) \mathds{1}_{A_n}\bigg] \\[1em] 
 & \eqqcolon T_{1,n} + T_{2,n}.
 \end{split}
 \end{equation}
@@ -275,11 +275,11 @@ Da $g_n$ nach Definition deterministisch, damit also unabhängig von $(X_1, Y_1)
 \begin{equation}
 \label{eq:lem8}
 \begin{split}
-& \E \Big[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \\
+& \E \Big[\int |\hat{m}_n(x) - m(x)|^2 \mathds{P}_X(dx)\Big] \\[1em] 
 & \leq \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \Bigg(\log\bigg(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\Big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\Big)\bigg) + 1\Bigg) \\[0.5em]
-& \quad + 2 \cdot \E\bigg[\int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + c_9 \cdot \frac{(M_n + 1)^d}{n}\bigg] \\[0.5em]
+& \quad + 2 \cdot \E\bigg[\int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + c_9 \cdot \frac{(M_n + 1)^d}{n}\bigg] \\[1em]
 & = \frac{1}{n} \cdot c_9 \cdot \log(n)^2 \cdot \Bigg(\log\bigg(\sup_{x_1^n \in (\supp(X))^n}\mathcal{N}_1\Big(\frac{1}{n \cdot \beta_n},\mathcal{F}^{(J_n)},x_1^n\Big)\bigg) + 1\Bigg) \\[0.5em]
-& \quad + 2 \int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + 2 \cdot c_9 \cdot \frac{(M_n + 1)^d}{n} \\
+& \quad + 2 \int |g_{n}(x) - m(x)|^2 \mathds{P}_X(dx) + 2 \cdot c_9 \cdot \frac{(M_n + 1)^d}{n} \\[1em] 
 & \eqqcolon T_{2,A,n} + 2 \cdot T_{2,B,n} + 2 \cdot c_9 \cdot \frac{(M_n + 1)^d}{n},
 \end{split}
 \end{equation}
@@ -388,7 +388,7 @@ Mit Ungleichung~(\ref{vorbereitung}) und Gleichung~(\ref{bound}) erhalten wir nu
 \begin{equation}
 \label{1stsum}
 \begin{split}
-T_{2,B_1,n}(x) & = |g_n(x) - P_{m,n}(x)| \\
+T_{2,B_1,n}(x) & = |g_n(x) - P_{m,n}(x)| \\[0.5em]
 & = \bigg|\! \sum_{\bi \in [M_n]^d} \sum_{\substack{ \bj \in [q]^d \\ |\bj|_1 \leq q}} \frac{1}{\bj!} \cdot \partial^{\bj} m (x_{\mathbf{i}}) \bigg|\!\! \cdot \!\!\bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d\Big(1 - \frac{M_n}{2a_n} \cdot \Big|x^{(j)} - x_{\mathbf{i}}^{(j)}\Big|\Big)_+ \bigg| \\[0.5em]
 & \leq (M_n + 1)^d \cdot (q + 1)^d \cdot z \cdot \bigg| f_{\net,\bj,\mathbf{i}}(x) - (x - x_{\mathbf{i}})^{\bj} \cdot \prod_{j = 1}^d\Big(1 - \frac{M_n}{2a_n} \cdot \Big|x^{(j)} - x_{\mathbf{i}}^{(j)}\Big|\Big)_+ \bigg| \\[0.5em]
 & \leq  (M_n + 1)^d \cdot c\cdot \log(n) \cdot \frac{M_n^3}{R_n},

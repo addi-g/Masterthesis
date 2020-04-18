@@ -3,9 +3,7 @@ Main Datei die die Simulation und damit den Vergleich der implementierten Schaet
 durchfuehrt.
 """
 import numpy as np
-import matplotlib . pyplot as plt
 import pandas as pd
-import tikzplotlib
 from scipy.stats import iqr
 from data_gen import gen_data_Y
 from constant import constant_estimate
@@ -16,38 +14,6 @@ from fc_neural_network import fc_neural_1_estimate
 n = 1000
 n_train = int(n * 0.8)
 n_test = int(n * 0.2)
-
-'''
-EINDIMENSIONALER FALL (d = 1) wird geplottet
-'''
-# Wahl der Parameter fuer unseren neuen Neuronale-Netze-Regressionschaetzer
-
-N = 3
-q = 2
-R = 10 ** 6  
-a = 2
-M = 2
-d = 1
-
-sigma = 0.05
-
-X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
-m_X_train, Y_train = gen_data_Y(X_train,sigma)
-    
-X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
-    
-Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
-m_X_test, dummy = gen_data_Y(X_test,sigma)
-    
-
-area = 4
-plt.scatter(X_test, m_X_test, s=area, color = 'blue', label='m_1', alpha=0.5)
-plt.scatter(X_test, Y_pred_new_nn, s=area, color = 'red', label='new_neural_network_estimate', alpha=0.5)
-plt.title('...')
-plt.legend(loc='upper left') 
-plt.xlabel('x')
-plt.ylabel('y')
-tikzplotlib.save("mytikz_d1.tex")
 
 '''
 ein Vergleich des emp. L2 Fehler gemacht fuer d = 1
@@ -72,10 +38,10 @@ e_L2_avg[:] = np.nan
 for sigma in spreads:
     for i in range(0,np.size(scaled_error,0),1):
     
-        X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
+        X_train = np.random.uniform(low=-a,high=a,size=(int(n_train),d))
         m_X_train, Y_train = gen_data_Y(X_train,sigma)
         
-        X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
+        X_test = np.random.uniform(low=-a,high=a,size=(int(n_test),d))
         
         Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
         Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
@@ -146,10 +112,10 @@ e_L2_avg[:] = np.nan
 for sigma in spreads:
     for i in range(0,np.size(scaled_error,0),1):
     
-        X_train = np.random.uniform(low=-2,high=2,size=(int(n_train),d))
+        X_train = np.random.uniform(low=-a,high=a,size=(int(n_train),d))
         m_X_train, Y_train = gen_data_Y(X_train,sigma)
         
-        X_test = np.random.uniform(low=-2,high=2,size=(int(n_test),d))
+        X_test = np.random.uniform(low=-a,high=a,size=(int(n_test),d))
         
         Y_pred_new_nn = new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a,)
         Y_pred_fc_nn_1 = fc_neural_1_estimate(X_train, Y_train, X_test)
@@ -163,7 +129,7 @@ for sigma in spreads:
         
         for j in range(0,np.size(e_L2_avg),1):
             
-            X = np.random.uniform(low=-2,high=2,size=(n_test,d))
+            X = np.random.uniform(low=-a,high=a,size=(n_test,d))
             m_X, Y = gen_data_Y(X,sigma)
             Y_pred_constant = constant_estimate(Y)
             

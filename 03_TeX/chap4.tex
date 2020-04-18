@@ -1,64 +1,305 @@
 \chapter{Anwendungsbeispiel auf simulierte Daten}
 \label{chap:4}
 
-In diesem Kapitel betrachten wir die Leistung unseres Neuronale-Netze"=Regressionsschätzers aus Kapitel~\ref{chap:2}, bei endlicher Stichprobengröße auf simulierte Daten in $Python$~\cite[Version 3.7.3]{van1995python} mithilfe der $Keras$ Bibliothek \cite{chollet2015keras}.
+In diesem Kapitel untersuchen wir die Leistung unseres Neuronale-Netze"=Regressionsschätzers aus Kapitel~\ref{chap:2} anhand von Anwendungsbeispielen auf simulierte Daten. Der Schätzer und die Beispiele wurden in \emph{Python}~\cite[Version 3.7.3]{van1995python} implementiert (vgl.\@ Appendix~\ref{chap:app}). 
+%Dafür führen wir eine Simulation bei endlicher Stichprobengröße auf simulierte Daten durch.
+Im ersten Abschnitt führen wir eine Parameterstudie für unseren Neuronale-Netze-Regressionsschätzer durch. Im zweiten Abschnitt quantifizieren wir im Rahmen eines Simulationsbeispiels die Leistung unseres Neuronale-Netze-Regressionsschätzers, indem wir den empirischen $L_2$-Fehler dieses Schätzers und weiterer Standardschätzer berechnen und vergleichen.
+%Die Implementation der Standardschätzer erfolgte mithilfe der $Keras$ Bibliothek \cite{chollet2015keras}. Keras ist eine \emph{High-Level} Anwendungs-Programmierschnittstelle für neuronale Netze in Python. Wir haben uns für Keras entschieden, da diese Bibliothek einfaches und schnelles Erstellen von neuronalen Netzen durch Benutzerfreundlichkeit, Modularität und Erweiterbarkeit ermöglicht. 
 
-Die simulierten Daten, welche wir verwenden werden, sehen wie folgt aus:
-Wir wählen $X$ gleichverteilt auf $[-2, 2]^d$, wobei $d$ die Dimension des Inputs ist, zudem wählen wir $\epsilon$ standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
-$$Y = m_j(X) + \sigma \cdot \lambda_j \cdot \epsilon,$$ 
-wobei $m_j \colon [-2, 2]^d \to \R$ für  $j \in \{1, 2\}$ den Funktionen:
-$$ m_1(x) =  \sin\big(0.2 \cdot x^2\big) + \exp(0.5 \cdot x) + x^3$$
-und
-$$ m_2(x_0, x_1) = \sin\big(\sqrt[2]{x_0^2 + x_1^2}\big)$$
-entspricht.
-Den Skalierungsfaktor $\lambda_j > 0$ wählen wir als Interquartilsabstand \emph{(IQR)} einer Stichprobe der Größe $N = 800$ von $m(X)$. Für den Rauschfaktor $\sigma$ gilt $\sigma \in \{0.05, 0.1\}.$ Mit diesen Daten lässt sich nun auch $Y$ darstellen.
+\section{Parameterstudie}
+\label{Studie}
 
-Um die Leistung unseres Neuronale-Netze-Regressionsschätzers zu überprüfen, haben wir erstmals die Funktion $m_1$ und die jeweilige Schätzung durch unseren Neuronale-Netze-Regressionsschätzer für $\sigma = 0.05$ zeichnen lassen. 
-Visuell kann man mit Abbildung~\ref{fig:subfig1.a.4} erkennen, dass der Schätzer eine sehr gute Approximation der Funktion liefert, aber um genauer beurteilen zu können wie gut die Schätzung wirklich ist und wie gut unser Schätzer im Vergleich zu anderen Schätzern abschneidet, betrachten wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} den Interquartilsabstand und den Median des skalierten $L_2$-Fehlers der einzelnen Schätzer. 
+In diesem Abschnitt führen wir für unseren Neuronale-Netze-Regressionsschätzer \textit{new\_neural\_network\_estimate} ($m_{n,1}$) eine Parameterstudie durch, um den Einfluss der Parameter auf den Schätzer zu überprüfen. Wir haben als Regressionsfunktion $m\colon [-3,3] \to \R$ mit
+$$m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$$
+gewählt.
+Diese Funktion stellt als Potenzreihe und durch ihr starkes Schwingen für Regressionsschätzer und insbesondere für unseren Neuronale-Netze-Schätzer, welcher Polynome approximiert, eine Herausforderung dar. Wir erzeugen eine Stichprobe von $1000$ unabhängigen auf dem Intervall $[-3,3]$ gleichverteilten Zufallsvariablen und teilen diese Stichprobe in ein Learning-Sample der Größe $800$ und ein Testing-Sample \todo{was mach ich mit dem Sample? dieses Y aus Teil 2 brauch ich auch schon ...} der Größe $200$ auf. In der Parameterstudie verändern wir bei unserem Neuronale-Netze-Schätzer den Parameter~$N$, welcher den maximalen Grad der Polynome bestimmt, welche wir mit $f_{\net,\bj,\bi}$ schätzen möchten und die ihrerseits die Regressionsfunktion approximieren sollen (vgl.\@ Lemma~\ref{lem:5}). Zudem verändern wir den Parameter~$M$, welcher den Abstand zwischen zwei benachbarten Gitterpunkten steuert. Durch wachsendes $M$ verfeinert sich das Gitter, welches wir über das Intervall $[-3,3]$ legen und wir vermuten, dass sich dadurch die Approximationsgüte verbessert (vgl.\@ Lemma~\ref{lem:pcsmooth}). 
 
-Unser Vorgehen zum Vergleich der drei hier betrachteten Regressionsschätzer gestaltet sich wie folgt:
-Wir bestimmen als Erstes den $L_2$-Fehler der einzelnen Schätzer $m_{n,i}$ für $i = 1,2,3$ approximativ durch den empirisch arithmetischen $L_2$-Fehler $\epsilon_{L_2,N}(m_{n,i})$ auf einer unabhängigen Stichprobe von $X$ der Größe $N = 1000$. 
+Um die Vergleichbarkeit der Ergebnisse sicherzustellen, erzeugen wir mit einem \emph{Seed} eine reproduzierbare Realisierung der Zufallsvariablen. In der Parameterstudie betrachten wir den Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $M \in\{2,4,8,9,16\}$ und $N \in \{2,4,8,9,16\}$. Für die Wahl der Parameter haben wir uns an \cite{kohler19} orientiert.
 
-Da wir unsere Regressionsfunktionen kennen und der Fehler stark vom Verhalten der Funktion $m_j$ abhängt, betrachten wir den empirischen $L_2$-Fehler im Verhältnis zum simpelsten Schätzer von $m_j$, einer konstanten Funktion. Der Wert dieses \textit{konstanten Schätzers} bestimmen wir, in dem wir das empirische Mittel der beobachteten Daten $Y$ nehmen. Wir erhalten damit ein skaliertes Fehlermaß $\epsilon_{L_2,N}(m_{n,i})/\bar{\epsilon}_{L_2,N}(avg)$ mit $\bar{\epsilon}_{L_2,N}(avg)$ als Median von $50$ unabhängigen Realisierungen von $\epsilon_{L_2,N}$. 
-
-Wir bestimmten $\epsilon_{L_2,N}(\cdot)$ als empirisches Mittel von $25$ quadratischen Fehlern der Schätzung des konstanten Schätzers. Dieses skalierte Fehlermaß ist so zu deuten, dass ein großer Fehler durch einen der drei Regressionsschätzer im Falle, dass der Fehler des konstanten Schätzers klein ist, auf eine noch schlechtere Leistung hindeutet. Der Fehler $\epsilon_{L_2,N}(m_{n,i})$ wird also durch $\bar{\epsilon}_{L_2,N}(avg)$ gewichtet.
-
-Die resultierenden skalierten Fehler hängen noch von der Stichprobe von $(X, Y)$ ab und um diese Werte besser vergleichen zu können, führen wir die Fehlerberechnung jeweils $50$ mal durch und geben dann den Median und den Interquartilsabstand für die Schätzung der betrachteten Regressionsschätzer aus.
-Wir teilen für jeden Schätzer die Stichprobe in ein \textit{learning sample} der Größe $n_l = 0.8 \cdot N$ und in ein \textit{testing sample} der Größe $n_t = 0.2 \cdot N$ auf. Wir bestimmen die Parameterwerte für die Schätzer auf dem learning sample und bestimmen das korrespondiere $L_2$-Risiko auf dem testing sample.
-
-Unser erster Schätzer \textit{fc\_neural\_1\_estimate} ist ein neuronales Netz mit einer verborgenen Schicht. Dieser Schätzer hat eine feste Anzahl an Neuronen die wir aus der Menge $\{5, 10, 25, 50, 75\}$ auswählen die bei der Simulation zu einem minimalen empirischen $L_2$-Risiko führt.
-
-Unser zweiter Schätzer \textit{nearest\_neighbor\_estimate} ist ein Nächste-Nachbar-Schätzer bei der die Anzahl an nächsten Nachbarn so aus der Menge $\{1, 2, 3\} \cup \{4, 8, 12, 16, \dots, 4 \cdot \lfloor\frac{n_l}{4}\rfloor\}$ ausgewählt wird, dass dieser zu minimalen empirischen $L_2$-Risiko führt.
-
-Unser letzter Schätzer ist der in Kapitel~\ref{chap:2} vorgestellte Neuronale-Netze-Regressionsschätzer den wir mit \textit{new\_neural\_network\_estimate} bezeichnen. Hier haben wir die Parameter, je nachdem, welche Regressionsfunktion wir betrachtet haben, entsprechend angepasst, da wir zum Beispiel den Grad der zu schätzenden Funktion kennen und dies bei unserem Schätzer berücksichtigen können. Für die Schätzung von $m_1$ setzten wir: $d = 1$, $N = 3$, $q = 2$, $R = 10^6$, $a = 2$, $M = 2$.
-Für die Schätzung von $m_2$ wählten wir: $d = 2$, $N = 2$, $q = 2$, $R = 10^6$, $a = 2$, $M = 2$.
-
+In Abbildung~\ref{fig:subfig.a.1} erkennen wir die Approximation der Regressionsfunktion $m$ auf dem Testing-Sample durch unseren Neuronale-Netze-Regressionsschätzer, wobei wir $M = 2$ und $N \in \{2,4,8,16\}$ wählen. Visuell erkennen wir, dass sich die Approximation mit steigendem $N$ verbessert.
+In Abbildung~\ref{fig:subfig.a.2} erkennen wir die Approximation der Regressionsfunktion $m$ auf dem Testing-Sample durch unseren Neuronale-Netze-Regressionsschätzer, wobei wir $N = 2$ und $M \in \{2,4,8,16\}$ wählen. Visuell erkennen wir, dass sich die Approximation mit steigendem $M$ verbessert. In Abbildung~\ref{fig:subfig.a.3} haben wir $N = 16$ fest gewählt und betrachten variables $M \in \{2,4,8,16\}$. Visuell erkennen wir, dass sich die Approximation mit steigendem $M$ verbessert.
+In Abbildung~\ref{fig:subfig.a.4} haben wir $M = 16$ fest gewählt und betrachten variables $N \in \{2,4,8,16\}$. Visuell erkennen wir, dass sich die Approximation mit steigendem $N$ verbessert.
+In Abbildung~\ref{fig:subfig.a.5} betrachten wir $M \in \{2,4,8,9,16\}$ und $N \in \{2,4,8,9,16\}$, wobei wir immer Kombinationen von $M$ und $N$ betrachten, sodass $(M + 1)\cdot(N + 1) \approx 51$ ergibt. Visuell erkennen wir, dass die Approximation besser ist, wenn einer der Parameter sehr groß ist, als wenn der kleiner Wert etwas höher und dafür der höhere etwas kleiner wird. Es ist zu beachten, dass die Approximation durch den Schätzer besser wird je höher die Parameter sind. Hohe Parameter führen aber auch zu einem höheren Ressourcenbedarf wie z.B. der Rechenzeit. Es ist daher auch interessant zu wissen, ob der Schätzer auch bei geringer Parameterwahl akzeptable Ergebnisse liefert. \todo{Sinn von Test und Sätze anders aufschreiben}
 \begin{figure}
     \begin{subfigure}[b]{0.5\textwidth}
         \centering
         \scalebox{0.9}{
-          \input{m1tikz.tex}}
-        \caption{Zu schätzende Funktion $m_1$. \\\qquad  }
-        \label{fig:subfig8}
+          \input{Plots_Simulation/mytikz_N2_M2.tex}}
+        \label{fig:subfig1n2m2}
     \end{subfigure}
     \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \scalebox{0.9}{
-           \input{nnnestimatetikz.tex}}
-        \caption{Schätzung von $m_1$ durch unseren Neuronale-Netze-Regressionsschätzer.}   
-        \label{fig:subfig9}
+           \input{Plots_Simulation/mytikz_N4_M2.tex}}
+        \label{fig:subfig1n4m2}
     \end{subfigure}
-       \hspace{0.4cm}
-    \begin{subfigure}[b]{1\textwidth}
+       \hspace{0.1cm}
+    \begin{subfigure}[b]{0.5\textwidth}
     \centering
     \scalebox{0.9}{
-	\input{tikzd1.tex}}
-	 \caption{Visueller Vergleich der Funktion $m_1$ mit ihrer Schätzung.}
-        \label{fig:subfig810}
+	\input{Plots_Simulation/mytikz_N8_M2.tex}}
+        \label{fig:subfig1n8m2}
     \end{subfigure}
-    \caption{Darstellung der Funktion $m_1$ und dessen Schätzung durch den Schätzer \textit{new\_neural\_network\_estimate}.} 
-\label{fig:subfig1.a.4}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+     \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N16_M2.tex}}
+        \label{fig:subfig1n16m2}
+    \end{subfigure}
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \scalebox{0.9}{
+\begin{tikzpicture} 
+    \begin{axis}[%
+    legend columns=2,
+    hide axis,
+    xmin=10,
+    xmax=50,
+    ymin=0,
+    ymax=0.4,
+    legend style={draw=white!15!black,legend cell align=left,column sep=0.25cm}
+    ]
+    \addlegendimage{no markers,black}
+    \addlegendentry{Regressionsfunktion $m \quad$};
+     \addlegendimage{only marks,red,mark=x}
+    \addlegendentry{Regrssionsschätzung};
+    \end{axis}
+\end{tikzpicture}}
+    \end{subfigure}
+    \caption{Approximation der Regressionsfunktion $m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$ durch unseren Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $M = 2$ und $N \in \{2,4,8,16\}$.}
+    \label{fig:subfig.a.1}
 \end{figure}
+\begin{figure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+	\input{Plots_Simulation/mytikz_N2_M2.tex}}
+        \label{fig:subfig2n2m2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+     \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N2_M4.tex}}  
+        \label{fig:subfig2n2m4}
+    \end{subfigure}
+    \hspace{0.1cm}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+	\input{Plots_Simulation/mytikz_N2_M8.tex}}
+        \label{fig:subfig2n2m8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+     \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N2_M16.tex}}
+        \label{fig:subfig2n2m16}
+    \end{subfigure}
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \scalebox{0.9}{
+\begin{tikzpicture} 
+    \begin{axis}[%
+    legend columns=2,
+    hide axis,
+    xmin=10,
+    xmax=50,
+    ymin=0,
+    ymax=0.4,
+    legend style={draw=white!15!black,legend cell align=left,column sep=0.25cm}
+    ]
+    \addlegendimage{no markers,black}
+    \addlegendentry{Regressionsfunktion $m \quad$};
+     \addlegendimage{only marks,red,mark=x}
+    \addlegendentry{Regressionsschätzung};
+    \end{axis}
+\end{tikzpicture}}
+    \end{subfigure}
+     \caption{Approximation der Regressionsfunktion $m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$ durch unseren Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $N = 2$ und $M \in \{2,4,8,16\}$.}
+\label{fig:subfig.a.2}
+\end{figure}
+\begin{figure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+	\input{Plots_Simulation/mytikz_N16_M2.tex}}
+        \label{fig:subfig3n16m2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+     \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N16_M4.tex}}
+        \label{fig:subfig3n16m4}
+    \end{subfigure}
+    \hspace{0.1cm}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+	\input{Plots_Simulation/mytikz_N16_M8.tex}}
+        \label{fig:subfign3n16m8}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+     \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N16_M16.tex}}
+        \label{fig:subfig3n16m16}
+    \end{subfigure}
+\begin{subfigure}[b]{1\textwidth}
+        \centering
+        \scalebox{0.9}{
+\begin{tikzpicture} 
+    \begin{axis}[%
+    legend columns=2,
+    hide axis,
+    xmin=10,
+    xmax=50,
+    ymin=0,
+    ymax=0.4,
+    legend style={draw=white!15!black,legend cell align=left,column sep=0.25cm}
+    ]
+    \addlegendimage{no markers,black}
+    \addlegendentry{Regressionsfunktion $m \quad$};
+     \addlegendimage{only marks,red,mark=x}
+    \addlegendentry{Regressionsschätzung};
+    \end{axis}
+\end{tikzpicture}}
+    \end{subfigure}
+ \caption{Approximation der Regressionsfunktion $m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$ durch unseren Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $N = 16$ und $M \in \{2,4,8,16\}$.}
+ \label{fig:subfig.a.3}
+\end{figure}
+\begin{figure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \scalebox{0.9}{
+          \input{Plots_Simulation/mytikz_N2_M16.tex}}
+        \label{fig:subfig4n2m16}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N4_M16.tex}}
+        \label{fig:subfig4n4m16}
+    \end{subfigure}
+       \hspace{0.1cm}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+	\input{Plots_Simulation/mytikz_N8_M16.tex}}
+        \label{fig:subfig4n8m16}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+     \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N16_M16.tex}}
+        \label{fig:subfig4n16m16}
+    \end{subfigure}
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \scalebox{0.9}{
+\begin{tikzpicture} 
+    \begin{axis}[%
+    legend columns=2,
+    hide axis,
+    xmin=10,
+    xmax=50,
+    ymin=0,
+    ymax=0.4,
+    legend style={draw=white!15!black,legend cell align=left,column sep=0.25cm}
+    ]
+    \addlegendimage{no markers,black}
+    \addlegendentry{Regressionsfunktion $m \quad$};
+     \addlegendimage{only marks,red,mark=x}
+    \addlegendentry{Regressionsschätzung};
+    \end{axis}
+\end{tikzpicture}}
+    \end{subfigure}
+     \caption{Approximation der Regressionsfunktion $m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$ durch unseren Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $M = 16$ und $N \in \{2,4,8,16\}$.}
+    \label{fig:subfig.a.4}
+\end{figure}
+\begin{figure}
+    \begin{subfigure}[b]{0.5\textwidth}
+        \centering
+        \scalebox{0.9}{
+          \input{Plots_Simulation/mytikz_N2_M16.tex}}
+          \label{test2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N4_M9.tex}}
+           \label{fig:test}
+    \end{subfigure}
+       \hspace{0.1cm}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \scalebox{0.9}{
+	\input{Plots_Simulation/mytikz_N9_M4.tex}}
+	\label{teat1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\textwidth}
+    \centering
+     \scalebox{0.9}{
+           \input{Plots_Simulation/mytikz_N16_M2.tex}}
+           \label{test3}
+    \end{subfigure}
+    \begin{subfigure}[b]{1\textwidth}
+        \centering
+        \scalebox{0.9}{
+\begin{tikzpicture} 
+    \begin{axis}[%
+    legend columns=2,
+    hide axis,
+    xmin=10,
+    xmax=50,
+    ymin=0,
+    ymax=0.4,
+    legend style={draw=white!15!black,legend cell align=left,column sep=0.25cm}
+    ]
+    \addlegendimage{no markers,black}
+    \addlegendentry{Regressionsfunktion $m \quad$};
+     \addlegendimage{only marks,red,mark=x}
+    \addlegendentry{Regressionsschätzung};
+    \end{axis}
+\end{tikzpicture}}
+    \end{subfigure}
+     \caption{Approximation der Regressionsfunktion $m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$ durch unseren Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $M \in \{2,4,8,9,16\}$ und $N \in \{2,4,8,9,16\}$, wobei wir immer Kombinationen von $M$ und $N$ betrachten, sodass $(M + 1)\cdot(N + 1) \approx 51$ gilt.}
+    \label{fig:subfig.a.5}
+\end{figure}
+\newpage
+\section{Vergleich des empirischen $L_2$-Fehlers}
+
+In diesem Abschnitt führen wir nun einen Vergleich des empirischen $L_2$-Fehlers zwischen dem in Abschnitt \ref{Studie} vorgestellten Regressionsschätzer und den Standardschätzern durch, die im Verlauf dieses Abschnitts vorgestellt werden.
+Die simulierten Daten, welche wir verwenden werden, sehen wie folgt aus:
+Wir wählen $X$ gleichverteilt auf $[-2, 2]^d$, wobei $d \in \{1,2\}$ die Dimension des Inputs ist. Zudem wählen wir $\epsilon$ standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
+\begin{equation}
+    \label{eq:Y}
+    Y = m_d(X) + \sigma \cdot \lambda_d \cdot \epsilon,
+\end{equation}
+wobei $m_d \colon [-2, 2]^d \to \R$ den Regressionsfunktionen
+$$ m_1(x) =  \sin\big(0.2 \cdot x^2\big) + \exp(0.5 \cdot x) + x^3$$
+und
+$$ m_2(x_0, x_1) = \sin\big(\sqrt[2]{x_0^2 + x_1^2}\big)$$
+entspricht.
+Den Skalierungsfaktor $\lambda_d > 0$ wählen wir als Interquartilsabstand \emph{(IQA)} einer Stichprobe von $m(X)$. Für den Rauschfaktor $\sigma$ gilt $\sigma \in \{0.05, 0.1\}.$ Mit diesen Daten lässt sich nun auch $Y$ darstellen. 
+
+Als Nächstes kommen wir zu den Schätzern, die wir in diesem Abschnitt vergleichen möchten. Für die Wahl der Parameter der jeweiligen Schätzer haben wir uns an \cite{kohler19} orientiert.
+Der Schätzer \textit{fc\_neural\_1\_estimate} \todo{Keras erwähnen s.o.} ($m_{n,2}$) ist ein neuronales Netz mit Architektur~$(1,\bk)$, wobei die Anzahl an Neuronen $\bk$ aus der Menge $\{5, 10, 25, 50, 75\}$ stammt. Für das neuronale Netz haben wir die \emph{ReLu} Aktivierungsfunktion $f(x) = \max\{0,x\}$ verwendet. Die Anzahl der Neuronen in der verborgenen Schicht ist so gewählt, dass diese zu einem minimalen empirischen $L_2$-Risiko des Schätzers führt.
+
+Unser nächster Schätzer \textit{nearest\_neighbor\_estimate} ($m_{n,3}$) ist ein Nächste-Nachbar-Schätzer \cite[Kapitel~7.1]{fahrmeir2009regression}, bei dem die Anzahl an nächsten Nachbarn so aus der Menge $\{ 2,3,\dots,9\}$ ausgewählt wird, dass dieser zu einem minimalen empirischen $L_2$-Risiko führt.
+
+Um die Qualität der Schätzung mittels Kennzahlen zu quantifizieren und um diese mit anderen Schätzern zu vergleichen, betrachten wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} den Interquartilsabstand und den Median des skalierten $L_2$-Fehlers $\epsilon_{L_2}(m_{n,i})$ der einzelnen Schätzer $m_{n,i}$ von einer Stichprobe von Schätzungen. 
+
+Für die Schätzung von $m_1$ setzen wir: $d = 1$, $N = 3$, $q = 2$, $R = 10^6$, $a = 2$, $M = 2$, da diese Wahl der Parameter bereits sehr gute und schnelle Schätzungen liefert. Für die Schätzung von $m_2$ erhalten wir bereits mit: $d = 2$, $N = 2$, $q = 2$, $R = 10^6$, $a = 2$, $M = 2$ sehr gute Schätzungen.
+
+Wir betrachten ein skaliertes Fehlermaß, da wir die zu schätzenden Regressionsfunktionen $m_d$ kennen und der Fehler stark von der Komplexität der zu schätzenden Funktion abhängt. \todo{2 mal gleicher Satzanfang} Dieses skalierte Fehlermaß ist so zu verstehen, dass wir den empirischen $L_2$-Fehler im Verhältnis zum Median des empirischen $L_2$-Fehlers $\bar{\epsilon}_{L_2}$ des simpelsten Schätzers von $m_d$, einer konstanten Funktion, welchen wir als \textit{konstanten Schätzer} bezeichnen, betrachten. Dieses skalierte Fehlermaß ist so zu deuten, dass ein großer Fehler eines Regressionsschätzers im Falle, dass der Fehler des konstanten Schätzers klein ist, auf eine noch schlechtere Leistung hindeutet.
+
+Unser Vorgehen zum Vergleich der drei hier betrachteten Regressionsschätzer gestaltet sich wie folgt:
+Da die resultierenden skalierten Fehler noch von der Stichprobe von $(X, Y)$ abhängen und um diese Werte besser vergleichen zu können, führen wir die Fehlerberechnung jeweils $50$ mal durch und geben dann den Median und den Interquartilsabstand für die Schätzung der betrachteten Regressionsschätzer aus.
+Um diesen skalierten $L_2$-Fehler in jeder der 50 Iterationen zu bestimmen, gehen wir folgt vor:
+
+Wir teilen die Stichprobe von $X$ in ein Learning-Sample $X_{\text{train}}$ der Größe $n_{\text{train}} = 800$ und in ein Testing-Sample $X_{\text{test}}$ der Größe $n_{\text{test}} = 200$ auf.
+Auf dem Learning-Sample werden nun auch die Werte $Y_{\text{train}}$ als Realisierung der Zufallsvariable $Y$ aus Gleichung~\eqref{eq:Y} bestimmt. Jedem einzelnen dieser Schätzer wird nun der Datensatz $(X_{\text{train}},Y_{\text{train}})$ zum Lernen bzw.\@ Festlegen der Parameter gegeben. Wir bestimmen als Erstes den $L_2$-Fehler der einzelnen Schätzer \todo{was ist n?} $m_{n,i}$ mit $i = 1,2,3$ approximativ durch den empirischen $L_2$-Fehler $\epsilon_{L_2}(m_{n,i})$ auf einer unabhängigen Stichprobe $X_{\text{test}}$ der Größe $200.$ Mit dem konstanten Schätzer bestimmen wir nun 25-mal den empirischen $L_2$-Fehler auf einer unabhängigen Stichprobe von $X$ der Größe 200.
+Von dieser Stichprobe von Fehlern nehmen wir nun den Median und erhalten so das skalierte Fehlermaß $\epsilon_{L_2}(m_{n,i}) / \bar{\epsilon}_{L_2}.$
 
 %\begin{figure}
 %\centering
@@ -71,25 +312,25 @@ Für die Schätzung von $m_2$ wählten wir: $d = 2$, $N = 2$, $q = 2$, $R = 10^6
 %\end{tikzpicture}
 %\end{figure}
 
-Wie wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} anhand des skalierten $L_2$-Fehlers sehen können, übertrifft unserer Neuronale-Netze-Regressionsschätzer in allen Fällen die Leistung der anderen Schätzer. 
+Wie wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} anhand des Medians und des IQA des skalierten $L_2$-Fehlers sehen können, übertrifft unserer Neuronale-Netze-Regressionsschätzer in allen Fällen die Leistung der anderen Schätzer. 
 \begin{table}
 \centering
 \begin{tabular}{ |p{5cm}||p{4cm}|p{4cm}|}
  \hline
  & \multicolumn{2}{|c|}{$m_1$}\\
  \hline
- \textit{noise}& $5\%$ & $10\%$ \\
+ $\sigma$& $5\%$ & $10\%$ \\
  \hline
- $\bar{\epsilon}_{L_2,N}(avg)$& $13.4482362$ & $13.3925910$ \\
+ $\bar{\epsilon}_{L_2,N}$& $13.4482362$ & $13.3925910$ \\
  \hline
- \textit{approach}&  Median (IQR) &  Median (IQR)   \\
+ \textit{Lageparam. (Streuungsmaß) }&  Median (IQA) &  Median (IQA)   \\
  \hline
- new\_neural\_network\_estimate & $\mathbf{2.482\textbf{e-}05 (1.612\textbf{e-}05)}$   & $\mathbf{6.908\textbf{e-}05 (3.936\textbf{e-}05)}$  \\
- fc\_neural\_1\_estimate & $4.384\text{e-}04 (2.14\text{e-}03)$ &   $7.261\text{e-}04 (4.57\text{e-}03)$ \\
- nearest\_neighbor\_estimate & $2.9527\text{e-}04 (9.312\text{e-}05)$ & $9.0864\text{e-}04 (2.8952\text{e-}04)$\\
+ new\_neural\_network\_estimate & $\mathbf{2.482\textbf{e-}05 \; (1.612\textbf{e-}05)}$   & $\mathbf{6.908\textbf{e-}05 \; (3.936\textbf{e-}05)}$  \\
+ fc\_neural\_1\_estimate & $4.384\text{e-}04 \; (2.14\text{e-}03)$ &   $7.261\text{e-}04 \; (4.57\text{e-}03)$ \\
+ nearest\_neighbor\_estimate & $2.9527\text{e-}04 \; (9.312\text{e-}05)$ & $9.0864\text{e-}04 \; (2.895\text{e-}04)$\\
  \hline
 \end{tabular}
-    \caption{Median und IQR des skalierten empirischen $L_2$-Fehlers für Schätzungen für $m_1$ mit Stichprobengröße $N = 1000$.}
+    \caption{Median und IQR von $50$ skalierten empirischen $L_2$-Fehlers für Schätzungen für $m_1$.}
      \label{tab:truthTablesm1}   
 \end{table}
     
@@ -99,17 +340,17 @@ Wie wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} a
  \hline
  & \multicolumn{2}{|c|}{$m_2$}\\
  \hline
- \textit{noise}& $5\%$ & $10\%$ \\
+ $\sigma$& $5\%$ & $10\%$ \\
  \hline
- $\bar{\epsilon}_{L_2,N}(avg)$& $0.0324$ & $0.0311$ \\
+ $\bar{\epsilon}_{L_2,N}$& $0.0324$ & $0.0311$ \\
  \hline
- \textit{approach}&  Median (IQR) &  Median (IQR)   \\
+ \textit{Lageparam. (Streuungsmaß)}&  Median (IQA) &  Median (IQA)   \\
  \hline
- new\_neural\_network\_estimate & $\mathbf{0.003961 (0.000932)}$   & $\mathbf{0.00431 (0.000973)}$  \\
- fc\_neural\_1\_estimate & $0.0257 (0.3803)$ &   $0.0559 (0.52033)$ \\
- nearest\_neighbor\_estimate & $0.01616 (0.005906)$ &$0.01763 (0.007081)$\\
+ new\_neural\_network\_estimate & $\mathbf{0.003961 \; (0.000932)}$   & $\mathbf{0.00431 \; (0.000973)}$  \\
+ fc\_neural\_1\_estimate & $0.0257 \; (0.3803)$ &   $0.0559 \; (0.52033)$ \\
+ nearest\_neighbor\_estimate & $0.01616 \; (0.005906)$ &$0.01763 \; (0.007081)$\\
  \hline
 \end{tabular}
-    \caption{Median und IQR des skalierten empirischen $L_2$-Fehlers für Schätzungen $m_2$ mit Stichprobengröße $N = 1000$.}
+    \caption{Median und IQR von $50$ skalierten empirischen $L_2$-Fehlers für Schätzungen $m_2$.}
     \label{tab:truthTablesm2}   
 \end{table}

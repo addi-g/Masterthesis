@@ -67,7 +67,7 @@ def output_weights(X, Y, N, q, R, d, M, a):
     
     n = np.size(X, 0)
     
-    # Eine beliebige constante > 0
+    # Eine beliebige Konstante > 0
     
     c_3 = 0.01
     
@@ -128,7 +128,7 @@ def new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a):
 
     F_net = np.empty((1, J,))
     F_net[:] = np.nan
-    
+         
     for u in range (0,len(X_test),1):
         j = 0
         while j < J:
@@ -138,5 +138,5 @@ def new_neural_network_estimate(X_train, Y_train, X_test, N, q, R, d, M, a):
                     j += 1 
                      
         Y_pred[u] = np.sum(np.transpose(weights) * F_net)
-        
+    
     return Y_pred

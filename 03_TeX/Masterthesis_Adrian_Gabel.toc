@@ -12,6 +12,8 @@
 \contentsline {subsection}{\numberline {3.2.2}Abschätzung von $T_{2,n}$}{43}{subsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.2.1}Abschätzung von $T_{2,A,n}$}{46}{subsubsection.3.2.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2.2}Abschätzung von $T_{2,B,n}$}{47}{subsubsection.3.2.2.2}%
-\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{51}{chapter.4}%
-\contentsline {chapter}{Appendix}{55}{chapter*.17}%
-\contentsline {chapter}{Literaturverzeichnis}{68}{chapter*.18}%
+\contentsline {chapter}{\numberline {4}Anwendungsbeispiel auf simulierte Daten}{52}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Parameterstudie}{52}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Vergleich des empirischen $L_2$-Fehlers}{59}{section.4.2}%
+\contentsline {chapter}{Appendix}{62}{chapter*.23}%
+\contentsline {chapter}{Literaturverzeichnis}{76}{chapter*.24}%

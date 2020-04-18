@@ -1,7 +1,7 @@
 \chapter{Grundlagen für neuronale Netze}
 \label{chap:1}
 
-Der Zweck dieses Kapitels ist es auf die in dieser Arbeit verwendeten neuronalen Netze einzugehen, die als Bausteine für unseren einfach berechenbaren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Approximationsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden. Wenn wir in dieser Arbeit von \emph{unserem Neuronale-Netze-Regressionsschätzer} sprechen, beziehen wir uns immer auf den \emph{einfach berechenbaren Neuronale-Netze-Regressionsschätzer} aus \cite{kohler19}. 
+Das Ziel dieses Kapitels ist es, auf die in dieser Arbeit verwendeten neuronalen Netze einzugehen, die als Bausteine für unseren einfach berechenbaren Neuronale-Netze-Regressionsschätzer verwendet werden. Weiterhin werden wir Approximationsresultate darstellen und beweisen, welche wir für das Resultat der Konvergenzgeschwindigkeit des einfach berechenbaren Neuronale-Netze-Regressionsschätzers benötigen werden. Wenn wir in dieser Arbeit von \emph{unserem Neuronale-Netze-Regressionsschätzer} sprechen, beziehen wir uns immer auf den \emph{einfach berechenbaren Neuronale-Netze-Regressionsschätzer} aus \cite{kohler19}. 
 In dieser Arbeit bezeichnen wir mit $d \geq 1$ immer eine natürliche Zahl.
 
 Da wir uns in dieser Arbeit mit neuronalen Netzen beschäftigen, ist es hilfreich zu wissen, was man darunter versteht. Ein neuronales Netz ist nichts anderes als eine Ansammlung von Neuronen, welche als Informationsverarbeitungseinheiten dienen, die schichtweise in einer Architektur angeordnet sind. Beginnend mit der Eingabeschicht (\textit{Input Layer}) fließen Informationen über eine oder mehrere verborgene Schichten (\textit{Hidden Layer}) bis hin zur Ausgabeschicht (\textit{Output Layer)}. Die Informationsweitergabe der Neuronen verläuft wie folgt: Für jedes Neuron $j$ werden die Eingaben $x_1,\dots,x_n$ mit $w_{1_j}, \dots, w_{n_j}$ gewichtet an eine Aktivierungsfunktion $\sigma$ übergeben, welche die Neuronenaktivierung berechnet. Die Eingaben können aus dem beobachteten Prozess resultieren oder andererseits aus den Ausgaben anderer Neuronen stammen. 
@@ -691,10 +691,10 @@ net/.style={
 die wir im zweiten Teil dieses Beweises zeigen werden. Damit beweisen wir das Resultat mit Hilfe von Lemma~\ref{lem:3}, denn mit der Definition von $f_{\mathrm{hat},y}(x)$ und der Dreiecksungleichung folgt:
 \begin{equation*}
 \begin{split}
-\bigg|f_{\mathrm{hat},y}(x) - & \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \\[0.5em]
+\bigg|f_{\mathrm{hat},y}(x) - & \bigg(1 - \frac{M}{2a} \cdot |x - y|\bigg)_+\bigg| \\[1em]
 & \leq \bigg|f_{\ReLU} \bigg(\frac{M}{2a} \cdot (x - y) + 1\bigg) - \max\bigg\{\frac{M}{2a} \cdot (x - y) + 1, 0\bigg\}\bigg| \\[0.5em]
 & \quad + 2 \cdot \bigg|f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y)\bigg) - \max\bigg\{\frac{M}{2a} \cdot (x - y), 0\bigg\}\bigg| \\[0.5em]
-& \quad + \bigg|f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg) - \max\bigg\{\frac{M}{2a} \cdot (x - y) - 1, 0\bigg\}\bigg|\\[0.5em] 
+& \quad + \bigg|f_{\ReLU}\bigg(\frac{M}{2a} \cdot (x - y) - 1\bigg) - \max\bigg\{\frac{M}{2a} \cdot (x - y) - 1, 0\bigg\}\bigg|\\[1em] 
 & \leq 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty}, \|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \cdot \frac{1}{R},
 \end{split}
 \end{equation*} 
