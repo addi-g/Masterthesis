@@ -5,12 +5,12 @@ In dieser Arbeit behandeln wir Neuronale-Netze-Schätzer im Kontext der \emph{ni
 %mit \emph{zufälligem Design}.
 In der Regressionsanalyse betrachtet man einen $\R^d \times \R$-wertigen Zufallsvektor $(X,Y)$. Man ist daran interessiert, wie der Wert der \emph{Reaktionsvariable} $Y$ vom Wert des \emph{Beobachtungsvektors} $X$ abhängt. Dies bedeutet, dass man eine (messbare) Funktion $f\colon \R^d \to \R$ sucht, sodass $f(X)$ eine \glqq gute Approximation von $Y$\grqq{} ist. Das wiederum bedeutet, dass $f(X)$ nah an $Y$ sein sollte, was in gewisser Weise gleichwertig damit ist den Ausdruck $|f(X) - Y|$ zu \glqq minimieren\grqq. Da aber $X$ und $Y$ Zufallsvektoren sind und damit $|f(X) - Y|$ auch zufällig ist, ist nicht klar was unter \glqq $|f(X) - Y|$ minimal\grqq{} zu verstehen ist. Wir können dieses Problem lösen, indem wir das sogenannte \emph{$L_2$-Risiko} 
 $$
-\E[|f(X) - Y|^2],
+\E[|f(X) - Y|^2]
 $$
 einführen und verlangen, dass dieses so klein wie möglich ist.
 Bei der nichtparametrischen Regression ist die Bauart der schätzenden Funktion $f$ komplett unbekannt. Wir sind daher an einer Funktion interessiert, die das $L_2$-Risiko von $f$ minimiert. Dies führt auf die \emph{Regressionsfunktion} $m(x) = \E[Y \mid X = x]$, da für das das $L_2$-Risiko einer beliebigen messbaren Funktion $f\colon \R^d \to \R$  gilt:
 $$\E[|f(X) - Y|^2] = \E[|m(X) - Y|^2] + \int|f(x) - m(x)|^2 \mathds{P}_X (dx),$$
-d.h. der mittlere quadratische Vorhersagefehler einer Funktion $f$ ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers, der aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von Y entsteht. Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein. Dieser $L_2$-Fehler ist immer nichtnegativ und für $f(x) = m(x)$ sogar Null. Daher ist $m$ die beste Wahl für $f.$
+d.h. der mittlere quadratische Vorhersagefehler einer Funktion $f$ ist darstellbar als Summe des $L_2$-Risikos der Regressionsfunktion (unvermeidbarer Fehler) und des $L_2$-Fehlers, der aufgrund der Verwendung von $f$ an Stelle von $m$ bei der Vorhersage bzw.\@ Approximation des Wertes von $Y$ entsteht. Im Hinblick auf die Minimierung des $L_2$-Risikos sollte dabei der $L_2$-Fehler der Schätzfunktion möglichst klein sein. Dieser $L_2$-Fehler ist immer nichtnegativ und für $f(x) = m(x)$ sogar Null. Daher ist $m$ die beste Wahl für $f.$
 In Anwendungsfällen ist aber üblicherweise die Verteilung von $(X, Y)$ unbekannt, daher kann die Regressionsfunktion $m$ nicht berechnet werden. Oft ist es aber möglich, Werte von $(X, Y)$ zu beobachten und damit die Regressionsfunktion $m$ zu schätzen. Formal führt das auf folgende Problemstellung:
 \begin{prblm}[{\cite[Kapitel 1.1 und Kapitel 1.2]{gyoerfi2002}}]
 \label{prblm:1}
@@ -316,7 +316,7 @@ f_k^{(s)}(x) & = 1 \nonumber
 \end{align*} 
 für $|\bj|_1 + d + 1 \leq k \leq 2^s.$
 \end{defn}
-Das folgende Lemma ist ein Spezialfall von \cite[Lemma 5]{kohler19} und liefert das eingangs erwähnte Approximationsresultat für neuronale Netze $f_{\mathrm{net},\bj,\bi}$ aus Definition~\ref{fnet}. Dieses Lemma wird hier nur der Vollständigkeit halber und ohne Beweis aufgeführt
+Das folgende Lemma ist ein Spezialfall von \cite[Lemma 5]{kohler19} und liefert das eingangs erwähnte Approximationsresultat für neuronale Netze $f_{\mathrm{net},\bj,\bi}$ aus Definition~\ref{fnet}. Dieses Lemma wird hier nur der Vollständigkeit halber und ohne Beweis aufgeführt.
 
 \begin{lem}
 \label{lem:5}
@@ -325,7 +325,7 @@ Sei $a \geq 1$ und $R \in \R$ mit
 \begin{equation*}
 \begin{split}
 R & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a}{|\sigma'(t_{\sigma})|}, \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a^{3 \cdot 2^s}, \\[0.5em]
-& \qquad 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\},
+& \qquad \qquad 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M^3 \biggr\},
 \end{split}
 \end{equation*}
 wobei $s = \lceil\log_2(N + d)\rceil$ mit $N \in \N$. Sei $x_{{\bi}_k} \in [-a, a]^d,$ $\bj \in [N]^d,$ $\bi \in [M]^d$ und $f_{\mathrm{net},\bj,\bi}$ das neuronale Netz aus Definition~\ref{fnet}.

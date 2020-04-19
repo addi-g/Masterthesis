@@ -10,10 +10,11 @@ im Falle des Schätzers
 m_n(x) \coloneqq T_{\beta_n}\tilde{m}_n (x),
 \end{equation}
 mit $\beta_n = c_1 \cdot \log(n)$ für eine hinreichend große und von $n$ unabhängige Konstante $c_1 > 0$ und unter Annahme einer $(p,C)$-glatten Regressionsfunktion $m$ herleiten. Hierbei bezeichnet $T_{\beta}z = \max\{\min\{z, \beta\}, -\beta\}$
-für $z \in \R$ und $\beta > 0$. Weiterhin bezeichnen wir mit $\tilde{m}_n$ unseren Neuronale-Netze-Regresssionsschätzer aus Kapitel~\ref{subsec:2.2}, welcher aus mehreren neuronalen Netzen konstruiert wurde. Für diesen gilt: 
+für $z \in \R$ und $\beta > 0$. Weiterhin bezeichnen wir mit $\tilde{m}_n$ unseren Neuronale-Netze-Regressionsschätzer aus Kapitel~\ref{subsec:2.2}, welcher aus mehreren neuronalen Netzen konstruiert wurde. Für diesen gilt: 
 Die Aktivierungsfunktion $\sigma$ ist der logistische Squasher, $N \geq q$, $M = M_n = \lceil c_2 \cdot n^{1/(2p + d)}\rceil$ mit $c_2 >0$ und unabhängig von $n$, $R = R_n = n^{d + 4}$ und $a = a_n = (\log n)^{1/(6(N + d))}.$
 
 Nun kommen wir zu dem Hauptresultat dieser Arbeit.
+\begin{samepage}
 \begin{mthm}[{\cite[Theorem 1]{kohler19}}]
 \label{optstop}
 Angenommen die Verteilung von $Y$ erfüllt 
@@ -25,6 +26,7 @@ Dann gilt für hinreichend großes $n$:
 $$\E \Big[\int |m_n(x) - m(x)|^2  \mathds{P}_X(dx)\Big] \leq c_{\mathrm{fin}} \cdot (\log n)^3 \cdot n^{- \frac{2p}{2p + d}},$$
 wobei $c_{\mathrm{fin}} > 0$ eine von $n$ unabhängige Konstante ist.
 \end{mthm}
+\end{samepage}
 
 Bevor wir zum Beweis von Hauptresultat~\ref{optstop} kommen, stellen wir im folgenden Abschnitt die dafür notwendigen Hilfsresultate vor.
 \section{Approximationsresultate für Hauptsatz \hyperref[optstop]{3.1}}
@@ -367,7 +369,7 @@ Wir überprüfen, ob für Lemma~\ref{lem:5} alle Voraussetzungen erfüllt sind. 
 \begin{equation*}
 \begin{split}
 R_n & \geq \max\biggl\{\frac{\|\sigma''\|_{\infty} \cdot (M_n + 1)}{2 \cdot |\sigma'(t_{\sigma})|}, \frac{9 \cdot \|\sigma''\|_{\infty} \cdot a_n}{|\sigma'(t_{\sigma})|}, \frac{20 \cdot \|\sigma'''\|_{\infty}}{3 \cdot |\sigma''(t_{\sigma})|} \cdot 3^{3 \cdot 3^s} \cdot a_n^{3 \cdot 2^s}, \\[0.5em]
-& \quad 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M_n^3 \biggr\}
+& \qquad \qquad 1792 \cdot \frac{\max\{\|\sigma''\|_{\infty},\|\sigma'''\|_{\infty}, 1\}}{\min\{2 \cdot |\sigma'(t_{\sigma})|, |\sigma''(t_{\sigma})|, 1\}} \cdot M_n^3 \biggr\}
 \end{split}
 \end{equation*}
 erfüllt. Daher gelten für unser neuronales Netz aus Definition \ref{fnet} mit $x_{\mathbf{i}} \in [-a_n, a_n]^d$ alle Voraussetzungen für Lemma~\ref{lem:5}.

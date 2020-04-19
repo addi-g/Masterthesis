@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  19 APR 2020 19:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  19 APR 2020 20:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1562,56 +1562,56 @@ Kapitel 3.
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 30.
+(hyperref)                removing `\@ifnextchar' on input line 32.
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 39 undefined on input line 58.
+LaTeX Warning: Hyper reference `OPTSTOP' on page 39 undefined on input line 57.
 
 
 [39] [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 93.
+(hyperref)                removing `\@ifnextchar' on input line 95.
 
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 113.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 115.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 113.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 115.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 113.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 113.
+(hyperref)                removing `math shift' on input line 115.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 113.
+(hyperref)                removing `subscript' on input line 115.
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 41 undefined on input line 134
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 115.
+
+
+LaTeX Warning: Hyper reference `OPTSTOP' on page 41 undefined on input line 136
 .
 
 [41] [42]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 180.
+(hyperref)                removing `math shift' on input line 182.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 180.
+(hyperref)                removing `subscript' on input line 182.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 180.
+(hyperref)                removing `math shift' on input line 182.
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 43 undefined on input line 217
+LaTeX Warning: Hyper reference `OPTSTOP' on page 43 undefined on input line 219
 .
 
 [43] [44]
@@ -1619,12 +1619,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 45 undefined on input line 284
+LaTeX Warning: Hyper reference `OPTSTOP' on page 45 undefined on input line 286
 .
 
 [45] [46]
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 47 undefined on input line 351
+LaTeX Warning: Hyper reference `OPTSTOP' on page 47 undefined on input line 353
 .
 
 [47]
@@ -1635,7 +1635,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 49 undefined on input line 412
+LaTeX Warning: Hyper reference `OPTSTOP' on page 49 undefined on input line 414
 .
 
 [49] [50])
@@ -2181,7 +2181,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [65])
-(../01_Code/parametersimulation_d1.py [66]
+(../01_Code/parameterstudie_d1.py [66]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [67])
@@ -2220,10 +2220,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 47201 strings out of 492162
- 998747 string characters out of 6125292
- 2379099 words of memory out of 5000000
- 49507 multiletter control sequences out of 15000+600000
+ 47202 strings out of 492162
+ 998734 string characters out of 6125292
+ 2379095 words of memory out of 5000000
+ 49508 multiletter control sequences out of 15000+600000
  121409 words of font info for 370 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,23n,138p,963b,4221s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2249,7 +2249,7 @@ s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
 
-Output written on Masterthesis_Adrian_Gabel.pdf (77 pages, 873835 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (77 pages, 874009 bytes).
 PDF statistics:
  1632 PDF objects out of 1728 (max. 8388607)
  806 named destinations out of 1000 (max. 500000)
