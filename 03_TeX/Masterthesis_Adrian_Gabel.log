@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  18 APR 2020 21:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.31)  19 APR 2020 19:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1211,7 +1211,7 @@ File: tikzlibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 code.tex
 File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \arrowsize=\dimen287
-)))
+))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2019/01/24 v1.1.2 Todonotes source and documentation.
 Package: todonotes 2018/11/22
@@ -1240,10 +1240,18 @@ File: tikzlibraryfadings.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 File: pgflibraryfadings.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )))
 \c@@todonotes@numberoftodonotes=\count194
-) (./befehle.tex
-\c@thm=\count195
-\myboxA=\box70
-\myboxB=\box71
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count195
+\float@exts=\toks53
+\float@box=\box70
+\@float@everytoks=\toks54
+\@floatcapt=\box71
+)
+(./befehle.tex
+\c@thm=\count196
+\myboxA=\box72
+\myboxB=\box73
 \mylenA=\skip73
 ) (./Masterthesis_Adrian_Gabel.aux (./titel.aux)
 (./erklaerung.aux) (./einleitung.aux) (./chap1.aux) (./chap2.aux) (./chap3.aux)
@@ -1272,17 +1280,17 @@ bibgerm.sty: babel.sty detected
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count196
+\scratchcounter=\count197
 \scratchdimen=\dimen288
-\scratchbox=\box72
-\nofMPsegments=\count197
-\nofMParguments=\count198
-\everyMPshowfont=\toks53
-\MPscratchCnt=\count199
+\scratchbox=\box74
+\nofMPsegments=\count198
+\nofMParguments=\count199
+\everyMPshowfont=\toks55
+\MPscratchCnt=\count266
 \MPscratchDim=\dimen289
-\MPnumerator=\count266
-\makeMPintoPDFobject=\count267
-\everyMPtoPDFconversion=\toks54
+\MPnumerator=\count267
+\makeMPintoPDFobject=\count268
+\everyMPtoPDFconversion=\toks56
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2019-12-09 v2.10 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1292,10 +1300,10 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count268
+\c@lstlisting=\count269
 
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box73
+\AtBeginShipoutBox=\box75
 Package hyperref Info: Link coloring OFF on input line 20.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -1308,7 +1316,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count269
+\c@section@level=\count270
 )
 LaTeX Info: Redefining \ref on input line 20.
 LaTeX Info: Redefining \pageref on input line 20.
@@ -1322,6 +1330,7 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.16}).
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Info: Redefining \microtypecontext on input line 20.
 Package microtype Info: Generating PDF output.
@@ -1537,11 +1546,8 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 
 
 ]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 36.
-
 [24] [25] [26] [27]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3514) has occurred while \output is active []
 
  [28]
 [29] [30] [31] [32] [33] [34] [35] [36]) [37]
@@ -1565,47 +1571,47 @@ LaTeX Warning: Hyper reference `OPTSTOP' on page 39 undefined on input line 58.
 [39] [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 94.
+(hyperref)                removing `\@ifnextchar' on input line 93.
 
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 113.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 114.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 113.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 114.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 114.
+(hyperref)                removing `math shift' on input line 113.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 114.
+(hyperref)                removing `subscript' on input line 113.
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 41 undefined on input line 135
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 113.
+
+
+LaTeX Warning: Hyper reference `OPTSTOP' on page 41 undefined on input line 134
 .
 
 [41] [42]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 181.
+(hyperref)                removing `math shift' on input line 180.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 181.
+(hyperref)                removing `subscript' on input line 180.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 181.
+(hyperref)                removing `math shift' on input line 180.
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 43 undefined on input line 218
+LaTeX Warning: Hyper reference `OPTSTOP' on page 43 undefined on input line 217
 .
 
 [43] [44]
@@ -1613,12 +1619,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 45 undefined on input line 285
+LaTeX Warning: Hyper reference `OPTSTOP' on page 45 undefined on input line 284
 .
 
 [45] [46]
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 47 undefined on input line 352
+LaTeX Warning: Hyper reference `OPTSTOP' on page 47 undefined on input line 351
 .
 
 [47]
@@ -1629,7 +1635,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Warning: Hyper reference `OPTSTOP' on page 49 undefined on input line 413
+LaTeX Warning: Hyper reference `OPTSTOP' on page 49 undefined on input line 412
 .
 
 [49] [50])
@@ -1642,17 +1648,11 @@ LaTeX Warning: Hyper reference `OPTSTOP' on page 51 undefined on input line 46.
 
  (./chap4.tex
 Kapitel 4.
-
-Overfull \hbox (102.41458pt too wide) in paragraph at lines 12--13
-\T1/ptm/m/n/12 (-20) In die-sem Ab-schnitt füh-ren wir für un-se-ren Neuronale-
-Netze-Regressionsschätzer \T1/ptm/m/it/12 (-20) new_neural_network_estimate
- []
-
 [52
 
 
 
-] (./Plots_Simulation/mytikz_N2_M2.tex
+] [53] (./Plots_Simulation/mytikz_N2_M2.tex
 Package pgfplots info on input line 14: Overriding colorspace to rgb due to xco
 lor configuration.
 Missing character: There is no . in font nullfont!
@@ -1666,7 +1666,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 27--29
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 37--39
  [][] 
  []
 
@@ -1684,7 +1684,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 33--35
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 43--45
  [][] 
  []
 
@@ -1702,7 +1702,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 40--42
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 50--52
  [][] 
  []
 
@@ -1720,21 +1720,21 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 46--48
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 56--58
  [][] 
  []
 
-Package pgfplots info on input line 67: Overriding colorspace to rgb due to xco
+Package pgfplots info on input line 77: Overriding colorspace to rgb due to xco
 lor configuration.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 24--69
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 34--79
 [][] []
  []
 
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 24--69
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 34--79
 [] []
  []
 
@@ -1752,7 +1752,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 76--78
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 87--89
  [][] 
  []
 
@@ -1770,7 +1770,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 82--84
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 93--95
  [][] 
  []
 
@@ -1788,7 +1788,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 89--91
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 100--102
  [][] 
  []
 
@@ -1806,21 +1806,21 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 95--97
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 106--108
  [][] 
  []
 
-Package pgfplots info on input line 116: Overriding colorspace to rgb due to xc
+Package pgfplots info on input line 127: Overriding colorspace to rgb due to xc
 olor configuration.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 73--118
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 84--129
 [][] []
  []
 
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 73--118
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 84--129
 [] []
  []
 
@@ -1838,7 +1838,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 125--127
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 136--138
  [][] 
  []
 
@@ -1856,7 +1856,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 131--133
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 142--144
  [][] 
  []
 
@@ -1874,7 +1874,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 138--140
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 149--151
  [][] 
  []
 
@@ -1892,21 +1892,21 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 144--146
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 155--157
  [][] 
  []
 
-Package pgfplots info on input line 165: Overriding colorspace to rgb due to xc
+Package pgfplots info on input line 176: Overriding colorspace to rgb due to xc
 olor configuration.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 122--167
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 133--178
 [][] []
  []
 
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 122--167
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 133--178
 [] []
  []
 
@@ -1924,7 +1924,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 174--176
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 185--187
  [][] 
  []
 
@@ -1942,7 +1942,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 180--182
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 191--193
  [][] 
  []
 
@@ -1960,7 +1960,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 187--189
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 198--200
  [][] 
  []
 
@@ -1978,21 +1978,21 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 193--195
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 204--206
  [][] 
  []
 
-Package pgfplots info on input line 214: Overriding colorspace to rgb due to xc
+Package pgfplots info on input line 225: Overriding colorspace to rgb due to xc
 olor configuration.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 171--216
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 182--227
 [][] []
  []
 
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 171--216
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 182--227
 [] []
  []
 
@@ -2010,7 +2010,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 223--225
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 234--236
  [][] 
  []
 
@@ -2028,7 +2028,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 229--231
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 240--242
  [][] 
  []
 
@@ -2046,7 +2046,7 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 236--238
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 247--249
  [][] 
  []
 
@@ -2064,76 +2064,95 @@ Missing character: There is no 1 in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no t in font nullfont!
 )
-Overfull \hbox (2.10751pt too wide) in paragraph at lines 242--244
+Overfull \hbox (2.10751pt too wide) in paragraph at lines 253--255
  [][] 
  []
 
-Package pgfplots info on input line 263: Overriding colorspace to rgb due to xc
+Package pgfplots info on input line 274: Overriding colorspace to rgb due to xc
 olor configuration.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 220--265
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 231--276
 [][] []
  []
 
 
-Overfull \hbox (2.28003pt too wide) in paragraph at lines 220--265
+Overfull \hbox (2.28003pt too wide) in paragraph at lines 231--276
 [] []
  []
 
-[53] [54] [55] [56] [57] [58]
+[54] [55] [56] [57] [58] [59]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 269.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 281.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 269.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 269.
+(hyperref)                removing `math shift' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 269.
+(hyperref)                removing `subscript' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 269.
+(hyperref)                removing `math shift' on input line 281.
 
+[60
 
-LaTeX Warning: Citation `fahrmeir2009regression' on page 59 undefined on input 
-line 288.
-
-
-Overfull \hbox (6.11327pt too wide) in paragraph at lines 288--289
-[]\T1/ptm/m/n/12 (-20) Unser nächs-ter Schät-zer \T1/ptm/m/it/12 (-20) nea-rest
-_neighbor_estimate \T1/ptm/m/n/12 (-20) ($\OML/ztmcm/m/it/12 m[]$\T1/ptm/m/n/12
- (-20) ) ist ein Nächste-Nachbar-Schätzer
+]
+Overfull \hbox (8.65428pt too wide) in paragraph at lines 330--330
+[]$\OT1/ztmcm/m/n/12 13\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 4482362$| 
  []
 
-[59]
-Overfull \hbox (1.66882pt too wide) in paragraph at lines 328--328
+
+Overfull \hbox (8.65428pt too wide) in paragraph at lines 330--330
+[]$\OT1/ztmcm/m/n/12 13\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 3925910$| 
+ []
+
+
+Overfull \hbox (1.66882pt too wide) in paragraph at lines 334--334
 []\T1/ptm/m/n/12 (-20) new_neural_network_estimate| 
  []
 
 
-Overfull \hbox (0.79616pt too wide) in paragraph at lines 330--330
-[]$\OT1/ztmcm/m/n/12 2\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 9527[]04 (9\OML/ztm
-cm/m/it/12 :\OT1/ztmcm/m/n/12 312[]05)$| 
+Overfull \hbox (0.58595pt too wide) in paragraph at lines 334--334
+[]$[]$| 
  []
 
 
-Overfull \hbox (0.79616pt too wide) in paragraph at lines 330--331
-[]$\OT1/ztmcm/m/n/12 9\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 0864[]04 (2\OML/ztm
-cm/m/it/12 :\OT1/ztmcm/m/n/12 895[]04)$| 
+Overfull \hbox (0.58595pt too wide) in paragraph at lines 334--335
+[]$[]$| 
  []
 
 
-Overfull \hbox (1.66882pt too wide) in paragraph at lines 349--349
+Overfull \hbox (6.27817pt too wide) in paragraph at lines 336--336
+[]$\OT1/ztmcm/m/n/12 2\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 9527[]04$| 
+ []
+
+
+Overfull \hbox (0.58595pt too wide) in paragraph at lines 336--336
+[]$\OT1/ztmcm/m/n/12 (9\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 312[]05)$| 
+ []
+
+
+Overfull \hbox (6.27817pt too wide) in paragraph at lines 336--336
+[]$\OT1/ztmcm/m/n/12 9\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 0864[]04$| 
+ []
+
+
+Overfull \hbox (0.58595pt too wide) in paragraph at lines 336--337
+[]$\OT1/ztmcm/m/n/12 (2\OML/ztmcm/m/it/12 :\OT1/ztmcm/m/n/12 895[]04)$| 
+ []
+
+
+Overfull \hbox (1.66882pt too wide) in paragraph at lines 355--355
 []\T1/ptm/m/n/12 (-20) new_neural_network_estimate| 
  []
 
-) [60] [61]
+) [61] [62]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
@@ -2151,39 +2170,39 @@ Package microtype Info: Loading generic protrusion settings for font family
 (../01_Code/main.py
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 15.
- [62
+ [63
 
 
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [63]
+ [64]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [64])
-(../01_Code/parametersimulation_d1.py [65]
+ [65])
+(../01_Code/parametersimulation_d1.py [66]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [66])
-(../01_Code/data_gen.py [67]) (../01_Code/help_neural_networks.py [68])
-(../01_Code/new_neural_network.py [69]
+ [67])
+(../01_Code/data_gen.py [68]) (../01_Code/help_neural_networks.py [69])
+(../01_Code/new_neural_network.py [70]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [70]
+ [71]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [71])
-(../01_Code/fc_neural_network.py [72]) (../01_Code/nearest_neighbor.py)
-(../01_Code/constant.py [73])) [74]
+ [72])
+(../01_Code/fc_neural_network.py [73]) (../01_Code/nearest_neighbor.py)
+(../01_Code/constant.py [74])) [75]
 \openout2 = `literaturverzeichnis.aux'.
 
  (./literaturverzeichnis.tex
-(./Masterthesis_Adrian_Gabel.bbl [75
+(./Masterthesis_Adrian_Gabel.bbl [76
 
 
 
-])) [76]
+])) [77]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 70.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
  (./Masterthesis_Adrian_Gabel.aux
@@ -2193,7 +2212,7 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
 Package rerunfilecheck Info: File `Masterthesis_Adrian_Gabel.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: 04282E46CF6D3642520C966BB3919E2F;1186.
+(rerunfilecheck)             Checksum: DABA09AA5C9ACD97EA015C64C74FBF9C;1186.
 
 
 LaTeX Warning: There were undefined references.
@@ -2201,13 +2220,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 47264 strings out of 492162
- 1000418 string characters out of 6125292
- 2383312 words of memory out of 5000000
- 49560 multiletter control sequences out of 15000+600000
- 121859 words of font info for 374 fonts, out of 8000000 for 9000
+ 47201 strings out of 492162
+ 998747 string characters out of 6125292
+ 2379099 words of memory out of 5000000
+ 49507 multiletter control sequences out of 15000+600000
+ 121409 words of font info for 370 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,24n,138p,1215b,4221s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,23n,138p,963b,4221s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
  </Users/adrian/Library/texlive/2019/texmf-var/fonts/pk/ljfour/public/bbm/bbm12
 .600pk>{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lo
@@ -2230,9 +2249,9 @@ s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
 
-Output written on Masterthesis_Adrian_Gabel.pdf (76 pages, 872498 bytes).
+Output written on Masterthesis_Adrian_Gabel.pdf (77 pages, 873835 bytes).
 PDF statistics:
- 1630 PDF objects out of 1728 (max. 8388607)
- 814 named destinations out of 1000 (max. 500000)
+ 1632 PDF objects out of 1728 (max. 8388607)
+ 806 named destinations out of 1000 (max. 500000)
  61174 words of extra memory for PDF output out of 61914 (max. 10000000)
 

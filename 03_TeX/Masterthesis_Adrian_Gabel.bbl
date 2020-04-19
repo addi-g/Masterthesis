@@ -4,13 +4,13 @@
 \bibitem[Bar15]{Topologie2015}
 R.~Bartsch.
 \newblock {\em Allgemeine Topologie}.
-\newblock De Gruyter, Berlin, 2. edition, 2015.
+\newblock De Gruyter, Berlin, 2. Auflage, 2015.
 
 \bibitem[BKK19]{kohler19}
 A.~Braun, M.~Kohler, und A.~Krzyzak.
 \newblock Analysis of the rate of convergence of neural network regression
   estimates which are easy to implement.
-\newblock 2019.
+\newblock arXiv:1912.05436, 2019.
 
 \bibitem[Bos13]{bosch2009algebra}
 S.~Bosch.
@@ -27,11 +27,21 @@ L.~Devroye, L.~Györfi, und G.~Lugosi.
 \newblock {\em A Probabilistic Theory of Pattern Recognition}.
 \newblock Springer, New York, 1. Auflage, 1996.
 
+\bibitem[DR08]{reusken2008}
+W.~Dahmen und A.~Reusken.
+\newblock {\em Numerik für Ingenieure und Naturwissenschaftler}.
+\newblock Springer, Berlin, 2. Auflage, 2008.
+
 \bibitem[DW80]{DevWag80}
 L.~Devroye und T.J. Wagner.
 \newblock Distribution-free consistency results in non- parametric
   discrimination and regression function estimation.
-\newblock {\em Annals of Statistic}, 8:231--239, 1980.
+\newblock {\em Annals of Statistics}, 8:231--239, 1980.
+
+\bibitem[FKL09]{fahrmeir2009regression}
+L.~Fahrmeir, T.~Kneib, und S.~Lang.
+\newblock {\em Regression: Modelle, Methoden und Anwendungen}.
+\newblock Statistik und ihre Anwendungen. Springer, Berlin, 2009.
 
 \bibitem[For16]{forster2016}
 O.~Forster.
@@ -49,12 +59,6 @@ L.~Györfi, M.~Kohler, A.~Krzyzak, und H.~Walk.
 \newblock {\em A Distribution-Free Theory of Nonparametric Regression.}
 \newblock Springer series in statistics. Springer, Berlin, 1. Auflage, 2002.
 
-\bibitem[HTN96]{hesiod1996works}
-Hesiod, D.W. Tandy, und W.C. Neale.
-\newblock {\em Works and Days: A Translation and Commentary for the Social
-  Sciences}.
-\newblock University of California Press, 1996.
-
 \bibitem[Kle13]{Klenke2013}
 A.~Klenke.
 \newblock {\em Wahrscheinlichkeitstheorie}.
@@ -70,25 +74,22 @@ K.~Königsberger.
 \newblock {\em Analysis 2}.
 \newblock Springer, Berlin, 5. Auflage, 2004.
 
-\bibitem[MK05]{2005metamorphoses}
-C.~Martin und B.M.W. Knox.
-\newblock {\em Metamorphoses: A New Translation}.
-\newblock W. W. Norton, 2005.
+\bibitem[PVG{\etalchar{+}}11]{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, und E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
 
 \bibitem[RN09]{AI}
-Stuart Russell und Peter Norvig.
+S.~Russell und P.~Norvig.
 \newblock {\em Artificial Intelligence: A Modern Approach}.
 \newblock Prentice Hall Press, USA, 3. Auflage, 2009.
-
-\bibitem[Spa96]{sparkes1996red}
-B.A. Sparkes.
-\newblock {\em The Red and the Black: Studies in Greek Pottery}.
-\newblock Routledge, 1996.
 
 \bibitem[TEC19]{tollerproofs}
 A.~Toller, F.~Edholm, und D.~Chen.
 \newblock {\em Proofs in Competition Math: Volume 2}.
-\newblock Lulu.com, 2019.
+\newblock Selbstverlag, 1. Auflage, 2019.
 
 \bibitem[VRDJ95]{van1995python}
 G.~Van~Rossum und F.~L. Drake~Jr.

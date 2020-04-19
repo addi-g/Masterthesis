@@ -12,51 +12,44 @@ A level-1 auxiliary file: appendix.aux
 A level-1 auxiliary file: literaturverzeichnis.aux
 The style file: alpha.bst
 Database file #1: Masterthesis_Adrian_Gabel.bib
-I was expecting a `,' or a `}'---line 106 of file Masterthesis_Adrian_Gabel.bib
- : 
- : edition = {1.},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--empty journal in kohler19
 You've used 18 entries,
             2543 wiz_defined-function locations,
-            664 strings with 6455 characters,
-and the built_in function-call counts, 5986 in all, are:
-= -- 558
-> -- 307
-< -- 7
-+ -- 104
-- -- 101
-* -- 379
-:= -- 1047
-add.period$ -- 57
+            667 strings with 6735 characters,
+and the built_in function-call counts, 6625 in all, are:
+= -- 619
+> -- 389
+< -- 6
++ -- 136
+- -- 134
+* -- 462
+:= -- 1164
+add.period$ -- 58
 call.type$ -- 18
-change.case$ -- 100
+change.case$ -- 118
 chr.to.int$ -- 18
-cite$ -- 19
-duplicate$ -- 269
-empty$ -- 450
-format.name$ -- 125
-if$ -- 1206
+cite$ -- 18
+duplicate$ -- 264
+empty$ -- 461
+format.name$ -- 156
+if$ -- 1322
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 32
+missing$ -- 30
 newline$ -- 94
 num.names$ -- 54
-pop$ -- 137
+pop$ -- 142
 preamble$ -- 1
-purify$ -- 125
+purify$ -- 140
 quote$ -- 0
 skip$ -- 199
 stack$ -- 0
-substring$ -- 154
-swap$ -- 17
-text.length$ -- 7
-text.prefix$ -- 7
+substring$ -- 184
+swap$ -- 18
+text.length$ -- 6
+text.prefix$ -- 6
 top$ -- 0
-type$ -- 84
-warning$ -- 1
-while$ -- 49
-width$ -- 20
-write$ -- 239
-(There was 1 error message)
+type$ -- 88
+warning$ -- 0
+while$ -- 52
+width$ -- 21
+write$ -- 246

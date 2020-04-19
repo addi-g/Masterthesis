@@ -1,5 +1,5 @@
 """
-Parameterstudie für den indimensional Fall
+Parameterstudie für den eindimensional Fall
 """
 import numpy as np
 import matplotlib . pyplot as plt
@@ -71,8 +71,6 @@ n_test = int(n * 0.2)
 # Vergleich 5
 #N, q, R, M = 4, 2, 10 ** 6, 9
 N, q, R, M = 9, 2, 10 ** 6, 4
-#N, q, R, M = 3, 2, 10 ** 6, 4
-#N, q, R, M = 4, 2, 10 ** 6, 3
 
 a = 3
 d = 1

@@ -33,7 +33,7 @@ Für die Konstruktion unseres Neuronale-Netze-Regressionsschätzers wählen wir 
 %mit einer Tikhonov Regularisierung \cite[Theorem 5.9]{Kress2012} lösen.
 
 Es ist bekannt (vgl.\@ \cite[Theorem 7.2 und Problem 7.2]{DevLug96} und \cite[Section 3]{DevWag80}), dass man Glattheitsvoraussetzungen an die Regressionsfunktion stellen muss, um nichttriviale Konvergenzresultate für nichtparametrische Regressionsschätzer herzuleiten. Dafür verwenden wir die folgende Definition.
-\todo{auf eine Seite?}
+\newpage
 \begin{defn}[($p,C$)-Glattheit]
 \label{def:pc}
    Sei $p = q + s$ mit $q \in \N_0$ und $s \in (0,1]$ und sei $C > 0$. Eine Funktion $f\colon \R^d \to \R$ heißt \emph{($p, C$)-glatt}, falls für alle Multiindizes~$\alpha = (\alpha_1,\dots,\alpha_d) \in \N_0^d$ mit $\sum_{j = 1}^{d}\alpha_j = q$ die partielle Ableitung 

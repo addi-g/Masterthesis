@@ -1,25 +1,35 @@
 \chapter{Anwendungsbeispiel auf simulierte Daten}
 \label{chap:4}
 
-In diesem Kapitel untersuchen wir die Leistung unseres Neuronale-Netze"=Regressionsschätzers aus Kapitel~\ref{chap:2} anhand von Anwendungsbeispielen auf simulierte Daten. Der Schätzer und die Beispiele wurden in \emph{Python}~\cite[Version 3.7.3]{van1995python} implementiert (vgl.\@ Appendix~\ref{chap:app}). 
+In diesem Kapitel untersuchen wir die Leistung unseres Neuronale-Netze"=Regressionsschätzers aus Kapitel~\ref{chap:2} anhand von Anwendungsbeispielen auf simulierte Daten. Der Schätzer und die Beispiele wurden in \emph{Python}~\cite[Version 3.7.3]{van1995python} implementiert (vgl.~\hyperref[chap:app]{Appendix}). 
 %Dafür führen wir eine Simulation bei endlicher Stichprobengröße auf simulierte Daten durch.
 Im ersten Abschnitt führen wir eine Parameterstudie für unseren Neuronale-Netze-Regressionsschätzer durch. Im zweiten Abschnitt quantifizieren wir im Rahmen eines Simulationsbeispiels die Leistung unseres Neuronale-Netze-Regressionsschätzers, indem wir den empirischen $L_2$-Fehler dieses Schätzers und weiterer Standardschätzer berechnen und vergleichen.
-%Die Implementation der Standardschätzer erfolgte mithilfe der $Keras$ Bibliothek \cite{chollet2015keras}. Keras ist eine \emph{High-Level} Anwendungs-Programmierschnittstelle für neuronale Netze in Python. Wir haben uns für Keras entschieden, da diese Bibliothek einfaches und schnelles Erstellen von neuronalen Netzen durch Benutzerfreundlichkeit, Modularität und Erweiterbarkeit ermöglicht. 
 
 \section{Parameterstudie}
 \label{Studie}
 
-In diesem Abschnitt führen wir für unseren Neuronale-Netze-Regressionsschätzer \textit{new\_neural\_network\_estimate} ($m_{n,1}$) eine Parameterstudie durch, um den Einfluss der Parameter auf den Schätzer zu überprüfen. Wir haben als Regressionsfunktion $m\colon [-3,3] \to \R$ mit
+In diesem Abschnitt führen wir für die Implementation unseres Neuronale-Netze"=Regressionsschätzers \textit{new\_neural\_network\_estimate} ($m_{n,1}$) eine Parameterstudie durch. Die konkrete Implementierung des Schätzers gemäß Kapitel~\ref{chap:2} erfordert die Festsetzung von Parametern, deren Einfluss auf die Schätzung wir in diesem Abschnitt genauer betrachten werden. Wir haben als Regressionsfunktion $m\colon [-3,3] \to \R$ mit
 $$m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$$
 gewählt.
-Diese Funktion stellt als Potenzreihe und durch ihr starkes Schwingen für Regressionsschätzer und insbesondere für unseren Neuronale-Netze-Schätzer, welcher Polynome approximiert, eine Herausforderung dar. Wir erzeugen eine Stichprobe von $1000$ unabhängigen auf dem Intervall $[-3,3]$ gleichverteilten Zufallsvariablen und teilen diese Stichprobe in ein Learning-Sample der Größe $800$ und ein Testing-Sample \todo{was mach ich mit dem Sample? dieses Y aus Teil 2 brauch ich auch schon ...} der Größe $200$ auf. In der Parameterstudie verändern wir bei unserem Neuronale-Netze-Schätzer den Parameter~$N$, welcher den maximalen Grad der Polynome bestimmt, welche wir mit $f_{\net,\bj,\bi}$ schätzen möchten und die ihrerseits die Regressionsfunktion approximieren sollen (vgl.\@ Lemma~\ref{lem:5}). Zudem verändern wir den Parameter~$M$, welcher den Abstand zwischen zwei benachbarten Gitterpunkten steuert. Durch wachsendes $M$ verfeinert sich das Gitter, welches wir über das Intervall $[-3,3]$ legen und wir vermuten, dass sich dadurch die Approximationsgüte verbessert (vgl.\@ Lemma~\ref{lem:pcsmooth}). 
+Diese Funktion stellt als Potenzreihe und durch ihr starkes Schwingen für Regressionsschätzer und insbesondere für unseren Neuronale-Netze-Regressionsschätzer, welcher Polynome approximiert, eine Herausforderung dar. Wir erzeugen als Realisierung von $X$ ein Training-Sample der Größe $800$ und ein Testing-Sample der Größe $n = 200$ von unabhängigen auf dem Intervall $[-3,3]$ gleichverteilten Zufallsvariablen. Zudem wählen wir $\epsilon$ standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
+\begin{equation}
+    \label{eq:Y}
+    Y = m(X) + \sigma \cdot \lambda \cdot \epsilon.
+\end{equation}
+Den Skalierungsfaktor $\lambda > 0$ wählen wir als Interquartilsabstand \emph{(IQA)} von $m(X)$ auf dem Trainingsdatensatz. Für den Rauschfaktor $\sigma$ gilt $\sigma = 0.05.$
+%Mit diesen Daten lässt sich nun auch $Y$ darstellen.
+Dem Schätzer wird nun der Trainingsdatensatz von $X$ und $Y$ zum Lernen bzw.\@ Festlegen der Gewichte nach Kapitel~\ref{subsec:2:1} gegeben. 
 
-Um die Vergleichbarkeit der Ergebnisse sicherzustellen, erzeugen wir mit einem \emph{Seed} eine reproduzierbare Realisierung der Zufallsvariablen. In der Parameterstudie betrachten wir den Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $M \in\{2,4,8,9,16\}$ und $N \in \{2,4,8,9,16\}$. Für die Wahl der Parameter haben wir uns an \cite{kohler19} orientiert.
+In der Parameterstudie verändern wir bei unserem Neuronale-Netze-Regressionsschätzer den Parameter~$N$, welcher den maximalen Grad der Polynome bestimmt, welche wir mit $f_{\net,\bj,\bi}$ schätzen möchten und die ihrerseits die Regressionsfunktion $m$  approximieren sollen (vgl.\@ Lemma~\ref{lem:5}). Zudem verändern wir den Parameter~$M$, welcher den Abstand zwischen zwei benachbarten Gitterpunkten steuert. Durch wachsendes $M$ verfeinert sich das Gitter, welches wir über das Intervall $[-3,3]$ legen und wir vermuten, dass sich dadurch die Approximationsgüte verbessert (vgl.\@ Lemma~\ref{lem:pcsmooth}). 
 
-In Abbildung~\ref{fig:subfig.a.1} erkennen wir die Approximation der Regressionsfunktion $m$ auf dem Testing-Sample durch unseren Neuronale-Netze-Regressionsschätzer, wobei wir $M = 2$ und $N \in \{2,4,8,16\}$ wählen. Visuell erkennen wir, dass sich die Approximation mit steigendem $N$ verbessert.
-In Abbildung~\ref{fig:subfig.a.2} erkennen wir die Approximation der Regressionsfunktion $m$ auf dem Testing-Sample durch unseren Neuronale-Netze-Regressionsschätzer, wobei wir $N = 2$ und $M \in \{2,4,8,16\}$ wählen. Visuell erkennen wir, dass sich die Approximation mit steigendem $M$ verbessert. In Abbildung~\ref{fig:subfig.a.3} haben wir $N = 16$ fest gewählt und betrachten variables $M \in \{2,4,8,16\}$. Visuell erkennen wir, dass sich die Approximation mit steigendem $M$ verbessert.
-In Abbildung~\ref{fig:subfig.a.4} haben wir $M = 16$ fest gewählt und betrachten variables $N \in \{2,4,8,16\}$. Visuell erkennen wir, dass sich die Approximation mit steigendem $N$ verbessert.
-In Abbildung~\ref{fig:subfig.a.5} betrachten wir $M \in \{2,4,8,9,16\}$ und $N \in \{2,4,8,9,16\}$, wobei wir immer Kombinationen von $M$ und $N$ betrachten, sodass $(M + 1)\cdot(N + 1) \approx 51$ ergibt. Visuell erkennen wir, dass die Approximation besser ist, wenn einer der Parameter sehr groß ist, als wenn der kleiner Wert etwas höher und dafür der höhere etwas kleiner wird. Es ist zu beachten, dass die Approximation durch den Schätzer besser wird je höher die Parameter sind. Hohe Parameter führen aber auch zu einem höheren Ressourcenbedarf wie z.B. der Rechenzeit. Es ist daher auch interessant zu wissen, ob der Schätzer auch bei geringer Parameterwahl akzeptable Ergebnisse liefert. \todo{Sinn von Test und Sätze anders aufschreiben}
+Um die Vergleichbarkeit der Ergebnisse sicherzustellen, erzeugen wir mit einem \emph{Seed} eine reproduzierbare Realisierung der Zufallsvariablen. In der Parameterstudie betrachten wir den Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $M \in\{2,4,8,9,16\}$ und $N \in \{2,4,8,9,16\}$. Für die Wahl der Parameter haben wir uns an \cite{kohler19} orientiert. Es ist zu beachten, dass die Approximation durch den Schätzer besser wird je höher die Parameter sind. Hohe Parameter führen aber auch zu einem höheren Ressourcenbedarf wie z.B. der Rechenzeit. Es ist daher auch interessant zu wissen, ob der Schätzer auch bei niedriger Parameterwahl akzeptable Ergebnisse liefert.
+
+In Abbildung~\ref{fig:subfig.a.1} erkennen wir die Approximation der Regressionsfunktion $m$ auf dem Testing-Sample durch unseren Neuronale-Netze-Regressionsschätzer, wobei wir $M = 2$ und $N \in \{2,4,8,16\}$ wählen. Mit diesem Test versuchen wir zu erkennen, ob die Approximation der Regressionsfunktion besser wird, wenn der maximale Grad der Polynome, die wir schätzen möchten, steigt. Anhand der Plots erkennen wir, dass sich die Approximation mit steigendem $N$ verbessert.
+Der nächste Test besteht darin die Parameter $N = 2$ und $M \in \{2,4,8,16\} $ zu wählen. Durch das steigende $M$ verfeinern wir das Gitter welches auf dem Intervall $[-3,3]$ liegt und wir können in Abbildung~\ref{fig:subfig.a.2}  beobachten wie sich mit steigendem $M$ die Approximation der Regressionsfunktion verbessert. In Abbildung~\ref{fig:subfig.a.3} haben wir $N = 16$ fest gewählt und betrachten variables $M \in \{2,4,8,16\}$. Der Test unterscheidet sich zu dem vorherigen nur darin, dass $N$ hoch gewählt wurde und wir können auch wieder beobachten, dass sich die Approximation mit steigendem $M$ verbessert. Im Vergleich zu dem vorherigen Test sind aber die Approximationen bereits mit geringem $M$ deutlich besser.
+In Abbildung~\ref{fig:subfig.a.4} haben wir $M = 16$ fest gewählt und betrachten variables $N \in \{2,4,8,16\}$. Durch alleiniges Betrachten der Plots erkennen wir, dass sich die Approximation mit steigendem $N$ verbessert.
+
+Im letzten Test möchten wir, dass der Aufwand zur Lösung des Kleinste-Quadrate-Problems gleicht bleibt. Gemäß Kapitel~\ref{subsec:2.2} lösen wir für die Bestimmung der Gewichte der Ausgabeschicht ein Kleinste-Quadrate-Problem. Der Rechenaufwand für das Lösen der Normalengleichungen, welche wir in unserer Implementation verwendet haben, ist ähnlich zu dem der numerisch stabileren Lösung einer $QR$-Zerlegung. Bei der $QR$-Zerlegung mittels Housholdertransformationen beträgt die Anzahl an Operationen in unserem Fall ca.\@ $n \cdot \big((M + 1)\cdot(N + 1)\big)^2$ \cite[Kapitel 4, Seite 130]{reusken2008}. Wir betrachten daher die Tupel $(M, N) \in \{2,4,9,16\}$ mit $(M + 1)\cdot(N + 1) \approx 51$. In Abbildung~\ref{fig:subfig.a.5} erkennen wir, dass die Approximation bei $(2,16)$ und $(16,2)$ besser ist.
+
 \begin{figure}
     \begin{subfigure}[b]{0.5\textwidth}
         \centering
@@ -69,6 +79,7 @@ In Abbildung~\ref{fig:subfig.a.5} betrachten wir $M \in \{2,4,8,9,16\}$ und $N \
     \caption{Approximation der Regressionsfunktion $m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$ durch unseren Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $M = 2$ und $N \in \{2,4,8,16\}$.}
     \label{fig:subfig.a.1}
 \end{figure}
+
 \begin{figure}
     \begin{subfigure}[b]{0.5\textwidth}
     \centering
@@ -265,40 +276,35 @@ In Abbildung~\ref{fig:subfig.a.5} betrachten wir $M \in \{2,4,8,9,16\}$ und $N \
      \caption{Approximation der Regressionsfunktion $m(x) = \sin\big(\frac{\pi}{2} \cdot x^2\big)$ durch unseren Neuronale-Netze-Regressionsschätzer mit Parametern $d = 1$, $q = 2$, $R = 10^6$, $a = 3$, $M \in \{2,4,8,9,16\}$ und $N \in \{2,4,8,9,16\}$, wobei wir immer Kombinationen von $M$ und $N$ betrachten, sodass $(M + 1)\cdot(N + 1) \approx 51$ gilt.}
     \label{fig:subfig.a.5}
 \end{figure}
-\newpage
+
+\clearpage
 \section{Vergleich des empirischen $L_2$-Fehlers}
 
-In diesem Abschnitt führen wir nun einen Vergleich des empirischen $L_2$-Fehlers zwischen dem in Abschnitt \ref{Studie} vorgestellten Regressionsschätzer und den Standardschätzern durch, die im Verlauf dieses Abschnitts vorgestellt werden.
+In diesem Abschnitt führen wir nun einen Vergleich des empirischen $L_2$-Fehlers zwischen dem in Abschnitt~\ref{Studie} eingeführten Regressionsschätzer und zwei Standardschätzern durch, die im Verlauf dieses Abschnitts vorgestellt werden.
 Die simulierten Daten, welche wir verwenden werden, sehen wie folgt aus:
-Wir wählen $X$ gleichverteilt auf $[-2, 2]^d$, wobei $d \in \{1,2\}$ die Dimension des Inputs ist. Zudem wählen wir $\epsilon$ standardnormalverteilt und unabhängig von $X$ und wir definieren $Y$ durch:
-\begin{equation}
-    \label{eq:Y}
-    Y = m_d(X) + \sigma \cdot \lambda_d \cdot \epsilon,
-\end{equation}
-wobei $m_d \colon [-2, 2]^d \to \R$ den Regressionsfunktionen
+Wir wählen $X$ gleichverteilt auf $[-2, 2]^d$, wobei $d \in \{1,2\}$ die Dimension des Inputs ist. Mit Gleichung~\eqref{eq:Y} können wir $Y$ darstellen, wobei $m = m_d \colon [-2, 2]^d \to \R$ den Regressionsfunktionen
 $$ m_1(x) =  \sin\big(0.2 \cdot x^2\big) + \exp(0.5 \cdot x) + x^3$$
 und
 $$ m_2(x_0, x_1) = \sin\big(\sqrt[2]{x_0^2 + x_1^2}\big)$$
-entspricht.
-Den Skalierungsfaktor $\lambda_d > 0$ wählen wir als Interquartilsabstand \emph{(IQA)} einer Stichprobe von $m(X)$. Für den Rauschfaktor $\sigma$ gilt $\sigma \in \{0.05, 0.1\}.$ Mit diesen Daten lässt sich nun auch $Y$ darstellen. 
+entspricht. 
+Den Skalierungsfaktor $\lambda = \lambda_d > 0$ wählen wir als Interquartilsabstand einer Stichprobe von $m_d(X)$. Für den Rauschfaktor $\sigma$ gilt $\sigma \in \{0.05, 0.1\}.$
 
 Als Nächstes kommen wir zu den Schätzern, die wir in diesem Abschnitt vergleichen möchten. Für die Wahl der Parameter der jeweiligen Schätzer haben wir uns an \cite{kohler19} orientiert.
-Der Schätzer \textit{fc\_neural\_1\_estimate} \todo{Keras erwähnen s.o.} ($m_{n,2}$) ist ein neuronales Netz mit Architektur~$(1,\bk)$, wobei die Anzahl an Neuronen $\bk$ aus der Menge $\{5, 10, 25, 50, 75\}$ stammt. Für das neuronale Netz haben wir die \emph{ReLu} Aktivierungsfunktion $f(x) = \max\{0,x\}$ verwendet. Die Anzahl der Neuronen in der verborgenen Schicht ist so gewählt, dass diese zu einem minimalen empirischen $L_2$-Risiko des Schätzers führt.
+Der Schätzer \textit{fc\_neural\_1\_estimate} ($m_{n,2}$) ist ein neuronales Netz mit Architektur~$(1,\bk)$, wobei die Anzahl an Neuronen $\bk$ aus der Menge $\mathcal{A} = \{5, 10, 25, 50, 75\}$ stammt. Die Implementation dieses Schätzers erfolgte mithilfe der $Keras$ Bibliothek~\cite{chollet2015keras}. Keras ist eine \emph{High-Level} Anwendungs-Programmierschnittstelle für neuronale Netze in Python. Wir haben uns für Keras entschieden, da diese Bibliothek einfaches und schnelles Erstellen von neuronalen Netzen durch Benutzerfreundlichkeit, Modularität und Erweiterbarkeit ermöglicht. Für das neuronale Netz haben wir die \emph{ReLU} Aktivierungsfunktion $f(x) = \max\{0,x\}$ verwendet. Die Anzahl der Neuronen aus der Menge $\mathcal{A}$ in der verborgenen Schicht ist so gewählt, dass diese zu einem minimalen empirischen $L_2$-Fehler des Schätzers führt.
 
-Unser nächster Schätzer \textit{nearest\_neighbor\_estimate} ($m_{n,3}$) ist ein Nächste-Nachbar-Schätzer \cite[Kapitel~7.1]{fahrmeir2009regression}, bei dem die Anzahl an nächsten Nachbarn so aus der Menge $\{ 2,3,\dots,9\}$ ausgewählt wird, dass dieser zu einem minimalen empirischen $L_2$-Risiko führt.
+Unser nächster Schätzer \textit{nearest\_neighbor\_estimate} ($m_{n,3}$) ist ein Nächste-Nachbar-Schät"=zer \cite[Kapitel~7.1]{fahrmeir2009regression}, bei dem die Anzahl an nächsten Nachbarn so aus der Menge~$\{ 2,3,\dots,9\}$ ausgewählt wird, dass dieser zu einem minimalen empirischen $L_2$-Fehler führt. Diesen Schätzer haben wir mithilfe der \emph{Scikit-learn} Bibliothek implementiert \cite{scikit-learn}. Scikit-learn ist eine Bibliothek für maschinelles Lernen in Python, die viele effiziente Werkzeuge für maschinelles Lernen, statistische Modellierung einschließlich Klassifikation und Regression enthält.
 
-Um die Qualität der Schätzung mittels Kennzahlen zu quantifizieren und um diese mit anderen Schätzern zu vergleichen, betrachten wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} den Interquartilsabstand und den Median des skalierten $L_2$-Fehlers $\epsilon_{L_2}(m_{n,i})$ der einzelnen Schätzer $m_{n,i}$ von einer Stichprobe von Schätzungen. 
+Um die Qualität der Schätzung mittels Kennzahlen zu quantifizieren und um diese mit anderen Schätzern zu vergleichen, betrachten wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} den Interquartilsabstand und den Median des skalierten empirischen $L_2$-Fehlers $\epsilon_{L_2}(m_{n,i})$ der einzelnen Schätzer $m_{n,i}$ von einer Stichprobe von Schätzungen. 
 
 Für die Schätzung von $m_1$ setzen wir: $d = 1$, $N = 3$, $q = 2$, $R = 10^6$, $a = 2$, $M = 2$, da diese Wahl der Parameter bereits sehr gute und schnelle Schätzungen liefert. Für die Schätzung von $m_2$ erhalten wir bereits mit: $d = 2$, $N = 2$, $q = 2$, $R = 10^6$, $a = 2$, $M = 2$ sehr gute Schätzungen.
 
-Wir betrachten ein skaliertes Fehlermaß, da wir die zu schätzenden Regressionsfunktionen $m_d$ kennen und der Fehler stark von der Komplexität der zu schätzenden Funktion abhängt. \todo{2 mal gleicher Satzanfang} Dieses skalierte Fehlermaß ist so zu verstehen, dass wir den empirischen $L_2$-Fehler im Verhältnis zum Median des empirischen $L_2$-Fehlers $\bar{\epsilon}_{L_2}$ des simpelsten Schätzers von $m_d$, einer konstanten Funktion, welchen wir als \textit{konstanten Schätzer} bezeichnen, betrachten. Dieses skalierte Fehlermaß ist so zu deuten, dass ein großer Fehler eines Regressionsschätzers im Falle, dass der Fehler des konstanten Schätzers klein ist, auf eine noch schlechtere Leistung hindeutet.
+Wir betrachten ein skaliertes Fehlermaß, da wir die zu schätzenden Regressionsfunktionen~$m_d$ kennen und der Fehler stark von der Komplexität der zu schätzenden Funktion abhängt. Dieses skalierte Fehlermaß ist so zu verstehen, dass wir den empirischen $L_2$-Fehler in Verhältnis zum Median des empirischen $L_2$-Fehlers $\bar{\epsilon}_{L_2}$ des \textit{konstanten Schätzers} setzen. Dieser konstante Schätzer approximiert die Regressionsfunktion mit dem arithmetischen Mittel der Funktionswerte auf dem Trainingsdatensatz. Die Skalierung führt dazu, dass ein großer Fehler eines Regressionsschätzers im Falle, dass der Fehler des konstanten Schätzers klein ist, auf eine noch schlechtere Leistung hindeutet.
 
 Unser Vorgehen zum Vergleich der drei hier betrachteten Regressionsschätzer gestaltet sich wie folgt:
-Da die resultierenden skalierten Fehler noch von der Stichprobe von $(X, Y)$ abhängen und um diese Werte besser vergleichen zu können, führen wir die Fehlerberechnung jeweils $50$ mal durch und geben dann den Median und den Interquartilsabstand für die Schätzung der betrachteten Regressionsschätzer aus.
-Um diesen skalierten $L_2$-Fehler in jeder der 50 Iterationen zu bestimmen, gehen wir folgt vor:
-
-Wir teilen die Stichprobe von $X$ in ein Learning-Sample $X_{\text{train}}$ der Größe $n_{\text{train}} = 800$ und in ein Testing-Sample $X_{\text{test}}$ der Größe $n_{\text{test}} = 200$ auf.
-Auf dem Learning-Sample werden nun auch die Werte $Y_{\text{train}}$ als Realisierung der Zufallsvariable $Y$ aus Gleichung~\eqref{eq:Y} bestimmt. Jedem einzelnen dieser Schätzer wird nun der Datensatz $(X_{\text{train}},Y_{\text{train}})$ zum Lernen bzw.\@ Festlegen der Parameter gegeben. Wir bestimmen als Erstes den $L_2$-Fehler der einzelnen Schätzer \todo{was ist n?} $m_{n,i}$ mit $i = 1,2,3$ approximativ durch den empirischen $L_2$-Fehler $\epsilon_{L_2}(m_{n,i})$ auf einer unabhängigen Stichprobe $X_{\text{test}}$ der Größe $200.$ Mit dem konstanten Schätzer bestimmen wir nun 25-mal den empirischen $L_2$-Fehler auf einer unabhängigen Stichprobe von $X$ der Größe 200.
+Da die resultierenden skalierten Fehler noch von der Stichprobe von $(X, Y)$ abhängen und um diese Werte besser vergleichen zu können, führen wir die Fehlerberechnung jeweils $50$-mal durch und geben dann den Median und den Interquartilsabstand für die Schätzung der betrachteten Regressionsschätzer aus.
+Um diesen skalierten empirischen $L_2$-Fehler in jeder der 50 Iterationen zu bestimmen, gehen wir folgt vor:
+Wir erzeugen ein Training-Sample $X_{\text{train}}$ aus Realisierungen von $X$ der Größe $800$ und ein Testing-Sample~$X_{\text{test}}$ der Größe $n = 200$.
+Auf dem Training-Sample werden nun auch die Werte $Y_{\text{train}}$ als Realisierung der Zufallsvariable $Y$ über Gleichung~\eqref{eq:Y} bestimmt. Jedem einzelnen dieser Schätzer werden nun die Training-Samples $X_{\text{train}}$ und $Y_{\text{train}}$ zum Lernen bzw.\@ Festlegen der Parameter gegeben. Wir bestimmen als Erstes den $L_2$-Fehler der einzelnen Schätzer $m_{n,i}$ mit $i = 1,2,3$ approximativ durch den empirischen $L_2$-Fehler~$\epsilon_{L_2}(m_{n,i})$ auf der unabhängigen Stichprobe $X_{\text{test}}.$ Mit dem konstanten Schätzer bestimmen wir nun 25-mal den empirischen $L_2$-Fehler auf einer unabhängigen Stichprobe von Realisierungen von $X$ der Größe 200.
 Von dieser Stichprobe von Fehlern nehmen wir nun den Median und erhalten so das skalierte Fehlermaß $\epsilon_{L_2}(m_{n,i}) / \bar{\epsilon}_{L_2}.$
 
 %\begin{figure}
@@ -312,45 +318,45 @@ Von dieser Stichprobe von Fehlern nehmen wir nun den Median und erhalten so das 
 %\end{tikzpicture}
 %\end{figure}
 
-Wie wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} anhand des Medians und des IQA des skalierten $L_2$-Fehlers sehen können, übertrifft unserer Neuronale-Netze-Regressionsschätzer in allen Fällen die Leistung der anderen Schätzer. 
+Wie wir in Tabelle~\ref{tab:truthTablesm1} und Tabelle~\ref{tab:truthTablesm2} anhand des Medians und des Interquartilsabstands des skalierten $L_2$-Fehlers sehen können, übertrifft unserer Neuronale-Netze-Regressions"=schätzer in allen Fällen die Leistung der anderen Schätzer. Diese Schlussfolgerung steht im Einklang mit den Resultaten für den zweidimensionalen Fall aus \cite[Tabel 1]{kohler19} .
 \begin{table}
 \centering
-\begin{tabular}{ |p{5cm}||p{4cm}|p{4cm}|}
+\begin{tabular}{ |p{5cm}||p{1.7cm} p{2cm}|p{1.7cm} p{2cm}|}
  \hline
- & \multicolumn{2}{|c|}{$m_1$}\\
+ & \multicolumn{4}{|c|}{$m_1$}\\
  \hline
- $\sigma$& $5\%$ & $10\%$ \\
+ $\sigma$& $5\%$& & $10\%$ &\\
  \hline
- $\bar{\epsilon}_{L_2,N}$& $13.4482362$ & $13.3925910$ \\
+ $\bar{\epsilon}_{L_2,N}$& $13.4482362$ & & $13.3925910$ & \\
  \hline
- \textit{Lageparam. (Streuungsmaß) }&  Median (IQA) &  Median (IQA)   \\
+ \textit{Lageparam. (Streuungsmaß) }&  Median &(IQA) &  Median &(IQA)   \\
  \hline
- new\_neural\_network\_estimate & $\mathbf{2.482\textbf{e-}05 \; (1.612\textbf{e-}05)}$   & $\mathbf{6.908\textbf{e-}05 \; (3.936\textbf{e-}05)}$  \\
- fc\_neural\_1\_estimate & $4.384\text{e-}04 \; (2.14\text{e-}03)$ &   $7.261\text{e-}04 \; (4.57\text{e-}03)$ \\
- nearest\_neighbor\_estimate & $2.9527\text{e-}04 \; (9.312\text{e-}05)$ & $9.0864\text{e-}04 \; (2.895\text{e-}04)$\\
+new\_neural\_network\_estimate & $\mathbf{2.482\textbf{e-}05}$& $\mathbf{(1.612\textbf{e-}05)}$   & $\mathbf{6.908\textbf{e-}05}$&$\mathbf{ (3.936\textbf{e-}05)}$  \\
+ fc\_neural\_1\_estimate & $4.384\text{e-}04$&$(2.14\text{e-}03)$ &   $7.261\text{e-}04$&$(4.57\text{e-}03)$ \\
+ nearest\_neighbor\_estimate & $2.9527\text{e-}04$&$(9.312\text{e-}05)$ & $9.0864\text{e-}04$&$(2.895\text{e-}04)$\\
  \hline
 \end{tabular}
-    \caption{Median und IQR von $50$ skalierten empirischen $L_2$-Fehlers für Schätzungen für $m_1$.}
+    \caption{Median und IQA von $50$ skalierten empirischen $L_2$-Fehlern für Schätzungen von $m_1$.}
      \label{tab:truthTablesm1}   
 \end{table}
-    
+
     \begin{table}
 \centering
-\begin{tabular}{ |p{5cm}||p{4cm}|p{4cm}|}
+\begin{tabular}{ |p{5cm}||p{1.7cm} p{2cm}|p{1.7cm} p{2cm}|}
  \hline
- & \multicolumn{2}{|c|}{$m_2$}\\
+ & \multicolumn{4}{|c|}{$m_2$}\\
  \hline
- $\sigma$& $5\%$ & $10\%$ \\
+ $\sigma$& $5\%$ & & $10\%$ &  \\
  \hline
- $\bar{\epsilon}_{L_2,N}$& $0.0324$ & $0.0311$ \\
+ $\bar{\epsilon}_{L_2,N}$& $0.0324$ & & $0.0311$ & \\
  \hline
- \textit{Lageparam. (Streuungsmaß)}&  Median (IQA) &  Median (IQA)   \\
+ \textit{Lageparam. (Streuungsmaß)}&  Median &(IQA) &  Median &(IQA)   \\
  \hline
- new\_neural\_network\_estimate & $\mathbf{0.003961 \; (0.000932)}$   & $\mathbf{0.00431 \; (0.000973)}$  \\
- fc\_neural\_1\_estimate & $0.0257 \; (0.3803)$ &   $0.0559 \; (0.52033)$ \\
- nearest\_neighbor\_estimate & $0.01616 \; (0.005906)$ &$0.01763 \; (0.007081)$\\
+ new\_neural\_network\_estimate & $\mathbf{0.003961}$ & $\mathbf{(0.000932)}$   & $\mathbf{0.00431}$ & $\mathbf{(0.000973)}$  \\
+ fc\_neural\_1\_estimate & $0.0257$ & $(0.3803)$ &   $0.0559$ &  $(0.52033)$ \\
+ nearest\_neighbor\_estimate & $0.01616$ & $(0.005906)$ &$0.01763$ & $(0.007081)$\\
  \hline
 \end{tabular}
-    \caption{Median und IQR von $50$ skalierten empirischen $L_2$-Fehlers für Schätzungen $m_2$.}
+    \caption{Median und IQA von $50$ skalierten empirischen $L_2$-Fehlern für Schätzungen von $m_2$.}
     \label{tab:truthTablesm2}   
 \end{table}

@@ -1,5 +1,5 @@
 """
-Implementation unseres Neuronale-Netze-Regressionschaetzers
+Implementation unseres Neuronale-Netze-Regressionsschaetzers
 """
 import scipy.special
 import numpy as np

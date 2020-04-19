@@ -6,7 +6,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 
 # Fully connected neuronales Netz mit einer verborgenen Schicht welches die 
-# Anzahl der Neuronen adaptiv, durch Minimierung des L2-Fehlers, aus der Menge \{5, 10, 25, 50, 75\} waehlt. 
+# Anzahl der Neuronen adaptiv, durch Minimierung des emp. L2-Fehlers, aus der Menge \{5, 10, 25, 50, 75\} waehlt. 
 #
 # X: Eingabevektor der Form (X_1,...,X_n) fuer das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
 # Y: Eingabevektor der Form (Y_1,...,Y_n) fuer das neuronale Netz aus dem Datensatz (X_1,Y_1),...,(X_n,Y_n)
